@@ -1,0 +1,143 @@
+{
+  "testedAt": "2026-10-24T14:54:38.484Z",
+  "sourceCommit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+  "catalogImages": 28,
+  "verifiedSourceBytes": 1817972,
+  "batch": {
+    "id": "1f519b30-62ad-44f1-b95b-f44a4c4a368e",
+    "status": "done",
+    "createdAt": "2026-10-24T14:48:51.870Z",
+    "finishedAt": "2026-10-24T14:54:38.484Z",
+    "items": [
+      {
+        "name": "Barbell Back Squat",
+        "status": "blocked",
+        "message": "Need a start and an end position from side-view images with a body found; missing: start and end."
+      },
+      {
+        "name": "Conventional Barbell Deadlift",
+        "status": "blocked",
+        "message": "The builder does not yet create the required bar or its hand contacts."
+      },
+      {
+        "name": "Flat Barbell Bench Press",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a bench the picture path doesn't build yet."
+      },
+      {
+        "name": "Standing Barbell Overhead Press (Shoulder Press)",
+        "status": "blocked",
+        "message": "The builder does not yet create the required bar or its hand contacts."
+      },
+      {
+        "name": "Barbell Bent-Over Row",
+        "status": "needs-review",
+        "message": "The animation completed. Review its failed, uncertain or missing measurements in Studio.",
+        "summary": {
+          "pass": 10,
+          "fail": 6,
+          "limited": 0,
+          "uncertain": 0,
+          "info": 9,
+          "unmeasured": 0
+        }
+      },
+      {
+        "name": "Pull-Up",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a pull-up bar the picture path doesn't build yet."
+      },
+      {
+        "name": "Lat Pulldown (seated, to the front)",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a seat the picture path doesn't build yet."
+      },
+      {
+        "name": "Dumbbell Bicep Curl (standing, both arms)",
+        "status": "blocked",
+        "message": "The builder does not yet create the required dumbbells or its hand contacts."
+      },
+      {
+        "name": "Dumbbell Lateral Raise",
+        "status": "blocked",
+        "message": "The builder does not yet create the required dumbbells or its hand contacts."
+      },
+      {
+        "name": "Dumbbell Shoulder Press (seated overhead press)",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a seat the picture path doesn't build yet."
+      },
+      {
+        "name": "Walking Lunge (dumbbells optional)",
+        "status": "blocked",
+        "message": "The two pictures show alternating lowered lunge stances and do not show the standing start. They are context references only."
+      },
+      {
+        "name": "Front Plank (forearm plank)",
+        "status": "blocked",
+        "message": "Picture 0 is kneeling setup; picture 1 is a static forearm hold. Do not turn this pair into a kneel-to-plank exercise cycle."
+      },
+      {
+        "name": "Tricep Pushdown (cable, bar or rope attachment)",
+        "status": "blocked",
+        "message": "The builder does not yet create the required cable handle or its hand contacts."
+      },
+      {
+        "name": "Leg Press (seated machine)",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a leg-press sled the picture path doesn't build yet."
+      }
+    ]
+  },
+  "row": {
+    "runId": "20261024-144853-7bd0",
+    "status": "done",
+    "summary": {
+      "pass": 10,
+      "fail": 6,
+      "limited": 0,
+      "uncertain": 0,
+      "info": 9,
+      "unmeasured": 0
+    },
+    "steps": [
+      {
+        "id": "read",
+        "status": "done",
+        "seconds": 0.1
+      },
+      {
+        "id": "build",
+        "status": "done",
+        "seconds": 1.3
+      },
+      {
+        "id": "animate",
+        "status": "done",
+        "seconds": 28.7
+      },
+      {
+        "id": "render",
+        "status": "done",
+        "seconds": 226.9
+      },
+      {
+        "id": "stills",
+        "status": "done",
+        "seconds": 86
+      },
+      {
+        "id": "check",
+        "status": "done",
+        "seconds": 0.1
+      }
+    ],
+    "fittedCacheRestoreSeconds": 0.38,
+    "independentReplay": {
+      "frames": 81,
+      "maximumAnchorErrorMm": 0.004289668595447438,
+      "hingeDriftDegrees": 0,
+      "result": "passed"
+    }
+  }
+}

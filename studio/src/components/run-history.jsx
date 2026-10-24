@@ -2,7 +2,7 @@ import './run-history.css'
 import StatusChip from './status-chip.jsx'
 import { formatDuration, formatWhen } from '../lib/format.js'
 import { RUN_STATUS_LABELS } from '../lib/labels.js'
-import { historyBar, historyLine } from '../lib/status.js'
+import { checksAside, historyBar, historyLine, unmeasuredLine } from '../lib/status.js'
 
 // A thin bar per run: pass / limited / fail / not measured (amber), so improvement shows at a glance.
 const Bar = ({ summary }) => {
@@ -35,6 +35,7 @@ const RunHistory = ({ runs, shownId, onPick }) => (
               type="button"
               className={`history-item${run.id === shownId ? ' is-shown' : ''}`}
               aria-pressed={run.id === shownId}
+              aria-label={[formatWhen(run.createdAt), historyLine(run), checksAside(run.summary), unmeasuredLine(run.summary), RUN_STATUS_LABELS[run.status] ?? run.status].filter(Boolean).join(' · ')}
               onClick={() => onPick(run.id)}
             >
               <span className="history-when num">{formatWhen(run.createdAt)}</span>

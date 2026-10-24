@@ -21,7 +21,7 @@ export const scoreKind = (summary) => {
   if (!summary) return 'none'
   if (n(summary.fail)) return 'fail'
   if (n(summary.unmeasured)) return 'unmeasured'
-  if (n(summary.limited)) return 'limited'
+  if (n(summary.limited) || n(summary.uncertain)) return 'limited'
   return n(summary.pass) ? 'pass' : 'none'
 }
 
@@ -33,11 +33,13 @@ export const checksAside = (summary) => {
   return parts.join(', ')
 }
 
-// The history bar's parts, as shares of every check that was judged or would have been: pass, limited,
-// fail, and the not-measured ones in amber, so a run held back by them never shows all green.
+// Include uncertain checks in the amber review segment alongside proportion limits.
+// Missing measurements retain their own amber segment; neither may disappear into green.
 export const historyBar = (summary) => {
   if (!summary) return null
-  const parts = ['pass', 'limited', 'fail', 'unmeasured'].map((kind) => ({ kind, count: n(summary[kind]) }))
+  const parts = ['pass', 'limited', 'fail', 'unmeasured'].map((kind) => ({
+    kind, count: n(summary[kind]) + (kind === 'limited' ? n(summary.uncertain) : 0),
+  }))
   const total = parts.reduce((t, p) => t + p.count, 0)
   if (!total) return null
   return parts.map(({ kind, count }) => ({ kind, share: count / total }))
@@ -65,6 +67,10 @@ export const exerciseLine = (exercise, state, runs) => {
     const latest = latestFinished(runs)
     return latest?.summary ? `${historyLine(latest)} · ${unmeasuredLine(latest.summary)}` : 'not measured'
   }
+  if (status === 'review') {
+    const latest = latestFinished(runs)
+    return latest?.summary ? `${historyLine(latest)} · ${checksAside(latest.summary) || 'needs review'}` : 'needs review'
+  }
   if (status === 'passing' || status === 'failing') {
     const latest = latestFinished(runs)
     if (latest?.status === 'failed') return 'last run failed'
@@ -74,7 +80,7 @@ export const exerciseLine = (exercise, state, runs) => {
   return 'not run yet'
 }
 
-const DOTS = { passing: 'pass', failing: 'fail', unmeasured: 'unmeasured', running: 'running', 'needs-reference': 'empty' }
+const DOTS = { review: 'unmeasured', passing: 'pass', failing: 'fail', unmeasured: 'unmeasured', running: 'running', 'needs-reference': 'empty' }
 export const dotKind = (status) => DOTS[status] ?? 'idle'
 
 export const pollInterval = (state) => (state?.running || state?.queued?.length ? 1000 : 5000)

@@ -3,6 +3,8 @@ import './app.css'
 import ExerciseList from './components/exercise-list.jsx'
 import ExercisePage from './components/exercise-page.jsx'
 import WorkPanel from './components/work-panel.jsx'
+import AutomationPanel from './components/automation-panel.jsx'
+import { automationProgress } from './lib/automation.js'
 import { api } from './lib/api.js'
 import { formatLeft } from './lib/format.js'
 import { hashFor, routeFromHash } from './lib/hash.js'
@@ -27,6 +29,9 @@ const App = () => {
   const [listOpen, setListOpen] = useState(false)
   const [work, setWork] = useState(null)
   const [workOpen, setWorkOpen] = useState(false)
+  const [automationOpen, setAutomationOpen] = useState(false)
+  const [automationActive, setAutomationActive] = useState(null)
+  const automationToggle = useRef(null)
   const workToggle = useRef(null)
   const fetchedStatus = useRef({})
 
@@ -109,6 +114,7 @@ const App = () => {
       setSelected(route.slug)
       setListOpen(false)
       setWorkOpen(false)
+      setAutomationOpen(false)
       // A run link focuses that run once; any other route clears it, so coming back doesn't jump again.
       setFocusRun(focusFrom(route))
       // Back to the plain exercise route, so the same link works again.
@@ -121,8 +127,8 @@ const App = () => {
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
 
-  const select = (slug) => {
-    window.location.hash = hashFor(slug)
+  const select = (slug, runId = null) => {
+    window.location.hash = hashFor(slug, runId)
     setSelected(slug)
     setListOpen(false)
   }
@@ -140,6 +146,7 @@ const App = () => {
   const runningName = running && exercises?.find((e) => e.slug === running.slug)?.name
   const fixes = inProgressText(work)
   const closeWork = useCallback(() => setWorkOpen(false), [])
+  const closeAutomation = useCallback(() => setAutomationOpen(false), [])
 
   return (
     <div className="app">
@@ -150,6 +157,13 @@ const App = () => {
         </div>
         <button type="button" className="app-list-toggle" aria-expanded={listOpen} onClick={() => setListOpen((o) => !o)}>
           {listOpen ? 'Hide exercises' : 'All exercises'}
+        </button>
+        <button type="button" ref={automationToggle} className={`app-automation${automationActive ? ' is-running' : ''}`}
+          aria-label="Automate exercises" aria-expanded={automationOpen} aria-controls="automation-panel"
+          onClick={() => { setAutomationOpen((value) => !value); setWorkOpen(false) }}>
+          <span className="app-automation-long">Automate exercises</span>
+          <span className="app-automation-short" aria-hidden="true">Automate</span>
+          {automationActive && <span className="num">{automationProgress(automationActive).finished}/{automationProgress(automationActive).total}</span>}
         </button>
         <p className={`app-queue${running ? ' is-running' : ''}`} aria-live="polite">
           {running ? (
@@ -172,7 +186,7 @@ const App = () => {
             className={`app-work${fixes ? ' is-running' : ''}`}
             aria-expanded={workOpen}
             aria-controls="work-panel"
-            onClick={() => setWorkOpen((o) => !o)}
+            onClick={() => { setWorkOpen((o) => !o); setAutomationOpen(false) }}
           >
             {fixes && <span className="app-work-ring" aria-hidden="true" />}
             <span className="app-work-long">{fixes ?? 'Behind the scenes'}</span>
@@ -191,6 +205,9 @@ const App = () => {
         onClose={closeWork}
         toggleRef={workToggle}
       />
+
+      <AutomationPanel open={automationOpen} exercises={exercises} onClose={closeAutomation}
+        toggleRef={automationToggle} onOpenExercise={select} onChanged={refresh} onActiveChange={setAutomationActive} />
 
       {offline && <p className="app-offline" role="alert">{offline}</p>}
 

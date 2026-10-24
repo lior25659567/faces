@@ -27,3 +27,7 @@ export const unheld = (name, equipment) => {
   const row = kitOf(name, equipment)
   return row.built ? null : row.holds
 }
+
+
+// Opt in only after a motion profile has real rendered validation, not merely a prop.
+export const automaticBuilder = (name) => Boolean(own(KIT.exercises, name)?.automatic)

@@ -72,7 +72,7 @@ const sendJson = (res, status, body) => {
 
 const readIf = (file) => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null)
 
-export const studioApi = ({ store, queue, work, watcher, onListening }) => {
+export const studioApi = ({ store, queue, work, watcher, automation, onListening }) => {
   const exerciseOr404 = (slug) => {
     const exercise = store.getExercise(slug)
     if (!exercise) throw new HttpError(404, 'That exercise does not exist.')
@@ -88,9 +88,10 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
     const latest = store.listRuns(slug).find((r) => !r.readOnly && (r.status === 'done' || r.status === 'failed'))
     if (!latest) return 'not-run'
     if (latest.status === 'failed') return 'failing'
-    const { pass = 0, fail = 0, unmeasured = 0 } = latest.summary || {}
+    const { pass = 0, fail = 0, unmeasured = 0, limited = 0, uncertain = 0 } = latest.summary || {}
     if (fail > 0) return 'failing'
     if (unmeasured > 0) return 'unmeasured'
+    if (limited > 0 || uncertain > 0 || (latest.automationJobId && ['pass','fail','limited','uncertain','unmeasured'].some((key) => !Number.isFinite(latest.summary?.[key])))) return 'review'
     return pass > 0 ? 'passing' : 'not-run'
   }
 
@@ -123,6 +124,15 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
     const method = req.method
     const seg = pathname.split('/').filter(Boolean).map(decodeURIComponent) // ['api', ...]
     if (seg[0] === 'files') return serveFile(req, res, pathname)
+
+    if (seg[1] === 'automation' && automation) {
+      if (seg.length === 2 && method === 'GET') return sendJson(res, 200, automation.summary())
+      if (seg.length === 2 && method === 'POST') return sendJson(res, 201, automation.start(await readJsonBody(req)))
+      const job = automation.get(seg[2])
+      if (!job) throw new HttpError(404, 'That automation batch does not exist.')
+      if (seg.length === 3 && method === 'GET') return sendJson(res, 200, job)
+      if (seg.length === 4 && seg[3] === 'cancel' && method === 'POST') return sendJson(res, 200, automation.cancel(seg[2]))
+    }
 
     if (seg[1] === 'state' && method === 'GET') return sendJson(res, 200, queue.state())
 
@@ -217,6 +227,7 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
       // items watched (and re-run), only once this server really listens. A second `vite` that loses
       // the port, or a vitest run (no HTTP server), never touches them.
       server.httpServer?.once('listening', () => {
+        automation?.recoverInterrupted()
         queue.recoverInterrupted?.()
         queue.restartInterrupted?.()
         watcher?.start()
@@ -225,6 +236,7 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
       // The Blender child must not outlive the Studio.
       server.httpServer?.once('close', () => {
         watcher?.stop()
+        automation?.stop()
         queue.stop?.()
       })
       server.middlewares.use(async (req, res, next) => {

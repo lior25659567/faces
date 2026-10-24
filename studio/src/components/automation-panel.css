@@ -1,0 +1,78 @@
+.automation-panel {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  z-index: 8;
+  width: min(740px, calc(100vw - 24px));
+  max-height: calc(100vh - 72px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: 0 12px 36px -12px #15181c55;
+}
+.automation-head, .automation-selection-head, .automation-results-head, .automation-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.automation-head { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.automation-head h2 { margin: 0; font-size: var(--t-l); }
+.automation-head h2:focus { outline: none; }
+.automation-head p, .automation-note, .automation-stop p {
+  margin: 6px 0 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+.automation-head > .btn { flex: none; }
+.automation-prepare { padding: 16px 0; }
+.automation-panel h3 { margin: 4px 0 12px; font-size: var(--t-m); }
+.automation-selection-head { align-items: center; }
+.automation-selection-head h3 { margin-bottom: 4px; }
+.automation-selection {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 18px;
+  border: 0;
+  padding: 8px 0 16px;
+  margin: 0;
+}
+.automation-selection legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.automation-selection label { display: flex; align-items: flex-start; gap: 8px; font-size: var(--t-s); }
+.automation-selection input { margin: 3px 0 0; }
+.automation-results { padding-top: 16px; border-top: 1px solid var(--line); }
+.automation-results-head { align-items: center; flex-wrap: wrap; }
+.automation-history { display: flex; align-items: center; gap: 8px; font-size: var(--t-s); }
+.automation-job-line { margin: 4px 0 8px; color: var(--ink-2); font-size: var(--t-s); }
+.automation-progress { width: 100%; height: 7px; accent-color: var(--running); }
+.automation-stop { margin: 14px 0; }
+.automation-stop p { margin-top: 5px; }
+.automation-items { list-style: none; margin: 12px 0 0; padding: 0; }
+.automation-item { padding: 13px 0; border-top: 1px solid var(--line); }
+.automation-item-name { font-size: var(--t-s); font-weight: 600; }
+.automation-status { flex: none; border-radius: 4px; padding: 2px 6px; background: var(--sunken); color: var(--ink-3); font-size: var(--t-xs); }
+.is-running > .automation-item-head .automation-status { color: var(--running); background: var(--running-bg); }
+.is-pass > .automation-item-head .automation-status { color: var(--pass); background: var(--pass-bg); }
+.is-review > .automation-item-head .automation-status, .is-blocked > .automation-item-head .automation-status { color: var(--limited); background: var(--limited-bg); }
+.is-fail > .automation-item-head .automation-status { color: var(--fail); background: var(--fail-bg); }
+.automation-item p { margin: 6px 0 0; font-size: var(--t-s); color: var(--ink-2); }
+.automation-checks { color: var(--ink-3); }
+.automation-item-links { display: flex; align-items: center; gap: 12px; margin-top: 7px; font-size: var(--t-xs); }
+.automation-item-links > .btn { padding-left: 0; font-size: var(--t-xs); height: 25px; }
+.automation-item-links a { color: var(--running); }
+.automation-error { color: var(--fail); background: var(--fail-bg); border-radius: var(--radius-s); padding: 10px 12px; font-size: var(--t-s); }
+@media (max-width: 520px) {
+  .automation-panel { right: 8px; top: 56px; width: calc(100vw - 16px); max-height: calc(100vh - 64px); padding: 14px; }
+  .automation-selection { grid-template-columns: 1fr; }
+  .automation-item-head { flex-wrap: wrap; gap: 5px; }
+}
+
+.automation-check-only { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 12px; font-size: var(--t-s); color: var(--ink-2); }
+.automation-check-only input { margin: 3px 0 0; }
+
+.automation-prepare > summary { cursor: pointer; font-size: var(--t-m); font-weight: 600; }
+.automation-prepare > summary span { margin-left: 8px; font-size: var(--t-xs); font-weight: 400; color: var(--ink-3); }
+.automation-selection-head p { color: var(--ink-3); font-size: var(--t-xs); margin: 12px 0; }

@@ -150,3 +150,21 @@ test('queueLine', () => {
   expect(queueLine(1)).toBe('Waiting for 1 run to finish first')
   expect(queueLine(3)).toBe('Waiting for 3 runs to finish first')
 })
+
+
+test('uncertain and limited results stay amber and need review', () => {
+  expect(scoreKind({pass:4,fail:0,limited:0,uncertain:1,unmeasured:0})).toBe('limited')
+  expect(dotKind('review')).toBe('unmeasured')
+  const runs=[{id:'r',status:'done',summary:{pass:4,fail:0,limited:0,uncertain:1,unmeasured:0}}]
+  expect(exerciseLine({slug:'row',status:'review'},{running:null,queued:[]},runs)).toContain('1 uncertain')
+})
+
+
+test('history bars retain uncertain checks in their amber review share', () => {
+  expect(historyBar({pass:4,fail:0,limited:1,uncertain:3,unmeasured:2})).toEqual([
+    {kind:'pass',share:.4}, {kind:'limited',share:.4}, {kind:'fail',share:0}, {kind:'unmeasured',share:.2},
+  ])
+  expect(historyBar({pass:0,fail:0,limited:0,uncertain:2,unmeasured:0})).toEqual([
+    {kind:'pass',share:0}, {kind:'limited',share:1}, {kind:'fail',share:0}, {kind:'unmeasured',share:0},
+  ])
+})

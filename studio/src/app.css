@@ -454,3 +454,29 @@ select.field {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Batch automation stays reachable while its panel is closed. */
+.app-automation {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: var(--t-s);
+  font-weight: 550;
+  cursor: pointer;
+}
+.app-automation:hover, .app-automation[aria-expanded='true'] { border-color: var(--ink-3); background: var(--sunken); }
+.app-automation.is-running { color: var(--running); background: var(--running-bg); border-color: var(--running); }
+.app-automation-short { display: none; }
+@media (max-width: 520px) {
+  .app-automation { height: 28px; padding: 0 8px; font-size: var(--t-xs); }
+  .app-automation-long { display: none; }
+  .app-automation-short { display: inline; }
+  .app-bar:has(.app-automation) .app-name { display: none; }
+}

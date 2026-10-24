@@ -1,3 +1,4 @@
+import { createAutomation } from './automation.js'
 import { studioApi } from './api.js'
 import { DATA } from './paths.js'
 import { createQueue, installShutdown } from './queue.js'
@@ -13,8 +14,9 @@ export const studioPlugin = ({ dataRoot = DATA, onListening = installShutdown } 
   configureServer(server) {
     const store = createStore(dataRoot)
     const queue = createQueue({ store })
+    const automation = createAutomation({ store, queue })
     const work = createWork(dataRoot)
     const watcher = createWorkWatcher({ work, store, queue })
-    studioApi({ store, queue, work, watcher, onListening: () => onListening(queue) }).configureServer(server)
+    studioApi({ store, queue, work, watcher, automation, onListening: () => onListening(queue) }).configureServer(server)
   },
 })

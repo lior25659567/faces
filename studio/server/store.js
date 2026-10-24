@@ -112,7 +112,7 @@ export const createStore = (dataRoot = DATA) => {
   // Pictures a run can measure: at least one that is not context-only.
   const hasUsablePictures = (slug) => listReferences(slug).some((i) => !i.contextOnly)
 
-  const addReference = (slug, bytes, originalName, ext = 'png') => {
+  const addReference = (slug, bytes, originalName, ext = 'png', options = {}) => {
     const images = load(slug)
     let id
     do id = `img-${randomBytes(4).toString('hex')}`
@@ -122,7 +122,10 @@ export const createStore = (dataRoot = DATA) => {
     writeFileSync(path.join(refDir(slug), file), bytes)
     const meta = {
       id, file, original: originalName, order: Math.max(0, ...images.map((i) => i.order)) + 1,
-      phase: 'start', phaseSetBy: 'guess', view: null, viewSetBy: null, contextOnly: false, deleted: false,
+      phase: options.phase || 'start', phaseSetBy: options.phase ? 'user' : 'guess',
+      view: options.view || null, viewSetBy: options.view ? 'user' : null,
+      contextOnly: Boolean(options.contextOnly), deleted: false,
+      ...(options.source ? { source: options.source } : {}),
     }
     images.push(meta)
     save(slug, guessPhases(images))

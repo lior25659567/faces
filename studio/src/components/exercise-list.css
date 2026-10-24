@@ -161,3 +161,5 @@
     padding: 12px 8px 16px;
   }
 }
+
+.exercise-item-line.is-review { color: var(--limited); }

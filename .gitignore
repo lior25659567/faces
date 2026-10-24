@@ -21,6 +21,7 @@ studio/.venv
 
 # Generated render outputs — the Studio regenerates these per run
 3d-character/studio/runs
+3d-character/studio/automation
 
 # Working backups and session/tool state
 *.bak

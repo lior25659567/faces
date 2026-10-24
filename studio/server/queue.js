@@ -422,7 +422,8 @@ export const createQueue = ({
       replace(current, fresh.id)
     }
     const at = waiting.findIndex((w) => w.slug === slug &&
-      Boolean(store.readRun(slug, w.runId)?.readOnly) === Boolean(extra.readOnly))
+      Boolean(store.readRun(slug, w.runId)?.readOnly) === Boolean(extra.readOnly) &&
+      (store.readRun(slug, w.runId)?.automationJobId || null) === (extra.automationJobId || null))
     const old = at < 0 ? null : store.readRun(slug, waiting[at].runId)
     let run = fresh
     if (old) {
@@ -518,7 +519,7 @@ export const createQueue = ({
     const restarted = []
     for (const { slug } of store.listExercises()) {
       const newest = store.listRuns(slug)[0]
-      if (!newest || newest.status !== 'interrupted' || newest.restartedAs || newest.restartOf || newest.replacedBy) continue
+      if (!newest || newest.automationJobId || newest.status !== 'interrupted' || newest.restartedAs || newest.restartOf || newest.replacedBy) continue
       if (!store.hasUsablePictures(slug)) continue
       const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, ...(newest.readOnly ? { readOnly: true } : {}) })
       store.writeRun({ ...newest, restartedAs: run.id, restartedAt: iso() })
@@ -548,5 +549,5 @@ export const createQueue = ({
     } catch { /* already gone */ }
   }
 
-  return { enqueue, enqueueRead: (slug) => enqueue(slug, { readOnly: true }), enqueueRecheck, state, recoverInterrupted, restartInterrupted, stop, forceKill }
+  return { enqueue, enqueueRead: (slug, extra = {}) => enqueue(slug, { ...extra, readOnly: true }), enqueueRecheck, state, recoverInterrupted, restartInterrupted, stop, forceKill }
 }

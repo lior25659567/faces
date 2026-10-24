@@ -929,6 +929,12 @@ BAKE_TOLERANCE = 0.04
 
 
 def wear(skin_path, scratch, ages=AGES, log=print):
+    """Fit once and reuse a verified, unposed character on subsequent builds."""
+    from fitted_cache import cached_wear
+    return cached_wear(skin_path, scratch, ages, _wear_uncached, log=log)
+
+
+def _wear_uncached(skin_path, scratch, ages=AGES, log=print):
     """The MPFB cage fitted to a skin, the skin pulled on and baked to the rig's bones.
 
     The same steps `animate.wear_skin` takes on `character.py`'s cage, in the same order:

@@ -103,3 +103,20 @@ test('restarting an interrupted reference check never starts a full build', asyn
   expect(calls).toHaveLength(1)
   expect(queue.restartInterrupted()).toEqual([])
 })
+
+
+test('manual and automated checks keep separate queue ownership', () => {
+  queue=createQueue({store,spawnProcess:reader([],true,true),otherBlenderRunning:()=>false})
+  const automatic=queue.enqueueRead(slug,{automationJobId:'batch-a'})
+  const manual=queue.enqueueRead(slug)
+  expect(manual.id).not.toBe(automatic.id)
+  expect(store.readRun(slug,automatic.id).automationJobId).toBe('batch-a')
+  expect(store.readRun(slug,manual.id).automationJobId).toBeUndefined()
+})
+
+test('interrupted automation runs cannot restart outside their owning batch', () => {
+  const run=store.createRun(slug,{automationJobId:'stopped-batch'})
+  store.writeRun({...run,status:'interrupted'})
+  queue=createQueue({store,spawnProcess:reader([],true,true),otherBlenderRunning:()=>false})
+  expect(queue.restartInterrupted()).toEqual([])
+})

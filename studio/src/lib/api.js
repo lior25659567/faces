@@ -38,6 +38,10 @@ const optionalJson = async (url) => {
 export const api = {
   state: () => request('/api/state'),
   work: () => request('/api/work'),
+  automation: () => request('/api/automation'),
+  automationJob: (id) => request(`/api/automation/${seg(id)}`),
+  startAutomation: (slugs, options = {}) => request('/api/automation', json('POST', { slugs, ...options })),
+  cancelAutomation: (id) => request(`/api/automation/${seg(id)}/cancel`, { method: 'POST' }),
   exercises: () => request('/api/exercises'),
   exercise: (slug) => request(`/api/exercises/${seg(slug)}`),
   addExercise: ({ name, equipment }) => request('/api/exercises', json('POST', { name, equipment })),
