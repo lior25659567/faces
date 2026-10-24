@@ -2357,8 +2357,9 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
     read within PICTURE_AIM - at most PICTURE_ROUNDS times. The picture follows the joints almost one for one
     (tipping the trunk 10 degrees moves the picture's lean 9-10), so a round or two lands it. The bottom's
     depth is held at the coach's seat below his knee's top meanwhile (`_hold`, the hip angle giving way). The
-    round whose picture reads closest to the coach - fewest rows off, then the leans, then everything - is
-    kept, exactly as it was solved and read.
+    round with the most complete reading, then closest to the coach - fewest rows off, then the leans,
+    then everything - is kept, exactly as it was solved and read. Missing detections are reported as
+    incomplete, never counted as matched rows.
     The arms are not solved again: they ride the chest, and the bar with them (`match_arms` ran before).
     Returns the rounds, for the run's report."""
     import shutil
@@ -2370,7 +2371,7 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
         finally:
             shutil.rmtree(folder, ignore_errors=True)
     ir = _studio()
-    from picture import picture_value
+    from picture import assess_round, picture_value
     side = studio["camera"]["side"]
     preview_set(560, 560)       # the stills step's own render settings
     quiet = []
@@ -2400,7 +2401,7 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
             break
         misses, read = {}, {}
         for phase, metric, coach in rows:
-            v = picture_value(pic[phase], "flat", metric)
+            v = picture_value(pic.get(phase), "flat", metric)
             if v is not None:
                 read[f"{phase} {metric}"] = round(v, 1)
                 misses[(phase, metric)] = coach - v
@@ -2410,19 +2411,20 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
             seen, _, how = _seat_at(rig, skin, studio, first, last)
             look = {"seat_below_knee": None if seen is None else round(seen, 3), "read_on": how,
                     "coach": round(seat_want, 3)}
+        assessment = assess_round(rows, misses, studio["tolerance"]["angles_deg"])
+        missing = [f"{p} {m}" for p, m in assessment["missing"]]
         rounds.append({"targets": {p: {k: round(aim["phases"][p][k], 1) for k in keys} for p in STUDIO_PHASES},
                        "frames": at, "picture": read, "rig": rig_read, "depth": look,
+                       "status": assessment["status"], "missing": missing,
                        "misses": {f"{p} {m}": round(v, 1) for (p, m), v in misses.items()}})
         log(f"form: picture round {n} (frames {', '.join(f'{p} {f}' for p, f in at.items())}): " + ", ".join(
             f"{p} {m} picture {read.get(f'{p} {m}', 'not read')} (rig {rig_read[f'{p} {m}']}, coach {c:.1f})"
             for p, m, c in rows) + ("" if look is None else f", end seat depth {look['seat_below_knee']} "
                                                             f"({look['read_on']}; coach {look['coach']})"))
-        # the round kept: fewest rows off the coach by more than the tolerance, then the worst lean, then all
-        # the misses together (the bottom's hip angle, held by the depth, reads alike in every round)
-        tol = studio["tolerance"]["angles_deg"]
-        score = (sum(abs(v) > tol for v in misses.values()),
-                 round(max((abs(v) for (p, m), v in misses.items() if m == "torso_lean"), default=0.0), 1),
-                 round(sum(v * v for v in misses.values()), 1))
+        # Missing measurements rank before error: a round must not win by losing its difficult rows.
+        score = assessment["score"]
+        if missing:
+            log("form: picture: incomplete reading; not measured: " + ", ".join(missing))
         snaps.append(_snapshot(rig))
         if best is None or score < best[0]:
             best = (score, json.loads(json.dumps(aim)), n)
@@ -2430,6 +2432,8 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
         need = {r: v for r, v in misses.items() if not (r in held and v * held[r] > 0)
                 and abs(v) > (PICTURE_AIM if r in corrected else PICTURE_DEADBAND[r[1]])}
         if not need or n == PICTURE_ROUNDS:
+            if missing:
+                log("form: picture: stopped with incomplete measurements; the best measured round is kept")
             break
         new = json.loads(json.dumps(aim))
         for (phase, metric), miss in need.items():
@@ -2452,14 +2456,19 @@ def match_picture(rig, skin, first, last, targets, studio, folder=None, log=prin
         aim = best[1]
         log(f"form: picture: kept round {best[2]} as it was solved and read: targets " + ", ".join(
             f"{p} lean {aim['phases'][p]['torso_lean']:.1f} hip {aim['phases'][p]['hip_included']:.1f}"
-            for p in STUDIO_PHASES) + f"; {best[0][0]} row(s) off by more than the tolerance, the worst lean "
-            f"miss {best[0][1]:.1f} degrees; {len(rounds)} reading(s) in {time.time() - started:.0f} s")
+            for p in STUDIO_PHASES) + f"; {best[0][0]} row(s) not measured, "
+            f"{best[0][1]} measured row(s) off by more than the tolerance, "
+            f"the worst measured lean miss {best[0][2]:.1f} degrees; "
+            f"{len(rounds)} reading(s) in {time.time() - started:.0f} s")
     keep = {rig.animation_data.action.name}
     for a in snaps:
         if a.name not in keep and a.users == 0:
             bpy.data.actions.remove(a)
     bpy.context.scene.frame_set(first)
+    selected = rounds[best[2]] if best is not None else None
     return {"rounds": rounds, "kept": None if best is None else best[2], "seconds": round(time.time() - started, 1),
+            "status": selected["status"] if selected else "not_checked",
+            "missing": selected["missing"] if selected else [],
             "targets": {p: {k: round(aim["phases"][p][k], 1) for k in keys} for p in STUDIO_PHASES}}
 
 

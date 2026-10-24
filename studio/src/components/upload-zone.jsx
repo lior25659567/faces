@@ -15,7 +15,7 @@ const typingIn = (el) =>
   Boolean(el?.closest?.('textarea, [contenteditable]:not([contenteditable="false"])')) ||
   (el?.tagName === 'INPUT' && TEXT_INPUTS.has(el.getAttribute('type') ?? ''))
 
-// Drop, pick or paste pictures; each is uploaded in turn, then one run starts. No run button needed.
+// Save a batch of pictures; the exercise page starts a reference check or build explicitly.
 const UploadZone = ({ slug, compact, onDone }) => {
   const input = useRef(null)
   const zone = useRef(null)
@@ -55,15 +55,10 @@ const UploadZone = ({ slug, compact, onDone }) => {
     }
     setProgress(null)
     if (added) {
-      try {
-        await api.startRun(slug)
-        setStarted(`${added} ${added === 1 ? 'picture' : 'pictures'} added. A new run has started.`)
-      } catch (e) {
-        failed.push({ name: 'Starting the run', message: e.message })
-      }
+      setStarted(`${added} ${added === 1 ? 'picture' : 'pictures'} saved. Set their positions and views, then check the references.`)
     }
     setProblems(failed)
-    // Stay busy until the run request has an answer, so a second paste can't race it.
+    // The whole batch is saved before another paste can begin.
     busyRef.current = false
     onDone()
   }
@@ -142,8 +137,8 @@ const UploadZone = ({ slug, compact, onDone }) => {
           ) : (
             <span id="upload-help" className="upload-help">
               {compact
-                ? 'They go to the end of the list, and a new run starts.'
-                : 'Start, middle and end positions, in that order. The run starts by itself once they are uploaded.'}
+                ? 'They go to the end of the list. Check the references when your edits are finished.'
+                : 'Add side views of the start and end positions; include the middle when available. You can edit them before building.'}
             </span>
           )}
         </span>

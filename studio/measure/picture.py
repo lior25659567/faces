@@ -93,3 +93,22 @@ def picture_value(summary, method, metric):
         return None
     v = (summary.get(method) or {}).get(metric)
     return float(v) if _finite(v) else None
+
+
+def assess_round(rows, misses, tolerance):
+    """Rank a solver round by measurement coverage before accuracy.
+
+    A detector failure is not a zero error: losing a difficult row must never make a round look
+    better. Complete rounds keep the existing order (failed rows, worst lean, squared error).
+    Only the expected rows count; non-finite readings count as missing.
+    """
+    expected = {(phase, metric) for phase, metric, _ in rows}
+    measured = {key: misses[key] for key in expected if _finite(misses.get(key))}
+    missing = sorted(expected - measured.keys())
+    failures = sum(abs(value) > tolerance for value in measured.values())
+    worst_lean = round(max((abs(value) for (_, metric), value in measured.items()
+                            if metric == "torso_lean"), default=0.0), 1)
+    score = (len(missing), failures, worst_lean, round(sum(value * value for value in measured.values()), 1))
+    complete = bool(expected) and not missing
+    return {"score": score, "missing": missing, "complete": complete,
+            "status": "incomplete" if not complete else "matched" if failures == 0 else "limited"}

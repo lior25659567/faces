@@ -530,7 +530,12 @@ def clip_from_keyposes(rest, keyposes, fps=FPS, feet="planted", label="keyposes.
     lacking = [b for b in bones if b not in rest.rest_turns]
     if lacking:
         raise ValueError(f"the rest clip has no {lacking} bones (load it with turned='all')")
-    poses = motion([turns for _, turns in keys], fps=fps, feet=feet)
+    key_turns = [turns for _, turns in keys]
+    if keyposes.get("exercise") == "Barbell Bent-Over Row":
+        from row_motion import stabilize_body
+        key_turns = stabilize_body(key_turns)
+        notes.append("row: starting body hinge held throughout; arms retain reference motion")
+    poses = motion(key_turns, fps=fps, feet=feet)
 
     def in_world(r):
         return Matrix((to_world @ r @ to_world.T).tolist()).to_quaternion()

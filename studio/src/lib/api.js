@@ -51,16 +51,17 @@ export const api = {
   updateReference: (slug, id, patch) => request(`/api/exercises/${seg(slug)}/references/${seg(id)}`, json('PATCH', patch)),
   removeReference: (slug, id) => request(`/api/exercises/${seg(slug)}/references/${seg(id)}`, { method: 'DELETE' }),
   startRun: (slug) => request(`/api/exercises/${seg(slug)}/runs`, { method: 'POST' }),
+  checkReferences: (slug) => request(`/api/exercises/${seg(slug)}/read`, { method: 'POST' }),
 
   // One JSON file from a run's folder, or null when it isn't there.
   runJson: (slug, runId, file) => optionalJson(runFileUrl(slug, runId, file)),
 
   // Everything the comparison and checks need from one run's folder.
   runBundle: async (slug, runId) => {
-    const [snapshot, ours, checks, targets, measurements, readProblems] = await Promise.all(
-      ['references.json', 'ours.json', 'checks.json', 'targets.json', 'measurements.json', 'read-problems.json']
+    const [snapshot, ours, checks, targets, measurements, readProblems, preflight] = await Promise.all(
+      ['references.json', 'ours.json', 'checks.json', 'targets.json', 'measurements.json', 'read-problems.json', 'preflight.json']
         .map((file) => optionalJson(runFileUrl(slug, runId, file))),
     )
-    return { snapshot, ours, checks, targets, measurements, readProblems }
+    return { snapshot, ours, checks, targets, measurements, readProblems, preflight }
   },
 }

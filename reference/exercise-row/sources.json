@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/yuhonas/free-exercise-db",
+  "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+  "retrieved_on": "2026-10-24",
+  "upstream_declared_license": "Unlicense / public-domain dataset",
+  "upstream_provenance": "README credits https://github.com/wrkout/exercises.json; original photographer is not named in the dataset",
+  "images": [
+    {
+      "file": "start.jpg",
+      "phase": "start",
+      "view": "three-quarter",
+      "source_url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/0.jpg",
+      "sha256": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+      "role": "whole-body and bar-path reference; not a true side image"
+    },
+    {
+      "file": "end.jpg",
+      "phase": "end",
+      "view": "three-quarter",
+      "source_url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/1.jpg",
+      "sha256": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72",
+      "role": "whole-body and bar-path reference; not a true side image"
+    }
+  ]
+}

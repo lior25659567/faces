@@ -81,7 +81,7 @@ const Head = ({ run, live, ahead, below, belowKnown, titleId }) => {
   )
 }
 
-const RunProgress = ({ run, live, ahead, below, belowKnown, starting, onRunAgain, titleId = 'progress-title' }) => {
+const RunProgress = ({ run, live, ahead, below, belowKnown, starting, onRunAgain, retryLabel = 'Run again', titleId = 'progress-title' }) => {
   const stopped = run.status === 'failed' || run.status === 'interrupted'
   const spent = spentSoFar(run, live)
   const share = live && spent + live.left > 0 ? Math.min(spent / (spent + live.left), 1) : null
@@ -94,7 +94,7 @@ const RunProgress = ({ run, live, ahead, below, belowKnown, starting, onRunAgain
         </div>
         {stopped && (
           <button type="button" className="btn btn-primary" onClick={onRunAgain} disabled={starting} aria-busy={starting}>
-            {starting ? 'Starting…' : 'Run again'}
+            {starting ? 'Starting…' : retryLabel}
           </button>
         )}
       </div>

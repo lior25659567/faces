@@ -127,6 +127,15 @@ test('historyLine', () => {
   expect(historyLine({ status: 'failed', summary: null })).toBe('—')
 })
 
+test('reference-only checks do not replace the animation score in the exercise list', () => {
+  const runs = [
+    { status: 'done', readOnly: true, summary: null },
+    { status: 'failed', readOnly: true, summary: null },
+    { status: 'done', summary: { pass: 4, fail: 1 } },
+  ]
+  expect(exerciseLine({ slug: 'squat', status: 'failing' }, null, runs)).toBe('4 of 5 pass')
+})
+
 describe('pollInterval', () => {
   test('every second while something runs or waits, else every 5 s', () => {
     expect(pollInterval({ running: { slug: 'a' }, queued: [] })).toBe(1000)

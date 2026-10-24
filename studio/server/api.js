@@ -85,7 +85,7 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
     const { running, queued } = queue.state()
     if (running?.slug === slug || (Array.isArray(queued) && queued.some((q) => q.slug === slug))) return 'running'
     if (!store.listReferences(slug).some((i) => !i.contextOnly)) return 'needs-reference'
-    const latest = store.listRuns(slug).find((r) => r.status === 'done' || r.status === 'failed')
+    const latest = store.listRuns(slug).find((r) => !r.readOnly && (r.status === 'done' || r.status === 'failed'))
     if (!latest) return 'not-run'
     if (latest.status === 'failed') return 'failing'
     const { pass = 0, fail = 0, unmeasured = 0 } = latest.summary || {}
@@ -154,6 +154,9 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
             checks: readIf(path.join(dir, 'checks.json')),
             ours: readIf(path.join(dir, 'ours.json')),
             targets: readIf(path.join(dir, 'targets.json')),
+            preflight: readIf(path.join(dir, 'preflight.json')),
+            measurements: readIf(path.join(dir, 'measurements.json')),
+            snapshot: readIf(path.join(dir, 'references.json')),
             // why each picture went unused when the read step stopped (no targets.json then)
             readProblems: readIf(path.join(dir, 'read-problems.json')),
           }
@@ -194,6 +197,10 @@ export const studioApi = ({ store, queue, work, watcher, onListening }) => {
           store.removeReference(slug, seg[4])
           return sendJson(res, 200, { ok: true })
         }
+      }
+      if (seg[3] === 'read' && seg.length === 4 && method === 'POST') {
+        exerciseOr404(slug)
+        return sendJson(res, 201, queue.enqueueRead(slug))
       }
       if (seg[3] === 'runs' && seg.length === 4 && method === 'POST') {
         exerciseOr404(slug)

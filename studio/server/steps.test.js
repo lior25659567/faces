@@ -126,3 +126,11 @@ test('the picture loop shows as a note while animating (task 19 review)', () => 
   expect(readLine('stills', 'form: picture round 0 (frames …)', state)).toEqual({})
   expect(readLine('animate', 'form: bar -0.16 of the torso below the shoulder joints', state)).toEqual({})
 })
+
+test('row images drive the movement even when a row clip exists', async () => {
+  await writeFile(path.join(dir, 'keyposes.json'), '{}')
+  const row = {name:'Barbell Bent-Over Row', clip:'row.fbx'}
+  const command = commandFor('animate', row, dir, row)
+  expect(command.args).toContain('--keyposes')
+  expect(command.args).not.toContain('--mixamo')
+})

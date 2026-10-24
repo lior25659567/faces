@@ -343,7 +343,8 @@ export const createQueue = ({
     save()
     const mine = live
     // A check-only re-run (store.createRecheckRun) reuses the rendered outputs and runs the check alone.
-    const procs = run.checkOnly ? PROCESSES.filter((p) => p.id === 'check') : PROCESSES
+    const procs = run.readOnly ? PROCESSES.filter((p) => p.id === 'read')
+      : run.checkOnly ? PROCESSES.filter((p) => p.id === 'check') : PROCESSES
     for (const proc of procs) {
       if (cancelled(mine)) return
       if (!(await runProcess(proc, runDir))) {
@@ -420,7 +421,8 @@ export const createQueue = ({
       store.writeRun(fresh)
       replace(current, fresh.id)
     }
-    const at = waiting.findIndex((w) => w.slug === slug)
+    const at = waiting.findIndex((w) => w.slug === slug &&
+      Boolean(store.readRun(slug, w.runId)?.readOnly) === Boolean(extra.readOnly))
     const old = at < 0 ? null : store.readRun(slug, waiting[at].runId)
     let run = fresh
     if (old) {
@@ -441,6 +443,21 @@ export const createQueue = ({
       // A waiting run whose folder was deleted by hand can't be merged into: the new one takes its place.
       if (at >= 0) waiting.splice(at, 1)
       waiting.push({ slug, runId: fresh.id })
+    }
+    // A reference check and a build may wait separately, but neither may later use pictures that
+    // have since changed. Retire stale queued work rather than silently turning a check into a build.
+    const latestPictures = picturesKey(readJson(path.join(store.runDir(slug, run.id), 'references.json')))
+    for (let n = waiting.length - 1; n >= 0; n--) {
+      const queued = waiting[n]
+      if (queued.slug !== slug || queued.runId === run.id) continue
+      const snapshot = readJson(path.join(store.runDir(slug, queued.runId), 'references.json'))
+      if (picturesKey(snapshot) === latestPictures) continue
+      const stale = store.readRun(slug, queued.runId)
+      if (stale) {
+        stale.replacedBy = run.id
+        interrupt(stale, REPLACED)
+      }
+      waiting.splice(n, 1)
     }
     setImmediate(() => pump().catch(() => {}))
     return run
@@ -466,7 +483,7 @@ export const createQueue = ({
     if (live && !live.replaced) {
       const elapsed = live.t0 === null ? 0 : Math.max((now() - live.t0) / 1000, 0)
       const estimates = { ...DEFAULT_SECONDS, ...live.estimates }
-      const { seconds, overdue } = timeLeft({ steps: STEPS, currentId: live.step, elapsed, fraction: live.fraction, estimates })
+      const { seconds, overdue } = timeLeft({ steps: live.run.steps, currentId: live.step, elapsed, fraction: live.fraction, estimates })
       // The current step alone (no later steps), for the page's per-step "time left".
       const step = timeLeft({ steps: [live.step], currentId: live.step, elapsed, fraction: live.fraction, estimates })
       running = {
@@ -503,7 +520,7 @@ export const createQueue = ({
       const newest = store.listRuns(slug)[0]
       if (!newest || newest.status !== 'interrupted' || newest.restartedAs || newest.restartOf || newest.replacedBy) continue
       if (!store.hasUsablePictures(slug)) continue
-      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id })
+      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, ...(newest.readOnly ? { readOnly: true } : {}) })
       store.writeRun({ ...newest, restartedAs: run.id, restartedAt: iso() })
       restarted.push({ slug, runId: run.id })
     }
@@ -531,5 +548,5 @@ export const createQueue = ({
     } catch { /* already gone */ }
   }
 
-  return { enqueue, enqueueRecheck, state, recoverInterrupted, restartInterrupted, stop, forceKill }
+  return { enqueue, enqueueRead: (slug) => enqueue(slug, { readOnly: true }), enqueueRecheck, state, recoverInterrupted, restartInterrupted, stop, forceKill }
 }

@@ -1,4 +1,6 @@
 """Turn a run's measured reference images into the exercise's targets."""
+import math
+
 from kit import has_depth
 from posture import classify_back
 
@@ -99,11 +101,11 @@ def _posture_reading(result, metric, image_id):
 
 
 def _why_not(meta, result):
+    if meta.get("contextOnly"):
+        return "Context only"
     if isinstance(result, Exception):
         from read_pose import NoBody
         return "No body found in this image" if isinstance(result, NoBody) else "Could not read this image"
-    if meta.get("contextOnly"):
-        return "Context only"
     return None
 
 
@@ -214,11 +216,13 @@ def to_pipeline_targets(targets):
     out_phases = {}
     for src, dst in names.items():
         ph = targets["phases"].get(src, {})
-        if any(k not in ph for k in FORM_KEYS):
+        if any(not isinstance((ph.get(k) or {}).get("value"), (int, float))
+               or isinstance(ph[k]["value"], bool) or not math.isfinite(ph[k]["value"]) for k in FORM_KEYS):
             return None
         out_phases[dst] = {k: int(round(ph[k]["value"])) for k in FORM_KEYS}
     w = targets.get("widths", {})
-    if any(k not in w for k in WIDTH_METRICS):
+    if any(not isinstance((w.get(k) or {}).get("value"), (int, float))
+           or isinstance(w[k]["value"], bool) or not math.isfinite(w[k]["value"]) for k in WIDTH_METRICS):
         return None
     measure = {}
     posture = _solver_posture(targets, names)

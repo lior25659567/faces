@@ -50,7 +50,7 @@ export const historyLine = (run) => {
 }
 
 // The run the server judges an exercise by: the newest that finished (done or failed).
-const latestFinished = (runs = []) => runs.find((r) => r.status === 'done' || r.status === 'failed') || null
+const latestFinished = (runs = []) => runs.find((r) => !r.readOnly && (r.status === 'done' || r.status === 'failed')) || null
 
 // The short line under each exercise in the list.
 export const exerciseLine = (exercise, state, runs) => {

@@ -74,7 +74,7 @@ const Card = ({ slug, image, index, count, why, whyRun, dragging, busy, onPatch,
   )
 }
 
-// The pictures in movement order. Every change saves and starts one new run. `reasons` (run-view
+// The pictures in movement order. Every change saves; checking and building are explicit. `reasons` (run-view
 // stripReasons) are one run's own "Not used" reasons, named by that run's time.
 const ReferenceStrip = ({ slug, references, reasons, busy, onChange }) => {
   const [order, setOrder] = useState(null)

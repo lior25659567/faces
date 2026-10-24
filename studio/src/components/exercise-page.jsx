@@ -3,6 +3,7 @@ import './exercise-page.css'
 import ChecksTable from './checks-table.jsx'
 import Comparison from './comparison.jsx'
 import ReferenceStrip from './reference-strip.jsx'
+import ReferencePreview from './reference-preview.jsx'
 import RunHistory from './run-history.jsx'
 import RunProgress from './run-progress.jsx'
 import UploadZone from './upload-zone.jsx'
@@ -13,6 +14,7 @@ import { motionSource } from '../lib/labels.js'
 import { defaultRunId, samePictures, stripReasons } from '../lib/run-view.js'
 import { checksAside, checksLine, scoreKind, unmeasuredLine } from '../lib/status.js'
 import { workForExercise } from '../lib/work.js'
+import { referenceCheck } from '../lib/reference-check.js'
 
 const ACTIVE = new Set(['queued', 'running', 'failed', 'interrupted'])
 
@@ -37,6 +39,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   const [pickedRunId, setPickedRunId] = useState(null)
   const [bundle, setBundle] = useState(null)
   const [doneSnapshot, setDoneSnapshot] = useState(null)
+  const [referenceBundle, setReferenceBundle] = useState(null)
   const [busy, setBusy] = useState(false)
   const inFlight = useRef(false)
   const refsSection = useRef(null)
@@ -64,12 +67,29 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
     load()
   }, [load, runKey])
 
-  const runs = detail?.runs ?? []
+  // Reference checks have no animation or score; keep them out of result selection and build history.
+  const allRuns = detail?.runs ?? []
+  const runs = allRuns.filter((r) => !r.readOnly)
+  const referenceRun = allRuns[0] ?? null
+  const referenceRunId = referenceRun?.id
+  const referenceStatus = referenceRun?.status
   const latest = runs[0] ?? null
   const latestDone = runs.find((r) => r.status === 'done') ?? null
   const shownId = pickedRunId && runs.some((r) => r.id === pickedRunId) ? pickedRunId : defaultRunId(runs)
   const shown = runs.find((r) => r.id === shownId) ?? null
   const shownStatus = shown?.status
+
+  useEffect(() => {
+    if (!referenceRunId) {
+      setReferenceBundle(null)
+      return undefined
+    }
+    let alive = true
+    api.runBundle(slug, referenceRunId).then((b) => {
+      if (alive) setReferenceBundle({ runId: referenceRunId, ...b })
+    })
+    return () => { alive = false }
+  }, [slug, referenceRunId, referenceStatus, live?.step])
 
   useEffect(() => {
     if (!shownId) {
@@ -123,13 +143,11 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
     }
   }
 
-  // Any change to the pictures starts one run with the latest set (the server merges waiting runs).
-  const changeReferences = (action) => guarded(async () => {
-    await action()
-    await api.startRun(slug)
-  })
+  // Save edits together before checking or committing to a complete animation build.
+  const changeReferences = (action) => guarded(action)
 
   const runAgain = () => guarded(() => api.startRun(slug))
+  const checkReferences = () => guarded(() => api.checkReferences(slug))
 
   const scrollTo = (ref) => {
     const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -140,7 +158,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   // A "Re-ran automatically" link: show that run, its progress while it goes and its result after.
   useEffect(() => {
     if (!focusRun || focusedRun.current === focusRun.n || !detail) return
-    const run = detail.runs.find((r) => r.id === focusRun.runId)
+    const run = detail.runs.find((r) => !r.readOnly && r.id === focusRun.runId)
     if (!run) return // not on the page yet: the next load brings it
     focusedRun.current = focusRun.n
     // Still going: its progress is the panel at the top. Otherwise show its result (or why there is none).
@@ -152,6 +170,15 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   }, [focusRun, detail])
 
   const references = detail?.references ?? []
+  const currentReferenceBundle = referenceBundle?.runId === referenceRun?.id && referenceBundle?.snapshot?.images &&
+    samePictures(references, referenceBundle.snapshot.images) ? referenceBundle : null
+  const check = referenceCheck(references, referenceRun, referenceBundle)
+  const checking = referenceRun?.readOnly && ['queued', 'running'].includes(referenceRun.status)
+  const working = Boolean(live || queuedAt >= 0)
+  // A stopped build may have old pictures or unresolved reference problems. Retry the cheap
+  // reference check first unless the current pictures have already passed it.
+  const retryRun = check.canBuild ? runAgain : checkReferences
+  const retryLabel = check.canBuild ? 'Build again' : 'Check references'
   const summary = latestDone?.summary ?? null
   const line = checksLine(summary)
   const aside = checksAside(summary)
@@ -178,7 +205,9 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   // the newest run, also when its read step stopped), never mixed with another run's.
   const reasons = viewingOlder
     ? (bundleReady ? stripReasons({ run: shown, targets: bundle.targets, readProblems: bundle.readProblems }) : null)
-    : stripReasons({ run: latest, targets: detail?.latest?.targets, readProblems: detail?.latest?.readProblems })
+    : currentReferenceBundle
+      ? stripReasons({ run: referenceRun, targets: currentReferenceBundle.targets, readProblems: currentReferenceBundle.readProblems })
+      : null
 
   return (
     <article className="exercise-page">
@@ -208,6 +237,44 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
       {loadError && <p className="exercise-error" role="alert">{loadError}</p>}
       {actionError && <p className="exercise-error" role="alert">{actionError}</p>}
 
+      {detail && (
+        <section className="section exercise-section exercise-reference-check" aria-labelledby="reference-check-title">
+          <div className="section-head">
+            <div>
+              <h2 className="section-title" id="reference-check-title">Prepare the movement</h2>
+              <p className="section-note">Save your picture edits, check that Studio can use them, then build the animation.</p>
+            </div>
+            <div className="exercise-build-actions">
+              <button type="button" className="btn btn-quiet" onClick={scrollToReferences}>Edit pictures</button>
+              <button type="button" className="btn" onClick={checkReferences} disabled={busy || checking || !references.length}>
+                {checking ? 'Checking references…' : 'Check references'}
+              </button>
+              <button type="button" className="btn btn-primary" onClick={runAgain} disabled={busy || working || !check.canBuild}>
+                Build exercise
+              </button>
+            </div>
+          </div>
+          <div className={`exercise-check-feedback is-${check.state}`} role="status">
+            {checking ? (
+              <p>{referenceRun.status === 'queued' ? 'The reference check is waiting in the queue.' : 'Reading your pictures and checking what they can show…'}</p>
+            ) : check.state === 'stale' ? (
+              <p>Your pictures or tags changed. Check the references again before building.</p>
+            ) : check.state === 'ready' ? (
+              <p>The references are ready to build. The finished animation still needs its movement checks.</p>
+            ) : check.state === 'blocked' ? (
+              <p>Fix the reference problems below, then check again.</p>
+            ) : check.state === 'failed' ? (
+              <p>{check.message}</p>
+            ) : (
+              <p>Start with side views of the beginning and end of the movement. Label each position and view, then check the references.</p>
+            )}
+            {currentReferenceBundle?.preflight?.mode && <p className="exercise-check-mode">Movement source: {currentReferenceBundle.preflight.mode}.</p>}
+            {check.blockers?.length > 0 && <ul>{check.blockers.map((message, i) => <li key={i}>{message}</li>)}</ul>}
+            {check.warnings?.length > 0 && <ul className="exercise-check-warnings">{check.warnings.map((message, i) => <li key={i}>{message}</li>)}</ul>}
+          </div>
+        </section>
+      )}
+
       {behind.shown.length > 0 && (
         <section className="section exercise-section" aria-labelledby="work-title">
           <div className="section-head">
@@ -231,7 +298,8 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
 
       {liveRun && (
         <section className="section exercise-section" aria-labelledby="progress-live-title">
-          <RunProgress run={liveRun} live={live} ahead={null} titleId="progress-live-title" onRunAgain={runAgain} />
+          <RunProgress run={liveRun} live={live} ahead={null} titleId="progress-live-title"
+            onRunAgain={retryRun} retryLabel={retryLabel} starting={busy || checking} />
         </section>
       )}
 
@@ -243,8 +311,9 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
             ahead={ahead}
             below={below}
             belowKnown={belowKnown}
-            starting={busy}
-            onRunAgain={runAgain}
+            starting={busy || checking}
+            onRunAgain={retryRun}
+            retryLabel={retryLabel}
           />
         </section>
       )}
@@ -291,7 +360,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
           <div className="section-head">
             <h2 className="section-title" id="references-title">Reference pictures</h2>
             {references.length > 0 && (
-              <p className="section-note">In movement order, start to end. Drag to reorder; every change starts a new run.</p>
+              <p className="section-note">In movement order, start to end. Changes are saved without rebuilding. Check the references when you finish editing.</p>
             )}
           </div>
           {references.length > 0 && (
@@ -302,6 +371,10 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
               busy={busy}
               onChange={changeReferences}
             />
+          )}
+          {currentReferenceBundle?.measurements && (
+            <ReferencePreview slug={slug} images={currentReferenceBundle.snapshot.images}
+              measurements={currentReferenceBundle.measurements} targets={currentReferenceBundle.targets} />
           )}
           <UploadZone slug={slug} compact={references.length > 0} onDone={refresh} />
         </section>

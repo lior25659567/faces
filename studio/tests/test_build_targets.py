@@ -152,7 +152,8 @@ def test_run_read_cli(tmp_path):
     snap = json.loads((bad / "references.json").read_text())
     snap["images"][2]["path"] = str(bad / "missing.png")
     (bad / "references.json").write_text(json.dumps(snap))
-    assert run_cli(bad).returncode == 0
+    assert run_cli(bad).returncode == 3
+    assert not json.loads((bad / "preflight.json").read_text())["ready"]
     m = json.loads((bad / "measurements.json").read_text())
     assert "error" in m["img-bt"]
     assert not (bad / "pipeline-targets.json").exists()
@@ -353,8 +354,8 @@ def test_a_failed_read_writes_this_runs_own_reasons(tmp_path, monkeypatch, capsy
 
 def test_a_good_read_writes_no_problems_file(tmp_path, monkeypatch):
     import run_read
-    snapshot(tmp_path, {"img-15", "img-17"})
-    monkeypatch.setattr(run_read, "read_pose", lambda path: MEASURED["img-15" if path.name == "15.png" else "img-17"])
+    snapshot(tmp_path, {"img-15", "img-17", "img-bt"})
+    monkeypatch.setattr(run_read, "read_pose", lambda path: RAW[path.name])
     assert run_read.main(tmp_path) == 0
     assert (tmp_path / "targets.json").exists() and not (tmp_path / "read-problems.json").exists()
 

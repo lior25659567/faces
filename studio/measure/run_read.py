@@ -8,6 +8,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from build_targets import PHASES, SOLVER_EXERCISES, TooFewPositions, build_targets, to_pipeline_targets  # noqa: E402
 from read_pose import NoBody, read_pose  # noqa: E402
+from preflight import plan_for  # noqa: E402
+from pose_cache import read_cached  # noqa: E402
 
 KEY_FIELDS = ("view", "facing", "camera_side", "size", "world", "pixels")
 
@@ -39,11 +41,19 @@ def main(run_dir):
     run_dir = Path(run_dir)
     snap = json.loads((run_dir / "references.json").read_text())
     images = snap["images"]
+    # These are derived from this read. Never leave stale correction inputs after a failed retry.
+    for name in ("targets.json", "pipeline-targets.json", "keyposes.json", "preflight.json", "read-problems.json"):
+        (run_dir / name).unlink(missing_ok=True)
+    run_file = run_dir / "run.json"
+    run = json.loads(run_file.read_text()) if run_file.exists() else {}
+    cache_dir = run_dir.parent / ".pose-cache"
     measured, out = {}, {}
     for n, img in enumerate(images, 1):
+        if img.get("deleted") or img.get("contextOnly"):
+            continue
         print(f"image {n}/{len(images)}", flush=True)
         try:
-            measured[img["id"]] = out[img["id"]] = read_pose(Path(img["path"]))
+            measured[img["id"]] = out[img["id"]] = read_cached(Path(img["path"]), read_pose, cache_dir)
         except NoBody as e:
             measured[img["id"]] = e
             out[img["id"]] = {"error": "No body found in this image", "crop": None}
@@ -58,12 +68,15 @@ def main(run_dir):
         # this run's own reasons per picture, so the page never shows an older run's beside them
         (run_dir / "read-problems.json").write_text(json.dumps(
             {"exercise": snap["exercise"], "message": str(e), "images": e.images}, indent=2))
+        (run_dir / "preflight.json").write_text(json.dumps(
+            {"ready": False, "mode": "Reference check", "blockers": [str(e)], "warnings": []}, indent=2))
         print(str(e), file=sys.stderr)   # the last line: the run's failure message names each picture
         return 3
     # the exercise's equipment word (the Studio's, from the run's snapshot): for an exercise added in the Studio, the
     # checks go by it (studio/measure/kit.py)
     targets["equipment"] = snap.get("equipment")
     (run_dir / "targets.json").write_text(json.dumps(targets, indent=2))
+    pt = None
     if snap["exercise"] in SOLVER_EXERCISES:
         pt = to_pipeline_targets(targets)
         if pt is not None:
@@ -71,6 +84,11 @@ def main(run_dir):
     keys = key_positions(targets, measured)
     if keys is not None:
         (run_dir / "keyposes.json").write_text(json.dumps(keys, indent=1))
+    plan = plan_for(snap, targets, pt, keys, clip=run.get("clip"))
+    (run_dir / "preflight.json").write_text(json.dumps(plan, indent=2))
+    if not plan["ready"]:
+        print(" ".join(plan["blockers"]), file=sys.stderr)
+        return 3
     return 0
 
 

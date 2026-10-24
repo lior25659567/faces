@@ -33,8 +33,16 @@ export const commandFor = (processId, run, runDir, exercise) => {
     }
   }
   if (processId === 'animate') {
-    const clip = exercise?.clip ?? run?.clip
+    const preflight = path.join(runDir, 'preflight.json')
+    if (existsSync(preflight)) {
+      try {
+        const plan = JSON.parse(readFileSync(preflight, 'utf8'))
+        if (plan.ready !== true) return { error: plan.blockers?.join(' ') || 'Check the reference images before building.' }
+      } catch { return { error: 'The reference check is unreadable. Check the reference images again.' } }
+    }
     const name = exercise?.name ?? run?.name
+    // Row references must actually drive the motion even when a generic row clip exists.
+    const clip = name === 'Barbell Bent-Over Row' ? null : exercise?.clip ?? run?.clip
     // No clip: the motion moves between the reference pictures' key positions, which the read step wrote
     // (studio/measure/run_read.py -> keyposes.json; pipeline/blender/keypose_clip.py, task 9).
     const keyposes = path.join(runDir, 'keyposes.json')

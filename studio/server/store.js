@@ -185,7 +185,7 @@ export const createStore = (dataRoot = DATA) => {
     const run = {
       id, slug, name: exercise.name, clip: exercise.clip, status: 'queued',
       createdAt: new Date().toISOString(), startedAt: null, finishedAt: null,
-      steps: STEP_IDS.map(newStep), error: null, summary: null, ...extra,
+      steps: (extra.readOnly ? ['read'] : STEP_IDS).map(newStep), error: null, summary: null, ...extra,
     }
     writeRun(run)
     return run
@@ -233,7 +233,9 @@ export const createStore = (dataRoot = DATA) => {
   const listRuns = (slug) => {
     const dir = path.join(dataRoot, 'runs', slug)
     if (!existsSync(dir)) return []
-    return readdirSync(dir).map((id) => readRun(slug, id)).filter(Boolean).sort((a, b) => (a.id < b.id ? 1 : -1))
+    // Cached reference checks can finish within the same second. Random ID suffixes are not chronology.
+    return readdirSync(dir).map((id) => readRun(slug, id)).filter(Boolean)
+      .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || '') || b.id.localeCompare(a.id))
   }
 
   const allRuns = () => {

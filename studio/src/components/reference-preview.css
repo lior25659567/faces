@@ -1,0 +1,17 @@
+.reference-preview { margin-top: 16px; }
+.reference-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.reference-preview-head p { margin: 0; font-weight: 600; }
+.reference-preview-guide { color: var(--ink-3); font-size: var(--t-xs); line-height: 1.5; }
+.reference-preview-cards { display: flex; gap: 12px; padding: 0 0 10px; margin: 12px 0 0; list-style: none; overflow-x: auto; }
+.reference-preview-card { flex: 0 0 220px; border: 1px solid var(--line); border-radius: var(--radius-m); padding: 10px; background: var(--surface); }
+.reference-preview-phase { margin: 0 0 8px; font-weight: 600; }
+.reference-preview-picture { height: 260px; background: var(--image-bg); border-radius: var(--radius-s); overflow: hidden; }
+.reference-preview-picture svg, .reference-preview-picture img { width: 100%; height: 100%; object-fit: contain; }
+.reference-preview-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--t-xs); color: var(--ink-3); }
+.reference-preview-warning { font-size: var(--t-xs); color: var(--ink); line-height: 1.5; }
+.reference-pose-line { stroke: #04a9a0; stroke-width: 2.5; }
+.reference-pose-point { fill: #04a9a0; stroke: #fff; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.reference-pose-line.is-low { stroke: #bb6900; stroke-dasharray: 5 3; }
+.reference-pose-point.is-low { fill: #bb6900; }
+.reference-pose-line.is-unknown { stroke: #68717a; stroke-dasharray: 2 3; }
+.reference-pose-point.is-unknown { fill: #68717a; }
