@@ -1,0 +1,99 @@
+.history-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.history-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.history-item {
+  display: grid;
+  grid-template-columns: 130px 110px minmax(80px, 1fr) 110px 110px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 0;
+  background: var(--surface);
+  font-size: var(--t-s);
+  text-align: left;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: var(--sunken);
+}
+
+.history-item.is-shown {
+  background: var(--running-bg);
+  box-shadow: inset 3px 0 0 var(--running);
+}
+
+.history-when {
+  color: var(--ink);
+  font-weight: 550;
+}
+
+.history-score {
+  color: var(--ink-2);
+}
+
+.history-took {
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+  text-align: right;
+}
+
+.history-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--uncertain-bg);
+}
+
+.history-bar.is-empty {
+  background: repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 8px);
+}
+
+.history-bar .is-pass {
+  background: var(--pass);
+}
+
+.history-bar .is-limited {
+  background: #e0a33a;
+}
+
+.history-bar .is-fail {
+  background: var(--fail);
+}
+
+/* checks that would be judged but weren't measured: amber, hatched apart from "limited" */
+.history-bar .is-unmeasured {
+  background: repeating-linear-gradient(135deg, var(--limited) 0 3px, var(--limited-bg) 3px 5px);
+}
+
+.history-item .status-chip {
+  justify-self: end;
+}
+
+@media (max-width: 680px) {
+  .history-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 12px;
+  }
+
+  .history-bar {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .history-took {
+    text-align: left;
+  }
+}

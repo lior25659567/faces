@@ -1,0 +1,9 @@
+name = "faces-avatar"
+main = "src/index.js"
+compatibility_date = "2025-10-01"
+
+# The whole point of this Worker. The AI binding lets it call Workers AI without a token: there
+# is no API key in this file, in the source, or in the app that calls it. Cloudflare authorises
+# the call because it comes from your own Worker.
+[ai]
+binding = "AI"

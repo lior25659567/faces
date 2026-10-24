@@ -1,0 +1,220 @@
+{
+  "Barbell Back Squat": {
+    "prime": [
+      "quads",
+      "glutes"
+    ],
+    "secondary": [],
+    "stabilisers": [
+      "hamstrings",
+      "adductors",
+      "lower-back",
+      "abs",
+      "calves",
+      "traps",
+      "lats"
+    ],
+    "note": "Trains the quads and glutes, which push you back up out of the bottom."
+  },
+  "Barbell Bent-Over Row": {
+    "prime": [
+      "lats",
+      "rhomboids",
+      "traps",
+      "rear-delts"
+    ],
+    "secondary": [
+      "biceps"
+    ],
+    "stabilisers": [
+      "lower-back",
+      "glutes",
+      "hamstrings",
+      "forearms"
+    ],
+    "note": "Back work: lats, rhomboids, mid-traps and rear delts pull, biceps help."
+  },
+  "Conventional Barbell Deadlift": {
+    "prime": [
+      "glutes",
+      "hamstrings",
+      "lower-back"
+    ],
+    "secondary": [
+      "quads"
+    ],
+    "stabilisers": [
+      "lats",
+      "traps",
+      "rhomboids",
+      "forearms",
+      "abs",
+      "adductors"
+    ],
+    "note": "Trains glutes, hamstrings and lower back, with the quads driving off the floor."
+  },
+  "Dumbbell Bicep Curl (standing, both arms)": {
+    "prime": [
+      "biceps"
+    ],
+    "secondary": [
+      "forearms"
+    ],
+    "stabilisers": [
+      "front-delts",
+      "abs"
+    ],
+    "note": "Trains the biceps, with the forearms helping flex the elbow."
+  },
+  "Dumbbell Lateral Raise": {
+    "prime": [
+      "side-delts"
+    ],
+    "secondary": [
+      "front-delts"
+    ],
+    "stabilisers": [
+      "traps",
+      "abs"
+    ],
+    "note": "Trains the side of the shoulder, with the front delt helping lift."
+  },
+  "Dumbbell Shoulder Press (seated overhead press)": {
+    "prime": [
+      "front-delts",
+      "side-delts"
+    ],
+    "secondary": [
+      "triceps",
+      "traps",
+      "serratus"
+    ],
+    "stabilisers": [
+      "abs",
+      "lats"
+    ],
+    "note": "Overhead press for the front and side delts, with triceps and traps helping."
+  },
+  "Flat Barbell Bench Press": {
+    "prime": [
+      "chest"
+    ],
+    "secondary": [
+      "front-delts",
+      "triceps"
+    ],
+    "stabilisers": [
+      "serratus",
+      "biceps",
+      "forearms",
+      "lats",
+      "glutes",
+      "quads"
+    ],
+    "note": "Chest press: the chest does the pushing, front delts and triceps help."
+  },
+  "Front Plank (forearm plank)": {
+    "prime": [
+      "abs",
+      "obliques"
+    ],
+    "secondary": [],
+    "stabilisers": [
+      "lower-back",
+      "quads",
+      "glutes",
+      "serratus"
+    ],
+    "note": "Trains the abs and obliques to hold your body in one straight line."
+  },
+  "Lat Pulldown (seated, to the front)": {
+    "prime": [
+      "lats"
+    ],
+    "secondary": [
+      "rhomboids",
+      "traps",
+      "rear-delts",
+      "biceps"
+    ],
+    "stabilisers": [
+      "abs"
+    ],
+    "note": "Lats do the pulling, with rhomboids, mid-traps, rear delts and biceps helping."
+  },
+  "Leg Press (seated machine)": {
+    "prime": [
+      "glutes",
+      "quads",
+      "hamstrings"
+    ],
+    "secondary": [
+      "adductors",
+      "calves"
+    ],
+    "stabilisers": [
+      "abs"
+    ],
+    "note": "Works the glutes, quads and hamstrings, with inner thighs and calves helping."
+  },
+  "Pull-Up": {
+    "prime": [
+      "lats",
+      "rhomboids"
+    ],
+    "secondary": [
+      "biceps",
+      "traps",
+      "rear-delts"
+    ],
+    "stabilisers": [
+      "abs",
+      "forearms"
+    ],
+    "note": "Lats and rhomboids pull you up; biceps, mid-traps and rear delts help."
+  },
+  "Standing Barbell Overhead Press (Shoulder Press)": {
+    "prime": [
+      "front-delts",
+      "side-delts"
+    ],
+    "secondary": [
+      "triceps",
+      "traps",
+      "serratus"
+    ],
+    "stabilisers": [
+      "lower-back",
+      "abs",
+      "glutes",
+      "quads"
+    ],
+    "note": "Shoulder press: front and side delts drive it, triceps and traps help."
+  },
+  "Tricep Pushdown (cable, bar or rope attachment)": {
+    "prime": [
+      "triceps"
+    ],
+    "secondary": [],
+    "stabilisers": [
+      "abs",
+      "lats"
+    ],
+    "note": "Trains the triceps on the back of the upper arm; only the elbows move."
+  },
+  "Walking Lunge (dumbbells optional)": {
+    "prime": [
+      "glutes",
+      "quads"
+    ],
+    "secondary": [
+      "hamstrings",
+      "adductors"
+    ],
+    "stabilisers": [
+      "calves",
+      "abs"
+    ],
+    "note": "Front-leg glutes and quads do the work, with hamstrings and inner thigh helping."
+  }
+}

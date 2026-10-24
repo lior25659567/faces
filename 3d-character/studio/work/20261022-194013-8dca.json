@@ -1,0 +1,90 @@
+{
+  "id": "20261022-194013-8dca",
+  "title": "Fix his posture: chest up, straight back, head over the shoulders",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-22T16:40:13.101Z",
+  "updatedAt": "2026-10-23T06:54:40.930Z",
+  "finishedAt": "2026-10-23T06:54:40.930Z",
+  "log": [
+    {
+      "at": "2026-10-22T16:40:13.249Z",
+      "text": "Starting from the latest run: back rounds 30° / 34° / 41° (should be straight), head 20–21° further forward than the coach at the middle and bottom."
+    },
+    {
+      "at": "2026-10-22T16:41:03.374Z",
+      "text": "Started: reading the brief, the solver's history and how the Studio measures back rounding and neck angle."
+    },
+    {
+      "at": "2026-10-22T21:03:54.144Z",
+      "text": "Paused for a while by a usage limit on my side; resuming now from where it stopped."
+    },
+    {
+      "at": "2026-10-22T21:04:08.150Z",
+      "text": "Built a copy of the character before the posture step (in my scratch folder) so I can measure where the rounded back and forward head come from, joint by joint."
+    },
+    {
+      "at": "2026-10-22T21:07:12.735Z",
+      "text": "Root cause found. The rounded back has two sources: the Mixamo clip itself already bends his spine 9° standing to 35° at the bottom, and then our posture step reaches the coach's forward lean by bending the spine further (+21° standing, +16° middle, +6° bottom) instead of tipping the hips forward; the hips are never turned. The arm and bar step changes nothing here."
+    },
+    {
+      "at": "2026-10-22T21:07:12.775Z",
+      "text": "The forward head follows from that: the curled chest carries the base of the neck forward. On this character a neutral head already reads 28° on the Studio's neck measure (his shoulder joints sit 77 mm behind his hip joints), so matching the coach's 13° means tilting the head back about 20° against the chest, which is also what the coach's face direction needs."
+    },
+    {
+      "at": "2026-10-22T21:12:55.676Z",
+      "text": "First fix tried (spine kept straight, hips tip forward for the lean, neck and head set to the coach's): back rounding 30/34/41° → 0/0/0°, neck vs coach 38.9/15.6/14.2° against 38.6/13.4/13.5°. The face looks up too much in the middle (−2° against the coach's −14°); tuning that next, then looking at the pictures."
+    },
+    {
+      "at": "2026-10-22T21:15:01.237Z",
+      "text": "Balanced the face against the neck: neck within 4° of the coach at every position, face within 8° (it was 14° off). Starting a full run of the Studio's own squat command in my scratch folder (about 8 minutes)."
+    },
+    {
+      "at": "2026-10-22T21:19:46.296Z",
+      "text": "Full run 1 measured the Studio's way: back rounding 30/34/41° → 0/0/0° (pass at all three), neck 38/34/34° → 39/17/15° against the coach's 39/13/13° (all pass). Two things got worse and must be fixed before I finish: the upper arm at the start is 0.6° outside its tolerance, and two small new skin folds appeared (the neckline on frames 58–59 and the right ankle on frame 38)."
+    },
+    {
+      "at": "2026-10-22T21:24:47.907Z",
+      "text": "Neck fold traced: my first head solve bent the neck bone itself back 24–33° (the old motion never bent it more than 13°), which creases the skin at the back of the neck. Capping the neck bone at 13° and letting the head take the rest brings the neck's largest fold from 542 mm² down to 82 mm² (the Studio's limit is 100); the neck angle still passes (within 5.5° of the coach)."
+    },
+    {
+      "at": "2026-10-22T21:27:26.336Z",
+      "text": "Hips now tip about the line through both hip joints (not a fixed axis), which keeps the two legs as they were relative to each other; the hidden crotch fold at the bottom halves (1,932 → 1,040 mm²). The right-ankle crease at the bottom is driven by matching the coach's 22° lean exactly (at 21° it shrinks to 108 mm², the old run sat at 66); investigating. Starting full run 2."
+    },
+    {
+      "at": "2026-10-22T21:32:19.938Z",
+      "text": "Full run 2: back rounding −0.1/0.0/0.5°, neck 39/19/17° against the coach's 39/13/13° (all pass), the neck fold is gone and the hidden crotch fold is back to its old size (121 against 100 mm²). The grip width now passes too. Still open: the upper arm at the start (48.5°, limit 46.3°) and the right-ankle crease at the deepest frame (168 mm², limit 100). Looking at the shoulders next."
+    },
+    {
+      "at": "2026-10-22T21:36:36.451Z",
+      "text": "Upper arm explained: with the old curled back the curl itself opened the arm angle through the rep the way the coach's opens (41° → 52°); with a straight back the elbow stayed near 48° the whole rep. Letting the elbow follow the coach's angle more closely gives 44° / 49–51° / 52° (all within tolerance) and the wrists bend no more than before."
+    },
+    {
+      "at": "2026-10-22T21:41:11.029Z",
+      "text": "Full run 3: every check that passed before still passes (upper arm 44/51/52° now), back straight and neck within tolerance at all three positions. One thing left: a crease at the front of the right ankle at the deepest frame (168 mm², limit 100; it was 66 before, just under). Trying a smoother skin blend at the ankles, the same treatment the shoulders and hips got in the last task."
+    },
+    {
+      "at": "2026-10-22T21:47:12.190Z",
+      "text": "Full run 4: the smoother ankle blend removes the ankle crease completely (168 mm² → none), but it let the heel follow the shin a little: foot slide 1.1/1.4 mm → 3.0/4.4 mm (limit 5). Keeping the soles out of that blend next."
+    },
+    {
+      "at": "2026-10-23T06:48:00.670Z",
+      "text": "Why there was a long gap: a test run did not get stuck in a loop. The Mac went to sleep at 00:49 because its battery was at 1% and woke at 09:44 on the charger; the run used only about 2 minutes of processor time in those 9 hours, and its skin step reports 32,290 s, which is the 32,118 s of sleep plus its normal time. It carried on as soon as the Mac woke and is finishing now; nothing was changed for it."
+    },
+    {
+      "at": "2026-10-23T06:50:31.199Z",
+      "text": "Full run 5 (soles kept out of the ankle blend): back rounding 0/0/0°, neck 39/19/17° against the coach's 39/13/13°, the ankle crease is gone, feet slide 1.1/1.4 mm again, and every check that passed before still passes. The only visible fold left is the known left-thumb one. Now re-checking the grip, the knees and the old fixes before I finish."
+    }
+  ],
+  "summary": "Back rounding 30°/34°/41° → 0°/0°/0.5° (start/middle/end; worst frame of the whole squat 0.5°, was 41°). Neck against the coach (39/13/13°): 38/34/34° → 39/19/17°, all within tolerance now. Checks 16 pass / 11 fail → 21 pass / 6 fail in my test run, nothing that passed before fails; the grip, feet, cracks and smooth motion are unchanged, and the only visible fold is still the known left-thumb one. Still not perfect: at the start he now tips forward from the hips with a straight back (the coach stands more upright), and his face looks a little higher than the coach's in the middle and at the bottom.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-095441-fc54"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T06:54:41.839Z",
+  "rerunNote": null
+}

@@ -1,0 +1,1378 @@
+{
+  "note": "Joint angles condensed from reference/exercises/form-guidelines.json by a verified extraction, then replayed by pipeline/pose_model.py. Every angle carries the exact source fragment it came from. `measure` matters: `included` is the angle BETWEEN two bones (180 = straight) and `flexion` is degrees away from straight (0 = straight); they are opposites. `ambiguous` means the source gave a number without saying which, and the solver refuses to pose it rather than choosing.",
+  "exercises": [
+    {
+      "name": "Barbell Back Squat",
+      "travels_vertically": "DEPTH: the hip crease is LOWER than the top of the kneecaps \u2014 hips below knees, past parallel.",
+      "travels_horizontally": "Hips and knees bend AT THE SAME TIME \u2014 the hips travel back and down while the knees push out.",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing fully erect with the bar racked across the upper back.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "rotation",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "ELBOWS: pointed down and BEHIND the torso at the top \u2014 neither vertical/under the bar nor flared horizontally out to the sides.",
+              "note": "NOT FROM THE SOURCE. The prose gives the elbow's DIRECTION in both phases \u2014 \"pointed down and BEHIND the torso at the top\", \"now in line with the torso rather than behind it\" \u2014 and no magnitude for either, and it gives the hands only as a grip width that this skeleton cannot reach. The quantity that was missing turned out not to be the one both readers first assumed. Tilting the humerus backward (`from_vertical`) moves the ELBOW and barely moves the hand: at rest the elbow already sits on the torso's own line (y -0.130, the chest's), at 20 degrees back it is at -0.194 and at 40 at -0.249, while the hand only creeps from +0.065 to +0.005 and stays in front of the chest throughout. What the hand needed was the ROLL, because the roll is what decides the plane the bent elbow swings the forearm through. Supplied by the project, same standing as the elbow angle recorded beside it.",
+              "resolved_by_hand": "Supplied by the project on 2026-10-18, not read from the source, and PINNED BY THE SOURCE'S OWN WHAT STAYS STILL SENTENCE rather than chosen for looks. That sentence names \"the position of the bar on the back, the hands, the wrists\", so the hand must hold its place against the shoulder across both frames. Without a roll it does not: the hand sits 23 mm below the shoulder at the top and 110 mm below at the bottom, an 87 mm drift that reads as the bar sliding down the back mid-rep. With a roll of 90 it is 23 mm and 20 mm \u2014 3 mm of drift. The sweep, right hand, y positive forward: roll 0 gives y +0.065 (in front of the chest), 45 gives +0.008 (level), 90 gives -0.130 (exactly on the chest line, which is where a bar across the upper back sits in a skeleton with no thickness), 135 gives -0.267 and 180 gives -0.324, both too far back. 90 is the only value that satisfies the stays-still requirement in both phases at once. Revisit it with the elbow angle if either is ever rendered and disputed."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 50,
+              "low": 45,
+              "high": 60,
+              "source": "HANDS: just outside the shoulders. ELBOWS: pointed down and BEHIND the torso at the top \u2014 neither vertical/under the bar nor flared horizontally out to the sides.",
+              "note": "NOT FROM THE SOURCE. This exercise states no elbow angle in either phase \u2014 only directions (\"pointed down and BEHIND the torso\", \"now in line with the torso\") and a grip WIDTH of 1.2-1.3x shoulder width, which cannot be posed here at all because it puts the hands 0.026 from the shoulder joints against an arm whose minimum reach is 0.040 with the elbow fully folded. A bar behind the neck needs a torso with thickness and this skeleton is a line. The value below was supplied by the project, from the anatomy of a bar rack rather than from the prose, and `resolved_by_hand` says so. The same value is recorded in both phases because the source's own WHAT STAYS STILL list names \"the position of the bar on the back, the hands, the wrists\": the arm does not move relative to the torso between the two frames, so an elbow recorded in one phase and absent from the other would animate an arm the source says is still.",
+              "resolved_by_hand": "Supplied by the project on 2026-10-18, not read from the source. With no elbow angle the arm is straight, and once the squat is posed to the depth its own phase description demands \u2014 hips below knees \u2014 the shoulder sits 0.390 above the floor against an arm 0.440 long, so a straight arm reaches through the ground and the solver's floor invariant lifts the whole figure onto its fingertips. The options were measured before choosing: included 180 puts the hand at 0.000 and the feet 41 mm up, 115 at 0.000 and 17 mm, 90 at 0.080, 70 at 0.164, 60 at 0.208, 45 at 0.274. 50 was chosen: it sits inside the 45-60 a real back-squat rack uses and puts the hand about 0.11 below the shoulder, which is where a hand gripping a bar lying across the upper back sits \u2014 just below and behind it, forearm folded up. This is a project decision about the exercise, not a reading of the text, and it should be revisited by anyone who renders this frame and disagrees."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "JOINT ANGLES: hips locked ~180 degrees",
+              "note": ""
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "knees locked ~180 degrees",
+              "note": ""
+            },
+            {
+              "joint": "ankle",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "ankles neutral ~90 degrees, shins vertical",
+              "note": "Ankle convention differs from the other joints in this same sentence: here 90 included (shin perpendicular to foot) is NEUTRAL, not bent. Do not treat 180 as the ankle's straight pose."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "toes turned out approximately 30 degrees",
+              "note": ""
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Bottom of the rep. DEPTH: the hip crease is LOWER than the top of the kneecaps \u2014 hips below knees, past parallel.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "direction": "backward",
+              "degrees": 27.5,
+              "derived": true,
+              "low": 25,
+              "high": 30,
+              "source": "ELBOWS: now in line with the torso rather than behind it.",
+              "note": "DERIVED, not stated: `derived: true` marks a value solved for rather than read. \"In line with the torso\" is an exact geometric statement, and this phase records the torso's own lean, so the humerus's tilt is the torso's tilt \u2014 27.5 degrees from vertical, backward, because the torso leans forward and the arm hangs down the same line. RE-DERIVED 2026-10-18 from 45 to 27.5 when the preferred spine entry was switched from the low-bar variant to the high-bar one; the low/high band follows that entry's own 25-30. COUPLED TO THE PREFERRED SPINE ENTRY: flip `preferred` back to the low-bar 45 and this must be re-derived with it. Added because the squat had NO shoulder angle in either phase, so the arms hung straight down and the hands finished ON THE FLOOR at the bottom of the rep. STILL MISSING, and still a gap: the elbow. The source gives no elbow angle for either phase \u2014 only \"pointed down and BEHIND the torso\", \"in line with the torso\", and a grip WIDTH of 1.2-1.3x shoulder width. That width would put the hands 0.026 from the shoulder joints in this skeleton, which is inside the arm's minimum reach of 0.040 with the elbow fully folded, so the stated grip cannot be posed here at all: a bar behind the neck needs a torso with thickness, and this one is a line. Flagged."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "rotation",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "ELBOWS: now in line with the torso rather than behind it.",
+              "note": "NOT FROM THE SOURCE. The prose gives the elbow's DIRECTION in both phases \u2014 \"pointed down and BEHIND the torso at the top\", \"now in line with the torso rather than behind it\" \u2014 and no magnitude for either, and it gives the hands only as a grip width that this skeleton cannot reach. The quantity that was missing turned out not to be the one both readers first assumed. Tilting the humerus backward (`from_vertical`) moves the ELBOW and barely moves the hand: at rest the elbow already sits on the torso's own line (y -0.130, the chest's), at 20 degrees back it is at -0.194 and at 40 at -0.249, while the hand only creeps from +0.065 to +0.005 and stays in front of the chest throughout. What the hand needed was the ROLL, because the roll is what decides the plane the bent elbow swings the forearm through. Supplied by the project, same standing as the elbow angle recorded beside it.",
+              "resolved_by_hand": "Supplied by the project on 2026-10-18, not read from the source, and PINNED BY THE SOURCE'S OWN WHAT STAYS STILL SENTENCE rather than chosen for looks. That sentence names \"the position of the bar on the back, the hands, the wrists\", so the hand must hold its place against the shoulder across both frames. Without a roll it does not: the hand sits 23 mm below the shoulder at the top and 110 mm below at the bottom, an 87 mm drift that reads as the bar sliding down the back mid-rep. With a roll of 90 it is 23 mm and 20 mm \u2014 3 mm of drift. The sweep, right hand, y positive forward: roll 0 gives y +0.065 (in front of the chest), 45 gives +0.008 (level), 90 gives -0.130 (exactly on the chest line, which is where a bar across the upper back sits in a skeleton with no thickness), 135 gives -0.267 and 180 gives -0.324, both too far back. 90 is the only value that satisfies the stays-still requirement in both phases at once. Revisit it with the elbow angle if either is ever rendered and disputed."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 50,
+              "low": 45,
+              "high": 60,
+              "source": "ELBOWS: now in line with the torso rather than behind it.",
+              "note": "NOT FROM THE SOURCE. This exercise states no elbow angle in either phase \u2014 only directions (\"pointed down and BEHIND the torso\", \"now in line with the torso\") and a grip WIDTH of 1.2-1.3x shoulder width, which cannot be posed here at all because it puts the hands 0.026 from the shoulder joints against an arm whose minimum reach is 0.040 with the elbow fully folded. A bar behind the neck needs a torso with thickness and this skeleton is a line. The value below was supplied by the project, from the anatomy of a bar rack rather than from the prose, and `resolved_by_hand` says so. The same value is recorded in both phases because the source's own WHAT STAYS STILL list names \"the position of the bar on the back, the hands, the wrists\": the arm does not move relative to the torso between the two frames, so an elbow recorded in one phase and absent from the other would animate an arm the source says is still.",
+              "resolved_by_hand": "Supplied by the project on 2026-10-18, not read from the source. With no elbow angle the arm is straight, and once the squat is posed to the depth its own phase description demands \u2014 hips below knees \u2014 the shoulder sits 0.390 above the floor against an arm 0.440 long, so a straight arm reaches through the ground and the solver's floor invariant lifts the whole figure onto its fingertips. The options were measured before choosing: included 180 puts the hand at 0.000 and the feet 41 mm up, 115 at 0.000 and 17 mm, 90 at 0.080, 70 at 0.164, 60 at 0.208, 45 at 0.274. 50 was chosen: it sits inside the 45-60 a real back-squat rack uses and puts the hand about 0.11 below the shoulder, which is where a hand gripping a bar lying across the upper back sits \u2014 just below and behind it, forearm folded up. This is a project decision about the exercise, not a reading of the text, and it should be revisited by anyone who renders this frame and disagrees."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "KNEES: pushed out to the sides, tracking directly over and slightly past the toes, thighs in line with the 30-degree foot splay.",
+              "note": "The source states its own number by reference: the thighs are \"in line with the 30-degree foot splay\", and the foot splay is recorded as 30 in both phases of this exercise. `hip`/`splay` was added to the schema on 2026-10-18 to hold it \u2014 `splay` and not `abduction` because the source fixes the number by equating it with the FEET, and a splay is a turn about the upright seen from above; recorded as a frontal-plane abduction the same 30 produced only five degrees of visible knees-out \u2014 there was no measure for a thigh leaving the sagittal plane, so the knees-out that the source calls a defining cue of the squat was being dropped. Flagged."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 65,
+              "low": 60,
+              "high": 70,
+              "source": "knee flexed to roughly 60-70 degrees of included angle (deep flexion)",
+              "note": "Source states 'included angle' explicitly: this is a DEEPLY bent knee (60 included = near-full bend), not a nearly straight one."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 55,
+              "low": 50,
+              "high": 60,
+              "source": "hip included angle roughly 50-60 degrees between femur and torso",
+              "note": "Source names the two segments the angle is between: femur and torso."
+            },
+            {
+              "joint": "ankle",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 22.5,
+              "low": 20,
+              "high": 25,
+              "source": "ankle dorsiflexed roughly 20-25 degrees so the SHINS ARE INCLINED FORWARD (shins must not be vertical)",
+              "note": "Dorsiflexion measured away from the ankle's neutral (the ~90 included of the start phase), not away from 180. Applying it to a 180 baseline would break the pose."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 45,
+              "low": 40,
+              "high": 50,
+              "source": "TORSO: leaning forward \u2014 about 40-50 degrees from vertical for a low-bar squat",
+              "note": "LOW-BAR variant. Mutually exclusive with the high-bar entry below: pick one bar position, never average the two. Global tilt of the torso segment, not a change in spine shape \u2014 the source insists the spine's arch is 'completely unchanged'. WAS PREFERRED UNTIL 2026-10-18, AND IS NOT ANY MORE. The first ruling made this entry the one the solver poses; posing the figure and measuring it showed that doing so makes the phase contradict its own description. THE ARITHMETIC, for whoever reads this next: the thigh's rotation away from straight down is hip flexion minus torso lean, and the knee only rises above the hip once that passes 90 degrees. With the hip included angle this phase states, 55 (flexion 125), the knee clears the hip only at a lean under 35 degrees. Solved: the low-bar 40-50 lean puts the hip 43 mm ABOVE the knee, and this high-bar 25-30 lean puts it 32 mm BELOW \u2014 which is what the phase's own orientation_source demands in capitals, \"DEPTH: the hip crease is LOWER than the top of the kneecaps \u2014 hips below knees, past parallel\". The preference moved to the high-bar entry below, where the reversal and its reasoning are recorded. This stays in the file as the recorded low-bar alternative: flip `preferred` back to demonstrate a low-bar squat and remove it from the other entry \u2014 a group with two preferred entries is refused, and so is one with none. If you do flip it, the derived `shoulder/from_vertical` at the top of this phase is coupled to the choice and has to be re-derived to 45 with it."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 27.5,
+              "preferred": true,
+              "low": 25,
+              "high": 30,
+              "source": "a more upright 25-30 degrees from vertical for high-bar; exact angle varies with build and bar position",
+              "note": "HIGH-BAR variant. Mutually exclusive with the low-bar entry above. Source itself adds that the exact angle varies with build and bar position. PREFERRED AS OF 2026-10-18, REVERSING THE FIRST RULING, which had chosen the low-bar entry above. THE ARITHMETIC, for whoever reads this next: the thigh's rotation away from straight down is hip flexion minus torso lean, and the knee only rises above the hip once that passes 90 degrees. With the hip included angle this phase states, 55 (flexion 125), the knee clears the hip only at a lean under 35 degrees. Solved: the low-bar 40-50 lean puts the hip 43 mm ABOVE the knee, and this high-bar 25-30 lean puts it 32 mm BELOW \u2014 which is what the phase's own orientation_source demands in capitals, \"DEPTH: the hip crease is LOWER than the top of the kneecaps \u2014 hips below knees, past parallel\". WHY THE PHASE STATEMENT BEATS THE VARIANT: the depth sentence is a statement about this PHASE, while the lean is one of two mutually exclusive variants, so the phase-level statement constrains the choice between them rather than being overridden by one of them \u2014 preferring low-bar made the phase contradict its own first line. And depth is the defining cue of a squat and the thing people most often get wrong: a demonstration that stops above parallel teaches the error it exists to prevent, whereas the torso angle is a stylistic difference between two valid lifts. The derived `shoulder/from_vertical` at the top of this phase is coupled to this choice and was re-derived from 45 to 27.5 with it."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "thighs in line with the 30-degree foot splay",
+              "note": "Restated in the finish phase, so the feet are unchanged from the start. SATISFIED BY THE HIP IN THIS PHASE (2026-10-18): the same sentence now also feeds `hip/splay 30`, and a splayed hip turns the whole leg, so the ankle contributes the REMAINDER \u2014 30 minus 30, nothing. The toes still end up 30 degrees out from straight ahead, which is what this entry asserts; it is the foot's absolute direction, not an extra turn. pipeline/pose_audit.py lists it among the inert angles for that reason, correctly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conventional Barbell Deadlift",
+      "travels_vertically": "Full lockout, standing tall. Hips and knees both fully straightened to 180 degrees but NOT hyperextended.",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "bent_over",
+          "orientation_source": "Crouched over the bar, which is still on the floor.",
+          "angles": [
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 137.5,
+              "low": 130,
+              "high": 145,
+              "source": "JOINT ANGLES: knees flexed to roughly 130-145 degrees",
+              "note": "AMBIGUOUS: the source says 'flexed to' with neither 'included' nor 'of flexion', unlike the hip in the very same sentence which it marks 'hip included angle'. Flagging, not choosing. For the reviewer: only the included reading (~130-145 between femur and shin, a mildly bent knee) is anatomically consistent with the entry's own 'HIPS: higher than the knees' and 'the setup looks like a half squat'; the flexion reading would be a near-maximal bend. Confirm before posing. RESOLVED by the research pass to the `included` convention. Evidence: the hip in the very same sentence is tagged 'hip included angle roughly 90-110 degrees', and this file carries a sentence-level convention tag across the joints it lists together \u2014 the squat's 'hips locked ~180 degrees, knees locked ~180 degrees, ankles neutral ~90 degrees' is the same construction \u2014 while nothing in this entry says 'of flexion'. The included reading is also the only one that matches the picture two sentences earlier in the source, 'the setup looks like a half squat, not a deep squat' with 'HIPS: higher than the knees': 130-145 of FLEXION would fold the knee to within 35-50 degrees of its anatomical limit, which is a deep squat. StrongLifts' live deadlift page was fetched and prints no knee figure at all, so it neither confirms nor contradicts the convention, but it does corroborate the half-squat picture."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 100,
+              "low": 90,
+              "high": 110,
+              "source": "hip included angle roughly 90-110 degrees",
+              "note": ""
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_horizontal",
+              "degrees": 32.5,
+              "low": 20,
+              "high": 45,
+              "source": "torso inclined roughly 20-45 degrees above horizontal depending on build",
+              "note": "0 is parallel to the floor, so the midpoint is a steeply inclined torso. Very wide stated range and the source attributes it to build; the midpoint is a placeholder, not a prescription. Global tilt of the torso segment, not spine shape."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 15,
+              "low": 15,
+              "high": 15,
+              "source": "toes turned out about 15 degrees",
+              "note": ""
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Full lockout, standing tall.",
+          "angles": [
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Hips and knees both fully straightened to 180 degrees but NOT hyperextended.",
+              "note": "Source caps it: 180 is the ceiling, do not drive past straight."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Hips and knees both fully straightened to 180 degrees but NOT hyperextended.",
+              "note": "Source caps it: 180 is the ceiling, do not drive past straight."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 15,
+              "low": 15,
+              "high": 15,
+              "source": "Feet unchanged: same hip-width stance, toes still out 15 degrees, whole foot flat.",
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flat Barbell Bench Press",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "lying_supine",
+          "orientation_source": "Lying supine on the bench with the bar held at arm's length above the shoulders, elbows locked, having just been unracked.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "BAR AND ARMS: bar directly above the shoulder joints, arms vertical, elbows fully extended to ~180 degrees, wrists stacked straight over the elbows.",
+              "note": "Added 2026-10-18. The phase recorded its elbow and not its shoulder, so the arm was left at rest and the figure was drawn with the arms HANGING while the source has them overhead \u2014 the same defect that left this file's barbell overhead press locking out with its arms by its sides, and the same repair. `from_vertical` rather than `flexion` BECAUSE THE FIGURE IS LYING DOWN. Flexion is measured in the body's own sagittal plane, so 180 of it would swing a supine lifter's arms along the bench toward the head; `from_vertical` is this file's gravity-relative measure, and 180 of it points the arms at the ceiling, which is what \"vertical\" means in a sentence about a bar held above the shoulders. Flagged."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "arms vertical, elbows fully extended to ~180 degrees, wrists stacked straight over the elbows",
+              "note": ""
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "toes turned out roughly 30 degrees",
+              "note": "Feet are on the floor, not the bench, while the body is supine."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "lying_supine",
+          "orientation_source": "Bottom of the rep, bar touching the chest. [...] buttocks still on the bench, both feet still flat.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "abduction",
+              "degrees": 75,
+              "low": 75,
+              "high": 75,
+              "source": "ELBOWS: tucked to roughly 75 degrees from the torso (NOT flared to 90 degrees, and not pinned against the ribs)",
+              "note": "Source labels this 'ELBOWS', but the angle it gives is the upper arm's angle away from the torso, i.e. SHOULDER abduction \u2014 it is not an elbow bend. The 90 in the same sentence is the named mistake (flared), not a target, and is deliberately not recorded."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 52.5,
+              "low": 45,
+              "high": 60,
+              "source": "ELBOW ANGLE: roughly 45-60 degrees of flexion, varying with grip width and torso depth",
+              "note": "Source says 'of flexion', so 0 is straight and this is a moderately bent arm \u2014 roughly a third bent, NOT the near-full bend that 45-60 included would mean. Source attributes the variation to grip width and torso depth. CONFLICT WITH A SEGMENT ORIENTATION, resolved 2026-10-18 in favour of this joint angle. The same end_position also says \"FOREARMS: vertical to the floor when viewed from BOTH the side and the front\", which `forearm/from_vertical` could now hold, and the two do not agree: posing this 45-60 degrees of elbow flexion leaves the forearm well off vertical. The joint angle wins because a joint angle is this schema's primary measurement and the forearm line is a descriptive aside in the same breath \u2014 and because the forearm's direction here also depends on the shoulder, which is a separate defect recorded in the task report. Not an omission: a decision, recorded so the next reader sees it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standing Barbell Overhead Press (Shoulder Press)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing erect with the bar resting on the front of the shoulders.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 45,
+              "low": 45,
+              "high": 45,
+              "source": "ELBOWS: almost directly UNDER the bar when viewed from the side, and angled roughly 45 degrees in toward the midline when viewed from the front",
+              "note": "AMBIGUOUS and the weakest number in this set. It describes which way the elbows POINT in the front view, INWARD toward the midline \u2014 so it is not abduction (away from the midline); feeding 45 into an abduction channel would swing the arms the wrong way. The source does not say whether it is measured from the torso's midline plane or from straight ahead, and gives no joint convention. Treat as a direction cue and confirm against the entry's master cue, 'FOREARMS: vertical to the floor from both the side and front views', before posing. RULED BY THE PROJECT on 2026-10-18, not resolved from the text: `measure` is set to `abduction` with the 45 unchanged. The research pass found that this figure is not a flexion-or-included quantity at all, and the live StrongLifts overhead-press page states the same cue as 'About 45 degrees in from the front. No flaring.' The project reads the source as describing where the ELBOWS sit relative to the torso seen from the front, which is shoulder abduction, a measure the solver already applies. THIS IS AN INTERPRETATION OF WHICH QUANTITY THE SOURCE DESCRIBES, made by this project; it is not a convention reading taken from the source, and the source still never states the reference plane. The caution above is left standing because it is the reason this is an interpretation rather than a transcription: the source's words are 'in toward the midline' and the solver's abduction channel swings the arm away from it. Check it against a render before it ships. DIRECTION UNVERIFIED, PARKED FOR A RENDER (2026-10-18), alongside the bent-over row's 75: the project's reading is that the 45 is a shoulder abduction, and abduction swings the arm AWAY from the midline while the source's words are \"in toward the midline\". The magnitude is the source's and the direction is this file's reading. To be checked against the posed figure on the staging contact sheet, not reasoned about again. CORRECTED 2026-10-18 AFTER A RENDER: the measure was `abduction` and that was wrong. Posed as abduction the 45 threw the elbow 132 mm sideways with no forward travel at all; posed as `flexion` it throws it 132 mm FORWARD with the hand above it, which is elbows forward and down, hands at shoulder width and the bar in front of the shoulders \u2014 a front rack, and still \"almost directly UNDER the bar when viewed from the side\". The project's first reading, recorded above and ruled in on 2026-10-18, took \"angled 45 degrees in toward the midline\" for a frontal-plane quantity; the render showed that it is the sagittal one. The caution above stands as the record of a reading that was tried and found wrong, which is why it is left rather than deleted."
+            },
+            {
+              "joint": "forearm",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "FOREARMS: vertical to the floor from both the side and front views. Upper arms are NOT horizontal (that would be a front-squat rack position).",
+              "note": "A SEGMENT TILT, and the schema was extended on 2026-10-18 to hold it: the source states the forearm's orientation plainly and there was no measure it could go in, so the quantity was being dropped rather than read. `solve` measures a forearm's tilt from the UPWARD vertical, unlike the humerus's and the femur's, which are measured from the hanging one \u2014 so 0 here is vertical with the HAND ABOVE THE ELBOW, which is where the racked bar is (\"BAR: resting across the front deltoids, just below the collarbones\"), and 180 would be the hand below it. Before this entry the start had nothing to say about either the elbow or the forearm, so the arms hung straight and the bar sat at hip height. The elbow is still NOT recorded: the source's only other word on it is the negative \"Upper arms are NOT horizontal\", which is not a number. Flagged."
+            },
+            {
+              "joint": "wrist",
+              "side": "both",
+              "measure": "rotation",
+              "degrees": 75,
+              "low": 75,
+              "high": 75,
+              "source": "WRISTS: almost straight with the knuckles rotated back about 75 degrees",
+              "note": "Internally inconsistent in the source: 'almost straight' sits in the same clause as 75 degrees of something. The grip detail reads the same way \u2014 'the wrist stays nearly straight with the knuckles back about 75 degrees rather than collapsing into full extension' \u2014 which suggests the hand tipped back relative to the forearm rather than an axial twist of the wrist. Recorded as the source's own words ('rotated back'); do not apply 75 as a visible twist without review."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 15,
+              "low": 15,
+              "high": 15,
+              "source": "toes turned slightly out (roughly 15 degrees)",
+              "note": ""
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Full lockout overhead. [...] The torso has moved FORWARD under the bar so the whole body forms a straight vertical line from midfoot through hips, shoulders and bar \u2014 the slight lean-back from the start has been removed, and there is no backward lean at lockout.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Elbows locked straight, arms vertical, upper arms beside the ears.",
+              "note": "Word-derived, not a stated numeral: an arm held vertical overhead beside the ear is 180 degrees of shoulder flexion, the top of the joint's range. At 180 flexion and abduction coincide \u2014 both put the humerus vertical above the shoulder, which the solver was checked against \u2014 so the label does not change the pose; flexion is recorded because the press finishes in front of the frontal plane. Added 2026-10-18: this phase previously held NO angles at all, so it solved to the bare rest pose and the lockout animated to arms hanging by the sides, the opposite of the movement. Flagged."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Elbows locked straight, arms vertical, upper arms beside the ears.",
+              "note": "Word-derived, not a stated numeral: \"locked straight\" is 180 included. The source says it twice more, in the alignment cues and in the mistake list (\"Not locking the elbows at the top, so the rep is short and poorly controlled\"). Flagged."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Hips and knees still locked.",
+              "note": "Word-derived, not a stated numeral: \"locked\" is straight, 180 included. Corroborated by the start position (\"HIPS AND KNEES: fully locked straight \u2014 no dip, no bend\") and by the cue \"Hips and knees stay LOCKED from start to finish \u2014 any knee bend turns it into a push press\". Flagged."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Hips and knees still locked.",
+              "note": "Word-derived, not a stated numeral: \"locked\" is straight, 180 included. The same cue names knee bend as the fault that turns this into a push press, so the joint must not be left to a default. Flagged."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "The torso has moved FORWARD under the bar so the whole body forms a straight vertical line from midfoot through hips, shoulders and bar \u2014 the slight lean-back from the start has been removed, and there is no backward lean at lockout.",
+              "note": "Word-derived, not a stated numeral, but \"a straight vertical line\" is an exact geometric statement = 0 from vertical. This is the torso segment's global tilt. The start phase is deliberately left without a spine entry: the source says the start torso \"leans back a small amount\" and never gives a number for it, so the removal of that lean cannot be animated from this file. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Head neutral: on the way up it travels BACK a few inches to let the bar pass the face, then comes forward under the bar at lockout.",
+              "note": "Word-derived, not a stated numeral: \"neutral\" is zero deviation from the spine's line, the reading this file uses elsewhere for \"head in line with the spine\". The head's travel back and then forward is given no number and is not recorded; it belongs to a mid-rep keyframe this two-phase file does not hold. Flagged."
+            },
+            {
+              "joint": "wrist",
+              "side": "both",
+              "measure": "rotation",
+              "degrees": 75,
+              "low": 75,
+              "high": 75,
+              "source": "WHAT STAYS STILL: the feet, the knees, the hips, the grip, the wrists and the shape of the lower back.",
+              "note": "The number is not restated in the end position: it is carried unchanged from this exercise's start phase, because the alignment cues list it among what does not move. Recorded explicitly rather than left out, because an angle absent from a phase is not held \u2014 it animates back to the rest pose \u2014 so omitting it would snap the hands straight during the press. The value comes from this exercise's start entry, \"WRISTS: almost straight with the knuckles rotated back about 75 degrees\", and that entry's caution about the number applies here unchanged. Flagged."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 15,
+              "low": 15,
+              "high": 15,
+              "source": "WHAT STAYS STILL: the feet, the knees, the hips, the grip, the wrists and the shape of the lower back.",
+              "note": "The number is not restated in the end position: it is carried unchanged from this exercise's start phase, because the alignment cues list it among what does not move. Recorded explicitly rather than left out, because an angle absent from a phase is not held \u2014 it animates back to the rest pose \u2014 so omitting it would straighten the feet at lockout. The value comes from this exercise's start entry, \"toes turned slightly out (roughly 15 degrees)\". Flagged."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Barbell Bent-Over Row",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "bent_over",
+          "orientation_source": "Bent over the bar, which rests on the floor.",
+          "angles": [
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_horizontal",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "TORSO: HORIZONTAL, parallel to the floor \u2014 this is the defining geometry of the lift.",
+              "note": "Angle stated in words, not digits: 'parallel to the floor' is exactly 0 degrees from horizontal. Kept because a horizontal torso is the opposite of the neutral standing default and is the defining geometry of this lift."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "toes turned out about 30 degrees, pointed the same direction as the knees",
+              "note": ""
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "ARMS: hanging straight down, perfectly vertical, elbows fully extended, shoulder blades allowed to spread slightly.",
+              "note": "Angle stated in words, not digits: 'elbows fully extended' is 180 degrees included (straight). No frame-of-reference inference needed for an elbow, so this is a transcription rather than a guess."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "bent_over",
+          "orientation_source": "TORSO: still essentially horizontal \u2014 it may rise no more than about 15 degrees above its starting angle; it must not swing up toward vertical.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "direction": "backward",
+              "degrees": 75,
+              "low": 75,
+              "high": 75,
+              "source": "ELBOWS: pulled back BEHIND the torso, tucked roughly 75 degrees in from the torso rather than flared out at 90 degrees",
+              "note": "The source labels this 'ELBOWS', but an angle measured between the upper arm and the torso is shoulder abduction. The 90 in the same sentence is the rejected wrong form ('rather than flared out at 90 degrees') and must not be keyed. The elbows also travel behind the torso (shoulder extension), which the source does not quantify, so that component is left out. DIRECTION UNVERIFIED, PARKED FOR A RENDER (2026-10-18). Posed as abduction, this swings the elbows out SIDEWAYS in the figure's frontal plane, while the source describes them driving BACK behind the torso (\"ELBOWS: pulled back BEHIND the torso\"). Which quantity the 75 names is a question about the prose, and it is to be settled by looking at the posed figure on the staging contact sheet rather than argued again on paper. Until then the magnitude is from the source and the direction is this file's reading. Note that until the rotation axes were fixed on 2026-10-18 this angle acted on the forearm degenerately, so what it draws has only just become visible. MEASURE CORRECTED 2026-10-18 AFTER A RENDER, number unchanged. Posed as abduction the elbows swung purely sideways with ZERO travel along the torso, which cannot be \"pulled back BEHIND the torso\". The 75 is the angle the humerus is tucked IN from flared-straight-out, so the upper arm finishes about 15 degrees off the torso's own line, pointing toward the hips \u2014 which is what \"past the rib cage\" describes, and what the pull-up's identical sentence describes too. Recorded as `from_vertical 75` with `direction: backward`, the measure this file already uses for a segment's tilt against gravity. NOTE THE SISTER ENTRY: the bench press's word-for-word \"tucked to roughly 75 degrees from the torso (NOT flared to 90)\" resolves the OTHER way, to abduction, because its own sentence adds \"and not pinned against the ribs\". Same words, opposite readings, each fixed by its own disambiguating clause."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 52.5,
+              "low": 45,
+              "high": 60,
+              "source": "elbow flexion roughly 45-60 degrees",
+              "note": ""
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_horizontal",
+              "degrees": 0,
+              "low": 0,
+              "high": 15,
+              "source": "TORSO: still essentially horizontal \u2014 it may rise no more than about 15 degrees above its starting angle; it must not swing up toward vertical.",
+              "note": "15 is a stated tolerance ceiling, not a target. The posed value is 'still essentially horizontal' = 0; do NOT key the midpoint of 0-15. Rising past 15 is listed as a form fault that turns the lift into a deadlift."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 30,
+              "low": 30,
+              "high": 30,
+              "source": "toes turned out about 30 degrees, pointed the same direction as the knees",
+              "note": "Carried unchanged from the start frame; the source states the feet do not move ('WHAT STAYS STILL: the torso angle, the hips, the knees, the feet'). The number itself comes from the start-position sentence quoted here."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pull-Up",
+      "travels_vertically": "Head neutral \u2014 the chin clears the bar because the BODY rose, not because the neck craned forward.",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "hanging",
+          "orientation_source": "Full dead hang from the bar.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "ARMS: fully extended overhead, elbows at roughly 180 degrees.",
+              "note": "Added 2026-10-18. The phase recorded its elbow and not its shoulder, so the arm was left at rest and the figure was drawn with the arms HANGING while the source has them overhead \u2014 the same defect that left this file's barbell overhead press locking out with its arms by its sides, and the same repair. At 180 flexion and abduction coincide: both put the humerus vertical above the shoulder, which was checked against the solver rather than assumed. Word-derived in the sense that \"overhead\" rather than a numeral fixes it, but the position is exact: an arm extended overhead beside the ear is the top of the shoulder's range. Before this the figure hung by hands BELOW its own shoulders and floated with its feet a metre off the floor, because `ground()` anchors a hanging figure by the hands. Flagged."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "ARMS: fully extended overhead, elbows at roughly 180 degrees.",
+              "note": "Convention is fixed by 'fully extended' in the same breath as the number, so 180 is included (straight)."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "TORSO: hanging vertically, spine long and neutral, chest lifted, abdominals braced; no sag in the lower back.",
+              "note": "Angle stated in words, not digits: 'hanging vertically' is 0 degrees from vertical."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "hanging",
+          "orientation_source": "Top of the rep. The CHIN clears the top of the bar, or the upper chest approaches the bar.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "ELBOWS: driven DOWNWARD and back, pulled past the rib cage; elbow flexion roughly 40-60 degrees of included angle.",
+              "note": "Word-derived, not a stated numeral, and recorded to say explicitly what the phase was relying on by default: \"driven DOWNWARD\" is the humerus back at 0 from vertical, which is also its rest value, so this entry changes no position \u2014 it was verified to change none. The \"and back\" is deliberately NOT recorded: the source gives a direction and no magnitude for it, and this file does not invent one. Checked when it was written: the drawn finish already clears the chin over the bar (head 1.458 against a bar at 1.250). Flagged."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 50,
+              "low": 40,
+              "high": 60,
+              "source": "ELBOWS: driven DOWNWARD and back, pulled past the rib cage; elbow flexion roughly 40-60 degrees of included angle.",
+              "note": "CONTRADICTORY SOURCE - do not key this joint without a human decision. The one fragment names both conventions at once: 'flexion' and 'of included angle', which are opposites here. 40-60 included is a deeply bent arm; 40-60 of flexion is a barely bent arm. Recorded as ambiguous rather than resolved. For the reviewer: only the included reading is geometrically consistent with the rest of the same sentence (chin clearing the bar, elbows pulled past the rib cage), but the source itself does not settle it. RESOLVED by the research pass to the `included` convention, which is also what this file's own `findings` array already recorded as the fix. Evidence: 'of included angle' is this file's convention tag and the bare word 'flexion' beside it names the joint action, not a competing convention \u2014 the same construction as the squat's 'knee flexed to roughly 60-70 degrees of included angle' and the deadlift's 'hip included angle roughly 90-110 degrees'. Where this file means the flexion convention it writes 'of flexion' with no 'included' attached (bench press, lat pulldown finish, curl knees). Only the included reading is geometrically consistent with the elbows 'pulled past the rib cage' in the same sentence, so the CONTRADICTORY SOURCE warning above is answered rather than outstanding."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "TORSO: still essentially vertical, leaning back only very slightly; no large arch, no hip pike, no kipping swing.",
+              "note": "'Essentially vertical' keyed as 0. The permitted backward lean is only ever 'very slightly' with no figure attached, so high stays 0 instead of inventing a ceiling."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lat Pulldown (seated, to the front)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "seated",
+          "orientation_source": "Seated in the machine with the lower body anchored - the thigh pad adjusted so it sits firmly against the top of the thighs",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "With the arms extended overhead (elbows nearly straight, about 170-180 degrees, upper arms framing the head), depress and retract the scapulae - pull the shoulders down and back out of the shrugged position - and hold that set.",
+              "note": "Added 2026-10-18. The phase recorded its elbow and not its shoulder, so the arm was left at rest and the figure was drawn with the arms HANGING while the source has them overhead \u2014 the same defect that left this file's barbell overhead press locking out with its arms by its sides, and the same repair. At 180 flexion and abduction coincide: both put the humerus vertical above the shoulder, which was checked against the solver rather than assumed. \"Upper arms framing the head\" is the same position: vertical, beside the ears. Note that this solver measures shoulder flexion from the hanging vertical and does not carry the torso's lean into the arm, so with this entry the arms point straight up while the torso leans 15 degrees back; the source gives no arm angle relative to the torso. Flagged."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "feet flat on the floor about hip-width apart and the knees bent to roughly 90 degrees",
+              "note": "'bent to roughly 90 degrees' names neither convention, so recorded as ambiguous per the rule. Harmless in this one case: at 90 the two readings coincide (90 included = 90 of flexion), so the posed knee is the same either way. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. Chosen to match how this file tags its other bare-90 entries (leg press, dumbbell shoulder press, walking lunge). The pose is fixed independently by the source's own geometry: seated under the thigh pad with 'feet flat on the floor', thigh horizontal and shin vertical."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 175,
+              "low": 170,
+              "high": 180,
+              "source": "With the arms extended overhead (elbows nearly straight, about 170-180 degrees, upper arms framing the head)",
+              "note": "Convention fixed by 'nearly straight' next to the number, so included. 170-180 of flexion would be a fully folded arm, which contradicts 'extended overhead'."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "direction": "backward",
+              "degrees": 15,
+              "low": 0,
+              "high": 30,
+              "source": "The torso leans back slightly from vertical, no more than about 30 degrees, with the legs providing support",
+              "note": "The source prescribes a real backward lean but quantifies only its ceiling. 15 is the midpoint of 0-30 and is NOT a stated figure - flagged so a reviewer can pin it. Do not key 30: the source calls leaning past about 30 degrees the fault that turns the pulldown into a row. DIRECTION RECORDED 2026-10-18: `from_vertical` is a magnitude, and this is the only entry in the file whose torso leans BACK \u2014 the source says \"The torso leans back slightly from vertical\" \u2014 so the direction is now stated outright. Without it the solver leaned this figure forward like the squat and the deadlift, which is the opposite of a pulldown. ONLY THE DIRECTION IS ASSERTED HERE, and it is read from the prose. The magnitude is not: this file's own `findings` array records that the 15 is an invented midpoint of a ceiling (\"no more than about 30 degrees\") and still has to be pinned by a reviewer."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "seated",
+          "orientation_source": "thighs still pinned under the pad, feet still flat, lumbar spine not arched",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 57.5,
+              "low": 45,
+              "high": 70,
+              "source": "finishing at about 45-70 degrees of flexion with the upper arms down alongside the ribs and the forearms close to vertical and in line with the cable",
+              "note": ""
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "direction": "backward",
+              "degrees": 15,
+              "low": 0,
+              "high": 30,
+              "source": "Torso lean unchanged from the start - still at that same slight backward lean, with no extra rocking back during the pull",
+              "note": "Explicitly unchanged from the start, so it inherits the start's unpinned magnitude: 15 is the midpoint of the stated 0-30 bound, not a stated figure. The two frames must carry the IDENTICAL value whatever a reviewer pins it to - any difference between them would animate the rocking the source lists as a fault. DIRECTION RECORDED 2026-10-18: `from_vertical` is a magnitude, and this is the only entry in the file whose torso leans BACK \u2014 the source says \"The torso leans back slightly from vertical\" \u2014 so the direction is now stated outright. Without it the solver leaned this figure forward like the squat and the deadlift, which is the opposite of a pulldown. ONLY THE DIRECTION IS ASSERTED HERE, and it is read from the prose. The magnitude is not: this file's own `findings` array records that the 15 is an invented midpoint of a ceiling (\"no more than about 30 degrees\") and still has to be pinned by a reviewer."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "feet flat on the floor about hip-width apart and the knees bent to roughly 90 degrees",
+              "note": "Carried from the start frame, which the end position states is unchanged ('thighs still pinned under the pad, feet still flat'). Convention unnamed in the source, though at 90 both readings coincide. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. The finish carries the start's value because the source states the lower body does not move during the pull ('thighs still pinned under the pad, feet still flat'); the 90 itself is printed only once, in start_position. The knee is a held pose here, not an animated joint."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dumbbell Bicep Curl (standing, both arms)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing tall, feet flat and hip-width apart (about 15-25 cm between the insteps)",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 175,
+              "low": 170,
+              "high": 180,
+              "source": "Elbows fully extended (about 170-180 degrees), upper arms vertical and pinned alongside the ribs",
+              "note": "Convention fixed by 'fully extended' next to the number, so included (180 = straight)."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 7.5,
+              "low": 5,
+              "high": 10,
+              "source": "knees soft (about 5-10 degrees of flexion, not locked)",
+              "note": ""
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "upper arms vertical and pinned alongside the ribs so the elbow points straight back at the floor-wall line",
+              "note": "Angle stated in words, not digits: a vertical upper arm on a standing body is 0 degrees of shoulder flexion. Worth keying explicitly rather than leaving to the neutral default, because holding it at 0 in BOTH frames is what the source makes the defining constraint of this lift."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "toes pointing straight forward",
+              "note": "Angle stated in words: 'straight forward' is 0 degrees of splay. Keyed explicitly to distinguish it from the row, where the source does prescribe 30 degrees of toe-out."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Torso is identical to the start - no lean back, no hip thrust, lumbar arch unchanged.",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 47.5,
+              "low": 40,
+              "high": 55,
+              "source": "Elbows flexed to roughly 40-55 degrees of remaining angle (dumbbells finishing at upper-chest/front-of-shoulder height, about 10-15 cm in front of the collarbone)",
+              "note": "NON-STANDARD WORDING - needs a human decision before keying. 'of remaining angle' is neither 'included' nor 'flexion', so this is recorded as ambiguous rather than resolved. For the reviewer: 'remaining angle' reads most naturally as the angle left at the joint, i.e. included, and only that reading matches the position given in the same parenthesis (upper arm vertical, dumbbell at upper-chest height means a deeply bent elbow); 40-55 of flexion would leave the dumbbell near the hip. The source does not use either standard term, so it is left for a human to pin.",
+              "resolved_by_hand": "The source says 'roughly 40-55 degrees of REMAINING angle'. The angle remaining between the upper arm and the forearm is the included angle, so 40-55 here is a deeply bent elbow \u2014 the top of a curl \u2014 not a third-bent one. The extraction was right to flag it: the entry never writes the word 'included'. Resolved 2026-10-17; the other twelve ambiguous angles are still unresolved and the solver still refuses them."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "The upper arm is still vertical: the elbow has NOT travelled forward, so the point of the elbow stays directly under the shoulder joint, in the same spot it occupied at the start.",
+              "note": "Angle stated in words: still-vertical upper arm on a standing body is 0 degrees of shoulder flexion. The source states this as a hard constraint on the finish frame, so it must be keyed identical to the start - any shoulder motion between the frames animates the 'elbows drift forward' fault."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 7.5,
+              "low": 5,
+              "high": 10,
+              "source": "knees soft (about 5-10 degrees of flexion, not locked)",
+              "note": "Carried from the start frame, which the end position states is unchanged ('Knees and feet unchanged.'); the number comes from the start-position sentence quoted here."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "toes pointing straight forward",
+              "note": "Carried from the start frame, which the end position states is unchanged ('Knees and feet unchanged.')."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dumbbell Lateral Raise",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing with the dumbbells alongside the thighs.",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 15,
+              "low": 10,
+              "high": 20,
+              "source": "the elbows either fully extended or holding a slight bend (roughly 10-20 degrees)",
+              "note": "The source names neither \"flexion\" nor \"included\". Recorded as flexion because \"slight bend\" settles it: 10-20 degrees of INCLUDED angle would be a fully folded elbow, not a slight bend. Also note this is one of two sanctioned options, not a required value - the source allows fully extended elbows (0 flexion) instead."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Torso still erect and vertical with no lean back or side-to-side sway; shoulders still depressed, traps not shrugged up toward the ears. Knees and feet unchanged, gaze still level and forward.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "abduction",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "Arms raised out to the sides until they reach shoulder height and are approximately parallel with the floor - the body makes a wide T, with the shoulder-to-hand line horizontal",
+              "note": "Derived, not quoted: the source states the geometry rather than a number. An arm parallel with the floor on a vertical torso is 90 degrees of shoulder abduction, and that matches the source's own elevation scale (\"as the arms pass about 60-70 degrees of elevation\"). The source also caps it here - going above shoulder height is listed as a form mistake. Two things deliberately NOT recorded: (1) the 60-70 degree figure is a mid-arc event where slight upward arm rotation begins, not this finish pose; (2) the source says the arms sit \"a few degrees forward of the frontal plane\" but gives no number, so no forward offset is recorded."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 15,
+              "low": 10,
+              "high": 20,
+              "source": "Elbow angle is unchanged from the start (still extended or holding that same slight 10-20 degree bend)",
+              "note": "Same convention call as the start phase: neither \"flexion\" nor \"included\" is stated, and \"slight bend\" rules out the included reading. The source explicitly freezes this joint across both phases - only the shoulder animates - so the start and finish values must stay identical, including the fully-extended alternative."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dumbbell Shoulder Press (seated overhead press)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "seated",
+          "orientation_source": "Seated upright with the back against the bench pad so the head, shoulders and glutes all make contact with the bench",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "Elbows flexed to roughly 90 degrees",
+              "note": "The source says \"flexed to roughly 90 degrees\" with neither \"flexion\" nor \"included\" stated, so the convention is recorded as ambiguous rather than guessed. In this one case the ambiguity does not change the pose: included = 180 - flexion, so 90 included and 90 of flexion both give a right angle at the elbow. Corroborated by \"Forearms near vertical under the dumbbells\" with the handles at shoulder level. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. Chosen for consistency with this exercise's own finish elbow, which the file keys included (170-180, 'fully extended'). Corroborated by 'Forearms near vertical under the dumbbells' with the handles at shoulder level. CONFLICT WITH A SEGMENT ORIENTATION, resolved 2026-10-18 in favour of this joint angle. The same sentence ends \"Forearms near vertical under the dumbbells\", which `forearm/from_vertical` could now hold, and the source's own two numbers do not agree with each other: a 90-degree elbow under an upper arm held 37.5 degrees forward of hanging puts the forearm 52.5 degrees off vertical, not on it. The joint angle wins \u2014 it is the primary measurement, it is the one the research pass resolved, and \"near vertical\" is a cue rather than a figure. Not an omission: a decision, recorded so the next reader sees it."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 37.5,
+              "low": 30,
+              "high": 45,
+              "source": "pointing down and FORWARD (about 30-45 degrees in front of the frontal plane)",
+              "note": "This belongs to the SHOULDER, not the elbow - it is where the whole upper arm points, which the source phrases as where the elbows point. Zero for this value is the frontal plane (elbows straight out to the sides), NOT the anatomical zero of arms hanging at the side, so a rig must swing the downward-pointing upper arms 30-45 degrees forward of the body's side-on plane. This is exactly what prevents the \"goal post\" flare the source warns against."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "seated",
+          "orientation_source": "Torso unchanged: head, shoulders and glutes still touching the bench, lower back NOT arched off the pad, ribcage down, feet still flat on the floor.",
+          "angles": [
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "The arms are near vertical, upper arms close to in line with the torso, and the hands may travel slightly inward so the dumbbells end up nearer together than at the start.",
+              "note": "Added 2026-10-18. The phase recorded its elbow and not its shoulder, so the arm was left at rest and the figure was drawn with the arms HANGING while the source has them overhead \u2014 the same defect that left this file's barbell overhead press locking out with its arms by its sides, and the same repair. At 180 flexion and abduction coincide: both put the humerus vertical above the shoulder, which was checked against the solver rather than assumed. This phase held nothing but its elbow, so the lockout of a shoulder press was being drawn as a rest pose. The hands' slight inward travel is given no number and is not recorded. Flagged."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 175,
+              "low": 170,
+              "high": 180,
+              "source": "until the elbows are fully extended (about 170-180 degrees)",
+              "note": "The source does not use the word \"included\", but \"fully extended\" at 170-180 can only be an included angle, where 180 = straight; 170-180 degrees of FLEXION would be a folded-shut elbow. GAP WORTH FLAGGING on this phase: the source gives no number for the overhead shoulder angle - only \"The arms are near vertical, upper arms close to in line with the torso\", which is hedged and so was not converted. No shoulder angle is therefore recorded here, and a straight elbow on a neutral (arms-down) shoulder is not the press finish - the overhead shoulder angle has to come from somewhere other than this source."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Walking Lunge (dumbbells optional)",
+      "travels_vertically": "Bottom of the lunge: hips lowered straight down so both knees are bent to about 90 degrees.",
+      "travels_horizontally": "Then a long step forward with the lead leg - roughly one full stride, about 60-90 cm depending on height - landing with the lead foot flat, toes pointing straight ahead, directly in line with the hip.",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing tall with feet hip-width apart, toes pointing straight forward, weight even through both feet.",
+          "angles": [],
+          "note": "The empty `angles` list is deliberate and is not an extraction failure. The source reads \"Standing tall with feet hip-width apart, toes pointing straight forward, weight even through both feet... arms straight down by the sides... Back straight, spine neutral... Head in line with the spine, chin level\", which is the solver's rest pose joint for joint: every angle it could state is zero departure from rest, so recording them would add provenance and change no position. Checked 2026-10-18. The same start_position paragraph also describes a step and touchdown (\"lead shin near vertical, trailing leg extended behind with the heel lifted\") and the source says an animation needs at least four keyframes \u2014 tall stance, step-and-touchdown, 90/90 bottom, drive-up \u2014 but this file holds two phases per exercise, so those middle positions are not recorded."
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Torso stays upright and vertical, perpendicular to the floor",
+          "angles": [
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "hips lowered straight down so both knees are bent to about 90 degrees",
+              "note": "\"Bent to about 90 degrees\" names neither convention, so it is recorded as ambiguous. As with the press elbow, 90 is the value where both readings coincide (included = 180 - flexion), so the pose itself is determinate: a right angle at both knees. Corroborated by \"The front thigh is roughly parallel with the floor, the front shin near vertical\". Caution for the rig: the source distinguishes LEAD from TRAILING leg, not left from right, and the lead leg alternates - \"a visible alternation of lead leg between reps\". RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. Corroborated by 'The front thigh is roughly parallel with the floor, the front shin near vertical' in the same passage, which fixes the right angle whichever label is used. Chosen to match the file's other bare-90 entries."
+            },
+            {
+              "joint": "hip",
+              "side": "right",
+              "measure": "from_horizontal",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "The front thigh is roughly parallel with the floor",
+              "note": "A segment tilt, not a joint angle: the lead femur is horizontal, 0 = parallel to the floor. With the torso vertical this works out to roughly 90 degrees of lead-hip flexion, but the source never states a hip angle, so only the stated geometry is recorded. SIDE IS A CONVENTION, NOT SOURCE DATA: the source says \"front thigh\", and left/right cannot express lead/trailing, so the lead leg is arbitrarily recorded as right - mirror it for a left-lead rep. The trailing thigh is given only as a height, \"The trailing knee hovers about 2-10 cm above the floor\", never as an angle, so it is left out."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Front Plank (forearm plank)",
+      "travels_vertically": "The whole torso, hips and legs lifted off the floor and held as one straight, stiff line from the crown of the head through the shoulders, hips, knees and ankles.",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "lying_prone",
+          "orientation_source": "Begin lying prone (face down) on a mat.",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "elbows still at about 90 degrees and still tucked near the ribs",
+              "note": "The numeral appears only in end_position, where the word \"still\" states the elbow angle is unchanged from the start, so it is carried back to this phase. Convention not stated by the source; at 90 the two conventions coincide (90 included = 90 of flexion = the same right-angle bend), so the pose is identical either way and may be applied as included 90. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. The numeral is carried back from end_position's 'elbows STILL at about 90 degrees', whose 'still' states that the start is unchanged, and the geometry (forearm flat on the floor, shoulder stacked over the elbow) fixes the right angle on its own."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "rotation",
+              "degrees": 90,
+              "derived": true,
+              "low": 90,
+              "high": 90,
+              "source": "Elbows tucked close to the sides of the ribs and placed directly under the shoulders, forearms flat on the floor and roughly parallel to each other (or hands lightly clasped), palms down and hands facing forward.",
+              "note": "DERIVED, not stated: `derived: true` marks a value this file solved for rather than read. The source states three things about this arm \u2014 the upper arms lie along the ribs, the forearms are flat on the floor, and the elbows are at about 90 degrees (the last carried from the end position's \"still at about 90\") \u2014 and no shoulder ABDUCTION satisfies them: at every abduction from 0 to 120 the forearm comes out 90 degrees off the floor, because the elbow's hinge stays in the floor plane as the arm abducts. What the three facts do determine, exactly, is the humerus's roll about its own length: +90 turns the elbow's hinge upright, which lays the forearm in the floor plane with the elbow still at 90. The arithmetic is in .sdd/task-2-report.md (round 6). This REPLACES the `forearm/from_horizontal 0` entry recorded here on 2026-10-18, which asserted the same sentence by placing the forearm outright and in doing so overrode the elbow, folding the arm flat on itself to a 0-degree included angle. Still missing, and still a gap: the ABDUCTION. With it at rest the forearms lie flat but point out to the SIDES rather than forward past the head; the source's \"roughly parallel to each other\" and \"hands facing forward\" argue for about 90 degrees of abduction and its \"elbows tucked close to the sides of the ribs\" argues for far less, and the two cannot both be met. A human has to settle that."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Legs extended straight behind, feet about hip-width or closer",
+              "note": "Word-derived, not a stated numeral: the source says the legs are \"extended straight behind\", which is 180 included by definition. Flagged so a reviewer knows no number was printed."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Quadriceps contracted to lock the knees straight",
+              "note": "Word-derived, not a stated numeral: \"lock the knees straight\" is 180 included by definition. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Head in line with the spine, neck long, gaze down at the floor just in front of the hands.",
+              "note": "Word-derived, not a stated numeral: \"in line with the spine\" is zero deviation. Flagged. The gaze direction is stated but no eye/neck angle is given."
+            }
+          ],
+          "note": "NO SHOULDER ANGLE IS RECORDED FOR THIS PHASE, and the absence is deliberate. A `shoulder/from_vertical 0` was added here on 2026-10-18 and removed again the same day: it asserts that the upper arms are vertical, which is true of the FINISH (the humerus stands over the elbow and holds the body up) and impossible in the START, where the source puts the trunk flat on the mat \u2014 a vertical humerus would prop the chest the height of an upper arm off the floor. The source's words are \"Elbows tucked close to the sides of the ribs and placed directly under the shoulders, forearms flat on the floor\", and the position they describe needs the upper arms splayed out in the plane of the floor, which is a shoulder ABDUCTION this source never numbers. So the shoulder is left at rest and the gap is recorded here rather than filled. Visible consequence: with the upper arms lying along the ribs, the 90-degree elbows point the forearms into the mat rather than along it. The lift-off between the two phases does not depend on any of this \u2014 it comes from `RESTS_ON` in pipeline/pose_model.py, which anchors a prone body on its trunk and a front support on its forearms. WHY THE START SITS HIGH: with no abduction recorded the upper arms lie along the ribs instead of splaying out to the sides, so there is nothing to let the chest down and the figure rests 0.150 above the mat rather than on it. That is this gap showing, not a grounding error \u2014 a real prone start lies on the mat with the upper arms angled out, and the angle that would say so is the one the source never gives. The forearm entry added to this phase puts the forearms flat on the floor, which the source does state, and that is as close as the data gets."
+        },
+        {
+          "phase": "finish",
+          "orientation": "front_support",
+          "orientation_source": "The whole torso, hips and legs lifted off the floor and held as one straight, stiff line from the crown of the head through the shoulders, hips, knees and ankles - the only contact points are the forearms/hands and the toes.",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "elbows still at about 90 degrees and still tucked near the ribs",
+              "note": "Source gives the number without saying included or flexion, so it is recorded ambiguous per the rule. At 90 the two conventions coincide (90 included = 90 of flexion = the same right-angle bend), so the pose is unaffected and this may be applied as included 90. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. The geometry in the same sentence \u2014 'Shoulders stacked directly over the elbows, upper arms close to vertical' \u2014 fixes the right angle on its own."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Shoulders stacked directly over the elbows, upper arms close to vertical",
+              "note": "Word-derived, not a stated numeral, and the source hedges with \"close to\" vertical, so treat 0 as approximate. This is the segment's global tilt (humerus upright), not a joint rotation. Flagged."
+            },
+            {
+              "joint": "hip",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "held as one straight, stiff line from the crown of the head through the shoulders, hips, knees and ankles ... Pelvis neutral: no sag or arch in the lower back, and no hiking of the hips up into a tent",
+              "note": "Word-derived, not a stated numeral: the hip lies on a declared straight line, which is 180 included. Flagged. Sag and pike are named as error states, so this joint must not be left to a default."
+            },
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 180,
+              "low": 180,
+              "high": 180,
+              "source": "Glutes and quads engaged, knees fully straight",
+              "note": "Word-derived, not a stated numeral: \"fully straight\" is 180 included. Flagged."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Pelvis neutral: no sag or arch in the lower back, and no hiking of the hips up into a tent",
+              "note": "Word-derived, not a stated numeral: neutral with no sag and no arch is zero flexion. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Head neutral and in line with the spine, gaze down and slightly forward at the floor, chin neither tucked to the chest nor craned up.",
+              "note": "Word-derived, not a stated numeral: \"in line with the spine\" is zero deviation. Flagged. \"Gaze down and slightly forward\" is given no number and is not recorded."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tricep Pushdown (cable, bar or rope attachment)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "standing",
+          "orientation_source": "Standing facing the cable stack, roughly one forearm's length (about 25-40 cm) back from the weight stack so the cable hangs just clear of the chest.",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "preferred": true,
+              "low": 90,
+              "high": 90,
+              "source": "Elbows flexed to about 90 degrees",
+              "note": "\"Flexed to about 90 degrees\" states a number but not the convention, so it is recorded ambiguous per the rule. At 90 the two conventions coincide (90 included = 90 of flexion), so the pose is identical either way. The end_position return sentence restates this position as \"about 90-110 degrees\", which widens the stated tolerance at this end of the arc. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. Chosen for consistency with this exercise's own finish elbow, which the file keys included (170-180, full extension). PREFERRED: the research pass established that the 100-110 entry below is not a duplicate of this one and not a bar-versus-rope split but a second valid start the source offers, so this one \u2014 the standard start \u2014 is marked as the entry the solver poses, and the other stays recorded as the alternative."
+            },
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 105,
+              "low": 100,
+              "high": 110,
+              "source": "can start slightly higher, around 100-110 degrees, with the hands near upper-chest height",
+              "note": "An ALTERNATIVE start the source explicitly permits, not a second simultaneous value - pose one or the other, not both. Convention unstated. Internal evidence, offered but not treated as resolved: 100-110 is tied to hands HIGHER than the 90 position, so a larger number means MORE bend, which is the flexion convention; read as included, 100-110 would be a straighter arm with LOWER hands, contradicting the sentence. A human should settle this before it is keyframed. RESOLVED by the research pass to the `flexion` convention, at MEDIUM confidence: the source attaches no convention word to this figure, so the reading rests on physical consistency inside the one sentence rather than on a tag. With the upper arm stated vertical and pinned to the side, the only way the hands rise from mid-torso to 'upper-chest height' is for the forearm to fold further up \u2014 more bend, which is the flexion convention; read as included, 100-110 would be a straighter, more open elbow with LOWER hands, contradicting the same clause. The resulting pose is an included angle of 180 - 105 = 75 degrees. NOT the preferred entry: the 90-degree standard start above is the one the solver poses, and this is the alternative the source offers, which is why the two can sit in the file together."
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Upper arms vertical and pinned to the sides so the elbows sit level with the midpoint of the trunk, roughly beside the lower ribs.",
+              "note": "Word-derived, not a stated numeral: \"vertical\" is 0 from vertical. This is the humerus's global tilt, and it is the defining constraint of the lift (elbows travelling forward is the source's main named fault), so it must not be left to a default. Flagged."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Torso vertical and perpendicular to the floor - essentially no forward lean",
+              "note": "Word-derived, not a stated numeral, but \"perpendicular to the floor\" is an exact geometric statement = 0 from vertical. Flagged."
+            },
+            {
+              "joint": "wrist",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Wrists neutral and straight.",
+              "note": "Word-derived, not a stated numeral: straight is zero flexion. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Head in line with the spine, chin level, gaze straight ahead or very slightly down at the hands",
+              "note": "Word-derived, not a stated numeral: \"in line with the spine\" is zero deviation. Flagged. \"Very slightly down\" is given no number and is not recorded."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "standing",
+          "orientation_source": "Stance unchanged from start_position (\"Standing facing the cable stack\"); end_position confirms it with \"Torso still vertical - no hinge forward, no lean over the bar, no shoulder roll forward\".",
+          "angles": [
+            {
+              "joint": "elbow",
+              "side": "both",
+              "measure": "included",
+              "degrees": 175,
+              "low": 170,
+              "high": 180,
+              "source": "Elbows extended to full (but not forcibly locked) extension, roughly 170-180 degrees, so the arms form one straight line from shoulder to knuckles beside the thighs.",
+              "note": ""
+            },
+            {
+              "joint": "shoulder",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Upper arms have NOT moved: the elbows are still beside the lower ribs at the trunk's midpoint, the same spot as at the start.",
+              "note": "Word-derived and carried from start_position's \"Upper arms vertical and pinned to the sides\"; the source states the segment did not move rather than restating a value. Flagged."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "from_vertical",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Torso still vertical - no hinge forward, no lean over the bar, no shoulder roll forward.",
+              "note": "Word-derived, not a stated numeral: \"still vertical\" is 0 from vertical. Flagged."
+            },
+            {
+              "joint": "wrist",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "wrists still straight and in line with the forearms",
+              "note": "Word-derived, not a stated numeral: straight is zero flexion. Flagged. The rope variant's \"hands also separate and rotate slightly\" carries no number and no rotation value is recorded."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg Press (seated machine)",
+      "phases": [
+        {
+          "phase": "start",
+          "orientation": "seated",
+          "orientation_source": "Seated in the machine with the back and sacrum (tailbone) flat against the backrest - the whole lumbar and pelvic region in contact with the pad, with no gap behind the lower back and no rounding.",
+          "angles": [
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 90,
+              "low": 90,
+              "high": 90,
+              "source": "Seat and foot position adjusted so the knees are bent to approximately 90 degrees at the start",
+              "note": "\"Bent to approximately 90 degrees\" states a number but not the convention, so it is recorded ambiguous per the rule. At 90 the two conventions coincide (90 included = 90 of flexion), so the pose is identical either way. The end_position return sentence corroborates: \"until the knees are bent about 90 degrees again\". NOTE ALSO: no hip angle is stated anywhere for this phase, so the hip is deliberately left out - do not infer it from this knee value. RESOLVED by the research pass to the `included` convention. At exactly 90 the two conventions coincide (flexion = 180 - included, so 90 of either is the same right angle): no choice between opposite readings was made or needed here, and the label is for consistency with the rest of the file rather than for the pose. Chosen because this exercise's own finish knee is explicitly included (160-175, 'short of full extension'), so one scale runs across the whole rep: 90 deep at the start, 167.5 near-straight at the finish."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Feet placed flat on the resistance plate with the toes pointing forward, feet about hip- to shoulder-width apart and symmetrical on the plate, heels in full contact.",
+              "note": "Word-derived, not a stated numeral: \"toes pointing forward\" is 0 of splay from straight ahead. Flagged. Foot spacing is given as hip-to-shoulder-width, a distance, not an angle."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "the whole lumbar and pelvic region in contact with the pad, with no gap behind the lower back and no rounding",
+              "note": "Word-derived, not a stated numeral, and it describes spinal neutrality ONLY. The source never states the backrest's incline, so the trunk's global tilt in the machine is unknown - do not convert this to a from_vertical or from_horizontal value. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "head resting in line with the spine against the headrest or backrest, chin level, gaze straight ahead along the line of the press",
+              "note": "Word-derived, not a stated numeral: \"in line with the spine\" is zero deviation. Flagged."
+            }
+          ]
+        },
+        {
+          "phase": "finish",
+          "orientation": "seated",
+          "orientation_source": "Still seated: \"Back and sacrum still flat against the backrest with the lower back unmoved; the hips do not lift off or slide up the seat.\" (start_position: \"Seated in the machine\")",
+          "angles": [
+            {
+              "joint": "knee",
+              "side": "both",
+              "measure": "included",
+              "degrees": 167.5,
+              "low": 160,
+              "high": 175,
+              "source": "knees close to, but short of, full extension (roughly 160-175 degrees) and deliberately NOT hyperextended or locked out",
+              "note": "Convention is unambiguous here: the number is attached to \"short of full extension\", so 180 = straight and 160-175 is a near-straight knee. IMPORTANT OMISSION: the 160-175 figure is scoped to the KNEES only. The hip is described solely as \"Hips and knees extended ... Legs form a near-straight line from hip through knee to ankle\" with no numeral, so no hip angle is recorded. Do not borrow this knee range for the hip; the hip needs a human-set value before this phase will read correctly, since a neutral-default hip will not look like a finished press."
+            },
+            {
+              "joint": "foot",
+              "side": "both",
+              "measure": "splay",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Feet placed flat on the resistance plate with the toes pointing forward",
+              "note": "Carried from start_position; end_position does not restate toe direction, saying only \"the knees still tracking directly over the feet and no inward or outward drift\" and \"Heels stay flat and pressed against the plate\". Word-derived, not a stated numeral. Flagged."
+            },
+            {
+              "joint": "spine",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Back and sacrum still flat against the backrest with the lower back unmoved; the hips do not lift off or slide up the seat.",
+              "note": "Word-derived, not a stated numeral, and spinal neutrality only - the backrest's incline is never stated, so no global trunk tilt may be derived. Flagged."
+            },
+            {
+              "joint": "neck",
+              "side": "both",
+              "measure": "flexion",
+              "degrees": 0,
+              "low": 0,
+              "high": 0,
+              "source": "Hands still lightly on the handles, shoulders down, head neutral, gaze forward.",
+              "note": "Word-derived, not a stated numeral: \"head neutral\" with the start's \"in line with the spine\" is zero deviation. Flagged."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "exercise": "Pull-Up",
+      "phase": "finish",
+      "joint": "elbow",
+      "problem": "wrong_measure",
+      "detail": "Recorded as measure \"ambiguous\" on the grounds that the fragment \"elbow flexion roughly 40-60 degrees of included angle\" names both conventions at once. It does not contradict itself: \"of included angle\" is this file's convention tag and \"flexion\" names the joint action. The task brief's own canonical included example is the identical construction from the squat entry, \"knee flexed to roughly 60-70 degrees of included angle (deep flexion)\", and the deadlift writes \"hip included angle roughly 90-110 degrees\". Where the file means the flexion convention it writes \"of flexion\" with no \"included\" attached (bench \"roughly 45-60 degrees of flexion\", pulldown \"45-70 degrees of flexion\", curl knees \"5-10 degrees of flexion\"). The source settles this, so leaving the pull-up's only animated joint unkeyable is a false abstention; 40-60 included is the deeply bent arm that matches the chin clearing the bar and the elbows pulled past the rib cage in the same sentence.",
+      "fix": "measure: \"included\", degrees 50, low 40, high 60 (unchanged numbers). Drop the CONTRADICTORY SOURCE warning from note and record instead that \"of included angle\" fixes the convention, as it does in the squat and deadlift entries."
+    },
+    {
+      "exercise": "Lat Pulldown (seated, to the front)",
+      "phase": "start",
+      "joint": "spine",
+      "problem": "wrong_number",
+      "detail": "degrees: 15 is a midpoint of a tolerance bound, not a figure in the source. The fragment quoted, \"The torso leans back slightly from vertical, no more than about 30 degrees, with the legs providing support\", states the magnitude only as \"slightly\" and gives 30 as a ceiling the source elsewhere calls the fault that turns the pulldown into a row. The note admits 15 is unstated, but degrees is the field the rig consumes, so the flag does not stop a 15-degree lean being posed. It is also inconsistent with this same extraction's correct handling of the row finish torso, where it refused to key the midpoint of 0-15 because the pose magnitude was stated.",
+      "fix": "Do not key a number from a ceiling. Leave degrees unset (or omit the joint and let the rig's neutral default apply) while keeping low 0 / high 30 as the stated bound, and mark it for a human to pin. If a number must ship, it has to come from a reviewer's decision recorded as such, not from averaging a maximum."
+    },
+    {
+      "exercise": "Lat Pulldown (seated, to the front)",
+      "phase": "finish",
+      "joint": "spine",
+      "problem": "wrong_number",
+      "detail": "Same invented 15 as the start phase, inherited. The fragment quoted, \"Torso lean unchanged from the start - still at that same slight backward lean, with no extra rocking back during the pull\", correctly establishes that this frame copies the start, so the defect is inherited rather than independent: the source states no lean magnitude anywhere in this entry. Listing the phase as clean would hide that the rig gets a non-source torso angle in both keyframes.",
+      "fix": "Whatever the start resolves to, this frame must carry the identical value (the extraction is right that any difference animates the rocking fault). So: leave degrees unset with low 0 / high 30 until a reviewer pins the start, then mirror it exactly."
+    }
+  ]
+}

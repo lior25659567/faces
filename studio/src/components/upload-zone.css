@@ -1,0 +1,143 @@
+.upload {
+  margin-top: 16px;
+}
+
+.upload-zone {
+  scroll-margin: 72px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 150px;
+  padding: 24px 28px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  background: var(--sunken);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.upload-zone:hover {
+  border-color: var(--ink-3);
+}
+
+.upload-zone.is-compact {
+  min-height: 0;
+  padding: 14px 18px;
+}
+
+.upload-zone.is-over {
+  border-color: var(--running);
+  border-style: solid;
+  background: var(--running-bg);
+}
+
+.upload-zone.is-busy {
+  cursor: progress;
+  border-color: var(--running);
+}
+
+/* an upward arrow into a tray, drawn in CSS */
+.upload-icon {
+  position: relative;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.upload-icon::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid var(--ink);
+  border-top: 2px solid var(--ink);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.upload-icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 2px;
+  height: 13px;
+  background: var(--ink);
+  transform: translateX(-50%);
+}
+
+.upload-zone.is-compact .upload-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.upload-zone.is-compact .upload-icon::before {
+  top: 8px;
+}
+
+.upload-zone.is-compact .upload-icon::after {
+  top: 10px;
+  height: 11px;
+}
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.upload-text strong {
+  font-size: var(--t-l);
+  font-weight: 650;
+}
+
+.upload-zone.is-compact .upload-text strong {
+  font-size: var(--t-m);
+}
+
+.upload-zone.is-busy .upload-text strong {
+  color: var(--running);
+}
+
+.upload-help {
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.upload-notice {
+  color: var(--ink);
+  font-size: var(--t-s);
+  font-weight: 600;
+}
+
+.upload-ok {
+  margin: 10px 0 0;
+  color: var(--pass);
+  font-size: var(--t-s);
+  font-weight: 550;
+}
+
+.upload-problems {
+  margin: 10px 0 0;
+  padding: 10px 14px 10px 30px;
+  border-radius: var(--radius-s);
+  background: var(--fail-bg);
+  color: var(--fail);
+  font-size: var(--t-s);
+}
+
+.upload-problems li + li {
+  margin-top: 4px;
+}
+
+@media (max-width: 520px) {
+  .upload-zone {
+    padding: 18px;
+    min-height: 120px;
+  }
+}

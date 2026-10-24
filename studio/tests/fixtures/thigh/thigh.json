@@ -1,0 +1,68 @@
+{
+ "coach-17-end": {
+  "hip": [
+   255.97,
+   275.53
+  ],
+  "knee": [
+   452.19,
+   288.02
+  ],
+  "what": "the coach's 17.png (MediaPipe's person mask and landmarks)"
+ },
+ "ours-before-end": {
+  "hip": [
+   340.41,
+   438.1
+  ],
+  "knee": [
+   652.85,
+   444.84
+  ],
+  "what": "ours before task 20: the old too-deep bottom"
+ },
+ "ours-hips-high-end": {
+  "hip": [
+   351.9,
+   419.84
+  ],
+  "knee": [
+   643.08,
+   491.3
+  ],
+  "what": "ours held at the coach's -0.05 by the outline count (task 20b variant A: hips over the knees)"
+ },
+ "ours-20b-end": {
+  "hip": [
+   347.93,
+   427.43
+  ],
+  "knee": [
+   650.55,
+   466.65
+  ],
+  "what": "ours after task 20b (variant B)"
+ },
+ "ours-21-end": {
+  "hip": [
+   344.63,
+   430.97
+  ],
+  "knee": [
+   650.19,
+   460.15
+  ],
+  "what": "ours after task 21 (the live bottom: its thigh line held at the coach's)"
+ },
+ "ours-22-end": {
+  "hip": [
+   335.5,
+   430.5
+  ],
+  "knee": [
+   652.2,
+   408.6
+  ],
+  "what": "ours after task 22 (its seat held at the coach's 0.646)"
+ }
+}

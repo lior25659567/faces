@@ -1,0 +1,46 @@
+node_modules
+dist
+.env
+*.env
+.DS_Store
+__pycache__
+
+# Python env, LivePortrait and its weights (about 1.8 GB): rebuilt with `npm run setup`
+pipeline/.venv
+pipeline/vendor
+
+# Your own photos and stills stay off git
+input/*
+!input/.gitkeep
+
+# --- added for first git setup ---
+# Python envs and caches (rebuilt with `npm run setup`; never belong in git)
+studio/.venv
+**/.pytest_cache
+*.pyc
+
+# Generated render outputs — the Studio regenerates these per run
+3d-character/studio/runs
+
+# Working backups and session/tool state
+*.bak
+*.bak-*
+.superpowers
+.sdd
+
+# Reference image sets: copyrighted coach photos and personal test portraits (internal QA, never shipped)
+all_people_reference_images/
+3d-character/studio/references/
+3d-character/reference-squat/
+reference/bodies/
+reference/muscle-figure/
+reference/exercise-art/
+reference/open-photos/
+reference/ansur/
+reference/user-photos/
+
+# Generated pipeline outputs (usdz/gif/png renders) and the downloaded MediaPipe model (both rebuilt by setup)
+3d-character/output/
+studio/models/
+new 3d-character/
+3d-character/mascot-arms-down.glb

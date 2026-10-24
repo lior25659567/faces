@@ -1,0 +1,23 @@
+{
+  "id": "20261023-195005-bc94",
+  "title": "Studio: check-only re-run — 'done --recheck' re-judges in ~0.2s instead of re-rendering",
+  "exercises": [],
+  "status": "done",
+  "startedAt": "2026-10-23T16:50:05.937Z",
+  "updatedAt": "2026-10-23T16:50:06.059Z",
+  "finishedAt": "2026-10-23T16:50:06.059Z",
+  "log": [
+    {
+      "at": "2026-10-23T16:50:05.992Z",
+      "text": "Added store.createRecheckRun (copies a rendered run's outputs into a new run, only the check step left to run) and queue.enqueueRecheck (picks the newest rendered run; full-run fallback when nothing is rendered). execute() runs only the check process for a checkOnly run. work 'done --recheck' flags the item; the watcher calls enqueueRecheck instead of a full enqueue."
+    },
+    {
+      "at": "2026-10-23T16:50:06.025Z",
+      "text": "TDD across store/queue/work/CLI: full studio suite 278/278 green. Real end-to-end through the actual queue and run_check.py on a copy of run 20261023-192819-61eb: new check-only run done in 0.28s, steps read..stills copied/done + check fresh, summary 20/5/4, no Blender spawned."
+    }
+  ],
+  "summary": "Check-logic fixes now re-judge in ~0.2s via 'done --recheck'; a full 'done' still re-renders. No exercises listed here, so nothing re-ran.",
+  "rerun": [],
+  "rerunQueuedAt": "2026-10-23T16:50:07.259Z",
+  "rerunNote": "No exercises were listed, so nothing re-ran."
+}

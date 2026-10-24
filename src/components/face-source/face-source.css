@@ -1,0 +1,262 @@
+.face-source {
+  --face-source-ink: var(--ink, #3a2618);
+  display: grid;
+  justify-items: start;
+  gap: 0.6rem;
+  color: var(--face-source-ink);
+}
+
+.face-source__choices,
+.face-source__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: inherit;
+  gap: 0.4rem;
+}
+
+/* A checkbox drawn as a switch: it decides whether the next picture is restyled first. */
+.face-source__style {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.face-source__style input {
+  position: relative;
+  width: 2.25rem;
+  height: 1.3rem;
+  margin: 0;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: none;
+  cursor: inherit;
+  appearance: none;
+}
+
+.face-source__style input::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.15rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: currentColor;
+  translate: 0 -50%;
+}
+
+.face-source__style input:checked {
+  background: var(--face-source-ink);
+}
+
+.face-source__style input:checked::before {
+  background: #fff;
+  translate: 0.9rem -50%;
+}
+
+.face-source__style input:focus-visible {
+  outline: 2px solid var(--face-source-ink);
+  outline-offset: 2px;
+}
+
+.face-source__style:has(input:disabled) {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.face-source__hint {
+  max-width: 17rem;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .face-source__style input,
+  .face-source__style input::before {
+    transition: background-color 120ms, translate 120ms;
+  }
+}
+
+.face-source__button {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.face-source__button:hover {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.face-source__button:focus-visible,
+.face-source__button:has(:focus-visible) {
+  outline: 2px solid var(--face-source-ink);
+  outline-offset: 2px;
+}
+
+.face-source__button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* The avatar picker: a select drawn like the buttons beside it, with its own arrow.
+   The hover selector keeps the arrow when the button's hover background applies. */
+.face-source__avatar,
+.face-source__avatar:hover {
+  max-width: 100%;
+  padding-right: 2rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%233a2618' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    right 0.8rem center / 0.7rem no-repeat;
+  text-overflow: ellipsis;
+  appearance: none;
+}
+
+.face-source__avatar:hover:enabled {
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.face-source__button--primary,
+.face-source__button--primary:hover {
+  border-color: var(--face-source-ink);
+  background: var(--face-source-ink);
+  color: #fff;
+}
+
+.face-source__button--primary:hover:enabled {
+  background: color-mix(in srgb, var(--face-source-ink) 86%, #fff);
+}
+
+/* Out of sight but still reachable by keyboard; the label around it is the visible button. */
+.face-source__file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.face-source__status {
+  display: grid;
+  justify-items: inherit;
+  gap: 0.35rem;
+  max-width: 17rem;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.face-source__status p {
+  margin: 0;
+}
+
+.face-source__count {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.face-source progress {
+  width: 10rem;
+  height: 0.375rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 18%, transparent);
+  appearance: none;
+}
+
+.face-source progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+.face-source progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.face-source progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.face-source__camera {
+  width: min(24rem, calc(100vw - 2rem));
+  max-height: calc(100svh - 2rem);
+  padding: 1.25rem;
+  overflow: auto;
+  border: 0;
+  border-radius: 1.5rem;
+  background: #fff;
+  color: var(--face-source-ink);
+  text-align: left;
+}
+
+.face-source__camera::backdrop {
+  background: rgb(58 38 24 / 0.55);
+}
+
+.face-source__camera h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.face-source__camera p {
+  margin: 0.9rem 0;
+  line-height: 1.45;
+}
+
+.face-source__viewfinder {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--face-source-ink) 12%, #fff);
+}
+
+/* Mirrored like a mirror while framing; the saved photo is not. */
+.face-source__viewfinder video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+/* A whole body needs a tall frame; it is kept short enough for the dialog to fit the window. */
+.face-source__viewfinder--body {
+  aspect-ratio: 9 / 16;
+  max-height: min(58svh, 32rem);
+  margin-inline: auto;
+}
+
+/* The seconds left on the timer, large enough to read from across the room. */
+.face-source__camera .face-source__countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: #fff;
+  font-size: 7rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 1.5rem rgb(0 0 0 / 0.6);
+}
+
+.face-source__actions {
+  justify-content: flex-end;
+}

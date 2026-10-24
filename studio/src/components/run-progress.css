@@ -1,0 +1,217 @@
+.progress-head {
+  align-items: flex-start;
+}
+
+.progress .section-title.is-failed {
+  color: var(--fail);
+}
+
+.progress-sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: var(--t-s);
+}
+
+/* why this run started on its own, e.g. "Restarted automatically after the Studio was stopped" */
+.progress-note {
+  margin: 4px 0 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.progress-sub strong {
+  color: var(--running);
+  font-weight: 650;
+}
+
+.progress-sub strong.is-overdue {
+  color: var(--limited);
+}
+
+.progress-bar {
+  position: relative;
+  height: 6px;
+  margin: 0 0 18px;
+  border-radius: 3px;
+  background: var(--running-bg);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 3px;
+  background: var(--running);
+  transition: width 0.6s ease;
+}
+
+.progress-bar-fill.is-unknown {
+  width: 30%;
+  animation: progress-slide 1.4s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(340%);
+  }
+}
+
+.progress-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.progress-step {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: var(--t-s);
+}
+
+.progress-step + .progress-step {
+  border-top: 1px solid var(--line);
+}
+
+.progress-step.is-waiting .step-label {
+  color: var(--ink-3);
+}
+
+.progress-step.is-running {
+  background: var(--running-bg);
+}
+
+.progress-step.is-running .step-label {
+  color: var(--running);
+  font-weight: 650;
+}
+
+.progress-step.is-failed {
+  background: var(--fail-bg);
+}
+
+.progress-step.is-failed .step-label {
+  color: var(--fail);
+  font-weight: 650;
+}
+
+.step-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.step-icon.is-done {
+  background: var(--pass-bg);
+  color: var(--pass);
+}
+
+.step-icon.is-failed {
+  background: var(--fail);
+  color: #fff;
+}
+
+.step-icon.is-waiting {
+  border: 1.5px dashed var(--line-strong);
+}
+
+.step-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(29, 95, 204, 0.25);
+  border-top-color: var(--running);
+  border-radius: 50%;
+  animation: step-spin 0.8s linear infinite;
+}
+
+@keyframes step-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.step-time {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--ink-2);
+  text-align: right;
+}
+
+.step-time.is-note {
+  color: var(--running);
+}
+
+.step-left {
+  color: var(--running);
+  font-weight: 600;
+}
+
+.step-left.is-overdue {
+  color: var(--limited);
+}
+
+.progress-error {
+  margin-top: 14px;
+}
+
+.progress-error-message {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: var(--t-m);
+  font-weight: 550;
+  max-width: 72ch;
+}
+
+.progress-log summary {
+  color: var(--ink-2);
+  font-size: var(--t-s);
+  cursor: pointer;
+}
+
+.progress-log pre {
+  max-height: 240px;
+  margin: 8px 0 0;
+  padding: 12px 14px;
+  overflow: auto;
+  border-radius: var(--radius-s);
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 520px) {
+  .progress-step {
+    gap: 4px 10px;
+    padding: 10px 12px;
+  }
+
+  /* the live step carries two times; give them their own line under the label */
+  .progress-step.is-running .step-time {
+    grid-column: 2 / -1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+}

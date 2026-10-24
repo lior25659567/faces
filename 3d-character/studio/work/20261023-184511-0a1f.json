@@ -1,0 +1,50 @@
+{
+  "id": "20261023-184511-0a1f",
+  "title": "Judge depth the way it looks: thigh angle in the picture, like the coach",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T15:45:11.325Z",
+  "updatedAt": "2026-10-23T16:28:18.693Z",
+  "finishedAt": "2026-10-23T16:28:18.693Z",
+  "log": [
+    {
+      "at": "2026-10-23T15:45:11.366Z",
+      "text": "The bottom now looks level like the coach, but a review found the depth check still compares two different kinds of measurement, so it would also pass a squat that stops short. Switching depth to the same picture measure on both: the angle of the thigh's outline at the bottom."
+    },
+    {
+      "at": "2026-10-23T15:46:45.160Z",
+      "text": "Started: the bottom's depth will be judged by the angle of the thigh's outline in the picture, measured the same way on the coach's photo and on ours. Reading the code first."
+    },
+    {
+      "at": "2026-10-23T15:53:36.674Z",
+      "text": "Measured the thigh in the silhouettes at the bottom: on both the coach's photo and ours only the thigh's top line is visible, from the hip crease (where the torso meets it) to the knee — the underside merges with the calf and seat. That top line reads −22.0° on the coach, −24.7° on our current bottom, −14.9° on the old too-deep one and −35.4° on the hips-high version; so 5° around the coach passes ours and fails both of the others."
+    },
+    {
+      "at": "2026-10-23T15:57:38.723Z",
+      "text": "Built and tested the thigh-line reading (it reads the coach at −22.0°). For our side, the rig's own estimate of the same line (its thigh angle plus the thigh's taper measured in the standing pose) follows the picture within 2–6° across depths, so it can serve as the cross-check. Wiring it into the Studio's checks and the animation's picture loop next."
+    },
+    {
+      "at": "2026-10-23T16:07:55.994Z",
+      "text": "Tests pass in a scratch copy (Python 297, the thigh-line Blender test: our picture and the rig's estimate agree within 2° on a test human). Running a full scratch animation where the squat holds its bottom at the coach's thigh line."
+    },
+    {
+      "at": "2026-10-23T16:15:47.020Z",
+      "text": "Applied to the Studio and the animation (16 files, backed up as .bak-21) while the Studio was idle. Running the tests and a final scratch run from the real code."
+    },
+    {
+      "at": "2026-10-23T16:28:18.646Z",
+      "text": "Verified from the real code: the coach's thigh line at the bottom reads −22.2°, ours −22.4° (pass); the rig's own estimate −24° agrees. The old too-deep bottom and the hips-high version both fail this check. All other rows keep their status (20 pass / 5 fail / 4 uncertain); all tests pass. Beside 17.png the bottom's thigh sits about level like the coach's."
+    }
+  ],
+  "summary": "Squat depth is now judged the way it looks: the thigh's line in the picture, measured the same way on the coach's photo and ours (coach −22.2°, ours −22.4°, pass). The animation holds its bottom there. The old MediaPipe-line depth is shown only. 20 pass / 5 fail / 4 uncertain.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-192819-61eb"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T16:28:19.764Z",
+  "rerunNote": null
+}

@@ -1,0 +1,54 @@
+{
+  "id": "20261023-163955-27b5",
+  "title": "Squat to parallel like the coach (fix how depth and hip angle are measured)",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T13:39:55.138Z",
+  "updatedAt": "2026-10-23T14:37:50.881Z",
+  "finishedAt": "2026-10-23T14:37:50.881Z",
+  "log": [
+    {
+      "at": "2026-10-23T13:39:55.176Z",
+      "text": "At the bottom he looks deeper than the coach (seat below the knees; the coach stops at parallel), but the depth check passes. His leg bones slope in his standing pose and the Studio doesn't allow for that — the same kind of issue we fixed for the back lean. Fixing how depth and the hip angle are measured, then aiming the animation at parallel."
+    },
+    {
+      "at": "2026-10-23T13:40:04.620Z",
+      "text": "Started: reading the brief and the earlier torso fix; measuring the thigh's slope in the standing (bind) pose next."
+    },
+    {
+      "at": "2026-10-23T13:53:03.106Z",
+      "text": "Measured: in the standing (bind) pose the thigh and shin joint lines slope 10.6° back on the side camera (both legs, thigh and shin alike), so the rig's hip reads ~10.5° too open and the bottom's depth 0.135 torso lengths too shallow (bottom: +0.03 read, +0.16 counted from the bind pose; coach −0.05). The knee is unaffected."
+    },
+    {
+      "at": "2026-10-23T13:53:03.151Z",
+      "text": "Checked by the bones: the standing pose's leg direction, carried by each bone's own turn, stays 10.6–11.4° off the joint line through the whole rep, so counting from the bind pose follows the leg. The thigh's own skin outline is ~5° off (the cartoon's bind-pose thighs lean back ~4.5°): noted as a caveat."
+    },
+    {
+      "at": "2026-10-23T14:01:50.836Z",
+      "text": "Built (in a scratch copy, tests first): the Studio now counts each thigh and shin from its bind-pose slope (standing reads hip 180 / knee 180; a level thigh reads depth 0), and the animation solver aims with the same count. Re-measured the latest run with it: the depth row now fails honestly (+0.16 vs the coach's −0.05), the middle is picked 2 frames earlier. Now running a full scratch animation with the fix."
+    },
+    {
+      "at": "2026-10-23T14:16:41.533Z",
+      "text": "Scratch run 1 with the fix: depth now reads +0.03 (pass; it read +0.16 counted from the bind pose before), the start's legs stand straighter (picture hip 170.6 vs coach 170.8), end lean passes; 20 pass / 5 fail / 4 uncertain (was 19 / 5 / 5). Looking at the bottom beside 17.png: the hips now sit a little above the knees — I'm checking how far off that is by eye with a few depth variants."
+    },
+    {
+      "at": "2026-10-23T14:25:37.934Z",
+      "text": "Applied the fix to the Studio and the solver (6 files, backed up as .bak-20) while the Studio was idle. Running the tests and a final scratch run from the real code now."
+    },
+    {
+      "at": "2026-10-23T14:37:50.841Z",
+      "text": "Verified on a final scratch run from the real code: depth +0.03 (pass), start stands straighter (hip 170.6 vs coach 170.8), end lean now passes; 20 pass / 5 fail / 4 uncertain. All tests pass (Blender keypose test now checks the hip: 90.4). By eye the bottom moved from below parallel to near parallel, hips a few degrees above the knees; the new depth number reads this cartoon about 0.1 deep (its standing pose's thighs lean back ~4°) — flagged for a decision."
+    }
+  ],
+  "summary": "Thigh and shin now counted from the standing pose in the Studio and the solver: standing reads hip 180 / knee 180, the squat stops near parallel (depth +0.03, pass) instead of below it; 20 pass / 5 fail / 4 uncertain (was 19 / 5 / 5). Caveat: by eye the bottom is a few degrees above the coach's parallel, and this depth number reads the cartoon about 0.1 deep.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-173752-b505"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T14:37:52.960Z",
+  "rerunNote": null
+}

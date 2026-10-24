@@ -1,0 +1,27 @@
+{
+  "id": "20261023-193414-0396",
+  "title": "Make check-logic fixes fast: re-check a run without re-rendering (0.2s vs ~8 min)",
+  "exercises": [],
+  "status": "done",
+  "startedAt": "2026-10-23T16:34:14.354Z",
+  "updatedAt": "2026-10-23T16:35:23.155Z",
+  "finishedAt": "2026-10-23T16:35:23.155Z",
+  "log": [
+    {
+      "at": "2026-10-23T16:35:23.039Z",
+      "text": "Read the check code: picture-space judging is already applied where MediaPipe reads our cartoon reliably (torso_lean, hip_included). The remaining red is real arm-pose gaps (elbow/upperarm/width, judged on the rig because the detector can't read the cartoon's arms) and coach-side disagreements (knee flat-vs-3D) — not loose comparisons, so no picture-space sweep to do."
+    },
+    {
+      "at": "2026-10-23T16:35:23.078Z",
+      "text": "Measured the real loop cost: the check step (run_check.py) is 0.17s on the squat's existing measurements with no Blender; a full re-render is ~8 min. Every check-logic tweak currently pays the full render."
+    },
+    {
+      "at": "2026-10-23T16:35:23.118Z",
+      "text": "Added studio/scripts/recheck.mjs: re-runs only the check step against an already-rendered run, rewriting checks.json, no render, no Blender, no verdict-logic change. Verified in a throwaway data root — happy path, name + --run, three error paths, and the live run untouched. Whole tool 0.13s."
+    }
+  ],
+  "summary": "recheck.mjs gives a 0.13s check-only loop (vs ~8 min) for fixing check rules. No exercises listed, so nothing re-renders from this item.",
+  "rerun": [],
+  "rerunQueuedAt": "2026-10-23T16:35:24.875Z",
+  "rerunNote": "No exercises were listed, so nothing re-ran."
+}

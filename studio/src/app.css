@@ -1,0 +1,456 @@
+/* Exercise Studio: a calm internal tool. Light theme only. */
+:root {
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* neutrals */
+  --canvas: #f1f2f4;
+  --surface: #ffffff;
+  --sunken: #f6f7f8;
+  --image-bg: #e8eaed;
+  --ink: #15181c;
+  --ink-2: #474d55;
+  --ink-3: #737a84;
+  --line: #e1e3e7;
+  --line-strong: #c9cdd3;
+
+  /* status: green pass, red fail, amber limited, blue running, grey uncertain / measured */
+  --pass: #17784b;
+  --pass-bg: #e3f3ea;
+  --fail: #c22a1d;
+  --fail-bg: #fcebe8;
+  --limited: #9a5b00;
+  --limited-bg: #fff1d6;
+  --running: #1d5fcc;
+  --running-bg: #e7effc;
+  --uncertain: #5a626d;
+  --uncertain-bg: #eceef1;
+  --info: #6c737d;
+
+  --focus: #1d5fcc;
+  --radius-s: 6px;
+  --radius-m: 10px;
+
+  /* type scale (base 14) */
+  --t-xs: 12px;
+  --t-s: 13px;
+  --t-m: 14px;
+  --t-l: 16px;
+  --t-xl: 20px;
+  --t-xxl: 26px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--t-m);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+img {
+  display: block;
+}
+
+/* ---- shared controls ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--t-s);
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--ink-3);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-primary {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  border-color: #000;
+  background: #000;
+}
+
+.btn-quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-2);
+  padding: 0 8px;
+}
+
+.btn-quiet:hover {
+  border-color: transparent;
+  background: var(--sunken);
+  color: var(--ink);
+}
+
+.field {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  font-size: var(--t-s);
+  min-width: 0;
+}
+
+select.field {
+  padding-right: 4px;
+}
+
+.section {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: var(--t-l);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+.section-note {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---- app frame ---- */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 52px;
+  padding: 0 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+/* the mark: a coach frame and our frame, side by side */
+.app-mark {
+  position: relative;
+  width: 22px;
+  height: 18px;
+}
+
+.app-mark::before,
+.app-mark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  border-radius: 3px;
+}
+
+.app-mark::before {
+  left: 0;
+  background: var(--ink);
+}
+
+.app-mark::after {
+  right: 0;
+  border: 2px solid var(--ink);
+}
+
+.app-name {
+  font-size: var(--t-l);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.app-list-toggle {
+  display: none;
+}
+
+.app-queue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 0 auto;
+  min-width: 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.app-queue.is-running {
+  color: var(--running);
+}
+
+.app-queue-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-queue-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--running);
+  animation: app-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes app-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* "1 fix in progress": work going on behind the scenes; opens the panel */
+.app-work {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: var(--t-s);
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.app-work:hover {
+  border-color: var(--ink-3);
+  color: var(--ink);
+}
+
+.app-work[aria-expanded='true'] {
+  border-color: var(--ink-2);
+  background: var(--sunken);
+}
+
+.app-work.is-running {
+  border-color: transparent;
+  background: var(--running-bg);
+  color: var(--running);
+}
+
+.app-work.is-running:hover,
+.app-work.is-running[aria-expanded='true'] {
+  border-color: var(--running);
+}
+
+/* a ring that turns: work, not a run */
+.app-work-ring {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(29, 95, 204, 0.25);
+  border-top-color: var(--running);
+  border-radius: 50%;
+  animation: app-turn 1s linear infinite;
+}
+
+.app-work-short {
+  display: none;
+}
+
+@keyframes app-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-offline {
+  margin: 0;
+  padding: 10px 20px;
+  background: var(--fail-bg);
+  color: var(--fail);
+  font-size: var(--t-s);
+  font-weight: 550;
+}
+
+.app-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+}
+
+.app-side {
+  border-right: 1px solid var(--line);
+  background: var(--canvas);
+}
+
+.app-main {
+  min-width: 0;
+  background: var(--surface);
+}
+
+.app-loading {
+  padding: 40px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 860px) {
+  .app-bar {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .app-list-toggle {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+    font-size: var(--t-s);
+    font-weight: 550;
+    cursor: pointer;
+    flex: none;
+  }
+
+  .app-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-side {
+    display: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .app-side.is-open {
+    display: block;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-name {
+    font-size: var(--t-m);
+  }
+
+  .app-queue {
+    font-size: var(--t-xs);
+  }
+
+  .app-work {
+    height: 28px;
+    padding: 0 10px;
+    font-size: var(--t-xs);
+  }
+
+  /* no room for both: "1 fix" while work runs; the panel's items also show on each exercise's page */
+  .app-work:not(.is-running) {
+    display: none;
+  }
+
+  .app-work-long {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .app-work-short {
+    display: inline;
+  }
+
+  /* the queue line matters more than the name: keep the mark, drop the words while a fix runs */
+  .app-bar:has(.app-work.is-running) .app-name {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

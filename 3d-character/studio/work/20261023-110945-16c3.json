@@ -1,0 +1,50 @@
+{
+  "id": "20261023-110945-16c3",
+  "title": "Lean like the coach at the middle and bottom (judge by the picture, like the coach)",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T08:09:45.925Z",
+  "updatedAt": "2026-10-23T09:10:14.922Z",
+  "finishedAt": "2026-10-23T09:10:14.922Z",
+  "log": [
+    {
+      "at": "2026-10-23T08:09:45.969Z",
+      "text": "The start now matches. At the middle and bottom he still looks more upright than the coach: read from the picture with the same detector as the coach, his lean is 12° and 10° against the coach's 18° and 22°. Making the Studio judge by the picture and the animation aim for it."
+    },
+    {
+      "at": "2026-10-23T08:10:25.435Z",
+      "text": "Started: reading the brief, the solver and the Studio's measuring code before changing anything."
+    },
+    {
+      "at": "2026-10-23T08:25:07.672Z",
+      "text": "Measured the cause: on the picture the detector puts our shoulders near the neck and slides them back toward the bar as he squats, so his trunk reads 11° at the bottom while the bones say 22°. Tipping his chest forward moves the picture reading almost one for one, so the animation can aim at the picture."
+    },
+    {
+      "at": "2026-10-23T08:40:32.110Z",
+      "text": "Built the Studio side (ours read from the picture like the coach, the bones as a cross-check) and a solver loop that reads the picture and corrects the lean; a trial on the last run's scene brings the picture lean to 8 / 20 / 27° against the coach's 7 / 18 / 22. Now running a full test run on a scratch copy."
+    },
+    {
+      "at": "2026-10-23T08:51:03.483Z",
+      "text": "First full test run: the grip now passes (1.80 against the coach's 1.87, was 1.67); no bar height keeps the grip, the wrists and the standing upper arm all in tolerance, so as ruled the grip is kept and the standing upper arm reads 51° against 41°. At the bottom the picture can't give both the coach's lean and hip angle without sinking the hips below the knees, so the lean comes first; running the second test now."
+    },
+    {
+      "at": "2026-10-23T09:00:56.175Z",
+      "text": "Second test run: the picture now reads his lean 8 / 18 / 22° against the coach's 7 / 18 / 22°; the bottom's hip angle reads 79° against 69° because holding the hips at the coach's depth is kept. Applied the changes to the Studio and the animation code; running the final checks and one more full test."
+    },
+    {
+      "at": "2026-10-23T09:10:10.529Z",
+      "text": "Final checks pass on a full test run with the applied code: the picture reads his lean 8 / 18 / 22° against the coach's 7 / 18 / 22° (all three pass); the bottom's hip angle reads 79° against 69° (shown as uncertain: the picture and the skeleton read it 24° apart); the grip passes and, as ruled, the standing upper arm gives way to it. Closing now; the Studio will re-run the squat."
+    }
+  ],
+  "summary": "Picture lean 8 / 12 / 11° → 8 / 18 / 22° (coach 7 / 18 / 22): he now leans like the coach at the middle and bottom. Bottom hip angle 97° → 79° (coach 69°): closer, but matching it would sink his hips below his knees, so the depth is kept. Grip 1.67 → 1.79 (passes); the standing upper arm gives way to it (45° → 51°, coach 41°).",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-121017-439b"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T09:10:17.169Z",
+  "rerunNote": null
+}

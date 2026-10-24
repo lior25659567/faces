@@ -1,0 +1,229 @@
+.comparison-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.pair {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  border-radius: var(--radius-m);
+  background: var(--sunken);
+  border: 1px solid var(--line);
+}
+
+.pair.is-unused {
+  background: var(--surface);
+  border-style: dashed;
+}
+
+.pair-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  padding: 0 2px;
+  font-size: var(--t-s);
+}
+
+.pair-phase {
+  font-weight: 650;
+}
+
+.pair-view {
+  color: var(--ink-3);
+}
+
+.pair-tally {
+  margin-left: auto;
+  font-size: var(--t-xs);
+  font-weight: 650;
+}
+
+.pair-tally.is-pass {
+  color: var(--pass);
+}
+
+.pair-tally.is-fail {
+  color: var(--fail);
+}
+
+/* everything judged passes, but some rows weren't measured on the character: amber, never green (task 19) */
+.pair-tally.is-unmeasured {
+  color: var(--limited);
+}
+
+.pair-images {
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+}
+
+.pair-side {
+  position: relative;
+  flex: 1 1 0%;
+  min-width: 0;
+  background: var(--image-bg);
+}
+
+.pair-side img {
+  width: 100%;
+  height: auto;
+}
+
+/* the GIF runs across the whole sheet; the pairs sit two by two beneath it */
+.pair-gif {
+  grid-column: 1 / -1;
+}
+
+.pair-side.is-gif {
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
+
+.pair-side.is-gif img {
+  width: auto;
+  max-width: 100%;
+  max-height: 380px;
+}
+
+/* the coach, cut to the body's box (aspect-ratio comes from the box) */
+.pair-side .pair-cropped {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
+.pair-cropped.is-background {
+  background-repeat: no-repeat;
+}
+
+.pair-side img.is-mirrored {
+  transform: scaleX(-1);
+}
+
+.pair-label {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(21, 24, 28, 0.06);
+}
+
+.pair-side.is-ours .pair-label {
+  background: var(--ink);
+  color: #fff;
+}
+
+.pair-missing {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 16px;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+  text-align: center;
+}
+
+.pair-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 2px;
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+}
+
+.pair-foot-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px 12px;
+  flex-wrap: wrap;
+}
+
+.pair-crop-toggle {
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font-size: var(--t-xs);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.pair-crop-toggle:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.pair-why {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--t-s);
+}
+
+.comparison-empty {
+  margin: 0 0 12px;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.comparison-context {
+  margin-top: 22px;
+}
+
+.comparison-context-title {
+  margin: 0;
+  font-size: var(--t-m);
+  font-weight: 650;
+}
+
+.comparison-context-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.context-item {
+  margin: 0;
+}
+
+.context-item img {
+  height: 140px;
+  width: auto;
+  max-width: 100%;
+  border-radius: var(--radius-s);
+  background: var(--image-bg);
+  object-fit: contain;
+}
+
+.context-item figcaption {
+  margin-top: 4px;
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+}
+
+@media (max-width: 520px) {
+  .comparison-sheet {
+    gap: 12px;
+  }
+}

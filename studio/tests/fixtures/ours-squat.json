@@ -1,0 +1,87 @@
+{
+ "first": 1,
+ "last": 69,
+ "camera_side": "right",
+ "per_frame": [
+  {
+   "frame": 1,
+   "flat": {
+    "knee_included": 170,
+    "hip_included": 165,
+    "torso_lean": 8,
+    "grip_ratio": 1.7,
+    "elbow_width_ratio": 1.7
+   },
+   "3d": {
+    "elbow_included": 88,
+    "upperarm_vs_torso": 40
+   }
+  },
+  {
+   "frame": 68,
+   "flat": {
+    "knee_included": 175.0,
+    "hip_included": 171.0,
+    "torso_lean": 6.7,
+    "grip_ratio": 1.7,
+    "elbow_width_ratio": 1.7
+   },
+   "3d": {
+    "elbow_included": 90.5,
+    "upperarm_vs_torso": 41.3
+   }
+  },
+  {
+   "frame": 50,
+   "flat": {
+    "knee_included": 105.0,
+    "hip_included": 109.0,
+    "torso_lean": 18.4,
+    "grip_ratio": 1.77,
+    "elbow_width_ratio": 1.77
+   },
+   "3d": {
+    "elbow_included": 99.9,
+    "upperarm_vs_torso": 50.5
+   }
+  },
+  {
+   "frame": 38,
+   "flat": {
+    "knee_included": 47.0,
+    "hip_included": 72.0,
+    "torso_lean": 30.0,
+    "hip_below_knee": -0.05,
+    "grip_ratio": 1.77,
+    "elbow_width_ratio": 1.77
+   },
+   "3d": {
+    "elbow_included": 82.3,
+    "upperarm_vs_torso": 52.0
+   }
+  }
+ ],
+ "phase_frames": {
+  "start": 68,
+  "middle": 50,
+  "end": 38
+ },
+ "phase_driver": "hip_included",
+ "jumps": [],
+ "steps": [],
+ "arm": {
+  "shoulder_half_width": 0.117,
+  "upper_arm": 0.105,
+  "forearm": 0.124
+ },
+ "stills": [
+  {
+   "image": "img-15",
+   "phase": "start",
+   "view": "side",
+   "frame": 68,
+   "file": "stills/img-15.png",
+   "facing": "right"
+  }
+ ]
+}

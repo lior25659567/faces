@@ -1,0 +1,38 @@
+.face-follow {
+  position: relative;
+  display: block;
+}
+
+.face-follow__base {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* The part of the base that the atlas covers: the head and whatever moves with it. */
+.face-follow__head {
+  position: absolute;
+  pointer-events: none;
+  /* The edges are feathered to hide the join with the base, except where the component sets
+     an --edge-* to solid because that side lies on the edge of the still. */
+  mask-image:
+    linear-gradient(to right, var(--edge-left, transparent), #000 6%, #000 94%, var(--edge-right, transparent)),
+    linear-gradient(to bottom, var(--edge-top, transparent), #000 6%, #000 94%, var(--edge-bottom, transparent));
+  mask-composite: intersect;
+}
+
+/* One cell of the atlas, filling the head. There are two: the current angle, and under it the one before.
+   Until the atlas has loaded they are empty and the base shows through.
+   --gutter-x and --gutter-y are the space between cells, as a share of one cell. */
+.face-follow__angle {
+  --col: calc((var(--cols) - 1) / 2);
+  --row: calc((var(--rows) - 1) / 2);
+  position: absolute;
+  inset: 0;
+  background-size:
+    calc((var(--cols) + (var(--cols) - 1) * var(--gutter-x, 0)) * 100%)
+    calc((var(--rows) + (var(--rows) - 1) * var(--gutter-y, 0)) * 100%);
+  background-position:
+    calc(var(--col) / (var(--cols) - 1) * 100%)
+    calc(var(--row) / (var(--rows) - 1) * 100%);
+}

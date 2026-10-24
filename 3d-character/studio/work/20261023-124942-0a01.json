@@ -1,0 +1,78 @@
+{
+  "id": "20261023-124942-0a01",
+  "title": "Fix the fold at the base of the left thumb",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T09:49:42.615Z",
+  "updatedAt": "2026-10-23T13:13:40.328Z",
+  "finishedAt": "2026-10-23T13:13:40.328Z",
+  "log": [
+    {
+      "at": "2026-10-23T09:49:42.662Z",
+      "text": "The Studio sees skin folding over at the base of the left thumb (up to about 1,320 mm², visible on about 35 of 69 frames). The thumb has no root bone of its own, so its base bends into the palm. Starting with measurements."
+    },
+    {
+      "at": "2026-10-23T09:50:07.809Z",
+      "text": "Started on the left-thumb fold: reading the earlier hand-rig notes and the latest squat run."
+    },
+    {
+      "at": "2026-10-23T09:55:47.548Z",
+      "text": "Measuring the fold on the latest squat run: both thumbs fold (left 1,323 mm², right 1,367 mm² hidden); looking at which bones carry it."
+    },
+    {
+      "at": "2026-10-23T10:05:32.780Z",
+      "text": "Found the cause: the grip swings each thumb about 80° up and out from the hand, and the skin where the thumb meets the back of the hand switches from following the thumb to following the hand within one 6 mm step, so it passes through itself."
+    },
+    {
+      "at": "2026-10-23T10:09:34.646Z",
+      "text": "Spreading the thumb's weights more gently cut the fold by about half, not enough; now testing where the thumb's root joint sits, since the swing presses the thumb into the back of the hand."
+    },
+    {
+      "at": "2026-10-23T10:19:50.210Z",
+      "text": "Promising off-line: spreading the thumb's share round the way it swings, smoothing it over the thumb's root, and letting the grip pick the thumb pose that folds least removes every fold over the limit on both hands (same thumb pose as now). Building it properly next."
+    },
+    {
+      "at": "2026-10-23T10:27:42.530Z",
+      "text": "Changing the weights before the grip is solved moved the bar and the ring finger, so instead the hand's weights are smoothed after the grip is closed, only where that grip turns skin over; off-line this clears both thumbs and keeps the grip pose exactly. Checking the grip numbers on it now."
+    },
+    {
+      "at": "2026-10-23T10:35:27.180Z",
+      "text": "In Blender on the latest squat, the Studio's own fold measure finds no fold over the limit at either hand after the smoothing. Starting a full test run of the squat (about 8 minutes)."
+    },
+    {
+      "at": "2026-10-23T10:58:47.125Z",
+      "text": "First full test run: the folded-skin check went from fail to info (only a hidden crotch fold and the normal knee/hip/elbow creases left), every other check the same. Tightened the smoothing so it never touches the middle of the palm the bar rests on; second full test run started."
+    },
+    {
+      "at": "2026-10-23T11:02:20.960Z",
+      "text": "Waiting for another squat job that is using Blender before my second test run can start (one Blender at a time)."
+    },
+    {
+      "at": "2026-10-23T13:04:57.789Z",
+      "text": "Paused for a while by a usage limit on my side; resuming now."
+    },
+    {
+      "at": "2026-10-23T13:05:05.906Z",
+      "text": "Paused for a usage limit and resumed; the second test run's animation finished, now taking its stills and checks."
+    },
+    {
+      "at": "2026-10-23T13:07:26.545Z",
+      "text": "Second test run: no fold over the limit at either hand, the grip identical (finger wraps within 1°, thumb, palm and bar unchanged). The change is now in the pipeline; running the final check run from it."
+    },
+    {
+      "at": "2026-10-23T13:13:34.769Z",
+      "text": "Final check run from the pipeline matches the second run row for row: no fold at either hand, grip unchanged. One knife-edge row (bottom torso lean) now reads uncertain instead of pass; details in the report."
+    }
+  ],
+  "summary": "Left-thumb fold fixed: the folded-skin check goes from fail (left hand 1,323 mm², seen up to 193 mm²) to info (no fold over the limit at either hand; right hand 1,367 mm² hidden → none). The grip is unchanged (same pose; finger wraps within 1°, thumb, palm and bar the same). One knife-edge row, bottom torso lean, now reads uncertain instead of pass (picture 22.1° vs coach 22.4°, but 10.5° from the rig against a 10° line). The hidden crotch fold is not changed (about 2,080 mm²).",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-161342-223f"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T13:13:42.147Z",
+  "rerunNote": null
+}

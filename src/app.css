@@ -1,0 +1,121 @@
+/* The page continues the still's own studio backdrop, so the character stands in it:
+   the still's gradient behind the figure, its top color above. */
+.stage {
+  --backdrop: #a9d6cf;
+  --ink: #3a2618;
+  position: relative;
+  display: grid;
+  place-items: end center;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    var(--backdrop-gradient, none) bottom / 100% min(100svh, calc(100vw / var(--ratio, 1))) no-repeat,
+    var(--backdrop);
+  color: var(--ink);
+}
+
+.stage__figure {
+  width: min(100vw, calc(100svh * var(--ratio)));
+  /* Hides the seam where the still's backdrop meets the page. */
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.stage__bar {
+  position: absolute;
+  inset: 1.25rem 1.25rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 0.75rem 1rem;
+}
+
+.stage__picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.stage__source {
+  justify-content: end;
+  justify-items: end;
+  margin-left: auto;
+  text-align: right;
+}
+
+.stage__picker button {
+  padding: 0.4rem 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stage__picker button:hover {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.stage__picker button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--backdrop);
+}
+
+.stage__picker button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.stage__still-notice {
+  display: none;
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  max-width: 24ch;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage__still-notice {
+    display: block;
+  }
+}
+
+.stage--empty {
+  place-items: center start;
+  padding: clamp(1.5rem, 6vw, 5rem);
+}
+
+.empty {
+  max-width: 34rem;
+}
+
+.empty .face-source {
+  margin-bottom: 2rem;
+}
+
+.empty h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.empty p {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.empty pre {
+  margin: 0 0 1rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  border-radius: 1rem;
+  background: #fff;
+  font: 500 0.95rem/1.5 ui-monospace, 'SF Mono', Menlo, monospace;
+}

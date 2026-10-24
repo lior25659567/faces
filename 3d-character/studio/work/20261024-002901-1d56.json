@@ -1,0 +1,27 @@
+{
+  "id": "20261024-002901-1d56",
+  "title": "Lengthen the character's arms so the squat elbow matches the coach (now stuck ~50° vs 82–100°)",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "failed",
+  "startedAt": "2026-10-23T21:29:01.457Z",
+  "updatedAt": "2026-10-23T21:42:29.071Z",
+  "finishedAt": "2026-10-23T21:42:29.071Z",
+  "log": [
+    {
+      "at": "2026-10-23T21:29:01.517Z",
+      "text": "Root cause: solver hits upper-arm/grip/elbow-width but the elbow jams ~50° vs 82–100°. bar_drop -0.16 (big head forces the bar ~16cm low); short arms (upper 0.105 vs ~0.185 human-scaled) must over-bend to keep hands on the low bar. Eye confirms: our hands tuck at the neck, coach's are lower/more open."
+    },
+    {
+      "at": "2026-10-23T21:30:33.654Z",
+      "text": "Testing arm scale 1.5x in a scratch EEVEE/Workbench render (--fast), off the live data. Will read the solver's elbow at standing/mid/bottom and eyeball the skin before baking any default."
+    },
+    {
+      "at": "2026-10-23T21:42:29.029Z",
+      "text": "Disproved by scratch render: at 1.5x arms the elbow is 51/50/47 — unchanged from baseline 50/50/47. Feasibility model confirms the direction is backwards: a longer arm reaching the same bar bends MORE (best elbow 85->76 as arms lengthen), away from the 82-100 target. The solver already hits upper-arm/grip/elbow-width; the elbow is their geometric consequence. Root cause is the coach's four arm numbers being mutually inconsistent (read from a foreshortened app screenshot), not arm length."
+    }
+  ],
+  "summary": "Lengthening the arms does not open the elbow (proven: 1.5x -> elbow unchanged at ~50). Reverted. The elbow miss is the coach's arm numbers not fitting together, a measurement-side issue — not the character.",
+  "rerun": null
+}

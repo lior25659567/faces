@@ -1,0 +1,163 @@
+.exercise-list {
+  position: sticky;
+  top: 52px;
+  max-height: calc(100vh - 52px);
+  overflow-y: auto;
+  padding: 20px 12px 24px;
+}
+
+.exercise-list-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 8px 10px;
+}
+
+.exercise-list-title {
+  margin: 0;
+  font-size: var(--t-m);
+  font-weight: 650;
+}
+
+.exercise-list-count {
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.exercise-list-empty {
+  padding: 0 8px;
+  color: var(--ink-3);
+}
+
+.exercise-list-items {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.exercise-item:hover {
+  background: rgba(21, 24, 28, 0.045);
+}
+
+.exercise-item.is-selected {
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.exercise-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.exercise-dot.is-pass {
+  background: var(--pass);
+}
+
+.exercise-dot.is-fail {
+  background: var(--fail);
+}
+
+.exercise-dot.is-unmeasured {
+  background: var(--limited);
+}
+
+.exercise-dot.is-running {
+  background: var(--running);
+  box-shadow: 0 0 0 3px var(--running-bg);
+}
+
+.exercise-dot.is-empty {
+  background: transparent;
+  border: 1.5px solid var(--line-strong);
+}
+
+.exercise-item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.exercise-item-name {
+  font-size: var(--t-s);
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+.exercise-item-line {
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.exercise-item-line.is-fail {
+  color: var(--fail);
+}
+
+.exercise-item-line.is-pass {
+  color: var(--pass);
+}
+
+.exercise-item-line.is-unmeasured {
+  color: var(--limited);
+}
+
+.exercise-item-line.is-running {
+  color: var(--running);
+}
+
+.exercise-add-open {
+  margin: 0 8px;
+}
+
+.exercise-add {
+  display: grid;
+  gap: 6px;
+  margin: 0 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.exercise-add-label {
+  color: var(--ink-2);
+  font-size: var(--t-xs);
+  font-weight: 550;
+}
+
+.exercise-add-error {
+  margin: 0;
+  color: var(--fail);
+  font-size: var(--t-xs);
+}
+
+.exercise-add-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+@media (max-width: 860px) {
+  .exercise-list {
+    position: static;
+    max-height: none;
+    padding: 12px 8px 16px;
+  }
+}

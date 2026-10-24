@@ -1,0 +1,83 @@
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px 2px 7px;
+  border-radius: 999px;
+  font-size: var(--t-xs);
+  font-weight: 650;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.status-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-chip.is-pass,
+.status-chip.is-done {
+  background: var(--pass-bg);
+  color: var(--pass);
+}
+
+.status-chip.is-fail,
+.status-chip.is-failed {
+  background: var(--fail-bg);
+  color: var(--fail);
+}
+
+.status-chip.is-limited,
+.status-chip.is-interrupted {
+  background: var(--limited-bg);
+  color: var(--limited);
+}
+
+.status-chip.is-running,
+.status-chip.is-queued {
+  background: var(--running-bg);
+  color: var(--running);
+}
+
+.status-chip.is-uncertain {
+  background: var(--uncertain-bg);
+  color: var(--uncertain);
+}
+
+.status-chip.is-info {
+  background: transparent;
+  color: var(--info);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.status-chip.is-info::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+/* info rows, by why they have no verdict (checks.json `kind`) */
+.status-chip.is-not-measured {
+  background: var(--limited-bg);
+  color: var(--limited);
+}
+
+.status-chip.is-not-measured::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.status-chip.is-not-judged,
+.status-chip.is-shown-only {
+  background: transparent;
+  color: var(--info);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.status-chip.is-not-judged::before,
+.status-chip.is-shown-only::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}

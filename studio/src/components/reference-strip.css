@@ -1,0 +1,174 @@
+.ref-strip {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 2px 2px 10px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.ref-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: none;
+  width: 172px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  scroll-snap-align: start;
+  cursor: grab;
+}
+
+.ref-card:active {
+  cursor: grabbing;
+}
+
+.ref-card.is-dragging {
+  opacity: 0.45;
+  border-style: dashed;
+}
+
+.ref-card.is-context {
+  background: var(--sunken);
+}
+
+.ref-card.is-context .ref-thumb img {
+  opacity: 0.6;
+}
+
+.ref-thumb {
+  position: relative;
+  height: 180px;
+  border-radius: var(--radius-s);
+  background: var(--image-bg);
+  overflow: hidden;
+}
+
+.ref-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ref-order {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--ink);
+  color: #fff;
+  font-size: var(--t-xs);
+  font-weight: 700;
+}
+
+.ref-name {
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ref-field {
+  display: grid;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 550;
+  color: var(--ink-3);
+}
+
+.ref-field .field {
+  height: 28px;
+  width: 100%;
+  font-size: var(--t-xs);
+}
+
+.ref-field .field.needs-pick {
+  border-color: var(--limited);
+  background: var(--limited-bg);
+}
+
+.ref-hint {
+  margin: -4px 0 0;
+  color: var(--ink-3);
+  font-size: 11px;
+}
+
+.ref-hint.is-pick {
+  color: var(--limited);
+  font-weight: 600;
+}
+
+.ref-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  font-size: var(--t-xs);
+  cursor: pointer;
+}
+
+.ref-check input {
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+.ref-why {
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: var(--radius-s);
+  background: var(--uncertain-bg);
+  color: var(--ink-2);
+  font-size: var(--t-xs);
+  line-height: 1.4;
+}
+
+.ref-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: auto;
+  padding-top: 2px;
+}
+
+.ref-move {
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.ref-remove {
+  height: 28px;
+  margin-left: auto;
+  color: var(--fail);
+  font-size: var(--t-xs);
+}
+
+.ref-remove:hover {
+  background: var(--fail-bg);
+  color: var(--fail);
+}
+
+/* the controls live in a fieldset only so they can all be disabled at once */
+.ref-controls {
+  display: contents;
+}
+
+.ref-controls:disabled .ref-field,
+.ref-controls:disabled .ref-check {
+  opacity: 0.6;
+}

@@ -1,0 +1,46 @@
+{
+  "id": "20261023-195436-d23a",
+  "title": "Depth check: seat vs top of the knee (decided)",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T16:54:36.907Z",
+  "updatedAt": "2026-10-23T17:49:04.337Z",
+  "finishedAt": "2026-10-23T17:49:04.337Z",
+  "log": [
+    {
+      "at": "2026-10-23T16:56:11.839Z",
+      "text": "Starting: the depth check becomes 'how far the seat sits below the top of the knee', read the same way on the coach's photo and on ours, with a second reading from the 3D skin."
+    },
+    {
+      "at": "2026-10-23T17:19:00.218Z",
+      "text": "Built and tested the new depth reading on a copy of the code: the coach's photo reads 0.646 thigh lengths (seat below knee top); a test human in Blender reads the same on its picture and its 3D skin within 0.02. Now running a full squat on the copy to see the new bottom."
+    },
+    {
+      "at": "2026-10-23T17:49:00.989Z",
+      "text": "Applied. A full squat run from the real code: the seat now sits 0.639 thigh lengths below the top of the knee; the coach's is 0.646 (allowed gap 0.10). Before this change it was 0.560. The 3D skin reads 0.562. It finds the same two points, but the camera's perspective lifts the far knee a little in the picture."
+    },
+    {
+      "at": "2026-10-23T17:49:01.026Z",
+      "text": "Before and after beside the coach's 17.png: /Users/lywrbwm/Developer/faces/.sdd/task-22-shots/bottom-before-after-17.png. The new bottom is deeper: the solver closed the bottom's hip target to 40.5 degrees. In the GIF the two look close."
+    },
+    {
+      "at": "2026-10-23T17:49:01.061Z",
+      "text": "Every other check keeps its status: 20 pass, 5 fail, 4 uncertain, 7 info, same as before. With the deeper bottom, skin hidden from every camera folds more at the crotch (127 to 2,331 mm²). No camera sees it, so it isn't judged."
+    },
+    {
+      "at": "2026-10-23T17:49:01.098Z",
+      "text": "Also done: MediaPipe's reading of the thigh in the bind pose keeps its sign. Old runs say 'This run predates the new depth reading; run it again'. Depth rows show only for the back squat. A failed picture read no longer stops the solver. Tests pass: 302 Python, 278 JavaScript, 3 Blender files."
+    }
+  ],
+  "summary": "The squat's depth is now judged the way a judge sees it: the seat sits 0.639 thigh lengths below the top of the knee, the coach 0.646. The bottom goes a little deeper than before. All other checks keep their status.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-204905-7963"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T17:49:06.062Z",
+  "rerunNote": null
+}

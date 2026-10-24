@@ -1,0 +1,79 @@
+{
+ "contact": {
+  "penetration_mm": 28.91,
+  "penetration_frame": 56,
+  "sides": {
+   "left": {
+    "sole_vertices": 481,
+    "sole_slide_mm": 1.36,
+    "slide_frame": 61,
+    "sole_lift_mm": 1.72
+   },
+   "right": {
+    "sole_vertices": 479,
+    "sole_slide_mm": 1.44,
+    "slide_frame": 41,
+    "sole_lift_mm": 2.65
+   }
+  },
+  "box": [
+   [
+    -0.23997586965560913,
+    -0.40294814109802246,
+    -0.028908520936965942
+   ],
+   [
+    0.24253147840499878,
+    0.5670167207717896,
+    0.9460548162460327
+   ]
+  ]
+ },
+ "deformation": {
+  "crack_max_mm": 0.0,
+  "max_growth_mm": 129.4241814832401,
+  "growth_frame": 32,
+  "coincident_unconnected_pairs": 26304,
+  "deepest_frame": 32,
+  "deepest": {
+   "max_growth_mm": 129.4241814832401,
+   "max_growth_pct": 12.95392234459371,
+   "edges_over_1pct": 1215,
+   "edges_over_0_5pct": 2662,
+   "worst_edge_at": [
+    0.0002,
+    -0.0054,
+    0.344
+   ],
+   "worst_edge_posed_at": [
+    0.0025,
+    -0.1812,
+    0.0398
+   ],
+   "worst_edge_rest_mm": 1.0915110201666411,
+   "crack_max_mm": 0.0,
+   "skin_max_move_mm": 490.3330619259084
+  }
+ },
+ "form": {
+  "targets": "3d-character/reference-squat/targets.json",
+  "legs_torso": {
+   "worst_miss_knee_included_deg": 0.22,
+   "worst_miss_hip_included_deg": 9.52,
+   "worst_miss_torso_lean_deg": 3.51
+  },
+  "arms": {
+   "bar_drop": 0.0,
+   "grip_ratio_chosen": 1.8,
+   "reach_short_mm": 0.0
+  },
+  "contact": {
+   "hand_vertices": 4618,
+   "deepest_inside_bar_mm": 1.9209626650390004,
+   "nearest_gap_mm_min": -1.9209626650390004,
+   "frames_touching_within_3mm": 61,
+   "frames": 69
+  }
+ },
+ "grip": null
+}

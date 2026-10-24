@@ -1,0 +1,187 @@
+.exercise-page {
+  max-width: 1180px;
+  padding: 28px 36px 64px;
+}
+
+.exercise-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+}
+
+.exercise-head-main {
+  min-width: 0;
+  flex: 1 1 360px;
+}
+
+.exercise-title {
+  margin: 0 0 6px;
+  font-size: var(--t-xxl);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.exercise-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.exercise-equipment {
+  text-transform: capitalize;
+}
+
+.exercise-noclip {
+  color: var(--limited);
+}
+
+.exercise-refs-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+.exercise-refs-link:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.exercise-score {
+  text-align: right;
+}
+
+.exercise-score-line {
+  margin: 0;
+  font-size: var(--t-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.exercise-score-line.is-pass {
+  color: var(--pass);
+}
+
+.exercise-score-line.is-fail {
+  color: var(--fail);
+}
+
+.exercise-score-line.is-limited,
+.exercise-score-line.is-unmeasured {
+  color: var(--limited);
+}
+
+.exercise-score-source {
+  margin: 2px 0 0;
+  color: var(--ink-2);
+  font-size: var(--t-s);
+  font-weight: 550;
+}
+
+.exercise-refs {
+  scroll-margin-top: 64px;
+}
+
+.exercise-score-unmeasured {
+  margin: 2px 0 0;
+  color: var(--limited);
+  font-size: var(--t-s);
+  font-weight: 650;
+}
+
+.exercise-score-aside {
+  margin: 2px 0 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.exercise-error {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  background: var(--fail-bg);
+  color: var(--fail);
+  font-size: var(--t-s);
+  font-weight: 550;
+}
+
+.exercise-older {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  background: var(--running-bg);
+  color: var(--running);
+  font-size: var(--t-s);
+  font-weight: 550;
+}
+
+.exercise-older .btn-quiet {
+  color: var(--running);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .exercise-page {
+    padding: 20px 16px 48px;
+  }
+
+  .exercise-score {
+    text-align: left;
+  }
+
+  .exercise-title {
+    font-size: 22px;
+  }
+}
+
+.exercise-loading {
+  margin: 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+}
+
+/* where a "Re-ran automatically" link lands, clear of the sticky top bar */
+.exercise-anchor {
+  scroll-margin-top: 64px;
+}
+
+.exercise-work {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exercise-work-item {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.exercise-work-more {
+  margin-top: 10px;
+  margin-left: -8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

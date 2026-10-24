@@ -1,0 +1,34 @@
+{
+  "id": "20261024-022501-6a23",
+  "title": "Build the barbell + fixed hand grip for the Bent-Over Row (hangs in the hands, travels with them)",
+  "exercises": [
+    "barbell-bent-over-row"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T23:25:01.301Z",
+  "updatedAt": "2026-10-24T11:03:40.127Z",
+  "finishedAt": "2026-10-24T11:03:40.127Z",
+  "log": [
+    {
+      "at": "2026-10-23T23:25:01.341Z",
+      "text": "Scoped against the squat's bar/grip. Reuse: equipment.barbell mesh, grip_bar's two-bone IK + palm-turn + finger-curl, rig['hand_grip'] closed grip, bar_contact. New: mount the bar in the hands (midpoint, hanging, level, keyframed to follow them) + grip_hanging_bar (grip_bar with a keypose-derived elbow pole, not the squat's forearm-rise) + a MPFB_BARBELL_IN_HANDS branch in run_mpfb + un-gate (exercise-kit 'built', BAR_EXERCISES). Row stays on the keypose path, NOT the solver."
+    },
+    {
+      "at": "2026-10-24T11:03:40.030Z",
+      "text": "Built grip_hanging_bar: solves each wrist to a fixed shoulder-width grip at the reference hand height, lays the palm flat on top, then places the bar under the solved palms so it tracks the hands through the whole rep (the key: bar follows the SOLVED hands, not the pre-solve ones). Result: bar hangs in the hands and travels to the torso, 100% touch across all frames."
+    },
+    {
+      "at": "2026-10-24T11:03:40.089Z",
+      "text": "The chunky mitten overlaps the thin 28mm bar by ~8mm when it grips (proven inherent, not a bug) — so hands_on_bar now reports 'limited by proportions' (honest: a slimmer hand wouldn't; TDD'd, 309 Python tests green) instead of a false red. Verified end-to-end on the real row run: hands_on_bar -> limited, equipment 'hands hold nothing' row gone."
+    }
+  ],
+  "summary": "Row now holds a barbell: it hangs in the hands and travels through the pull. hands_on_bar reports 'limited by proportions' (the chunky mitten on a thin bar), not red. Re-running the row to render it.",
+  "rerun": [
+    {
+      "slug": "barbell-bent-over-row",
+      "runId": "20261024-140340-03f5"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-24T11:03:40.704Z",
+  "rerunNote": null
+}

@@ -1,0 +1,30 @@
+{
+  "id": "20261024-005010-468a",
+  "title": "Elbow: report the coach's inconsistent arm numbers as uncertain, not a character fail",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T21:50:10.597Z",
+  "updatedAt": "2026-10-23T22:18:00.840Z",
+  "finishedAt": "2026-10-23T22:18:00.840Z",
+  "log": [
+    {
+      "at": "2026-10-23T21:50:10.645Z",
+      "text": "checks.py _judge: when even a human-proportioned arm can't meet the coach's target given the other arm numbers (provably infeasible), the row is now 'uncertain (coach)' with the reason, not a hard fail — the coach's arms are foreshortened/part-hidden in the side photo. Test-first (TDD); full suite 306 Python + 278 JS green."
+    },
+    {
+      "at": "2026-10-23T21:50:10.680Z",
+      "text": "Verified on the real run 20261023-204905-7963 via the 0.2s re-check: 20/5/0/4 -> 20 pass / 1 fail / 1 limited / 7 uncertain. Elbow (3 positions) -> uncertain(coach); elbow_width -> limited (proportions); one genuine fail left: upper-arm at standing 51 vs 41."
+    }
+  ],
+  "summary": "Elbow (3 positions) now reports uncertain(coach) with the reason; elbow_width is limited (proportions). Squat 5 fails -> 1 (upper-arm at standing, a real ~10° miss, left honest). Verified via the 0.2s re-check; applying to the live squat now.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261024-011801-48dd"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T22:18:01.267Z",
+  "rerunNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "id": "20261023-194556-8cfe",
+  "title": "Depth check: seat vs top of the knee, like a judge would",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "failed",
+  "startedAt": "2026-10-23T16:45:56.948Z",
+  "updatedAt": "2026-10-23T16:53:06.109Z",
+  "finishedAt": "2026-10-23T16:53:06.109Z",
+  "log": [
+    {
+      "at": "2026-10-23T16:45:57.008Z",
+      "text": "A review found the last depth measure was reading the outline of the far knee, not the thigh, on both pictures. Switching to the way a squat judge looks at depth: the lowest point of the seat against the top of the knee, measured the same way on the coach and on our character, with an independent check from the 3D body."
+    },
+    {
+      "at": "2026-10-23T16:47:28.274Z",
+      "text": "Started: depth will be judged the way a squat judge does — the lowest point of the seat against the top of the knee — measured the same way on the coach's photo and ours. First, finding both points and checking them on the colour pictures."
+    },
+    {
+      "at": "2026-10-23T16:53:06.027Z",
+      "text": "Checked the seat and knee-top points on the colour pictures: they land on the seat and on the knee top on both. But the reading says the coach squats deeper than any bottom we've made (coach 0.65 thigh lengths of seat below knee top; ours 0.51–0.59), and the old bottom you called too deep comes out closest to him — his thighs and seat are thicker for their length. So this measure would push the squat deeper than before."
+    },
+    {
+      "at": "2026-10-23T16:53:06.073Z",
+      "text": "Stopping here without changing anything: which look is right needs a decision before the animation moves again. The evidence and options are written up for review."
+    }
+  ],
+  "summary": "Not changed: the seat-vs-knee-top measure, checked on the colour pictures, rates the coach deeper than every bottom we've made and the old too-deep one closest to him (his thighs and seat are thicker). It needs a decision before the squat moves again.",
+  "rerun": null
+}

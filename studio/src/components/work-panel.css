@@ -1,0 +1,83 @@
+/* hangs from the top bar, on the right, over the page */
+.work-panel {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  z-index: 6;
+  width: min(460px, calc(100vw - 24px));
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 20px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: 0 12px 32px -12px rgba(21, 24, 28, 0.28);
+}
+
+.work-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-panel-title {
+  margin: 0;
+  font-size: var(--t-l);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+/* focus lands here when the panel opens; a ring on a heading would only look like a field */
+.work-panel-title:focus {
+  outline: none;
+}
+
+.work-panel-note {
+  max-width: 46ch;
+  margin: 4px 0 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.work-panel-close {
+  flex: none;
+  margin: -4px -8px 0 0;
+}
+
+.work-panel-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-panel-row {
+  padding: 16px 0;
+}
+
+.work-panel-row + .work-panel-row {
+  border-top: 1px solid var(--line);
+}
+
+.work-panel-row:last-child {
+  padding-bottom: 0;
+}
+
+.work-panel-empty,
+.work-panel-more {
+  margin: 16px 0 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+@media (max-width: 520px) {
+  .work-panel {
+    top: 56px;
+    right: 8px;
+    width: calc(100vw - 16px);
+    padding: 14px 16px 16px;
+  }
+}

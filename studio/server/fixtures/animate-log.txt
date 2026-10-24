@@ -1,0 +1,236 @@
+[INFO ] services.locationservice ...............: Not adding link to MakeHuman user data, since neither explicit path nor auto-discovery is set in preferences.
+[INFO ] mpfb.init ..............................: Build info 20261010
+[INFO ] mpfb.init ..............................: Online access preference is not enabled. Not checking if MakeHuman is online.
+[INFO ] mpfb.init ..............................: MPFB initialization has finished.
+FBX version: 7700
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+WARNING: User property type 'Short' is not supported
+retarget: read squat.fbx: 69 frames at 30 fps (source frames 1..69)
+10:54:06 | INFO: Data are loaded, start creating Blender stuff
+10:54:06 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:06 | INFO: glTF import finished in 0.09s
+00:02.325  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/3d-cartoon-boy-silhouette.png'
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+[  1.6s] skin measured: height 0.9991 | thigh 235, shin 134, upper_arm 105, forearm 76, hand 101, foot 126, hip_height 411, torso 343, neck 81, head 246, shoulder_half 117, hip_half 48
+[  3.8s] age 0.1875: rel error 0.268 -> 0.162, scale 0.541, targets {'upperleg': 1.0, 'lowerleg': -0.074, 'upperarm': 0.0, 'lowerarm': 0.0, 'hand': 0.502, 'foot': 1.0, 'torso-vert': 0.897, 'torso-horiz': 1.0, 'hip-horiz': 0.186, 'hip-vert': 0.0}
+[  5.9s] age 0.3: rel error 0.270 -> 0.182, scale 0.481, targets {'upperleg': 1.0, 'lowerleg': 0.173, 'upperarm': 0.0, 'lowerarm': -0.0, 'hand': 0.432, 'foot': 1.0, 'torso-vert': 0.896, 'torso-horiz': 1.0, 'hip-horiz': 0.18, 'hip-vert': 0.0}
+[  8.0s] age 0.5: rel error 0.274 -> 0.201, scale 0.406, targets {'upperleg': 1.0, 'lowerleg': 0.237, 'upperarm': 0.0, 'lowerarm': -0.001, 'hand': 0.391, 'foot': 1.0, 'torso-vert': 0.939, 'torso-horiz': 1.0, 'hip-horiz': 0.244, 'hip-vert': 0.0}
+[ 10.0s] after targets (age 0.1875): joint error mm {'hip.left': 0.5, 'hip.right': 0.5, 'knee.left': 78.8, 'knee.right': 78.5, 'ankle.left': 77.8, 'ankle.right': 77.7, 'neck (Head bone)': 36.6}
+10:54:16 | INFO: Data are loaded, start creating Blender stuff
+10:54:16 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:16 | INFO: glTF import finished in 0.09s
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+[ 10.6s] relaxed the shoulder/neck blends: {'zone_vertices': 2516, 'damage_before': {'crossing': 65, 'overlapping': 63, 'folds': 109}, 'damage_after': {'crossing': 16, 'overlapping': 62, 'folds': 39}, 'kept': True, 'moved_mm_max': 17.285486887462095, 'moved_mm_mean_in_zone': 4.520104808914208, 'socket': {'vertices': 467, 'weight_moved_max': np.float64(0.125)}}
+[ 10.6s] warped onto the skin's joints: {'trunk_scale_xyz': [0.6717165454083148, 0.9335528753131411, 0.6044200720971714], 'lean_deg': 1.4396585351778524, 'head_scale_xyz': [1.317058886338807, 1.3084098510664812, 1.3507156024583589], 'radial': {'LeftArm': 0.992, 'LeftForeArm': 1.14, 'LeftUpLeg': 0.649, 'LeftLeg': 0.71, 'LeftHand': 1.018, 'RightArm': 0.971, 'RightForeArm': 1.144, 'RightUpLeg': 0.648, 'RightLeg': 0.71, 'RightHand': 1.018, 'Neck': 0.565}, 'bones_placed_within_mm': 1.8995327925655187e-05}; helpers removed 5778 verts
+[ 10.7s] cage ready: skin-to-cage gap mean 12.6 / p95 37.0 mm
+10:54:17 | INFO: Data are loaded, start creating Blender stuff
+10:54:17 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:17 | INFO: glTF import finished in 0.13s
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+wear: region_fit refused the age 0.1875 cage (region_fit could not back off far enough to leave the cage undamaged after 12 rounds); trying the next age
+10:54:19 | INFO: Data are loaded, start creating Blender stuff
+10:54:19 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:19 | INFO: glTF import finished in 0.09s
+00:14.719  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/3d-cartoon-boy-silhouette.png'
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+[  1.3s] skin measured: height 0.9991 | thigh 235, shin 134, upper_arm 105, forearm 76, hand 101, foot 126, hip_height 411, torso 343, neck 81, head 246, shoulder_half 117, hip_half 48
+[  3.5s] age 0.3: rel error 0.270 -> 0.182, scale 0.481, targets {'upperleg': 1.0, 'lowerleg': 0.173, 'upperarm': 0.0, 'lowerarm': -0.0, 'hand': 0.432, 'foot': 1.0, 'torso-vert': 0.896, 'torso-horiz': 1.0, 'hip-horiz': 0.18, 'hip-vert': 0.0}
+[  5.5s] age 0.5: rel error 0.274 -> 0.201, scale 0.406, targets {'upperleg': 1.0, 'lowerleg': 0.237, 'upperarm': 0.0, 'lowerarm': -0.001, 'hand': 0.391, 'foot': 1.0, 'torso-vert': 0.939, 'torso-horiz': 1.0, 'hip-horiz': 0.244, 'hip-vert': 0.0}
+[  7.6s] after targets (age 0.3): joint error mm {'hip.left': 1.8, 'hip.right': 1.8, 'knee.left': 77.1, 'knee.right': 76.8, 'ankle.left': 77.1, 'ankle.right': 77.0, 'neck (Head bone)': 47.5}
+10:54:26 | INFO: Data are loaded, start creating Blender stuff
+10:54:26 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:26 | INFO: glTF import finished in 0.09s
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+[  8.2s] relaxed the shoulder/neck blends: {'zone_vertices': 2516, 'damage_before': {'crossing': 369, 'overlapping': 52, 'folds': 261}, 'damage_after': {'crossing': 96, 'overlapping': 53, 'folds': 54}, 'kept': True, 'moved_mm_max': 30.502098639816637, 'moved_mm_mean_in_zone': 6.544727496679184, 'socket': {'vertices': 425, 'weight_moved_max': np.float64(0.147)}}
+[  8.2s] warped onto the skin's joints: {'trunk_scale_xyz': [0.66092777233701, 1.9440867024832862, 0.5577614925416114], 'lean_deg': 1.1960179016220263, 'head_scale_xyz': [1.2815735453354755, 1.2400782400056798, 1.2923884928870042], 'radial': {'LeftArm': 0.862, 'LeftForeArm': 1.002, 'LeftUpLeg': 0.597, 'LeftLeg': 0.66, 'LeftHand': 0.935, 'RightArm': 0.843, 'RightForeArm': 1.005, 'RightUpLeg': 0.596, 'RightLeg': 0.66, 'RightHand': 0.935, 'Neck': 0.553}, 'bones_placed_within_mm': 1.862645149230957e-05}; helpers removed 5778 verts
+[  8.3s] cage ready: skin-to-cage gap mean 12.4 / p95 38.0 mm
+10:54:27 | INFO: Data are loaded, start creating Blender stuff
+10:54:27 | INFO: Blender create Mesh node fe1a9e98_8569_4317_b570_7406da8fefac
+10:54:27 | INFO: glTF import finished in 0.09s
+01:07.150  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0001.png'
+01:07.456  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0002.png'
+01:07.751  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0003.png'
+01:08.039  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0004.png'
+01:08.327  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0005.png'
+01:08.618  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0006.png'
+01:08.912  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0007.png'
+01:09.205  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0008.png'
+01:09.501  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0009.png'
+01:09.794  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0010.png'
+01:10.085  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0011.png'
+01:10.378  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0012.png'
+01:10.667  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0013.png'
+01:10.965  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0014.png'
+01:11.249  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0015.png'
+01:11.537  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0016.png'
+01:11.823  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0017.png'
+01:12.131  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0018.png'
+01:12.425  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0019.png'
+01:12.711  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0020.png'
+01:13.000  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0021.png'
+01:13.335  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0022.png'
+01:13.613  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0023.png'
+01:13.902  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0024.png'
+01:14.200  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0025.png'
+01:14.499  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0026.png'
+01:14.780  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0027.png'
+01:15.059  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0028.png'
+01:15.344  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0029.png'
+01:15.627  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0030.png'
+01:15.905  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0031.png'
+01:16.190  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0032.png'
+01:16.479  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0033.png'
+01:16.761  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0034.png'
+01:17.044  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0035.png'
+01:17.321  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0036.png'
+01:17.638  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0037.png'
+01:17.920  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0038.png'
+01:18.201  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0039.png'
+01:18.482  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0040.png'
+01:18.760  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0041.png'
+01:19.048  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0042.png'
+01:19.327  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0043.png'
+01:19.609  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0044.png'
+01:19.895  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0045.png'
+01:20.178  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0046.png'
+01:20.465  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0047.png'
+01:20.751  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0048.png'
+01:21.042  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0049.png'
+01:21.324  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0050.png'
+01:21.606  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0051.png'
+01:21.891  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0052.png'
+01:22.172  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0053.png'
+01:22.460  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0054.png'
+01:22.746  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0055.png'
+01:23.029  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0056.png'
+01:23.322  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0057.png'
+01:23.608  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0058.png'
+01:23.903  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0059.png'
+01:24.181  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0060.png'
+01:24.463  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0061.png'
+01:24.748  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0062.png'
+01:25.038  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0063.png'
+01:25.330  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0064.png'
+01:25.623  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0065.png'
+01:25.925  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0066.png'
+01:26.217  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0067.png'
+01:26.511  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0068.png'
+01:26.814  render           | Saved: '/private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/frame_0069.png'
+facing check: foot reaches +0.038 ahead of the leg, +0.103 behind
+turned the model to face +Y; foot now reaches +0.103 ahead
+bake_to_skin: skin -> 46261 verts, 28 bone groups, influences {'1': 30156, '2': 6466, '3': 4788, '4': 4851}; vs Surface Deform mean 0.28 / max 26.1 mm; crack 0.0000 mm over 26304 pairs (29.8s)
+retarget (bone for bone): keyed 69 frames, 52 of 52 bones driven | source forward (-0.0, -1.0, 0.0) | scale 0.4148 | feet planted | IK residual 41.2 mm, shortfall 0.0 mm
+form: bar +0.00 of the torso below the shoulder joints, grip 1.80 x shoulder-joint width
+mpfb: form matched: {'targets': '3d-character/reference-squat/targets.json', 'legs_torso': {'worst_miss_knee_included_deg': 0.22, 'worst_miss_hip_included_deg': 9.52, 'worst_miss_torso_lean_deg': 3.51}, 'arms': {'bar_drop': 0.0, 'grip_ratio_chosen': 1.8, 'reach_short_mm': 0.0}, 'contact': {'hand_vertices': 4618, 'deepest_inside_bar_mm': 1.9209626650390004, 'nearest_gap_mm_min': -1.9209626650390004, 'frames_touching_within_3mm': 61, 'frames': 69}}
+  standing f68  knee_included                  target                      160 ours   160.0 PASS
+  standing f68  hip_included                   target                      167 ours   157.5 FAIL
+  standing f68  torso_lean                     target                        7 ours     3.6 PASS
+  standing f68  elbow_included                 target                       90 ours    46.1 FAIL
+  standing f68  upperarm_vs_torso              target                       41 ours    44.2 PASS
+  standing f68  grip_ratio                     target                     1.87 ours    1.76 PASS
+  standing f68  elbow_width_ratio              target                     1.98 ours     1.7 FAIL
+  standing f68  wrist_above_shoulder_sw        target about 0 (slightly above) ours   -0.09 PASS
+  standing f68  elbow_below_shoulder_sw        target                     ~0.5 ours    0.48 PASS
+  standing f68  forearm_from_vertical_behind   target                        0 ours     3.9 PASS
+  mid      f50  knee_included                  target                       88 ours    87.3 PASS
+  mid      f50  hip_included                   target                       98 ours    96.8 PASS
+  mid      f50  torso_lean                     target                       18 ours    17.4 PASS
+  mid      f50  elbow_included                 target                      100 ours    44.5 FAIL
+  mid      f50  upperarm_vs_torso              target                       50 ours    48.7 PASS
+  mid      f50  grip_ratio                     target                     1.87 ours    1.73 FAIL
+  mid      f50  elbow_width_ratio              target                     1.98 ours    1.74 FAIL
+  mid      f50  wrist_above_shoulder_sw        target about 0 (slightly above) ours   -0.04 PASS
+  mid      f50  elbow_below_shoulder_sw        target                     ~0.5 ours    0.44 PASS
+  mid      f50  forearm_from_vertical_behind   target                        0 ours     0.3 PASS
+  bottom   f38  knee_included                  target                       64 ours    64.0 PASS
+  bottom   f38  hip_included                   target                       77 ours    76.1 PASS
+  bottom   f38  torso_lean                     target                       22 ours    20.9 PASS
+  bottom   f38  elbow_included                 target                       82 ours    43.8 FAIL
+  bottom   f38  upperarm_vs_torso              target                       52 ours    49.2 PASS
+  bottom   f38  grip_ratio                     target                     1.87 ours    1.69 FAIL
+  bottom   f38  elbow_width_ratio              target                     1.98 ours    1.72 FAIL
+  bottom   f38  wrist_above_shoulder_sw        target about 0 (slightly above) ours    -0.0 PASS
+  bottom   f38  elbow_below_shoulder_sw        target                     ~0.5 ours    0.41 PASS
+  bottom   f38  forearm_from_vertical_behind   target                        0 ours     2.2 PASS
+  bottom   f38  hip_vs_knee_mm                 target       about 0 (parallel) ours    34.1 FAIL
+mpfb: contact penetration 28.91 mm | left sole slide 1.36 mm lift 1.72 mm | right sole slide 1.44 mm lift 2.65 mm | crack max 0.0000 mm over 26304 pairs | deepest frame 32: max edge growth 129.4 mm, 1215 edges > 1%
+retarget report -> /private/tmp/claude-501/-Users-lywrbwm-Developer-faces/fb556b81-ba32-4179-9f78-dbf99c0dabb2/scratchpad/t12/form5/retarget.json
+Info: Saved as "squat.blend"
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:49:19)
+OBJ import of 'base.obj' took 12.05 ms
+OBJ import of 'base.obj' took 8.52 ms
+OBJ import of 'base.obj' took 8.00 ms
+OBJ import of 'base.obj' took 7.93 ms
+OBJ import of 'base.obj' took 11.41 ms
+OBJ import of 'base.obj' took 7.95 ms
+OBJ import of 'base.obj' took 8.25 ms
+
+Blender quit

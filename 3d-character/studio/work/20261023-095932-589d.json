@@ -1,0 +1,58 @@
+{
+  "id": "20261023-095932-589d",
+  "title": "Stand tall at the start like the coach (fix how torso lean is measured and aimed)",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T06:59:32.431Z",
+  "updatedAt": "2026-10-23T07:58:38.633Z",
+  "finishedAt": "2026-10-23T07:58:38.633Z",
+  "log": [
+    {
+      "at": "2026-10-23T06:59:32.477Z",
+      "text": "Latest run: 21 pass / 6 fail. Back and head now pass, but at the start he tips forward about 20° from the hips while the coach stands nearly upright — his shoulder joints sit further back than a person's, so matching the coach's lean number makes him tilt too far. Fixing how lean is measured so it matches what you see."
+    },
+    {
+      "at": "2026-10-23T07:00:11.317Z",
+      "text": "Started: reading the brief and measuring where the character's torso line sits compared with the coach's at the start, middle and end of the squat."
+    },
+    {
+      "at": "2026-10-23T07:08:45.133Z",
+      "text": "Measured: at rest the rig's shoulder joints sit 76 mm behind its hip joints, so its upright bind pose reads 15.3° leaning BACK; at the start his chest is turned 25° forward from that upright pose while the old lean row read only 7°. MediaPipe run on our own stills agrees with the eye: about 4° at rest and 19° at the start (coach 7°)."
+    },
+    {
+      "at": "2026-10-23T07:14:52.241Z",
+      "text": "Chose the fix: our torso line is now counted from the character's own upright bind pose (the rig's 15.3° backward offset is taken out in the side camera's view), for the lean, the hip angle, the upper-arm angle and the neck angle alike. Checked first: the skin of his trunk turns with the chest bones (24/35/39° from upright at start/middle/end), and the bind pose's neck then reads 13°, the same neutral as the coach's 13.4°."
+    },
+    {
+      "at": "2026-10-23T07:24:39.308Z",
+      "text": "Built it in the Studio's measuring and in the animation solver (tests first: standing tall reads 0°, a 20° forward tilt reads 20°); the Studio now also hands the coach's neck and face numbers to the solver in its own targets file. Starting a full test run in my scratch folder."
+    },
+    {
+      "at": "2026-10-23T07:27:12.098Z",
+      "text": "Fixed the three small Studio display issues too: a position's tally and a run's history bar now turn amber (not green) when something wasn't measured, and the face-direction / skin-stretch rows say 'Shown only' when there's no reading; checked on a throwaway Studio, not yours."
+    },
+    {
+      "at": "2026-10-23T07:40:56.566Z",
+      "text": "Test run 1: he now stands upright at the start (lean 7° like the coach's 7°), middle and end leans match (18°, 22°), back straight, head in line (35/15/13° vs coach 39/13/13) and the face now points like the coach's. One regression: with his head further forward the bar could ride higher on his back, and the arm search took it - the upper-arm rows went from pass to 'limited'. Measured why and fixing the arm search next."
+    },
+    {
+      "at": "2026-10-23T07:49:24.383Z",
+      "text": "Arm fix: the arm search now ranks bar heights by the Studio's own upper-arm rows at the coach's three positions (on the side the Studio's camera sees), and searches the bar's height in finer steps. On run 1's pose it picks the bar 0.14 above the shoulders: upper arm 46/49/49° vs coach 41/50/52, wrists within 19°. Starting test run 2."
+    },
+    {
+      "at": "2026-10-23T07:58:38.594Z",
+      "text": "Final test run 2 checked and looked at: start stands upright like the coach (lean 7° vs 7°, counted from his own upright pose; it was 22°), middle 18° vs 18°, end 22° vs 22°; back straight, head in line, upper arm passes at all three again (45/49/50° vs 41/50/52°), feet, floor, hands on bar 69/69, smooth motion all pass - 21 pass / 6 fail, the same rows as before. The known left-hand fold is the same size but visible on more frames (31 vs 12). All Studio and Blender tests pass."
+    }
+  ],
+  "summary": "He now stands upright at the start like the coach: torso lean (counted from his own upright pose) 22.5 -> 7.1° at the start (coach 6.7), middle 31 -> 18 (18.4), end 37 -> 22 (22.4); head in line and the face now points like the coach's; every check that passed still passes (21 pass / 6 fail). The left-hand fold (known) shows on more frames.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-105839-abd8"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T07:58:39.350Z",
+  "rerunNote": null
+}

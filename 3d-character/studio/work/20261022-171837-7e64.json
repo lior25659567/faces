@@ -1,0 +1,62 @@
+{
+  "id": "20261022-171837-7e64",
+  "title": "Fix skin folding over at the shoulders, neckline, belly and shorts",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-22T14:18:37.095Z",
+  "updatedAt": "2026-10-22T16:33:15.327Z",
+  "finishedAt": "2026-10-22T16:33:15.327Z",
+  "log": [
+    {
+      "at": "2026-10-22T14:18:37.135Z",
+      "text": "Starting: measuring each fold the Studio found (neckline, both shoulders, belly notch, shorts crotch, left collarbone)"
+    },
+    {
+      "at": "2026-10-22T14:19:16.680Z",
+      "text": "Started: reading the earlier reports and looking at the pictures of the five places where the skin folds over."
+    },
+    {
+      "at": "2026-10-22T14:22:05.161Z",
+      "text": "Copied the latest squat run to a private folder and pulled out the skin, its bone weights and every frame's pose, so each fold can be measured off-line."
+    },
+    {
+      "at": "2026-10-22T14:31:40.441Z",
+      "text": "Measured the latest squat the Studio's way: neckline up to 2,897 mm², right shoulder 950, left shoulder 919, front of the shorts 731, belly 367, left collarbone 304. Re-ran the skin-weight step with every stage recorded so each fold can be traced to the step that made it."
+    },
+    {
+      "at": "2026-10-22T14:35:56.403Z",
+      "text": "Root causes found. Neckline: the head tilts back 21–34° against the chest, but the neck's skin switches from 'chest' to 'head' in one step (the neck bone covers only 2 cm). Belly: the weight-fitting step made a step on the tank top. Shorts: the left and right thighs meet at a step on the front seam. Shoulders: the upper arm twists about 100° to hold the bar and the shoulder skin blends that twist."
+    },
+    {
+      "at": "2026-10-22T15:07:53.396Z",
+      "text": "Tried fixes off-line on the real squat motion. Smoothing the weights everywhere also made the waist fold, so I am smoothing only where bones meet. Two changes remove every fold at all five places in all 69 frames, with no new folds elsewhere. The neck gets a smooth chest-to-head blend all the way round. The shoulders, waist and hip joints get the smoothest blend of their own bones. Next: building this into the pipeline and running the full squat."
+    },
+    {
+      "at": "2026-10-22T15:12:13.435Z",
+      "text": "Built the fix into the skin-weight step (skin_wrap.py, backed up as .bak-15). It reproduces the off-line result: all five places at zero. The first full squat run with it is going now in my scratch folder."
+    },
+    {
+      "at": "2026-10-22T15:38:43.296Z",
+      "text": "Third full run passes the skin-weight step's own safety checks. Measured the Studio's way, the neckline, both shoulders, the collarbone, the belly and the shorts no longer fold in any frame; form, feet, floor, hands on the bar and cracks are unchanged. One side effect: the smoother left shoulder no longer hides an old fold at the root of the left thumb (from the grip work), so the camera now sees 111 mm² of it. Checking the grip numbers and rendering before/after pictures next."
+    },
+    {
+      "at": "2026-10-22T16:04:00.042Z",
+      "text": "Looking at the GIF up close, the fixed neck had a new problem: the throat skin slid under the tank top's collar and poked out at its edge. I now hold the skin under the collar to the chest, the same as the collar, and keep the arms' weight off the neck. Off-line that keeps all five places at zero, nothing new, and the collar stays on the skin (largest slip 19 mm, was 42 in the live run). Fifth full run going now."
+    },
+    {
+      "at": "2026-10-22T16:33:15.256Z",
+      "text": "Final full run checked: none of the five places folds in any frame. Grip numbers are unchanged (largest difference 0.1°), and the form rows, feet, floor, hands on the bar and cracks are identical to the live run. I looked at close-ups and at the GIF up close; the throat, shoulders, belly and shorts are clean, and the collar stays on the neck."
+    }
+  ],
+  "summary": "Skin no longer folds over at the five places, in every frame of the squat. Neckline 2,897 → 0 mm² (hidden part under the chin 3,282 → 0), left shoulder 919 → 0, right shoulder 950 → 0, left collarbone 304 → 0, belly 367 → 0, front of the shorts 952 → 0. The fix is in the skin-weight step: the neck now blends smoothly from chest to head all the way round, and the shoulders, waist and hips blend smoothly where their bones meet. Form, feet, floor, hands on the bar, cracks and the grip are unchanged. The shorts' crotch also no longer tears at the bottom (58 mm → 1.7 mm). One thing will still show: an old fold at the root of the left thumb (from the grip work, 1,324 mm², same size as before) used to be hidden behind the left shoulder's fold. With the shoulder fixed, the camera now sees 111–193 mm² of it, so the folded-skin row will name 'the left hand'. That is the next thing to fix.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261022-193317-6779"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-22T16:33:17.776Z",
+  "rerunNote": null
+}

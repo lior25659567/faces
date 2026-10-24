@@ -1,0 +1,12 @@
+{
+  "name": "exercise-studio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "setup": "bash setup.sh"
+  }
+}

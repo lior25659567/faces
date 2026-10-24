@@ -1,0 +1,188 @@
+.checks-empty {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: var(--t-s);
+}
+
+.checks-scroll {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.checks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-s);
+}
+
+.checks-table thead th {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  text-align: left;
+}
+
+.checks-table th.checks-num,
+.checks-table td.checks-num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.checks-group th {
+  padding: 14px 12px 6px;
+  background: var(--surface);
+  text-align: left;
+  font-size: var(--t-s);
+  font-weight: 700;
+}
+
+.checks-group th > span:first-child {
+  margin-right: 10px;
+}
+
+.checks-group-note {
+  color: var(--ink-3);
+  font-weight: 400;
+  font-size: var(--t-xs);
+}
+
+.checks-group-tally {
+  float: right;
+  font-size: var(--t-xs);
+  font-weight: 650;
+}
+
+.checks-group-tally.is-pass {
+  color: var(--pass);
+}
+
+.checks-group-tally.is-fail {
+  color: var(--fail);
+}
+
+/* everything judged passes, but some rows weren't measured on the character: amber, never green */
+.checks-group-tally.is-unmeasured {
+  color: var(--limited);
+}
+
+tbody + tbody .checks-group th {
+  border-top: 1px solid var(--line);
+}
+
+.checks-row th,
+.checks-row td {
+  padding: 8px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.checks-row + .checks-row th,
+.checks-row + .checks-row td {
+  border-top: 1px solid var(--sunken);
+}
+
+.checks-name {
+  width: 27%;
+  font-weight: 500;
+}
+
+.checks-num {
+  width: 10%;
+  color: var(--ink);
+}
+
+.checks-status {
+  width: 15%;
+}
+
+.checks-note {
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.checks-hint {
+  display: block;
+  margin-top: 2px;
+  color: var(--uncertain);
+  font-style: italic;
+}
+
+.checks-row.is-fail .checks-num:nth-of-type(2) {
+  color: var(--fail);
+  font-weight: 650;
+}
+
+@media (max-width: 680px) {
+  .checks-table thead {
+    display: none;
+  }
+
+  .checks-table,
+  .checks-table tbody,
+  .checks-row,
+  .checks-group,
+  .checks-group th {
+    display: block;
+  }
+
+  .checks-group th {
+    padding: 14px 12px 4px;
+  }
+
+  .checks-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 4px 12px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--sunken);
+  }
+
+  .checks-row th,
+  .checks-row td,
+  .checks-row + .checks-row th,
+  .checks-row + .checks-row td {
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .checks-name {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .checks-table td.checks-num {
+    text-align: left;
+  }
+
+  .checks-row td[data-label='Coach']::before,
+  .checks-row td[data-label='Allowed']::before,
+  .checks-row td[data-label='Ours']::before {
+    content: attr(data-label) ' ';
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+
+  .checks-status {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .checks-note {
+    grid-column: 1 / -1;
+  }
+
+  .checks-note:empty {
+    display: none;
+  }
+}
+
+/* checks that would be judged but weren't measured on the character keep the exercise from passing */
+.checks-unmeasured {
+  color: var(--limited);
+  font-weight: 600;
+}

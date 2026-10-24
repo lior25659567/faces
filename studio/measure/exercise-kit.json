@@ -1,0 +1,33 @@
+{
+  "about": "What each exercise holds in the hands (holds), what holds the body up besides the floor (support), whether its feet step (steps), and what of it the animation path builds (built), and whether its depth at the bottom is judged (depth: the seat against the top of the knee, task 22). One table for the pipeline (pipeline/blender/animate.py --keyposes), the checks (studio/measure/kit.py, checks.py) and the Studio's server (studio/server/store.js). The 14 names are reference/exercises/poses.json's; an exercise added in the Studio goes by its equipment word (by_equipment). built: the held equipment the --mpfb path makes - only the back squat's bar (animate.py MPFB_BARBELL_ON_BACK). Task 9 review.",
+  "exercises": {
+    "Barbell Back Squat": {"holds": "bar", "built": true, "depth": true},
+    "Conventional Barbell Deadlift": {"holds": "bar"},
+    "Flat Barbell Bench Press": {"holds": "bar", "support": "bench"},
+    "Standing Barbell Overhead Press (Shoulder Press)": {"holds": "bar"},
+    "Barbell Bent-Over Row": {"holds": "bar"},
+    "Pull-Up": {"support": "pull-up bar"},
+    "Lat Pulldown (seated, to the front)": {"holds": "cable bar", "support": "seat"},
+    "Dumbbell Bicep Curl (standing, both arms)": {"holds": "dumbbells"},
+    "Dumbbell Lateral Raise": {"holds": "dumbbells"},
+    "Dumbbell Shoulder Press (seated overhead press)": {"holds": "dumbbells", "support": "seat"},
+    "Walking Lunge (dumbbells optional)": {"steps": true, "clip": "lunge.fbx"},
+    "Front Plank (forearm plank)": {},
+    "Tricep Pushdown (cable, bar or rope attachment)": {"holds": "cable handle"},
+    "Leg Press (seated machine)": {"support": "leg-press sled"}
+  },
+  "by_equipment": {
+    "barbell": {"holds": "bar"},
+    "dumbbells": {"holds": "dumbbells"},
+    "cable": {"holds": "cable handle"},
+    "bench": {"support": "bench"},
+    "machine": {"support": "machine"},
+    "bodyweight": {},
+    "other": {}
+  },
+  "refusals": {
+    "steps": "No motion for this exercise: its feet step, which the picture path can't animate yet. Add {clip} to 3d-character/mixamo (its README says how).",
+    "support": "No motion for this exercise: it needs a {support} the picture path doesn't build yet."
+  },
+  "unheld": "No {holds} on this path yet; the hands hold nothing"
+}

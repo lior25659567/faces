@@ -1,0 +1,50 @@
+{
+  "id": "20261023-174417-e19a",
+  "title": "Fine-tune depth: judge the thigh the way it looks",
+  "exercises": [
+    "barbell-back-squat"
+  ],
+  "status": "done",
+  "startedAt": "2026-10-23T14:44:17.910Z",
+  "updatedAt": "2026-10-23T15:29:22.869Z",
+  "finishedAt": "2026-10-23T15:29:22.869Z",
+  "log": [
+    {
+      "at": "2026-10-23T14:44:17.959Z",
+      "text": "After the last fix he stops near parallel, a few degrees high, and the depth check passes. But the measure still has a small bias: his standing thighs naturally lean back about 4°, so poses that look most like the coach read a little too deep. Calibrating the thigh from how it looks standing, then aiming at the coach's depth exactly."
+    },
+    {
+      "at": "2026-10-23T14:45:45.574Z",
+      "text": "Started: the thigh and shin will be counted from how their skin looks in the standing pose (about 6° off the joints, not 10.6°), and the squat will hold its bottom at the coach's depth. Measuring the skin outline of each leg in the standing pose first."
+    },
+    {
+      "at": "2026-10-23T14:54:34.098Z",
+      "text": "Measured each leg's skin outline in the standing pose: the thighs lean back 4.5° (right) / 5.0° (left) where their joint lines lean 10.5° / 10.8°; MediaPipe on the standing render agrees (hip 171.9, ~4° back). The shin's own outline is all knee and heel, so the shin turns with the thigh and the knee keeps its joint reading (MediaPipe: 178.4, straight). Built and tested in a scratch copy; running a full scratch animation now."
+    },
+    {
+      "at": "2026-10-23T15:02:02.611Z",
+      "text": "Scratch run with the new count and the depth held at the coach's −0.05: every row as before or better (depth −0.047 pass, middle knee 105.7 vs coach 104.7; 20 pass / 5 fail / 4 uncertain), the standing pose reads hip 175.2 (MediaPipe on the same render: 171.8 with a 4° lean). But beside 17.png the bottom now looks a little above parallel — the thigh slopes down to the knee where the coach's is level. Checking a variant before closing."
+    },
+    {
+      "at": "2026-10-23T15:08:49.050Z",
+      "text": "Compared two versions beside 17.png at the same thigh length: holding the bottom at the coach's −0.05 by the new count leaves the hips visibly above the knees (thigh outline 7° downhill, the coach's level); letting it sit where the depth check's margin stops it (+0.03, still a pass) puts the thigh level like the coach's. The coach's −0.05 is his MediaPipe line, which runs ~4° below his visible thigh. Going with the level-looking one and flagging it for review."
+    },
+    {
+      "at": "2026-10-23T15:18:15.731Z",
+      "text": "Applied (8 files, backed up as .bak-20b) while the Studio was idle: the thigh is counted from its skin outline in the Studio and the solver, and the clip-less key-position path counts the legs the same way. Running the tests and a final scratch run from the real code."
+    },
+    {
+      "at": "2026-10-23T15:29:22.832Z",
+      "text": "Verified from the real code: standing reads hip 175.2 (MediaPipe on the same render 172.0 with a 4° lean; on a person-shaped test human the two agree within 0.3°); bottom depth +0.03 (pass) with the thigh level like the coach's; middle knee 104.9 vs the coach's 104.7; 20 pass / 5 fail / 4 uncertain. All tests pass (the clip-less test squat's hip reads 90.3). Holding the number at exactly −0.05 was built and tested too, but it left the hips visibly above the knees, so it is not switched on — flagged for review."
+    }
+  ],
+  "summary": "The thigh is now judged by its skin outline (how it looks), in the Studio and the animation alike. The bottom's thigh sits level like the coach's (depth +0.03, pass); 20 pass / 5 fail / 4 uncertain. Holding the depth at exactly the coach's −0.05 made the hips sit visibly above the knees, so that part is left off pending review.",
+  "rerun": [
+    {
+      "slug": "barbell-back-squat",
+      "runId": "20261023-182924-f861"
+    }
+  ],
+  "rerunQueuedAt": "2026-10-23T15:29:24.891Z",
+  "rerunNote": null
+}
