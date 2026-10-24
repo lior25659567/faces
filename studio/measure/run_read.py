@@ -11,7 +11,7 @@ from read_pose import NoBody, read_pose  # noqa: E402
 from preflight import plan_for  # noqa: E402
 from pose_cache import read_cached  # noqa: E402
 
-KEY_FIELDS = ("view", "facing", "camera_side", "size", "world", "pixels")
+KEY_FIELDS = ("view", "facing", "camera_side", "size", "world", "pixels", "visibility")
 
 
 def key_positions(targets, measured):

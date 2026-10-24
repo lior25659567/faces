@@ -1,11 +1,11 @@
 {
-  "about": "What each exercise holds in the hands (holds), what holds the body up besides the floor (support), whether its feet step (steps), and what of it the animation path builds (built), and whether its depth at the bottom is judged (depth: the seat against the top of the knee, task 22). One table for the pipeline (pipeline/blender/animate.py --keyposes), the checks (studio/measure/kit.py, checks.py) and the Studio's server (studio/server/store.js). The 14 names are reference/exercises/poses.json's; an exercise added in the Studio goes by its equipment word (by_equipment). built: the held equipment the --mpfb path makes - only the back squat's bar (animate.py MPFB_BARBELL_ON_BACK). Task 9 review.",
+  "about": "What each exercise holds in the hands (holds), what holds the body up besides the floor (support), whether its feet step (steps), and what of it the animation path builds (built), and whether its depth at the bottom is judged (depth: the seat against the top of the knee, task 22). One table for the pipeline (pipeline/blender/animate.py --keyposes), the checks (studio/measure/kit.py, checks.py) and the Studio's server (studio/server/store.js). The 14 names are reference/exercises/poses.json's; an exercise added in the Studio goes by its equipment word (by_equipment). built: the held equipment the --mpfb path makes - the back squat's and bent-over row's bars (animate.py). Task 9 review.",
   "exercises": {
     "Barbell Back Squat": {"holds": "bar", "built": true, "depth": true},
     "Conventional Barbell Deadlift": {"holds": "bar"},
     "Flat Barbell Bench Press": {"holds": "bar", "support": "bench"},
     "Standing Barbell Overhead Press (Shoulder Press)": {"holds": "bar"},
-    "Barbell Bent-Over Row": {"holds": "bar"},
+    "Barbell Bent-Over Row": {"holds": "bar", "built": true},
     "Pull-Up": {"support": "pull-up bar"},
     "Lat Pulldown (seated, to the front)": {"holds": "cable bar", "support": "seat"},
     "Dumbbell Bicep Curl (standing, both arms)": {"holds": "dumbbells"},

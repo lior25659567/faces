@@ -24,7 +24,7 @@ NOT_MEASURED, NOT_JUDGED, SHOWN_ONLY = "not-measured", "not-judged", "shown-only
 SHOWN_ONLY_METRICS = ("head_pitch", "skin_stretch")
 # Exercises whose character holds a bar (pipeline/blender/animate.py: the form-target solver and
 # MPFB_BARBELL_ON_BACK): their hands_on_bar row is there even when the contact wasn't measured.
-BAR_EXERCISES = SOLVER_EXERCISES
+BAR_EXERCISES = SOLVER_EXERCISES + ("Barbell Bent-Over Row",)
 NOT_IN_COACH_PICTURE = "Not judged: not measured in the coach's picture"
 
 CRACK_MAX_MM = 1.0
@@ -281,6 +281,10 @@ def _phase_rows(targets, ours, exercise):
                     said = _joined(f"Deeper than the coach by {deeper:.2f} thigh lengths", said)
                 if said != PREDATES and not (said or "").startswith(NOT_ON_CHARACTER):
                     said = _joined(said, SEAT_ABOUT)
+            elif isinstance(t, dict) and t.get("source") == "inferred_3d":
+                # An oblique photo's inferred depth cannot be checked against a new estimate
+                # from a side render. Compare with the actual rig and disclose the reference limit.
+                mine, said, doubt = rig, "Reference angle inferred from three-quarter depth; compared with the 3D rig", False
             else:
                 mine, said, doubt = _picture_read(ours, phase, metric, method, rig, _tol(metric, tol), _num(target))
             if metric == "seat_below_knee" and not isinstance(t, dict):     # targets read before it existed
@@ -309,6 +313,8 @@ def _phase_rows(targets, ours, exercise):
                 rows.append(_row(phase, metric, t["value"], mine, "uncertain", frame, said, uncertain_why="ours"))
             else:
                 st, note, _ = _judge(exercise, arm, _want(targets, phase), metric, t["value"], mine, _tol(metric, tol))
+                if exercise == "Barbell Bent-Over Row" and phase == "end" and metric == "torso_lean":
+                    said = _joined(said, "The row holds the starting torso hinge")
                 rows.append(_row(phase, metric, t["value"], mine, st, frame, _joined(note, said)))
     warning = (ours.get("legs_at_rest") or {}).get("warning") if isinstance(ours.get("legs_at_rest"), dict) else None
     if warning:     # the bind pose's legs, which every leg reading of ours is counted from, may read off (task 21)
@@ -380,6 +386,18 @@ def _body_rows(report, exercise, equipment=None):
         rows.append(_row("body", "feet_in_floor", FEET_IN_FLOOR_MAX_MM, pen,
                          "pass" if pen <= FEET_IN_FLOOR_MAX_MM else "fail", contact.get("penetration_frame"), None, "mm"))
     hands = ((report.get("form") or {}).get("contact") or (report.get("grip") or {}).get("contact"))
+    if hands and exercise == "Barbell Bent-Over Row":
+        # A combined minimum can hide a floating hand. A row needs independent
+        # finite-shaft measurements on both hands for the same complete animation.
+        sides = hands.get("sides") or {}
+        n = _num(hands.get("frames"))
+        reads = [sides.get(side) or {} for side in ("left", "right")]
+        if not n or any(r.get("frames") != n or _num(r.get("deepest_inside_bar_mm")) is None
+                        or _num(r.get("frames_touching_within_3mm")) is None for r in reads):
+            hands = None
+        else:
+            hands = {**hands, "deepest_inside_bar_mm": max(r["deepest_inside_bar_mm"] for r in reads),
+                     "frames_touching_within_3mm": min(r["frames_touching_within_3mm"] for r in reads)}
     if not hands and exercise in BAR_EXERCISES:
         rows.append(_missing("body", "hands_on_bar", BAR_DEPTH_MAX_MM, "mm"))
     elif hands and not (_num(hands.get("deepest_inside_bar_mm")) is not None

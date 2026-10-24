@@ -266,7 +266,9 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
             ) : check.state === 'failed' ? (
               <p>{check.message}</p>
             ) : (
-              <p>Start with side views of the beginning and end of the movement. Label each position and view, then check the references.</p>
+              <p>{exercise.name === 'Barbell Bent-Over Row'
+                ? 'Start with matching side or three-quarter views of the beginning and end. Label their positions and actual views, then check the references.'
+                : 'Start with side views of the beginning and end of the movement. Label each position and view, then check the references.'}</p>
             )}
             {currentReferenceBundle?.preflight?.mode && <p className="exercise-check-mode">Movement source: {currentReferenceBundle.preflight.mode}.</p>}
             {check.blockers?.length > 0 && <ul>{check.blockers.map((message, i) => <li key={i}>{message}</li>)}</ul>}

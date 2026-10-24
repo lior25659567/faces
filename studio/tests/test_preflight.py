@@ -53,12 +53,17 @@ def test_invalid_target_cannot_enable_solver(value):
 def test_row_uses_reference_motion_even_with_clip_and_explains_missing_bar():
     snap = inputs(False)
     snap['exercise'] = 'Barbell Bent-Over Row'
-    result = plan(snap, 'row.fbx')
+    targets = build_targets(snap['exercise'], snap['images'], RAW)
+    keys = run_read.key_positions(targets, RAW)
+    for entry in keys['phases']:
+        # This older committed reading predates pixel output; provide explicit test coordinates.
+        entry['pixels'] = {name: point[:2] for name, point in entry['world'].items()}
+    result = plan_for(snap, targets, None, keys, 'row.fbx')
     assert result['ready']
     assert result['mode'] == 'Image key poses'
     assert not any('does not correct' in w for w in result['warnings'])
-    assert any('hand contact' in w for w in result['warnings'])
-    assert plan(snap, None)['mode'] == 'Image key poses'
+    assert not any('does not yet build' in w for w in result['warnings'])
+    assert plan_for(snap, targets, None, keys, None)['mode'] == 'Image key poses'
 
 
 def test_run_read_writes_blockers_and_removes_stale_solver_targets(tmp_path, monkeypatch):

@@ -32,7 +32,7 @@ def test_a_support_the_path_does_not_build_is_refused(name, support):
                                          "doesn't build yet.")
 
 
-@pytest.mark.parametrize("name", ["Barbell Back Squat", "Conventional Barbell Deadlift", "Front Plank (forearm plank)",
+@pytest.mark.parametrize("name", ["Barbell Bent-Over Row", "Barbell Back Squat", "Conventional Barbell Deadlift", "Front Plank (forearm plank)",
                                   "Dumbbell Lateral Raise", "Tricep Pushdown (cable, bar or rope attachment)"])
 def test_standing_or_lying_exercises_move(name):
     assert kit.picture_refusal(name) is None
@@ -41,7 +41,6 @@ def test_standing_or_lying_exercises_move(name):
 @pytest.mark.parametrize("name,thing", [
     ("Conventional Barbell Deadlift", "bar"),
     ("Standing Barbell Overhead Press (Shoulder Press)", "bar"),
-    ("Barbell Bent-Over Row", "bar"),
     ("Dumbbell Bicep Curl (standing, both arms)", "dumbbells"),
     ("Dumbbell Lateral Raise", "dumbbells"),
     ("Tricep Pushdown (cable, bar or rope attachment)", "cable handle")])
@@ -49,7 +48,7 @@ def test_equipment_held_but_not_built_is_named(name, thing):
     assert kit.unheld(name) == thing
 
 
-@pytest.mark.parametrize("name", ["Barbell Back Squat", "Front Plank (forearm plank)",
+@pytest.mark.parametrize("name", ["Barbell Bent-Over Row", "Barbell Back Squat", "Front Plank (forearm plank)",
                                   "Walking Lunge (dumbbells optional)"])
 def test_nothing_unheld_when_the_bar_is_built_or_nothing_is_held(name):
     # the back squat's bar is built on the --mpfb path (animate.MPFB_BARBELL_ON_BACK); the plank holds nothing; the

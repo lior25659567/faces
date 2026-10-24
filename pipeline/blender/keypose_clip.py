@@ -434,6 +434,10 @@ def key_poses(keyposes, rest, notes=None, feet="planted", legs=DOWN):
             continue
         entry = by_phase[phase]
         body, arms, found = key_points(entry, stance=stance)
+        if keyposes.get("exercise") == "Barbell Bent-Over Row":
+            from row_motion import symmetric_body
+            body = symmetric_body(body)
+            found["square"] = True
         if feet == "planted" and stance is None:
             stance = stance_of(body)
         out.append((phase, bone_turns(body, arms, rest, square=found["square"], legs=legs)))

@@ -107,7 +107,7 @@ export const uncertainHint = (row) =>
 // the picture path refuses it (its feet step, or a bench/seat it doesn't build: the server's `pictureRefusal`,
 // studio/measure/exercise-kit.json), and saying when the hands hold nothing there (`unheld`).
 export const motionSource = (exercise) => {
-  if (exercise?.name === 'Barbell Bent-Over Row') return "Reference motion with a stable torso; bar contact is not yet solved"
+  if (exercise?.name === 'Barbell Bent-Over Row') return "Reference motion with a stable torso and shared bar"
   if (exercise?.clip) return `Motion from ${exercise.clip}`
   if (exercise?.pictureRefusal) return exercise.pictureRefusal
   const holding = exercise?.unheld ? `, holding no ${exercise.unheld}` : ''

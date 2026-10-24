@@ -40,6 +40,7 @@ TOLERANCE = {"angles_deg": 5, "ratios": 0.12, "hip_below_knee": 0.10, "seat_belo
 CROSS_LIMIT = {"angle": 2 * TOLERANCE["angles_deg"], "ratio": 2 * TOLERANCE["ratios"],
                "neck": 2 * TOLERANCE["neck_vs_torso"]}
 SOLVER_EXERCISES = ("Barbell Back Squat",)
+ROW_EXERCISE = "Barbell Bent-Over Row"
 PHASES = ("start", "middle", "end")
 SIDE_VIEWS = ("side",)
 FRONT_VIEWS = ("front", "behind", "frontal")
@@ -79,6 +80,19 @@ def _reading(result, metric, image_id):
         if cross is not None:
             uncertain = abs(value - cross) > CROSS_LIMIT[_kind(metric)]
     return {"value": value, "method": method, "cross": cross, "uncertain": uncertain, "image": image_id}
+
+
+def _oblique_reading(result, metric, image_id):
+    """An inferred 3D angle, never the foreshortened angle of an oblique photograph.
+
+    The flat value is not a cross-check here: it measures a different projection. Keep
+    the source explicit so downstream reports can distinguish an inferred target.
+    """
+    value = (result.get("3d") or {}).get(metric)
+    if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+        return None
+    return {"value": value, "method": "3d", "cross": None, "uncertain": False,
+            "image": image_id, "source": "inferred_3d"}
 
 
 def _posture_reading(result, metric, image_id):
@@ -136,6 +150,8 @@ def _mean(a, b):
         if k not in b:
             continue
         x, y = a[k], b[k]
+        if x["method"] != y["method"]:
+            continue  # a projected side angle and inferred 3D angle are not interchangeable
         out[k] = {"value": half(x["value"], y["value"]), "method": x["method"], "cross": half(x["cross"], y["cross"]),
                   "uncertain": x["uncertain"] or y["uncertain"], "image": None}
     return out
@@ -155,22 +171,27 @@ def build_targets(exercise, images, measured, equipment=None):
             result = Exception("not measured")
         why = _why_not(m, result)
         view = m.get("view") or (None if isinstance(result, Exception) else result.get("view"))
-        if why or view not in SIDE_VIEWS or m.get("phase") in phases:
+        oblique_row = exercise == ROW_EXERCISE and view == "three-quarter"
+        phase_view = view in SIDE_VIEWS or oblique_row
+        if why or not phase_view or m.get("phase") in phases:
             problem = _problem(m, result, view)
             if problem:
                 problems.append(problem)
         if why:
             info[i] = {"used": False, "why": why, "view": view}
             continue
-        if view in SIDE_VIEWS:
+        if phase_view:
             phase = m["phase"]
             if phase in phases:
                 info[i] = {"used": False, "why": f"Another image already gives the {phase} position", "view": view}
                 continue
-            reads = {k: _reading(result, k, i) for k in ANGLE_METRICS + (depth if phase == "end" else ())}
+            reader = _oblique_reading if oblique_row else _reading
+            reads = {k: reader(result, k, i) for k in ANGLE_METRICS + (depth if phase == "end" else ())}
             # the seat's depth kept without a value where his picture doesn't show it, as a posture is
             seat = ("seat_below_knee",) if phase == "end" and "seat_below_knee" in depth else ()
-            reads.update({k: _posture_reading(result, k, i) for k in POSTURE_METRICS + seat})
+            # The silhouette and face direction of an oblique view do not give side posture.
+            if not oblique_row:
+                reads.update({k: _posture_reading(result, k, i) for k in POSTURE_METRICS + seat})
             phases[phase] = {k: v for k, v in reads.items() if v is not None}
             camera = camera or {"side": result["camera_side"], "facing": result["facing"]}
             info[i] = {"used": True, "why": None, "view": view}
@@ -187,7 +208,8 @@ def build_targets(exercise, images, measured, equipment=None):
     missing = [p for p in ("start", "end") if p not in phases]
     if missing:
         named = f" {'; '.join(problems)}." if problems else ""
-        raise TooFewPositions("Need a start and an end position from side-view images with a body found; "
+        views = "side or three-quarter images" if exercise == ROW_EXERCISE else "side-view images"
+        raise TooFewPositions(f"Need a start and an end position from {views} with a body found; "
                               f"missing: {' and '.join(missing)}.{named}", info)
     if "middle" not in phases:
         mid = _mean(phases["start"], phases["end"])

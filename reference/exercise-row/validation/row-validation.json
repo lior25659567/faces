@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "frames": 81,
+  "source": "replayed saved scene with real reference inputs",
+  "anchor_error_mm": 0.004289668595447438,
+  "hinge_drift_deg": 0.0,
+  "grip_width_range_mm": 0.0012218952178955078,
+  "bar_rise_mm": 37.69230842590332,
+  "minimum_bar_rise_mm": 27.14656256139278,
+  "contracted_frame": 46,
+  "reference_elbows_deg": {
+    "start": 172.45831229554616,
+    "end": 107.85303171154656
+  },
+  "actual_elbows_deg": {
+    "start": {
+      "left": 164.82044877934334,
+      "right": 164.35662684803813
+    },
+    "end": {
+      "left": 99.58978714487087,
+      "right": 100.7727830654001
+    }
+  },
+  "position_jumps": {
+    "bar": {
+      "max_mm": 4.035209771245718,
+      "seam_mm": 0.07736709812888876
+    },
+    "left": {
+      "max_mm": 4.308788571506739,
+      "seam_mm": 0.07738879503449425
+    },
+    "right": {
+      "max_mm": 4.742375575006008,
+      "seam_mm": 0.07742276648059487
+    }
+  },
+  "hand_rotation_jumps": {
+    "left": {
+      "max_deg": 4.99996991889075,
+      "seam_deg": 0.0
+    },
+    "right": {
+      "max_deg": 5.000283083145979,
+      "seam_deg": 0.0
+    }
+  },
+  "hand_contact": {
+    "left": {
+      "frames": 81,
+      "frames_touching_within_3mm": 81,
+      "deepest_inside_bar_mm": 0.7933494759223706,
+      "nearest_gap_mm_max": 0.021679350648808743
+    },
+    "right": {
+      "frames": 81,
+      "frames_touching_within_3mm": 81,
+      "deepest_inside_bar_mm": 0.803380714031722,
+      "nearest_gap_mm_max": 0.050451843053647694
+    }
+  },
+  "feet": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 2,
+    "sides": {
+      "left": {
+        "sole_vertices": 486,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.21403823792934418,
+        -0.11317221820354462,
+        -1.511296659373329e-06
+      ],
+      [
+        0.2122659981250763,
+        0.42092758417129517,
+        0.8354917168617249
+      ]
+    ]
+  },
+  "render_sample_sha256": [
+    "4a7fa929af81922641a410a47b1170a5826fa8e980c8d79b3a7b8ce6b51057a3",
+    "993536161a5444c9d0eef6d04692215fb05dab95aeb513419313dc675074f9ba",
+    "0c054a90127b710850c6c1e2a4f9673b6fbeb9795197e9411e2f4f8bf4203568",
+    "3a77cdba532ca5d52fec38c1d887afff1647630ad0a123c3997bda1dc2e2ad56",
+    "4710324596bcff441993281d6a1630560986219b72a21a29fb511cb68e78f164",
+    "d3d7a70d772c96a5db9509fd7e49c820b80a4d672606274b0ff7ccc6003bbcf1"
+  ]
+}

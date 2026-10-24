@@ -27,3 +27,8 @@ test('an exercise of our own goes by its equipment word', () => {
   expect(pictureRefusal('Burpee', 'bodyweight')).toBeNull()
   expect(unheld('Burpee', undefined)).toBeNull()
 })
+
+
+test('the row builds its bar rather than reporting empty hands', () => {
+  expect(unheld('Barbell Bent-Over Row')).toBeNull()
+})

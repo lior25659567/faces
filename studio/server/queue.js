@@ -30,7 +30,7 @@ export const realSpawn = (cmd, args, opts) => {
 
 const spawnFailure = (cmd, e) => {
   if (e?.code === 'ENOENT') {
-    if (cmd === BLENDER) return "Blender isn't where the Studio expects it (/Applications/Blender.app)."
+    if (cmd === BLENDER) return `Blender could not be found (${BLENDER}). Install it or set STUDIO_BLENDER to its executable.`
     if (cmd === PYTHON) return "The Studio's Python isn't set up. Run: cd studio && npm run setup"
   }
   return `The Studio could not start this step: ${e?.message || e}`
@@ -58,7 +58,7 @@ export const installShutdown = (queue, { proc = process, graceMs = 1500, exit = 
 
 const pgrepBlender = () => {
   try {
-    execFileSync('pgrep', ['-f', 'Blender.app/Contents/MacOS/Blender'], { stdio: 'ignore' })
+    execFileSync('pgrep', ['-x', 'Blender|blender'], { stdio: 'ignore' })
     return true
   } catch {
     return false // pgrep exits 1 when nothing matches

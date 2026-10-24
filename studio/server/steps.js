@@ -64,7 +64,7 @@ export const commandFor = (processId, run, runDir, exercise) => {
       cmd: BLENDER,
       args: ['--background', '--python-exit-code', '1', '--python-expr', UNBUFFERED,
         '--python', path.join(REPO, 'pipeline', 'blender', 'animate.py'), '--',
-        '--mpfb', '--exercise', name, '--wrap-skin', SKIN, ...motion,
+        '--mpfb', '--fast', '--exercise', name, '--wrap-skin', SKIN, ...motion,
         ...(existsSync(targets) ? ['--form-targets', targets] : []),
         '--side-view', '--out', path.join(runDir, 'frames'), '--gif', path.join(runDir, 'animation.gif'),
         '--save', path.join(runDir, 'scene.blend')],

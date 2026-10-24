@@ -541,6 +541,14 @@ def run_mpfb(args):
         for row in result["form_report"]["table"]:
             print(f"  {row['phase']:8s} f{row['frame']:<3d} {row['metric']:30s} target {str(row['target']):>24s} "
                   f"ours {row['ours']:>7} {'PASS' if row['pass'] else 'FAIL'}")
+    elif args.exercise == "Barbell Bent-Over Row":
+        import row_bar
+        bar, row = row_bar.apply(rig, skin, first, last,
+                                targets=Path(args.keyposes).with_name("targets.json") if args.keyposes else None,
+                                keyposes=args.keyposes)
+        held.append(bar)
+        result["row"] = row
+        result["grip"] = {"contact": row["contact"]}
     elif args.exercise in MPFB_BARBELL_ON_BACK:
         scene.frame_set(first)
         bar, where = mpfb_cage.mount_barbell(rig, skin)
@@ -559,6 +567,20 @@ def run_mpfb(args):
           f" | deepest frame {d['deepest_frame']}: max edge growth "
           f"{d['deepest']['max_growth_mm']:.1f} mm, {d['deepest']['edges_over_1pct']} edges > 1%")
     scene.frame_set(first)
+    if held:
+        import numpy as np
+        low, high = np.array(c["box"][0]), np.array(c["box"][1])
+        for frame in range(first, last + 1):
+            scene.frame_set(frame)
+            for prop in held:
+                points = np.array([prop.matrix_world @ Vector(corner) for corner in prop.bound_box])
+                low, high = np.minimum(low, points.min(axis=0)), np.maximum(high, points.max(axis=0))
+        # A padded bounding cube fits props at both preview camera angles. Keep the
+        # physical skin contact box separate from this virtual camera framing box.
+        centre = (low + high) / 2
+        half = max(float(max(high - low)), .5) * .55
+        result["preview_box"] = [(centre - half).tolist(), (centre + half).tolist()]
+        scene.frame_set(first)
     if args.out or args.save:
         report = Path(args.out) if args.out else Path(args.save).parent
         report.mkdir(parents=True, exist_ok=True)
@@ -566,8 +588,8 @@ def run_mpfb(args):
     if args.out:
         import numpy as np
         out = Path(args.out)
-        mpfb_cage.preview_set(args.width, args.height)
-        low, high = np.array(c["box"][0]), np.array(c["box"][1])
+        mpfb_cage.preview_set(args.width, args.height, samples=4 if args.fast else 16)
+        low, high = np.array(result.get("preview_box", c["box"]))
         centre = (low + high) / 2
         distance = mpfb_cage.distance_for(max(high[2] - low[2], 0.5) * 1.05)
         mpfb_cage.camera_on(centre, 35, 10, distance)
@@ -716,8 +738,8 @@ def main():
     if args.keyposes and not args.mpfb:
         parser.error("--keyposes works on the --mpfb path (with --wrap-skin)")
     if args.mpfb:
-        args.width = args.width or 560
-        args.height = args.height or 560
+        args.width = args.width or (360 if args.fast else 560)
+        args.height = args.height or (360 if args.fast else 560)
         run_mpfb(args)
         return
     args.width = args.width or (360 if args.fast else 540)

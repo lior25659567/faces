@@ -734,7 +734,8 @@ def gif_box(run, skin, first, last):
     """The box animate.py framed the GIF on: the run's frames/retarget.json contact box (the skin over
     the clip), or, without a readable one, that box measured again frame by frame."""
     try:
-        box = json.loads((Path(run) / "frames" / "retarget.json").read_text())["contact"]["box"]
+        report = json.loads((Path(run) / "frames" / "retarget.json").read_text())
+        box = report.get("preview_box", report["contact"]["box"])
         box = np.array(box, dtype=float)
         if box.shape == (2, 3) and np.isfinite(box).all():
             return box

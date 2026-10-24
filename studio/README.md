@@ -2,8 +2,9 @@
 
 From the repository root, install JavaScript dependencies with `npm ci`. Set up the pose reader with
 `cd studio && npm run setup`, then start Studio with `npm run dev` from `studio/`.
-The full animation pipeline currently expects macOS Blender at `/Applications/Blender.app`, the MPFB
-setup, and the mascot assets. Frontend builds and the pure Python/JavaScript tests can run on Linux.
+The animation pipeline needs Blender 5.2 with MPFB and the mascot assets. On macOS it uses
+`/Applications/Blender.app`; on Linux it uses `blender` or the `STUDIO_BLENDER` executable override.
+The cloud environment has a tested Blender wrapper under `/workspace/.tools/bin/blender-faces`.
 
 ## Prepare references before building
 
@@ -19,11 +20,37 @@ correction inputs now stop before Blender instead of silently rendering the unch
 A joint overlay shows what the reader detected in the photograph; it does not certify inferred 3D depth.
 
 Bent-over rows use image key poses even when a motion clip exists. The starting torso and lower-body
-pose are held throughout the rep to prevent drift while the arms move. They do not yet have
-a dedicated bar or hand-contact solver. An existing non-squat motion clip is compared with the pictures
-but is not corrected toward them. The reference check reports these limitations before a build; more
-rerenders cannot remove them. Developing row-specific bar contact and motion constraints requires a
-separate Blender validation pass with representative row images.
+pose are held throughout the rep while the arms move. The visible reference arm drives both sides, preventing hidden-arm depth noise from weakening the pull.
+A separate row solver puts both closed hands
+on one level bar, keeps the grip width fixed, checks each hand's actual skin contact, and reports any
+reach adjustment needed for the mascot's proportions. It also reports torso/thigh collision candidates.
+
+Use Start and End references photographed from the same view: both side or both three-quarter.
+Three-quarter references use explicitly marked inferred 3D depth, so their measurements are approximate.
+A stationary hinge can intentionally differ from a demonstration that raises its torso as it pulls.
+Studio uses `--fast` for 360 px, four-sample GIF previews; comparison stills retain their usual settings.
+Preview framing includes the held bar so its ends remain visible.
+Other non-squat exercises with existing clips are compared against their references without changing
+the clip's motion.
+
+To add the sourced example photos without replacing your own references or starting a build:
+
+```bash
+node studio/scripts/import-row-references.mjs
+```
+
+The command is repeatable. Original photos, licenses and provenance are in `reference/exercise-row/`.
+They are three-quarter views, never relabeled as side views. Select **Barbell Bent-Over Row** in Studio,
+check the references, then build. On Linux set `STUDIO_BLENDER` to a Blender 5.2 executable or wrapper;
+macOS retains the standard application path by default. The cloud snapshot's tested wrapper is
+`/workspace/.tools/bin/blender-faces`.
+
+A completed run can be independently replayed and checked without fitting/rendering it again:
+
+```bash
+blender --background RUN/scene.blend --python-exit-code 1 \
+  --python studio/tests/blender/test_row_contact.py -- --run RUN
+```
 
 Successful image readings are cached per exercise under `runs/<exercise>/.pose-cache/`. Image contents,
 reader code, model and dependency versions form the cache key. Phase/view changes rebuild targets from
