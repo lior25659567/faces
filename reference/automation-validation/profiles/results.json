@@ -727,7 +727,7 @@
     {
       "exercise": "Lat Pulldown (seated, to the front)",
       "runId": "20261024-160053-7f93",
-      "status": "needs-review",
+      "status": "blocked",
       "summary": {
         "pass": 13,
         "fail": 0,
@@ -1111,11 +1111,12 @@
           ],
           "ready": true
         }
-      }
+      },
+      "assessment": "Historical candidate rejected after adding the overhead-start completion check; contact and fold checks alone did not establish full movement range."
     }
   ],
   "referenceOnlyBatch": {
-    "id": "5cb105f3-60b7-471a-89b8-fca6e298f019",
+    "id": "3b79bcc6-76cf-4ffd-b1e5-1e6a486ad471",
     "status": "done",
     "items": [
       {
@@ -1150,8 +1151,8 @@
       },
       {
         "name": "Lat Pulldown (seated, to the front)",
-        "status": "ready",
-        "message": "References are ready. Rendering was not requested."
+        "status": "blocked",
+        "message": "The current reference/model combination does not reach the required overhead start. Support and grip contact pass, but the pulldown range is incomplete."
       },
       {
         "name": "Dumbbell Bicep Curl (standing, both arms)",
@@ -1330,6 +1331,168 @@
           "metric": "foot_floor_gap_right",
           "target": 5.0,
           "ours": 1.862645149230957e-05,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        }
+      ]
+    }
+  },
+  "pulldownCompletionRejection": {
+    "runId": "20261024-162241-619b",
+    "status": "failed",
+    "renderStarted": false,
+    "gifProduced": false,
+    "checks": {
+      "summary": {
+        "pass": 11,
+        "fail": 1,
+        "limited": 0,
+        "uncertain": 0,
+        "info": 0,
+        "unmeasured": 0
+      },
+      "rows": [
+        {
+          "group": "body",
+          "metric": "equipment_gap_left",
+          "target": 3.0,
+          "ours": 0.023420679378641576,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_left",
+          "target": 3.0,
+          "ours": 0.794683399555349,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_gap_right",
+          "target": 3.0,
+          "ours": 0.050525146363101375,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_right",
+          "target": 3.0,
+          "ours": 0.7998675726826298,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_anchor_error",
+          "target": 2.0,
+          "ours": 0.00031166301281708116,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_path_adaptation",
+          "target": 20.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Reach adaptation changes the photographed equipment path.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_body_overlap",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "overhead_shortfall",
+          "target": 0.0,
+          "ours": 93.9091444015503,
+          "status": "fail",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Both handles must reach above the head; a secure grip alone does not complete an overhead press.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_pelvis",
+          "target": 5.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_pelvis",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_left",
+          "target": 5.0,
+          "ours": 0.5908176535740495,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_right",
+          "target": 5.0,
+          "ours": 0.0,
           "status": "pass",
           "unit": "mm",
           "frame": 1,

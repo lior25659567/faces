@@ -46,7 +46,7 @@ def rows_for(report):
                 'Finite convex weight-head/body surface samples; inspect the rendered silhouette too.')
         if profile.get('overhead'):
             row('overhead_shortfall', contacts.get('overhead_shortfall_mm'), 0., complete,
-                'Both handles must reach above the head; a secure grip alone does not complete an overhead press.')
+                'Both handles must reach above the head; a secure grip alone does not establish the required movement range.')
     supports = physical.get('supports') or {}
     required = {'seated': ('pelvis',), 'supine': ('pelvis', 'back'),
         'hold': ('left_forearm', 'right_forearm', 'left_toe', 'right_toe'),

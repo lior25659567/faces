@@ -598,7 +598,7 @@ def run_mpfb(args):
                 summary = {s: sum(r['status'] == s for r in rows) for s in ('pass', 'fail', 'limited', 'uncertain', 'info')}
                 summary['unmeasured'] = sum(r.get('kind') == 'not-measured' for r in rows)
                 (run / 'checks.json').write_text(json.dumps({'summary': summary, 'rows': rows}, allow_nan=False))
-            raise SystemExit('The reference pose could not satisfy equipment, body or support contact on this character. '
+            raise SystemExit('The reference pose could not satisfy the required movement or contact constraints on this character. '
                              'The measured details were saved in Checks. Rendering stopped before producing an inaccurate preview.')
     c, d = result["contact"], result["deformation"]
     print(f"mpfb: contact penetration {c['penetration_mm']} mm | "

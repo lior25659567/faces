@@ -25,7 +25,8 @@ def profile_for(exercise):
     row = PROFILES.get(exercise)
     return {'family': row[0], 'feet': row[1], 'mode': 'hold' if row[0] == 'hold' else 'cycle',
             'holds': row[0] not in ('hold', 'sled'),
-            'overhead': exercise in ('Standing Barbell Overhead Press (Shoulder Press)', 'Dumbbell Shoulder Press (seated overhead press)')} if row else None
+            'overhead': exercise in ('Standing Barbell Overhead Press (Shoulder Press)', 'Dumbbell Shoulder Press (seated overhead press)',
+                                     'Lat Pulldown (seated, to the front)')} if row else None
 
 
 def prepare_key_turns(exercise, keys):

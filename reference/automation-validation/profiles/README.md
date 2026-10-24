@@ -10,9 +10,9 @@ photos, Blender 5.2.2/MPFB 2.0.18 and the Studio queue. The new previews use 12 
 | Biceps curl | 12 | 0 | 10 | 0 | [Render](biceps-curl.gif) |
 | Lateral raise | 13 | 0 | 10 | 0 | [Render](lateral-raise.gif) |
 | Conventional deadlift | 14 | 1 | 10 | 0 | [Render](deadlift.gif) |
-| Seated lat pulldown | 13 | 0 | 10 | 0 | [Render](lat-pulldown.gif) |
+| Seated lat pulldown — rejected candidate | 13 | 0 | 10 | 0 | [Rejected render](lat-pulldown.gif) |
 
-Every result needs review. The ten angle measurements come from inferred photo
+Every result needs review; the pulldown candidate is rejected. The ten angle measurements come from inferred photo
 depth; they are never promoted into calibrated measurements. The deadlift still
 fails a visible left collarbone skin-fold check (992 mm² against a 100 mm² limit).
 Its neutral-neck adjustment did not eliminate that fold; the failure is retained.
@@ -20,7 +20,10 @@ Bounded clavicle-roll probes did not establish a correction and were not shipped
 
 The pulldown's clavicle elevation shares high-arm motion with the shoulder girdle
 while preserving the measured world arm directions. Its former visible shoulder
-fold no longer fails in the corrected full render, with the original fold limits.
+fold no longer fails in the corrected candidate render, with the original fold limits.
+Visual review nevertheless found an incomplete overhead start. The added movement
+completion check rejects it before producing another GIF. Its historical candidate
+is retained as evidence of why contact and skin checks alone cannot approve a lift.
 The deadlift keeps its shaft outside the body and bounds the necessary reach
 correction to 20 mm; this case needed at most 14.1 mm.
 
@@ -36,8 +39,9 @@ overlapped the body by 7.8 mm. Measured Checks and the scene were saved; no GIF 
 animation frames were produced. The final check also verifies that Studio keeps
 the render step waiting when this happens. A grip alone cannot approve that pose.
 
-All 14 source sets were rechecked unattended. Five were ready for supported
-rendering; nine remained blocked. The squat needs genuine side and width photos;
+All 14 source sets were rechecked unattended. Reference readiness is separate from
+the physical and movement-completion gates. The final batch had four reference-ready
+exercises and ten blocked. The squat needs genuine side and width photos;
 the lunge lacks calibrated stepping positions. Other prototypes retain unresolved
 head/reach, body-support or machine-path constraints, including the plank's raised
 forearms and the leg press's incompatible sled path. They are not automatically

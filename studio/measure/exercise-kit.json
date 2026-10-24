@@ -34,9 +34,10 @@
       "holds": "cable bar",
       "support": "seat",
       "built": true,
-      "automatic": true,
+      "automatic": false,
       "referenceMotion": true,
-      "supportBuilt": true
+      "supportBuilt": true,
+      "automationBlocker": "The current reference/model combination does not reach the required overhead start. Support and grip contact pass, but the pulldown range is incomplete."
     },
     "Dumbbell Bicep Curl (standing, both arms)": {
       "holds": "dumbbells",

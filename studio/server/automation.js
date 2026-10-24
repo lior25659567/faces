@@ -214,7 +214,7 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     if (result.status !== 'done') {
       const physical = json(path.join(store.runDir(item.slug, result.id), 'frames', 'retarget.json'))?.physical?.validation
       if (physical?.ready === false) return update(job, item, { status: 'blocked', summary: json(path.join(store.runDir(item.slug, result.id), 'checks.json'))?.summary || result.summary,
-        message: 'The reference pose could not satisfy contact with the equipment, body or support on this character. Rendering stopped; open the result for measured corrections.' })
+        message: 'The pose failed movement completion or physical contact on this character. Rendering stopped; open the result for measured corrections.' })
       return update(job, item, { status: 'failed', message: result.error?.message || 'The animation did not complete.' })
     }
     const checks = json(path.join(store.runDir(item.slug, result.id), 'checks.json'))

@@ -13,6 +13,7 @@ import hand_rig
 import mpfb_cage as cage
 import skin_wrap
 from row_motion import shaft_gaps, solve_shared_bar
+from motion_profiles import profile_for
 
 SIDES = (('left', 'Left', -1), ('right', 'Right', 1))
 DUMBBELLS = {'Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise',
@@ -211,7 +212,7 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None):
         report['body_clearance'] = body_clearance(rig, skin, props['bar'], first, last, include_head=True)
     else:
         report['head_body_clearance'] = dumbbell_clearance(skin, props, first, last, height)
-    if 'Overhead Press' in exercise or exercise == 'Dumbbell Shoulder Press (seated overhead press)':
+    if (profile_for(exercise) or {}).get('overhead'):
         head = {g.index for g in skin.vertex_groups if 'Head' in g.name}
         mask = np.array([sum(g.weight for g in v.groups if g.group in head) > .5 for v in skin.data.vertices])
         clearances = []

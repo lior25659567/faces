@@ -80,7 +80,7 @@ variants at a pinned source revision, with verified image hashes, provenance, an
 Manual references are kept. Missing parts of an earlier automatic import can be completed without
 duplicating its pictures. Unchanged valid completed results are reused unless `--force` is given.
 
-The row, back squat, deadlift, biceps curl, lateral raise and seated lat-pulldown profiles are
+The row, back squat, deadlift, biceps curl and lateral raise profiles are
 enabled for automation. Each still has to pass reference preflight and its physical contact checks. The catalog's squat pair supplies only three-quarter views, so it cannot satisfy
 the required side positions and front/rear grip-width reference on its own. Unsupported equipment,
 missing views, unsuitable source poses, and failed form checks stay visible as blockers or review
@@ -137,3 +137,7 @@ The deadlift still has a visible collar skin-fold failure; it remains review wor
 uncertain for the new oblique references. Other prototypes are not enabled until their support,
 reach, movement completion and equipment clearances validate on the mascot. Restart Studio after
 updating `exercise-kit.json` to refresh its loaded capability table.
+
+The seated pulldown prototype has valid support/contact but does not reach the required overhead
+start on this mascot. It is blocked alongside the overhead presses; the completion check prevents
+those incomplete poses from producing a new preview.

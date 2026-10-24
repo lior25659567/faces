@@ -106,6 +106,7 @@ def test_an_overhead_grip_does_not_certify_an_incomplete_overhead_pose():
     report = {'frames': 1, 'physical': {'profile': {'overhead': True}, 'contacts': {'frames': 1, 'overhead_shortfall_mm': 50.}}}
     rows = rows_for(report)
     assert any(r['metric'] == 'overhead_shortfall' and r['status'] == 'fail' for r in rows)
+    assert profile_for('Lat Pulldown (seated, to the front)')['overhead']
 
 
 def test_high_pulldown_arms_share_elevation_with_clavicles_without_rotating_the_measured_arms():
