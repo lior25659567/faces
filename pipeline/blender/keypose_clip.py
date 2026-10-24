@@ -425,7 +425,10 @@ def key_poses(keyposes, rest, notes=None, feet="planted", legs=DOWN):
         phase = entry.get("phase")
         if phase in PHASES and phase not in by_phase and entry.get("world"):
             by_phase[phase] = entry
-    if "start" not in by_phase or "end" not in by_phase:
+    hold = (keyposes.get('motion') or {}).get('mode') == 'hold'
+    if hold and len(by_phase) == 1:
+        by_phase = {'start': next(iter(by_phase.values()))}
+    elif "start" not in by_phase or "end" not in by_phase:
         raise ValueError("Need a start and an end position from side pictures to move between; found "
                          + (", ".join(p for p in PHASES if p in by_phase) or "none"))
     out, stance = [], None
@@ -438,6 +441,18 @@ def key_poses(keyposes, rest, notes=None, feet="planted", legs=DOWN):
             from row_motion import symmetric_body
             body = symmetric_body(body)
             found["square"] = True
+        else:
+            from motion_profiles import profile_for
+            if profile_for(keyposes.get('exercise')):
+                from row_motion import symmetric_body
+                body = symmetric_body(body)
+                # Every currently supported profile is a simultaneous bilateral
+                # movement. Depth noise must not lift one foot off the floor.
+                seen = entry.get('camera_side')
+                arms = _mirrored_arm(arms, seen) if entry.get('view') in ('side', 'three-quarter') and seen in ('left', 'right') else symmetric_body(arms)
+                for side in ('left', 'right'):
+                    body, _ = _hinge_knee(body, side)
+                found['square'] = True
         if feet == "planted" and stance is None:
             stance = stance_of(body)
         out.append((phase, bone_turns(body, arms, rest, square=found["square"], legs=legs)))
@@ -494,6 +509,8 @@ def pose_at(keys, marks, s):
 
 def motion(keys, fps=FPS, feet="planted"):
     """Every frame's bone turns. "planted" feet keep the first position's foot throughout."""
+    if len(keys) == 1:
+        return [{name: value.copy() for name, value in keys[0].items()} for _ in range(round(fps))]
     if feet == "planted":
         keys = [{**k, **{b: keys[0][b] for b in FEET}} for k in keys]
     marks = path_marks(keys)
@@ -535,6 +552,8 @@ def clip_from_keyposes(rest, keyposes, fps=FPS, feet="planted", label="keyposes.
     if lacking:
         raise ValueError(f"the rest clip has no {lacking} bones (load it with turned='all')")
     key_turns = [turns for _, turns in keys]
+    from motion_profiles import prepare_key_turns
+    key_turns = prepare_key_turns(keyposes.get('exercise'), key_turns)
     if keyposes.get("exercise") == "Barbell Bent-Over Row":
         from row_motion import stabilize_body
         key_turns = stabilize_body(key_turns)

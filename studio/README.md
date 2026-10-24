@@ -80,8 +80,8 @@ variants at a pinned source revision, with verified image hashes, provenance, an
 Manual references are kept. Missing parts of an earlier automatic import can be completed without
 duplicating its pictures. Unchanged valid completed results are reused unless `--force` is given.
 
-Only the row and back-squat builders are currently enabled for automatic rendering, and each still
-has to pass preflight. The catalog's squat pair supplies only three-quarter views, so it cannot satisfy
+The row, back squat, deadlift, biceps curl, lateral raise and seated lat-pulldown profiles are
+enabled for automation. Each still has to pass reference preflight and its physical contact checks. The catalog's squat pair supplies only three-quarter views, so it cannot satisfy
 the required side positions and front/rear grip-width reference on its own. Unsupported equipment,
 missing views, unsuitable source poses, and failed form checks stay visible as blockers or review
 items. The plank's static hold and the lunge's alternate lowered stances are not invented into motion
@@ -91,6 +91,12 @@ cycles.
 Closing the panel does not stop the batch. A backend restart marks unfinished batches interrupted;
 they do not resume automatically. Start a new batch to continue, preserving imported references and
 completed results.
+
+The new profiles build finite hand handles and body supports, preserve bilateral symmetry and
+keep the torso/legs still on isolation movements. Fast previews use 12 fps; comparison stills keep
+560 px resolution with four EEVEE samples. Photo depth inferred from an oblique/frontal view stays
+uncertain, even when contact passes. Impossible contact stops before rendering and saves its
+measurements in Checks. Overhead completion and weight/head collision are separate from grip.
 
 To enable another exercise, implement its motion/equipment constraints and validate real rendered
 poses and contact checks first. Only then opt its named entry into `automatic: true` in
@@ -116,10 +122,18 @@ From the repository root:
 
 ```bash
 npm test --prefix studio -- server/preflight.test.js server/preflight-api.test.js server/steps.test.js src/lib
+npm test --prefix studio -- server/automation.test.js server/automation-api.test.js server/reference-catalog.test.js server/reference-fetch.test.js
 npm run build --prefix studio
-python -m pytest studio/tests/test_preflight.py studio/tests/test_build_targets.py studio/tests/test_pose_cache.py studio/tests/test_picture_round.py
+studio/.venv/bin/python -m pytest studio/tests/test_preflight.py studio/tests/test_build_targets.py studio/tests/test_pose_cache.py studio/tests/test_picture_round.py studio/tests/test_motion_profiles.py
 ```
 
 The Python checks need `pytest`, `numpy`, and `pillow`; the real photo-reader CLI additionally needs the
 Studio model and MediaPipe. Some older tests require private reference pictures excluded from Git or
 macOS image tools. Blender render quality and contact checks must run with the full pipeline installed.
+
+The [expanded validation report](../reference/automation-validation/profiles/README.md) includes
+actual GIFs, per-run measurements, known failures, and independent saved-scene contact replays.
+The deadlift still has a visible collar skin-fold failure; it remains review work. Source depth is
+uncertain for the new oblique references. Other prototypes are not enabled until their support,
+reach, movement completion and equipment clearances validate on the mascot. Restart Studio after
+updating `exercise-kit.json` to refresh its loaded capability table.

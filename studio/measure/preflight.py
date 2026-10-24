@@ -1,7 +1,7 @@
 """Describe what the selected animation path can actually do before starting Blender."""
 import math
 
-from build_targets import FORM_KEYS, PHASES, ROW_EXERCISE, SOLVER_EXERCISES, WIDTH_METRICS
+from build_targets import FORM_KEYS, PHASES, ROW_EXERCISE, REFERENCE_EXERCISES, SOLVER_EXERCISES, WIDTH_METRICS
 from kit import picture_refusal, unheld
 
 LABELS = {"knee_included": "knee bend", "hip_included": "hip bend", "torso_lean": "torso lean",
@@ -64,8 +64,32 @@ def plan_for(snapshot, targets, pipeline_targets, keys, clip=None):
     row = exercise == ROW_EXERCISE
     if row:
         clip = None
+    reference = exercise in REFERENCE_EXERCISES
+    if reference:
+        clip = None
     mode = "Corrected reference poses" if solver else "Existing motion clip" if clip else "Image key poses"
     blockers, warnings = [], []
+    if reference:
+        entries = (keys or {}).get('phases') or []
+        hold = (targets.get('motion') or {}).get('mode') == 'hold'
+        expected = {'start'} if hold else {'start', 'end'}
+        if not expected.issubset({e.get('phase') for e in entries}):
+            blockers.append('A readable hold position is required.' if hold else 'Readable Start and End positions are required.')
+        if hold and len(entries) != 1:
+            blockers.append('Use one active forearm-plank hold; setup and transition pictures must be context only.')
+        views = {e.get('view') for e in entries}
+        if not views.issubset({'side', 'three-quarter', 'front', 'behind', 'frontal'}) or len(views) > 1:
+            blockers.append('Use matching camera views, tagged as photographed.')
+        for entry in entries:
+            world = entry.get('world') or {}
+            if any(not _point(world.get(name), 3) for name in ROW_JOINTS):
+                blockers.append(f"The {entry.get('phase')} position has missing or invalid body landmarks.")
+            if entry.get('view') == 'side' and entry.get('camera_side') not in ('left', 'right'):
+                blockers.append('The reference camera side could not be determined.')
+        if views - {'side'}:
+            warnings.append('Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.')
+        if hold:
+            warnings.append('This is a static hold. The builder repeats the photographed hold without inventing a setup or movement cycle.')
     if row:
         blockers.extend(row_key_problems(keys))
         warnings.append("The visible arm drives both sides of this bilateral row. The hidden arm's estimated depth is not used independently.")

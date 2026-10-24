@@ -1293,6 +1293,7 @@ class BoneRetarget:
         heavy = [m for m in self.skin.modifiers if m.show_viewport] if self.skin else []
         anchors, previous, frames_out = {}, {}, []
         shortfall = residual = 0.0
+        initial_floor_shift = Vector((0.0, 0.0, 0.0))
         try:
             for m in heavy:
                 m.show_viewport = False
@@ -1306,6 +1307,7 @@ class BoneRetarget:
                     for m in heavy:
                         m.show_viewport = True
                     lift = self.floor - float(_skin_points(self.skin)[:, 2].min()) if self.skin else 0.0
+                    initial_floor_shift.z = lift
                     for m in heavy:
                         m.show_viewport = False
                     self._move_root(Vector((0.0, 0.0, lift)))
@@ -1322,7 +1324,10 @@ class BoneRetarget:
                         shortfall = max(shortfall, self._two_bone(s, world, world_rot, anchors[s]))
                     world = self._world()
                 elif self.feet == "free" and i > 0:
-                    pass                          # grounded per frame below
+                    # pose_frame resets the root. Preserve the initial floor offset;
+                    # otherwise a free-foot hold jumps between frames one and two.
+                    self._move_root(initial_floor_shift)
+                    world = self._world()
                 # key: rotations on one hemisphere frame to frame, and the root's location
                 for pb in rig.pose.bones:
                     q = pb.rotation_quaternion.copy()
@@ -1367,6 +1372,7 @@ def skin_contact(rig, skin, first_frame, last_frame, floor=0.0, sole_band=0.012)
     out = {"penetration_mm": 0.0, "penetration_frame": None}
     sole = {}
     start = {}
+    initial_gaps = {}
     worst = {s: {"slide": 0.0, "lift": 0.0, "frame": None} for s in ("left", "right")}
     low, high = None, None
     for frame in range(first_frame, last_frame + 1):
@@ -1384,11 +1390,23 @@ def skin_contact(rig, skin, first_frame, last_frame, floor=0.0, sole_band=0.012)
                    + rig.matrix_world @ pose[names["RightUpLeg"]].head) / 2
             for s, sign in (("left", -1.0), ("right", 1.0)):
                 pick = ((pts[:, 0] - mid.x) * sign > 0) & (pts[:, 2] < floor + sole_band)
+                if not pick.any():
+                    # A raised/hanging foot has no vertices near the floor. Track
+                    # its own sole and report the floor gap instead of crashing or
+                    # treating an empty set as zero movement.
+                    title = s.title()
+                    groups = {g.index for g in skin.vertex_groups if title + 'Foot' in g.name or title + 'ToeBase' in g.name}
+                    foot = np.array([sum(g.weight for g in v.groups if g.group in groups) > .5 for v in skin.data.vertices])
+                    if foot.any():
+                        pick = foot & (pts[:, 2] < float(pts[foot, 2].min()) + sole_band)
                 sole[s] = np.flatnonzero(pick)
                 start[s] = pts[pick].copy()
+                initial_gaps[s] = max(0., float(pts[pick, 2].min()) - floor) * 1000 if pick.any() else None
             continue
         for s in ("left", "right"):
             now = pts[sole[s]]
+            if not len(now):
+                continue
             slide = float(np.linalg.norm(now[:, :2] - start[s][:, :2], axis=1).max())
             lift = float(np.abs(now[:, 2] - start[s][:, 2]).max())
             if slide > worst[s]["slide"]:
@@ -1396,8 +1414,9 @@ def skin_contact(rig, skin, first_frame, last_frame, floor=0.0, sole_band=0.012)
             worst[s]["lift"] = max(worst[s]["lift"], lift)
     scene.frame_set(first_frame)
     out["penetration_mm"] = round(out["penetration_mm"], 2)
-    out["sides"] = {s: {"sole_vertices": int(len(sole[s])), "sole_slide_mm": round(w["slide"] * 1000, 2),
-                        "slide_frame": w["frame"], "sole_lift_mm": round(w["lift"] * 1000, 2)}
+    out["sides"] = {s: {"sole_vertices": int(len(sole[s])), "sole_slide_mm": round(w["slide"] * 1000, 2) if len(sole[s]) else None,
+                        "slide_frame": w["frame"], "sole_lift_mm": round(w["lift"] * 1000, 2),
+                        "initial_floor_gap_mm": initial_gaps[s]}
                     for s, w in worst.items()}
     out["box"] = [list(map(float, low)), list(map(float, high))]
     return out

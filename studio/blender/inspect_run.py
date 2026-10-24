@@ -1208,6 +1208,9 @@ def inspect(run):
     snapshot = _read_json(run / "references.json", "reference list")
     measured = _read_json(run / "measurements.json", "measurements") if (run / "measurements.json").is_file() else {}
     side = (targets.get("camera") or {}).get("side")
+    if side not in SIDE_TURN and (targets.get('motion') or {}).get('approximateDepth'):
+        side = 'left'
+        log('Using the character left side as a 3D comparison basis; the source photograph is not a side view.')
     if side not in SIDE_TURN:
         raise RunError("The targets do not say which side the reference was photographed from.")
 
@@ -1259,7 +1262,7 @@ def inspect(run):
         log("the pose jumps on frames " + ", ".join(f"{j['frame']} (hips {j['hips_mm']} mm, knees {j['knees_mm']} mm)"
                                                     for j in jumps) + "; not picked as positions")
 
-    mpfb_cage.preview_set(560, 560)
+    mpfb_cage.preview_set(560, 560, samples=4 if targets.get('motion') else 16)
     stills_dir = run / "stills"
     stills_dir.mkdir(parents=True, exist_ok=True)
     keys = [i for i in snapshot.get("images") or [] if not i.get("contextOnly") and not i.get("deleted")]

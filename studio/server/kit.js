@@ -11,14 +11,14 @@ const own = (table, key) => (key != null && Object.hasOwn(table, key) ? table[ke
 
 const kitOf = (name, equipment) => {
   const row = own(KIT.exercises, name) ?? own(KIT.by_equipment, equipment) ?? {}
-  return { holds: row.holds ?? null, support: row.support ?? null, steps: Boolean(row.steps), built: Boolean(row.built), clip: row.clip ?? null }
+  return { holds: row.holds ?? null, support: row.support ?? null, supportBuilt: Boolean(row.supportBuilt), steps: Boolean(row.steps), built: Boolean(row.built), clip: row.clip ?? null }
 }
 
 // The plain sentence the picture path (no Mixamo clip) refuses the exercise with, or null when it can animate it.
 export const pictureRefusal = (name, equipment) => {
   const row = kitOf(name, equipment)
   if (row.steps) return KIT.refusals.steps.replace('{clip}', row.clip || 'its clip')
-  if (row.support) return KIT.refusals.support.replace('{support}', row.support)
+  if (row.support && !row.supportBuilt) return KIT.refusals.support.replace('{support}', row.support)
   return null
 }
 
@@ -31,3 +31,5 @@ export const unheld = (name, equipment) => {
 
 // Opt in only after a motion profile has real rendered validation, not merely a prop.
 export const automaticBuilder = (name) => Boolean(own(KIT.exercises, name)?.automatic)
+export const referenceMotion = (name) => name === 'Barbell Bent-Over Row' || Boolean(own(KIT.exercises, name)?.referenceMotion)
+export const automationBlocker = (name) => own(KIT.exercises, name)?.automationBlocker || null

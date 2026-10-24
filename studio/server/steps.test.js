@@ -16,6 +16,14 @@ test('lists the six steps and four processes', () => {
   expect(PROCESSES.map((p) => p.id)).toEqual(['read', 'animate', 'stills', 'check'])
 })
 
+test('validated reference profiles use the edited photos even if a generic clip is available', async () => {
+  await writeFile(path.join(dir, 'keyposes.json'), '{}')
+  const exercise = { name: 'Dumbbell Lateral Raise', clip: 'lateral-raise.fbx' }
+  const command = commandFor('animate', exercise, dir, exercise)
+  expect(command.args).toContain('--keyposes')
+  expect(command.args).not.toContain('--mixamo')
+})
+
 test('reads the animate log into steps', async () => {
   const lines = (await readFile(new URL('./fixtures/animate-log.txt', import.meta.url), 'utf8')).split('\n')
   const state = {}

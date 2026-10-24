@@ -489,11 +489,14 @@ def run_mpfb(args):
     import json
     import mpfb_cage
     retarget = retarget_module()
+    from motion_profiles import profile_for
+    profile = profile_for(args.exercise) if args.keyposes else None
+    motion_fps = 12 if args.fast and profile else 30
     if not args.wrap_skin or bool(args.mixamo) == bool(args.keyposes):
         raise SystemExit("--mpfb needs --wrap-skin (the skin) and one motion: --mixamo (a clip) or --keyposes "
                          "(the reference pictures' key positions)")
     clip = (retarget.load_clip(args.mixamo, turned="all") if args.mixamo
-            else keypose_clip_from(args.keyposes, args.exercise, args.feet, quiet=True))   # refused here, before building
+            else keypose_clip_from(args.keyposes, args.exercise, args.feet, quiet=True, fps=motion_fps))   # refused here, before building
     workspace = Path(args.out) if args.out else Path(tempfile.gettempdir())
     workspace.mkdir(parents=True, exist_ok=True)
     skin, rig, cage, built = mpfb_cage.wear(args.wrap_skin, workspace)
@@ -505,8 +508,8 @@ def run_mpfb(args):
         lean = sum(leans) / len(leans) if leans else 0.0
         print(f"retarget: the key positions' legs counted from the thighs' skin outline at rest ({lean:+.1f} degrees "
               f"forward of straight down)", flush=True)
-        clip = keypose_clip_from(args.keyposes, args.exercise, args.feet, lean=lean)
-    driver = retarget.BoneRetarget(rig, skin, clip, exercise=args.exercise, feet=args.feet,
+        clip = keypose_clip_from(args.keyposes, args.exercise, args.feet, lean=lean, fps=motion_fps)
+    driver = retarget.BoneRetarget(rig, skin, clip, exercise=args.exercise, feet=args.feet or (profile or {}).get('feet'),
                                    foot_lock=not args.no_foot_lock)
     result = driver.run()
     scene = bpy.context.scene
@@ -515,6 +518,12 @@ def run_mpfb(args):
     result["cage"] = built
 
     held = []
+    if profile:
+        import exercise_supports
+        supports, support_report = exercise_supports.apply(rig, skin, first, last, args.exercise)
+        held.extend(supports)
+        result['physical'] = {'profile': profile, 'supports': support_report}
+        result['contact'] = retarget.skin_contact(rig, skin, first, last)
     if args.form_targets:
         # The poses corrected toward a measured reference, at the clip's own timing
         # (`mpfb_cage`, "matching a reference"); the bar's height and the grip are chosen there.
@@ -557,8 +566,40 @@ def run_mpfb(args):
         result["grip"] = mpfb_cage.grip_bar(rig, bar, first, last)
         result["grip"]["contact"] = mpfb_cage.bar_contact(rig, skin, bar, first, last)
         print(f"mpfb: hands on the bar: {result['grip']}")
+    elif profile:
+        import exercise_contacts
+        props, contacts = exercise_contacts.apply(rig, skin, first, last, args.exercise,
+            pulley_anchor=((result.get('physical') or {}).get('supports') or {}).get('pulley_anchor'))
+        held.extend(props)
+        result['physical']['contacts'] = contacts
     # measured on the animation as it will play: after the grip re-keyed the arms and fingers
     result["deformation"] = mpfb_cage.clip_deformation(rig, skin, first, last)
+    if profile:
+        # Check the actual keyed skin/props before spending time rendering a bad
+        # preview. A successful process is never substituted for valid contact.
+        from physical_checks import rows_for
+        rows = rows_for(result)
+        for side, reading in (result['contact'].get('sides') or {}).items():
+            if profile['family'] in ('standing', 'hinge', 'seated', 'supine'):
+                gap = reading.get('initial_floor_gap_mm')
+                rows.append({'group': 'body', 'metric': 'foot_floor_gap_' + side, 'target': 5., 'ours': gap,
+                    'status': 'pass' if gap is not None and gap <= 5. else 'fail', 'unit': 'mm', 'frame': first,
+                    'kind': None, 'note': 'Feet must reach the floor.', 'uncertain_why': None})
+        failures = [r for r in rows if r['status'] != 'pass']
+        result['physical']['validation'] = {'rows': rows, 'ready': not failures}
+        if failures:
+            # The normal report log starts Studio's render stage. A rejected
+            # physical pose has not reached that stage.
+            (workspace / 'retarget.json').write_text(json.dumps(result, indent=1, default=lambda value: list(value)))
+            print('physical: contact validation blocked this pose before rendering', flush=True)
+            if args.save:
+                bpy.ops.wm.save_as_mainfile(filepath=args.save)
+                run = Path(args.save).parent
+                summary = {s: sum(r['status'] == s for r in rows) for s in ('pass', 'fail', 'limited', 'uncertain', 'info')}
+                summary['unmeasured'] = sum(r.get('kind') == 'not-measured' for r in rows)
+                (run / 'checks.json').write_text(json.dumps({'summary': summary, 'rows': rows}, allow_nan=False))
+            raise SystemExit('The reference pose could not satisfy equipment, body or support contact on this character. '
+                             'The measured details were saved in Checks. Rendering stopped before producing an inaccurate preview.')
     c, d = result["contact"], result["deformation"]
     print(f"mpfb: contact penetration {c['penetration_mm']} mm | "
           + " | ".join(f"{s} sole slide {m['sole_slide_mm']} mm lift {m['sole_lift_mm']} mm"
@@ -613,7 +654,7 @@ def run_mpfb(args):
         export_usdz(Path(args.usdz), skin, rig)
 
 
-def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False):
+def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False, fps=30):
     """`--keyposes`: a clip moving between the reference pictures' key positions (keypose_clip.py), for an
     exercise with no Mixamo clip, on the Mixamo rest every clip shares (read from keypose_clip.REST_CLIP). It is
     a `retarget.Clip` like the one `load_clip` reads, so everything after it in `run_mpfb` is unchanged. The
@@ -629,7 +670,9 @@ def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False):
     # minutes and then die in BoneRetarget on feet 'auto' (task 9 review).
     kit = _kit()
     refusal = kit.picture_refusal(exercise)
-    mode = feet or retarget.EXERCISES.get(exercise, {}).get("feet", "planted")
+    from motion_profiles import profile_for
+    profile = profile_for(exercise)
+    mode = feet or (profile or {}).get('feet') or retarget.EXERCISES.get(exercise, {}).get("feet", "planted")
     if refusal is None and mode not in ("planted", "free"):
         refusal = kit.load()["refusals"]["steps"].format(clip=kit.kit_of(exercise)["clip"] or "its clip")
     if refusal:
@@ -643,7 +686,7 @@ def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False):
     rest = retarget.load_clip(keypose_clip.REST_CLIP, turned="all")
     try:
         legs = keypose_clip.DOWN if lean is None else keypose_clip.leg_rest(lean)
-        clip = keypose_clip.clip_from_keyposes(rest, json.loads(path.read_text()), feet=mode, label=str(path),
+        clip = keypose_clip.clip_from_keyposes(rest, json.loads(path.read_text()), fps=fps, feet=mode, label=str(path),
                                                legs=legs)
     except ValueError as problem:
         raise SystemExit(f"No motion for this exercise: {problem}") from None

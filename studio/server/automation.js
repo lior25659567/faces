@@ -82,6 +82,14 @@ export const automationVerdict = (summary) => summary &&
   ['pass', 'fail', 'limited', 'uncertain', 'unmeasured'].every((key) => Number.isInteger(summary[key]) && summary[key] >= 0) &&
   summary.pass > 0 && ['fail', 'limited', 'uncertain', 'unmeasured'].every((key) => summary[key] === 0) ? 'passed' : 'needs-review'
 
+const reviewMessage = (checks) => {
+  const failed = (checks?.rows || []).filter((row) => row.status === 'fail').map((row) => row.note).filter((note) => typeof note === 'string' && note.trim())
+  if (failed.length) return `The animation completed but needs correction: ${[...new Set(failed)].slice(0, 2).join(' ').slice(0, 900)}`
+  if (checks?.summary?.unmeasured > 0) return 'The animation completed, but required measurements are missing. Open Checks before judging the result.'
+  if (checks?.summary?.uncertain > 0) return 'The animation completed, but reference measurements remain uncertain. Review the detected joints and use calibrated side views to judge inferred depth.'
+  return 'The animation completed. Review its failed, uncertain or missing measurements in Studio.'
+}
+
 
 export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpec, download = fetchReference,
   fingerprint = builderFingerprint, pollMs = 250, maxRunMs = 45 * 60 * 1000, now = Date.now } = {}) => {
@@ -112,7 +120,7 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     }
     return null
   }
-  const blockedBuilder = (exercise) => exercise.pictureRefusal || (exercise.unheld
+  const blockedBuilder = (exercise) => exercise.automationBlocker || exercise.pictureRefusal || (exercise.unheld
     ? `The builder does not yet create the required ${exercise.unheld} or its hand contacts.`
     : `No validated automatic motion builder exists for ${exercise.name} yet.`)
 
@@ -176,7 +184,8 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     if (previous) {
       if (fingerprint() !== job.builderFingerprint) return update(job, item, { status: 'blocked', message: 'The builder changed during this batch. Start a fresh batch with the new code.' })
       return update(job, item, { status: automationVerdict(previous.summary), runId: previous.id,
-        summary: previous.summary, reused: true, message: 'Reused the existing result: references and builder are unchanged.' })
+        summary: previous.summary, reused: true, message: 'Reused the existing result: references and builder are unchanged.' +
+          (automationVerdict(previous.summary) === 'passed' ? '' : ' ' + reviewMessage(json(path.join(store.runDir(item.slug, previous.id), 'checks.json')))) })
     }
 
     update(job, item, { status: 'checking', message: 'Reading references and checking required inputs.' })
@@ -202,10 +211,16 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     update(job, item, { runId: run.id })
     const result = await waitForRun(job, item.slug, run.id)
     if (!result || stopped) return
-    if (result.status !== 'done') return update(job, item, { status: 'failed', message: result.error?.message || 'The animation did not complete.' })
+    if (result.status !== 'done') {
+      const physical = json(path.join(store.runDir(item.slug, result.id), 'frames', 'retarget.json'))?.physical?.validation
+      if (physical?.ready === false) return update(job, item, { status: 'blocked', summary: json(path.join(store.runDir(item.slug, result.id), 'checks.json'))?.summary || result.summary,
+        message: 'The reference pose could not satisfy contact with the equipment, body or support on this character. Rendering stopped; open the result for measured corrections.' })
+      return update(job, item, { status: 'failed', message: result.error?.message || 'The animation did not complete.' })
+    }
+    const checks = json(path.join(store.runDir(item.slug, result.id), 'checks.json'))
     update(job, item, { status: automationVerdict(result.summary), summary: result.summary,
       message: automationVerdict(result.summary) === 'passed' ? 'The completed animation passed its measured checks.'
-        : 'The animation completed. Review its failed, uncertain or missing measurements in Studio.' })
+        : reviewMessage(checks) })
   }
 
   const execute = async (job) => {

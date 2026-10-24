@@ -5,7 +5,7 @@ import path from 'node:path'
 import { createStore } from './store.js'
 import { builderFingerprint, createAutomation } from './automation.js'
 
-const ROW = 'barbell-bent-over-row', SQUAT = 'barbell-back-squat', DEADLIFT = 'conventional-barbell-deadlift'
+const ROW = 'barbell-bent-over-row', SQUAT = 'barbell-back-squat', UNSUPPORTED = 'standing-barbell-overhead-press-shoulder-press'
 let root, store, automation, builds, reads, downloads, settings
 beforeEach(() => {
   root = mkdtempSync(path.join(os.tmpdir(), 'studio-automation-test-'))
@@ -35,7 +35,7 @@ const fakeQueue = () => ({
   },
   enqueue: (slug, extra) => {
     builds.push(slug); const run = store.createRun(slug, extra)
-    put(run, 'animation.gif', 'GIF89a' + 'x'.repeat(1100)); put(run, 'checks.json', { summary: settings.summary })
+    put(run, 'animation.gif', 'GIF89a' + 'x'.repeat(1100)); put(run, 'checks.json', { summary: settings.summary, rows: settings.checkRows || [] })
     put(run, 'scene.blend', 'BLENDER'); put(run, 'ours.json', { stills: [{ file: 'stills/start.png' }] }); put(run, 'stills/start.png', 'PNG')
     store.writeRun({ ...run, status: 'done', summary: settings.summary })
     return run
@@ -69,7 +69,7 @@ test('existing user references are never replaced or relabeled', async () => {
 
 test('missing input and unsupported equipment prevent costly builds, and batch continues', async () => {
   settings.ready = false; make()
-  const result = await finished(automation.start({ slugs: [SQUAT, DEADLIFT, ROW] }))
+  const result = await finished(automation.start({ slugs: [SQUAT, UNSUPPORTED, ROW] }))
   expect(result.items.map((i) => i.status)).toEqual(['blocked', 'blocked', 'blocked'])
   expect(result.items[0].message).toMatch(/front reference/)
   expect(result.items[1].message).toMatch(/bar|hand contacts/)
@@ -80,6 +80,14 @@ test('a completed run with form failures is review work, never a pass', async ()
   settings.summary.fail = 6; make()
   const result = await finished(automation.start({ slugs: [ROW] }))
   expect(result.items[0].status).toBe('needs-review'); expect(result.items[0].summary.fail).toBe(6)
+})
+
+test('unattended results name measured defects instead of sending the user into another blind rebuild', async () => {
+  settings.summary.fail = 1
+  settings.checkRows = [{ status: 'fail', note: 'Skin folds over at the left collarbone.' }]
+  make(); const result = await finished(automation.start({ slugs: [ROW] }))
+  expect(result.items[0].status).toBe('needs-review')
+  expect(result.items[0].message).toContain('left collarbone')
 })
 
 test('reference-only mode does not render or claim animation success', async () => {

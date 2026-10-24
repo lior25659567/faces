@@ -21,10 +21,13 @@ def key_positions(targets, measured):
     (pipeline/blender/keypose_clip.py animates between them). A position the targets only estimated (no middle
     picture) is left out; None without a start and an end that carry world landmarks."""
     phases = []
+    seen_images = set()
     for phase in PHASES:
         readings = targets["phases"].get(phase) or {}
         image = next((r.get("image") for r in readings.values() if isinstance(r, dict) and r.get("image")), None)
         result = measured.get(image) if image else None
+        if (targets.get('motion') or {}).get('mode') == 'hold' and image in seen_images:
+            continue
         if not isinstance(result, dict) or not result.get("world"):
             continue
         entry = {"phase": phase, "image": image, **{k: result.get(k) for k in KEY_FIELDS}}
@@ -32,9 +35,14 @@ def key_positions(targets, measured):
         # set to Side), else the detector's
         entry["view"] = (targets.get("images", {}).get(image) or {}).get("view") or entry["view"]
         phases.append(entry)
-    if {"start", "end"} - {p["phase"] for p in phases}:
+        seen_images.add(image)
+    hold = (targets.get('motion') or {}).get('mode') == 'hold'
+    if not (hold and len(phases) == 1) and {"start", "end"} - {p["phase"] for p in phases}:
         return None
-    return {"exercise": targets["exercise"], "phases": phases}
+    result = {"exercise": targets["exercise"], "phases": phases}
+    if targets.get('motion'):
+        result['motion'] = targets['motion']
+    return result
 
 
 def main(run_dir):

@@ -5,7 +5,7 @@ Every status is computed from the run's own measurements. Never show a pass that
 from build_targets import (ANGLE_METRICS, DEPTH_METRICS, FRONT_VIEWS, PHASES, POSTURE_METRICS, RULES, SOLVER_EXERCISES,
                            TOLERANCE, WIDTH_METRICS)
 from feasibility import closest_arm_pose
-from kit import has_depth, unheld, unheld_note
+from kit import has_depth, kit_of, unheld, unheld_note
 from picture import PICTURE_METRICS, REPORTED_METRICS, SEEN_MIN, picture_value
 from posture import NEUTRAL_EAR_NOSE_DEG, classify_back
 
@@ -54,6 +54,8 @@ def _fmt(metric, v):
 
 
 def _disagree_note(metric, t):
+    if t.get('source') == 'inferred_3d' and t.get('cross') is None:
+        return 'The reference depth is inferred from one photograph; a calibrated side view is needed to judge this angle.'
     other = "3d" if t["method"] == "flat" else "flat"
     names = {"flat": "flat", "3d": "in 3D"}
     return (f"Two readings of the coach disagree: {_fmt(metric, t['value'])} {names[t['method']]}, "
@@ -374,11 +376,17 @@ def _body_rows(report, exercise, equipment=None):
         s = (contact.get("sides") or {}).get(side) or {}
         v = _num(s.get("sole_slide_mm"))
         name = f"foot_slide_{side}"
-        if v is None:
+        if report.get('feet') == 'free':
+            rows.append(_info('body', name, None, v, NOT_JUDGED, 'This movement does not lock its feet to the floor.', unit='mm'))
+        elif v is None:
             rows.append(_missing("body", name, FOOT_SLIDE_MAX_MM, "mm"))
         else:
             rows.append(_row("body", name, FOOT_SLIDE_MAX_MM, v, "pass" if v <= FOOT_SLIDE_MAX_MM else "fail",
                              s.get("slide_frame"), None, "mm"))
+        if report.get('feet') == 'planted' and 'initial_floor_gap_mm' in s:
+            gap = _num(s.get('initial_floor_gap_mm'))
+            rows.append(_missing('body', 'foot_floor_gap_' + side, 5., 'mm') if gap is None else
+                        _row('body', 'foot_floor_gap_' + side, 5., gap, 'pass' if gap <= 5. else 'fail', unit='mm'))
     pen = _num(contact.get("penetration_mm"))
     if pen is None:
         rows.append(_missing("body", "feet_in_floor", FEET_IN_FLOOR_MAX_MM, "mm"))
@@ -780,9 +788,13 @@ def unmeasured(rows):
 
 
 def build_checks(targets, ours, report, exercise):
+    from physical_checks import rows_for
     rows = (_phase_rows(targets, ours, exercise) + _width_rows(targets, ours, exercise)
             + _posture_rows(targets, ours, exercise)
-            + _body_rows(report, exercise, targets.get("equipment")) + _fold_rows(ours) + _motion_rows(ours))
+            + _body_rows(report, exercise, targets.get("equipment")) + _fold_rows(ours) + _motion_rows(ours)
+            + rows_for(report))
+    if kit_of(exercise).get('reference_motion') and not (report.get('physical') or {}).get('contacts'):
+        rows.append(_missing('body', 'equipment_contact', 3., 'mm'))
     summary = {s: sum(1 for r in rows if r["status"] == s) for s in STATUSES}
     summary["unmeasured"] = unmeasured(rows)
     return {"summary": summary, "rows": rows}

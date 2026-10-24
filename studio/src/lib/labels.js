@@ -24,12 +24,29 @@ export const METRIC_LABELS = {
   feet_in_floor: 'Feet sinking into the floor',
   hands_on_bar: 'Hands on the bar',
   equipment: 'Equipment in the hands',
+  equipment_contact: 'Measured equipment contact',
+  equipment_anchor_error: 'Hand anchor error',
+  equipment_path_adaptation: 'Equipment path changed for reach',
+  equipment_body_overlap: 'Equipment overlapping the body',
+  body_support_contact: 'Measured body support',
+  support_motion: 'Supported machine motion',
+  sled_rail_deviation: 'Sled deviation from its rails',
+  weight_head_body_overlap: 'Weight heads overlapping the body',
+  overhead_shortfall: 'Handles below the completed overhead position',
   skin_stretch: 'Skin stretch at the deepest point',
   smooth_motion: 'Smooth motion (no jumps between frames)',
   folded_skin: 'Skin folding over',
 }
 
-export const label = (metric) => METRIC_LABELS[metric] ?? metric
+export const label = (metric) => {
+  if (METRIC_LABELS[metric]) return METRIC_LABELS[metric]
+  const contact = /^(equipment_gap|equipment_penetration|foot_floor_gap)_(left|right)$/.exec(metric)
+  if (contact) return `${contact[2] === 'left' ? 'Left' : 'Right'} ${
+    { equipment_gap: 'hand gap at the handle', equipment_penetration: 'hand inside the handle', foot_floor_gap: 'foot above the floor' }[contact[1]]}`
+  const support = /^support_(gap|penetration)_(.+)$/.exec(metric)
+  if (support) return `${support[2].replaceAll('_', ' ')} ${support[1] === 'gap' ? 'gap at support' : 'inside support'}`
+  return metric
+}
 
 export const STATUS_LABELS = {
   pass: 'Pass',

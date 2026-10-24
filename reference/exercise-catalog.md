@@ -14,12 +14,15 @@ redirects, checks image headers and byte limits, and verifies the expected conte
 It returns image data and provenance; the automation owns importing it without replacing
 existing user references.
 
-Two source pairs are deliberately ineligible for automatic animation:
+Walking-lunge references are deliberately ineligible for automatic animation:
 
 - Walking lunge photos depict alternating lowered stances, without a standing start.
   Both are context-only references.
-- The plank pair depicts a kneeling setup and a static forearm hold. Only the hold is
-  a usable pose; this pair must not become a kneel-to-plank animation cycle.
+
+The plank pair depicts a kneeling setup and a static forearm hold. Only the hold is
+a usable pose; this pair must not become a kneel-to-plank animation cycle. The
+static-hold reader consumes that one pose. Automatic rendering remains disabled
+until the mascot passes its actual forearm/toe support checks.
 
 The back-squat pair shows the correct exercise but supplies only three-quarter views.
 It cannot satisfy that solver's required side positions and front/rear grip-width

@@ -2,7 +2,7 @@ import { copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, readdirSync,
 import { randomBytes } from 'node:crypto'
 import path from 'node:path'
 import { CLIPS_DIR, DATA, REPO } from './paths.js'
-import { pictureRefusal, unheld } from './kit.js'
+import { automationBlocker, pictureRefusal, unheld } from './kit.js'
 
 // The "Save as" column of 3d-character/mixamo/README.md, keyed by the names in poses.json.
 const CLIPS = {
@@ -79,6 +79,7 @@ export const createStore = (dataRoot = DATA) => {
       // that the path doesn't build (studio/measure/exercise-kit.json; task 9 review)
       pictureRefusal: pictureRefusal(e.name, e.equipment || 'bodyweight'),
       unheld: unheld(e.name, e.equipment || 'bodyweight'),
+      automationBlocker: automationBlocker(e.name),
     }))
   }
 

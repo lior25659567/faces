@@ -1,0 +1,1343 @@
+{
+  "sourceCommit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+  "profiles": [
+    {
+      "exercise": "Dumbbell Bicep Curl (standing, both arms)",
+      "runId": "20261024-154838-ae04",
+      "status": "needs-review",
+      "summary": {
+        "pass": 12,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 9,
+        "unmeasured": 0
+      },
+      "sourceDepth": "inferred from pinned three-quarter photographs",
+      "startedAt": "2026-10-24T15:48:38.348Z",
+      "finishedAt": "2026-10-24T15:50:57.394Z",
+      "steps": [
+        {
+          "id": "read",
+          "status": "done",
+          "seconds": 0.2
+        },
+        {
+          "id": "build",
+          "status": "done",
+          "seconds": 1.8
+        },
+        {
+          "id": "animate",
+          "status": "done",
+          "seconds": 8.8
+        },
+        {
+          "id": "render",
+          "status": "done",
+          "seconds": 90.2
+        },
+        {
+          "id": "stills",
+          "status": "done",
+          "seconds": 37.9
+        },
+        {
+          "id": "check",
+          "status": "done",
+          "seconds": 0.1
+        }
+      ],
+      "independentReplay": {
+        "exercise": "Dumbbell Bicep Curl (standing, both arms)",
+        "frames": 32,
+        "max_hand_gap_mm": 0.07922370232577025,
+        "max_hand_penetration_mm": 0.7995808042724657,
+        "summary": {
+          "pass": 12,
+          "fail": 0,
+          "limited": 0,
+          "uncertain": 10,
+          "info": 9,
+          "unmeasured": 0
+        }
+      },
+      "failures": [],
+      "physical": {
+        "profile": {
+          "family": "standing",
+          "feet": "planted",
+          "mode": "cycle",
+          "holds": true
+        },
+        "supports": null,
+        "contacts": {
+          "frames": 32,
+          "equipment": "dumbbells",
+          "max_grip_anchor_error_mm": 0.0,
+          "worst_wrist_bend_deg": 0.0,
+          "max_surface_path_adjustment_mm": 0.0,
+          "path_adjustments": [],
+          "sides": {
+            "left": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.02338768967026332,
+              "deepest_inside_bar_mm": 0.7946733886009033
+            },
+            "right": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.07922370232577025,
+              "deepest_inside_bar_mm": 0.7995808042724657
+            }
+          }
+        },
+        "validation": {
+          "rows": [
+            {
+              "group": "body",
+              "metric": "equipment_gap_left",
+              "target": 3.0,
+              "ours": 0.02338768967026332,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_left",
+              "target": 3.0,
+              "ours": 0.7946733886009033,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_gap_right",
+              "target": 3.0,
+              "ours": 0.07922370232577025,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_right",
+              "target": 3.0,
+              "ours": 0.7995808042724657,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_anchor_error",
+              "target": 2.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_left",
+              "target": 5.0,
+              "ours": 0.11441720562288538,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_right",
+              "target": 5.0,
+              "ours": 0.0,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            }
+          ],
+          "ready": true
+        }
+      }
+    },
+    {
+      "exercise": "Dumbbell Lateral Raise",
+      "runId": "20261024-155058-eaec",
+      "status": "needs-review",
+      "summary": {
+        "pass": 13,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 8,
+        "unmeasured": 0
+      },
+      "sourceDepth": "inferred from pinned three-quarter photographs",
+      "startedAt": "2026-10-24T15:50:58.902Z",
+      "finishedAt": "2026-10-24T15:53:32.914Z",
+      "steps": [
+        {
+          "id": "read",
+          "status": "done",
+          "seconds": 0.2
+        },
+        {
+          "id": "build",
+          "status": "done",
+          "seconds": 1.4
+        },
+        {
+          "id": "animate",
+          "status": "done",
+          "seconds": 9.1
+        },
+        {
+          "id": "render",
+          "status": "done",
+          "seconds": 105.3
+        },
+        {
+          "id": "stills",
+          "status": "done",
+          "seconds": 38
+        },
+        {
+          "id": "check",
+          "status": "done",
+          "seconds": 0.1
+        }
+      ],
+      "independentReplay": {
+        "exercise": "Dumbbell Lateral Raise",
+        "frames": 32,
+        "max_hand_gap_mm": 0.07919278136533578,
+        "max_hand_penetration_mm": 0.7996001951860445,
+        "summary": {
+          "pass": 13,
+          "fail": 0,
+          "limited": 0,
+          "uncertain": 10,
+          "info": 8,
+          "unmeasured": 0
+        }
+      },
+      "failures": [],
+      "physical": {
+        "profile": {
+          "family": "standing",
+          "feet": "planted",
+          "mode": "cycle",
+          "holds": true
+        },
+        "supports": null,
+        "contacts": {
+          "frames": 32,
+          "equipment": "dumbbells",
+          "max_grip_anchor_error_mm": 0.0,
+          "worst_wrist_bend_deg": 0.0,
+          "max_surface_path_adjustment_mm": 0.0,
+          "path_adjustments": [],
+          "sides": {
+            "left": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.023394884413803843,
+              "deepest_inside_bar_mm": 0.7947031197445232
+            },
+            "right": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.07919278136533578,
+              "deepest_inside_bar_mm": 0.7996001951860445
+            }
+          }
+        },
+        "validation": {
+          "rows": [
+            {
+              "group": "body",
+              "metric": "equipment_gap_left",
+              "target": 3.0,
+              "ours": 0.023394884413803843,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_left",
+              "target": 3.0,
+              "ours": 0.7947031197445232,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_gap_right",
+              "target": 3.0,
+              "ours": 0.07919278136533578,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_right",
+              "target": 3.0,
+              "ours": 0.7996001951860445,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_anchor_error",
+              "target": 2.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_left",
+              "target": 5.0,
+              "ours": 0.1975530612980947,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_right",
+              "target": 5.0,
+              "ours": 0.0,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            }
+          ],
+          "ready": true
+        }
+      }
+    },
+    {
+      "exercise": "Conventional Barbell Deadlift",
+      "runId": "20261024-160331-0057",
+      "status": "needs-review",
+      "summary": {
+        "pass": 14,
+        "fail": 1,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 8,
+        "unmeasured": 0
+      },
+      "sourceDepth": "inferred from pinned three-quarter photographs",
+      "startedAt": "2026-10-24T16:05:19.212Z",
+      "finishedAt": "2026-10-24T16:08:07.252Z",
+      "steps": [
+        {
+          "id": "read",
+          "status": "done",
+          "seconds": 0.1
+        },
+        {
+          "id": "build",
+          "status": "done",
+          "seconds": 1.4
+        },
+        {
+          "id": "animate",
+          "status": "done",
+          "seconds": 37.1
+        },
+        {
+          "id": "render",
+          "status": "done",
+          "seconds": 91.1
+        },
+        {
+          "id": "stills",
+          "status": "done",
+          "seconds": 38.2
+        },
+        {
+          "id": "check",
+          "status": "done",
+          "seconds": 0.1
+        }
+      ],
+      "independentReplay": {
+        "exercise": "Conventional Barbell Deadlift",
+        "frames": 32,
+        "max_hand_gap_mm": 0.050594693431386256,
+        "max_hand_penetration_mm": 0.7994552372389292,
+        "summary": {
+          "pass": 14,
+          "fail": 1,
+          "limited": 0,
+          "uncertain": 10,
+          "info": 8,
+          "unmeasured": 0
+        }
+      },
+      "failures": [
+        {
+          "group": "body",
+          "metric": "folded_skin",
+          "target": 99.9,
+          "ours": 991.7,
+          "unit": "mm2",
+          "status": "fail",
+          "frame": 32,
+          "note": "Skin folds over at the left collarbone (up to 992 mm\u00b2, 16 of 32 frames); plus creases at the knees and the hips, which are normal in deep bends, and folds hidden from every view at the collarbones and the right shoulder",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "physical": {
+        "profile": {
+          "family": "hinge",
+          "feet": "planted",
+          "mode": "cycle",
+          "holds": true,
+          "overhead": false
+        },
+        "supports": null,
+        "contacts": {
+          "frames": 32,
+          "equipment": "bar",
+          "max_grip_anchor_error_mm": 0.0003577093302688433,
+          "worst_wrist_bend_deg": 22.873163608887822,
+          "max_surface_path_adjustment_mm": 68.819833368632,
+          "path_adjustments": [
+            {
+              "frame": 1,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 2,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 3,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 4,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 5,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 6,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 7,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 8,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 9,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 10,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 11,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 12,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 13,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 14,
+              "adjustment_mm": 2.1771967586831193
+            },
+            {
+              "frame": 15,
+              "adjustment_mm": 6.338222466865026
+            },
+            {
+              "frame": 16,
+              "adjustment_mm": 9.279007847530329
+            },
+            {
+              "frame": 17,
+              "adjustment_mm": 11.142787966881077
+            },
+            {
+              "frame": 18,
+              "adjustment_mm": 13.097517586105386
+            },
+            {
+              "frame": 19,
+              "adjustment_mm": 14.09145852784395
+            },
+            {
+              "frame": 20,
+              "adjustment_mm": 14.091444969281117
+            },
+            {
+              "frame": 21,
+              "adjustment_mm": 14.091458528690499
+            },
+            {
+              "frame": 22,
+              "adjustment_mm": 13.138189063152984
+            },
+            {
+              "frame": 23,
+              "adjustment_mm": 9.278978832719156
+            },
+            {
+              "frame": 24,
+              "adjustment_mm": 4.292028411393699
+            },
+            {
+              "frame": 25,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 26,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 27,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 28,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 29,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 30,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 31,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 32,
+              "adjustment_mm": 0.0
+            }
+          ],
+          "sides": {
+            "left": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.023476571965738366,
+              "deepest_inside_bar_mm": 0.7947543066898645
+            },
+            "right": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.050594693431386256,
+              "deepest_inside_bar_mm": 0.7994552372389292
+            }
+          },
+          "body_clearance": {
+            "status": "clear_at_samples",
+            "worst": null,
+            "sample_spacing_mm": 12.560264062499993,
+            "triangles": 43067,
+            "frames": []
+          }
+        },
+        "validation": {
+          "rows": [
+            {
+              "group": "body",
+              "metric": "equipment_gap_left",
+              "target": 3.0,
+              "ours": 0.023476571965738366,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_left",
+              "target": 3.0,
+              "ours": 0.7947543066898645,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_gap_right",
+              "target": 3.0,
+              "ours": 0.050594693431386256,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_right",
+              "target": 3.0,
+              "ours": 0.7994552372389292,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_anchor_error",
+              "target": 2.0,
+              "ours": 0.0003577093302688433,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_path_adaptation",
+              "target": 20.0,
+              "ours": 14.091458528690499,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": "Reach adaptation changes the photographed equipment path.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_body_overlap",
+              "target": 3.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_left",
+              "target": 5.0,
+              "ours": 0.6476966664195061,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_right",
+              "target": 5.0,
+              "ours": 9.313225746154785e-06,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            }
+          ],
+          "ready": true
+        }
+      }
+    },
+    {
+      "exercise": "Lat Pulldown (seated, to the front)",
+      "runId": "20261024-160053-7f93",
+      "status": "needs-review",
+      "summary": {
+        "pass": 13,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 10,
+        "unmeasured": 0
+      },
+      "sourceDepth": "inferred from pinned three-quarter photographs",
+      "startedAt": "2026-10-24T16:02:23.021Z",
+      "finishedAt": "2026-10-24T16:05:19.211Z",
+      "steps": [
+        {
+          "id": "read",
+          "status": "done",
+          "seconds": 0.1
+        },
+        {
+          "id": "build",
+          "status": "done",
+          "seconds": 1.5
+        },
+        {
+          "id": "animate",
+          "status": "done",
+          "seconds": 18.4
+        },
+        {
+          "id": "render",
+          "status": "done",
+          "seconds": 99.7
+        },
+        {
+          "id": "stills",
+          "status": "done",
+          "seconds": 41.4
+        },
+        {
+          "id": "check",
+          "status": "done",
+          "seconds": 0.1
+        }
+      ],
+      "independentReplay": {
+        "exercise": "Lat Pulldown (seated, to the front)",
+        "frames": 32,
+        "max_hand_gap_mm": 0.050525146363101375,
+        "max_hand_penetration_mm": 0.7998675726826298,
+        "summary": {
+          "pass": 13,
+          "fail": 0,
+          "limited": 0,
+          "uncertain": 10,
+          "info": 10,
+          "unmeasured": 0
+        }
+      },
+      "failures": [],
+      "physical": {
+        "profile": {
+          "family": "seated",
+          "feet": "free",
+          "mode": "cycle",
+          "holds": true,
+          "overhead": false
+        },
+        "supports": {
+          "frames": 32,
+          "surfaces": {
+            "pelvis": {
+              "frames": 32,
+              "measured_frames": 32,
+              "max_gap_mm": 0.0,
+              "max_penetration_mm": 0.0
+            }
+          },
+          "backrest_plane_y": -0.3705603778362274,
+          "pulley_anchor": [
+            0.0001125633716583252,
+            0.10133754466056827,
+            0.963835619430542
+          ]
+        },
+        "contacts": {
+          "frames": 32,
+          "equipment": "bar",
+          "max_grip_anchor_error_mm": 0.00031166301281708116,
+          "worst_wrist_bend_deg": 13.63223097356122,
+          "max_surface_path_adjustment_mm": 0.07988761672134137,
+          "path_adjustments": [
+            {
+              "frame": 1,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 2,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 3,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 4,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 5,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 6,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 7,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 8,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 9,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 10,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 11,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 12,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 13,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 14,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 15,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 16,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 17,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 18,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 19,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 20,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 21,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 22,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 23,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 24,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 25,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 26,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 27,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 28,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 29,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 30,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 31,
+              "adjustment_mm": 0.0
+            },
+            {
+              "frame": 32,
+              "adjustment_mm": 0.0
+            }
+          ],
+          "sides": {
+            "left": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.023420679378641576,
+              "deepest_inside_bar_mm": 0.794683399555349
+            },
+            "right": {
+              "frames": 32,
+              "frames_touching_within_3mm": 32,
+              "nearest_gap_mm_max": 0.050525146363101375,
+              "deepest_inside_bar_mm": 0.7998675726826298
+            }
+          },
+          "cable_anchor": [
+            0.0001125633716583252,
+            0.10133754466056827,
+            0.963835619430542
+          ],
+          "body_clearance": {
+            "status": "clear_at_samples",
+            "worst": null,
+            "sample_spacing_mm": 12.560264062499993,
+            "triangles": 43067,
+            "frames": []
+          }
+        },
+        "validation": {
+          "rows": [
+            {
+              "group": "body",
+              "metric": "equipment_gap_left",
+              "target": 3.0,
+              "ours": 0.023420679378641576,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_left",
+              "target": 3.0,
+              "ours": 0.794683399555349,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_gap_right",
+              "target": 3.0,
+              "ours": 0.050525146363101375,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_penetration_right",
+              "target": 3.0,
+              "ours": 0.7998675726826298,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_anchor_error",
+              "target": 2.0,
+              "ours": 0.00031166301281708116,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_path_adaptation",
+              "target": 20.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": "Reach adaptation changes the photographed equipment path.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "equipment_body_overlap",
+              "target": 3.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "support_gap_pelvis",
+              "target": 5.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "support_penetration_pelvis",
+              "target": 3.0,
+              "ours": 0.0,
+              "status": "pass",
+              "kind": null,
+              "frame": null,
+              "unit": "mm",
+              "note": null,
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_left",
+              "target": 5.0,
+              "ours": 0.5908176535740495,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            },
+            {
+              "group": "body",
+              "metric": "foot_floor_gap_right",
+              "target": 5.0,
+              "ours": 0.0,
+              "status": "pass",
+              "unit": "mm",
+              "frame": 1,
+              "kind": null,
+              "note": "Feet must reach the floor.",
+              "uncertain_why": null
+            }
+          ],
+          "ready": true
+        }
+      }
+    }
+  ],
+  "referenceOnlyBatch": {
+    "id": "5cb105f3-60b7-471a-89b8-fca6e298f019",
+    "status": "done",
+    "items": [
+      {
+        "name": "Barbell Back Squat",
+        "status": "blocked",
+        "message": "Need a start and an end position from side-view images with a body found; missing: start and end."
+      },
+      {
+        "name": "Conventional Barbell Deadlift",
+        "status": "ready",
+        "message": "References are ready. Rendering was not requested."
+      },
+      {
+        "name": "Flat Barbell Bench Press",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a bench the picture path doesn't build yet."
+      },
+      {
+        "name": "Standing Barbell Overhead Press (Shoulder Press)",
+        "status": "blocked",
+        "message": "The reference pose has not passed head/bar clearance and safe arm-reach checks on this mascot."
+      },
+      {
+        "name": "Barbell Bent-Over Row",
+        "status": "ready",
+        "message": "References are ready. Rendering was not requested."
+      },
+      {
+        "name": "Pull-Up",
+        "status": "blocked",
+        "message": "Keeping the fixed pull-up bar clear of the head exceeds the current safe two-hand reach. This profile needs further body and arm calibration."
+      },
+      {
+        "name": "Lat Pulldown (seated, to the front)",
+        "status": "ready",
+        "message": "References are ready. Rendering was not requested."
+      },
+      {
+        "name": "Dumbbell Bicep Curl (standing, both arms)",
+        "status": "ready",
+        "message": "References are ready. Rendering was not requested."
+      },
+      {
+        "name": "Dumbbell Lateral Raise",
+        "status": "ready",
+        "message": "References are ready. Rendering was not requested."
+      },
+      {
+        "name": "Dumbbell Shoulder Press (seated overhead press)",
+        "status": "blocked",
+        "message": "The current mascot has not passed the overhead-completion and weight/head-clearance checks. Grip contact alone does not make this a valid overhead press."
+      },
+      {
+        "name": "Walking Lunge (dumbbells optional)",
+        "status": "blocked",
+        "message": "The two pictures show alternating lowered lunge stances and do not show the standing start. They are context references only."
+      },
+      {
+        "name": "Front Plank (forearm plank)",
+        "status": "blocked",
+        "message": "Picture 0 is kneeling setup; picture 1 is a static forearm hold. Do not turn this pair into a kneel-to-plank exercise cycle."
+      },
+      {
+        "name": "Tricep Pushdown (cable, bar or rope attachment)",
+        "status": "blocked",
+        "message": "The reference bar path has not passed body-clearance and bounded arm-reach checks on this mascot."
+      },
+      {
+        "name": "Leg Press (seated machine)",
+        "status": "blocked",
+        "message": "No motion for this exercise: it needs a leg-press sled the picture path doesn't build yet."
+      }
+    ]
+  },
+  "overheadRejection": {
+    "runId": "20261024-161607-8dcd",
+    "status": "failed",
+    "renderStarted": false,
+    "gifProduced": false,
+    "checks": {
+      "summary": {
+        "pass": 9,
+        "fail": 2,
+        "limited": 0,
+        "uncertain": 0,
+        "info": 0,
+        "unmeasured": 0
+      },
+      "rows": [
+        {
+          "group": "body",
+          "metric": "equipment_gap_left",
+          "target": 3.0,
+          "ours": 0.023450665993952208,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_left",
+          "target": 3.0,
+          "ours": 0.7946928721784411,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_gap_right",
+          "target": 3.0,
+          "ours": 0.07920497232554238,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_right",
+          "target": 3.0,
+          "ours": 0.7995571271743398,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_anchor_error",
+          "target": 2.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "weight_head_body_overlap",
+          "target": 3.0,
+          "ours": 7.831793861833074,
+          "status": "fail",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Finite convex weight-head/body surface samples; inspect the rendered silhouette too.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "overhead_shortfall",
+          "target": 0.0,
+          "ours": 86.35324239730835,
+          "status": "fail",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Both handles must reach above the head; a secure grip alone does not complete an overhead press.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_pelvis",
+          "target": 5.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_pelvis",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_left",
+          "target": 5.0,
+          "ours": 0.20396243780851364,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_right",
+          "target": 5.0,
+          "ours": 1.862645149230957e-05,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        }
+      ]
+    }
+  }
+}

@@ -23,8 +23,6 @@ def test_the_lunge_is_refused_because_its_feet_step():
 
 @pytest.mark.parametrize("name,support", [
     ("Flat Barbell Bench Press", "bench"),
-    ("Dumbbell Shoulder Press (seated overhead press)", "seat"),
-    ("Lat Pulldown (seated, to the front)", "seat"),
     ("Leg Press (seated machine)", "leg-press sled"),
     ("Pull-Up", "pull-up bar")])
 def test_a_support_the_path_does_not_build_is_refused(name, support):
@@ -39,10 +37,7 @@ def test_standing_or_lying_exercises_move(name):
 
 
 @pytest.mark.parametrize("name,thing", [
-    ("Conventional Barbell Deadlift", "bar"),
     ("Standing Barbell Overhead Press (Shoulder Press)", "bar"),
-    ("Dumbbell Bicep Curl (standing, both arms)", "dumbbells"),
-    ("Dumbbell Lateral Raise", "dumbbells"),
     ("Tricep Pushdown (cable, bar or rope attachment)", "cable handle")])
 def test_equipment_held_but_not_built_is_named(name, thing):
     assert kit.unheld(name) == thing
@@ -54,6 +49,13 @@ def test_nothing_unheld_when_the_bar_is_built_or_nothing_is_held(name):
     # the back squat's bar is built on the --mpfb path (animate.MPFB_BARBELL_ON_BACK); the plank holds nothing; the
     # lunge's dumbbells are optional
     assert kit.unheld(name) is None
+
+
+@pytest.mark.parametrize('name', ['Conventional Barbell Deadlift', 'Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise',
+    'Dumbbell Shoulder Press (seated overhead press)', 'Lat Pulldown (seated, to the front)'])
+def test_new_profiles_build_their_equipment_and_required_support(name):
+    assert kit.unheld(name) is None
+    assert kit.picture_refusal(name) is None
 
 
 def test_an_exercise_of_our_own_goes_by_its_equipment():

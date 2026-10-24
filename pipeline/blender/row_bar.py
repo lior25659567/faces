@@ -178,7 +178,7 @@ def side_contacts(rig, skin, bar, first, last):
 
 
 
-def body_clearance(rig, skin, bar, first, last):
+def body_clearance(rig, skin, bar, first, last, include_head=False):
     """Sample the shaft against the evaluated torso/thigh surface, excluding hands.
 
     Surface overlap is a conservative candidate. An interior centre is only called
@@ -192,8 +192,8 @@ def body_clearance(rig, skin, bar, first, last):
     unit = fit['measured']['height'] / 1.75
     radius = equipment.BARBELL_BAR_DIAMETER / 2 * unit
     half_length = equipment.BARBELL_LENGTH / 2 * unit
-    torso = {g.index for g in skin.vertex_groups if any(k in g.name for k in
-              ('Hips', 'Spine', 'UpLeg', 'Leg')) and 'Hand' not in g.name}
+    regions = ('Hips', 'Spine', 'UpLeg', 'Leg') + (('Neck', 'Head') if include_head else ())
+    torso = {g.index for g in skin.vertex_groups if any(k in g.name for k in regions) and 'Hand' not in g.name}
     selected = np.array([sum(g.weight for g in v.groups if g.group in torso) > .5
                          for v in skin.data.vertices])
     skin.data.calc_loop_triangles()

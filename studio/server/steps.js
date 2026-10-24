@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { BLENDER, CLIPS_DIR, PYTHON, REPO, SKIN } from './paths.js'
+import { referenceMotion } from './kit.js'
 
 const UNBUFFERED = 'import sys; sys.stdout.reconfigure(line_buffering=True); sys.stderr.reconfigure(line_buffering=True)'
 
@@ -42,7 +43,7 @@ export const commandFor = (processId, run, runDir, exercise) => {
     }
     const name = exercise?.name ?? run?.name
     // Row references must actually drive the motion even when a generic row clip exists.
-    const clip = name === 'Barbell Bent-Over Row' ? null : exercise?.clip ?? run?.clip
+    const clip = referenceMotion(name) ? null : exercise?.clip ?? run?.clip
     // No clip: the motion moves between the reference pictures' key positions, which the read step wrote
     // (studio/measure/run_read.py -> keyposes.json; pipeline/blender/keypose_clip.py, task 9).
     const keyposes = path.join(runDir, 'keyposes.json')

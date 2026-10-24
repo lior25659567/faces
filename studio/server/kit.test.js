@@ -15,8 +15,8 @@ test('the picture path refuses the lunge and the exercises it has no support for
 })
 
 test('what the hands should hold that the path does not build', () => {
-  expect(unheld('Conventional Barbell Deadlift')).toBe('bar')
-  expect(unheld('Dumbbell Lateral Raise')).toBe('dumbbells')
+  expect(unheld('Conventional Barbell Deadlift')).toBeNull()
+  expect(unheld('Dumbbell Lateral Raise')).toBeNull()
   expect(unheld('Barbell Back Squat')).toBeNull()
   expect(unheld('Front Plank (forearm plank)')).toBeNull()
 })
@@ -31,4 +31,11 @@ test('an exercise of our own goes by its equipment word', () => {
 
 test('the row builds its bar rather than reporting empty hands', () => {
   expect(unheld('Barbell Bent-Over Row')).toBeNull()
+})
+
+test('validated seated profiles have both held equipment and body supports', () => {
+  for (const name of ['Lat Pulldown (seated, to the front)', 'Dumbbell Shoulder Press (seated overhead press)']) {
+    expect(unheld(name)).toBeNull()
+    expect(pictureRefusal(name)).toBeNull()
+  }
 })

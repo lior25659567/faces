@@ -117,7 +117,7 @@ test('each exercise says what the picture path refuses and what its hands would 
   expect(rows['Walking Lunge (dumbbells optional)'].pictureRefusal)
     .toBe('No motion for this exercise: its feet step, which the picture path can\'t animate yet. Add lunge.fbx to 3d-character/mixamo (its README says how).')
   expect(rows['Flat Barbell Bench Press'].pictureRefusal).toBe('No motion for this exercise: it needs a bench the picture path doesn\'t build yet.')
-  expect(rows['Conventional Barbell Deadlift']).toMatchObject({ pictureRefusal: null, unheld: 'bar' })
+  expect(rows['Conventional Barbell Deadlift']).toMatchObject({ pictureRefusal: null, unheld: null })
   expect(rows['Barbell Back Squat']).toMatchObject({ pictureRefusal: null, unheld: null })
   store.addExercise({ name: 'Back Squat from images', equipment: 'barbell', clip: null })
   expect(store.getExercise('back-squat-from-images')).toMatchObject({ pictureRefusal: null, unheld: 'bar' })

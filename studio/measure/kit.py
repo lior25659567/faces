@@ -34,7 +34,8 @@ def kit_of(exercise, equipment=None):
     if row is None:
         row = table["by_equipment"].get(equipment or "", {})
     return {"holds": row.get("holds"), "support": row.get("support"), "steps": bool(row.get("steps")),
-            "built": bool(row.get("built")), "clip": row.get("clip"), "depth": bool(row.get("depth"))}
+            "built": bool(row.get("built")), "clip": row.get("clip"), "depth": bool(row.get("depth")),
+            "support_built": bool(row.get('supportBuilt')), 'reference_motion': bool(row.get('referenceMotion'))}
 
 
 def picture_refusal(exercise, equipment=None):
@@ -42,7 +43,7 @@ def picture_refusal(exercise, equipment=None):
     row, refusals = kit_of(exercise, equipment), load()["refusals"]
     if row["steps"]:
         return refusals["steps"].format(clip=row["clip"] or "its clip")
-    if row["support"]:
+    if row["support"] and not row['support_built']:
         return refusals["support"].format(support=row["support"])
     return None
 

@@ -41,6 +41,12 @@ CROSS_LIMIT = {"angle": 2 * TOLERANCE["angles_deg"], "ratio": 2 * TOLERANCE["rat
                "neck": 2 * TOLERANCE["neck_vs_torso"]}
 SOLVER_EXERCISES = ("Barbell Back Squat",)
 ROW_EXERCISE = "Barbell Bent-Over Row"
+HOLD_EXERCISE = "Front Plank (forearm plank)"
+REFERENCE_EXERCISES = ("Conventional Barbell Deadlift", "Flat Barbell Bench Press",
+    "Standing Barbell Overhead Press (Shoulder Press)", "Pull-Up", "Lat Pulldown (seated, to the front)",
+    "Dumbbell Bicep Curl (standing, both arms)", "Dumbbell Lateral Raise",
+    "Dumbbell Shoulder Press (seated overhead press)", HOLD_EXERCISE,
+    "Tricep Pushdown (cable, bar or rope attachment)", "Leg Press (seated machine)")
 PHASES = ("start", "middle", "end")
 SIDE_VIEWS = ("side",)
 FRONT_VIEWS = ("front", "behind", "frontal")
@@ -171,7 +177,7 @@ def build_targets(exercise, images, measured, equipment=None):
             result = Exception("not measured")
         why = _why_not(m, result)
         view = m.get("view") or (None if isinstance(result, Exception) else result.get("view"))
-        oblique_row = exercise == ROW_EXERCISE and view == "three-quarter"
+        oblique_row = (exercise == ROW_EXERCISE and view == 'three-quarter') or (exercise in REFERENCE_EXERCISES and view in ('three-quarter', 'front', 'behind', 'frontal'))
         phase_view = view in SIDE_VIEWS or oblique_row
         if why or not phase_view or m.get("phase") in phases:
             problem = _problem(m, result, view)
@@ -187,6 +193,12 @@ def build_targets(exercise, images, measured, equipment=None):
                 continue
             reader = _oblique_reading if oblique_row else _reading
             reads = {k: reader(result, k, i) for k in ANGLE_METRICS + (depth if phase == "end" else ())}
+            if view in FRONT_VIEWS and exercise in REFERENCE_EXERCISES and not widths:
+                widths.update({k: v for k in WIDTH_METRICS if (v := _reading(result, k, i)) is not None})
+            if oblique_row and exercise != ROW_EXERCISE:
+                for reading in reads.values():
+                    if reading:
+                        reading['uncertain'] = True
             # the seat's depth kept without a value where his picture doesn't show it, as a posture is
             seat = ("seat_below_knee",) if phase == "end" and "seat_below_knee" in depth else ()
             # The silhouette and face direction of an oblique view do not give side posture.
@@ -205,18 +217,28 @@ def build_targets(exercise, images, measured, equipment=None):
         else:
             info[i] = {"used": False, "why": "This view gives no target (only side and front/behind views do)",
                        "view": view}
+    source_phases = list(phases)
+    hold = exercise == HOLD_EXERCISE
+    if hold and len(phases) == 1:
+        # One photographed hold, evaluated at two times. No new pose is inferred.
+        pose = next(iter(phases.values()))
+        phases = {'start': pose, 'end': pose}
     missing = [p for p in ("start", "end") if p not in phases]
     if missing:
         named = f" {'; '.join(problems)}." if problems else ""
-        views = "side or three-quarter images" if exercise == ROW_EXERCISE else "side-view images"
+        views = "side or three-quarter images" if exercise in (ROW_EXERCISE,) + REFERENCE_EXERCISES else "side-view images"
         raise TooFewPositions(f"Need a start and an end position from {views} with a body found; "
                               f"missing: {' and '.join(missing)}.{named}", info)
     if "middle" not in phases:
         mid = _mean(phases["start"], phases["end"])
         mid["estimated"] = True
         phases["middle"] = mid
-    return {"exercise": exercise, "phases": {p: phases[p] for p in PHASES}, "widths": widths,
-            "tolerance": dict(TOLERANCE), "images": info, "camera": camera}
+    result = {"exercise": exercise, "phases": {p: phases[p] for p in PHASES}, "widths": widths,
+              "tolerance": dict(TOLERANCE), "images": info, "camera": camera}
+    if exercise in REFERENCE_EXERCISES:
+        result['motion'] = {'mode': 'hold' if hold else 'cycle', 'sourcePhases': source_phases,
+                            'approximateDepth': any(i.get('used') and i.get('view') != 'side' for i in info.values())}
+    return result
 
 
 def _solver_posture(targets, names):
