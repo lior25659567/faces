@@ -177,8 +177,12 @@ def main():
     assert bar_rise >= minimum_rise, f"The row does not pull up: {bar_rise * 1000:.2f} mm; need {minimum_rise * 1000:.2f} mm"
     for side in ("left", "right"):
         start_angle, end_angle = endpoint_elbows["start"][side], endpoint_elbows["end"][side]
-        assert abs(start_angle - source_elbows["start"]) <= 20., f"{side} start elbow {start_angle:.1f} vs reference {source_elbows['start']:.1f}"
-        assert abs(end_angle - source_elbows["end"]) <= 20., f"{side} contracted elbow {end_angle:.1f} vs reference {source_elbows['end']:.1f}"
+        # Check both arms against the same five-degree angle tolerance as Checks.
+        # Judging the visible side alone concealed a coarse roll-grid error in
+        # the far arm. A numerical fit still does not calibrate source depth.
+        tolerance = read_json(run / 'targets.json')['tolerance']['angles_deg']
+        assert abs(start_angle - source_elbows["start"]) <= tolerance, f"{side} start elbow {start_angle:.1f} vs reference {source_elbows['start']:.1f}"
+        assert abs(end_angle - source_elbows["end"]) <= tolerance, f"{side} contracted elbow {end_angle:.1f} vs reference {source_elbows['end']:.1f}"
         assert start_angle - end_angle >= 25., f"{side} row barely flexes: {start_angle:.1f} -> {end_angle:.1f}"
 
 

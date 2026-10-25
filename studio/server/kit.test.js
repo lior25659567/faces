@@ -7,9 +7,9 @@ const needs = (what) => `No motion for this exercise: it needs a ${what} the pic
 
 test('the picture path refuses the lunge and the exercises it has no support for', () => {
   expect(pictureRefusal('Walking Lunge (dumbbells optional)')).toBe(LUNGE)
-  expect(pictureRefusal('Flat Barbell Bench Press')).toBe(needs('bench'))
-  expect(pictureRefusal('Pull-Up')).toBe(needs('pull-up bar'))
-  expect(pictureRefusal('Leg Press (seated machine)')).toBe(needs('leg-press sled'))
+  expect(pictureRefusal('Flat Barbell Bench Press')).toBeNull()
+  expect(pictureRefusal('Pull-Up')).toBeNull()
+  expect(pictureRefusal('Leg Press (seated machine)')).toBeNull()
   expect(pictureRefusal('Barbell Back Squat')).toBeNull()
   expect(pictureRefusal('Conventional Barbell Deadlift')).toBeNull()
 })

@@ -37,6 +37,18 @@ MIN_SEEN = 3
 # (across, up, scale): the framing's centre moved by these fractions of the framed extent, its size scaled
 FRAMINGS = ((0.0, 0.0, 1.0), (0.015, 0.0, 1.0), (-0.015, 0.0, 1.0), (0.0, 0.015, 1.0), (0.0, -0.015, 1.0))
 NO_BODY = "MediaPipe found no body in our picture"
+ESTIMATED_POSITION = "Estimated between the source positions; there is no reference photograph to compare here."
+
+
+def comparison_frames(phase_frames, targets):
+    """Keep picture searches for judged positions; an estimated middle has none.
+
+    Rig, contact and fold measurements still cover every animation frame. Missing
+    metadata is conservative: older runs keep all their existing picture reads.
+    """
+    middle = ((targets or {}).get('phases') or {}).get('middle') or {}
+    estimated = middle.get('estimated') is True
+    return {phase: frame for phase, frame in phase_frames.items() if phase != 'middle' or not estimated}
 
 
 def _finite(v):

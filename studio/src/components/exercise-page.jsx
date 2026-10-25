@@ -15,6 +15,8 @@ import { defaultRunId, samePictures, stripReasons } from '../lib/run-view.js'
 import { checksAside, checksLine, scoreKind, unmeasuredLine } from '../lib/status.js'
 import { workForExercise } from '../lib/work.js'
 import { referenceCheck } from '../lib/reference-check.js'
+import CharacterFit from './character-fit.jsx'
+import { characterFitResult } from '../lib/character-fit.js'
 
 const ACTIVE = new Set(['queued', 'running', 'failed', 'interrupted'])
 
@@ -41,6 +43,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   const [doneSnapshot, setDoneSnapshot] = useState(null)
   const [referenceBundle, setReferenceBundle] = useState(null)
   const [busy, setBusy] = useState(false)
+  const [pickedCharacterFit, setCharacterFit] = useState(null)
   const inFlight = useRef(false)
   const refsSection = useRef(null)
   const progressSection = useRef(null)
@@ -74,6 +77,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   const referenceRunId = referenceRun?.id
   const referenceStatus = referenceRun?.status
   const latest = runs[0] ?? null
+  const characterFit = pickedCharacterFit ?? latest?.characterFit ?? 'auto'
   const latestDone = runs.find((r) => r.status === 'done') ?? null
   const shownId = pickedRunId && runs.some((r) => r.id === pickedRunId) ? pickedRunId : defaultRunId(runs)
   const shown = runs.find((r) => r.id === shownId) ?? null
@@ -146,7 +150,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   // Save edits together before checking or committing to a complete animation build.
   const changeReferences = (action) => guarded(action)
 
-  const runAgain = () => guarded(() => api.startRun(slug))
+  const runAgain = () => guarded(() => api.startRun(slug, { characterFit }))
   const checkReferences = () => guarded(() => api.checkReferences(slug))
 
   const scrollTo = (ref) => {
@@ -254,6 +258,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
               </button>
             </div>
           </div>
+          <CharacterFit value={characterFit} onChange={setCharacterFit} disabled={busy || working} />
           <div className={`exercise-check-feedback is-${check.state}`} role="status">
             {checking ? (
               <p>{referenceRun.status === 'queued' ? 'The reference check is waiting in the queue.' : 'Reading your pictures and checking what they can show…'}</p>
@@ -339,6 +344,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
             </p>
           )}
           <section className="section exercise-section" aria-labelledby="comparison-title">
+            <p className="section-note">{characterFitResult(bundleReady ? bundle.characterFit : null, shown.characterFit)}</p>
             <Comparison
               key={shown.id}
               slug={slug}

@@ -1,0 +1,134 @@
+{
+  "name": "Tricep Pushdown",
+  "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
+  "run_dir": "/tmp/studio-complete-validation/tricep-pushdown-cable-bar-or-rope-attachment",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.19
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 165.35
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 27.57
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.09
+    }
+  ],
+  "summary": {
+    "pass": 22,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 2,
+    "info": 18,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "The short-arm rest character uses the validated fitness proportions for a collision-free cable grip."
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-41d79d3d": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
+    "img-bfe8bbbf": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c"
+  },
+  "scene_sha256": "51a56c9d1c6dedf0166596ae167d21110bb498ead19bc44ed6575d29a9bb9060",
+  "output_sha256": {
+    "animation.gif": "edc861c63d974117cca96b9df443b0d4aab31ed260e1e2b98c0c8df613979f5f",
+    "start.png": "8cd1bae67625c92486c37e687ac4dc3cd14ca413185cf880c6f29867be41ddfd",
+    "end.png": "68879667931a0e521a434dc766fe9dd2b9e7a0d6bb6ed3aaa96229675cf77b4f",
+    "checks.json": "fb8c2a30b7b11eb2d57e34f6a1a7f40e98ce1c0a52b0675082663fc505384710"
+  },
+  "physical_remeasurement": null
+}

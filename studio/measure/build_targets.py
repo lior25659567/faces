@@ -42,6 +42,7 @@ CROSS_LIMIT = {"angle": 2 * TOLERANCE["angles_deg"], "ratio": 2 * TOLERANCE["rat
 SOLVER_EXERCISES = ("Barbell Back Squat",)
 ROW_EXERCISE = "Barbell Bent-Over Row"
 HOLD_EXERCISE = "Front Plank (forearm plank)"
+SEQUENCE_EXERCISE = "Walking Lunge (dumbbells optional)"
 REFERENCE_EXERCISES = ("Conventional Barbell Deadlift", "Flat Barbell Bench Press",
     "Standing Barbell Overhead Press (Shoulder Press)", "Pull-Up", "Lat Pulldown (seated, to the front)",
     "Dumbbell Bicep Curl (standing, both arms)", "Dumbbell Lateral Raise",
@@ -126,6 +127,8 @@ def _why_not(meta, result):
     if isinstance(result, Exception):
         from read_pose import NoBody
         return "No body found in this image" if isinstance(result, NoBody) else "Could not read this image"
+    if meta.get('motionOnly') or (meta.get('source') or {}).get('motionOnly'):
+        return 'Motion sample'
     return None
 
 
@@ -133,7 +136,7 @@ def _problem(meta, result, view):
     """Plain words for a picture that gave no side position, naming it, for the read step's failure
     message; None when the user set it that way on purpose (context only, or a view they picked)."""
     name = meta.get("original") or meta.get("file") or meta["id"]
-    if meta.get("contextOnly"):
+    if meta.get("contextOnly") or meta.get('motionOnly') or (meta.get('source') or {}).get('motionOnly'):
         return None
     if isinstance(result, Exception):
         from read_pose import NoBody
@@ -166,8 +169,10 @@ def _mean(a, b):
 def build_targets(exercise, images, measured, equipment=None):
     """The targets; `equipment`: the Studio's equipment word, for an exercise added there (kit.py)."""
     images = sorted((m for m in images if not m.get("deleted")), key=lambda m: m.get("order", 0))
+    sequence = exercise == SEQUENCE_EXERCISE and any(
+        isinstance((m.get('source') or {}).get('sequenceInfo'), dict) for m in images if not m.get('contextOnly'))
     depth = DEPTH_METRICS if has_depth(exercise, equipment) else ()
-    info, phases, widths = {}, {}, {}
+    info, phases, widths, phase_widths = {}, {}, {}, {}
     camera = None
     problems = []   # pictures that gave no side position, in plain words, for a failed read
     for m in images:
@@ -177,7 +182,7 @@ def build_targets(exercise, images, measured, equipment=None):
             result = Exception("not measured")
         why = _why_not(m, result)
         view = m.get("view") or (None if isinstance(result, Exception) else result.get("view"))
-        oblique_row = (exercise == ROW_EXERCISE and view == 'three-quarter') or (exercise in REFERENCE_EXERCISES and view in ('three-quarter', 'front', 'behind', 'frontal'))
+        oblique_row = (exercise == ROW_EXERCISE and view == 'three-quarter') or ((exercise in REFERENCE_EXERCISES or sequence) and view in ('three-quarter', 'front', 'behind', 'frontal'))
         phase_view = view in SIDE_VIEWS or oblique_row
         if why or not phase_view or m.get("phase") in phases:
             problem = _problem(m, result, view)
@@ -193,8 +198,14 @@ def build_targets(exercise, images, measured, equipment=None):
                 continue
             reader = _oblique_reading if oblique_row else _reading
             reads = {k: reader(result, k, i) for k in ANGLE_METRICS + (depth if phase == "end" else ())}
-            if view in FRONT_VIEWS and exercise in REFERENCE_EXERCISES and not widths:
+            if view in FRONT_VIEWS and (exercise in REFERENCE_EXERCISES or sequence) and not widths:
                 widths.update({k: v for k in WIDTH_METRICS if (v := _reading(result, k, i)) is not None})
+            if view in FRONT_VIEWS and exercise in REFERENCE_EXERCISES:
+                # A pull-up/press changes elbow spread across its photographed
+                # positions. That width belongs to this exact phase; grip span
+                # remains a shared target, as does the legacy squat policy.
+                elbow_width = _reading(result, 'elbow_width_ratio', i)
+                phase_widths[phase] = {'elbow_width_ratio': elbow_width} if elbow_width else {}
             if oblique_row and exercise != ROW_EXERCISE:
                 for reading in reads.values():
                     if reading:
@@ -226,7 +237,7 @@ def build_targets(exercise, images, measured, equipment=None):
     missing = [p for p in ("start", "end") if p not in phases]
     if missing:
         named = f" {'; '.join(problems)}." if problems else ""
-        views = "side or three-quarter images" if exercise in (ROW_EXERCISE,) + REFERENCE_EXERCISES else "side-view images"
+        views = "side or three-quarter images" if exercise in (ROW_EXERCISE,) + REFERENCE_EXERCISES else "chronological sequence images" if sequence else "side-view images"
         raise TooFewPositions(f"Need a start and an end position from {views} with a body found; "
                               f"missing: {' and '.join(missing)}.{named}", info)
     if "middle" not in phases:
@@ -235,8 +246,10 @@ def build_targets(exercise, images, measured, equipment=None):
         phases["middle"] = mid
     result = {"exercise": exercise, "phases": {p: phases[p] for p in PHASES}, "widths": widths,
               "tolerance": dict(TOLERANCE), "images": info, "camera": camera}
-    if exercise in REFERENCE_EXERCISES:
-        result['motion'] = {'mode': 'hold' if hold else 'cycle', 'sourcePhases': source_phases,
+    if phase_widths:
+        result['phase_widths'] = phase_widths
+    if exercise in REFERENCE_EXERCISES or sequence:
+        result['motion'] = {'mode': 'sequence' if sequence else 'hold' if hold else 'cycle', 'sourcePhases': source_phases,
                             'approximateDepth': any(i.get('used') and i.get('view') != 'side' for i in info.values())}
     return result
 

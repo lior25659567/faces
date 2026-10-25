@@ -1,10 +1,11 @@
 import { createHash, randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import { BadInputError } from './store.js'
+import { BadInputError, characterFitOf } from './store.js'
 import { execFileSync } from 'node:child_process'
 import { BLENDER, PYTHON, REPO } from './paths.js'
 import { getReferenceSpec } from './reference-catalog.js'
+import { getBundledReferenceSpec } from './bundled-references.js'
 import { fetchReference } from './reference-fetch.js'
 import { automaticBuilder } from './kit.js'
 
@@ -17,8 +18,13 @@ const write = (file, value) => {
   renameSync(temporary, file)
 }
 const clone = (value) => structuredClone(value)
+const defaultReferenceSpec = (name) => getBundledReferenceSpec(name) || getReferenceSpec(name)
+const sequenceFields = (source = {}) => Object.fromEntries([
+  'motionOnly', 'timeSeconds', 'sequenceIndex', 'sourceFrameIndex', 'role', 'leadLeg',
+  'observedSupport', 'footContacts', 'contactNote', 'sequenceInfo',
+].filter((key) => Object.hasOwn(source, key)).map((key) => [key, source[key]]))
 const pictureKey = (images) => JSON.stringify([...images].sort((a, b) => a.order - b.order).map((i) =>
-  [i.id, i.file, i.phase, i.viewSetBy === 'user' ? i.view : null, Boolean(i.contextOnly)]))
+  [i.id, i.file, i.phase, i.viewSetBy === 'user' ? i.view : null, Boolean(i.contextOnly), sequenceFields(i.source)]))
 
 // Reuse outputs only while the builder, model and input contents are unchanged.
 const runtimeFingerprint = () => {
@@ -49,18 +55,22 @@ export const builderFingerprint = ({ root = REPO, execution = runtimeFingerprint
     }
   }
   for (const dir of ['pipeline', 'studio/measure', 'studio/blender', 'reference/exercises']) walk(path.join(root, dir))
-  for (const rel of ['studio/server/steps.js', 'studio/server/runtime_fingerprint.py', 'package-lock.json', 'studio/requirements.txt',
+  for (const rel of ['studio/server/steps.js', 'studio/server/runtime_fingerprint.py',
+    'studio/server/automation.js', 'studio/server/reference-catalog.js', 'studio/server/bundled-references.js',
+    'reference/exercise-catalog.json', 'reference/exercise-lunge/sequence.json', 'reference/exercise-lunge/sources.json',
+    'package-lock.json', 'studio/requirements.txt',
     '3d-character/3d cartoon boy.glb', 'studio/models/pose_landmarker_heavy.task']) add(path.join(root, rel))
   const clips = path.join(root, '3d-character/mixamo')
   if (existsSync(clips)) for (const name of readdirSync(clips).sort()) if (/\.fbx$/i.test(name)) add(path.join(clips, name))
   hash.update(execution())
   return hash.digest('hex')
 }
-const inputsFingerprint = (store, slug) => {
+const inputsFingerprint = (store, slug, characterFit = 'auto') => {
   const refs = store.listReferences(slug)
   const hash = createHash('sha256').update(pictureKey(refs))
   const exercise = store.getExercise(slug)
   hash.update(JSON.stringify([exercise.name, exercise.equipment, exercise.clip, exercise.pictureRefusal, automaticBuilder(exercise.name)]))
+  hash.update(characterFitOf(characterFit))
   for (const ref of refs) hash.update(readFileSync(path.join(store.root, 'references', slug, ref.file)))
   return hash.digest('hex')
 }
@@ -91,7 +101,7 @@ const reviewMessage = (checks) => {
 }
 
 
-export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpec, download = fetchReference,
+export const createAutomation = ({ store, queue, referenceSpec = defaultReferenceSpec, download = fetchReference,
   fingerprint = builderFingerprint, pollMs = 250, maxRunMs = 45 * 60 * 1000, now = Date.now } = {}) => {
   const folder = path.join(store.root, 'automation')
   let live = null, stopped = false
@@ -129,12 +139,22 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     if (busy(item.slug)) return update(job, item, { status: 'blocked', message: 'This exercise already has work running or queued. Its current work was left alone.' })
     const spec = referenceSpec(exercise.name)
     let refs = store.listReferences(item.slug)
+    const matchesSpec = (ref) => Boolean(spec && ref.source?.catalogId === spec.id && ref.source?.commit === spec.commit)
+    const bundledLunge = getBundledReferenceSpec(exercise.name)
+    const oldLunge = bundledLunge && getReferenceSpec(exercise.name)
+    // The old lunge pair contains only automatic context images. Keep those
+    // files and user tags while appending the reviewed sequence. Any manual
+    // image or other source change prevents this narrow migration.
+    const legacyContext = (ref) => spec && bundledLunge && spec.id === bundledLunge.id && spec.commit === bundledLunge.commit &&
+      ref.contextOnly === true && ref.source?.catalogId === oldLunge?.id && ref.source?.commit === oldLunge?.commit
+    const compatible = (images) => images.every((ref) => matchesSpec(ref) || legacyContext(ref))
+    const contextMigration = refs.length && refs.some(legacyContext) && compatible(refs)
     if (spec && refs.length && refs.every((r) => r.source?.catalogId) &&
-        refs.some((r) => r.source.catalogId !== spec.id || r.source.commit !== spec.commit)) {
+        refs.some((r) => !matchesSpec(r)) && !contextMigration) {
       return update(job, item, { status: 'blocked', message: 'The curated source changed. Review the previously imported references before replacing them.' })
     }
-    const automaticOnly = spec && refs.length && refs.every((r) => r.source?.catalogId === spec.id && r.source?.commit === spec.commit)
-    if (!refs.length || automaticOnly) {
+    const automaticOnly = spec && refs.length && refs.every(matchesSpec)
+    if (!refs.length || automaticOnly || contextMigration) {
       if (!spec) return update(job, item, { status: 'blocked', message: 'No exact curated reference source is mapped to this exercise. Add reference pictures in Studio.' })
       update(job, item, { status: 'fetching', message: 'Retrieving the curated reference photographs.', sourceUrl: spec.repository, sourceId: spec.id })
       const known = new Set(refs.map((r) => r.source?.url))
@@ -154,15 +174,16 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
         fetched.push({ image, result })
       }
       refs = store.listReferences(item.slug)
-      if (refs.length && !refs.every((r) => r.source?.catalogId === spec.id && r.source?.commit === spec.commit)) {
+      if (refs.length && !compatible(refs)) {
         item.message = 'Using reference pictures added while the download was running.'
       } else {
         const current = new Set(refs.map((r) => r.source?.url))
         for (const { image, result } of fetched) {
           if (current.has(image.url)) continue
-          store.addReference(item.slug, result.bytes, `${spec.id}-${image.phase}.${result.ext}`, result.ext, {
+          store.addReference(item.slug, result.bytes, `${spec.id}-${image.id || image.phase}.${result.ext}`, result.ext, {
             phase: image.phase, view: image.view, contextOnly: image.contextOnly,
             source: { ...result.provenance, catalogId: spec.id, commit: spec.commit, url: image.url,
+              ...sequenceFields(image), ...(spec.sequenceInfo ? { sequenceInfo: spec.sequenceInfo } : {}),
               sha256: result.sha256, license: spec.license },
           })
           current.add(image.url)
@@ -173,13 +194,16 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     }
     if (stopped) return
     // A catalog's special setup/static-only pair cannot become invented motion frames.
-    if (spec?.autoBuild === false && store.listReferences(item.slug).every((r) => r.source?.catalogId === spec.id)) {
+    const currentRefs = store.listReferences(item.slug)
+    if (spec?.autoBuild === false && currentRefs.some(matchesSpec) &&
+        (spec.motion === 'sequence' || currentRefs.filter((r) => !r.contextOnly).every(matchesSpec))) {
       return update(job, item, { status: 'blocked', message: spec.reason || 'These source images do not provide the positions needed for an automatic motion cycle.' })
     }
     if (busy(item.slug)) return update(job, item, { status: 'blocked', message: 'New work started on this exercise. Automation left it alone.' })
-    const inputs = inputsFingerprint(store, item.slug)
+    const inputs = inputsFingerprint(store, item.slug, job.characterFit)
     const previous = !job.checkOnly && !job.forceRebuild && store.listRuns(item.slug).find((run) => !run.readOnly && run.status === 'done' &&
       run.automationFingerprint === job.builderFingerprint && run.automationInputs === inputs &&
+      (run.characterFit || 'auto') === job.characterFit &&
       reusableOutputs(store, run))
     if (previous) {
       if (fingerprint() !== job.builderFingerprint) return update(job, item, { status: 'blocked', message: 'The builder changed during this batch. Start a fresh batch with the new code.' })
@@ -189,7 +213,7 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     }
 
     update(job, item, { status: 'checking', message: 'Reading references and checking required inputs.' })
-    const read = queue.enqueueRead(item.slug, { automationJobId: job.id })
+    const read = queue.enqueueRead(item.slug, { automationJobId: job.id, characterFit: job.characterFit })
     update(job, item, { referenceRunId: read.id })
     const checked = await waitForRun(job, item.slug, read.id)
     if (!checked || stopped) return
@@ -199,7 +223,7 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
       preflight: plan, referenceMessage: checked.error?.message || null })
     if (checked.status !== 'done' || plan?.ready !== true) return update(job, item, { status: 'blocked', preflight: plan,
       message: plan?.blockers?.join(' ') || checked.error?.message || 'The reference check did not establish readiness.' })
-    if (inputsFingerprint(store, item.slug) !== inputs) return update(job, item, { status: 'blocked', message: 'References changed during the check. Check the edited pictures before rebuilding.' })
+    if (inputsFingerprint(store, item.slug, job.characterFit) !== inputs) return update(job, item, { status: 'blocked', message: 'References changed during the check. Check the edited pictures before rebuilding.' })
     if (fingerprint() !== job.builderFingerprint) return update(job, item, { status: 'blocked', message: 'The builder changed during this batch. Start a fresh batch with the new code.' })
     if (job.checkOnly) return update(job, item, { status: 'ready', preflight: plan, message: 'References are ready. Rendering was not requested.' })
     const state = queue.state()
@@ -207,7 +231,7 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
       return update(job, item, { status: 'blocked', message: 'Manual work started during the reference check. Automation did not queue a duplicate build.' })
     }
     update(job, item, { status: 'building', preflight: plan, message: 'Building the supported animation and running its form checks.' })
-    const run = queue.enqueue(item.slug, { automationJobId: job.id, automationFingerprint: job.builderFingerprint, automationInputs: inputs })
+    const run = queue.enqueue(item.slug, { automationJobId: job.id, automationFingerprint: job.builderFingerprint, automationInputs: inputs, characterFit: job.characterFit })
     update(job, item, { runId: run.id })
     const result = await waitForRun(job, item.slug, run.id)
     if (!result || stopped) return
@@ -235,17 +259,18 @@ export const createAutomation = ({ store, queue, referenceSpec = getReferenceSpe
     job.status = job.timedOut ? 'interrupted' : job.cancelRequested ? 'cancelled' : 'done'
     job.finishedAt = iso(); save(job); live = null
   }
-  const start = ({ slugs, checkOnly = false, forceRebuild = false } = {}) => {
+  const start = ({ slugs, checkOnly = false, forceRebuild = false, characterFit = 'auto' } = {}) => {
     if (stopped) throw new BadInputError('Restart Studio before starting another batch.')
     if (live) throw Object.assign(Error('Another automation batch is already running.'), { status: 409 })
     if (typeof checkOnly !== 'boolean' || typeof forceRebuild !== 'boolean') throw new BadInputError('Batch options must be true or false.')
+    characterFit = characterFitOf(characterFit)
     const exercises = store.listExercises()
     if (slugs === undefined) slugs = exercises.map((e) => e.slug)
     if (!Array.isArray(slugs) || !slugs.length || slugs.length > 100 || slugs.some((s) => typeof s !== 'string' || !exercises.some((e) => e.slug === s))) {
       throw new BadInputError('Select existing exercises for the batch.')
     }
     const job = { id: randomUUID(), status: 'running', createdAt: iso(), finishedAt: null,
-      checkOnly, forceRebuild, builderFingerprint: fingerprint(), cancelRequested: false,
+      checkOnly, forceRebuild, characterFit, builderFingerprint: fingerprint(), cancelRequested: false,
       items: [...new Set(slugs)].map((slug) => ({ slug, name: store.getExercise(slug).name, status: 'waiting', message: 'Waiting for its turn.' })) }
     save(job); live = job
     setImmediate(() => execute(job).catch((error) => {

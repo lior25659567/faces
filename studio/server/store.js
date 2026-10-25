@@ -28,6 +28,13 @@ const POSES = path.join(REPO, 'reference', 'exercises', 'poses.json')
 export class NotFoundError extends Error {}
 export class BadInputError extends Error {}
 
+export const characterFitOf = (value = 'auto') => {
+  if (!['auto', 'original', 'fitness'].includes(value)) {
+    throw new BadInputError('Character proportions must be auto, original or fitness.')
+  }
+  return value
+}
+
 export const slugOf = (name) => (String(name).toLowerCase().match(/[a-z0-9]+/g) || []).join('-')
 
 const equipmentOf = (name) => {
@@ -180,16 +187,17 @@ export const createStore = (dataRoot = DATA) => {
   const createRun = (slug, extra = {}) => {
     const exercise = getExercise(slug)
     if (!exercise) throw new NotFoundError('Unknown exercise.')
+    const characterFit = characterFitOf(extra.characterFit)
     let id
     do id = `${stamp()}-${randomBytes(2).toString('hex')}`
     while (existsSync(runDir(slug, id)))
     const dir = runDir(slug, id)
     const images = listReferences(slug).map((i) => ({ ...i, path: path.join(refDir(slug), i.file) }))
-    writeJson(path.join(dir, 'references.json'), { exercise: exercise.name, slug, equipment: exercise.equipment, images })
+    writeJson(path.join(dir, 'references.json'), { exercise: exercise.name, slug, equipment: exercise.equipment, characterFit, images })
     const run = {
       id, slug, name: exercise.name, clip: exercise.clip, status: 'queued',
       createdAt: new Date().toISOString(), startedAt: null, finishedAt: null,
-      steps: (extra.readOnly ? ['read'] : STEP_IDS).map(newStep), error: null, summary: null, ...extra,
+      steps: (extra.readOnly ? ['read'] : STEP_IDS).map(newStep), error: null, summary: null, ...extra, characterFit,
     }
     writeRun(run)
     return run
@@ -207,6 +215,7 @@ export const createStore = (dataRoot = DATA) => {
     const exercise = getExercise(slug)
     if (!exercise) throw new NotFoundError('Unknown exercise.')
     if (!sourceRun?.id) throw new NotFoundError('No run to re-check.')
+    const characterFit = characterFitOf(sourceRun.characterFit)
     const srcDir = runDir(slug, sourceRun.id)
     let id
     do id = `${stamp()}-${randomBytes(2).toString('hex')}`
@@ -228,7 +237,7 @@ export const createStore = (dataRoot = DATA) => {
     const run = {
       id, slug, name: exercise.name, clip: exercise.clip, status: 'queued',
       createdAt: new Date().toISOString(), startedAt: null, finishedAt: null,
-      steps, error: null, summary: null, checkOnly: true, recheckOf: sourceRun.id, ...extra,
+      steps, error: null, summary: null, checkOnly: true, recheckOf: sourceRun.id, ...extra, characterFit,
     }
     writeRun(run)
     return run

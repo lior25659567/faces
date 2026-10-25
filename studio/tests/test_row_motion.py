@@ -147,3 +147,109 @@ def test_collision_safe_target_cannot_be_adapted_back_into_body():
     with pytest.raises(ValueError, match='outside'):
         solve_shared_bar(shoulders, [0.,.25,.35], [1,0,0], .22,
                          lengths, models, hints, allow_adaptation=False)
+
+
+def test_near_leg_geometry_is_preserved_instead_of_averaged_with_hidden_depth():
+    from row_motion import symmetric_body
+    points = {'left_hip': np.array([.1, 0., 0.]), 'right_hip': np.array([-.1, 0., 0.]),
+              'left_knee': np.array([.1, .2, -.2]), 'right_knee': np.array([-.1, .1, -.3]),
+              'left_ankle': np.array([.1, .1, -.5]), 'right_ankle': np.array([-.1, .05, -.6])}
+    body = symmetric_body(points, visible_leg='right')
+    np.testing.assert_allclose(body['right_knee'] - body['right_hip'], points['right_knee'] - points['right_hip'])
+    np.testing.assert_allclose(body['right_ankle'] - body['right_hip'], points['right_ankle'] - points['right_hip'])
+    np.testing.assert_allclose(body['left_knee'], body['right_knee'] * [-1, 1, 1])
+    assert not np.allclose(symmetric_body(points)['right_knee'], body['right_knee'])
+
+
+def test_angle_preferences_improve_the_measured_bend_without_sacrificing_exact_contact():
+    shoulder, point, hint = np.array([-.2, 0., 1.]), np.array([-.22, .2, .5]), np.array([-.2, .05, .75])
+    model = grip()
+    ordinary = solve_contact(shoulder, point, [1, 0, 0], -1, .3, .3, model, hint)
+    preferred = solve_contact(shoulder, point, [1, 0, 0], -1, .3, .3, model, hint,
+                              preference={'elbow_deg': ordinary['elbow_deg'] + 8})
+    # The fixed handle can make the exact requested angle infeasible. The goal
+    # must improve the fit while retaining the hard reach/wrist constraints.
+    assert abs(preferred['elbow_deg'] - (ordinary['elbow_deg'] + 8)) < 7.
+    assert np.linalg.norm(preferred['elbow'] - shoulder) == pytest.approx(.3)
+    assert np.linalg.norm(preferred['wrist'] - preferred['elbow']) == pytest.approx(.3)
+    np.testing.assert_allclose(preferred['wrist'] + preferred['turn'] @ np.array(model['B']), point, atol=1e-10)
+    assert preferred['bend_deg'] <= 25.
+
+
+def test_static_row_knee_uses_the_observed_mean_without_moving_the_thigh_or_torso():
+    def shin(included):
+        a = np.radians(180. - included)
+        return np.array([[1, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
+    keys = [{'Hips': np.eye(3), 'LeftUpLeg': np.eye(3), 'LeftLeg': shin(angle),
+             'LeftFoot': np.eye(3), 'LeftArm': np.eye(3)} for angle in (138., 146.)]
+    held = stabilize_body(keys, legs=np.array([0., 0., -1.]))
+    down = np.array([0., 0., -1.])
+    for pose in held:
+        actual = np.degrees(np.arccos(np.clip((-pose['LeftUpLeg'] @ down) @ (pose['LeftLeg'] @ down), -1, 1)))
+        assert actual == pytest.approx(142.)
+        assert 138. <= actual <= 146.
+        np.testing.assert_allclose(pose['Hips'], keys[0]['Hips'])
+        np.testing.assert_allclose(pose['LeftUpLeg'], keys[0]['LeftUpLeg'])
+        np.testing.assert_allclose(pose['LeftFoot'], keys[0]['LeftFoot'])
+    np.testing.assert_allclose(held[0]['LeftLeg'], held[1]['LeftLeg'])
+
+
+@pytest.mark.parametrize('lowering', [0., .0029])
+def test_nearly_straight_reference_arm_does_not_miss_a_narrow_hand_roll_solution(lowering):
+    # Actual fitted mascot geometry from the full row run. The old five-degree
+    # roll grid selected 164.8 degrees, although the measured 172.5-degree bend
+    # is attainable with exact grip contact and an unstrained wrist.
+    shoulder = np.array([-.1165087968, .1370491982, .6153230071])
+    point = np.array([-.1735291928, .0919172317, .3914068341])
+    point[2] -= lowering
+    lengths = (.1044322550, .0778808594)
+    model = {'B': [-.3477010433, .0025349160, .6989849656],
+             'kb': [.1800828592, .8630242024, .4719739293],
+             'hb': [-.9782464114, .1068996120, .1777819773],
+             'wrist': [-.2926503718, -.0149215590, .7099001408],
+             'middle_mcp': [-.3557208640, -.0029688906, .7242557284]}
+    target = 172.4583122955
+    if lowering:
+        # In this neighboring reachable pose, no coarse roll is feasible at
+        # all. The fallback fine search must still find the exact solution.
+        with pytest.raises(ValueError, match='cannot be reached'):
+            solve_contact(shoulder, point, [.9999939203, -.0034693454, 0.], -1,
+                          *lengths, model, [-.1457327220, .1351455250, .5150811291])
+    result = solve_contact(shoulder, point, [.9999939203, -.0034693454, 0.], -1,
+                           *lengths, model, [-.1457327220, .1351455250, .5150811291],
+                           preference={'elbow_deg': target, 'upperarm_deg': 54.7186953735,
+                                       'torso_down': [.0684012324, -.2396489084, -.1639482230]})
+    assert abs(result['elbow_deg'] - target) < 1.
+    assert result['bend_deg'] < 25.
+    assert np.linalg.norm(result['elbow'] - shoulder) == pytest.approx(lengths[0])
+    assert np.linalg.norm(result['wrist'] - result['elbow']) == pytest.approx(lengths[1])
+    np.testing.assert_allclose(result['wrist'] + result['turn'] @ (np.array(model['B']) - model['wrist']),
+                               point, atol=1e-9)
+
+
+def test_held_stance_balances_observed_thigh_directions_without_changing_the_hinge():
+    def rotation(degrees):
+        a = np.radians(degrees)
+        return np.array([[1, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
+    down = np.array([0., 0., -1.])
+    keys = [{'Hips': rotation(55), 'LeftUpLeg': rotation(thigh),
+             'LeftLeg': rotation(thigh + 180 - knee), 'LeftFoot': np.eye(3)}
+            for thigh, knee in [(20, 138), (30, 146)]]
+    result = stabilize_body(keys, legs=down)
+    for pose in result:
+        np.testing.assert_allclose(pose['LeftUpLeg'], rotation(25), atol=1e-9)
+        knee = np.degrees(np.arccos(np.clip((-pose['LeftUpLeg'] @ down) @ (pose['LeftLeg'] @ down), -1, 1)))
+        assert knee == pytest.approx(142)
+        np.testing.assert_allclose(pose['Hips'], keys[0]['Hips'])
+        np.testing.assert_allclose(pose['LeftFoot'], keys[0]['LeftFoot'])
+
+
+def test_straight_start_without_a_bend_plane_keeps_the_entire_starting_leg():
+    a = np.radians(20)
+    turn = np.array([[1, 0, 0], [0, np.cos(a), -np.sin(a)], [0, np.sin(a), np.cos(a)]])
+    keys = [{'LeftUpLeg': np.eye(3), 'LeftLeg': np.eye(3)},
+            {'LeftUpLeg': turn, 'LeftLeg': turn}]
+    held = stabilize_body(keys, legs=np.array([0., 0., -1.]))
+    for pose in held:
+        np.testing.assert_allclose(pose['LeftUpLeg'], keys[0]['LeftUpLeg'])
+        np.testing.assert_allclose(pose['LeftLeg'], keys[0]['LeftLeg'])

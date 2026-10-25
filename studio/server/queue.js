@@ -423,6 +423,7 @@ export const createQueue = ({
     }
     const at = waiting.findIndex((w) => w.slug === slug &&
       Boolean(store.readRun(slug, w.runId)?.readOnly) === Boolean(extra.readOnly) &&
+      (store.readRun(slug, w.runId)?.characterFit || 'auto') === fresh.characterFit &&
       (store.readRun(slug, w.runId)?.automationJobId || null) === (extra.automationJobId || null))
     const old = at < 0 ? null : store.readRun(slug, waiting[at].runId)
     let run = fresh
@@ -521,7 +522,7 @@ export const createQueue = ({
       const newest = store.listRuns(slug)[0]
       if (!newest || newest.automationJobId || newest.status !== 'interrupted' || newest.restartedAs || newest.restartOf || newest.replacedBy) continue
       if (!store.hasUsablePictures(slug)) continue
-      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, ...(newest.readOnly ? { readOnly: true } : {}) })
+      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, characterFit: newest.characterFit || 'auto', ...(newest.readOnly ? { readOnly: true } : {}) })
       store.writeRun({ ...newest, restartedAs: run.id, restartedAt: iso() })
       restarted.push({ slug, runId: run.id })
     }

@@ -17,7 +17,7 @@ beforeEach(async () => {
   work = createWork(root)
   queued = []
   const queue = {
-    enqueue: (slug) => { queued.push(slug); return store.createRun(slug) },
+    enqueue: (slug, extra) => { queued.push(slug); return store.createRun(slug, extra) },
     state: () => ({ running: null, queued: queued.map((slug) => ({ slug, runId: 'x' })) }),
   }
   let handler
@@ -119,6 +119,21 @@ test('starts a run through the queue and reads it back', async () => {
   expect(back.id).toBe(run.id)
   const state = await (await send('/api/state')).json()
   expect(state.queued).toHaveLength(1)
+})
+
+test('run API validates character proportions and passes only the chosen option', async () => {
+  const sendMode = (body) => send('/api/exercises/barbell-back-squat/runs', {
+    method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body),
+  })
+  const response = await sendMode({ characterFit: 'fitness', status: 'done', automationJobId: 'injected' })
+  expect(response.status).toBe(201)
+  const run = await response.json()
+  expect(run).toMatchObject({ characterFit: 'fitness', status: 'queued' })
+  expect(run.automationJobId).toBeUndefined()
+  const bad = await sendMode({ characterFit: 'longer' })
+  expect(bad.status).toBe(400)
+  expect((await bad.json()).error).toMatch(/Character proportions/)
+  expect(queued).toHaveLength(1)
 })
 
 test('refuses a video with its plain message and a 4xx', async () => {

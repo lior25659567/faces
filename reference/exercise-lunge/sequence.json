@@ -1,0 +1,247 @@
+{
+  "exercise": "Walking Lunge (dumbbells optional)",
+  "variant": "dumbbell walking lunge",
+  "source": "sources.json",
+  "motion": "step_sequence",
+  "view": "front",
+  "camera": "fixed frontal perspective, athlete walking toward camera",
+  "calibrated": false,
+  "approximateDepth": true,
+  "autoBuild": false,
+  "cropPixels": {
+    "x": 650,
+    "y": 150,
+    "width": 600,
+    "height": 900
+  },
+  "derivative": "Decoded video frames with one identical rectangular crop for every frame; no pose edits or generated pixels.",
+  "limitations": [
+    "The camera is not metrically calibrated. Forward travel is foreshortened and the athlete grows in the image.",
+    "These frames are a chronological stepping sequence, not interchangeable start/end photographs for a reversible lift.",
+    "The rear knee and swing foot can occlude each other in this frontal view; verify inferred contact states and depth.",
+    "The existing source catalog is preserved until a stepping/root-motion builder validates this sequence."
+  ],
+  "frames": [
+    {
+      "id": "lunge-00",
+      "file": "lunge-00.jpg",
+      "sequenceIndex": 0,
+      "sourceFrameIndex": 120,
+      "sourceTimestampSeconds": 2.001667,
+      "role": "standing_start",
+      "leadLeg": null,
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+      "observedSupport": "both",
+      "footContacts": {
+        "left": "flat",
+        "right": "flat"
+      },
+      "contactNote": "Both shoes appear on the mat in the initial standing stance."
+    },
+    {
+      "id": "lunge-01",
+      "file": "lunge-01.jpg",
+      "sequenceIndex": 1,
+      "sourceFrameIndex": 150,
+      "sourceTimestampSeconds": 2.501667,
+      "role": "right_heel_approach",
+      "leadLeg": "right",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "airborne"
+      },
+      "contactNote": "Left foot supports the body while the right heel approaches the next step."
+    },
+    {
+      "id": "lunge-02",
+      "file": "lunge-02.jpg",
+      "sequenceIndex": 2,
+      "sourceFrameIndex": 180,
+      "sourceTimestampSeconds": 3.001667,
+      "role": "right_descent",
+      "leadLeg": "right",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+      "observedSupport": "right",
+      "footContacts": {
+        "left": "uncertain",
+        "right": "flat"
+      },
+      "contactNote": "Right lead foot is visibly planted; rear left foot is partially hidden."
+    },
+    {
+      "id": "lunge-03",
+      "file": "lunge-03.jpg",
+      "sequenceIndex": 3,
+      "sourceFrameIndex": 210,
+      "sourceTimestampSeconds": 3.501667,
+      "role": "right_bottom",
+      "leadLeg": "right",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+      "observedSupport": "right",
+      "footContacts": {
+        "left": "uncertain",
+        "right": "flat"
+      },
+      "contactNote": "Right lead foot is planted; rear left foot is hidden behind the leg."
+    },
+    {
+      "id": "lunge-04",
+      "file": "lunge-04.jpg",
+      "sequenceIndex": 4,
+      "sourceFrameIndex": 240,
+      "sourceTimestampSeconds": 4.001667,
+      "role": "right_ascent",
+      "leadLeg": "right",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+      "observedSupport": "right",
+      "footContacts": {
+        "left": "airborne",
+        "right": "flat"
+      },
+      "contactNote": "Right lead foot remains planted while the left foot lifts forward."
+    },
+    {
+      "id": "lunge-05",
+      "file": "lunge-05.jpg",
+      "sequenceIndex": 5,
+      "sourceFrameIndex": 270,
+      "sourceTimestampSeconds": 4.503333,
+      "role": "feet_passing_transition",
+      "leadLeg": null,
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de",
+      "observedSupport": "right",
+      "footContacts": {
+        "left": "uncertain",
+        "right": "flat"
+      },
+      "contactNote": "Upright passing transition; exact left-foot touchdown is ambiguous in this image."
+    },
+    {
+      "id": "lunge-06",
+      "file": "lunge-06.jpg",
+      "sequenceIndex": 6,
+      "sourceFrameIndex": 300,
+      "sourceTimestampSeconds": 5.003333,
+      "role": "left_heel_approach",
+      "leadLeg": "left",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "8a97911d7a6e633db83033911723fb75afe92b5161d25db60412af728cbdd4e2",
+      "observedSupport": "right",
+      "footContacts": {
+        "left": "uncertain",
+        "right": "flat"
+      },
+      "contactNote": "Left heel approaches touchdown; right trailing foot remains visibly on the mat."
+    },
+    {
+      "id": "lunge-07",
+      "file": "lunge-07.jpg",
+      "sequenceIndex": 7,
+      "sourceFrameIndex": 330,
+      "sourceTimestampSeconds": 5.503333,
+      "role": "left_descent",
+      "leadLeg": "left",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "d36ad059c27b748f901d4b66822252130761e7318113ca0fd8bc813a9a5e39cf",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "uncertain"
+      },
+      "contactNote": "Left lead foot is planted; rear right foot is foreshortened and partly occluded."
+    },
+    {
+      "id": "lunge-08",
+      "file": "lunge-08.jpg",
+      "sequenceIndex": 8,
+      "sourceFrameIndex": 360,
+      "sourceTimestampSeconds": 6.003333,
+      "role": "left_bottom",
+      "leadLeg": "left",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "6ba865664aaa505f0dc84f2165e7c8f17819a6e60ddde14500a1f44f839296ef",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "uncertain"
+      },
+      "contactNote": "Left lead foot is planted; right rear toe contact cannot be resolved reliably."
+    },
+    {
+      "id": "lunge-09",
+      "file": "lunge-09.jpg",
+      "sequenceIndex": 9,
+      "sourceFrameIndex": 390,
+      "sourceTimestampSeconds": 6.503333,
+      "role": "left_ascent",
+      "leadLeg": "left",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "bf7286c1010f96f3d6ce12613a05acfbb643466366a99c68328f09d14260719f",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "airborne"
+      },
+      "contactNote": "Left lead foot supports the ascent while the right foot swings forward."
+    },
+    {
+      "id": "lunge-10",
+      "file": "lunge-10.jpg",
+      "sequenceIndex": 10,
+      "sourceFrameIndex": 420,
+      "sourceTimestampSeconds": 7.005,
+      "role": "right_swing_through",
+      "leadLeg": "left",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "3fee9ffb85b15f139e6ba050d2fc387a8a6e05cd0a19685210d56de65bb30e2b",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "airborne"
+      },
+      "contactNote": "Upright passing transition with the right shoe visibly raised."
+    },
+    {
+      "id": "lunge-11",
+      "file": "lunge-11.jpg",
+      "sequenceIndex": 11,
+      "sourceFrameIndex": 450,
+      "sourceTimestampSeconds": 7.505,
+      "role": "next_right_heel_approach",
+      "leadLeg": "right",
+      "view": "front",
+      "contextOnly": false,
+      "sha256": "aebbfacd7e385e94bc6b710388d39de90e15203dc172e65926db4b5123073dca",
+      "observedSupport": "left",
+      "footContacts": {
+        "left": "flat",
+        "right": "airborne"
+      },
+      "contactNote": "Left foot remains planted while the right heel approaches the next landing."
+    }
+  ],
+  "initialStandingTimestampSeconds": 2.001667,
+  "finalStandingTimestampSeconds": null,
+  "uprightPassingTimestampSeconds": 7.005,
+  "completeClosedCycle": false,
+  "contactAnnotationPolicy": "Foot states describe visually observed support only. Uncertain means occluded or near touchdown; it must not become a hard floor constraint. These are image annotations, not force-plate or metric floor measurements."
+}

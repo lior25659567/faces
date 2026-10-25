@@ -491,7 +491,9 @@ def run_mpfb(args):
     retarget = retarget_module()
     from motion_profiles import profile_for
     profile = profile_for(args.exercise) if args.keyposes else None
-    motion_fps = 12 if args.fast and profile else 30
+    # The full-body hanging arc needs denser samples than small standing lifts.
+    # Preserve its duration and the existing per-frame jump limit at 16 fps.
+    motion_fps = (16 if profile['family'] == 'hanging' else 12) if args.fast and profile else 30
     if not args.wrap_skin or bool(args.mixamo) == bool(args.keyposes):
         raise SystemExit("--mpfb needs --wrap-skin (the skin) and one motion: --mixamo (a clip) or --keyposes "
                          "(the reference pictures' key positions)")
@@ -501,6 +503,11 @@ def run_mpfb(args):
     workspace.mkdir(parents=True, exist_ok=True)
     skin, rig, cage, built = mpfb_cage.wear(args.wrap_skin, workspace)
     _check_skin_follows(skin, rig)
+    import reach_variant
+    character_mode = getattr(args, 'character_fit', 'auto')
+    character_fit = reach_variant.apply_if_needed(rig, skin, args.exercise, mode=character_mode)
+    if character_fit:
+        print(f"character: {character_fit['label']} (fixed arm lengths; face and source model preserved)", flush=True)
     if args.keyposes:
         # the legs counted from the rig's own thigh as the Studio reads it - its skin outline in the bind pose
         # (task 20) - so a picture's thigh puts ours where the picture's is
@@ -512,15 +519,36 @@ def run_mpfb(args):
     driver = retarget.BoneRetarget(rig, skin, clip, exercise=args.exercise, feet=args.feet or (profile or {}).get('feet'),
                                    foot_lock=not args.no_foot_lock)
     result = driver.run()
+    result['character_fit'] = character_fit or {
+        'requested_mode': character_mode, 'applied': False, 'label': 'Original proportions',
+        'source_model_unchanged': True, 'face_max_displacement_mm': 0., 'per_frame_stretch': False,
+    }
+    if getattr(clip, 'reference_motion', None):
+        result['reference_motion'] = clip.reference_motion
     scene = bpy.context.scene
     first, last = scene.frame_start, scene.frame_end
+    reference = json.loads(Path(args.keyposes).read_text()) if args.keyposes else None
+    deadlift_plan = None
+    if reference and args.exercise == 'Conventional Barbell Deadlift':
+        import deadlift_motion
+        deadlift_plan = deadlift_motion.apply(rig, skin, first, last, reference=reference)
+        result['deadlift_motion'] = deadlift_plan
+    result['per_frame_stage'] = 'Initial retarget, before body support and equipment corrections; final measurements follow below.'
+    if profile:
+        # Bind before measuring supports and grips so every subsequent physical
+        # check sees the same final surface as the Blender/GIF preview.
+        if args.usdz:
+            raise SystemExit('These reference-driven profiles use a post-skin collar surface correction. '
+                             'Skeletal-only USD export cannot preserve it; save the validated Blender scene or GIF instead.')
+        import pose_cleanup
+        result['surface_cleanup'] = pose_cleanup.apply(rig, skin, first, last, exercise=args.exercise)
     result["contact"] = retarget.skin_contact(rig, skin, first, last)
     result["cage"] = built
 
     held = []
     if profile:
         import exercise_supports
-        supports, support_report = exercise_supports.apply(rig, skin, first, last, args.exercise)
+        supports, support_report = exercise_supports.apply(rig, skin, first, last, args.exercise, reference=reference)
         held.extend(supports)
         result['physical'] = {'profile': profile, 'supports': support_report}
         result['contact'] = retarget.skin_contact(rig, skin, first, last)
@@ -568,10 +596,56 @@ def run_mpfb(args):
         print(f"mpfb: hands on the bar: {result['grip']}")
     elif profile:
         import exercise_contacts
+        grip_reference = None
+        reference_targets = {}
+        if args.keyposes and args.exercise in ('Pull-Up', 'Tricep Pushdown (cable, bar or rope attachment)'):
+            reference_file = Path(args.keyposes).with_name('targets.json')
+            if reference_file.is_file():
+                reference_targets = json.loads(reference_file.read_text())
+                if reference_targets.get('exercise') != args.exercise:
+                    raise ValueError('The grip targets do not match this exercise.')
+                candidate = ((reference_targets.get('widths') or {}).get('grip_ratio') or {}) if args.exercise == 'Pull-Up' else {}
+                value = candidate.get('value')
+                if type(value) in (int, float) and math.isfinite(value) and value > 0:
+                    grip_reference = candidate
+        # The longer-arm variant must still use the photographed fixed-bar
+        # width. FK wrists alone can silently choose a different grip. Preserve
+        # the source's uncertainty in the report and in the photo comparisons.
+        source_grip = grip_reference['value'] if grip_reference else None
+        fitted_grip = (deadlift_plan or {}).get('grip_ratio', source_grip)
+        nominal_cable_grip = args.exercise == 'Tricep Pushdown (cable, bar or rope attachment)' and fitted_grip is None
+        if nominal_cable_grip:
+            fitted_grip = 1.
         props, contacts = exercise_contacts.apply(rig, skin, first, last, args.exercise,
-            pulley_anchor=((result.get('physical') or {}).get('supports') or {}).get('pulley_anchor'))
+            pulley_anchor=((result.get('physical') or {}).get('supports') or {}).get('pulley_anchor'),
+            grip_ratio=fitted_grip, source_grip_ratio=source_grip,
+            grip_ratio_tolerance=(reference_targets.get('tolerance') or {}).get('ratios', 0.) if source_grip is not None else 0.,
+            source_elbow_widths=reference_targets.get('phase_widths'),
+            source_arm_targets=reference_targets.get('phases') if args.exercise == 'Tricep Pushdown (cable, bar or rope attachment)' else None,
+            source_angle_tolerance_deg=(reference_targets.get('tolerance') or {}).get('angles_deg', 5.),
+            bar_path=(deadlift_plan or {}).get('bar_path'),
+            reference_phase_frames=(result.get('reference_motion') or {}).get('phase_frames'))
+        if grip_reference:
+            contacts['grip_reference'] = grip_reference
+        elif nominal_cable_grip or deadlift_plan:
+            contacts['grip_source'] = 'nominal shoulder-width cable grip' if nominal_cable_grip else 'fitted conventional outside-knee grip'
+            contacts['requested_grip_ratio'] = None
+            contacts['grip_calibration'] = 'Source width is uncalibrated; the declared model fit must still pass physical and form checks.'
         held.extend(props)
         result['physical']['contacts'] = contacts
+    # Support and held-bar solvers can re-key the root as well as the arms (a
+    # pull-up is anchored to the fixed bar). Measure the final motion, including
+    # those corrections, so floor checks and camera bounds never use stale skin.
+    result['contact'] = retarget.skin_contact(rig, skin, first, last)
+    if args.exercise == 'Conventional Barbell Deadlift' and profile:
+        import deadlift_range
+        bar = bpy.data.objects.get('barbell')
+        if bar is None:
+            raise ValueError('The conventional floor-pull checks require the actual loaded bar mesh.')
+        movement = deadlift_range.measure_rig(rig, bar, first, last,
+            json.loads(rig['skin_fit'])['measured']['height'], result['reference_motion']['phase_frames'])
+        result['physical']['contacts']['deadlift_range'] = movement
+        result['deadlift_range'] = movement
     # measured on the animation as it will play: after the grip re-keyed the arms and fingers
     result["deformation"] = mpfb_cage.clip_deformation(rig, skin, first, last)
     if profile:
@@ -608,20 +682,47 @@ def run_mpfb(args):
           f" | deepest frame {d['deepest_frame']}: max edge growth "
           f"{d['deepest']['max_growth_mm']:.1f} mm, {d['deepest']['edges_over_1pct']} edges > 1%")
     scene.frame_set(first)
+    import numpy as np
+    low, high = np.array(c["box"][0]), np.array(c["box"][1])
     if held:
-        import numpy as np
-        low, high = np.array(c["box"][0]), np.array(c["box"][1])
         for frame in range(first, last + 1):
             scene.frame_set(frame)
             for prop in held:
                 points = np.array([prop.matrix_world @ Vector(corner) for corner in prop.bound_box])
                 low, high = np.minimum(low, points.min(axis=0)), np.maximum(high, points.max(axis=0))
-        # A padded bounding cube fits props at both preview camera angles. Keep the
-        # physical skin contact box separate from this virtual camera framing box.
-        centre = (low + high) / 2
-        half = max(float(max(high - low)), .5) * .55
-        result["preview_box"] = [(centre - half).tolist(), (centre + half).tolist()]
-        scene.frame_set(first)
+    # The full extent matters without props too: a horizontal plank is much
+    # longer than its height. Keep physical contact bounds separate from framing.
+    from preview_camera_policy import padded_box, views_for
+    result['preview_box'] = padded_box(low, high)
+    scene.frame_set(first)
+    preview_views = views_for(args.exercise, args.side_view)
+    result['preview_cameras'] = [list(view) for view in preview_views]
+    result['preview_camera_space'] = 'world'
+    if args.keyposes and (profile or args.exercise == 'Barbell Bent-Over Row'):
+        # Run the same all-frame visibility and motion checks as the inspector
+        # before spending time on a GIF. Include the planned reference cameras;
+        # the back of a bent elbow can be hidden in the preview but visible there.
+        import skin_preflight
+        mpfb_cage.preview_set(args.width, args.height, samples=4 if args.fast else 16)
+        print('skin-preflight: measuring movement and all planned camera views', flush=True)
+        checked_skin = skin_preflight.measure(rig, skin, first, last, args.exercise, held,
+            c['box'], args.keyposes, side_view=args.side_view,
+            reference_motion=result.get('reference_motion'), preview_views=preview_views)
+        result['skin_preflight'] = checked_skin
+        existing_rows = (((result.get('physical') or {}).get('validation') or {}).get('rows') or [])
+        rows = existing_rows + checked_skin['rows']
+        result['pre_render_validation'] = {'rows': rows, 'ready': checked_skin['ready']}
+        if profile:
+            result['physical']['validation'] = result['pre_render_validation']
+        if not checked_skin['ready']:
+            (workspace / 'retarget.json').write_text(json.dumps(result, indent=1, default=lambda value: list(value)))
+            if args.save:
+                bpy.ops.wm.save_as_mainfile(filepath=args.save)
+                summary = {s: sum(row['status'] == s for row in rows) for s in ('pass', 'fail', 'limited', 'uncertain', 'info')}
+                summary['unmeasured'] = sum(row.get('kind') == 'not-measured' for row in rows)
+                (Path(args.save).parent / 'checks.json').write_text(json.dumps({'summary': summary, 'rows': rows}, allow_nan=False))
+            raise SystemExit('Movement or visible skin checks failed before rendering. The measurements were saved in Checks; correct them before building the GIF.')
+        print('skin-preflight: passed', flush=True)
     if args.out or args.save:
         report = Path(args.out) if args.out else Path(args.save).parent
         report.mkdir(parents=True, exist_ok=True)
@@ -633,16 +734,14 @@ def run_mpfb(args):
         low, high = np.array(result.get("preview_box", c["box"]))
         centre = (low + high) / 2
         distance = mpfb_cage.distance_for(max(high[2] - low[2], 0.5) * 1.05)
-        mpfb_cage.camera_on(centre, 35, 10, distance)
+        mpfb_cage.camera_on(centre, *preview_views[0], distance)
         scene.render.filepath = str(out / "frame_")
         bpy.ops.render.render(animation=True)
         side = None
         if args.side_view:
             side = out / "side"
             side.mkdir(parents=True, exist_ok=True)
-            # the bar stays in: it is unloaded (`mpfb_cage.mount_barbell`), so end-on it is the
-            # small circle the reference shows, not a plate across the body
-            mpfb_cage.camera_on(centre, 90, 5, distance)
+            mpfb_cage.camera_on(centre, *preview_views[1], distance)
             scene.render.filepath = str(side / "frame_")
             bpy.ops.render.render(animation=True)
         if args.gif:
@@ -763,6 +862,9 @@ def main():
                         help="with --mpfb and --wrap-skin, instead of --mixamo: no clip - move between the "
                              "reference pictures' key positions (the Exercise Studio's keyposes.json; "
                              "keypose_clip.py), start -> middle -> end in 1.5 s, held 0.2 s, back in 1.0 s")
+    parser.add_argument("--character-fit", choices=('auto', 'original', 'fitness'), default='auto',
+                        help="MPFB body proportions: automatically add arm reach when needed, keep the "
+                             "original, or always use fixed fitness proportions; face and source model are preserved")
     parser.add_argument("--form-targets", default=None, metavar="JSON",
                         help="with --mpfb: correct the clip's poses toward measured reference form "
                              "(e.g. 3d-character/reference-squat/targets.json), keeping its timing")

@@ -1,0 +1,68 @@
+{
+  "exercise": "Pull-Up",
+  "slug": "pull-up",
+  "equipment": "bodyweight",
+  "images": [
+    {
+      "id": "img-96142bf0",
+      "file": "img-96142bf0.jpg",
+      "original": "Pullups-start.jpg",
+      "order": 1,
+      "phase": "start",
+      "phaseSetBy": "user",
+      "view": "behind",
+      "viewSetBy": "user",
+      "contextOnly": false,
+      "deleted": false,
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Pullups",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/0.jpg",
+        "sha256": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
+        "phase": "start",
+        "view": "behind",
+        "contextOnly": false,
+        "catalogId": "Pullups",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/0.jpg"
+      }
+    },
+    {
+      "id": "img-9a54cdbb",
+      "file": "img-9a54cdbb.jpg",
+      "original": "Pullups-end.jpg",
+      "order": 2,
+      "phase": "end",
+      "phaseSetBy": "user",
+      "view": "behind",
+      "viewSetBy": "user",
+      "contextOnly": false,
+      "deleted": false,
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Pullups",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/1.jpg",
+        "sha256": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f",
+        "phase": "end",
+        "view": "behind",
+        "contextOnly": false,
+        "catalogId": "Pullups",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/1.jpg"
+      }
+    }
+  ],
+  "characterFit": "auto"
+}

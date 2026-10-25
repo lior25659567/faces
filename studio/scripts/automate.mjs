@@ -2,14 +2,15 @@
 // A headless client for Studio's persisted batch runner; Studio owns the processes.
 const args = process.argv.slice(2)
 const slugs = []
-let checkOnly = false, forceRebuild = false
+let checkOnly = false, forceRebuild = false, characterFit = 'auto'
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--exercise' && args[i + 1]) slugs.push(args[++i])
   else if (args[i] === '--references-only') checkOnly = true
   else if (args[i] === '--force') forceRebuild = true
+  else if (args[i] === '--character-fit' && ['auto', 'original', 'fitness'].includes(args[i + 1])) characterFit = args[++i]
   else if (args[i] === '--all') { /* the default */ }
   else if (args[i] === '--help') {
-    console.log('Start Studio, then: npm run automate -- --all [--references-only] [--force]\nSelect a subset with repeated --exercise <slug>. Exit 0: passed/ready; 2: review or blocked; 1: error/interrupted.')
+    console.log('Start Studio, then: npm run automate -- --all [--references-only] [--force] [--character-fit auto|original|fitness]\nSelect a subset with repeated --exercise <slug>. Automatic proportions adapt arm reach when needed while preserving the original model. Exit 0: passed/ready; 2: review or blocked; 1: error/interrupted.')
     process.exit(0)
   } else { console.error(`Unknown or incomplete argument: ${args[i]}`); process.exit(1) }
 }
@@ -23,7 +24,7 @@ const request = async (url, body) => {
   return result
 }
 try {
-  let job = await request('/api/automation', { ...(slugs.length ? { slugs } : {}), checkOnly, forceRebuild })
+  let job = await request('/api/automation', { ...(slugs.length ? { slugs } : {}), checkOnly, forceRebuild, characterFit })
   process.once('SIGINT', async () => {
     try { await request(`/api/automation/${job.id}/cancel`, {}); console.log('Stop requested. Studio will finish the current exercise and stop the rest.') }
     finally { process.exit(130) }

@@ -1,0 +1,63 @@
+{
+  "name": "Dumbbell Lateral Raise",
+  "slug": "dumbbell-lateral-raise",
+  "run_dir": "/tmp/studio-complete-validation/dumbbell-lateral-raise",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.36
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 248.58
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 69.07
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.2
+    }
+  ],
+  "summary": {
+    "pass": 13,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-5cd18809": "aa1982c367ea9151ee7769ac1f9f8795209db94a6eb85f7d51a7033886fb7ebc",
+    "img-62ff8746": "9210e0fb0202c306026d45a55703aaec89b3bef7aafeb7791aa1d06adcf58ab3"
+  },
+  "scene_sha256": "daabfa4f1659d36fc3d6acd8ddc247af5605819c82e6f0f4f08e38ecb659c969",
+  "output_sha256": {
+    "animation.gif": "adbb532546a7472b92e33ab9ba9d3f4fc615a20f2014c16820685ae6a94a0594",
+    "start.png": "d2cd3f75b59205de2767f90f3d6b80a51fe20e1a878520efcb2353fb95a61288",
+    "end.png": "430140f0a94b1c78b01c83609589fee37625a0091b12a55ee6ebaef2a2dd5e04",
+    "checks.json": "773ffae20ce6618c6782a2d88ab759009a4c3230d0050d2bab34b806282962e3"
+  },
+  "physical_remeasurement": null
+}

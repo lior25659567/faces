@@ -25,22 +25,15 @@ def test_the_lunge_is_refused_because_its_feet_step():
     ("Flat Barbell Bench Press", "bench"),
     ("Leg Press (seated machine)", "leg-press sled"),
     ("Pull-Up", "pull-up bar")])
-def test_a_support_the_path_does_not_build_is_refused(name, support):
-    assert kit.picture_refusal(name) == (f"No motion for this exercise: it needs a {support} the picture path "
-                                         "doesn't build yet.")
+def test_implemented_supports_are_available_for_checked_manual_builds(name, support):
+    assert kit.picture_refusal(name) is None
+    assert kit.kit_of(name)['support_built']
 
 
 @pytest.mark.parametrize("name", ["Barbell Bent-Over Row", "Barbell Back Squat", "Conventional Barbell Deadlift", "Front Plank (forearm plank)",
                                   "Dumbbell Lateral Raise", "Tricep Pushdown (cable, bar or rope attachment)"])
 def test_standing_or_lying_exercises_move(name):
     assert kit.picture_refusal(name) is None
-
-
-@pytest.mark.parametrize("name,thing", [
-    ("Standing Barbell Overhead Press (Shoulder Press)", "bar"),
-    ("Tricep Pushdown (cable, bar or rope attachment)", "cable handle")])
-def test_equipment_held_but_not_built_is_named(name, thing):
-    assert kit.unheld(name) == thing
 
 
 @pytest.mark.parametrize("name", ["Barbell Bent-Over Row", "Barbell Back Squat", "Front Plank (forearm plank)",
@@ -52,7 +45,9 @@ def test_nothing_unheld_when_the_bar_is_built_or_nothing_is_held(name):
 
 
 @pytest.mark.parametrize('name', ['Conventional Barbell Deadlift', 'Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise',
-    'Dumbbell Shoulder Press (seated overhead press)', 'Lat Pulldown (seated, to the front)'])
+    'Dumbbell Shoulder Press (seated overhead press)', 'Lat Pulldown (seated, to the front)',
+    'Standing Barbell Overhead Press (Shoulder Press)', 'Flat Barbell Bench Press',
+    'Tricep Pushdown (cable, bar or rope attachment)'])
 def test_new_profiles_build_their_equipment_and_required_support(name):
     assert kit.unheld(name) is None
     assert kit.picture_refusal(name) is None

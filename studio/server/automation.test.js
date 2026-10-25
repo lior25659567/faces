@@ -4,8 +4,12 @@ import os from 'node:os'
 import path from 'node:path'
 import { createStore } from './store.js'
 import { builderFingerprint, createAutomation } from './automation.js'
+import { getReferenceSpec } from './reference-catalog.js'
+import { getBundledReferenceSpec } from './bundled-references.js'
+import { fetchReference } from './reference-fetch.js'
 
-const ROW = 'barbell-bent-over-row', SQUAT = 'barbell-back-squat', UNSUPPORTED = 'standing-barbell-overhead-press-shoulder-press'
+const ROW = 'barbell-bent-over-row', SQUAT = 'barbell-back-squat', UNSUPPORTED = 'walking-lunge-dumbbells-optional'
+const LUNGE = 'walking-lunge-dumbbells-optional'
 let root, store, automation, builds, reads, downloads, settings
 beforeEach(() => {
   root = mkdtempSync(path.join(os.tmpdir(), 'studio-automation-test-'))
@@ -67,12 +71,12 @@ test('existing user references are never replaced or relabeled', async () => {
   expect(readFileSync(path.join(root, 'references', ROW, image.file), 'utf8')).toBe('personal picture')
 })
 
-test('missing input and unsupported equipment prevent costly builds, and batch continues', async () => {
+test('missing input and unsupported motion prevent costly builds, and batch continues', async () => {
   settings.ready = false; make()
   const result = await finished(automation.start({ slugs: [SQUAT, UNSUPPORTED, ROW] }))
   expect(result.items.map((i) => i.status)).toEqual(['blocked', 'blocked', 'blocked'])
   expect(result.items[0].message).toMatch(/front reference/)
-  expect(result.items[1].message).toMatch(/bar|hand contacts/)
+  expect(result.items[1].message).toMatch(/feet step|lunge/)
   expect(builds).toEqual([])
 })
 
@@ -103,6 +107,24 @@ test('unchanged full results are reused; changed code, references and force inva
   const image = store.listReferences(ROW)[0]; store.updateReference(ROW, image.id, { phase: 'middle' })
   await finished(automation.start({ slugs: [ROW] })); expect(builds).toHaveLength(3)
   await finished(automation.start({ slugs: [ROW], forceRebuild: true })); expect(builds).toHaveLength(4)
+})
+
+test('character proportions are snapshotted and isolate cached batch results', async () => {
+  make()
+  const original = await finished(automation.start({ slugs: [ROW], characterFit: 'original' }))
+  const first = store.readRun(ROW, original.items[0].runId)
+  expect(first.characterFit).toBe('original')
+  expect(store.readRun(ROW, original.items[0].referenceRunId).characterFit).toBe('original')
+  const fitness = await finished(automation.start({ slugs: [ROW], characterFit: 'fitness' }))
+  const second = store.readRun(ROW, fitness.items[0].runId)
+  expect(second.characterFit).toBe('fitness')
+  expect(second.automationInputs).not.toBe(first.automationInputs)
+  expect(fitness.items[0].reused).not.toBe(true)
+  const reused = await finished(automation.start({ slugs: [ROW], characterFit: 'original' }))
+  expect(reused.items[0].runId).toBe(first.id)
+  expect(reused.items[0].reused).toBe(true)
+  expect(builds).toHaveLength(2)
+  expect(() => automation.start({ slugs: [ROW], characterFit: 'stretch' })).toThrow(/Character proportions/)
 })
 
 test.each(['running', 'queued'])('manual work %s during preflight prevents a duplicate automatic build', async (stage) => {
@@ -256,4 +278,110 @@ test('integrity errors stop that exercise without changing refs and later items 
   const result=await finished(automation.start({slugs:[ROW,SQUAT]}))
   expect(result.items[0].status).toBe('failed');expect(store.listReferences(ROW)).toEqual([])
   expect(result.items[1].status).toBe('passed');expect(builds).toEqual([SQUAT]);expect(calls).toBe(3)
+})
+
+const makeBundledLunge = (extra = {}) => make({ referenceSpec: undefined,
+  download: async (image) => {
+    downloads.push(image.url)
+    return fetchReference(image, { fetchImpl: () => { throw Error('bundled reference attempted a network request') } })
+  }, ...extra })
+const addLegacyLunge = () => {
+  const old = getReferenceSpec(store.getExercise(LUNGE).name)
+  return old.images.map((image) => store.addReference(LUNGE, Buffer.from('kept old context photo'), 'old-lunge.jpg', 'jpg', {
+    phase: image.phase, view: image.view, contextOnly: true,
+    source: { catalogId: old.id, commit: old.commit, url: image.url },
+  }))
+}
+
+test('default lunge automation imports verified local sequence frames without networking or unsupported rendering', async () => {
+  makeBundledLunge()
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(result.items[0].message).toContain('stepping/root-motion builder')
+  expect(downloads).toHaveLength(12)
+  expect(reads).toEqual([]); expect(builds).toEqual([])
+  const refs = store.listReferences(LUNGE)
+  const bundle = getBundledReferenceSpec(store.getExercise(LUNGE).name)
+  expect(refs).toHaveLength(12)
+  for (const [index, ref] of refs.entries()) {
+    expect(readFileSync(path.join(root, 'references', LUNGE, ref.file)).subarray(0, 3)).toEqual(Buffer.from([0xff, 0xd8, 0xff]))
+    expect(ref.source).toMatchObject({
+      catalogId: bundle.id, sequenceIndex: index, timeSeconds: bundle.images[index].timeSeconds,
+      motionOnly: bundle.images[index].motionOnly, footContacts: bundle.images[index].footContacts,
+      observedSupport: bundle.images[index].observedSupport, sourceFrameIndex: bundle.images[index].sourceFrameIndex,
+      license: 'CC BY-SA 4.0', author: 'Goulart', sha256: bundle.images[index].sha256,
+      sequenceInfo: { completeClosedCycle: false, calibrated: false, sourceInferredDepth: true },
+    })
+  }
+})
+
+test('old automatic context-only lunge pair migrates append-only and remains blocked with mixed sources', async () => {
+  const old = addLegacyLunge()
+  store.updateReference(LUNGE, old[0].id, { phase: 'end', view: 'behind' })
+  const before = store.listReferences(LUNGE)
+  makeBundledLunge()
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(result.items[0].message).toContain('stepping/root-motion builder')
+  const after = store.listReferences(LUNGE)
+  expect(after).toHaveLength(14)
+  expect(after.slice(0, 2)).toEqual(before)
+  for (const ref of old) expect(readFileSync(path.join(root, 'references', LUNGE, ref.file), 'utf8')).toBe('kept old context photo')
+  expect(reads).toEqual([]); expect(builds).toEqual([])
+  await finished(automation.start({ slugs: [LUNGE] }))
+  expect(store.listReferences(LUNGE)).toHaveLength(14)
+  expect(downloads).toHaveLength(12)
+})
+
+test.each([true, false])('manual lunge references prevent context migration and remain unchanged (contextOnly=%s)', async (contextOnly) => {
+  addLegacyLunge()
+  store.addReference(LUNGE, Buffer.from('my photograph'), 'personal.jpg', 'jpg', { phase: 'end', view: 'side', contextOnly })
+  const before = store.listReferences(LUNGE)
+  makeBundledLunge()
+  await finished(automation.start({ slugs: [LUNGE] }))
+  expect(downloads).toEqual([])
+  expect(store.listReferences(LUNGE)).toEqual(before)
+  expect(builds).toEqual([])
+})
+
+test('an active old endpoint cannot enter the context-only migration', async () => {
+  const old = addLegacyLunge()
+  store.updateReference(LUNGE, old[0].id, { contextOnly: false })
+  const before = store.listReferences(LUNGE)
+  makeBundledLunge()
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(result.items[0].message).toContain('curated source changed')
+  expect(store.listReferences(LUNGE)).toEqual(before)
+  expect(downloads).toEqual([])
+})
+
+test('a partially appended sequence resumes beside the preserved old context pair', async () => {
+  addLegacyLunge()
+  const bundle = getBundledReferenceSpec(store.getExercise(LUNGE).name)
+  const image = bundle.images[0]
+  const loaded = await fetchReference(image)
+  store.addReference(LUNGE, loaded.bytes, 'already-imported-frame.jpg', 'jpg', {
+    phase: image.phase, view: image.view, contextOnly: false,
+    source: { ...loaded.provenance, catalogId: bundle.id, commit: bundle.commit, url: image.url },
+  })
+  makeBundledLunge()
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(store.listReferences(LUNGE)).toHaveLength(14)
+  expect(downloads).toHaveLength(11)
+  expect(new Set(store.listReferences(LUNGE).map((ref) => ref.source.url)).size).toBe(14)
+  expect(reads).toEqual([]); expect(builds).toEqual([])
+})
+
+test('manual pictures added during bundle retrieval prevent all pending imports', async () => {
+  let manual
+  makeBundledLunge({ download: async (image) => {
+    if (!manual) manual = store.addReference(LUNGE, Buffer.from('new manual photograph'), 'my-lunge.jpg')
+    return fetchReference(image)
+  } })
+  await finished(automation.start({ slugs: [LUNGE] }))
+  expect(store.listReferences(LUNGE)).toEqual([manual])
+  expect(readFileSync(path.join(root, 'references', LUNGE, manual.file), 'utf8')).toBe('new manual photograph')
+  expect(builds).toEqual([])
 })

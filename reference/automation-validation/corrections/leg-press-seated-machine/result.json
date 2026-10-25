@@ -1,0 +1,63 @@
+{
+  "name": "Leg Press",
+  "slug": "leg-press-seated-machine",
+  "run_dir": "/tmp/studio-complete-validation/leg-press-seated-machine",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.12
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 492.74
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 50.6
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.16
+    }
+  ],
+  "summary": {
+    "pass": 22,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-3cc8d88f": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
+    "img-6e74c69b": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051"
+  },
+  "scene_sha256": "c0ceb90506f48c09ffd28a3e19d5e3eecd5cde33b0f5e1eb9bc1087502ebfba7",
+  "output_sha256": {
+    "animation.gif": "dc3ef9a7d8fdfab36bf10f3de0c2254a817dcdb98885369bc008f0ae1b2c2241",
+    "start.png": "3fe1e348d819f92e8e7247f57a217f4316a5f94e152888b65ff969516f52e8db",
+    "end.png": "5bdcf173aa193c9ba85bc8b71e1ec6b485ddafc077483e4ae8b10516b569f02f",
+    "checks.json": "2c7a2811af562e032862cc89755804fc97d6343d0bb18f55452cffc7b56b1529"
+  },
+  "physical_remeasurement": null
+}

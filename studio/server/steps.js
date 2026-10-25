@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { BLENDER, CLIPS_DIR, PYTHON, REPO, SKIN } from './paths.js'
 import { referenceMotion } from './kit.js'
+import { characterFitOf } from './store.js'
 
 const UNBUFFERED = 'import sys; sys.stdout.reconfigure(line_buffering=True); sys.stderr.reconfigure(line_buffering=True)'
 
@@ -65,7 +66,8 @@ export const commandFor = (processId, run, runDir, exercise) => {
       cmd: BLENDER,
       args: ['--background', '--python-exit-code', '1', '--python-expr', UNBUFFERED,
         '--python', path.join(REPO, 'pipeline', 'blender', 'animate.py'), '--',
-        '--mpfb', '--fast', '--exercise', name, '--wrap-skin', SKIN, ...motion,
+        '--mpfb', '--fast', '--exercise', name, '--wrap-skin', SKIN,
+        '--character-fit', characterFitOf(run?.characterFit), ...motion,
         ...(existsSync(targets) ? ['--form-targets', targets] : []),
         '--side-view', '--out', path.join(runDir, 'frames'), '--gif', path.join(runDir, 'animation.gif'),
         '--save', path.join(runDir, 'scene.blend')],
@@ -86,7 +88,8 @@ export const requiredOutputs = (processId, runDir, snapshot) => {
       files = (JSON.parse(readFileSync(path.join(runDir, 'ours.json'), 'utf8')).stills || []).map((s) => s.file).filter(Boolean)
     } catch { /* a missing or broken ours.json is reported as missing by the caller */ }
     // A still for every key image the run measured, plus whatever ours.json lists.
-    const keyImages = (snapshot?.images || []).filter((i) => !i.contextOnly && !i.deleted).map((i) => `stills/${i.id}.png`)
+    const keyImages = (snapshot?.images || []).filter((i) => !i.contextOnly && !i.deleted && !i.motionOnly && !i.source?.motionOnly)
+      .map((i) => `stills/${i.id}.png`)
     return [...new Set(['ours.json', ...keyImages, ...files])]
   }
   return []
@@ -104,6 +107,8 @@ export const readLine = (processId, line, state = {}) => {
     return { total: state.total }
   }
   if (line.startsWith('bake_to_skin:')) return { step: 'animate' }
+  if (line.startsWith('skin-preflight: measuring')) return { note: 'Checking movement and skin before rendering' }
+  if (line.startsWith('skin-preflight: passed')) return { note: null }
   if (line.startsWith('retarget report ->')) return { step: 'render' }
   // The solver's picture loop (pipeline/blender/mpfb_cage.py `match_picture`, task 19): a note on the step, so
   // the page shows what the minute is spent on

@@ -1,0 +1,162 @@
+{
+  "exercise": "Dumbbell Lateral Raise",
+  "phases": {
+    "start": {
+      "knee_included": {
+        "value": 148.433,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-5cd18809",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 147.792,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-5cd18809",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 18.011,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-5cd18809",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 157.742,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-5cd18809",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 33.404,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-5cd18809",
+        "source": "inferred_3d"
+      }
+    },
+    "middle": {
+      "knee_included": {
+        "value": 150.13049999999998,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "hip_included": {
+        "value": 153.10250000000002,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "torso_lean": {
+        "value": 11.6115,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "elbow_included": {
+        "value": 154.228,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "upperarm_vs_torso": {
+        "value": 73.913,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "estimated": true
+    },
+    "end": {
+      "knee_included": {
+        "value": 151.828,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-62ff8746",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 158.413,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-62ff8746",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 5.212,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-62ff8746",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 150.714,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-62ff8746",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 114.422,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-62ff8746",
+        "source": "inferred_3d"
+      }
+    }
+  },
+  "widths": {},
+  "tolerance": {
+    "angles_deg": 5,
+    "ratios": 0.12,
+    "hip_below_knee": 0.1,
+    "seat_below_knee": 0.1,
+    "back_rounding": 0.04,
+    "neck_vs_torso": 10,
+    "spine_curl": 10
+  },
+  "images": {
+    "img-5cd18809": {
+      "used": true,
+      "why": null,
+      "view": "three-quarter"
+    },
+    "img-62ff8746": {
+      "used": true,
+      "why": null,
+      "view": "three-quarter"
+    }
+  },
+  "camera": {
+    "side": "left",
+    "facing": null
+  },
+  "motion": {
+    "mode": "cycle",
+    "sourcePhases": [
+      "start",
+      "end"
+    ],
+    "approximateDepth": true
+  },
+  "equipment": "dumbbell"
+}

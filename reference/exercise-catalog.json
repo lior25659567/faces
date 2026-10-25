@@ -428,7 +428,7 @@
       "id": "Plank",
       "sourceName": "Plank",
       "motion": "hold",
-      "autoBuild": false,
+      "autoBuild": true,
       "limitations": [
         "Picture 0 is kneeling setup; picture 1 is a static forearm hold. Do not turn this pair into a kneel-to-plank exercise cycle."
       ],

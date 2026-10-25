@@ -71,6 +71,14 @@ describe('buildComparison', () => {
     expect(bare.pairs.map((p) => p.oursUrl)).toEqual([null, null, null])
     expect(bare.pairs.map((p) => p.used)).toEqual([null, null, null])
   })
+
+  test('chronological motion samples do not become empty comparison cards or context photos', () => {
+    const augmented = [...images, { id: 'sample', file: 'sample.jpg', source: { motionOnly: true } },
+      { id: 'sample-top-level', file: 'sample-top-level.jpg', motionOnly: true }]
+    const result = buildComparison({ slug: 's', runId: 'r', images: augmented, ours })
+    expect(result.pairs.map((pair) => pair.id)).toEqual(['img-15', 'img-17', 'img-bt'])
+    expect(result.context.map((image) => image.id)).toEqual(['img-14'])
+  })
 })
 
 describe('groupRows', () => {

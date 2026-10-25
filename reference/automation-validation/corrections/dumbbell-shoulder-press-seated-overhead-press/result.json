@@ -1,0 +1,134 @@
+{
+  "name": "Seated Dumbbell Shoulder Press",
+  "slug": "dumbbell-shoulder-press-seated-overhead-press",
+  "run_dir": "/tmp/studio-complete-validation/dumbbell-shoulder-press-seated-overhead-press",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.05
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 182.04
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 80.16
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.26
+    }
+  ],
+  "summary": {
+    "pass": 12,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "Original straight-arm reach cannot clear the head."
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-c052e570": "e0a775bfa0b32b63c84f19fba2b1a05db535bde849feb3e54a3479a943b3bed6",
+    "img-e96f851c": "940d5aad6b85960e833f88e218de8ce4f806d84cf2764741f1cbff9cce365d84"
+  },
+  "scene_sha256": "9aff41c96b5aef005d26bc9b98fae8efbd360c2e21d0e277da730113abc03a98",
+  "output_sha256": {
+    "animation.gif": "a6726178cec9b3e83583c4bb376b5e72bbb9b4b0906e784b8b96428d1b8fa1f2",
+    "start.png": "b588bcebfe471da69338af1e2ecb0c08ffe8feac3daf44bea1154095f5407f33",
+    "end.png": "6ea1d61599db1c7fb8bf7bb88f836466c5917c553d9027ccfd691b7ebdc17ab6",
+    "checks.json": "a94c3fa1d381bf576cc24fd63d8fb6b7269d17da8ba40d3d7f05b0e3fedacf2f"
+  },
+  "physical_remeasurement": null
+}

@@ -243,7 +243,8 @@ export const createWorkWatcher = ({ work, store, queue, intervalMs = 2500 }) => 
         }
         try {
           // A recheck item re-judges the newest rendered run (fast, no Blender); otherwise a full run.
-          const run = fresh.recheck ? queue.enqueueRecheck(slug) : queue.enqueue(slug)
+          const previous = store.listRuns(slug).find((run) => !run.readOnly)
+          const run = fresh.recheck ? queue.enqueueRecheck(slug) : queue.enqueue(slug, { characterFit: previous?.characterFit || 'auto' })
           ours.add(run.id)
           rerun.push({ slug, runId: run.id })
         } catch (e) {

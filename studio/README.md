@@ -30,8 +30,11 @@ Three-quarter references use explicitly marked inferred 3D depth, so their measu
 A stationary hinge can intentionally differ from a demonstration that raises its torso as it pulls.
 Studio uses `--fast` for 360 px, four-sample GIF previews; comparison stills retain their usual settings.
 Preview framing includes the held bar so its ends remain visible.
-Other non-squat exercises with existing clips are compared against their references without changing
-the clip's motion.
+The implemented reference-motion profiles also use edited picture poses when a generic clip exists.
+Comparison stills use the recorded source phase frames; the inspector cannot choose a different,
+closer-looking animation frame to hide an error. The latest row replay has **16 passing checks and
+2 retained source conflicts**: a held hinge differs from the demonstration's changing torso/hip angle.
+See the [row report](../reference/automation-validation/row/README.md) for the actual images and replay.
 
 To add the sourced example photos without replacing your own references or starting a build:
 
@@ -67,6 +70,7 @@ npm run automate -- --all
 npm run automate -- --all --references-only
 npm run automate -- --exercise barbell-bent-over-row
 npm run automate -- --exercise barbell-bent-over-row --force
+npm run automate -- --all --character-fit auto
 ```
 
 These are alternative invocations. Repeat `--exercise <slug>` to select several exercises.
@@ -75,28 +79,71 @@ must already be running. `--force` rebuilds an unchanged completed result, while
 reference and builder requirements. Exit code 0 means passed/ready, 2 means review or blocked items,
 and 1 means an error or interrupted batch.
 
-Automatic references use the [reviewed catalog](../reference/exercise-catalog.md): exact exercise
-variants at a pinned source revision, with verified image hashes, provenance, and actual camera views.
+Automatic reference retrieval covers all 14 mapped exercises through the
+[reviewed catalog](../reference/exercise-catalog.md): exact exercise variants at a pinned source
+revision, with verified image hashes, provenance, and actual camera views. The lunge uses its reviewed
+local video-frame bundle. Retrieving a source does not establish that its views or contacts can support
+an accurate animation.
 Manual references are kept. Missing parts of an earlier automatic import can be completed without
 duplicating its pictures. Unchanged valid completed results are reused unless `--force` is given.
 
-The row, back squat, deadlift, biceps curl and lateral raise profiles are
-enabled for automation. Each still has to pass reference preflight and its physical contact checks. The catalog's squat pair supplies only three-quarter views, so it cannot satisfy
-the required side positions and front/rear grip-width reference on its own. Unsupported equipment,
-missing views, unsuitable source poses, and failed form checks stay visible as blockers or review
-items. The plank's static hold and the lunge's alternate lowered stances are not invented into motion
-cycles.
+The implemented profiles include finite hand handles, bench/seat support, a fixed pull-up bar,
+cable equipment, a leg-press rail and footplate, and a static plank. Seated and lying poses check
+their actual supports; standing poses keep their feet planted. The plank checks forearms, toes,
+body alignment and whole-body floor clearance. The leg press checks its seat, backrest, headrest and
+both soles throughout the rail movement. Its two side previews expose contacts that the footplate
+would hide from the old foot-end camera. Supports, props and the whole horizontal body are included
+in preview framing.
+
+Each attempt still has to pass reference preflight and the physical checks. The catalog's squat pair
+supplies only three-quarter views, so it cannot satisfy the required side positions and front/rear
+grip-width reference on its own. Missing views, unsuitable source poses and failed form checks stay
+visible as blockers or review items. The plank's kneeling setup is context only; the usable pose makes
+a static hold. The lunge remains blocked at an unobserved support handoff instead of becoming an
+invented forward/reverse cycle.
 
 **Stop remaining exercises**, or Ctrl-C in the CLI, requests a stop after the current exercise finishes.
 Closing the panel does not stop the batch. A backend restart marks unfinished batches interrupted;
 they do not resume automatically. Start a new batch to continue, preserving imported references and
 completed results.
 
-The new profiles build finite hand handles and body supports, preserve bilateral symmetry and
-keep the torso/legs still on isolation movements. Fast previews use 12 fps; comparison stills keep
+The profiles preserve bilateral symmetry and keep the torso/legs still on isolation movements.
+Fast reference previews normally use 12 fps; pull-ups use 16 fps and the row keeps 30 fps. Comparison stills keep
 560 px resolution with four EEVEE samples. Photo depth inferred from an oblique/frontal view stays
 uncertain, even when contact passes. Impossible contact stops before rendering and saves its
 measurements in Checks. Overhead completion and weight/head collision are separate from grip.
+
+**Character proportions** is saved with each manual run and automation batch. **Automatic** uses
+a fixed longer-arm fitness variant when the original short-arm character cannot satisfy the
+supported reach profile. **Original** keeps the fitted character's proportions; impossible reach
+still stops before rendering. **Fitness** selects the variant explicitly. The face, hand shapes,
+original GLB and fitted cache are preserved. This is a rest-pose body choice, not changing arm
+lengths during a rep. The result states which proportions were actually used; retries, queue
+merging and completed-result reuse keep the choices separate.
+
+The same option is available with `npm run automate -- --all --character-fit auto` (or `original`
+or `fitness`) and Blender's `--character-fit`. Reference-driven Studio previews include a local,
+rest-bound collar correction that keeps authored face/hand normals, UVs, weights and materials.
+Skeletal-only USD export rejects that correction explicitly; the validated output is the Blender
+scene/GIF.
+
+Before rendering a GIF, Studio scans every posed frame for skin folds and movement jumps using
+the same detector, camera visibility and limits as final Checks. It includes the planned GIF cameras
+and each active source comparison camera at its recorded frame. Visible fold defects, missing camera
+coverage and unreadable geometry stop the build before rendering; hidden folds remain informational.
+The [saved-scene parity tests](../reference/automation-validation/skin-preflight/README.md) took about
+1.8–3.8 seconds for this geometry scan alone, excluding character building and rendering.
+
+For two-photo profiles, the estimated middle no longer launches five cartoon camera searches:
+15 detector-rendered pictures become 10. Estimated middle angles stay informational and identify
+their rig source. Actual photographed middle positions retain their comparisons. This avoids
+spending render/reader time on a middle pose for which there is no source photograph.
+
+The 12 reviewed [walking-lunge video frames](../reference/exercise-lunge/README.md) preserve source
+timestamps and observed contacts. They are not a closed cycle and contain an unobserved support
+handoff, so automatic stepping remains blocked rather than inventing forward travel. The squat
+still needs suitable side and front/rear references. Motion-only frames are labeled **Motion sample**
+with their source timestamps; they are separate from the three comparison anchors.
 
 To enable another exercise, implement its motion/equipment constraints and validate real rendered
 poses and contact checks first. Only then opt its named entry into `automatic: true` in
@@ -131,13 +178,20 @@ The Python checks need `pytest`, `numpy`, and `pillow`; the real photo-reader CL
 Studio model and MediaPipe. Some older tests require private reference pictures excluded from Git or
 macOS image tools. Blender render quality and contact checks must run with the full pipeline installed.
 
-The [expanded validation report](../reference/automation-validation/profiles/README.md) includes
-actual GIFs, per-run measurements, known failures, and independent saved-scene contact replays.
-The deadlift still has a visible collar skin-fold failure; it remains review work. Source depth is
-uncertain for the new oblique references. Other prototypes are not enabled until their support,
-reach, movement completion and equipment clearances validate on the mascot. Restart Studio after
-updating `exercise-kit.json` to refresh its loaded capability table.
+The [latest complete validation report](../reference/automation-validation/corrections/README.md) has zero failed Checks for bench press, overhead press,
+lat pulldown, seated dumbbell press, pull-up, forearm plank, leg press, curl, lateral raise, triceps pushdown
+and deadlift. This includes skin visibility, motion, supports, equipment contacts and completion;
+the earlier deadlift collar defect and short-arm overhead limits have concrete corrections.
+Original-proportion attempts still stop when they cannot meet the unchanged physical requirements.
 
-The seated pulldown prototype has valid support/contact but does not reach the required overhead
-start on this mascot. It is blocked alongside the overhead presses; the completion check prevents
-those incomplete poses from producing a new preview.
+Source depth remains uncertain for oblique/frontal photographs. A run with zero failures can still
+need review because its 3D pose is inferred rather than calibrated. The row retains the two source
+conflicts described above. The final pull-up passes all 43 frames, including full range, elbow
+direction, source widths, grip, visible skin and motion. Its 16 fps sampling keeps the 1.5-second
+raise and one-second return; no motion threshold was changed to accept the earlier 12 fps candidate.
+
+The [earlier profile report](../reference/automation-validation/profiles/README.md) retains the baseline
+GIFs and failure evidence; the newer [row](../reference/automation-validation/row/README.md) and
+[pre-render scan](../reference/automation-validation/skin-preflight/README.md) reports document their
+replays. Read `studio/measure/exercise-kit.json` for the current capability flags. Restart Studio after
+updating that file to refresh its loaded table; changing a flag alone never establishes accuracy.

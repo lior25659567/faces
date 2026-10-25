@@ -1,0 +1,262 @@
+{
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "surface_cleanup": {
+    "schema": 1,
+    "method": "coincident seam weld and local rest-bound corrective surface",
+    "vertices_before": 46261,
+    "vertices_after": 43186,
+    "faces": 52431,
+    "uv_loops": 157293,
+    "uv_and_materials_preserved": true,
+    "skin_weights_preserved": true,
+    "protected_custom_normals_preserved": true,
+    "seam_tolerance_mm": 0.009995116599818636,
+    "max_weld_displacement_mm": 0.0,
+    "max_bind_displacement_mm": 0.00024028122425079346,
+    "corrected_vertices": 3986,
+    "protected_vertices": 28165,
+    "factor": 1.0,
+    "iterations": 20,
+    "arm_emphasis": null,
+    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
+  },
+  "physical": {
+    "profile": {
+      "family": "standing",
+      "feet": "planted",
+      "mode": "cycle",
+      "holds": true,
+      "overhead": false
+    },
+    "supports": null,
+    "contacts": {
+      "frames": 32,
+      "equipment": "dumbbells",
+      "max_grip_anchor_error_mm": 0.0,
+      "worst_wrist_bend_deg": 0.0,
+      "max_surface_path_adjustment_mm": 0.0,
+      "path_adjustments": [],
+      "sides": {
+        "left": {
+          "frames": 32,
+          "frames_touching_within_3mm": 32,
+          "nearest_gap_mm_max": 0.02340214682256328,
+          "deepest_inside_bar_mm": 0.794688554986535
+        },
+        "right": {
+          "frames": 32,
+          "frames_touching_within_3mm": 32,
+          "nearest_gap_mm_max": 0.07922680474210797,
+          "deepest_inside_bar_mm": 0.7995756109944809
+        }
+      },
+      "head_body_clearance": {
+        "frames": 32,
+        "max_penetration_mm": 0.0,
+        "method": "finite convex weight-head/body surface samples; hand contact checked separately"
+      }
+    },
+    "validation": {
+      "rows": [
+        {
+          "group": "body",
+          "metric": "equipment_gap_left",
+          "target": 3.0,
+          "ours": 0.02340214682256328,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_left",
+          "target": 3.0,
+          "ours": 0.794688554986535,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_gap_right",
+          "target": 3.0,
+          "ours": 0.07922680474210797,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_right",
+          "target": 3.0,
+          "ours": 0.7995756109944809,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_anchor_error",
+          "target": 2.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "weight_head_body_overlap",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Finite convex weight-head/body surface samples; inspect the rendered silhouette too.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_left",
+          "target": 5.0,
+          "ours": 0.11441720562288538,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_right",
+          "target": 5.0,
+          "ours": 0.0,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        }
+      ],
+      "ready": true
+    }
+  },
+  "contact": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 2,
+    "sides": {
+      "left": {
+        "sole_vertices": 512,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.11441720562288538
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.2051643431186676,
+        -0.026214320212602615,
+        -2.6829553689822205e-07
+      ],
+      [
+        0.20304514467716217,
+        0.32382291555404663,
+        0.9597070813179016
+      ]
+    ]
+  },
+  "deformation": {
+    "crack_max_mm": 0.0,
+    "max_growth_mm": 20.81347837061699,
+    "growth_frame": 19,
+    "coincident_unconnected_pairs": 22574,
+    "deepest_frame": 1,
+    "deepest": {
+      "max_growth_mm": 13.006401530945563,
+      "max_growth_pct": 1.3017962600465938,
+      "edges_over_1pct": 7,
+      "edges_over_0_5pct": 121,
+      "worst_edge_at": [
+        0.2842,
+        0.0063,
+        0.7058
+      ],
+      "worst_edge_posed_at": [
+        0.1641,
+        0.1497,
+        0.5162
+      ],
+      "worst_edge_rest_mm": 17.780310810351164,
+      "crack_max_mm": 0.0,
+      "skin_max_move_mm": 399.4127349512693
+    }
+  },
+  "preview_box": [
+    [
+      -0.5272055268698154,
+      -0.3790347446166692,
+      -0.047985635776208846
+    ],
+    [
+      0.528472557704967,
+      0.6766433399581132,
+      1.0076924487985734
+    ]
+  ],
+  "preview_cameras": [
+    [
+      35.0,
+      10.0
+    ],
+    [
+      90.0,
+      5.0
+    ]
+  ],
+  "preview_camera_space": "world"
+}

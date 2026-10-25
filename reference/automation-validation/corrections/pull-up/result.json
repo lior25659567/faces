@@ -1,0 +1,134 @@
+{
+  "name": "Pull-Up",
+  "slug": "pull-up",
+  "run_dir": "/tmp/studio-final-pipeline-validation/pull-up",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 0.99
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 206.51
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 37.41
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.15
+    }
+  ],
+  "summary": {
+    "pass": 20,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 11,
+    "info": 10,
+    "unmeasured": 0
+  },
+  "frames": 43,
+  "fps": 16.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 13,
+    "end": 25
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "Original straight-arm reach cannot clear the head."
+  },
+  "pre_render_gate_exercised_in_cli": true,
+  "source_image_hashes": {
+    "img-96142bf0": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
+    "img-9a54cdbb": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f"
+  },
+  "scene_sha256": "003da9ea797fdea40c5790cb499e839bca4f0d3ab0c1d83cde661c62fe0a25aa",
+  "output_sha256": {
+    "animation.gif": "32b57f5281a5f9f380b57cca547b4bbb5883fb1db9bd6e880f4ad5e42c3c9a92",
+    "start.png": "7b6e9e0cee4945d814cbeb2aebae08cc91c655611e72b2b1e6ff58ab22f16b47",
+    "end.png": "ee49b7aa4e2ff790721e0803acf9e62d879660af4f8d5591033714b683b0def2",
+    "checks.json": "d74ddcf3d991d07d3cb5b3ff2a08aa0bf108b978fc6a1cb00acc6e56075da8ec"
+  },
+  "physical_remeasurement": null
+}

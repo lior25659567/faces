@@ -39,7 +39,7 @@ test('real view tags do not relabel oblique photos as side targets', () => {
 test('setup and alternate-lunge photos cannot become fabricated movement endpoints', () => {
   const plank = getReferenceSpec('Front Plank (forearm plank)')
   expect(plank.motion).toBe('hold')
-  expect(plank.autoBuild).toBe(false)
+  expect(plank.autoBuild).toBe(true)
   expect(plank.images.map((i) => i.contextOnly)).toEqual([true, false])
   expect(plank.images[1].phase).toBe('start')
   const lunge = getReferenceSpec('Walking Lunge (dumbbells optional)')

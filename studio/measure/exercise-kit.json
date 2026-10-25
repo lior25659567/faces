@@ -15,11 +15,17 @@
     },
     "Flat Barbell Bench Press": {
       "holds": "bar",
-      "support": "bench"
+      "support": "bench",
+      "built": true,
+      "supportBuilt": true,
+      "referenceMotion": true,
+      "automatic": true
     },
     "Standing Barbell Overhead Press (Shoulder Press)": {
       "holds": "bar",
-      "automationBlocker": "The reference pose has not passed head/bar clearance and safe arm-reach checks on this mascot."
+      "built": true,
+      "referenceMotion": true,
+      "automatic": true
     },
     "Barbell Bent-Over Row": {
       "holds": "bar",
@@ -28,16 +34,17 @@
     },
     "Pull-Up": {
       "support": "pull-up bar",
-      "automationBlocker": "Keeping the fixed pull-up bar clear of the head exceeds the current safe two-hand reach. This profile needs further body and arm calibration."
+      "supportBuilt": true,
+      "referenceMotion": true,
+      "automatic": true
     },
     "Lat Pulldown (seated, to the front)": {
       "holds": "cable bar",
       "support": "seat",
       "built": true,
-      "automatic": false,
+      "automatic": true,
       "referenceMotion": true,
-      "supportBuilt": true,
-      "automationBlocker": "The current reference/model combination does not reach the required overhead start. Support and grip contact pass, but the pulldown range is incomplete."
+      "supportBuilt": true
     },
     "Dumbbell Bicep Curl (standing, both arms)": {
       "holds": "dumbbells",
@@ -55,24 +62,29 @@
       "holds": "dumbbells",
       "support": "seat",
       "built": true,
-      "automatic": false,
+      "automatic": true,
       "referenceMotion": true,
-      "supportBuilt": true,
-      "automationBlocker": "The current mascot has not passed the overhead-completion and weight/head-clearance checks. Grip contact alone does not make this a valid overhead press."
+      "supportBuilt": true
     },
     "Walking Lunge (dumbbells optional)": {
       "steps": true,
       "clip": "lunge.fbx"
     },
     "Front Plank (forearm plank)": {
-      "automationBlocker": "The static hold is implemented, but this mascot has not passed forearm and toe support checks. Kneeling setup pictures are never animated as plank repetitions."
+      "referenceMotion": true,
+      "automatic": true
     },
     "Tricep Pushdown (cable, bar or rope attachment)": {
       "holds": "cable handle",
-      "automationBlocker": "The reference bar path has not passed body-clearance and bounded arm-reach checks on this mascot."
+      "built": true,
+      "referenceMotion": true,
+      "automatic": true
     },
     "Leg Press (seated machine)": {
-      "support": "leg-press sled"
+      "support": "leg-press sled",
+      "supportBuilt": true,
+      "referenceMotion": true,
+      "automatic": true
     }
   },
   "by_equipment": {

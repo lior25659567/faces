@@ -1,0 +1,1469 @@
+{
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "The short-arm rest character uses the validated fitness proportions for a collision-free cable grip."
+  },
+  "surface_cleanup": {
+    "schema": 1,
+    "method": "coincident seam weld and local rest-bound corrective surface",
+    "vertices_before": 46261,
+    "vertices_after": 43352,
+    "faces": 52431,
+    "uv_loops": 157293,
+    "uv_and_materials_preserved": true,
+    "skin_weights_preserved": true,
+    "protected_custom_normals_preserved": true,
+    "seam_tolerance_mm": 0.009995116599818636,
+    "max_weld_displacement_mm": 0.0,
+    "max_bind_displacement_mm": 0.00018143349382111312,
+    "corrected_vertices": 3866,
+    "protected_vertices": 28165,
+    "factor": 1.0,
+    "iterations": 20,
+    "arm_emphasis": null,
+    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
+  },
+  "physical": {
+    "profile": {
+      "family": "standing",
+      "feet": "planted",
+      "mode": "cycle",
+      "holds": true,
+      "overhead": false
+    },
+    "supports": {
+      "frames": 32,
+      "surfaces": {},
+      "pulley_anchor": [
+        0.00038572773337364197,
+        0.39619524035930637,
+        1.1396407112884521
+      ]
+    },
+    "contacts": {
+      "frames": 32,
+      "equipment": "bar",
+      "max_grip_anchor_error_mm": 0.00038326125053149835,
+      "worst_wrist_bend_deg": 22.540989681393523,
+      "max_surface_path_adjustment_mm": 15.340992258172266,
+      "path_adjustments": [
+        {
+          "frame": 1,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 2,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 3,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 4,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 5,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 6,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 7,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 8,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 9,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 10,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 11,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 12,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 13,
+          "adjustment_mm": 2.0000000000000018
+        },
+        {
+          "frame": 14,
+          "adjustment_mm": 5.000000000000004
+        },
+        {
+          "frame": 15,
+          "adjustment_mm": 7.000000000000006
+        },
+        {
+          "frame": 16,
+          "adjustment_mm": 8.000000000000007
+        },
+        {
+          "frame": 17,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 18,
+          "adjustment_mm": 0.00023843081229569697
+        },
+        {
+          "frame": 19,
+          "adjustment_mm": 1.3890624181444207e-08
+        },
+        {
+          "frame": 20,
+          "adjustment_mm": 0.00047683384337078637
+        },
+        {
+          "frame": 21,
+          "adjustment_mm": 0.00047683384335690874
+        },
+        {
+          "frame": 22,
+          "adjustment_mm": 1.0000000000000009
+        },
+        {
+          "frame": 23,
+          "adjustment_mm": 2.0000000000000018
+        },
+        {
+          "frame": 24,
+          "adjustment_mm": 1.0000000000000009
+        },
+        {
+          "frame": 25,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 26,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 27,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 28,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 29,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 30,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 31,
+          "adjustment_mm": 0.0
+        },
+        {
+          "frame": 32,
+          "adjustment_mm": 0.0
+        }
+      ],
+      "sides": {
+        "left": {
+          "frames": 32,
+          "frames_touching_within_3mm": 32,
+          "nearest_gap_mm_max": 0.023104290759506235,
+          "deepest_inside_bar_mm": 0.7945465890843856
+        },
+        "right": {
+          "frames": 32,
+          "frames_touching_within_3mm": 32,
+          "nearest_gap_mm_max": 0.0505111343235571,
+          "deepest_inside_bar_mm": 0.7998214395418908
+        }
+      },
+      "grip_ratio": 1.0,
+      "requested_grip_ratio": null,
+      "grip_source": "nominal shoulder-width cable grip",
+      "attachment": {
+        "kind": "short straight cable handle",
+        "length_character_units": 0.30372879787254337,
+        "length_adult_m": 0.5319978560917261,
+        "minimum_standard_length_adult_m": 0.46,
+        "source_width_calibrated": false,
+        "note": "Attachment length fits the closed hand span with palm margins; the side photograph does not calibrate its width."
+      },
+      "source_elbow_goals": [
+        {
+          "frame": 1,
+          "elbows_deg": {
+            "left": 91.439,
+            "right": 91.439
+          },
+          "source_fk_elbows_deg": {
+            "left": 92.43063354492188,
+            "right": 92.51997375488281
+          },
+          "upperarm_goal_deg": 17.083,
+          "source_fk_upperarm_deg": {
+            "left": 28.131096418984676,
+            "right": 28.43206336233438
+          },
+          "solved_elbows_deg": {
+            "left": 91.90525817871094,
+            "right": 92.14363861083984
+          },
+          "solved_upperarm_deg": {
+            "left": 20.66369078537699,
+            "right": 21.457867924128372
+          }
+        },
+        {
+          "frame": 2,
+          "elbows_deg": {
+            "left": 92.07068196785198,
+            "right": 92.07068196785198
+          },
+          "source_fk_elbows_deg": {
+            "left": 93.05452728271484,
+            "right": 93.1429672241211
+          },
+          "upperarm_goal_deg": 17.168424801469797,
+          "source_fk_upperarm_deg": {
+            "left": 28.148224527912365,
+            "right": 28.44922989803747
+          },
+          "solved_elbows_deg": {
+            "left": 92.54695129394531,
+            "right": 92.7996597290039
+          },
+          "solved_upperarm_deg": {
+            "left": 20.619363880978618,
+            "right": 21.40879487072153
+          }
+        },
+        {
+          "frame": 3,
+          "elbows_deg": {
+            "left": 93.86890310651088,
+            "right": 93.86890310651088
+          },
+          "source_fk_elbows_deg": {
+            "left": 94.83055877685547,
+            "right": 94.91647338867188
+          },
+          "upperarm_goal_deg": 17.411605217543865,
+          "source_fk_upperarm_deg": {
+            "left": 28.197518822976388,
+            "right": 28.498651106964314
+          },
+          "solved_elbows_deg": {
+            "left": 94.34892272949219,
+            "right": 94.64143371582031
+          },
+          "solved_upperarm_deg": {
+            "left": 20.500526257733522,
+            "right": 21.277628705071145
+          }
+        },
+        {
+          "frame": 4,
+          "elbows_deg": {
+            "left": 96.68864464710764,
+            "right": 96.68864464710764
+          },
+          "source_fk_elbows_deg": {
+            "left": 97.61544799804688,
+            "right": 97.69751739501953
+          },
+          "upperarm_goal_deg": 17.792929797887222,
+          "source_fk_upperarm_deg": {
+            "left": 28.276440756517133,
+            "right": 28.577705692817254
+          },
+          "solved_elbows_deg": {
+            "left": 97.24525451660156,
+            "right": 97.60688018798828
+          },
+          "solved_upperarm_deg": {
+            "left": 20.28217527802824,
+            "right": 21.038607191118064
+          }
+        },
+        {
+          "frame": 5,
+          "elbows_deg": {
+            "left": 100.38501150415814,
+            "right": 100.38501150415814
+          },
+          "source_fk_elbows_deg": {
+            "left": 101.26604461669922,
+            "right": 101.3432388305664
+          },
+          "upperarm_goal_deg": 18.29280381834853,
+          "source_fk_upperarm_deg": {
+            "left": 28.38283345130714,
+            "right": 28.684293465671505
+          },
+          "solved_elbows_deg": {
+            "left": 100.91150665283203,
+            "right": 101.22772979736328
+          },
+          "solved_upperarm_deg": {
+            "left": 21.974588660315177,
+            "right": 20.810971700643382
+          }
+        },
+        {
+          "frame": 6,
+          "elbows_deg": {
+            "left": 104.81267956543675,
+            "right": 104.81267956543675
+          },
+          "source_fk_elbows_deg": {
+            "left": 105.63871765136719,
+            "right": 105.71041107177734
+          },
+          "upperarm_goal_deg": 18.891574535826923,
+          "source_fk_upperarm_deg": {
+            "left": 28.51467691600065,
+            "right": 28.816306935327177
+          },
+          "solved_elbows_deg": {
+            "left": 105.14427947998047,
+            "right": 105.6920166015625
+          },
+          "solved_upperarm_deg": {
+            "left": 21.63273014755872,
+            "right": 22.265143646818338
+          }
+        },
+        {
+          "frame": 7,
+          "elbows_deg": {
+            "left": 109.82597685919754,
+            "right": 109.82597685919754
+          },
+          "source_fk_elbows_deg": {
+            "left": 110.58967590332031,
+            "right": 110.65530395507812
+          },
+          "upperarm_goal_deg": 19.56954216482998,
+          "source_fk_upperarm_deg": {
+            "left": 28.669649421770757,
+            "right": 28.971395007780565
+          },
+          "solved_elbows_deg": {
+            "left": 109.97571563720703,
+            "right": 110.52494049072266
+          },
+          "solved_upperarm_deg": {
+            "left": 21.187023334592023,
+            "right": 21.83981040445235
+          }
+        },
+        {
+          "frame": 8,
+          "elbows_deg": {
+            "left": 115.27867483846232,
+            "right": 115.27867483846232
+          },
+          "source_fk_elbows_deg": {
+            "left": 115.97440338134766,
+            "right": 116.03373718261719
+          },
+          "upperarm_goal_deg": 20.306931652038852,
+          "source_fk_upperarm_deg": {
+            "left": 28.844997306528242,
+            "right": 29.146768904328468
+          },
+          "solved_elbows_deg": {
+            "left": 115.06209564208984,
+            "right": 115.63893127441406
+          },
+          "solved_upperarm_deg": {
+            "left": 20.69019146086284,
+            "right": 21.36396283995225
+          }
+        },
+        {
+          "frame": 9,
+          "elbows_deg": {
+            "left": 121.02413138993438,
+            "right": 121.02413138993438
+          },
+          "source_fk_elbows_deg": {
+            "left": 121.64812469482422,
+            "right": 121.7010726928711
+          },
+          "upperarm_goal_deg": 21.08391201595809,
+          "source_fk_upperarm_deg": {
+            "left": 29.03727139977301,
+            "right": 29.339045945476876
+          },
+          "solved_elbows_deg": {
+            "left": 120.17815399169922,
+            "right": 120.92521667480469
+          },
+          "solved_upperarm_deg": {
+            "left": 21.9473619262541,
+            "right": 22.512915380078883
+          }
+        },
+        {
+          "frame": 10,
+          "elbows_deg": {
+            "left": 126.91541065227776,
+            "right": 126.91541065227776
+          },
+          "source_fk_elbows_deg": {
+            "left": 127.4657211303711,
+            "right": 127.51235961914062
+          },
+          "upperarm_goal_deg": 21.880612550406067,
+          "source_fk_upperarm_deg": {
+            "left": 29.242308002281437,
+            "right": 29.5439723026317
+          },
+          "solved_elbows_deg": {
+            "left": 125.31446838378906,
+            "right": 126.14241027832031
+          },
+          "solved_upperarm_deg": {
+            "left": 21.184896940216014,
+            "right": 21.76711953763421
+          }
+        },
+        {
+          "frame": 11,
+          "elbows_deg": {
+            "left": 132.80548013651196,
+            "right": 132.80548013651196
+          },
+          "source_fk_elbows_deg": {
+            "left": 133.28208923339844,
+            "right": 133.32249450683594
+          },
+          "upperarm_goal_deg": 22.677149481870174,
+          "source_fk_upperarm_deg": {
+            "left": 29.455150789801166,
+            "right": 29.756634911662985
+          },
+          "solved_elbows_deg": {
+            "left": 130.1164093017578,
+            "right": 131.04989624023438
+          },
+          "solved_upperarm_deg": {
+            "left": 22.03674003017797,
+            "right": 22.540516300396597
+          }
+        },
+        {
+          "frame": 12,
+          "elbows_deg": {
+            "left": 138.5473885208779,
+            "right": 138.5473885208779
+          },
+          "source_fk_elbows_deg": {
+            "left": 138.95205688476562,
+            "right": 138.98654174804688
+          },
+          "upperarm_goal_deg": 23.453650013395823,
+          "source_fk_upperarm_deg": {
+            "left": 29.67010991587789,
+            "right": 29.97131991070659
+          },
+          "solved_elbows_deg": {
+            "left": 134.46188354492188,
+            "right": 135.60386657714844
+          },
+          "solved_upperarm_deg": {
+            "left": 21.04866658504895,
+            "right": 21.50806127631881
+          }
+        },
+        {
+          "frame": 13,
+          "elbows_deg": {
+            "left": 143.994281111261,
+            "right": 143.994281111261
+          },
+          "source_fk_elbows_deg": {
+            "left": 144.3307342529297,
+            "right": 144.35960388183594
+          },
+          "upperarm_goal_deg": 24.19025441535941,
+          "source_fk_upperarm_deg": {
+            "left": 29.880709696102283,
+            "right": 30.18161455181849
+          },
+          "solved_elbows_deg": {
+            "left": 139.67266845703125,
+            "right": 141.0670928955078
+          },
+          "solved_upperarm_deg": {
+            "left": 21.714729738032872,
+            "right": 22.114034137840406
+          }
+        },
+        {
+          "frame": 14,
+          "elbows_deg": {
+            "left": 148.99977089134597,
+            "right": 148.99977089134597
+          },
+          "source_fk_elbows_deg": {
+            "left": 149.27346801757812,
+            "right": 149.29730224609375
+          },
+          "upperarm_goal_deg": 24.86716620401927,
+          "source_fk_upperarm_deg": {
+            "left": 30.079917702206338,
+            "right": 30.380506569478516
+          },
+          "solved_elbows_deg": {
+            "left": 145.29116821289062,
+            "right": 147.2390594482422
+          },
+          "solved_upperarm_deg": {
+            "left": 22.309144181941168,
+            "right": 22.703770285469105
+          }
+        },
+        {
+          "frame": 15,
+          "elbows_deg": {
+            "left": 153.41791146687666,
+            "right": 153.41791146687666
+          },
+          "source_fk_elbows_deg": {
+            "left": 153.63623046875,
+            "right": 153.65557861328125
+          },
+          "upperarm_goal_deg": 25.46464848266302,
+          "source_fk_upperarm_deg": {
+            "left": 30.26024859866581,
+            "right": 30.56054397197293
+          },
+          "solved_elbows_deg": {
+            "left": 149.7381134033203,
+            "right": 152.5482177734375
+          },
+          "solved_upperarm_deg": {
+            "left": 22.7817296457436,
+            "right": 23.12398682275325
+          }
+        },
+        {
+          "frame": 16,
+          "elbows_deg": {
+            "left": 157.10359130644522,
+            "right": 157.10359130644522
+          },
+          "source_fk_elbows_deg": {
+            "left": 157.27572631835938,
+            "right": 157.2913055419922
+          },
+          "upperarm_goal_deg": 25.963077256317927,
+          "source_fk_upperarm_deg": {
+            "left": 30.4139281905573,
+            "right": 30.71388775682881
+          },
+          "solved_elbows_deg": {
+            "left": 153.2037811279297,
+            "right": 156.6419219970703
+          },
+          "solved_upperarm_deg": {
+            "left": 23.378461322034195,
+            "right": 23.38346129919332
+          }
+        },
+        {
+          "frame": 17,
+          "elbows_deg": {
+            "left": 159.91275791762763,
+            "right": 159.91275791762763
+          },
+          "source_fk_elbows_deg": {
+            "left": 160.04966735839844,
+            "right": 160.06239318847656
+          },
+          "upperarm_goal_deg": 26.342971747958813,
+          "source_fk_upperarm_deg": {
+            "left": 30.533053342091314,
+            "right": 30.832755989041097
+          },
+          "solved_elbows_deg": {
+            "left": 155.55018615722656,
+            "right": 156.28883361816406
+          },
+          "solved_upperarm_deg": {
+            "left": 29.902739480408943,
+            "right": 28.509370634822936
+          }
+        },
+        {
+          "frame": 18,
+          "elbows_deg": {
+            "left": 161.70261110227264,
+            "right": 161.70261110227264
+          },
+          "source_fk_elbows_deg": {
+            "left": 161.8170623779297,
+            "right": 161.8280487060547
+          },
+          "upperarm_goal_deg": 26.585020533170002,
+          "source_fk_upperarm_deg": {
+            "left": 30.6098726280401,
+            "right": 30.909400163852922
+          },
+          "solved_elbows_deg": {
+            "left": 160.65350341796875,
+            "right": 161.0376739501953
+          },
+          "solved_upperarm_deg": {
+            "left": 30.73988721579624,
+            "right": 28.80552998397773
+          }
+        },
+        {
+          "frame": 19,
+          "elbows_deg": {
+            "left": 162.331,
+            "right": 162.331
+          },
+          "source_fk_elbows_deg": {
+            "left": 162.4375762939453,
+            "right": 162.44790649414062
+          },
+          "upperarm_goal_deg": 26.67,
+          "source_fk_upperarm_deg": {
+            "left": 30.63700865206287,
+            "right": 30.936489613765186
+          },
+          "solved_elbows_deg": {
+            "left": 162.04568481445312,
+            "right": 161.95053100585938
+          },
+          "solved_upperarm_deg": {
+            "left": 30.474680777698378,
+            "right": 28.61226263645395
+          }
+        },
+        {
+          "frame": 20,
+          "elbows_deg": {
+            "left": 162.331,
+            "right": 162.331
+          },
+          "source_fk_elbows_deg": {
+            "left": 162.43759155273438,
+            "right": 162.44790649414062
+          },
+          "upperarm_goal_deg": 26.67,
+          "source_fk_upperarm_deg": {
+            "left": 30.63700865206287,
+            "right": 30.936489613765186
+          },
+          "solved_elbows_deg": {
+            "left": 162.0458221435547,
+            "right": 161.95071411132812
+          },
+          "solved_upperarm_deg": {
+            "left": 30.47467941050162,
+            "right": 28.61227738966738
+          }
+        },
+        {
+          "frame": 21,
+          "elbows_deg": {
+            "left": 162.331,
+            "right": 162.331
+          },
+          "source_fk_elbows_deg": {
+            "left": 162.43759155273438,
+            "right": 162.44789123535156
+          },
+          "upperarm_goal_deg": 26.67,
+          "source_fk_upperarm_deg": {
+            "left": 30.63700865206287,
+            "right": 30.936489613765186
+          },
+          "solved_elbows_deg": {
+            "left": 162.04588317871094,
+            "right": 161.95074462890625
+          },
+          "solved_upperarm_deg": {
+            "left": 30.474670389655586,
+            "right": 28.61227873263325
+          }
+        },
+        {
+          "frame": 22,
+          "elbows_deg": {
+            "left": 160.94397586996774,
+            "right": 160.94397586996774
+          },
+          "source_fk_elbows_deg": {
+            "left": 161.0679473876953,
+            "right": 161.0796661376953
+          },
+          "upperarm_goal_deg": 26.482427349565267,
+          "source_fk_upperarm_deg": {
+            "left": 30.577213835593575,
+            "right": 30.87683588105954
+          },
+          "solved_elbows_deg": {
+            "left": 160.36593627929688,
+            "right": 160.30979919433594
+          },
+          "solved_upperarm_deg": {
+            "left": 30.049964823739426,
+            "right": 28.063859171572158
+          }
+        },
+        {
+          "frame": 23,
+          "elbows_deg": {
+            "left": 157.10359130644522,
+            "right": 157.10359130644522
+          },
+          "source_fk_elbows_deg": {
+            "left": 157.2757110595703,
+            "right": 157.29132080078125
+          },
+          "upperarm_goal_deg": 25.963077256317927,
+          "source_fk_upperarm_deg": {
+            "left": 30.413922718295392,
+            "right": 30.713886775629437
+          },
+          "solved_elbows_deg": {
+            "left": 156.08432006835938,
+            "right": 156.20169067382812
+          },
+          "solved_upperarm_deg": {
+            "left": 30.371700137472853,
+            "right": 29.01739676171213
+          }
+        },
+        {
+          "frame": 24,
+          "elbows_deg": {
+            "left": 151.2913379968816,
+            "right": 151.2913379968816
+          },
+          "source_fk_elbows_deg": {
+            "left": 151.5363006591797,
+            "right": 151.5578155517578
+          },
+          "upperarm_goal_deg": 25.17706370783874,
+          "source_fk_upperarm_deg": {
+            "left": 30.17292238116183,
+            "right": 30.47334790801876
+          },
+          "solved_elbows_deg": {
+            "left": 150.20631408691406,
+            "right": 150.3379669189453
+          },
+          "solved_upperarm_deg": {
+            "left": 28.754553618372512,
+            "right": 27.284684246159966
+          }
+        },
+        {
+          "frame": 25,
+          "elbows_deg": {
+            "left": 143.994281111261,
+            "right": 143.994281111261
+          },
+          "source_fk_elbows_deg": {
+            "left": 144.33071899414062,
+            "right": 144.35963439941406
+          },
+          "upperarm_goal_deg": 24.19025441535941,
+          "source_fk_upperarm_deg": {
+            "left": 29.880708248679568,
+            "right": 30.181619246605365
+          },
+          "solved_elbows_deg": {
+            "left": 142.2447967529297,
+            "right": 142.66848754882812
+          },
+          "solved_upperarm_deg": {
+            "left": 26.873657854531224,
+            "right": 26.668457836924635
+          }
+        },
+        {
+          "frame": 26,
+          "elbows_deg": {
+            "left": 135.7041239465035,
+            "right": 135.7041239465035
+          },
+          "source_fk_elbows_deg": {
+            "left": 136.14442443847656,
+            "right": 136.18186950683594
+          },
+          "upperarm_goal_deg": 23.069144321998664,
+          "source_fk_upperarm_deg": {
+            "left": 29.562764055501958,
+            "right": 29.86410459267494
+          },
+          "solved_elbows_deg": {
+            "left": 133.7091522216797,
+            "right": 134.3367462158203
+          },
+          "solved_upperarm_deg": {
+            "left": 25.117603828176605,
+            "right": 25.118802090430574
+          }
+        },
+        {
+          "frame": 27,
+          "elbows_deg": {
+            "left": 126.91541065227776,
+            "right": 126.91541065227776
+          },
+          "source_fk_elbows_deg": {
+            "left": 127.4657211303711,
+            "right": 127.51237487792969
+          },
+          "upperarm_goal_deg": 21.880612550406067,
+          "source_fk_upperarm_deg": {
+            "left": 29.242304497128224,
+            "right": 29.543966924977546
+          },
+          "solved_elbows_deg": {
+            "left": 124.57585144042969,
+            "right": 125.3815689086914
+          },
+          "solved_upperarm_deg": {
+            "left": 23.994660185313144,
+            "right": 24.250512238480464
+          }
+        },
+        {
+          "frame": 28,
+          "elbows_deg": {
+            "left": 118.12397245847704,
+            "right": 118.12397245847704
+          },
+          "source_fk_elbows_deg": {
+            "left": 118.7841796875,
+            "right": 118.8403549194336
+          },
+          "upperarm_goal_deg": 20.69171228007983,
+          "source_fk_upperarm_deg": {
+            "left": 28.939253176852368,
+            "right": 29.241049706870562
+          },
+          "solved_elbows_deg": {
+            "left": 115.87043762207031,
+            "right": 116.63172912597656
+          },
+          "solved_upperarm_deg": {
+            "left": 22.5572178662707,
+            "right": 22.974248387770082
+          }
+        },
+        {
+          "frame": 29,
+          "elbows_deg": {
+            "left": 109.82597685919754,
+            "right": 109.82597685919754
+          },
+          "source_fk_elbows_deg": {
+            "left": 110.58966064453125,
+            "right": 110.65531158447266
+          },
+          "upperarm_goal_deg": 19.56954216482998,
+          "source_fk_upperarm_deg": {
+            "left": 28.669652274926168,
+            "right": 28.971391765438494
+          },
+          "solved_elbows_deg": {
+            "left": 107.94914245605469,
+            "right": 108.61377716064453
+          },
+          "solved_upperarm_deg": {
+            "left": 22.67322027988427,
+            "right": 23.179806569910067
+          }
+        },
+        {
+          "frame": 30,
+          "elbows_deg": {
+            "left": 102.51652457934016,
+            "right": 102.51652457934016
+          },
+          "source_fk_elbows_deg": {
+            "left": 103.37110137939453,
+            "right": 103.44561004638672
+          },
+          "upperarm_goal_deg": 18.581056595132512,
+          "source_fk_upperarm_deg": {
+            "left": 28.445709565505364,
+            "right": 28.74725129364468
+          },
+          "solved_elbows_deg": {
+            "left": 101.15662384033203,
+            "right": 101.682861328125
+          },
+          "solved_upperarm_deg": {
+            "left": 22.81964765556676,
+            "right": 21.61444279407501
+          }
+        },
+        {
+          "frame": 31,
+          "elbows_deg": {
+            "left": 96.68864464710764,
+            "right": 96.68864464710764
+          },
+          "source_fk_elbows_deg": {
+            "left": 97.61546325683594,
+            "right": 97.69754791259766
+          },
+          "upperarm_goal_deg": 17.792929797887222,
+          "source_fk_upperarm_deg": {
+            "left": 28.27644525392495,
+            "right": 28.57770806263474
+          },
+          "solved_elbows_deg": {
+            "left": 95.84644317626953,
+            "right": 96.2144546508789
+          },
+          "solved_upperarm_deg": {
+            "left": 20.974376555912485,
+            "right": 21.72091116814412
+          }
+        },
+        {
+          "frame": 32,
+          "elbows_deg": {
+            "left": 92.83305089234045,
+            "right": 92.83305089234045
+          },
+          "source_fk_elbows_deg": {
+            "left": 93.80748748779297,
+            "right": 93.89485931396484
+          },
+          "upperarm_goal_deg": 17.27152290674361,
+          "source_fk_upperarm_deg": {
+            "left": 28.16903017586611,
+            "right": 28.47007276726767
+          },
+          "solved_elbows_deg": {
+            "left": 92.42079162597656,
+            "right": 92.74554443359375
+          },
+          "solved_upperarm_deg": {
+            "left": 20.976121438231146,
+            "right": 21.73230497351807
+          }
+        }
+      ],
+      "max_source_elbow_error_deg": 4.362571760401067,
+      "arm_references": {
+        "start": {
+          "knee_included": {
+            "value": 176.827,
+            "method": "flat",
+            "cross": 162.667,
+            "uncertain": true,
+            "image": "img-41d79d3d"
+          },
+          "hip_included": {
+            "value": 177.367,
+            "method": "flat",
+            "cross": 166.892,
+            "uncertain": true,
+            "image": "img-41d79d3d"
+          },
+          "torso_lean": {
+            "value": 1.909,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d"
+          },
+          "elbow_included": {
+            "value": 91.439,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d"
+          },
+          "upperarm_vs_torso": {
+            "value": 17.083,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d"
+          },
+          "back_rounding": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d",
+            "seen": null,
+            "span": null,
+            "state": "unreadable",
+            "cause": "no-seen",
+            "curl": null,
+            "excess": null,
+            "run": null
+          },
+          "neck_vs_torso": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d"
+          },
+          "head_pitch": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-41d79d3d"
+          }
+        },
+        "middle": {
+          "knee_included": {
+            "value": 176.187,
+            "method": "flat",
+            "cross": 164.76600000000002,
+            "uncertain": true,
+            "image": null
+          },
+          "hip_included": {
+            "value": 175.7705,
+            "method": "flat",
+            "cross": 166.632,
+            "uncertain": true,
+            "image": null
+          },
+          "torso_lean": {
+            "value": 3.4945,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "elbow_included": {
+            "value": 126.88499999999999,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "upperarm_vs_torso": {
+            "value": 21.8765,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "back_rounding": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "neck_vs_torso": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "head_pitch": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": null
+          },
+          "estimated": true
+        },
+        "end": {
+          "knee_included": {
+            "value": 175.547,
+            "method": "flat",
+            "cross": 166.865,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "hip_included": {
+            "value": 174.174,
+            "method": "flat",
+            "cross": 166.372,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "torso_lean": {
+            "value": 5.08,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "elbow_included": {
+            "value": 162.331,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "upperarm_vs_torso": {
+            "value": 26.67,
+            "method": "3d",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "back_rounding": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf",
+            "seen": null,
+            "span": null,
+            "state": "unreadable",
+            "cause": "no-seen",
+            "curl": null,
+            "excess": null,
+            "run": null
+          },
+          "neck_vs_torso": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          },
+          "head_pitch": {
+            "value": null,
+            "method": "flat",
+            "cross": null,
+            "uncertain": false,
+            "image": "img-bfe8bbbf"
+          }
+        }
+      },
+      "source_angle_tolerance_deg": 5.0,
+      "max_source_upperarm_error_deg": 4.46078206677446,
+      "cable_anchor": [
+        0.00038572773337364197,
+        0.39619524035930637,
+        1.1396407112884521
+      ],
+      "body_clearance": {
+        "status": "clear_at_samples",
+        "worst": null,
+        "measured_frames": 32,
+        "first_frame": 1,
+        "last_frame": 32,
+        "max_penetration_mm": 0.0,
+        "sample_spacing_mm": 3.0372879787254337,
+        "triangles": 43067,
+        "frames": []
+      },
+      "grip_calibration": "Source width is uncalibrated; the declared model fit must still pass physical and form checks."
+    },
+    "validation": {
+      "rows": [
+        {
+          "group": "body",
+          "metric": "equipment_gap_left",
+          "target": 3.0,
+          "ours": 0.023104290759506235,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_left",
+          "target": 3.0,
+          "ours": 0.7945465890843856,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_gap_right",
+          "target": 3.0,
+          "ours": 0.0505111343235571,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_penetration_right",
+          "target": 3.0,
+          "ours": 0.7998214395418908,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_anchor_error",
+          "target": 2.0,
+          "ours": 0.00038326125053149835,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_path_adaptation",
+          "target": 20.0,
+          "ours": 8.000000000000007,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Reach adaptation changes the photographed equipment path.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "equipment_body_overlap",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_left",
+          "target": 5.0,
+          "ours": 0.1927454286487773,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "foot_floor_gap_right",
+          "target": 5.0,
+          "ours": 0.0,
+          "status": "pass",
+          "unit": "mm",
+          "frame": 1,
+          "kind": null,
+          "note": "Feet must reach the floor.",
+          "uncertain_why": null
+        }
+      ],
+      "ready": true
+    }
+  },
+  "contact": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 1,
+    "sides": {
+      "left": {
+        "sole_vertices": 512,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.1927454286487773
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.1964063197374344,
+        -0.10854816436767578,
+        -1.532863080910829e-08
+      ],
+      [
+        0.19969770312309265,
+        0.2116284966468811,
+        0.9976016879081726
+      ]
+    ]
+  },
+  "deformation": {
+    "crack_max_mm": 0.0,
+    "max_growth_mm": 22.775088307360452,
+    "growth_frame": 1,
+    "coincident_unconnected_pairs": 22773,
+    "deepest_frame": 1,
+    "deepest": {
+      "max_growth_mm": 22.775088307360452,
+      "max_growth_pct": 2.2795332521613534,
+      "edges_over_1pct": 87,
+      "edges_over_0_5pct": 191,
+      "worst_edge_at": [
+        0.4165,
+        0.0407,
+        0.7305
+      ],
+      "worst_edge_posed_at": [
+        0.1134,
+        0.1178,
+        0.542
+      ],
+      "worst_edge_rest_mm": 27.319520166644562,
+      "crack_max_mm": 0.0,
+      "skin_max_move_mm": 522.9771162523741
+    }
+  },
+  "preview_box": [
+    [
+      -0.6251566956308164,
+      -0.4729877288010397,
+      -0.056982050539871376
+    ],
+    [
+      0.6284480790164747,
+      0.7806170458462515,
+      1.1966227241074199
+    ]
+  ],
+  "preview_cameras": [
+    [
+      35.0,
+      10.0
+    ],
+    [
+      90.0,
+      5.0
+    ]
+  ],
+  "preview_camera_space": "world"
+}

@@ -1,0 +1,4 @@
+.character-fit { display: grid; grid-template-columns: auto minmax(120px, 180px); align-items: center; gap: 7px 12px; margin: 14px 0; }
+.character-fit > label { font-size: var(--t-s); font-weight: 600; }
+.character-fit > p { grid-column: 1 / -1; margin: 0; color: var(--ink-3); font-size: var(--t-xs); }
+@media (max-width: 420px) { .character-fit { grid-template-columns: 1fr; } }

@@ -101,6 +101,23 @@ def test_estimated_middle_is_info():
     assert mids and all(r["status"] == "info" for r in mids)
 
 
+def test_estimated_middle_does_not_require_a_cartoon_picture_reading():
+    from picture import ESTIMATED_POSITION, summarize
+    t, o = copy.deepcopy(TARGETS), copy.deepcopy(OURS)
+    t['phases']['middle']['estimated'] = True
+    before = build_checks(t, o, REPORT, EX)
+    o['picture'] = {'middle': {**summarize([]), 'why': ESTIMATED_POSITION,
+                              'skipped': 'estimated-reference-position'}}
+    result = build_checks(t, o, REPORT, EX)
+    middle = [r for r in result['rows'] if r['group'] == 'middle']
+    assert middle and all(r['status'] == 'info' and r['kind'] != 'not-measured' for r in middle)
+    assert result['summary']['unmeasured'] == before['summary']['unmeasured']
+    from build_targets import ANGLE_METRICS
+    assert all(r['ours'] is not None for r in middle if r['metric'] in ANGLE_METRICS)
+    assert row(result, 'middle', 'torso_lean')['note'].endswith(
+        'Shown on the rig; there is no reference picture at this position.')
+
+
 def test_body_checks_pass_when_clean():
     rep = copy.deepcopy(REPORT)
     rep["contact"]["penetration_mm"] = 0.0
@@ -1057,10 +1074,9 @@ def _no_bar_report():
     return r
 
 
-@pytest.mark.parametrize("exercise,thing", [("Standing Barbell Overhead Press (Shoulder Press)", "bar"),
-                                            ("Tricep Pushdown (cable, bar or rope attachment)", "cable handle")])
+@pytest.mark.parametrize("exercise,thing", [("Custom cable extension", "cable handle")])
 def test_equipment_the_path_does_not_build_is_a_not_measured_row(exercise, thing):
-    c = build_checks({**TARGETS, "exercise": exercise}, OURS, _no_bar_report(), exercise)
+    c = build_checks({**TARGETS, "exercise": exercise, "equipment": "cable"}, OURS, _no_bar_report(), exercise)
     r = row(c, "body", "equipment")
     assert (r["status"], r["kind"], r["ours"]) == ("info", "not-measured", None)
     assert r["note"] == f"No {thing} on this path yet; the hands hold nothing"
@@ -1073,11 +1089,22 @@ def test_an_exercise_of_our_own_goes_by_its_equipment_word():
     assert row(c, "body", "equipment")["note"] == "No bar on this path yet; the hands hold nothing"
 
 
-def test_an_older_dumbbell_run_without_physical_measurements_cannot_pass():
-    c = build_checks({**TARGETS, 'exercise': 'Dumbbell Lateral Raise'}, OURS, _no_bar_report(), 'Dumbbell Lateral Raise')
+@pytest.mark.parametrize('exercise', ['Dumbbell Lateral Raise', 'Standing Barbell Overhead Press (Shoulder Press)',
+                                     'Tricep Pushdown (cable, bar or rope attachment)'])
+def test_an_older_held_equipment_run_without_physical_measurements_cannot_pass(exercise):
+    c = build_checks({**TARGETS, 'exercise': exercise}, OURS, _no_bar_report(), exercise)
     r = row(c, 'body', 'equipment_contact')
     assert r['kind'] == 'not-measured'
     assert c['summary']['unmeasured'] >= 1
+
+
+@pytest.mark.parametrize('exercise', ['Leg Press (seated machine)', 'Front Plank (forearm plank)'])
+def test_support_profiles_require_support_measurements_without_requiring_held_equipment(exercise):
+    c = build_checks({**TARGETS, 'exercise': exercise}, OURS, _no_bar_report(), exercise)
+    assert row(c, 'body', 'body_support_contact')['kind'] == 'not-measured'
+    assert row(c, 'body', 'physical_profile')['kind'] == 'not-measured'
+    assert not any(r['metric'] == 'equipment_contact' for r in c['rows'])
+    assert c['summary']['unmeasured'] >= 2
 
 
 @pytest.mark.parametrize("exercise", ["Barbell Back Squat", "Front Plank (forearm plank)"])

@@ -4,6 +4,8 @@ import { api } from '../lib/api.js'
 import { automationCheckLine, automationItemState, automationJobLine, automationProgress, automationSourceUrl } from '../lib/automation.js'
 import { formatWhen } from '../lib/format.js'
 import { usePoll } from '../lib/use-poll.js'
+import CharacterFit from './character-fit.jsx'
+import { characterFitLabel } from '../lib/character-fit.js'
 
 const AutomationPanel = ({ open, exercises = [], onClose, toggleRef, onOpenExercise, onChanged, onActiveChange }) => {
   const [data, setData] = useState(null)
@@ -12,6 +14,7 @@ const AutomationPanel = ({ open, exercises = [], onClose, toggleRef, onOpenExerc
   const [selection, setSelection] = useState(null)
   const [viewedId, setViewedId] = useState(null)
   const [checkOnly, setCheckOnly] = useState(false)
+  const [characterFit, setCharacterFit] = useState('auto')
   const panel = useRef(null)
   const heading = useRef(null)
   const requestVersion = useRef(0)
@@ -128,8 +131,9 @@ const AutomationPanel = ({ open, exercises = [], onClose, toggleRef, onOpenExerc
             <input type="checkbox" checked={checkOnly} disabled={busy} onChange={(event) => setCheckOnly(event.target.checked)} />
             <span>Find and check references only — skip animation builds</span>
           </label>
+          <CharacterFit value={characterFit} onChange={setCharacterFit} disabled={busy || checkOnly} />
           <button type="button" className="btn btn-primary" disabled={busy || !data || !selected.length}
-            onClick={() => action(() => api.startAutomation(selected, { checkOnly }))}>
+            onClick={() => action(() => api.startAutomation(selected, { checkOnly, characterFit }))}>
             {busy ? 'Starting…' : `${checkOnly ? 'Start reference checks' : 'Start automation'} (${selected.length})`}
           </button>
           <p className="automation-note">Missing equipment, unsuitable pictures, and failed form checks need review. A completed batch does not mean every exercise passed.</p>
@@ -150,6 +154,7 @@ const AutomationPanel = ({ open, exercises = [], onClose, toggleRef, onOpenExerc
             )}
           </div>
           {shown.checkOnly && <p className="automation-note">Reference checks only; animation builds were not requested.</p>}
+          {!shown.checkOnly && <p className="automation-note">Character proportions: {characterFitLabel(shown.characterFit)}.</p>}
           <p className="automation-job-line" role="status">{automationJobLine(shown)}</p>
           <progress className="automation-progress" value={automationProgress(shown).finished} max={Math.max(shown.items?.length || 0, 1)}
             aria-label="Exercises processed" />

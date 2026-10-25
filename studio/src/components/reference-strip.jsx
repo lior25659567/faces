@@ -25,6 +25,10 @@ const Card = ({ slug, image, index, count, why, whyRun, dragging, busy, onPatch,
         <span className="ref-order num">{index + 1}</span>
       </div>
       <p className="ref-name" title={name}>{name}</p>
+      {image.source?.motionOnly && <span className="ref-motion-sample"
+        title={`Sequence frame${Number.isFinite(image.source.timeSeconds) ? ` at ${image.source.timeSeconds.toFixed(3)} seconds` : ''}; excluded from comparison stills.`}>
+        Motion sample
+      </span>}
 
       {/* While a change is being saved, every control waits, so a double-click can't start two runs. */}
       <fieldset className="ref-controls" disabled={busy}>

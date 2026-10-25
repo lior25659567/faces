@@ -14,7 +14,7 @@ from pose_cache import read_cached  # noqa: E402
 KEY_FIELDS = ("view", "facing", "camera_side", "size", "world", "pixels", "visibility")
 
 
-def key_positions(targets, measured):
+def key_positions(targets, measured, images=None):
     """keyposes.json's content: {"exercise", "phases": [{"phase", "image", "view", "facing", "camera_side",
     "size", "world", "pixels"}]} for the side pictures the targets were read from (`view` as the targets took
     it: the user's tag, else the detector's), in start, middle, end order
@@ -42,6 +42,28 @@ def key_positions(targets, measured):
     result = {"exercise": targets["exercise"], "phases": phases}
     if targets.get('motion'):
         result['motion'] = targets['motion']
+    if (targets.get('motion') or {}).get('mode') == 'sequence':
+        samples = []
+        sequence_info = None
+        for image in images or []:
+            if image.get('contextOnly') or image.get('deleted'):
+                continue
+            source = image.get('source') or {}
+            if not isinstance(source.get('sequenceInfo'), dict):
+                continue
+            sequence_info = sequence_info or source['sequenceInfo']
+            reading = measured.get(image['id'])
+            entry = {'image': image['id'], 'source': source,
+                     **{key: source.get(key) for key in ('sequenceIndex', 'timeSeconds', 'sourceFrameIndex',
+                       'role', 'leadLeg', 'observedSupport', 'footContacts', 'contactNote', 'motionOnly')}}
+            if isinstance(reading, dict) and reading.get('world'):
+                entry.update({key: reading.get(key) for key in KEY_FIELDS})
+                entry['view'] = image.get('view') or entry['view']
+            else:
+                entry['error'] = 'The motion sample has no readable body landmarks.'
+            samples.append(entry)
+        result['sequence'] = {**(sequence_info or {}), 'samples': samples,
+                              'sourceInferredDepth': True, 'calibrated': False}
     return result
 
 
@@ -50,7 +72,7 @@ def main(run_dir):
     snap = json.loads((run_dir / "references.json").read_text())
     images = snap["images"]
     # These are derived from this read. Never leave stale correction inputs after a failed retry.
-    for name in ("targets.json", "pipeline-targets.json", "keyposes.json", "preflight.json", "read-problems.json"):
+    for name in ("targets.json", "pipeline-targets.json", "keyposes.json", "preflight.json", "read-problems.json", "sequence-continuity.json"):
         (run_dir / name).unlink(missing_ok=True)
     run_file = run_dir / "run.json"
     run = json.loads(run_file.read_text()) if run_file.exists() else {}
@@ -89,10 +111,25 @@ def main(run_dir):
         pt = to_pipeline_targets(targets)
         if pt is not None:
             (run_dir / "pipeline-targets.json").write_text(json.dumps(pt, indent=2))
-    keys = key_positions(targets, measured)
+    keys = key_positions(targets, measured, images)
     if keys is not None:
         (run_dir / "keyposes.json").write_text(json.dumps(keys, indent=1))
-    plan = plan_for(snap, targets, pt, keys, clip=run.get("clip"))
+    sequence = (targets.get('motion') or {}).get('mode') == 'sequence'
+    # A chronological stepping sequence must never fall back to the old cyclic
+    # FBX or the two-endpoint forward/reverse image path.
+    plan = plan_for(snap, targets, pt, keys, clip=None if sequence else run.get("clip"))
+    if sequence:
+        plan['mode'] = 'Chronological image sequence'
+        plan['blockers'].append('This walking sequence needs per-foot contact and forward root-motion validation before rendering.')
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'pipeline/blender'))
+        from sequence_clip import SequenceError, inspect_sequence
+        try:
+            continuity = inspect_sequence(keys or {})
+        except SequenceError as error:
+            continuity = error.report
+        (run_dir / 'sequence-continuity.json').write_text(json.dumps(continuity, indent=2))
+        plan['blockers'].extend(continuity.get('blockers') or [])
+        plan['ready'] = False
     (run_dir / "preflight.json").write_text(json.dumps(plan, indent=2))
     if not plan["ready"]:
         print(" ".join(plan["blockers"]), file=sys.stderr)

@@ -1,0 +1,47 @@
+{
+  "name": "Walking lunges, wger exercise 206 video 33",
+  "provider": "wger",
+  "exerciseId": 206,
+  "videoId": 33,
+  "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+  "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+  "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+  "author": "Goulart",
+  "authorHistory": [
+    "Goulart"
+  ],
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+  "retrievedOn": "2026-10-24",
+  "sizeBytes": 23850769,
+  "sha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154",
+  "width": 1920,
+  "height": 1080,
+  "durationSeconds": 14.308333,
+  "streamTimeBase": "1/600",
+  "frameCount": 858,
+  "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+  "metadata": {
+    "id": 33,
+    "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+    "exercise": 206,
+    "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+    "is_main": false,
+    "size": 23850769,
+    "duration": "14.31",
+    "width": 1920,
+    "height": 1080,
+    "codec": "hevc",
+    "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+    "license": 2,
+    "license_title": "",
+    "license_object_url": "",
+    "license_author": "Goulart",
+    "license_author_url": "",
+    "license_derivative_source_url": "",
+    "author_history": [
+      "Goulart"
+    ]
+  }
+}

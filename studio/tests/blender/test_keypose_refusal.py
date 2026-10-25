@@ -1,6 +1,6 @@
 """animate.py --mpfb --keyposes refuses, in the Studio's plain words and BEFORE the character is built, an exercise
-the picture path can't animate (studio/measure/kit.py): the walking lunge (its feet step) and one that needs a
-support the path doesn't build (the bench press's bench). Before, the lunge built the cage for two minutes and then
+the picture path can't animate (studio/measure/kit.py): the walking lunge (its feet step).
+The implemented bench/seat/rail profiles now have strict support checks. Before, the lunge built the cage for two minutes and then
 died in BoneRetarget on feet 'auto' (task 9 review). Runs inside Blender (no other Blender running), seconds:
 
     /Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
@@ -27,7 +27,6 @@ import mpfb_cage  # noqa: E402
 WANT = {
     "Walking Lunge (dumbbells optional)": "No motion for this exercise: its feet step, which the picture path can't "
                                           "animate yet. Add lunge.fbx to 3d-character/mixamo (its README says how).",
-    "Flat Barbell Bench Press": "No motion for this exercise: it needs a bench the picture path doesn't build yet.",
 }
 
 

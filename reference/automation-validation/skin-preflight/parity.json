@@ -1,0 +1,539 @@
+[
+  {
+    "name": "ohp",
+    "run": "/tmp/studio-final-validation/standing-barbell-overhead-press-shoulder-press",
+    "seconds": 3.528,
+    "ready": true,
+    "expected": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 310.9,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 5,
+      "note": "Folds hidden from every view at the left shoulder (up to 311 mm\u00b2, 25 of 32 frames), the right shoulder (up to 211 mm\u00b2, 15 of 32 frames) and the left collarbone (up to 108 mm\u00b2, 3 of 32 frames)",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "actual": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 310.9,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 5,
+      "note": "Folds hidden from every view at the left shoulder (up to 311 mm\u00b2, 25 of 32 frames), the right shoulder (up to 211 mm\u00b2, 15 of 32 frames) and the left collarbone (up to 108 mm\u00b2, 3 of 32 frames)",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "sameVerdict": [
+      [
+        "info",
+        "info"
+      ],
+      [
+        "not-judged",
+        "not-judged"
+      ],
+      [
+        99.9,
+        99.9
+      ]
+    ],
+    "measurement_error": null,
+    "preview_cameras": [
+      [
+        35.0,
+        10.0
+      ],
+      [
+        90.0,
+        5.0
+      ]
+    ],
+    "comparison_cameras": [
+      {
+        "image": "img-4b5dc525",
+        "phase": "start",
+        "frame": 1,
+        "view": "three-quarter",
+        "azimuth": 35.33264412596696,
+        "elevation": 10.0,
+        "location": [
+          -1.4019615978883604,
+          2.0876224897487368,
+          0.9170431244106917
+        ]
+      },
+      {
+        "image": "img-06bce39c",
+        "phase": "end",
+        "frame": 19,
+        "view": "three-quarter",
+        "azimuth": 35.33264412596696,
+        "elevation": 10.0,
+        "location": [
+          -1.515749901510226,
+          2.1844397046756368,
+          0.9893859557538913
+        ]
+      }
+    ],
+    "camera_position_error_mm": 0.00019527023206138751,
+    "state_restored": true,
+    "expected_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "matches": true
+  },
+  {
+    "name": "plank",
+    "run": "/tmp/studio-verified-validation/front-plank-forearm-plank",
+    "seconds": 1.754,
+    "ready": true,
+    "expected": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 630.8,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 1,
+      "note": "Folds hidden from every view at the left shoulder (up to 631 mm\u00b2, every frame), the right shoulder (up to 365 mm\u00b2, every frame) and the left hip (up to 179 mm\u00b2, every frame); plus creases at the left elbow, which are normal in deep bends",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "actual": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 630.8,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 1,
+      "note": "Folds hidden from every view at the left shoulder (up to 631 mm\u00b2, every frame), the right shoulder (up to 365 mm\u00b2, every frame) and the left hip (up to 179 mm\u00b2, every frame); plus creases at the left elbow, which are normal in deep bends",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "sameVerdict": [
+      [
+        "info",
+        "info"
+      ],
+      [
+        "not-judged",
+        "not-judged"
+      ],
+      [
+        99.9,
+        99.9
+      ]
+    ],
+    "measurement_error": null,
+    "preview_cameras": [
+      [
+        35.0,
+        10.0
+      ],
+      [
+        90.0,
+        5.0
+      ]
+    ],
+    "comparison_cameras": [
+      {
+        "image": "img-cd985885",
+        "phase": "start",
+        "frame": 1,
+        "view": "side",
+        "azimuth": -89.97184799854627,
+        "elevation": 5.0,
+        "location": [
+          2.4581811405724223,
+          0.45242817951765135,
+          0.3915527824546783
+        ]
+      }
+    ],
+    "camera_position_error_mm": 2.9294198088295524e-05,
+    "state_restored": true,
+    "expected_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "matches": true
+  },
+  {
+    "name": "pullup-negative",
+    "run": "/tmp/studio-approved-validation/pull-up",
+    "seconds": 3.534,
+    "ready": false,
+    "expected": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 313.2,
+      "unit": "mm2",
+      "status": "fail",
+      "frame": 19,
+      "note": "Skin folds over at the left elbow (up to 313 mm\u00b2, frame 19) and the right elbow (up to 278 mm\u00b2, frame 19); plus creases at the knees and the right elbow, which are normal in deep bends, and folds hidden from every view at the elbows and the shoulders",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 313.2,
+      "unit": "mm2",
+      "status": "fail",
+      "frame": 19,
+      "note": "Skin folds over at the left elbow (up to 313 mm\u00b2, frame 19) and the right elbow (up to 278 mm\u00b2, frame 19); plus creases at the knees and the right elbow, which are normal in deep bends, and folds hidden from every view at the elbows and the shoulders",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "sameVerdict": [
+      [
+        "fail",
+        "fail"
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        99.9,
+        99.9
+      ]
+    ],
+    "measurement_error": null,
+    "preview_cameras": [
+      [
+        35.0,
+        10.0
+      ],
+      [
+        90.0,
+        5.0
+      ]
+    ],
+    "comparison_cameras": [
+      {
+        "image": "img-96142bf0",
+        "phase": "start",
+        "frame": 1,
+        "view": "behind",
+        "azimuth": 180.3313413761972,
+        "elevation": 5.0,
+        "location": [
+          0.015358624931225865,
+          -2.692322770170289,
+          0.8935941791141645
+        ]
+      },
+      {
+        "image": "img-9a54cdbb",
+        "phase": "end",
+        "frame": 19,
+        "view": "behind",
+        "azimuth": 180.3313413761972,
+        "elevation": 5.0,
+        "location": [
+          0.01188308261344515,
+          -2.3966640221063713,
+          1.1425739978284648
+        ]
+      }
+    ],
+    "camera_position_error_mm": 0.00013924272189778076,
+    "state_restored": true,
+    "expected_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "matches": true
+  },
+  {
+    "name": "dbpress-negative",
+    "run": "/tmp/studio-final-validation/dumbbell-shoulder-press-seated-overhead-press",
+    "seconds": 3.618,
+    "ready": false,
+    "expected": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 247.4,
+      "unit": "mm2",
+      "status": "fail",
+      "frame": 24,
+      "note": "Skin folds over at the right shoulder (up to 247 mm\u00b2, 4 of 32 frames); plus creases at the knees and the elbows, which are normal in deep bends, and folds hidden from every view at the shoulders and the left elbow",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 247.4,
+      "unit": "mm2",
+      "status": "fail",
+      "frame": 24,
+      "note": "Skin folds over at the right shoulder (up to 247 mm\u00b2, 4 of 32 frames); plus creases at the knees and the elbows, which are normal in deep bends, and folds hidden from every view at the shoulders and the left elbow",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "sameVerdict": [
+      [
+        "fail",
+        "fail"
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        99.9,
+        99.9
+      ]
+    ],
+    "measurement_error": null,
+    "preview_cameras": [
+      [
+        35.0,
+        10.0
+      ],
+      [
+        90.0,
+        5.0
+      ]
+    ],
+    "comparison_cameras": [
+      {
+        "image": "img-c052e570",
+        "phase": "start",
+        "frame": 1,
+        "view": "three-quarter",
+        "azimuth": 35.31882388832778,
+        "elevation": 10.0,
+        "location": [
+          -1.1780166455693777,
+          1.5015383711896773,
+          0.7706858654738419
+        ]
+      },
+      {
+        "image": "img-e96f851c",
+        "phase": "end",
+        "frame": 19,
+        "view": "three-quarter",
+        "azimuth": 35.31882388832778,
+        "elevation": 10.0,
+        "location": [
+          -1.296700316140078,
+          1.6713625198803126,
+          0.8490341289270312
+        ]
+      }
+    ],
+    "camera_position_error_mm": 0.00014138485294674382,
+    "state_restored": true,
+    "expected_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    "matches": true
+  },
+  {
+    "name": "pullup-jump-negative",
+    "run": "/tmp/studio-release-validation/pull-up",
+    "seconds": 3.771,
+    "ready": false,
+    "expected": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 240.1,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 29,
+      "note": "Folds hidden from every view at the right elbow (up to 240 mm\u00b2, frame 29), the left shoulder (up to 186 mm\u00b2, 20 of 32 frames), the right shoulder (up to 167 mm\u00b2, 14 of 32 frames) and the left collarbone (up to 101 mm\u00b2, frame 28); plus creases at the elbows and the knees, which are normal in deep bends",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "actual": {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 240.1,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 29,
+      "note": "Folds hidden from every view at the right elbow (up to 240 mm\u00b2, frame 29), the left shoulder (up to 186 mm\u00b2, 20 of 32 frames), the right shoulder (up to 167 mm\u00b2, 14 of 32 frames) and the left collarbone (up to 101 mm\u00b2, frame 28); plus creases at the elbows and the knees, which are normal in deep bends",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    "sameVerdict": [
+      [
+        "info",
+        "info"
+      ],
+      [
+        "not-judged",
+        "not-judged"
+      ],
+      [
+        99.9,
+        99.9
+      ]
+    ],
+    "measurement_error": null,
+    "preview_cameras": [
+      [
+        35.0,
+        10.0
+      ],
+      [
+        90.0,
+        5.0
+      ]
+    ],
+    "comparison_cameras": [
+      {
+        "image": "img-96142bf0",
+        "phase": "start",
+        "frame": 1,
+        "view": "behind",
+        "azimuth": 180.3313413761972,
+        "elevation": 5.0,
+        "location": [
+          0.01535859404878577,
+          -2.6923251600880276,
+          0.893594865045528
+        ]
+      },
+      {
+        "image": "img-9a54cdbb",
+        "phase": "end",
+        "frame": 19,
+        "view": "behind",
+        "azimuth": 180.3313413761972,
+        "elevation": 5.0,
+        "location": [
+          0.01355000057848731,
+          -2.3966640070260867,
+          1.1425736485675635
+        ]
+      }
+    ],
+    "camera_position_error_mm": 0.00012202720205911586,
+    "state_restored": true,
+    "expected_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 1,
+      "unit": "frames",
+      "status": "fail",
+      "frame": 31,
+      "note": "Jump on frame 31 (51 mm)",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "actual_motion": {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 1,
+      "unit": "frames",
+      "status": "fail",
+      "frame": 31,
+      "note": "Jump on frame 31 (51 mm)",
+      "kind": null,
+      "uncertain_why": null
+    },
+    "matches": true
+  }
+]

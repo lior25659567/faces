@@ -1,7 +1,10 @@
 """Keep the body hinge stable in a reference-driven bent-over row."""
-def stabilize_body(keys):
-    """Hold the starting hinge and lower body while allowing the row's arms to move.
+def stabilize_body(keys, legs=None):
+    """Hold the starting hinge while allowing the row's arms to move.
 
+    With measured leg directions, hold the thigh direction and knee bend at their
+    observed means instead of adding a knee bounce. The feet keep their starting
+    turns. This constant stance stays within the observed motion of both legs.
     Matrices are absolute turns, so holding the trunk alone would leave the head or
     thighs drifting. Preserve every non-arm turn, including neck and feet.
     """
@@ -10,7 +13,34 @@ def stabilize_body(keys):
     def arm(name):
         return name.startswith(('LeftArm', 'RightArm', 'LeftForeArm', 'RightForeArm',
                                 'LeftHand', 'RightHand'))
-    return [{name: value if arm(name) else keys[0][name].copy() for name, value in key.items()}
+    held = {name: value.copy() for name, value in keys[0].items() if not arm(name)}
+    if legs is not None:
+        down = _unit(legs)
+        for side in ('Left', 'Right'):
+            thigh, shin = side + 'UpLeg', side + 'Leg'
+            if not all(thigh in key and shin in key for key in keys):
+                continue
+            angles = [math.acos(float(np.clip(_unit(-(key[thigh] @ down)) @ _unit(key[shin] @ down), -1, 1)))
+                      for key in keys]
+            target = float(np.mean(angles))
+            observed = [_unit(key[thigh] @ down) for key in keys]
+            average = np.mean(observed, axis=0)
+            if np.linalg.norm(average) < 1e-9:
+                # Opposing thigh directions do not establish a standing row.
+                raise ValueError('The row references do not establish a consistent thigh direction.')
+            thigh_turn = _rotation_between(observed[0], _unit(average))
+            held[thigh] = thigh_turn @ keys[0][thigh]
+            up = _unit(-(held[thigh] @ down))
+            original = _unit(thigh_turn @ keys[0][shin] @ down)
+            pole = original - up * (original @ up)
+            if np.linalg.norm(pole) < 1e-9:
+                # A straight starting knee has no stable bend plane to average.
+                # Keep its measured stance rather than invent a lateral knee.
+                held[thigh] = keys[0][thigh].copy()
+                continue
+            desired = up * math.cos(target) + _unit(pole) * math.sin(target)
+            held[shin] = _rotation_between(original, desired) @ thigh_turn @ keys[0][shin]
+    return [{name: value if arm(name) else held[name].copy() for name, value in key.items()}
             for key in keys]
 
 
@@ -40,7 +70,8 @@ def _rotation_between(a, b):
     return np.eye(3) + cross + cross @ cross * ((1 - cosine) / sine ** 2)
 
 
-def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, previous=None, max_bend=25, previous_turn=None):
+def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, previous=None, max_bend=25, previous_turn=None,
+                  preference=None):
     """Exact two-bone arm and closed-hand contact with one point on a straight bar.
 
     Free variables are the hand's roll around the bar and the elbow on its IK circle.
@@ -56,14 +87,36 @@ def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, prev
     hand_axis = _unit(np.asarray(grip['middle_mcp']) - grip['wrist'] if 'middle_mcp' in grip else grip['hb'])
     psi = np.linspace(0, 2 * math.pi, 72, endpoint=False)
     cross = np.array([[0, -axis[2], axis[1]], [axis[2], 0, -axis[0]], [-axis[1], axis[0], 0]])
-    best = None
-    for phi in np.radians(np.arange(0, 360, 5)):
+    lateral_axis = None
+    if preference and preference.get('elbow_lateral') is not None:
+        lateral_axis = _unit(preference['lateral_axis'])
+        lateral_goal = float(preference['elbow_lateral'])
+        lateral_scale = float(preference.get('lateral_scale', upper * .03))
+        if not np.isfinite([lateral_goal, lateral_scale]).all() or lateral_scale <= 0:
+            raise ValueError('The elbow lateral goal and scale must be finite, with a positive scale.')
+    minimum_elbow = None if not preference else preference.get('min_elbow_deg')
+    if minimum_elbow is not None:
+        if isinstance(minimum_elbow, bool) or not np.isfinite(minimum_elbow) or not 0 <= minimum_elbow <= 180:
+            raise ValueError('The minimum elbow angle must be between zero and 180 degrees.')
+    maximum_elbow_z = None if not preference else preference.get('max_elbow_z')
+    if maximum_elbow_z is not None and (isinstance(maximum_elbow_z, bool) or not np.isfinite(maximum_elbow_z)):
+        raise ValueError('The maximum elbow height must be finite.')
+    below_wrist = bool((preference or {}).get('elbow_below_wrist', False))
+    clearance = float((preference or {}).get('elbow_clearance_m', 0.))
+    vertical_fraction = (preference or {}).get('forearm_vertical_fraction')
+    if not np.isfinite(clearance) or clearance < 0:
+        raise ValueError('The elbow height clearance must be finite and nonnegative.')
+    if vertical_fraction is not None and (isinstance(vertical_fraction, bool) or not np.isfinite(vertical_fraction)
+                                         or not 0 <= vertical_fraction <= 1):
+        raise ValueError('The forearm vertical fraction must lie between zero and one.')
+    def candidate(degrees):
+        phi = math.radians(degrees)
         turn = (np.eye(3) + math.sin(phi) * cross + (1 - math.cos(phi)) * cross @ cross) @ base
         wrist = point - turn @ offset
         delta = wrist - shoulder
         distance = np.linalg.norm(delta)
         if not abs(upper - forearm) + 1e-6 < distance < upper + forearm - 1e-6:
-            continue
+            return None
         direction = delta / distance
         reach = (upper ** 2 + distance ** 2 - forearm ** 2) / (2 * distance)
         radius = math.sqrt(max(0, upper ** 2 - reach ** 2))
@@ -74,24 +127,69 @@ def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, prev
         fore = (wrist - elbows) / forearm
         bends = np.degrees(np.arccos(np.clip(fore @ (turn @ hand_axis), -1, 1)))
         cost = (bends / 5) ** 2 + np.sum(((elbows - hint) / (upper * .2)) ** 2, axis=1)
+        elbow_deg = math.degrees(math.acos(float(np.clip((upper * upper + forearm * forearm - distance * distance)
+                                                         / (2 * upper * forearm), -1, 1))))
+        if minimum_elbow is not None and elbow_deg < minimum_elbow:
+            return None
+        upperarm_deg = None
+        if preference:
+            if preference.get('elbow_deg') is not None:
+                cost += ((elbow_deg - float(preference['elbow_deg'])) / 1.5) ** 2
+            if preference.get('upperarm_deg') is not None and preference.get('torso_down') is not None:
+                down = _unit(preference['torso_down'])
+                upperarm_deg = np.degrees(np.arccos(np.clip(((elbows - shoulder) / upper) @ down, -1, 1)))
+                cost += ((upperarm_deg - float(preference['upperarm_deg'])) / 3.) ** 2
+            if lateral_axis is not None:
+                cost += ((elbows @ lateral_axis - lateral_goal) / lateral_scale) ** 2
+            if vertical_fraction is not None:
+                cost += ((elbows[:, 2] - (wrist[2] - vertical_fraction * forearm)) / (forearm * .1)) ** 2
         if previous is not None:
             cost += .3 * np.sum(((elbows - previous) / (upper * .2)) ** 2, axis=1)
         if previous_turn is not None:
             # Quaternion-sign continuity alone cannot stop physical half-turn jumps.
             relative = previous_turn.T @ turn
             change = math.degrees(math.acos(float(np.clip((np.trace(relative) - 1) / 2, -1, 1))))
-            cost += (change / 12) ** 2
+            # The finer reference grid exposes neighboring roll solutions. Give
+            # continuity enough weight to follow those gradually rather than
+            # hopping between individually good elbow fits.
+            cost += (change / (4. if preference else 12.)) ** 2
         cost[bends > max_bend] = np.inf
+        if maximum_elbow_z is not None:
+            cost[elbows[:, 2] > maximum_elbow_z] = np.inf
+        if below_wrist:
+            cost[elbows[:, 2] > wrist[2] - clearance] = np.inf
         index = int(np.argmin(cost))
-        if np.isfinite(cost[index]) and (best is None or cost[index] < best['cost']):
-            best = dict(elbow=elbows[index], wrist=wrist, turn=turn,
-                        bend_deg=float(bends[index]), cost=float(cost[index]))
+        if np.isfinite(cost[index]):
+            return dict(elbow=elbows[index], wrist=wrist, turn=turn,
+                        bend_deg=float(bends[index]), elbow_deg=elbow_deg,
+                        upperarm_deg=None if upperarm_deg is None else float(upperarm_deg[index]), cost=float(cost[index]))
+        return None
+
+    coarse = [(angle, candidate(angle)) for angle in range(0, 360, 5)]
+    viable = [(angle, result) for angle, result in coarse if result is not None]
+    best = min((result for _, result in viable), key=lambda result: result['cost'], default=None)
+    if preference:
+        # Nearly straight arms can be reachable over a narrow roll interval.
+        # Refine the best coarse regions to half-degree accuracy, rather than
+        # making every frame pay for an exhaustive fine grid. If the coarse
+        # grid missed all feasible regions, the full fine scan is necessary.
+        if viable:
+            centres = [angle for angle, _ in sorted(viable, key=lambda pair: pair[1]['cost'])[:3]]
+            fine = sorted({float((angle + step) % 360) for angle in centres
+                           for step in np.arange(-4.5, 5., .5)} - set(range(0, 360, 5)))
+        else:
+            fine = [angle for angle in np.arange(.5, 360., .5) if angle % 5]
+        for angle in fine:
+            result = candidate(angle)
+            if result is not None and (best is None or result['cost'] < best['cost']):
+                best = result
     if best is None:
         raise ValueError('The row bar cannot be reached with an unstrained wrist.')
     return best
 
 
-def solve_shared_bar(shoulders, centre, along, half_width, lengths, grips, hints, previous=None, allow_adaptation=True):
+def solve_shared_bar(shoulders, centre, along, half_width, lengths, grips, hints, previous=None, allow_adaptation=True,
+                     preferences=None):
     """Find the nearest inward adaptation of one shared bar that both hands can grip.
 
     Adaptation is uniform for the two hands, with fixed grip width and level bar. The
@@ -109,7 +207,8 @@ def solve_shared_bar(shoulders, centre, along, half_width, lengths, grips, hints
                 elbow = old.get('elbow') if isinstance(old, dict) else old
                 turn = old.get('turn') if isinstance(old, dict) else None
                 solutions[side] = solve_contact(shoulders[side], adapted + sign * half_width * along,
-                    along, sign, *lengths[side], grips[side], hints[side], elbow, previous_turn=turn)
+                    along, sign, *lengths[side], grips[side], hints[side], elbow, previous_turn=turn,
+                    preference=(preferences or {}).get(side))
         except ValueError:
             continue
         return adapted, solutions, float(np.linalg.norm(adapted - centre))
@@ -158,9 +257,13 @@ def reference_arms(keyposes):
                 shoulder, elbow, wrist = shoulder * mirror, elbow * mirror, wrist * mirror
             upper, fore = elbow - shoulder, wrist - elbow
             angle = math.degrees(math.acos(float(np.clip(_unit(-upper) @ _unit(fore), -1, 1))))
+            hip = convert @ arms[f'{measured_side}_hip']
+            if measured_side != side:
+                hip = hip * mirror
+            upperarm = math.degrees(math.acos(float(np.clip(_unit(upper) @ _unit(hip - shoulder), -1, 1))))
             phases[phase][side] = {'wrist_direction': _unit(wrist - shoulder),
                                   'elbow_direction': _unit(upper), 'forearm_direction': _unit(fore),
-                                  'elbow_deg': angle}
+                                  'elbow_deg': angle, 'upperarm_deg': upperarm}
     if not all(p in phases for p in ('start','end')):
         raise ValueError('Row contact needs measured Start and End arm positions.')
     return phases
@@ -172,6 +275,7 @@ def reference_arm_at(path, side, progress, upper, forearm):
     marks = [dict(start=0., middle=.5, end=1.)[p] for p in phases]
     p = float(np.clip(progress, 0, 1))
     angle = float(np.interp(p, marks, [path[phase][side]['elbow_deg'] for phase in phases]))
+    upperarm = float(np.interp(p, marks, [path[phase][side]['upperarm_deg'] for phase in phases]))
     directions = {}
     for name in ('wrist_direction','elbow_direction','forearm_direction'):
         directions[name] = _unit([np.interp(p, marks, [path[phase][side][name][axis] for phase in phases])
@@ -179,10 +283,10 @@ def reference_arm_at(path, side, progress, upper, forearm):
     reach = math.sqrt(max(0., upper * upper + forearm * forearm -
                          2 * upper * forearm * math.cos(math.radians(angle))))
     return {**directions, 'wrist': directions['wrist_direction'] * reach,
-            'elbow': directions['elbow_direction'] * upper, 'elbow_deg': angle}
+            'elbow': directions['elbow_direction'] * upper, 'elbow_deg': angle, 'upperarm_deg': upperarm}
 
 
-def symmetric_body(points):
+def symmetric_body(points, visible_leg=None):
     """Keep a bilateral row level rather than reproducing monocular shoulder/hip twist."""
     result = {}
     for name, point in points.items():
@@ -196,4 +300,19 @@ def symmetric_body(points):
         else:
             value[0] = 0
         result[name] = value
+    if visible_leg in ('left', 'right'):
+        # A bilateral row stands symmetrically, but averaging the occluded leg's
+        # inferred depth changes the very knee/hip angles judged on the near leg.
+        # Preserve that leg's measured vectors and mirror them onto the far side.
+        origin = np.asarray(points[visible_leg + '_hip'], dtype=float)
+        target = result[visible_leg + '_hip']
+        for joint in ('knee', 'ankle', 'heel', 'foot_index'):
+            name = visible_leg + '_' + joint
+            if name not in points:
+                continue
+            near = np.asarray(points[name], dtype=float) - origin + target
+            result[name] = near.copy()
+            far = ('right' if visible_leg == 'left' else 'left') + '_' + joint
+            if far in points:
+                result[far] = near * np.array([-1., 1., 1.])
     return result

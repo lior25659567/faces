@@ -44,7 +44,7 @@ def apply(rig, skin, first, last, targets=None, keyposes=None, log=print):
     path, widths = {}, []
     for frame, amount in zip(range(first, last + 1), progress):
         scene.frame_set(frame)
-        points, hints, frame_shoulders = {}, {}, {}
+        points, hints, frame_shoulders, preferences = {}, {}, {}, {}
         for side, title, sign in sides:
             shoulder = np.array(pose[cage.P + title + 'Arm'].head)
             frame_shoulders[side] = shoulder
@@ -53,9 +53,12 @@ def apply(rig, skin, first, last, targets=None, keyposes=None, log=print):
             turn = hand_rig.hand_turn(grips[side], sign, along, arm['forearm_direction'])
             points[side] = wrist + turn @ (np.array(grips[side]['B']) - grips[side]['wrist'])
             hints[side] = shoulder + arm['elbow']
+            hip = np.array(pose[cage.P + title + 'UpLeg'].head)
+            preferences[side] = {'elbow_deg': arm['elbow_deg'], 'upperarm_deg': arm['upperarm_deg'],
+                                 'torso_down': np.array(cage._torso_turn(rig)) @ (hip - shoulder)}
         centre = (points['left'] + points['right']) / 2
         centre -= along * ((centre - shoulder_mid) @ along)
-        path[frame] = (centre, hints, frame_shoulders)
+        path[frame] = (centre, hints, frame_shoulders, preferences)
         widths.append(abs((points['right'] - points['left']) @ along))
     ratio = None
     if targets and Path(targets).is_file():
@@ -86,12 +89,13 @@ def apply(rig, skin, first, last, targets=None, keyposes=None, log=print):
     trace = []
     for frame in range(first, last + 1):
         scene.frame_set(frame)
-        centre, hints, frame_shoulders = path[frame]
+        centre, hints, frame_shoulders, preferences = path[frame]
         centre, surface_shift = guard(centre)
         # Moving a target back toward the shoulder would re-enter the belly. If
         # this collision-free position is unreachable, stop rather than clip.
         adapted, solutions, shift = solve_shared_bar(frame_shoulders, centre, along, half, lengths, grips,
-                                                     hints, previous_elbows, allow_adaptation=False)
+                                                     hints, previous_elbows, allow_adaptation=False,
+                                                     preferences=preferences)
         worst_surface = max(worst_surface, surface_shift)
         bar.location = rig.matrix_world @ Vector(adapted)
         bar.keyframe_insert('location', frame=frame)
@@ -125,6 +129,8 @@ def apply(rig, skin, first, last, targets=None, keyposes=None, log=print):
     if worst_contact > .002 or worst_length > .002:
         raise ValueError(f'Row hand contact failed after posing: {worst_contact * 1000:.2f} mm.')
     report = {'source': 'shared bar from direct measured arm landmarks; elbow angles adapted to character limb lengths',
+              'body_adaptation': {'torso': 'starting hinge held throughout the row',
+                                  'stance': 'constant mean of observed thigh directions and knee bends; starting foot turns retained'},
               'requested_grip_ratio': requested, 'grip_ratio': chosen,
               'worst_wrist_bend_deg': worst_bend, 'max_path_adjustment_mm': worst_shift * 1000,
               'max_grip_anchor_error_mm': worst_contact * 1000,
@@ -191,7 +197,10 @@ def body_clearance(rig, skin, bar, first, last, include_head=False):
     fit = json.loads(rig['skin_fit'])
     unit = fit['measured']['height'] / 1.75
     radius = equipment.BARBELL_BAR_DIAMETER / 2 * unit
-    half_length = equipment.BARBELL_LENGTH / 2 * unit
+    full_bar_half = equipment.BARBELL_LENGTH / 2 * unit
+    half_length = float(bar.get('contact_half_length', full_bar_half))
+    if not np.isfinite(half_length) or not 0. < half_length <= full_bar_half:
+        raise ValueError('Equipment clearance needs a finite positive shaft length no longer than the bar.')
     regions = ('Hips', 'Spine', 'UpLeg', 'Leg') + (('Neck', 'Head') if include_head else ())
     torso = {g.index for g in skin.vertex_groups if any(k in g.name for k in regions) and 'Hand' not in g.name}
     selected = np.array([sum(g.weight for g in v.groups if g.group in torso) > .5
@@ -214,7 +223,7 @@ def body_clearance(rig, skin, bar, first, last, include_head=False):
             if crossings == 128 or crossings % 2 != 1:
                 return False
         return True
-    rows, worst = [], None
+    rows, worst, measured_frames = [], None, 0
     scene = bpy.context.scene
     samples = np.linspace(-half_length, half_length, 101)
     for frame in range(first, last + 1):
@@ -244,8 +253,11 @@ def body_clearance(rig, skin, bar, first, last, include_head=False):
             rows.append({'frame': frame, 'max_overlap_mm': max(r['depth_mm'] for r in overlaps),
                          'confirmed_inside_mm': max((r['depth_mm'] for r in confirmed), default=0.),
                          'axial_extent_mm': [min(r['axial_mm'] for r in overlaps), max(r['axial_mm'] for r in overlaps)]})
+        measured_frames += 1
     scene.frame_set(first)
     return {'status': 'overlap_candidates' if rows else 'clear_at_samples', 'worst': worst,
+            'measured_frames': measured_frames, 'first_frame': first, 'last_frame': last,
+            'max_penetration_mm': worst['depth_mm'] if worst else 0.,
             'sample_spacing_mm': float((samples[1] - samples[0]) * 1000),
             'triangles': len(triangles), 'frames': rows}
 

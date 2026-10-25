@@ -1,0 +1,149 @@
+{
+  "exercise": "Front Plank (forearm plank)",
+  "phases": [
+    {
+      "phase": "start",
+      "image": "img-cd985885",
+      "view": "side",
+      "facing": "right",
+      "camera_side": "right",
+      "size": [
+        850,
+        567
+      ],
+      "world": {
+        "left_shoulder": [
+          0.45237,
+          -0.04156,
+          0.12988
+        ],
+        "right_shoulder": [
+          0.51186,
+          -0.00183,
+          -0.1374
+        ],
+        "left_elbow": [
+          0.45153,
+          0.17032,
+          0.1607
+        ],
+        "right_elbow": [
+          0.45615,
+          0.22392,
+          -0.12659
+        ],
+        "left_wrist": [
+          0.58977,
+          0.22532,
+          0.20527
+        ],
+        "right_wrist": [
+          0.6008,
+          0.1706,
+          0.01563
+        ],
+        "left_hip": [
+          -0.00641,
+          -0.01449,
+          0.11907
+        ],
+        "right_hip": [
+          0.01499,
+          0.01551,
+          -0.11886
+        ],
+        "left_knee": [
+          -0.40405,
+          0.05704,
+          0.1177
+        ],
+        "right_knee": [
+          -0.31392,
+          0.07319,
+          -0.0649
+        ],
+        "left_ankle": [
+          -0.73701,
+          0.12633,
+          0.20207
+        ],
+        "right_ankle": [
+          -0.70678,
+          0.05346,
+          0.02612
+        ]
+      },
+      "pixels": {
+        "left_shoulder": [
+          543.96,
+          344.49
+        ],
+        "right_shoulder": [
+          554.84,
+          363.57
+        ],
+        "left_elbow": [
+          525.44,
+          422.7
+        ],
+        "right_elbow": [
+          540.94,
+          449.28
+        ],
+        "left_wrist": [
+          584.92,
+          430.72
+        ],
+        "right_wrist": [
+          600.89,
+          441.52
+        ],
+        "left_hip": [
+          380.63,
+          359.13
+        ],
+        "right_hip": [
+          381.08,
+          377.58
+        ],
+        "left_knee": [
+          260.73,
+          382.58
+        ],
+        "right_knee": [
+          256.36,
+          393.17
+        ],
+        "left_ankle": [
+          144.43,
+          394.35
+        ],
+        "right_ankle": [
+          141.63,
+          398.45
+        ]
+      },
+      "visibility": {
+        "left_shoulder": 1.0,
+        "right_shoulder": 1.0,
+        "left_elbow": 0.583,
+        "right_elbow": 1.0,
+        "left_wrist": 0.759,
+        "right_wrist": 1.0,
+        "left_hip": 1.0,
+        "right_hip": 1.0,
+        "left_knee": 0.473,
+        "right_knee": 0.998,
+        "left_ankle": 0.808,
+        "right_ankle": 0.998
+      }
+    }
+  ],
+  "motion": {
+    "mode": "hold",
+    "sourcePhases": [
+      "start"
+    ],
+    "approximateDepth": false
+  }
+}

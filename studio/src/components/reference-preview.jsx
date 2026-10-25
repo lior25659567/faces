@@ -29,7 +29,10 @@ const ReferencePreview = ({ slug, images = [], measurements = {}, targets }) => 
           const name = image.original || image.file
           return (
             <li className="reference-preview-card" key={image.id}>
-              <p className="reference-preview-phase">{PHASE_LABELS[image.phase] || 'Position not set'}</p>
+              <p className="reference-preview-phase" title={image.source?.motionOnly ? 'Sequence frame; excluded from comparison stills.' : undefined}>
+                {image.source?.motionOnly ? 'Motion sample' : PHASE_LABELS[image.phase] || 'Position not set'}
+                {image.source?.motionOnly && Number.isFinite(image.source.timeSeconds) ? ` · ${image.source.timeSeconds.toFixed(3)} s` : ''}
+              </p>
               <div className="reference-preview-picture">
                 {pose ? (
                   <svg viewBox={`0 0 ${pose.width} ${pose.height}`} role="img" aria-label={`${name}: detected pose`}>

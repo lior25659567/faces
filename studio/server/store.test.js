@@ -94,6 +94,25 @@ test('lists runs newest first and keeps step history', async () => {
   expect(store.readRun('barbell-back-squat', r1.id).status).toBe('done')
 })
 
+test('character proportions persist with each run and its reference snapshot', () => {
+  for (const characterFit of ['auto', 'original', 'fitness']) {
+    const run = store.createRun('barbell-back-squat', { characterFit })
+    expect(store.readRun(run.slug, run.id).characterFit).toBe(characterFit)
+    expect(JSON.parse(readFileSync(path.join(store.runDir(run.slug, run.id), 'references.json'))).characterFit).toBe(characterFit)
+  }
+  expect(store.createRun('barbell-back-squat').characterFit).toBe('auto')
+  for (const characterFit of [null, false, 'longer', {}, ['fitness']]) {
+    expect(() => store.createRun('barbell-back-squat', { characterFit })).toThrow(/Character proportions/)
+  }
+})
+
+test('a recheck retains the character proportions of the rendered source', () => {
+  const source = store.createRun('barbell-back-squat', { characterFit: 'fitness' })
+  const run = store.createRecheckRun(source.slug, source, { characterFit: 'original' })
+  expect(run.characterFit).toBe('fitness')
+  expect(JSON.parse(readFileSync(path.join(store.runDir(run.slug, run.id), 'references.json'))).characterFit).toBe('fitness')
+})
+
 test('applies detected views without overriding the user', async () => {
   const a = await upload(1), b = await upload(2)
   store.updateReference('barbell-back-squat', b.id, { view: 'behind' })
@@ -116,7 +135,7 @@ test('each exercise says what the picture path refuses and what its hands would 
   const rows = Object.fromEntries(store.listExercises().map((r) => [r.name, r]))
   expect(rows['Walking Lunge (dumbbells optional)'].pictureRefusal)
     .toBe('No motion for this exercise: its feet step, which the picture path can\'t animate yet. Add lunge.fbx to 3d-character/mixamo (its README says how).')
-  expect(rows['Flat Barbell Bench Press'].pictureRefusal).toBe('No motion for this exercise: it needs a bench the picture path doesn\'t build yet.')
+  expect(rows['Flat Barbell Bench Press']).toMatchObject({ pictureRefusal: null, unheld: null })
   expect(rows['Conventional Barbell Deadlift']).toMatchObject({ pictureRefusal: null, unheld: null })
   expect(rows['Barbell Back Squat']).toMatchObject({ pictureRefusal: null, unheld: null })
   store.addExercise({ name: 'Back Squat from images', equipment: 'barbell', clip: null })

@@ -1,0 +1,279 @@
+{
+  "id": "2d1c6347-7e53-4228-aafc-d3b214804b99",
+  "status": "done",
+  "createdAt": "2026-10-25T10:40:43.118Z",
+  "finishedAt": "2026-10-25T10:41:20.544Z",
+  "checkOnly": true,
+  "forceRebuild": false,
+  "characterFit": "auto",
+  "builderFingerprint": "bac4364a0ae1ed9d5f8a04d6a40354e8a41d46c60605c067c1091126900100c0",
+  "cancelRequested": false,
+  "items": [
+    {
+      "slug": "barbell-back-squat",
+      "name": "Barbell Back Squat",
+      "status": "blocked",
+      "message": "Need a start and an end position from side-view images with a body found; missing: start and end.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Barbell_Full_Squat",
+      "updatedAt": "2026-10-25T10:40:46.648Z",
+      "referenceRunId": "20261025-104045-ce92",
+      "preflight": {
+        "ready": false,
+        "mode": "Reference check",
+        "blockers": [
+          "Need a start and an end position from side-view images with a body found; missing: start and end."
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "slug": "conventional-barbell-deadlift",
+      "name": "Conventional Barbell Deadlift",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Barbell_Deadlift",
+      "updatedAt": "2026-10-25T10:40:49.873Z",
+      "referenceRunId": "20261025-104047-4ab0",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "flat-barbell-bench-press",
+      "name": "Flat Barbell Bench Press",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Barbell_Bench_Press_-_Medium_Grip",
+      "updatedAt": "2026-10-25T10:40:52.945Z",
+      "referenceRunId": "20261025-104050-3d32",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "standing-barbell-overhead-press-shoulder-press",
+      "name": "Standing Barbell Overhead Press (Shoulder Press)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Standing_Military_Press",
+      "updatedAt": "2026-10-25T10:40:55.803Z",
+      "referenceRunId": "20261025-104053-a8d5",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "barbell-bent-over-row",
+      "name": "Barbell Bent-Over Row",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Bent_Over_Barbell_Row",
+      "updatedAt": "2026-10-25T10:40:58.639Z",
+      "referenceRunId": "20261025-104056-9882",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "The visible arm drives both sides of this bilateral row. The hidden arm's estimated depth is not used independently.",
+          "The row holds the starting torso hinge. These references differ by 21 degrees of torso lean, so the held torso will differ from the End reference.",
+          "Three-quarter row references use estimated 3D depth. Their projected side angles are not used as measurements. Check the rendered body and bar path against the photographs.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong."
+        ]
+      }
+    },
+    {
+      "slug": "pull-up",
+      "name": "Pull-Up",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Pullups",
+      "updatedAt": "2026-10-25T10:41:01.375Z",
+      "referenceRunId": "20261025-104059-38b4",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "lat-pulldown-seated-to-the-front",
+      "name": "Lat Pulldown (seated, to the front)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Wide-Grip_Lat_Pulldown",
+      "updatedAt": "2026-10-25T10:41:04.086Z",
+      "referenceRunId": "20261025-104101-9bee",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "dumbbell-bicep-curl-standing-both-arms",
+      "name": "Dumbbell Bicep Curl (standing, both arms)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Dumbbell_Bicep_Curl",
+      "updatedAt": "2026-10-25T10:41:06.902Z",
+      "referenceRunId": "20261025-104104-3813",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "dumbbell-lateral-raise",
+      "name": "Dumbbell Lateral Raise",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Side_Lateral_Raise",
+      "updatedAt": "2026-10-25T10:41:09.549Z",
+      "referenceRunId": "20261025-104107-0f12",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "dumbbell-shoulder-press-seated-overhead-press",
+      "name": "Dumbbell Shoulder Press (seated overhead press)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Dumbbell_Shoulder_Press",
+      "updatedAt": "2026-10-25T10:41:12.213Z",
+      "referenceRunId": "20261025-104109-fbfb",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "walking-lunge-dumbbells-optional",
+      "name": "Walking Lunge (dumbbells optional)",
+      "status": "blocked",
+      "message": "Walking lunges require a chronological stepping/root-motion builder. These frontal frames do not supply calibrated depth, and the selection is not a closed cycle.",
+      "sourceUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+      "sourceId": "wger-206-video-33",
+      "updatedAt": "2026-10-25T10:41:12.231Z"
+    },
+    {
+      "slug": "front-plank-forearm-plank",
+      "name": "Front Plank (forearm plank)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Plank",
+      "updatedAt": "2026-10-25T10:41:15.016Z",
+      "referenceRunId": "20261025-104112-9582",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "This is a static hold. The builder repeats the photographed hold without inventing a setup or movement cycle.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong."
+        ]
+      }
+    },
+    {
+      "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
+      "name": "Tricep Pushdown (cable, bar or rope attachment)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Triceps_Pushdown",
+      "updatedAt": "2026-10-25T10:41:17.776Z",
+      "referenceRunId": "20261025-104115-488a",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, middle knee bend, middle hip bend. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    },
+    {
+      "slug": "leg-press-seated-machine",
+      "name": "Leg Press (seated machine)",
+      "status": "ready",
+      "message": "References are ready. Rendering was not requested.",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "sourceId": "Leg_Press",
+      "updatedAt": "2026-10-25T10:41:20.543Z",
+      "referenceRunId": "20261025-104118-1dc9",
+      "preflight": {
+        "ready": true,
+        "mode": "Image key poses",
+        "blockers": [],
+        "warnings": [
+          "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+          "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+          "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+        ]
+      }
+    }
+  ]
+}

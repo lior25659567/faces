@@ -1,0 +1,197 @@
+{
+  "exercise": "Pull-Up",
+  "phases": {
+    "start": {
+      "knee_included": {
+        "value": 137.379,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-96142bf0",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 159.329,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-96142bf0",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 5.632,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-96142bf0",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 149.498,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-96142bf0",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 160.571,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-96142bf0",
+        "source": "inferred_3d"
+      }
+    },
+    "middle": {
+      "knee_included": {
+        "value": 124.709,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "hip_included": {
+        "value": 155.8535,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "torso_lean": {
+        "value": 10.561,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "elbow_included": {
+        "value": 92.8205,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "upperarm_vs_torso": {
+        "value": 110.4105,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": null
+      },
+      "estimated": true
+    },
+    "end": {
+      "knee_included": {
+        "value": 112.039,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-9a54cdbb",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 152.378,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-9a54cdbb",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 15.49,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-9a54cdbb",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 36.143,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-9a54cdbb",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 60.25,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "img-9a54cdbb",
+        "source": "inferred_3d"
+      }
+    }
+  },
+  "widths": {
+    "grip_ratio": {
+      "value": 1.762,
+      "method": "flat",
+      "cross": 1.41,
+      "uncertain": true,
+      "image": "img-96142bf0"
+    },
+    "elbow_width_ratio": {
+      "value": 1.616,
+      "method": "flat",
+      "cross": 1.41,
+      "uncertain": false,
+      "image": "img-96142bf0"
+    }
+  },
+  "tolerance": {
+    "angles_deg": 5,
+    "ratios": 0.12,
+    "hip_below_knee": 0.1,
+    "seat_below_knee": 0.1,
+    "back_rounding": 0.04,
+    "neck_vs_torso": 10,
+    "spine_curl": 10
+  },
+  "images": {
+    "img-96142bf0": {
+      "used": true,
+      "why": null,
+      "view": "behind"
+    },
+    "img-9a54cdbb": {
+      "used": true,
+      "why": null,
+      "view": "behind"
+    }
+  },
+  "camera": {
+    "side": "right",
+    "facing": null
+  },
+  "phase_widths": {
+    "start": {
+      "elbow_width_ratio": {
+        "value": 1.616,
+        "method": "flat",
+        "cross": 1.41,
+        "uncertain": false,
+        "image": "img-96142bf0"
+      }
+    },
+    "end": {
+      "elbow_width_ratio": {
+        "value": 2.048,
+        "method": "flat",
+        "cross": 1.999,
+        "uncertain": false,
+        "image": "img-9a54cdbb"
+      }
+    }
+  },
+  "motion": {
+    "mode": "cycle",
+    "sourcePhases": [
+      "start",
+      "end"
+    ],
+    "approximateDepth": true
+  },
+  "equipment": "bodyweight"
+}

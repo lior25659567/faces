@@ -1,0 +1,468 @@
+{
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "surface_cleanup": {
+    "schema": 1,
+    "method": "coincident seam weld and local rest-bound corrective surface",
+    "vertices_before": 46261,
+    "vertices_after": 43186,
+    "faces": 52431,
+    "uv_loops": 157293,
+    "uv_and_materials_preserved": true,
+    "skin_weights_preserved": true,
+    "protected_custom_normals_preserved": true,
+    "seam_tolerance_mm": 0.009995116599818636,
+    "max_weld_displacement_mm": 0.0,
+    "max_bind_displacement_mm": 0.00024028122425079346,
+    "corrected_vertices": 3986,
+    "protected_vertices": 28165,
+    "factor": 1.0,
+    "iterations": 20,
+    "arm_emphasis": null,
+    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
+  },
+  "physical": {
+    "profile": {
+      "family": "sled",
+      "feet": "free",
+      "mode": "cycle",
+      "holds": false,
+      "overhead": false
+    },
+    "supports": {
+      "frames": 32,
+      "surfaces": {
+        "pelvis": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 8.940696716308594e-05,
+          "max_penetration_mm": 8.940696716308594e-05
+        },
+        "back": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.08664862689321262,
+          "max_penetration_mm": 0.07303003929672036
+        },
+        "head": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.00014442206213750863,
+          "max_penetration_mm": 0.00014442206213750863
+        },
+        "footplate_left": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.4726881825934878,
+          "max_penetration_mm": 0.0
+        },
+        "footplate_right": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.00030572649918625405,
+          "max_penetration_mm": 0.00036309318183352923
+        },
+        "footplate_left_heel": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.4865633916157448,
+          "max_penetration_mm": 0.0
+        },
+        "footplate_left_toe": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.4726881825934878,
+          "max_penetration_mm": 0.0
+        },
+        "footplate_right_heel": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.011819597015949417,
+          "max_penetration_mm": 0.0
+        },
+        "footplate_right_toe": {
+          "frames": 32,
+          "measured_frames": 32,
+          "max_gap_mm": 0.00030572649918625405,
+          "max_penetration_mm": 0.00036309318183352923
+        }
+      },
+      "correction": {
+        "applied": true,
+        "source_rail_deviation_mm": 17.792465165257454,
+        "max_ankle_path_adjustment_mm": 37.420615553855896,
+        "ankle_path_limit_mm": 49.955595703125,
+        "max_ankle_residual_mm": 0.17815829446037912,
+        "max_seat_settling_shift_mm": 25.92921257019043,
+        "max_body_pitch_adjustment_deg": 10.657389761051057,
+        "max_head_pitch_adjustment_deg": 11.763572692871092,
+        "backrest": {
+          "normal": [
+            0.0,
+            0.2095385193824768,
+            0.9778003692626953
+          ],
+          "plane": -0.011024810930930329,
+          "head_plane": 0.044333803389854154,
+          "body_axis": [
+            0.0,
+            -0.9778003692626953,
+            0.2095385193824768
+          ]
+        },
+        "foot_orientation": "rest plantar soles aligned to the rigid footplate normal",
+        "source": "reference-inferred travel axis; not calibrated"
+      },
+      "backrest": {
+        "normal": [
+          0.0,
+          0.2095385193824768,
+          0.9778003692626953
+        ],
+        "plane": -0.011024810930930329,
+        "headrest_padding_mm": 55.35861432078448,
+        "source": "fixed pad aligned to the measured torso; not a calibrated machine angle"
+      },
+      "rail_path": {
+        "frames": 32,
+        "max_deviation_mm": 0.1399064064025879,
+        "incline_deg": 21.68968391418457,
+        "source": "reference-inferred travel axis; not calibrated"
+      }
+    },
+    "contacts": null,
+    "validation": {
+      "rows": [
+        {
+          "group": "body",
+          "metric": "support_gap_pelvis",
+          "target": 5.0,
+          "ours": 8.940696716308594e-05,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_pelvis",
+          "target": 3.0,
+          "ours": 8.940696716308594e-05,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_back",
+          "target": 5.0,
+          "ours": 0.08664862689321262,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_back",
+          "target": 3.0,
+          "ours": 0.07303003929672036,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_head",
+          "target": 5.0,
+          "ours": 0.00014442206213750863,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_head",
+          "target": 3.0,
+          "ours": 0.00014442206213750863,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_left",
+          "target": 5.0,
+          "ours": 0.4726881825934878,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_left",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_right",
+          "target": 5.0,
+          "ours": 0.00030572649918625405,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_right",
+          "target": 3.0,
+          "ours": 0.00036309318183352923,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_left_heel",
+          "target": 5.0,
+          "ours": 0.4865633916157448,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_left_heel",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_left_toe",
+          "target": 5.0,
+          "ours": 0.4726881825934878,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_left_toe",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_right_heel",
+          "target": 5.0,
+          "ours": 0.011819597015949417,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_right_heel",
+          "target": 3.0,
+          "ours": 0.0,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_gap_footplate_right_toe",
+          "target": 5.0,
+          "ours": 0.00030572649918625405,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "support_penetration_footplate_right_toe",
+          "target": 3.0,
+          "ours": 0.00036309318183352923,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "sled_rail_deviation",
+          "target": 10.0,
+          "ours": 0.1399064064025879,
+          "status": "pass",
+          "kind": null,
+          "frame": null,
+          "unit": "mm",
+          "note": null,
+          "uncertain_why": null
+        }
+      ],
+      "ready": true
+    }
+  },
+  "contact": {
+    "penetration_mm": 0.0,
+    "penetration_frame": null,
+    "sides": {
+      "left": {
+        "sole_vertices": 60,
+        "sole_slide_mm": 44.55,
+        "slide_frame": 19,
+        "sole_lift_mm": 19.97,
+        "initial_floor_gap_mm": 1.2291967868804932
+      },
+      "right": {
+        "sole_vertices": 57,
+        "sole_slide_mm": 46.56,
+        "slide_frame": 19,
+        "sole_lift_mm": 17.26,
+        "initial_floor_gap_mm": 0.0002086162567138672
+      }
+    },
+    "box": [
+      [
+        -0.2681187391281128,
+        -0.7420690655708313,
+        1.1920928955078125e-07
+      ],
+      [
+        0.26912838220596313,
+        0.058363184332847595,
+        0.5020731687545776
+      ]
+    ]
+  },
+  "deformation": {
+    "crack_max_mm": 0.0,
+    "max_growth_mm": 88.06242930293848,
+    "growth_frame": 19,
+    "coincident_unconnected_pairs": 22574,
+    "deepest_frame": 19,
+    "deepest": {
+      "max_growth_mm": 88.06242930293848,
+      "max_growth_pct": 8.814070582430237,
+      "edges_over_1pct": 377,
+      "edges_over_0_5pct": 956,
+      "worst_edge_at": [
+        0.0002,
+        -0.0054,
+        0.344
+      ],
+      "worst_edge_posed_at": [
+        0.0006,
+        -0.2014,
+        0.1301
+      ],
+      "worst_edge_rest_mm": 1.0918376173373756,
+      "crack_max_mm": 0.0,
+      "skin_max_move_mm": 962.831715751553
+    }
+  },
+  "preview_box": [
+    [
+      -0.5331043317914009,
+      -0.8514158591628075,
+      -0.27120308913290503
+    ],
+    [
+      0.5328122690320015,
+      0.21450074166059496,
+      0.7947135116904974
+    ]
+  ],
+  "preview_cameras": [
+    [
+      90.0,
+      5.0
+    ],
+    [
+      -90.0,
+      5.0
+    ]
+  ],
+  "preview_camera_space": "world"
+}

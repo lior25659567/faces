@@ -93,9 +93,10 @@ from metrics import (bind_pose_warning, jump_frames, jump_sizes, jump_steps, mea
 from checks import fold_limit  # noqa: E402
 from kit import has_depth  # noqa: E402
 from creases import CREASE_SLACK, crease_of, hinges_from  # noqa: E402
-from picture import FRAMINGS, PICTURE_METRICS, summarize  # noqa: E402
+from picture import ESTIMATED_POSITION, FRAMINGS, PICTURE_METRICS, comparison_frames, summarize  # noqa: E402
 from posture import (KNEE_TORSO, KNEE_WINDOW, SEAT_BEHIND, back_profile, head_pitch, neck_vs_torso,  # noqa: E402
                      seat_depth, spine_bend)
+from reference_timing import recorded_phase_frames  # noqa: E402
 import mpfb_cage  # noqa: E402
 
 P = "mixamorig:"
@@ -748,7 +749,7 @@ def gif_box(run, skin, first, last):
     return np.array([low, high])
 
 
-def gif_cameras(box, yaw):
+def gif_cameras(box, yaw, views=None):
     """World positions of the GIF's cameras, as animate.py --mpfb places them around `box`: centred on
     it, at distance_for its height, at GIF_VIEWS. animate gives those azimuths in the house frame,
     where the figure faces +Y; here they are added to the figure's own yaw, so a figure turned any
@@ -756,7 +757,8 @@ def gif_cameras(box, yaw):
     low, high = np.asarray(box, dtype=float)
     centre = (low + high) / 2
     distance = mpfb_cage.distance_for(max(float(high[2] - low[2]), 0.5) * 1.05)
-    return [centre + view_direction(yaw + azimuth, elevation) * distance for azimuth, elevation in GIF_VIEWS]
+    angles = [(yaw + azimuth, elevation) for azimuth, elevation in GIF_VIEWS] if views is None else views
+    return [centre + view_direction(azimuth, elevation) * distance for azimuth, elevation in angles]
 
 
 def rendered_meshes(skin):
@@ -1163,13 +1165,17 @@ def measure_frames(rig, first, last, side, side_normal, behind_normal, turn):
     return per_frame, joints_by_frame
 
 
-def pick_positions(per_frame, targets, joints_by_frame):
+def pick_positions(per_frame, targets, joints_by_frame, reference_motion=None):
     """(phase frames, driver, jumps, steps): the coach's positions on our clip, as metrics picks them, never
     on a frame that jumps. RunError (plain words) when none can be picked."""
     try:
         jump_set = jump_frames(per_frame, targets, joints_by_frame)
-        phase_frames = pick_phase_frames(per_frame, targets, skip=jump_set)
-        driver = phase_driver(per_frame, targets)
+        phase_frames = recorded_phase_frames(per_frame, reference_motion, skip=jump_set)
+        if phase_frames is None:
+            phase_frames = pick_phase_frames(per_frame, targets, skip=jump_set)
+            driver = phase_driver(per_frame, targets)
+        else:
+            driver = 'reference_time'
         return phase_frames, driver, jump_sizes(joints_by_frame, jump_set), jump_steps(joints_by_frame)
     except ValueError as e:     # metrics says why in plain words (no position measured; every frame jumps)
         raise RunError(str(e)) from None
@@ -1254,7 +1260,9 @@ def inspect(run):
         for method in ("flat", "3d"):
             entry[method].update(posture[method])
         entry["flat"].update(_clean({"spine_curl": spine_curl(rig, side_normal, spine_rest)}))
-    phase_frames, driver, jumps, steps = pick_positions(per_frame, targets, joints_by_frame)
+    reference_report = _read_json(run / 'frames' / 'retarget.json', 'animation report') if (run / 'frames' / 'retarget.json').is_file() else {}
+    phase_frames, driver, jumps, steps = pick_positions(per_frame, targets, joints_by_frame,
+                                                       reference_report.get('reference_motion'))
     log(f"figure faces azimuth {yaw:.1f}; phase frames {phase_frames} (timed by {driver})")
     if steps:
         log("the pose snaps on frames " + ", ".join(f"{s['frame']} ({s['mm']} mm)" for s in steps))
@@ -1265,7 +1273,8 @@ def inspect(run):
     mpfb_cage.preview_set(560, 560, samples=4 if targets.get('motion') else 16)
     stills_dir = run / "stills"
     stills_dir.mkdir(parents=True, exist_ok=True)
-    keys = [i for i in snapshot.get("images") or [] if not i.get("contextOnly") and not i.get("deleted")]
+    keys = [i for i in snapshot.get("images") or [] if not i.get("contextOnly") and not i.get("deleted")
+            and not i.get('motionOnly') and not (i.get('source') or {}).get('motionOnly')]
     stills, still_cameras, side_stills = [], {}, {}
     for n, image in enumerate(keys, 1):
         phase = image.get("phase")
@@ -1286,10 +1295,17 @@ def inspect(run):
         if cam_view == "side" and (azimuth, elevation) == side_camera:
             side_stills.setdefault(phase, run / rel)
 
-    # ours read from the picture as the coach is, at every position, from the side camera of the coach's
-    # photos (the stills reused as the first framing); the torso rows are judged on it (checks.py)
+    # Read judged positions from the same camera as the coach. An estimated
+    # middle has no source picture and no verdict; avoid its five camera renders
+    # while retaining all-frame rig/contact/fold measurements.
+    picture_frames = comparison_frames(phase_frames, targets)
     with tempfile.TemporaryDirectory(prefix="picture-") as folder:
-        picture = picture_or_none(skin, phase_frames, *side_camera, folder, side_stills)
+        picture = picture_or_none(skin, picture_frames, *side_camera, folder, side_stills)
+        for phase, frame in phase_frames.items():
+            if phase not in picture_frames:
+                picture[phase] = {'frame': frame, **summarize([]), 'why': ESTIMATED_POSITION,
+                                  'skipped': 'estimated-reference-position'}
+                log(f"picture: {phase} frame {frame}: skipped camera search; {ESTIMATED_POSITION}")
         bind = bind_reading(rig, skin, side_camera, side, side_normal, behind_normal, turn, folder)
     # the depth as a judge sees it (task 22): the seat against the top of the knee at the bottom, read off our
     # silhouette as the coach's is and off the 3D skin - for an exercise whose kit row says so
@@ -1299,7 +1315,8 @@ def inspect(run):
     # the folds, judged by what the user sees: the GIF's cameras on every frame, each still's on its own.
     # They are one check among many: whatever goes wrong measuring them, the stills and the rest stand.
     try:
-        gif = gif_cameras(gif_box(run, skin, first, last), yaw)
+        from preview_camera_policy import angles_from_report
+        gif = gif_cameras(gif_box(run, skin, first, last), yaw, angles_from_report(reference_report))
         measured_folds = skin_folds(rig, skin, first, last, lambda frame: gif + still_cameras.get(frame, []))
     except Exception as e:      # noqa: BLE001 - logged, and the check then says "not measured"
         log(f"folds not measured: {type(e).__name__}: {e}")

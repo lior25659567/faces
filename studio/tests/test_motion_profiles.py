@@ -121,3 +121,21 @@ def test_high_pulldown_arms_share_elevation_with_clavicles_without_rotating_the_
     assert (pose['LeftShoulder'] @ np.array([1., 0., 0.]))[2] > 0
     assert (pose['RightShoulder'] @ np.array([-1., 0., 0.]))[2] > 0
     assert np.array_equal(pose['Spine2'], key['Spine2'])
+
+
+def test_pullup_shares_clavicle_elevation_without_freezing_its_source_body_or_legs():
+    def around_y(angle):
+        c, s = np.cos(angle), np.sin(angle)
+        return np.array([[c, 0., s], [0., 1., 0.], [-s, 0., c]])
+    first = {name: np.eye(3) for name in ('Hips', 'Spine2', 'LeftShoulder', 'RightShoulder', 'LeftLeg')}
+    first.update(LeftArm=around_y(-np.pi / 2), RightArm=around_y(np.pi / 2))
+    second = deepcopy(first)
+    second.update(Hips=around_y(.1), Spine2=around_y(.1), LeftLeg=around_y(.2))
+    before = deepcopy([first, second])
+    poses = prepare_key_turns('Pull-Up', [first, second])
+    assert (poses[0]['LeftShoulder'] @ np.array([1., 0., 0.]))[2] > 0
+    for name in ('Hips', 'Spine2', 'LeftLeg', 'LeftArm', 'RightArm'):
+        assert np.array_equal(poses[1][name], second[name])
+    assert not np.array_equal(poses[1]['LeftLeg'], poses[0]['LeftLeg'])
+    assert all(np.array_equal(key[name], original[name]) for key, original in zip([first, second], before) for name in key)
+    assert not profile_for('Pull-Up')['overhead']

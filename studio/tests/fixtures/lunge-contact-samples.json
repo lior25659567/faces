@@ -1,0 +1,723 @@
+{
+  "exercise": "Walking Lunge (dumbbells optional)",
+  "motion": {
+    "mode": "sequence"
+  },
+  "sourceVideoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154",
+  "description": "Hip-relative pose-detector landmarks for contact observability tests, derived from the attributed public wger frames in reference/exercise-lunge. Depth is inferred; not a calibrated recording.",
+  "sequence": {
+    "samples": [
+      {
+        "image": "lunge-00.jpg",
+        "imageSha256": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+        "sequenceIndex": 0,
+        "timeSeconds": 2.001667,
+        "sourceFrameIndex": 120,
+        "observedSupport": "both",
+        "footContacts": {
+          "left": "flat",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.09697,
+            0.00907,
+            0.02768
+          ],
+          "right_hip": [
+            -0.09497,
+            -0.01172,
+            -0.02606
+          ],
+          "left_ankle": [
+            0.08867,
+            0.75885,
+            0.19057
+          ],
+          "right_ankle": [
+            -0.17309,
+            0.70259,
+            0.24278
+          ],
+          "left_heel": [
+            0.06703,
+            0.79467,
+            0.21051
+          ],
+          "right_heel": [
+            -0.17971,
+            0.73494,
+            0.22489
+          ],
+          "left_foot_index": [
+            0.08531,
+            0.83003,
+            0.13785
+          ],
+          "right_foot_index": [
+            -0.21678,
+            0.7451,
+            0.14122
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.997,
+          "right_ankle": 0.994
+        }
+      },
+      {
+        "image": "lunge-01.jpg",
+        "imageSha256": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+        "sequenceIndex": 1,
+        "timeSeconds": 2.501667,
+        "sourceFrameIndex": 150,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.09445,
+            0.01155,
+            0.03334
+          ],
+          "right_hip": [
+            -0.09182,
+            -0.01565,
+            -0.03204
+          ],
+          "left_ankle": [
+            0.0807,
+            0.72452,
+            0.24797
+          ],
+          "right_ankle": [
+            -0.15378,
+            0.63269,
+            -0.17274
+          ],
+          "left_heel": [
+            0.06173,
+            0.75215,
+            0.26629
+          ],
+          "right_heel": [
+            -0.16209,
+            0.66348,
+            -0.20954
+          ],
+          "left_foot_index": [
+            0.07901,
+            0.75968,
+            0.2157
+          ],
+          "right_foot_index": [
+            -0.19004,
+            0.64927,
+            -0.31776
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.878,
+          "right_ankle": 0.984
+        }
+      },
+      {
+        "image": "lunge-02.jpg",
+        "imageSha256": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+        "sequenceIndex": 2,
+        "timeSeconds": 3.001667,
+        "sourceFrameIndex": 180,
+        "observedSupport": "right",
+        "footContacts": {
+          "left": "uncertain",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.10499,
+            0.01182,
+            0.02724
+          ],
+          "right_hip": [
+            -0.10266,
+            -0.01457,
+            -0.02461
+          ],
+          "left_ankle": [
+            0.22176,
+            0.57296,
+            0.37855
+          ],
+          "right_ankle": [
+            -0.10105,
+            0.58319,
+            -0.04901
+          ],
+          "left_heel": [
+            0.21204,
+            0.58328,
+            0.42076
+          ],
+          "right_heel": [
+            -0.10333,
+            0.61838,
+            -0.06529
+          ],
+          "left_foot_index": [
+            0.20205,
+            0.643,
+            0.40843
+          ],
+          "right_foot_index": [
+            -0.13968,
+            0.67454,
+            -0.14769
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.638,
+          "right_ankle": 0.976
+        }
+      },
+      {
+        "image": "lunge-03.jpg",
+        "imageSha256": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+        "sequenceIndex": 3,
+        "timeSeconds": 3.501667,
+        "sourceFrameIndex": 210,
+        "observedSupport": "right",
+        "footContacts": {
+          "left": "uncertain",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.10401,
+            0.02644,
+            0.03783
+          ],
+          "right_hip": [
+            -0.10234,
+            -0.03022,
+            -0.03436
+          ],
+          "left_ankle": [
+            0.14108,
+            0.32459,
+            0.46413
+          ],
+          "right_ankle": [
+            -0.09188,
+            0.33167,
+            -0.20501
+          ],
+          "left_heel": [
+            0.11996,
+            0.31308,
+            0.52425
+          ],
+          "right_heel": [
+            -0.1081,
+            0.36826,
+            -0.20946
+          ],
+          "left_foot_index": [
+            0.07711,
+            0.35592,
+            0.51651
+          ],
+          "right_foot_index": [
+            -0.11837,
+            0.38142,
+            -0.31479
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.064,
+          "right_ankle": 0.999
+        }
+      },
+      {
+        "image": "lunge-04.jpg",
+        "imageSha256": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+        "sequenceIndex": 4,
+        "timeSeconds": 4.001667,
+        "sourceFrameIndex": 240,
+        "observedSupport": "right",
+        "footContacts": {
+          "left": "airborne",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.1059,
+            0.00024,
+            0.0283
+          ],
+          "right_hip": [
+            -0.10387,
+            -0.00342,
+            -0.02698
+          ],
+          "left_ankle": [
+            0.26803,
+            0.63538,
+            0.30737
+          ],
+          "right_ankle": [
+            -0.06749,
+            0.69827,
+            0.0454
+          ],
+          "left_heel": [
+            0.25839,
+            0.65621,
+            0.33876
+          ],
+          "right_heel": [
+            -0.07065,
+            0.73489,
+            0.02185
+          ],
+          "left_foot_index": [
+            0.24879,
+            0.71068,
+            0.29699
+          ],
+          "right_foot_index": [
+            -0.11217,
+            0.7669,
+            -0.07622
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.934,
+          "right_ankle": 0.994
+        }
+      },
+      {
+        "image": "lunge-05.jpg",
+        "imageSha256": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de",
+        "sequenceIndex": 5,
+        "timeSeconds": 4.503333,
+        "sourceFrameIndex": 270,
+        "observedSupport": "right",
+        "footContacts": {
+          "left": "uncertain",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.09407,
+            -0.0044,
+            0.02643
+          ],
+          "right_hip": [
+            -0.09206,
+            0.00123,
+            -0.02516
+          ],
+          "left_ankle": [
+            0.13988,
+            0.72579,
+            0.12519
+          ],
+          "right_ankle": [
+            -0.06701,
+            0.72604,
+            0.13649
+          ],
+          "left_heel": [
+            0.11872,
+            0.75964,
+            0.14199
+          ],
+          "right_heel": [
+            -0.07129,
+            0.75928,
+            0.10903
+          ],
+          "left_foot_index": [
+            0.14489,
+            0.79003,
+            0.07819
+          ],
+          "right_foot_index": [
+            -0.09847,
+            0.75933,
+            0.01763
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.95,
+          "right_ankle": 0.956
+        }
+      },
+      {
+        "image": "lunge-06.jpg",
+        "imageSha256": "8a97911d7a6e633db83033911723fb75afe92b5161d25db60412af728cbdd4e2",
+        "sequenceIndex": 6,
+        "timeSeconds": 5.003333,
+        "sourceFrameIndex": 300,
+        "observedSupport": "right",
+        "footContacts": {
+          "left": "uncertain",
+          "right": "flat"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.10063,
+            0.01,
+            0.01355
+          ],
+          "right_hip": [
+            -0.09804,
+            -0.01202,
+            -0.01317
+          ],
+          "left_ankle": [
+            0.1614,
+            0.7191,
+            -0.10144
+          ],
+          "right_ankle": [
+            -0.11609,
+            0.64833,
+            0.33382
+          ],
+          "left_heel": [
+            0.14295,
+            0.75356,
+            -0.09641
+          ],
+          "right_heel": [
+            -0.121,
+            0.67563,
+            0.31887
+          ],
+          "left_foot_index": [
+            0.13163,
+            0.76542,
+            -0.18935
+          ],
+          "right_foot_index": [
+            -0.16067,
+            0.69255,
+            0.26803
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.987,
+          "right_ankle": 0.681
+        }
+      },
+      {
+        "image": "lunge-07.jpg",
+        "imageSha256": "d36ad059c27b748f901d4b66822252130761e7318113ca0fd8bc813a9a5e39cf",
+        "sequenceIndex": 7,
+        "timeSeconds": 5.503333,
+        "sourceFrameIndex": 330,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "uncertain"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.11102,
+            0.00741,
+            0.03301
+          ],
+          "right_hip": [
+            -0.10672,
+            -0.00586,
+            -0.02746
+          ],
+          "left_ankle": [
+            0.05648,
+            0.54658,
+            -0.22165
+          ],
+          "right_ankle": [
+            -0.27611,
+            0.42221,
+            0.37592
+          ],
+          "left_heel": [
+            0.0318,
+            0.57499,
+            -0.20052
+          ],
+          "right_heel": [
+            -0.29777,
+            0.42335,
+            0.38556
+          ],
+          "left_foot_index": [
+            0.0319,
+            0.61602,
+            -0.29937
+          ],
+          "right_foot_index": [
+            -0.30929,
+            0.49936,
+            0.34585
+          ]
+        },
+        "visibility": {
+          "left_ankle": 1.0,
+          "right_ankle": 0.323
+        }
+      },
+      {
+        "image": "lunge-08.jpg",
+        "imageSha256": "6ba865664aaa505f0dc84f2165e7c8f17819a6e60ddde14500a1f44f839296ef",
+        "sequenceIndex": 8,
+        "timeSeconds": 6.003333,
+        "sourceFrameIndex": 360,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "uncertain"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.10565,
+            0.00747,
+            0.03733
+          ],
+          "right_hip": [
+            -0.10288,
+            -0.00591,
+            -0.03557
+          ],
+          "left_ankle": [
+            0.05163,
+            0.5067,
+            -0.20891
+          ],
+          "right_ankle": [
+            -0.30945,
+            0.35347,
+            0.35513
+          ],
+          "left_heel": [
+            0.02283,
+            0.53713,
+            -0.18472
+          ],
+          "right_heel": [
+            -0.33183,
+            0.34341,
+            0.36436
+          ],
+          "left_foot_index": [
+            0.03339,
+            0.6118,
+            -0.25678
+          ],
+          "right_foot_index": [
+            -0.3473,
+            0.40856,
+            0.34295
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.992,
+          "right_ankle": 0.306
+        }
+      },
+      {
+        "image": "lunge-09.jpg",
+        "imageSha256": "bf7286c1010f96f3d6ce12613a05acfbb643466366a99c68328f09d14260719f",
+        "sequenceIndex": 9,
+        "timeSeconds": 6.503333,
+        "sourceFrameIndex": 390,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.10195,
+            0.0214,
+            0.02791
+          ],
+          "right_hip": [
+            -0.09958,
+            -0.02261,
+            -0.02631
+          ],
+          "left_ankle": [
+            0.04182,
+            0.66216,
+            -0.11137
+          ],
+          "right_ankle": [
+            -0.25191,
+            0.50972,
+            0.43637
+          ],
+          "left_heel": [
+            0.02071,
+            0.69175,
+            -0.09369
+          ],
+          "right_heel": [
+            -0.2662,
+            0.52578,
+            0.43512
+          ],
+          "left_foot_index": [
+            0.03839,
+            0.70908,
+            -0.192
+          ],
+          "right_foot_index": [
+            -0.2624,
+            0.5773,
+            0.36906
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.973,
+          "right_ankle": 0.245
+        }
+      },
+      {
+        "image": "lunge-10.jpg",
+        "imageSha256": "3fee9ffb85b15f139e6ba050d2fc387a8a6e05cd0a19685210d56de65bb30e2b",
+        "sequenceIndex": 10,
+        "timeSeconds": 7.005,
+        "sourceFrameIndex": 420,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.09497,
+            0.01856,
+            0.02672
+          ],
+          "right_hip": [
+            -0.09138,
+            -0.02148,
+            -0.02607
+          ],
+          "left_ankle": [
+            0.01299,
+            0.79176,
+            0.13325
+          ],
+          "right_ankle": [
+            -0.14635,
+            0.67835,
+            -0.02781
+          ],
+          "left_heel": [
+            -0.00932,
+            0.82292,
+            0.14713
+          ],
+          "right_heel": [
+            -0.14894,
+            0.71312,
+            -0.05766
+          ],
+          "left_foot_index": [
+            0.00439,
+            0.83554,
+            0.07251
+          ],
+          "right_foot_index": [
+            -0.171,
+            0.72472,
+            -0.15316
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.954,
+          "right_ankle": 0.957
+        }
+      },
+      {
+        "image": "lunge-11.jpg",
+        "imageSha256": "aebbfacd7e385e94bc6b710388d39de90e15203dc172e65926db4b5123073dca",
+        "sequenceIndex": 11,
+        "timeSeconds": 7.505,
+        "sourceFrameIndex": 450,
+        "observedSupport": "left",
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "view": "front",
+        "world": {
+          "left_hip": [
+            0.09764,
+            0.00028,
+            0.03217
+          ],
+          "right_hip": [
+            -0.09563,
+            -0.00486,
+            -0.02965
+          ],
+          "left_ankle": [
+            0.08829,
+            0.65274,
+            0.39194
+          ],
+          "right_ankle": [
+            -0.15743,
+            0.63389,
+            -0.254
+          ],
+          "left_heel": [
+            0.06803,
+            0.67479,
+            0.42213
+          ],
+          "right_heel": [
+            -0.16841,
+            0.6621,
+            -0.29766
+          ],
+          "left_foot_index": [
+            0.07933,
+            0.69133,
+            0.40129
+          ],
+          "right_foot_index": [
+            -0.21807,
+            0.62889,
+            -0.41314
+          ]
+        },
+        "visibility": {
+          "left_ankle": 0.348,
+          "right_ankle": 0.985
+        }
+      }
+    ],
+    "completeClosedCycle": false,
+    "calibrated": false,
+    "sourceInferredDepth": true
+  }
+}

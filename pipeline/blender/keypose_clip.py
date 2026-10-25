@@ -439,7 +439,10 @@ def key_poses(keyposes, rest, notes=None, feet="planted", legs=DOWN):
         body, arms, found = key_points(entry, stance=stance)
         if keyposes.get("exercise") == "Barbell Bent-Over Row":
             from row_motion import symmetric_body
-            body = symmetric_body(body)
+            visible = entry.get('camera_side')
+            if found.get('swapped_sides') and visible in ('left', 'right'):
+                visible = 'left' if visible == 'right' else 'right'
+            body = symmetric_body(body, visible_leg=visible)
             found["square"] = True
         else:
             from motion_profiles import profile_for
@@ -449,6 +452,8 @@ def key_poses(keyposes, rest, notes=None, feet="planted", legs=DOWN):
                 # Every currently supported profile is a simultaneous bilateral
                 # movement. Depth noise must not lift one foot off the floor.
                 seen = entry.get('camera_side')
+                if found.get('swapped_sides') and seen in ('left', 'right'):
+                    seen = 'left' if seen == 'right' else 'right'
                 arms = _mirrored_arm(arms, seen) if entry.get('view') in ('side', 'three-quarter') and seen in ('left', 'right') else symmetric_body(arms)
                 for side in ('left', 'right'):
                     body, _ = _hinge_knee(body, side)
@@ -517,6 +522,28 @@ def motion(keys, fps=FPS, feet="planted"):
     return [pose_at(keys, marks, s) for s in timeline(fps)]
 
 
+def reference_timing(keyposes, phase_names, key_turns, fps=FPS, first=1):
+    """Record the generated instants, independently of how well the rig matches a target.
+
+    A comparison must not choose whichever frame happens to look closest to the
+    reference angle. Use the actual forward stroke's interpolation parameters.
+    Row arms use fixed source marks in their direct bar solve; other profiles use
+    the same angular path marks as ``motion``.
+    """
+    explicit = [p for p in phase_names if p in PHASES]
+    hold = len(key_turns) == 1 or (keyposes.get('motion') or {}).get('mode') == 'hold'
+    if hold:
+        frames = {p: first for p in PHASES}
+    else:
+        marks = ({'start': 0., 'middle': .5, 'end': 1.} if keyposes.get('exercise') == 'Barbell Bent-Over Row'
+                 else dict(zip(phase_names, path_marks(key_turns))))
+        marks.setdefault('middle', .5)
+        forward = timeline(fps)[:int(round(DESCENT_S * fps)) + 1]
+        frames = {p: first + min(range(len(forward)), key=lambda i: abs(forward[i] - marks[p])) for p in PHASES}
+    return {'source': 'keyposes', 'mode': 'hold' if hold else 'cycle',
+            'phase_frames': frames, 'explicit_phases': explicit}
+
+
 def leg_points(pose, rest, legs=DOWN):
     """The legs' joints ({UpLeg, Leg, Foot, ToeBase} each side, Clip.frames' names) for one frame's turns, the
     two ankles' midpoint kept where it is at rest: the hips' path BoneRetarget follows (with planted feet it then
@@ -556,7 +583,7 @@ def clip_from_keyposes(rest, keyposes, fps=FPS, feet="planted", label="keyposes.
     key_turns = prepare_key_turns(keyposes.get('exercise'), key_turns)
     if keyposes.get("exercise") == "Barbell Bent-Over Row":
         from row_motion import stabilize_body
-        key_turns = stabilize_body(key_turns)
+        key_turns = stabilize_body(key_turns, legs=legs)
         notes.append("row: starting body hinge held throughout; arms retain reference motion")
     poses = motion(key_turns, fps=fps, feet=feet)
 
@@ -567,6 +594,8 @@ def clip_from_keyposes(rest, keyposes, fps=FPS, feet="planted", label="keyposes.
               for pose in poses]
     notes.append(f"key positions {', '.join(p for p, _ in keys)}; {len(poses)} frames at {fps} fps "
                  f"({DESCENT_S:g} s down, {HOLD_S:g} s held, {ASCENT_S:g} s up), feet {feet}")
-    return retarget.Clip(path=str(label), fps=float(fps), first=1, rest=dict(rest.rest), frames=frames,
+    clip = retarget.Clip(path=str(label), fps=float(fps), first=1, rest=dict(rest.rest), frames=frames,
                          bones=dict(rest.bones), notes=notes, rest_turns={b: rest.rest_turns[b] for b in bones},
                          turns=turns)
+    clip.reference_motion = reference_timing(keyposes, [p for p, _ in keys], key_turns, fps=fps)
+    return clip

@@ -12,11 +12,11 @@ export const runFileUrl = (slug, runId, file) => `/files/${enc('runs', slug, run
 // Ours faces the other way from the coach: flip it so the two read the same way.
 export const shouldMirror = (oursFacing, refFacing) => Boolean(oursFacing && refFacing && oursFacing !== refFacing)
 
-// One pair per non-context reference image (in the reference order), context-only images apart.
+// Comparison anchors in reference order; chronological motion samples stay in the reference strip.
 export const buildComparison = ({ slug, runId, images = [], ours, measurements, targets }) => {
   const sorted = [...images].sort((a, b) => a.order - b.order)
   const stills = ours?.stills || []
-  const pairs = sorted.filter((img) => !img.contextOnly).map((img) => {
+  const pairs = sorted.filter((img) => !img.contextOnly && !img.motionOnly && !img.source?.motionOnly).map((img) => {
     const still = stills.find((s) => s.image === img.id) || null
     const info = targets?.images?.[img.id]
     const used = typeof info?.used === 'boolean' ? info.used : null

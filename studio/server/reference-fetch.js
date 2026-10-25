@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto'
+import { readFile } from 'node:fs/promises'
 import * as http from 'node:http'
 import { imageKind } from '../../pipeline/frames-api.js'
 import { REFERENCE_SOURCE, referenceImageFor } from './reference-catalog.js'
+import { bundledReferenceImageFor, matchesBundledReference } from './bundled-references.js'
 
 export const MAX_REFERENCE_BYTES = 25 * 1024 * 1024
 export class ReferenceFetchError extends Error {
@@ -36,16 +38,20 @@ export const configureReferenceProxy = ({ environment = process.env, httpModule 
 }
 
 export const fetchReference = async (image, {
-  fetchImpl = globalThis.fetch, timeoutMs = 20_000, maxBytes = MAX_REFERENCE_BYTES, signal,
+  fetchImpl = globalThis.fetch, readFileImpl = readFile, timeoutMs = 20_000, maxBytes = MAX_REFERENCE_BYTES, signal,
 } = {}) => {
-  const trusted = referenceImageFor(image?.url)
+  const bundle = bundledReferenceImageFor(image?.url)
+  const trusted = bundle?.image ?? referenceImageFor(image?.url)
   if (!trusted) throw failure('This reference URL is not in the reviewed pinned catalog.', 'UNTRUSTED_SOURCE')
+  if (bundle && !matchesBundledReference(image, trusted)) {
+    throw failure('The bundled reference metadata cannot be overridden.', 'UNTRUSTED_SOURCE')
+  }
   if (!Number.isInteger(maxBytes) || maxBytes < 1 || maxBytes > MAX_REFERENCE_BYTES ||
       !Number.isFinite(timeoutMs) || timeoutMs < 1 || timeoutMs > 120_000) {
     throw failure('Invalid reference download limits.', 'INVALID_LIMITS')
   }
   if (signal?.aborted) throw failure('Reference download cancelled.', 'ABORTED')
-  if (fetchImpl === globalThis.fetch) configureReferenceProxy()
+  if (!bundle && fetchImpl === globalThis.fetch) configureReferenceProxy()
   const controller = new AbortController()
   let rejectCancelled
   const cancelled = new Promise((_, reject) => { rejectCancelled = reject })
@@ -62,6 +68,24 @@ export const fetchReference = async (image, {
     }, timeoutMs)
   })
   const download = async () => {
+    if (bundle) {
+      let bytes
+      try {
+        bytes = Buffer.from(await readFileImpl(new URL(bundle.fileUrl), { signal: controller.signal }))
+      } catch {
+        if (signal?.aborted) throw failure('Reference download cancelled.', 'ABORTED')
+        throw failure('The bundled reference image is unavailable. Restore the reviewed repository assets.', 'BUNDLE_MISSING')
+      }
+      if (bytes.length > maxBytes) throw failure('The reference image is larger than the download limit.', 'TOO_LARGE')
+      const ext = imageKind(bytes)
+      if (!ext) throw failure('The bundled reference is not a supported image.', 'NOT_IMAGE')
+      const sha256 = createHash('sha256').update(bytes).digest('hex')
+      if (sha256 !== trusted.sha256) throw failure('The reference image does not match the pinned source checksum.', 'CHECKSUM_MISMATCH')
+      return {
+        bytes, ext, sha256, sourceUrl: trusted.url,
+        provenance: { ...bundle.provenance, ...trusted, sourceUrl: trusted.url, sha256, sequenceInfo: bundle.sequenceInfo },
+      }
+    }
     let response
     try {
       response = await fetchImpl(trusted.url, { signal: controller.signal, redirect: 'error', headers: { accept: 'image/jpeg,image/png,image/webp' } })

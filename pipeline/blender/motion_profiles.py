@@ -50,15 +50,15 @@ def prepare_key_turns(exercise, keys):
                 if name in pose:
                     pose[name] = pose['Spine2'].copy()
         return poses
-    if family not in ('standing', 'seated', 'supine', 'sled'):
+    if family not in ('standing', 'seated', 'supine', 'sled', 'hanging'):
         return keys
-    fixed = {'Hips', 'Spine', 'Spine1', 'Spine2'}
-    if family != 'sled':
+    fixed = set() if family == 'hanging' else {'Hips', 'Spine', 'Spine1', 'Spine2', 'LeftShoulder', 'RightShoulder'}
+    if family not in ('sled', 'hanging'):
         fixed.update(side + name for side in ('Left', 'Right')
                      for name in ('UpLeg', 'Leg', 'Foot', 'ToeBase'))
     poses = [{name: np.array(keys[0][name] if name in fixed else value, copy=True)
               for name, value in key.items()} for key in keys]
-    if exercise == 'Lat Pulldown (seated, to the front)':
+    if profile.get('overhead') or family == 'hanging':
         # Share high-arm elevation with the clavicle instead of crushing the
         # whole turn into the shoulder socket. Keep each arm's measured WORLD
         # direction: the local basis compensates in BoneRetarget.

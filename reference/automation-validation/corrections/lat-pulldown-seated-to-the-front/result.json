@@ -1,0 +1,134 @@
+{
+  "name": "Lat Pulldown",
+  "slug": "lat-pulldown-seated-to-the-front",
+  "run_dir": "/tmp/studio-final-validation/lat-pulldown-seated-to-the-front",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 3.32
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 450.78
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 85.76
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.14
+    }
+  ],
+  "summary": {
+    "pass": 13,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "Original straight-arm reach cannot clear the head."
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-b6fb01ba": "929bc29751c35d0a624840b24501e74dc59438d351e66cc017e7ee8682fb3346",
+    "img-09dcdaf6": "781952e629e8a4cff549df94ee6b1da7e32c7cd507382d47e8566718c07807dd"
+  },
+  "scene_sha256": "6d3b9ed8e5c23766efc512dd8a6a4834ee2806281205064c9899702662f597f4",
+  "output_sha256": {
+    "animation.gif": "980930695e992fb4fd7f918f2e8e3f1251e78e3ade55cb078c2a627d10545e98",
+    "start.png": "e0f3ba43e85b83cac548a6060b7f5c0b7d640a06b04ccc80e460e4d4239a2886",
+    "end.png": "a7516d8a9eb4bc69eee87af04ee7f050ce969f3d4e4092720f0f12f641988a21",
+    "checks.json": "59584f8b655121a812e0586c92dd703e1fe239668bd346ac53685ad6663769c3"
+  },
+  "physical_remeasurement": null
+}

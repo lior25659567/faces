@@ -1,0 +1,63 @@
+{
+  "name": "Dumbbell Bicep Curl",
+  "slug": "dumbbell-bicep-curl-standing-both-arms",
+  "run_dir": "/tmp/studio-complete-validation/dumbbell-bicep-curl-standing-both-arms",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.64
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 249.86
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 68.31
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.2
+    }
+  ],
+  "summary": {
+    "pass": 13,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-24b4606a": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
+    "img-f1698c9f": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a"
+  },
+  "scene_sha256": "0f66c131f9cf3e6e90bdc77d3442086d1e8acbdc53df950d72dffe70f63c6b1d",
+  "output_sha256": {
+    "animation.gif": "793c7e95d2b38508864b7f066aa17d53c33d1b0d088e21b4fb3666de29b63e07",
+    "start.png": "128b5f23d67f164c0d0ecd60ddf2fbf8ba6f9c3651ac0d7b53a7ea646f798f2d",
+    "end.png": "76f27f38173b6a8f8356866f4150dd92a87ba6d45b8e35d9c7d4a8904e262a7b",
+    "checks.json": "d9cc91b133d7da2f3c9309f56f594ea96af91fcf0d27fc0e2f2fd7a1e107d918"
+  },
+  "physical_remeasurement": null
+}

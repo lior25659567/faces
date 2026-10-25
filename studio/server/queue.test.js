@@ -106,6 +106,31 @@ test('runs one process at a time', async () => {
   expect(record.max).toBe(1)
 })
 
+test('queued builds keep different character proportions separate', async () => {
+  let release
+  const gate = new Promise((resolve) => { release = resolve })
+  let first = null
+  const record = make(async (call, child, dir) => {
+    first ??= dir
+    if (dir === first) await gate
+    await goodScript(call, child, dir)
+  })
+  const slug = 'barbell-back-squat'
+  const active = queue.enqueue(slug)
+  await until(() => queue.state().running?.runId === active.id)
+  const original = queue.enqueue(slug, { characterFit: 'original' })
+  const fitness = queue.enqueue(slug, { characterFit: 'fitness' })
+  const sameOriginal = queue.enqueue(slug, { characterFit: 'original' })
+  expect(sameOriginal.id).toBe(original.id)
+  expect(fitness.id).not.toBe(original.id)
+  expect(queue.state().queued.map((entry) => entry.runId)).toEqual([original.id, fitness.id])
+  release()
+  await until(finished(slug, fitness.id), 8000)
+  const modes = record.calls.filter((call) => kindOf(call) === 'animate').map((call) =>
+    call.args[call.args.indexOf('--character-fit') + 1])
+  expect(modes).toEqual(['auto', 'original', 'fitness'])
+})
+
 test('coalesces queued runs for the same exercise', async () => {
   let release
   const gate = new Promise((r) => (release = r))

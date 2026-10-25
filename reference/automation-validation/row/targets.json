@@ -1,0 +1,154 @@
+{
+  "exercise": "Barbell Bent-Over Row",
+  "phases": {
+    "start": {
+      "knee_included": {
+        "value": 137.921,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-a5238694",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 100.503,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-a5238694",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 55.944,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-a5238694",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 172.456,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-a5238694",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 54.719,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-a5238694",
+        "source": "inferred_3d"
+      }
+    },
+    "middle": {
+      "knee_included": {
+        "value": 141.7885,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": null
+      },
+      "hip_included": {
+        "value": 113.6245,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": null
+      },
+      "torso_lean": {
+        "value": 45.445,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": null
+      },
+      "elbow_included": {
+        "value": 140.155,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": null
+      },
+      "upperarm_vs_torso": {
+        "value": 50.078,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": null
+      },
+      "estimated": true
+    },
+    "end": {
+      "knee_included": {
+        "value": 145.656,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-d5b918c9",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 126.746,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-d5b918c9",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 34.946,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-d5b918c9",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 107.854,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-d5b918c9",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 45.437,
+        "method": "3d",
+        "cross": null,
+        "uncertain": false,
+        "image": "img-d5b918c9",
+        "source": "inferred_3d"
+      }
+    }
+  },
+  "widths": {},
+  "tolerance": {
+    "angles_deg": 5,
+    "ratios": 0.12,
+    "hip_below_knee": 0.1,
+    "seat_below_knee": 0.1,
+    "back_rounding": 0.04,
+    "neck_vs_torso": 10,
+    "spine_curl": 10
+  },
+  "images": {
+    "img-a5238694": {
+      "used": true,
+      "why": null,
+      "view": "three-quarter"
+    },
+    "img-d5b918c9": {
+      "used": true,
+      "why": null,
+      "view": "three-quarter"
+    }
+  },
+  "camera": {
+    "side": "right",
+    "facing": null
+  },
+  "equipment": "barbell"
+}

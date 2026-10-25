@@ -2,7 +2,7 @@
 
 Every status is computed from the run's own measurements. Never show a pass that is not one.
 """
-from build_targets import (ANGLE_METRICS, DEPTH_METRICS, FRONT_VIEWS, PHASES, POSTURE_METRICS, RULES, SOLVER_EXERCISES,
+from build_targets import (ANGLE_METRICS, DEPTH_METRICS, FRONT_VIEWS, PHASES, POSTURE_METRICS, REFERENCE_EXERCISES, RULES, SOLVER_EXERCISES,
                            TOLERANCE, WIDTH_METRICS)
 from feasibility import closest_arm_pose
 from kit import has_depth, kit_of, unheld, unheld_note
@@ -303,8 +303,12 @@ def _phase_rows(targets, ours, exercise):
                 note = "Used to find this moment" + ("" if seen is None else f"; the picture reads {seen:.0f}°")
                 rows.append(_info(phase, metric, t["value"], rig, SHOWN_ONLY, note, frame))
             elif pt.get("estimated"):
-                rows.append(_info(phase, metric, t["value"], mine, NOT_JUDGED, "Estimated between the other two positions",
-                                  frame))
+                note = "Estimated between the other two positions"
+                skipped = ((ours.get('picture') or {}).get(phase) or {}).get('skipped')
+                if skipped == 'estimated-reference-position' and metric in PICTURE_METRICS:
+                    mine = rig
+                    note += ". Shown on the rig; there is no reference picture at this position."
+                rows.append(_info(phase, metric, t["value"], mine, NOT_JUDGED, note, frame))
             elif mine is None:      # a gap on our side, whether or not the coach's readings agree (and why, if known)
                 known = said if said == PREDATES or (said or "").startswith(NOT_ON_CHARACTER) else NOT_ON_CHARACTER
                 rows.append(_info(phase, metric, t["value"], None, NOT_MEASURED, known, frame))
@@ -326,11 +330,41 @@ def _phase_rows(targets, ours, exercise):
     return rows
 
 
+def _phase_elbow_width_rows(targets, ours, exercise):
+    """Compare each photographed elbow spread with that phase's own width."""
+    rows, metric = [], 'elbow_width_ratio'
+    phase_widths = targets.get('phase_widths')
+    phase_widths = phase_widths if isinstance(phase_widths, dict) else {}
+    for phase in PHASES:
+        if (targets['phases'].get(phase) or {}).get('estimated'):
+            rows.append(_info(phase, metric, None, None, NOT_JUDGED, 'Not judged: this position is estimated'))
+            continue
+        target = (phase_widths.get(phase) or {}).get(metric)
+        if not isinstance(target, dict) or _num(target.get('value')) is None:
+            rows.append(_info(phase, metric, None, None, NOT_JUDGED,
+                              'Not judged: no elbow-width measurement in this position\'s front or behind picture'))
+            continue
+        frame = (ours.get('phase_frames') or {}).get(phase)
+        mine = None if frame is None else _ours_value(ours, frame, target['method'], metric)
+        if mine is None:
+            rows.append(_missing(phase, metric, target['value'], frame=frame))
+        elif target.get('uncertain'):
+            rows.append(_row(phase, metric, target['value'], mine, 'uncertain', frame, _disagree_note(metric, target)))
+        else:
+            status, note, _ = _judge(exercise, ours.get('arm'), None, metric, target['value'], mine,
+                                     _tol(metric, targets['tolerance']))
+            rows.append(_row(phase, metric, target['value'], mine, status, frame, note))
+    return rows
+
+
 def _width_rows(targets, ours, exercise):
     rows, tol, arm = [], targets["tolerance"], ours.get("arm")
     front = any(i.get("used") and i.get("view") in FRONT_VIEWS for i in (targets.get("images") or {}).values()
                 if isinstance(i, dict))
     for metric in WIDTH_METRICS:
+        if metric == 'elbow_width_ratio' and exercise in REFERENCE_EXERCISES and 'phase_widths' in targets:
+            rows.extend(_phase_elbow_width_rows(targets, ours, exercise))
+            continue
         t = (targets.get("widths") or {}).get(metric)
         if not isinstance(t, dict) or _num(t.get("value")) is None:
             why = "not measured in the front or behind picture" if front or t is not None else "no front or behind picture"
@@ -793,8 +827,15 @@ def build_checks(targets, ours, report, exercise):
             + _posture_rows(targets, ours, exercise)
             + _body_rows(report, exercise, targets.get("equipment")) + _fold_rows(ours) + _motion_rows(ours)
             + rows_for(report))
-    if kit_of(exercise).get('reference_motion') and not (report.get('physical') or {}).get('contacts'):
-        rows.append(_missing('body', 'equipment_contact', 3., 'mm'))
+    capabilities = kit_of(exercise)
+    if capabilities.get('reference_motion'):
+        physical = report.get('physical') or {}
+        if capabilities.get('holds') and not physical.get('contacts'):
+            rows.append(_missing('body', 'equipment_contact', 3., 'mm'))
+        if (capabilities.get('support_built') or exercise == 'Front Plank (forearm plank)') and not physical.get('supports'):
+            rows.append(_missing('body', 'body_support_contact', 5., 'mm'))
+        if not physical.get('profile'):
+            rows.append(_missing('body', 'physical_profile', None, ''))
     summary = {s: sum(1 for r in rows if r["status"] == s) for s in STATUSES}
     summary["unmeasured"] = unmeasured(rows)
     return {"summary": summary, "rows": rows}

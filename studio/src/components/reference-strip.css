@@ -80,6 +80,15 @@
   white-space: nowrap;
 }
 
+.ref-motion-sample {
+  align-self: flex-start;
+  padding: 2px 6px;
+  border-radius: var(--radius-s);
+  background: var(--running-bg);
+  color: var(--running);
+  font-size: var(--t-xs);
+}
+
 .ref-field {
   display: grid;
   gap: 2px;

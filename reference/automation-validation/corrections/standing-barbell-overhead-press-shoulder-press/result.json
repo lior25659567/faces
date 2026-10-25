@@ -1,0 +1,139 @@
+{
+  "name": "Standing Barbell Overhead Press",
+  "slug": "standing-barbell-overhead-press-shoulder-press",
+  "run_dir": "/tmp/studio-final-validation/standing-barbell-overhead-press-shoulder-press",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 3.93
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 555.44
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 200.7
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.33
+    }
+  ],
+  "summary": {
+    "pass": 15,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  },
+  "frames": 32,
+  "fps": 12.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "character_fit": {
+    "kind": "fitness arm reach",
+    "label": "Fitness proportions",
+    "applied": true,
+    "upper_scale": 1.8,
+    "fore_scale": 1.8,
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "hand_scale": 1.0,
+    "per_frame_stretch": false,
+    "sides": {
+      "left": {
+        "upper_before_m": 0.10443226993083954,
+        "fore_before_m": 0.07788365334272385,
+        "upper_after_m": 0.18797808587551118,
+        "fore_after_m": 0.14019057601690293,
+        "wrist_translation_m": [
+          -0.1409132480621338,
+          0.03467267006635666,
+          0.01463861484080553
+        ]
+      },
+      "right": {
+        "upper_before_m": 0.10468268394470215,
+        "fore_before_m": 0.07495778799057007,
+        "upper_after_m": 0.18842883110046388,
+        "fore_after_m": 0.13492401838302612,
+        "wrist_translation_m": [
+          0.13851326704025269,
+          0.035191550850868225,
+          0.015128850936889648
+        ]
+      }
+    },
+    "requested_mode": "auto",
+    "original_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.10443226993083954,
+          "fore_m": 0.07788365334272385,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 0.9326923310071329,
+          "head_shortfall_mm": 66.81932813822233
+        },
+        "right": {
+          "upper_m": 0.10468268394470215,
+          "fore_m": 0.07495778799057007,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 0.931960947165028,
+          "head_shortfall_mm": 67.55071198032725
+        }
+      }
+    },
+    "actual_reach": {
+      "head_top_m": 0.9995116591453552,
+      "sides": {
+        "left": {
+          "upper_m": 0.1879781037569046,
+          "fore_m": 0.14019055664539337,
+          "shoulder_z_m": 0.6916018724441528,
+          "grip_offset_m": 0.05877453528941669,
+          "vertical_handle_bound_m": 1.0785450681358675,
+          "head_shortfall_mm": 0.0
+        },
+        "right": {
+          "upper_m": 0.1884288489818573,
+          "fore_m": 0.13492397964000702,
+          "shoulder_z_m": 0.6912083625793457,
+          "grip_offset_m": 0.06111211265041008,
+          "vertical_handle_bound_m": 1.0756733038516202,
+          "head_shortfall_mm": 0.0
+        }
+      }
+    },
+    "reason": "Original straight-arm reach cannot clear the head."
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-4b5dc525": "fb258efda95067b243b1c5033b1ff7b72a0f8cef8607477b71b969d3f72a8471",
+    "img-06bce39c": "b9419884fa57bd7de1dff2d0f811aa61d4cd5547b3c6ebafaca01c7017d8be1a"
+  },
+  "scene_sha256": "10c42346ffea683bdac4c446cee57f775e7c22dbd2940bc96a92f4abf369d06f",
+  "output_sha256": {
+    "animation.gif": "05d146ff142da22424ab23d71729989ef8b93b56c259f8899967c916a4f4c5fc",
+    "start.png": "6a35f4bd235799c85ef5c4caba55d07786a6685563085df087f60252f7820af9",
+    "end.png": "d0e04d4d0fe22012938dd3bf6a6b3791b1562d0091a80f73197c356ef6a844f4",
+    "checks.json": "3174c49a03aaa3db4a4b17176f227b9ec9267ab5b85b7a0844d2ff52bc7385d8"
+  },
+  "physical_remeasurement": {
+    "method": "Independent all-frame saved-scene clearance and range replay",
+    "first_frame": 1,
+    "last_frame": 32,
+    "geometry_changed": false
+  }
+}

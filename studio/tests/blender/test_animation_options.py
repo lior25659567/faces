@@ -14,4 +14,10 @@ for flags, expected in (([],(560,560)),(['--fast'],(360,360)),(['--fast','--widt
     sys.argv=['blender','--','--mpfb','--exercise','Barbell Bent-Over Row',*flags]
     animate.main()
     assert seen==[expected], (flags,seen,expected)
+for mode in ('auto', 'original', 'fitness'):
+    seen=[]
+    animate.run_mpfb=lambda args: seen.append(args.character_fit)
+    sys.argv=['blender','--','--mpfb','--exercise','Barbell Bent-Over Row','--character-fit',mode]
+    animate.main()
+    assert seen==[mode], (mode,seen)
 print('test_animation_options: PASS')

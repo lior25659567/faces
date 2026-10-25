@@ -1,0 +1,26 @@
+{
+  "python": {
+    "passed": 597,
+    "skipped": 18,
+    "command": "studio/.venv/bin/python -m pytest studio/tests -q --ignore=studio/tests/test_read_pose.py",
+    "notes": "Blender-only scene tests run separately; the legacy private-photo reader module is excluded. Runtime LD_LIBRARY_PATH and cache directories were configured."
+  },
+  "studio_js": {
+    "passed": 315,
+    "command": "npm --prefix studio test -- --exclude server/api.test.js --exclude server/images.test.js --exclude server/queue.test.js",
+    "notes": "Legacy private-photo/macOS suites excluded."
+  },
+  "api_queue_fit_tests": {
+    "passed": 2,
+    "command": "npm --prefix studio test -- server/api.test.js server/queue.test.js -t proportion"
+  },
+  "main_app": {
+    "passed": 59,
+    "command": "npm test -- --run"
+  },
+  "builds": [
+    "npm run build",
+    "npm --prefix studio run build"
+  ],
+  "actual_pipeline": "11 complete source-photo read/build/render/stills/check runs, plus independent saved-scene and negative-control replays. Row has separate 81-frame evidence."
+}

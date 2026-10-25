@@ -16,6 +16,15 @@ test('lists the six steps and four processes', () => {
   expect(PROCESSES.map((p) => p.id)).toEqual(['read', 'animate', 'stills', 'check'])
 })
 
+test('the Blender command receives the requested character proportions', () => {
+  for (const characterFit of ['auto', 'original', 'fitness']) {
+    const command = commandFor('animate', { ...run, characterFit }, dir, run)
+    expect(command.args[command.args.indexOf('--character-fit') + 1]).toBe(characterFit)
+  }
+  const args = commandFor('animate', run, dir, run).args
+  expect(args[args.indexOf('--character-fit') + 1]).toBe('auto')
+})
+
 test('validated reference profiles use the edited photos even if a generic clip is available', async () => {
   await writeFile(path.join(dir, 'keyposes.json'), '{}')
   const exercise = { name: 'Dumbbell Lateral Raise', clip: 'lateral-raise.fbx' }
@@ -88,7 +97,7 @@ test('a key-position run reads its own frame count whatever the order of the lin
 
 test('no clip and the picture path refuses the exercise: its plain refusal, nothing run', async () => {
   const refusal = 'No motion for this exercise: it needs a bench the picture path doesn\'t build yet.'
-  const ex = { slug: 'flat-barbell-bench-press', name: 'Flat Barbell Bench Press', clip: null, expectedClip: 'bench-press.fbx', pictureRefusal: refusal }
+  const ex = { slug: 'incline-press', name: 'Incline Press', clip: null, expectedClip: 'bench-press.fbx', pictureRefusal: refusal }
   await writeFile(path.join(dir, 'keyposes.json'), '{"phases": []}')
   const r = commandFor('animate', ex, dir, ex)
   expect(r.error).toBe(refusal)
@@ -112,6 +121,12 @@ test('stills require ours.json and a still for every non-context key image', asy
   expect(requiredOutputs('stills', dir, snapshot)).toEqual(['ours.json', 'stills/img-1.png', 'stills/img-3.png'])
   await writeFile(path.join(dir, 'ours.json'), JSON.stringify({ stills: [{ file: 'stills/img-1.png' }, { file: 'stills/extra.png' }] }))
   expect(requiredOutputs('stills', dir, snapshot)).toEqual(['ours.json', 'stills/img-1.png', 'stills/img-3.png', 'stills/extra.png'])
+})
+
+test('motion samples are read inputs, not required comparison stills', () => {
+  const snapshot = { images: [{ id: 'start' }, { id: 'sample', source: { motionOnly: true } },
+    { id: 'sample-top-level', motionOnly: true }, { id: 'end' }] }
+  expect(requiredOutputs('stills', dir, snapshot)).toEqual(['ours.json', 'stills/start.png', 'stills/end.png'])
 })
 
 test('lists required outputs, including every still the script names', async () => {
