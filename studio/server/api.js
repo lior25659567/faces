@@ -3,6 +3,7 @@ import path from 'node:path'
 import { MAX_BYTES, TOO_BIG_MESSAGE, UploadError, prepareUpload, refuseEarly } from './images.js'
 import { BadInputError, NotFoundError, characterFitOf } from './store.js'
 import { recentWork } from './work.js'
+import { validatedPreviews } from './validated-previews.js'
 
 const TYPES = {
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
@@ -122,8 +123,25 @@ export const studioApi = ({ store, queue, work, watcher, automation, onListening
 
   const route = async (req, res, pathname) => {
     const method = req.method
-    const seg = pathname.split('/').filter(Boolean).map(decodeURIComponent) // ['api', ...]
+    let seg
+    try { seg = pathname.split('/').filter(Boolean).map(decodeURIComponent) } // ['api', ...]
+    catch { throw new HttpError(404, 'Not found.') }
     if (seg[0] === 'files') return serveFile(req, res, pathname)
+
+    if (seg[1] === 'previews') {
+      if (seg.length === 2 && method === 'GET') return sendJson(res, 200, validatedPreviews.list(store.listExercises()))
+      if (seg.length === 4 && (method === 'GET' || method === 'HEAD')) {
+        const asset = validatedPreviews.asset(seg[2], seg[3])
+        if (!asset) throw new HttpError(404, 'That bundled preview asset does not exist.')
+        res.statusCode = 200
+        res.setHeader('content-type', asset.type)
+        res.setHeader('content-length', asset.bytes.length)
+        res.setHeader('cache-control', 'no-cache')
+        res.setHeader('etag', `"${asset.sha256}"`)
+        return res.end(method === 'HEAD' ? undefined : asset.bytes)
+      }
+      throw new HttpError(404, 'That bundled preview does not exist.')
+    }
 
     if (seg[1] === 'automation' && automation) {
       if (seg.length === 2 && method === 'GET') return sendJson(res, 200, automation.summary())

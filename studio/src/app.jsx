@@ -4,6 +4,7 @@ import ExerciseList from './components/exercise-list.jsx'
 import ExercisePage from './components/exercise-page.jsx'
 import WorkPanel from './components/work-panel.jsx'
 import AutomationPanel from './components/automation-panel.jsx'
+import PreviewLibrary from './components/preview-library.jsx'
 import { automationProgress } from './lib/automation.js'
 import { api } from './lib/api.js'
 import { formatLeft } from './lib/format.js'
@@ -14,6 +15,7 @@ import { inProgressText, livePoll } from './lib/work.js'
 // A run link (#/<slug>/run/<id>) asks the page to show that run once.
 let focusCount = 0
 const focusFrom = (route) => (route?.runId ? { slug: route.slug, runId: route.runId, n: ++focusCount } : null)
+const scrollToTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
 
 // What changes when a run moves on: which run, which step, what is waiting.
 const stateKey = (state) =>
@@ -23,6 +25,9 @@ const App = () => {
   const [state, setState] = useState(null)
   const [exercises, setExercises] = useState(null)
   const [runsBySlug, setRunsBySlug] = useState({})
+  const [previews, setPreviews] = useState(null)
+  const [previewError, setPreviewError] = useState(null)
+  const [showPreviews, setShowPreviews] = useState(() => !window.location.hash || window.location.hash === '#previews')
   const [selected, setSelected] = useState(() => routeFromHash(window.location.hash)?.slug ?? null)
   const [focusRun, setFocusRun] = useState(() => focusFrom(routeFromHash(window.location.hash)))
   const [offline, setOffline] = useState(null)
@@ -60,11 +65,21 @@ const App = () => {
     }
   }, [])
 
+  const loadPreviews = useCallback(async () => {
+    try {
+      setPreviews(await api.previews())
+      setPreviewError(null)
+    } catch (error) {
+      setPreviewError(error.message)
+    }
+  }, [])
+
   // Every second while a run, a fix, or a fix's re-run is moving; else every 5 s.
   const every = livePoll(state, work)
   usePoll(loadState, every)
   usePoll(loadWork, every)
   usePoll(loadExercises, 5000)
+  usePoll(loadPreviews, 5000)
 
   // A run started, moved to the next step or finished: refresh the list's statuses at once.
   const key = stateKey(state)
@@ -109,14 +124,24 @@ const App = () => {
   useEffect(() => {
     // Only #/<slug> (or #/<slug>/run/<id>) changes the exercise; other hashes leave the selection alone.
     const onHash = () => {
+      if (!window.location.hash || window.location.hash === '#previews') {
+        setShowPreviews(true)
+        setListOpen(false)
+        setWorkOpen(false)
+        setAutomationOpen(false)
+        scrollToTop()
+        return
+      }
       const route = routeFromHash(window.location.hash)
       if (!route) return
+      setShowPreviews(false)
       setSelected(route.slug)
       setListOpen(false)
       setWorkOpen(false)
       setAutomationOpen(false)
       // A run link focuses that run once; any other route clears it, so coming back doesn't jump again.
       setFocusRun(focusFrom(route))
+      if (!route.runId) scrollToTop()
       // Back to the plain exercise route, so the same link works again.
       if (route.runId) window.history.replaceState(null, '', hashFor(route.slug))
     }
@@ -130,7 +155,18 @@ const App = () => {
   const select = (slug, runId = null) => {
     window.location.hash = hashFor(slug, runId)
     setSelected(slug)
+    setShowPreviews(false)
     setListOpen(false)
+    if (!runId) scrollToTop()
+  }
+
+  const openPreviews = () => {
+    window.location.hash = '#previews'
+    setShowPreviews(true)
+    setListOpen(false)
+    setWorkOpen(false)
+    setAutomationOpen(false)
+    scrollToTop()
   }
 
   const onDetail = useCallback((slug, detail) => setRunsBySlug((prev) => ({ ...prev, [slug]: detail.runs })), [])
@@ -195,6 +231,16 @@ const App = () => {
         )}
       </header>
 
+      <nav className="app-view-bar" aria-label="Studio views">
+        <button type="button" className="btn app-view-button" aria-current={showPreviews ? 'page' : undefined} onClick={openPreviews}>
+          Built previews {previews && <span className="app-view-count num">{previews.filter((example) => example.available).length}</span>}
+        </button>
+        <button type="button" className="btn app-view-button" aria-current={!showPreviews ? 'page' : undefined}
+          disabled={!current} onClick={() => current && select(current.slug)}>
+          Exercise builder
+        </button>
+      </nav>
+
       <WorkPanel
         id="work-panel"
         open={workOpen}
@@ -217,13 +263,15 @@ const App = () => {
             exercises={exercises}
             state={state}
             runsBySlug={runsBySlug}
-            selected={current?.slug}
+            selected={showPreviews ? null : current?.slug}
             onSelect={select}
             onAdded={(e) => { loadExercises(); select(e.slug) }}
           />
         </aside>
         <main className="app-main">
-          {current ? (
+          {showPreviews ? (
+            <PreviewLibrary previews={previews} error={previewError} onRetry={loadPreviews} onOpenExercise={select} />
+          ) : current ? (
             <ExercisePage
               key={current.slug}
               exercise={current}

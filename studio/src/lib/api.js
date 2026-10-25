@@ -43,6 +43,7 @@ export const api = {
   startAutomation: (slugs, options = {}) => request('/api/automation', json('POST', { slugs, ...options })),
   cancelAutomation: (id) => request(`/api/automation/${seg(id)}/cancel`, { method: 'POST' }),
   exercises: () => request('/api/exercises'),
+  previews: () => request('/api/previews'),
   exercise: (slug) => request(`/api/exercises/${seg(slug)}`),
   addExercise: ({ name, equipment }) => request('/api/exercises', json('POST', { name, equipment })),
   uploadReference: (slug, file) =>

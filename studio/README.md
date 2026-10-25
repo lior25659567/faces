@@ -6,6 +6,17 @@ The animation pipeline needs Blender 5.2 with MPFB and the mascot assets. On mac
 `/Applications/Blender.app`; on Linux it uses `blender` or the `STUDIO_BLENDER` executable override.
 The cloud environment has a tested Blender wrapper under `/workspace/.tools/bin/blender-faces`.
 
+## Browse built previews
+
+Studio opens **Built previews** by default, with all 14 mapped exercises and 12 playable examples
+from the checked-in validation files. Squat and walking lunge show why a verified preview is still
+unavailable. Each example retains its actual failed checks and uncertainty labels.
+
+Click **Play preview** to animate a card; only one plays at a time. **Full size** opens the GIF and
+**View checks** opens its measurements. **Open exercise** switches to the builder for your references
+and runs. Return with **Built previews**. The bundled examples do not replace your references or run
+history, and browsing them does not require Blender or reference downloads.
+
 ## Prepare references before building
 
 1. Upload pictures, then set their Position and View. Edits are saved without launching a render.

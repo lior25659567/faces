@@ -356,6 +356,18 @@ select.field {
   grid-template-columns: 300px minmax(0, 1fr);
 }
 
+.app-view-bar {
+  display: flex;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.app-view-button[aria-current='page'] { border-color: var(--ink); background: var(--sunken); }
+.app-view-count { min-width: 20px; padding: 1px 5px; border-radius: 4px; background: var(--line); font-size: 12px; }
+@media (max-width: 520px) { .app-view-bar { padding: 10px 16px; } }
+
 .app-side {
   border-right: 1px solid var(--line);
   background: var(--canvas);
