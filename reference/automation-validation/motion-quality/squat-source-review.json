@@ -1,0 +1,120 @@
+{
+  "status": "incomplete-references",
+  "checked_sources": [
+    "Existing Commons squat demo and SquatsWikipedia videos",
+    "Fresh Commons side/back-squat searches",
+    "Eight new US Army full-resolution squat photos",
+    "CC-BY4 physiology paper figure2",
+    "All932 wger exerciseinfo records: exact BarbellFullSquat sources are anatomical illustrations, not photographs"
+  ],
+  "candidates": [
+    {
+      "file": "/tmp/squat-candidate-images/0-original.jpg",
+      "title": "File:207th MIB(T) female mentorship group (8060360).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/207th_MIB%28T%29_female_mentorship_group_%288060360%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:207th_MIB(T)_female_mentorship_group_(8060360).jpg",
+      "sha256": "42701e669ee73ba6855d78e7c977ef8f389cb839369b8247f770bf09eea4a2ee",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by 1st Lt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1749335\">Katherine Sibilla</a>",
+      "review": "Cropped or obstructed; unsuitable whole-body side phase."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/1-original.jpg",
+      "title": "File:21st TSC Leaders learn about fitness through H2F (9120671).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/21st_TSC_Leaders_learn_about_fitness_through_H2F_%289120671%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:21st_TSC_Leaders_learn_about_fitness_through_H2F_(9120671).jpg",
+      "sha256": "fd80b158b777e5cb37296bcdf27c480d128df0ffe838c37404596a631bc1a898",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army 21TSC by Spc. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1771076\">Elijah Campbell</a>",
+      "review": "Cropped or obstructed; unsuitable whole-body side phase."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/2-original.jpg",
+      "title": "File:250107-A-TY085-3326 (9717942).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/250107-A-TY085-3326_%289717942%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250107-A-TY085-3326_(9717942).jpg",
+      "sha256": "f56c7911669f17430e47ecdd61b87ec2500de05946fbb0a4db40d778db3f8294",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Cropped or obstructed; unsuitable whole-body side phase."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/3-original.jpg",
+      "title": "File:250107-A-TY085-4110 (9717953).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/250107-A-TY085-4110_%289717953%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250107-A-TY085-4110_(9717953).jpg",
+      "sha256": "8dd9807667d2a7445f08a1b9adec546a3dceb652d0acf6099cae4a953386ce7e",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Cropped or obstructed; unsuitable whole-body side phase."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/4-original.jpg",
+      "title": "File:250107-A-TY085-5357 (9717956).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/250107-A-TY085-5357_%289717956%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250107-A-TY085-5357_(9717956).jpg",
+      "sha256": "831e5e4955751b1b41439b8c1dd74d171c6a962bfe1b2b3a6f00bfe926700840",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Rear/grip candidate only; no matching true whole-body side start/bottom found."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/5-original.jpg",
+      "title": "File:250107-A-TY085-6593 (9717950).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/250107-A-TY085-6593_%289717950%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250107-A-TY085-6593_(9717950).jpg",
+      "sha256": "a7ebb4bba89f681f787fe3eb1ac1a5147dca89ac13943ff49e2805bdb06251a1",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Rear/grip candidate only; no matching true whole-body side start/bottom found."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/6-original.jpg",
+      "title": "File:250108-A-TY085-2511 (9718198).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/250108-A-TY085-2511_%289718198%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250108-A-TY085-2511_(9718198).jpg",
+      "sha256": "53479ee0fe1a9300d8034754c83007952a09ea33ab6c0d9dabc48934cdc0e926",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Cropped or obstructed; unsuitable whole-body side phase."
+    },
+    {
+      "file": "/tmp/squat-candidate-images/7-original.jpg",
+      "title": "File:250108-A-TY085-9468 (9718194).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/250108-A-TY085-9468_%289718194%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:250108-A-TY085-9468_(9718194).jpg",
+      "sha256": "d61acfaf2dac5bc1c4bbf4fd5b2f1cf751748b167c5e0842a5c95aa435922363",
+      "license": "Public domain",
+      "license_url": null,
+      "artist": "U.S. Army photo by Staff Sgt. <a rel=\"nofollow\" class=\"external text\" href=\"https://www.dvidshub.net/portfolio/1274825\">Samantha Lewis</a>",
+      "review": "Rear/grip candidate only; no matching true whole-body side start/bottom found."
+    }
+  ],
+  "missing": [
+    "Usable real side-view standing start with all body joints visible",
+    "Usable real side-view squat bottom from the same demonstration"
+  ],
+  "video_candidate": {
+    "metadata_file": "/tmp/squat-leg-workout-metadata.json",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/How_to_build_massive_Legs_ft_Mike_Israetel_from_Renaissance_Periodization_2_%28Full_leg_workout%29.webm",
+    "license": "CC BY3.0",
+    "author": "Szatstrength",
+    "download_status": "HTTP200 after respecting the rate-limit cooldown; downloaded and diagnostically sampled",
+    "size_bytes": 36922883,
+    "sha256": "8e65d343541f2aadf7ba3dec061567d1be88fc0763b911c86703e03c85fc941a",
+    "duration_seconds": 801.208,
+    "dimensions": [
+      640,
+      360
+    ],
+    "review": "20-second diagnostic sample sheet: squat segments show chiefly frontal/three-quarter rack views, with plate/rack occlusion in side-looking shots. No complete verified whole-body side Start+Bottom pair was established from these samples. Not imported as correction references."
+  },
+  "repo_changed": false
+}

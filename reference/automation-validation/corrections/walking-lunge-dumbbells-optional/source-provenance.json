@@ -1,0 +1,2476 @@
+{
+  "photos": [
+    {
+      "image": "lunge-dense-00",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-00.jpg",
+      "bundled_file": "source-references/lunge-dense-00.jpg",
+      "sha256": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 0,
+        "sourceFrameIndex": 120,
+        "sourceTimestampSeconds": 2.001667,
+        "footContacts": {
+          "left": "flat",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "heel",
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": false,
+        "role": "standing_start",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-01",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-01.jpg",
+      "bundled_file": "source-references/lunge-dense-01.jpg",
+      "sha256": "45e36b110657fd536d83e0c40b8247a85b592dea0c1ce8dbc35d86d1750b57b9",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "45e36b110657fd536d83e0c40b8247a85b592dea0c1ce8dbc35d86d1750b57b9",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 1,
+        "sourceFrameIndex": 126,
+        "sourceTimestampSeconds": 2.101667,
+        "footContacts": {
+          "left": "flat",
+          "right": "uncertain"
+        },
+        "observedContactPoints": {
+          "left": [
+            "heel",
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-02",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-02.jpg",
+      "bundled_file": "source-references/lunge-dense-02.jpg",
+      "sha256": "437e7c3b2e5e538e452b47b1767f13c5d6ebb8e44012c96e48aaa248712469bd",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "437e7c3b2e5e538e452b47b1767f13c5d6ebb8e44012c96e48aaa248712469bd",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 2,
+        "sourceFrameIndex": 132,
+        "sourceTimestampSeconds": 2.201667,
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "observedContactPoints": {
+          "left": [
+            "heel",
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-03",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-03.jpg",
+      "bundled_file": "source-references/lunge-dense-03.jpg",
+      "sha256": "4d07768cafc6ae4c9cd6f51a1bee5530d57196aaace13e998c7bdb4b58f0ebe0",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "4d07768cafc6ae4c9cd6f51a1bee5530d57196aaace13e998c7bdb4b58f0ebe0",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 3,
+        "sourceFrameIndex": 138,
+        "sourceTimestampSeconds": 2.301667,
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "observedContactPoints": {
+          "left": [
+            "heel",
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-04",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-04.jpg",
+      "bundled_file": "source-references/lunge-dense-04.jpg",
+      "sha256": "974ee086f0c8efa6860a0db710ffb926f3a3d7d41654c87a35d7b0ade24dd51a",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "974ee086f0c8efa6860a0db710ffb926f3a3d7d41654c87a35d7b0ade24dd51a",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 4,
+        "sourceFrameIndex": 144,
+        "sourceTimestampSeconds": 2.401667,
+        "footContacts": {
+          "left": "flat",
+          "right": "airborne"
+        },
+        "observedContactPoints": {
+          "left": [
+            "heel",
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-05",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-05.jpg",
+      "bundled_file": "source-references/lunge-dense-05.jpg",
+      "sha256": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 5,
+        "sourceFrameIndex": 150,
+        "sourceTimestampSeconds": 2.501667,
+        "footContacts": {
+          "left": "toe",
+          "right": "airborne"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-06",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-06.jpg",
+      "bundled_file": "source-references/lunge-dense-06.jpg",
+      "sha256": "df13eec6222991a599560753586b5caea549a784f0850ad24330bc9c56c43ca4",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "df13eec6222991a599560753586b5caea549a784f0850ad24330bc9c56c43ca4",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 6,
+        "sourceFrameIndex": 156,
+        "sourceTimestampSeconds": 2.601667,
+        "footContacts": {
+          "left": "toe",
+          "right": "uncertain"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": []
+        },
+        "observedSupport": "left",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-07",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-07.jpg",
+      "bundled_file": "source-references/lunge-dense-07.jpg",
+      "sha256": "16dd39e9ccdff1d34e423873799705dad61bc65980fc0ba420e039744fa37064",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "16dd39e9ccdff1d34e423873799705dad61bc65980fc0ba420e039744fa37064",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 7,
+        "sourceFrameIndex": 162,
+        "sourceTimestampSeconds": 2.701667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-08",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-08.jpg",
+      "bundled_file": "source-references/lunge-dense-08.jpg",
+      "sha256": "b8171578da3a8133f6ab26661f39717390f6e72c4e3d3d28f270d0792b721471",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "b8171578da3a8133f6ab26661f39717390f6e72c4e3d3d28f270d0792b721471",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 8,
+        "sourceFrameIndex": 168,
+        "sourceTimestampSeconds": 2.801667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-09",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-09.jpg",
+      "bundled_file": "source-references/lunge-dense-09.jpg",
+      "sha256": "1dbb63f44feb1c0ec0236cb0e1f366be9f2c74cf36a576547b4d47c0c9b6d4e8",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "1dbb63f44feb1c0ec0236cb0e1f366be9f2c74cf36a576547b4d47c0c9b6d4e8",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 9,
+        "sourceFrameIndex": 174,
+        "sourceTimestampSeconds": 2.901667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-10",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-10.jpg",
+      "bundled_file": "source-references/lunge-dense-10.jpg",
+      "sha256": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 10,
+        "sourceFrameIndex": 180,
+        "sourceTimestampSeconds": 3.001667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-11",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-11.jpg",
+      "bundled_file": "source-references/lunge-dense-11.jpg",
+      "sha256": "6935251d666676054c0361b4cf76d3166b9893b04870839ceeda5eebec0c12d7",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "6935251d666676054c0361b4cf76d3166b9893b04870839ceeda5eebec0c12d7",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 11,
+        "sourceFrameIndex": 186,
+        "sourceTimestampSeconds": 3.101667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-12",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-12.jpg",
+      "bundled_file": "source-references/lunge-dense-12.jpg",
+      "sha256": "3680a67c5e82f1009ef5eb3ffb25d7475dda20571f58c5cc96a3aa1bb5ccff19",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "3680a67c5e82f1009ef5eb3ffb25d7475dda20571f58c5cc96a3aa1bb5ccff19",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 12,
+        "sourceFrameIndex": 192,
+        "sourceTimestampSeconds": 3.201667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-13",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-13.jpg",
+      "bundled_file": "source-references/lunge-dense-13.jpg",
+      "sha256": "bee9891952625f90f27399f2d88c02a42a2a8cc611cb0750b5854d138b863fd6",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "bee9891952625f90f27399f2d88c02a42a2a8cc611cb0750b5854d138b863fd6",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 13,
+        "sourceFrameIndex": 198,
+        "sourceTimestampSeconds": 3.301667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-14",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-14.jpg",
+      "bundled_file": "source-references/lunge-dense-14.jpg",
+      "sha256": "f76d13c712b380da665c2d9bf6b20cb0cd7c63920648a024fba445f68a3cc566",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "f76d13c712b380da665c2d9bf6b20cb0cd7c63920648a024fba445f68a3cc566",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 14,
+        "sourceFrameIndex": 204,
+        "sourceTimestampSeconds": 3.401667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-15",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-15.jpg",
+      "bundled_file": "source-references/lunge-dense-15.jpg",
+      "sha256": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 15,
+        "sourceFrameIndex": 210,
+        "sourceTimestampSeconds": 3.501667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": false,
+        "role": "right_bottom",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-16",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-16.jpg",
+      "bundled_file": "source-references/lunge-dense-16.jpg",
+      "sha256": "749a68e3afcde3ad968f01df4e6d411fe7e226a85aed2124a4caff9a3eea2bae",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "749a68e3afcde3ad968f01df4e6d411fe7e226a85aed2124a4caff9a3eea2bae",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 16,
+        "sourceFrameIndex": 216,
+        "sourceTimestampSeconds": 3.601667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-17",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-17.jpg",
+      "bundled_file": "source-references/lunge-dense-17.jpg",
+      "sha256": "b68fdadfaa1aefaf50af1a5556aa9396c390767d159d7095ef49c62d48030334",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "b68fdadfaa1aefaf50af1a5556aa9396c390767d159d7095ef49c62d48030334",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 17,
+        "sourceFrameIndex": 222,
+        "sourceTimestampSeconds": 3.701667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-18",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-18.jpg",
+      "bundled_file": "source-references/lunge-dense-18.jpg",
+      "sha256": "5bdb700114f6da52710ee5a36270b34ba27adee7f5bc4f9933a5150e3fba0fa8",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "5bdb700114f6da52710ee5a36270b34ba27adee7f5bc4f9933a5150e3fba0fa8",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 18,
+        "sourceFrameIndex": 228,
+        "sourceTimestampSeconds": 3.801667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-19",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-19.jpg",
+      "bundled_file": "source-references/lunge-dense-19.jpg",
+      "sha256": "a3e1f7ed4149be0445e8d8ec7ede66e5b2c7eb1e7c528851d4275ab83062e73d",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "a3e1f7ed4149be0445e8d8ec7ede66e5b2c7eb1e7c528851d4275ab83062e73d",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 19,
+        "sourceFrameIndex": 234,
+        "sourceTimestampSeconds": 3.901667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-20",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-20.jpg",
+      "bundled_file": "source-references/lunge-dense-20.jpg",
+      "sha256": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 20,
+        "sourceFrameIndex": 240,
+        "sourceTimestampSeconds": 4.001667,
+        "footContacts": {
+          "left": "toe",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [
+            "toe"
+          ],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "both",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-21",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-21.jpg",
+      "bundled_file": "source-references/lunge-dense-21.jpg",
+      "sha256": "ba73ad019884fe6106076c1ace6236eb78cc9c190326347717ab44bee4b14f9e",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "ba73ad019884fe6106076c1ace6236eb78cc9c190326347717ab44bee4b14f9e",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 21,
+        "sourceFrameIndex": 246,
+        "sourceTimestampSeconds": 4.103333,
+        "footContacts": {
+          "left": "uncertain",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "right",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-22",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-22.jpg",
+      "bundled_file": "source-references/lunge-dense-22.jpg",
+      "sha256": "2a72f7571ee91af86bc38a1d0b310081e42fc136bea6e2a590aa4bd82c1cc6e5",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "2a72f7571ee91af86bc38a1d0b310081e42fc136bea6e2a590aa4bd82c1cc6e5",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 22,
+        "sourceFrameIndex": 252,
+        "sourceTimestampSeconds": 4.203333,
+        "footContacts": {
+          "left": "airborne",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "right",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-23",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-23.jpg",
+      "bundled_file": "source-references/lunge-dense-23.jpg",
+      "sha256": "23f8130d2c797076a23cdd980b1982446d5e82c82656ac551c158ddf4b41fba1",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "23f8130d2c797076a23cdd980b1982446d5e82c82656ac551c158ddf4b41fba1",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 23,
+        "sourceFrameIndex": 258,
+        "sourceTimestampSeconds": 4.303333,
+        "footContacts": {
+          "left": "airborne",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "right",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-24",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-24.jpg",
+      "bundled_file": "source-references/lunge-dense-24.jpg",
+      "sha256": "b4f24d09d5d528b952caa9cb664ac626a04ef6facbb3128f82142b8a649add87",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "b4f24d09d5d528b952caa9cb664ac626a04ef6facbb3128f82142b8a649add87",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 24,
+        "sourceFrameIndex": 264,
+        "sourceTimestampSeconds": 4.403333,
+        "footContacts": {
+          "left": "airborne",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "right",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": true,
+        "role": "motion_sample",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    },
+    {
+      "image": "lunge-dense-25",
+      "original_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/source-references/lunge-dense-25.jpg",
+      "bundled_file": "source-references/lunge-dense-25.jpg",
+      "sha256": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de",
+      "source": {
+        "name": "Walking lunges, wger exercise 206 video 33",
+        "provider": "wger",
+        "exerciseId": 206,
+        "videoId": 33,
+        "videoUuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+        "url": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+        "metadataUrl": "https://wger.de/api/v2/exerciseinfo/206/",
+        "author": "Goulart",
+        "authorHistory": [
+          "Goulart"
+        ],
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "licenseMetadataUrl": "https://wger.de/api/v2/license/2/",
+        "retrievedOn": "2026-10-24",
+        "sizeBytes": 23850769,
+        "sha256": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 14.308333,
+        "streamTimeBase": "1/600",
+        "frameCount": 858,
+        "sourceReview": "The original continuous gym footage and extracted frames were visually inspected. The source API does not include an AI-generation declaration.",
+        "metadata": {
+          "id": 33,
+          "uuid": "47a65c45-6fd1-4181-b71a-3a6c882e516b",
+          "exercise": 206,
+          "video": "https://wger.de/media/exercise-video/206/47a65c45-6fd1-4181-b71a-3a6c882e516b.MOV",
+          "is_main": false,
+          "size": 23850769,
+          "duration": "14.31",
+          "width": 1920,
+          "height": 1080,
+          "codec": "hevc",
+          "codec_long": "H.265 / HEVC (High Efficiency Video Coding)",
+          "license": 2,
+          "license_title": "",
+          "license_object_url": "",
+          "license_author": "Goulart",
+          "license_author_url": "",
+          "license_derivative_source_url": "",
+          "author_history": [
+            "Goulart"
+          ]
+        },
+        "sequenceIndex": 25,
+        "sourceFrameIndex": 270,
+        "sourceTimestampSeconds": 4.503333,
+        "footContacts": {
+          "left": "airborne",
+          "right": "flat"
+        },
+        "observedContactPoints": {
+          "left": [],
+          "right": [
+            "heel",
+            "toe"
+          ]
+        },
+        "observedSupport": "right",
+        "contactNote": "Only visually supported heel/toe points are anchors; uncertain touchdown/toe-off points remain unanchored.",
+        "motionOnly": false,
+        "role": "left_swing_through_end",
+        "contactModel": "named_heel_toe",
+        "playback": "once",
+        "calibrated": false,
+        "approximateDepth": true,
+        "derivative": "Real decoded source frames with the same original crop; no pose edits or generated pixels.",
+        "cropPixels": {
+          "x": 650,
+          "y": 150,
+          "width": 600,
+          "height": 900
+        },
+        "videoSha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "sequence",
+    "playback": "once",
+    "phase_frames": {
+      "start": 1,
+      "middle": 25,
+      "end": 42
+    },
+    "sample_frames": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      11,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20,
+      22,
+      23,
+      25,
+      27,
+      28,
+      30,
+      31,
+      33,
+      35,
+      36,
+      38,
+      39,
+      42
+    ],
+    "source_times": [
+      2.001667,
+      2.101667,
+      2.201667,
+      2.301667,
+      2.401667,
+      2.501667,
+      2.601667,
+      2.701667,
+      2.801667,
+      2.901667,
+      3.001667,
+      3.101667,
+      3.201667,
+      3.301667,
+      3.401667,
+      3.501667,
+      3.601667,
+      3.701667,
+      3.801667,
+      3.901667,
+      4.001667,
+      4.103333,
+      4.203333,
+      4.303333,
+      4.403333,
+      4.503333
+    ],
+    "contactModel": "named_heel_toe",
+    "sourceInferredDepth": true,
+    "calibrated": false,
+    "observed_contacts": [
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      }
+    ]
+  },
+  "original_snapshot_path": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/references.json"
+}

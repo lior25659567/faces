@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "frames": 81,
+  "source": "replayed saved scene with real reference inputs",
+  "anchor_error_mm": 0.005602750661637401,
+  "hinge_drift_deg": 0.0,
+  "grip_width_range_mm": 0.005304813385009766,
+  "bar_rise_mm": 37.69230842590332,
+  "minimum_bar_rise_mm": 27.146041207015514,
+  "contracted_frame": 46,
+  "reference_elbows_deg": {
+    "start": 172.45831229554616,
+    "end": 107.85303171154656
+  },
+  "actual_elbows_deg": {
+    "start": {
+      "left": 171.92260116768406,
+      "right": 171.32183688870722
+    },
+    "end": {
+      "left": 103.90958942659505,
+      "right": 104.0220031779905
+    }
+  },
+  "position_jumps": {
+    "bar": {
+      "max_mm": 4.035101272165775,
+      "seam_mm": 0.07736709812888876
+    },
+    "left": {
+      "max_mm": 7.624148856848478,
+      "seam_mm": 0.07742228626739234
+    },
+    "right": {
+      "max_mm": 7.773985620588064,
+      "seam_mm": 0.07729278149781749
+    }
+  },
+  "hand_rotation_jumps": {
+    "left": {
+      "max_deg": 8.99995143974405,
+      "seam_deg": 0.0
+    },
+    "right": {
+      "max_deg": 9.000038493933479,
+      "seam_deg": 0.0
+    }
+  },
+  "hand_contact": {
+    "left": {
+      "frames": 81,
+      "frames_touching_within_3mm": 81,
+      "deepest_inside_bar_mm": 0.7987653436670487,
+      "nearest_gap_mm_max": 0.02786813159949726
+    },
+    "right": {
+      "frames": 81,
+      "frames_touching_within_3mm": 81,
+      "deepest_inside_bar_mm": 0.8049387878609136,
+      "nearest_gap_mm_max": 0.05128807603306529
+    }
+  },
+  "feet": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 2,
+    "sides": {
+      "left": {
+        "sole_vertices": 486,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.6364908185787499
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.2093353420495987,
+        -0.10782282799482346,
+        -1.3632018180942396e-06
+      ],
+      [
+        0.2089657187461853,
+        0.42531150579452515,
+        0.8313003182411194
+      ]
+    ]
+  },
+  "render_sample_sha256": [
+    "2d2610b33220d01bbd8d6485e30df96561de89610ef1e09d6a7243d7c651fd7a",
+    "68fc2fe518d5cad4db0335d8e304f9814be66116c441e90fcb93b014e02b0721",
+    "f4413346bcbc4a5463997d855467be730e8f7cb854fbee8dd3667092d6917178",
+    "5783653ef8a5f3390f9ccc64693347f42865452e34939ca082146addb7edff2a",
+    "95637913eb04c2e29d1af4d30bd83abcad16df628f1d7ea44b313bb0001c9b75",
+    "01b099837cefb6884c8dbbf42a9f25149be731d129bb28bfbb5072d8bf1c76ba"
+  ]
+}

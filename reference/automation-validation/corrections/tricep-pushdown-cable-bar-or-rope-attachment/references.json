@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Triceps_Pushdown",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/0.jpg"
-      }
+      },
+      "path": "source-references/img-41d79d3d.jpg"
     },
     {
       "id": "img-bfe8bbbf",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Triceps_Pushdown",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/1.jpg"
-      }
+      },
+      "path": "source-references/img-bfe8bbbf.jpg"
     }
   ],
   "characterFit": "auto"

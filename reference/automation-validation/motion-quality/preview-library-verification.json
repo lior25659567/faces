@@ -1,0 +1,17 @@
+{
+  "cards": 14,
+  "available": 14,
+  "gifsVerified": 14,
+  "desktop": "1440px",
+  "mobile": [
+    "390px",
+    "320px"
+  ],
+  "singleAnimation": true,
+  "builderAndBackRouting": true,
+  "bottomCardScrollTop": true,
+  "runLinkFocusRetained": true,
+  "userRowDataUnchanged": true,
+  "oneShotReplay": true,
+  "browserErrors": []
+}

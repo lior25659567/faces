@@ -1,1090 +1,364 @@
 {
-  "reference_motion": {
-    "source": "keyposes",
-    "mode": "hold",
-    "phase_frames": {
-      "start": 1,
-      "middle": 1,
-      "end": 1
+  "img-cd985885": {
+    "image": "img-cd985885.jpg",
+    "size": [
+      850,
+      567
+    ],
+    "view": "side",
+    "shoulder_span": 0.13,
+    "camera_side": "right",
+    "facing": "right",
+    "crop": [
+      0.0524,
+      0.3699,
+      0.8657,
+      0.9104
+    ],
+    "flat": {
+      "knee_included": 175.515,
+      "hip_included": 177.487,
+      "elbow_included": 73.404,
+      "upperarm_vs_torso": 76.175,
+      "torso_lean": 85.141,
+      "hip_below_knee": -0.092,
+      "thigh_level": -7.123,
+      "grip_ratio": 0.877,
+      "elbow_width_ratio": 1.401,
+      "back_rounding": null,
+      "back_seen": 0.0,
+      "back_span": null,
+      "back_why": "level",
+      "neck_vs_torso": null,
+      "head_pitch": -39.844,
+      "seat_below_knee": 0.469
     },
-    "explicit_phases": [
-      "start"
-    ]
-  },
-  "character_fit": {
-    "kind": "fitness arm reach",
-    "label": "Fitness proportions",
-    "applied": true,
-    "upper_scale": 1.8,
-    "fore_scale": 1.8,
-    "source_model_unchanged": true,
-    "face_max_displacement_mm": 0.0,
-    "hand_scale": 1.0,
-    "per_frame_stretch": false,
-    "sides": {
-      "left": {
-        "upper_before_m": 0.10443226993083954,
-        "fore_before_m": 0.07788365334272385,
-        "upper_after_m": 0.18797808587551118,
-        "fore_after_m": 0.14019057601690293,
-        "wrist_translation_m": [
-          -0.1409132480621338,
-          0.03467267006635666,
-          0.01463861484080553
-        ]
-      },
-      "right": {
-        "upper_before_m": 0.10468268394470215,
-        "fore_before_m": 0.07495778799057007,
-        "upper_after_m": 0.18842883110046388,
-        "fore_after_m": 0.13492401838302612,
-        "wrist_translation_m": [
-          0.13851326704025269,
-          0.035191550850868225,
-          0.015128850936889648
-        ]
-      }
+    "3d": {
+      "knee_included": 166.846,
+      "hip_included": 169.413,
+      "elbow_included": 67.657,
+      "upperarm_vs_torso": 74.063,
+      "torso_lean": 87.339,
+      "hip_below_knee": -0.121,
+      "thigh_level": -9.818,
+      "grip_ratio": 0.715,
+      "elbow_width_ratio": 1.056,
+      "neck_vs_torso": null
     },
-    "requested_mode": "auto",
-    "original_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.10443226993083954,
-          "fore_m": 0.07788365334272385,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 0.9326923310071329,
-          "head_shortfall_mm": 66.81932813822233
-        },
-        "right": {
-          "upper_m": 0.10468268394470215,
-          "fore_m": 0.07495778799057007,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 0.931960947165028,
-          "head_shortfall_mm": 67.55071198032725
-        }
-      }
-    },
-    "actual_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.1879781037569046,
-          "fore_m": 0.14019055664539337,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 1.0785450681358675,
-          "head_shortfall_mm": 0.0
-        },
-        "right": {
-          "upper_m": 0.1884288489818573,
-          "fore_m": 0.13492397964000702,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 1.0756733038516202,
-          "head_shortfall_mm": 0.0
-        }
-      }
-    },
-    "reason": "Original straight-arm reach cannot clear the head."
-  },
-  "surface_cleanup": {
-    "schema": 1,
-    "method": "coincident seam weld and local rest-bound corrective surface",
-    "vertices_before": 46261,
-    "vertices_after": 43352,
-    "faces": 52431,
-    "uv_loops": 157293,
-    "uv_and_materials_preserved": true,
-    "skin_weights_preserved": true,
-    "protected_custom_normals_preserved": true,
-    "seam_tolerance_mm": 0.009995116599818636,
-    "max_weld_displacement_mm": 0.0,
-    "max_bind_displacement_mm": 0.00018143349382111312,
-    "corrected_vertices": 3866,
-    "protected_vertices": 28165,
-    "factor": 1.0,
-    "iterations": 20,
-    "arm_emphasis": null,
-    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
-  },
-  "physical": {
-    "profile": {
-      "family": "hold",
-      "feet": "free",
-      "mode": "hold",
-      "holds": false,
-      "overhead": false
-    },
-    "supports": {
-      "frames": 12,
-      "surfaces": {
-        "left_forearm": {
-          "frames": 12,
-          "measured_frames": 12,
-          "max_gap_mm": 0.08535385131835938,
-          "max_penetration_mm": 0.4056096076965332
-        },
-        "left_toe": {
-          "frames": 12,
-          "measured_frames": 12,
-          "max_gap_mm": 9.313225746154785e-05,
-          "max_penetration_mm": 0.0
-        },
-        "right_forearm": {
-          "frames": 12,
-          "measured_frames": 12,
-          "max_gap_mm": 0.3432035446166992,
-          "max_penetration_mm": 0.0
-        },
-        "right_toe": {
-          "frames": 12,
-          "measured_frames": 12,
-          "max_gap_mm": 0.04608556628227234,
-          "max_penetration_mm": 0.0
-        }
-      },
-      "correction": {
-        "applied": true,
-        "body_pitch_adjustment_deg": 5.269995379263318e-06,
-        "leg_direction_adjustment_deg": -1.2109374999999998,
-        "ankle_residual_mm": 4.8580770774725734e-05,
-        "wrist_residual_mm": 6.420049048816445e-05,
-        "forearm_gaps_mm": {
-          "left": -0.4055500030517578,
-          "right": 0.3432631492614746
-        },
-        "toe_gaps_mm": {
-          "left": 1.30385160446167e-05,
-          "right": 0.04606321454048157
-        },
-        "floor_penetration_mm": 0.4055500030517578,
-        "raw_torso_above_horizontal_deg": 20.184173509118065,
-        "reference": {
-          "image": "img-cd985885",
-          "camera_side": "right",
-          "method": "visible-side pixels for body; original 3D arm angles",
-          "torso_above_horizontal_deg": 4.858015724559938,
-          "thigh_angle_deg": -172.87498365109818,
-          "shin_angle_deg": -177.36504477956902,
-          "knee_included_deg": 175.5099388715292,
-          "hip_included_deg": 177.48468184196935,
-          "elbow_included_deg": 67.65968649197505,
-          "upperarm_vs_torso_deg": 74.06470917367302,
-          "pixel_elbow_included_deg": 73.41284414212298
-        }
-      }
-    },
-    "contacts": null,
-    "validation": {
-      "rows": [
-        {
-          "group": "body",
-          "metric": "support_gap_left_forearm",
-          "target": 5.0,
-          "ours": 0.08535385131835938,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_penetration_left_forearm",
-          "target": 3.0,
-          "ours": 0.4056096076965332,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_gap_left_toe",
-          "target": 5.0,
-          "ours": 9.313225746154785e-05,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_penetration_left_toe",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_gap_right_forearm",
-          "target": 5.0,
-          "ours": 0.3432035446166992,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_penetration_right_forearm",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_gap_right_toe",
-          "target": 5.0,
-          "ours": 0.04608556628227234,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "support_penetration_right_toe",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "folded_skin",
-          "target": 99.9,
-          "ours": 630.8,
-          "unit": "mm2",
-          "status": "info",
-          "frame": 1,
-          "note": "Folds hidden from every view at the left shoulder (up to 631 mm\u00b2, every frame), the right shoulder (up to 365 mm\u00b2, every frame) and the left hip (up to 179 mm\u00b2, every frame); plus creases at the left elbow, which are normal in deep bends",
-          "kind": "not-judged",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "smooth_motion",
-          "target": 0,
-          "ours": 0,
-          "unit": "frames",
-          "status": "pass",
-          "frame": null,
-          "note": null,
-          "kind": null,
-          "uncertain_why": null
-        }
+    "world": {
+      "nose": [
+        0.68042,
+        0.00818,
+        -0.11955
       ],
-      "ready": true
+      "left_eye_inner": [
+        0.68563,
+        -0.0326,
+        -0.11598
+      ],
+      "left_eye": [
+        0.68672,
+        -0.03244,
+        -0.10592
+      ],
+      "left_eye_outer": [
+        0.68779,
+        -0.03217,
+        -0.10802
+      ],
+      "right_eye_inner": [
+        0.6896,
+        -0.02308,
+        -0.1625
+      ],
+      "right_eye": [
+        0.68684,
+        -0.02107,
+        -0.17377
+      ],
+      "right_eye_outer": [
+        0.67616,
+        -0.01458,
+        -0.15172
+      ],
+      "left_ear": [
+        0.62376,
+        -0.09749,
+        -0.0525
+      ],
+      "right_ear": [
+        0.5476,
+        -0.08967,
+        -0.19442
+      ],
+      "mouth_left": [
+        0.65607,
+        0.01215,
+        -0.08236
+      ],
+      "mouth_right": [
+        0.61256,
+        0.01606,
+        -0.15084
+      ],
+      "left_shoulder": [
+        0.45237,
+        -0.04156,
+        0.12988
+      ],
+      "right_shoulder": [
+        0.51186,
+        -0.00183,
+        -0.1374
+      ],
+      "left_elbow": [
+        0.45153,
+        0.17032,
+        0.1607
+      ],
+      "right_elbow": [
+        0.45615,
+        0.22392,
+        -0.12659
+      ],
+      "left_wrist": [
+        0.58977,
+        0.22532,
+        0.20527
+      ],
+      "right_wrist": [
+        0.6008,
+        0.1706,
+        0.01563
+      ],
+      "left_pinky": [
+        0.68873,
+        0.21616,
+        0.22504
+      ],
+      "right_pinky": [
+        0.69619,
+        0.17029,
+        -0.03628
+      ],
+      "left_index": [
+        0.68989,
+        0.18762,
+        0.21299
+      ],
+      "right_index": [
+        0.7313,
+        0.1365,
+        -0.01954
+      ],
+      "left_thumb": [
+        0.59484,
+        0.22748,
+        0.19697
+      ],
+      "right_thumb": [
+        0.63081,
+        0.15027,
+        0.01817
+      ],
+      "left_hip": [
+        -0.00641,
+        -0.01449,
+        0.11907
+      ],
+      "right_hip": [
+        0.01499,
+        0.01551,
+        -0.11886
+      ],
+      "left_knee": [
+        -0.40405,
+        0.05704,
+        0.1177
+      ],
+      "right_knee": [
+        -0.31392,
+        0.07319,
+        -0.0649
+      ],
+      "left_ankle": [
+        -0.73701,
+        0.12633,
+        0.20207
+      ],
+      "right_ankle": [
+        -0.70678,
+        0.05346,
+        0.02612
+      ],
+      "left_heel": [
+        -0.77386,
+        0.11883,
+        0.2197
+      ],
+      "right_heel": [
+        -0.74161,
+        0.05679,
+        0.00268
+      ],
+      "left_foot_index": [
+        -0.72971,
+        0.20585,
+        0.23775
+      ],
+      "right_foot_index": [
+        -0.67365,
+        0.15502,
+        -0.01905
+      ]
+    },
+    "pixels": {
+      "nose": [
+        629.53,
+        355.07
+      ],
+      "left_eye_inner": [
+        630.08,
+        343.04
+      ],
+      "left_eye": [
+        628.43,
+        341.46
+      ],
+      "left_eye_outer": [
+        626.71,
+        339.94
+      ],
+      "right_eye_inner": [
+        629.94,
+        343.23
+      ],
+      "right_eye": [
+        628.24,
+        341.7
+      ],
+      "right_eye_outer": [
+        626.41,
+        340.07
+      ],
+      "left_ear": [
+        613.05,
+        331.9
+      ],
+      "right_ear": [
+        612.6,
+        333.52
+      ],
+      "mouth_left": [
+        617.96,
+        358.87
+      ],
+      "mouth_right": [
+        617.6,
+        359.2
+      ],
+      "left_shoulder": [
+        543.96,
+        344.49
+      ],
+      "right_shoulder": [
+        554.84,
+        363.57
+      ],
+      "left_elbow": [
+        525.44,
+        422.7
+      ],
+      "right_elbow": [
+        540.94,
+        449.28
+      ],
+      "left_wrist": [
+        584.92,
+        430.72
+      ],
+      "right_wrist": [
+        600.89,
+        441.52
+      ],
+      "left_pinky": [
+        605.45,
+        434.96
+      ],
+      "right_pinky": [
+        617.88,
+        444.43
+      ],
+      "left_index": [
+        606.07,
+        425.65
+      ],
+      "right_index": [
+        615.04,
+        432.14
+      ],
+      "left_thumb": [
+        596.73,
+        422.5
+      ],
+      "right_thumb": [
+        607.0,
+        428.81
+      ],
+      "left_hip": [
+        380.63,
+        359.13
+      ],
+      "right_hip": [
+        381.08,
+        377.58
+      ],
+      "left_knee": [
+        260.73,
+        382.58
+      ],
+      "right_knee": [
+        256.36,
+        393.17
+      ],
+      "left_ankle": [
+        144.43,
+        394.35
+      ],
+      "right_ankle": [
+        141.63,
+        398.45
+      ],
+      "left_heel": [
+        117.48,
+        388.73
+      ],
+      "right_heel": [
+        111.46,
+        391.03
+      ],
+      "left_foot_index": [
+        154.58,
+        439.93
+      ],
+      "right_foot_index": [
+        150.72,
+        445.45
+      ]
+    },
+    "visibility": {
+      "left_shoulder": 1.0,
+      "right_shoulder": 1.0,
+      "left_elbow": 0.583,
+      "right_elbow": 1.0,
+      "left_wrist": 0.759,
+      "right_wrist": 1.0,
+      "left_hip": 1.0,
+      "right_hip": 1.0,
+      "left_knee": 0.473,
+      "right_knee": 0.998,
+      "left_ankle": 0.808,
+      "right_ankle": 0.998
     }
-  },
-  "contact": {
-    "penetration_mm": 0.41,
-    "penetration_frame": 1,
-    "sides": {
-      "left": {
-        "sole_vertices": 122,
-        "sole_slide_mm": 0.0,
-        "slide_frame": null,
-        "sole_lift_mm": 0.0,
-        "initial_floor_gap_mm": 0.0
-      },
-      "right": {
-        "sole_vertices": 111,
-        "sole_slide_mm": 0.0,
-        "slide_frame": null,
-        "sole_lift_mm": 0.0,
-        "initial_floor_gap_mm": 0.04608556628227234
-      }
-    },
-    "box": [
-      [
-        -0.14794260263442993,
-        -0.03914317488670349,
-        -0.0004056096076965332
-      ],
-      [
-        0.1486067771911621,
-        0.9415842294692993,
-        0.3534432649612427
-      ]
-    ]
-  },
-  "deformation": {
-    "crack_max_mm": 0.0,
-    "max_growth_mm": 19.770464531732006,
-    "growth_frame": 1,
-    "coincident_unconnected_pairs": 22773,
-    "deepest_frame": 1,
-    "deepest": {
-      "max_growth_mm": 19.770464531732006,
-      "max_growth_pct": 1.978803801001942,
-      "edges_over_1pct": 42,
-      "edges_over_0_5pct": 113,
-      "worst_edge_at": [
-        0.2919,
-        -0.0506,
-        0.7112
-      ],
-      "worst_edge_posed_at": [
-        0.1379,
-        0.6035,
-        0.0303
-      ],
-      "worst_edge_rest_mm": 16.00390013553192,
-      "crack_max_mm": 0.0,
-      "skin_max_move_mm": 1169.7443607328619
-    }
-  },
-  "preview_box": [
-    [
-      -0.5390679851174355,
-      -0.08817954510450365,
-      -0.3628812447190285
-    ],
-    [
-      0.5397321596741677,
-      0.9906205996870995,
-      0.7159189000725746
-    ]
-  ],
-  "preview_cameras": [
-    [
-      35.0,
-      10.0
-    ],
-    [
-      90.0,
-      5.0
-    ]
-  ],
-  "preview_camera_space": "world",
-  "skin_preflight": {
-    "first": 1,
-    "last": 12,
-    "preview_box": [
-      [
-        -0.5390679851174355,
-        -0.08817954510450365,
-        -0.3628812447190285
-      ],
-      [
-        0.5397321596741677,
-        0.9906205996870995,
-        0.7159189000725746
-      ]
-    ],
-    "preview_cameras": [
-      [
-        35.0,
-        10.0
-      ],
-      [
-        90.0,
-        5.0
-      ]
-    ],
-    "preview_camera_space": "world",
-    "preview_camera_positions": [
-      [
-        -1.53262380273275,
-        2.6405084260342577,
-        0.6477750831891337
-      ],
-      [
-        -2.703197483210109,
-        0.4512205272912981,
-        0.41304701660162507
-      ]
-    ],
-    "comparison_camera_frames": [
-      1
-    ],
-    "comparison_cameras": [
-      {
-        "image": "img-cd985885",
-        "phase": "start",
-        "frame": 1,
-        "view": "side",
-        "azimuth": -89.97184799854627,
-        "elevation": 5.0,
-        "location": [
-          2.4581811405724223,
-          0.45242817951765135,
-          0.3915527824546783
-        ]
-      }
-    ],
-    "height_m": 0.9995,
-    "folds": [
-      {
-        "frame": 1,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 1,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 73.1,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 1,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 1,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 5,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 5,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 5,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 5,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 6,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 6,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 6,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 6,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 7,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 7,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 7,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 7,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 8,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 8,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 8,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 8,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 9,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 9,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 9,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 9,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 10,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 10,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 10,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 10,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 11,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 11,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 11,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 11,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      },
-      {
-        "frame": 12,
-        "bone": "mixamorig:LeftUpLeg",
-        "kind": "hidden",
-        "area_mm2": 178.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.0,
-          0.305,
-          0.12
-        ]
-      },
-      {
-        "frame": 12,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 364.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.089,
-          0.629,
-          0.213
-        ]
-      },
-      {
-        "frame": 12,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 630.8,
-        "visible_mm2": 46.4,
-        "centre": [
-          -0.087,
-          0.636,
-          0.203
-        ]
-      },
-      {
-        "frame": 12,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 131.8,
-        "visible_mm2": 42.9,
-        "centre": [
-          -0.137,
-          0.617,
-          0.032
-        ]
-      }
-    ],
-    "rows": [
-      {
-        "group": "body",
-        "metric": "folded_skin",
-        "target": 99.9,
-        "ours": 630.8,
-        "unit": "mm2",
-        "status": "info",
-        "frame": 1,
-        "note": "Folds hidden from every view at the left shoulder (up to 631 mm\u00b2, every frame), the right shoulder (up to 365 mm\u00b2, every frame) and the left hip (up to 179 mm\u00b2, every frame); plus creases at the left elbow, which are normal in deep bends",
-        "kind": "not-judged",
-        "uncertain_why": null
-      },
-      {
-        "group": "body",
-        "metric": "smooth_motion",
-        "target": 0,
-        "ours": 0,
-        "unit": "frames",
-        "status": "pass",
-        "frame": null,
-        "note": null,
-        "kind": null,
-        "uncertain_why": null
-      }
-    ],
-    "fold_rows": [
-      {
-        "group": "body",
-        "metric": "folded_skin",
-        "target": 99.9,
-        "ours": 630.8,
-        "unit": "mm2",
-        "status": "info",
-        "frame": 1,
-        "note": "Folds hidden from every view at the left shoulder (up to 631 mm\u00b2, every frame), the right shoulder (up to 365 mm\u00b2, every frame) and the left hip (up to 179 mm\u00b2, every frame); plus creases at the left elbow, which are normal in deep bends",
-        "kind": "not-judged",
-        "uncertain_why": null
-      }
-    ],
-    "motion_rows": [
-      {
-        "group": "body",
-        "metric": "smooth_motion",
-        "target": 0,
-        "ours": 0,
-        "unit": "frames",
-        "status": "pass",
-        "frame": null,
-        "note": null,
-        "kind": null,
-        "uncertain_why": null
-      }
-    ],
-    "jumps": [],
-    "steps": [],
-    "ready": true,
-    "measured_frames": 12,
-    "measurement_error": null,
-    "phase_frames": {
-      "start": 1,
-      "middle": 1,
-      "end": 1
-    },
-    "fold_ready": true,
-    "motion_ready": true
   }
 }

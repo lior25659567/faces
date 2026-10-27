@@ -1,6 +1,6 @@
 {
   "summary": {
-    "pass": 23,
+    "pass": 25,
     "fail": 0,
     "limited": 0,
     "uncertain": 0,
@@ -498,6 +498,30 @@
       "frame": null,
       "unit": "mm",
       "note": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.0,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 1,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. The arms remain stationary.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 0.0,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 1,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. The arms remain stationary.",
+      "kind": null,
       "uncertain_why": null
     }
   ]

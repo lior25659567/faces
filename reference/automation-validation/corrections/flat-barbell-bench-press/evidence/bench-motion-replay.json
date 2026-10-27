@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "rendered": false,
+  "scene_sha256": "22c2d35c602598342fd02bd5ebf35cd6177609afcabe07b8caeba6940bedceff",
+  "source_log": "/tmp/bench-final-independent-replay.log",
+  "measurements": {
+    "frames": 32,
+    "top_elbows_deg": {
+      "Left": 175.64382934570312,
+      "Right": 175.1955108642578
+    },
+    "bottom_elbows_deg": {
+      "Left": 71.5124740600586,
+      "Right": 72.16803741455078
+    },
+    "bar_travel_mm": 211.72267150878906,
+    "max_forearm_tilt_deg": 22.81172752380371,
+    "max_elbow_asymmetry_deg": 2.652618408203125,
+    "max_hand_gap_mm": 1.0529647926641947,
+    "max_hand_inside_mm": 0.702237849270807,
+    "max_sole_gap_mm": 2.0808775443583727,
+    "max_sole_drift_mm": 0.002795443257372863,
+    "upper_limb_speed_heights_s": 1.2211673611332836,
+    "upper_limb_turn_deg_s": 497.97712238939215,
+    "loaded_plates": true
+  }
+}

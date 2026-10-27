@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "image": "img-24b4606a",
+      "original_path": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/source-references/img-24b4606a.jpg",
+      "bundled_file": "source-references/img-24b4606a.jpg",
+      "sha256": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Dumbbell_Bicep_Curl",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/0.jpg",
+        "sha256": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
+        "phase": "start",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Dumbbell_Bicep_Curl",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/0.jpg"
+      }
+    },
+    {
+      "image": "img-f1698c9f",
+      "original_path": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/source-references/img-f1698c9f.jpg",
+      "bundled_file": "source-references/img-f1698c9f.jpg",
+      "sha256": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Dumbbell_Bicep_Curl",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/1.jpg",
+        "sha256": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a",
+        "phase": "end",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Dumbbell_Bicep_Curl",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/1.jpg"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/references.json"
+}

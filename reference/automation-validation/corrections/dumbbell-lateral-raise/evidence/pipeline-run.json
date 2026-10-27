@@ -1,0 +1,37 @@
+{
+  "name": "Dumbbell Lateral Raise",
+  "slug": "dumbbell-lateral-raise",
+  "source": "/tmp/studio-complete-validation/dumbbell-lateral-raise",
+  "characterFit": "auto",
+  "startedAt": "2026-10-27T08:30:24.584Z",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.11
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 278.67
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 118.76
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.41
+    }
+  ],
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  }
+}

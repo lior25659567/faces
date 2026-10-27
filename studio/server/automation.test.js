@@ -5,7 +5,7 @@ import path from 'node:path'
 import { createStore } from './store.js'
 import { builderFingerprint, createAutomation } from './automation.js'
 import { getReferenceSpec } from './reference-catalog.js'
-import { getBundledReferenceSpec } from './bundled-references.js'
+import { getBundledReferenceSpec, getLegacyBundledReferenceSpec, getOneStepBundledReferenceSpec } from './bundled-references.js'
 import { fetchReference } from './reference-fetch.js'
 
 const ROW = 'barbell-bent-over-row', SQUAT = 'barbell-back-squat', UNSUPPORTED = 'walking-lunge-dumbbells-optional'
@@ -99,6 +99,17 @@ test('reference-only mode does not render or claim animation success', async () 
   expect(result.items[0].status).toBe('ready'); expect(builds).toEqual([])
 })
 
+test('a reference-only preset check names its movement source without claiming photo retrieval or rendering', async () => {
+  make()
+  const result = await finished(automation.start({ slugs: [SQUAT], checkOnly: true }))
+  expect(result.items[0].status).toBe('ready')
+  expect(result.items[0].message).toContain('movement preset is ready')
+  expect(result.items[0].message).toContain('Photographs are optional context')
+  expect(downloads).toEqual([])
+  expect(builds).toEqual([])
+  expect(store.readRun(SQUAT, result.items[0].referenceRunId).motionPreset).toBe('squat-v1')
+})
+
 test('unchanged full results are reused; changed code, references and force invalidate reuse', async () => {
   make(); await finished(automation.start({ slugs: [ROW] }))
   const repeated = await finished(automation.start({ slugs: [ROW] }))
@@ -168,6 +179,50 @@ test('motion clip contents and availability invalidate the builder fingerprint',
   expect(fingerprint()).toBe(absent)
 })
 
+test.each([
+  'pipeline/blender/exercise_contacts.py',
+  'pipeline/blender/pullup_range.py',
+  'pipeline/blender/bench_contacts.py',
+  'pipeline/blender/bench_press.py',
+  'pipeline/blender/pulldown_contacts.py',
+  'pipeline/blender/keypose_clip.py',
+  'pipeline/blender/skin_preflight.py',
+  'studio/measure/physical_checks.py',
+  'studio/measure/upper_limb_motion.py',
+  'studio/blender/inspect_run.py',
+])('a corrected solver or motion gate rebuilds finished results without rewriting history: %s', async (relative) => {
+  const source = path.join(root, relative)
+  mkdirSync(path.dirname(source), { recursive: true })
+  writeFileSync(source, '# original movement implementation\n')
+  const fingerprint = () => builderFingerprint({ root, execution: () => 'fixed test runtime' })
+  make({ fingerprint })
+  const first = await finished(automation.start({ slugs: [ROW] }))
+  const oldRun = store.readRun(ROW, first.items[0].runId)
+  const oldOutputs = readFileSync(path.join(store.runDir(ROW, oldRun.id), 'checks.json'))
+  const unchanged = await finished(automation.start({ slugs: [ROW] }))
+  expect(unchanged.items[0]).toMatchObject({ reused: true, runId: oldRun.id })
+  expect(builds).toHaveLength(1)
+
+  // References, proportions and installed runtime are identical. Only the
+  // actual movement/check implementation changed.
+  writeFileSync(source, '# corrected movement implementation\n')
+  const corrected = await finished(automation.start({ slugs: [ROW] }))
+  const newRun = store.readRun(ROW, corrected.items[0].runId)
+  expect(corrected.items[0].reused).not.toBe(true)
+  expect(newRun.id).not.toBe(oldRun.id)
+  expect(newRun.automationInputs).toBe(oldRun.automationInputs)
+  expect(newRun.characterFit).toBe(oldRun.characterFit)
+  expect(newRun.automationFingerprint).not.toBe(oldRun.automationFingerprint)
+  expect(newRun.automationFingerprint).toBe(fingerprint())
+  expect(builds).toHaveLength(2)
+  expect(store.readRun(ROW, oldRun.id)).toEqual(oldRun)
+  expect(readFileSync(path.join(store.runDir(ROW, oldRun.id), 'checks.json'))).toEqual(oldOutputs)
+
+  const repeated = await finished(automation.start({ slugs: [ROW] }))
+  expect(repeated.items[0]).toMatchObject({ reused: true, runId: newRun.id })
+  expect(builds).toHaveLength(2)
+})
+
 test('a builder change earlier in a batch prevents reuse of later cached results', async () => {
   const queue = fakeQueue()
   const enqueueRead = queue.enqueueRead
@@ -203,7 +258,7 @@ test('changing the selected exercise clip invalidates reuse even with unchanged 
   expect(builds).toEqual([SQUAT, SQUAT])
   expect(store.readRun(SQUAT, changed.items[0].runId).automationInputs)
     .not.toBe(store.readRun(SQUAT, first.items[0].runId).automationInputs)
-  expect(downloads).toHaveLength(2)
+  expect(downloads).toHaveLength(0) // the explicit pinned squat preset does not depend on downloaded photos
 })
 
 test('partially imported automatic references resume without duplicates', async () => {
@@ -277,10 +332,11 @@ test('integrity errors stop that exercise without changing refs and later items 
   make({download:async()=>{calls++;if(calls===1)throw Error('Checksum mismatch');return {bytes:Buffer.from('JPEG'),ext:'jpg',sha256:'hash'}}})
   const result=await finished(automation.start({slugs:[ROW,SQUAT]}))
   expect(result.items[0].status).toBe('failed');expect(store.listReferences(ROW)).toEqual([])
-  expect(result.items[1].status).toBe('passed');expect(builds).toEqual([SQUAT]);expect(calls).toBe(3)
+  expect(result.items[1].status).toBe('passed');expect(builds).toEqual([SQUAT]);expect(calls).toBe(1)
+  expect(store.readRun(SQUAT, result.items[1].runId).motionPreset).toBe('squat-v1')
 })
 
-const makeBundledLunge = (extra = {}) => make({ referenceSpec: undefined,
+const makeBundledLunge = (extra = {}) => make({ referenceSpec: (name) => getLegacyBundledReferenceSpec(name) || getReferenceSpec(name),
   download: async (image) => {
     downloads.push(image.url)
     return fetchReference(image, { fetchImpl: () => { throw Error('bundled reference attempted a network request') } })
@@ -293,7 +349,56 @@ const addLegacyLunge = () => {
   }))
 }
 
-test('default lunge automation imports verified local sequence frames without networking or unsupported rendering', async () => {
+test('dense walking selection preserves old automatic frames and isolates the new observed chronology', async () => {
+  const legacy = getLegacyBundledReferenceSpec(store.getExercise(LUNGE).name)
+  for (const image of legacy.images) {
+    const loaded = await fetchReference(image)
+    store.addReference(LUNGE, loaded.bytes, image.id + '.jpg', 'jpg', {
+      phase: image.phase, view: image.view, contextOnly: image.contextOnly,
+      source: { ...loaded.provenance, catalogId: legacy.id, commit: legacy.commit, url: image.url },
+    })
+  }
+  const before = store.listReferences(LUNGE)
+  const dense = getOneStepBundledReferenceSpec(store.getExercise(LUNGE).name)
+  makeBundledLunge({ referenceSpec: () => ({ ...dense, autoBuild: true }) })
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(store.listReferences(LUNGE).slice(0, 12)).toEqual(before)
+  expect(store.listReferences(LUNGE)).toHaveLength(38)
+  expect(downloads).toHaveLength(26)
+  const read = store.readRun(LUNGE, result.items[0].referenceRunId)
+  expect(read.referenceBundle).toEqual({ id: dense.id, commit: dense.commit })
+  const snapshot = JSON.parse(readFileSync(path.join(store.runDir(LUNGE, read.id), 'references.json')))
+  expect(snapshot.referenceBundle).toEqual(read.referenceBundle)
+  expect(snapshot.images.slice(0, 12).every((image) => image.contextOnly === false)).toBe(true)
+})
+
+test('manually retagged legacy walking inputs cannot silently enter a new sequence', async () => {
+  const legacy = getLegacyBundledReferenceSpec(store.getExercise(LUNGE).name)
+  const image = legacy.images[0], loaded = await fetchReference(image)
+  const old = store.addReference(LUNGE, loaded.bytes, 'old.jpg', 'jpg', { phase: image.phase, view: image.view,
+    source: { ...loaded.provenance, catalogId: legacy.id, commit: legacy.commit, url: image.url } })
+  store.updateReference(LUNGE, old.id, { view: 'side' })
+  const before = store.listReferences(LUNGE)
+  const dense = getOneStepBundledReferenceSpec(store.getExercise(LUNGE).name)
+  makeBundledLunge({ referenceSpec: () => ({ ...dense, autoBuild: true }) })
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(result.items[0].message).toContain('include edits')
+  expect(downloads).toEqual([])
+  expect(reads).toEqual([])
+  expect(store.listReferences(LUNGE)).toEqual(before)
+})
+
+test('generic ready preflight cannot authorize an observed walking build without its source/contact proof', async () => {
+  makeBundledLunge({ referenceSpec: (name) => getOneStepBundledReferenceSpec(name) || getReferenceSpec(name) })
+  const result = await finished(automation.start({ slugs: [LUNGE] }))
+  expect(result.items[0].status).toBe('blocked')
+  expect(result.items[0].message).toContain('selected observed sequence')
+  expect(reads).toEqual([LUNGE])
+  expect(builds).toEqual([])
+})
+
+test('legacy twelve-frame lunge input stays blocked without inventing an unsupported handoff', async () => {
   makeBundledLunge()
   const result = await finished(automation.start({ slugs: [LUNGE] }))
   expect(result.items[0].status).toBe('blocked')
@@ -301,7 +406,7 @@ test('default lunge automation imports verified local sequence frames without ne
   expect(downloads).toHaveLength(12)
   expect(reads).toEqual([]); expect(builds).toEqual([])
   const refs = store.listReferences(LUNGE)
-  const bundle = getBundledReferenceSpec(store.getExercise(LUNGE).name)
+  const bundle = getLegacyBundledReferenceSpec(store.getExercise(LUNGE).name)
   expect(refs).toHaveLength(12)
   for (const [index, ref] of refs.entries()) {
     expect(readFileSync(path.join(root, 'references', LUNGE, ref.file)).subarray(0, 3)).toEqual(Buffer.from([0xff, 0xd8, 0xff]))
@@ -358,7 +463,7 @@ test('an active old endpoint cannot enter the context-only migration', async () 
 
 test('a partially appended sequence resumes beside the preserved old context pair', async () => {
   addLegacyLunge()
-  const bundle = getBundledReferenceSpec(store.getExercise(LUNGE).name)
+  const bundle = getLegacyBundledReferenceSpec(store.getExercise(LUNGE).name)
   const image = bundle.images[0]
   const loaded = await fetchReference(image)
   store.addReference(LUNGE, loaded.bytes, 'already-imported-frame.jpg', 'jpg', {

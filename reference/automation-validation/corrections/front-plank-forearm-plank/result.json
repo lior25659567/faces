@@ -1,31 +1,35 @@
 {
-  "name": "Front Plank",
+  "name": "Front Plank (forearm plank)",
   "slug": "front-plank-forearm-plank",
-  "run_dir": "/tmp/studio-final-pipeline-validation/front-plank-forearm-plank",
+  "run_dir": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 0.91
+      "seconds": 0.91,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 60.32
+      "seconds": 60.32,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 46.03
+      "seconds": 46.03,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.12
+      "seconds": 0.12,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     }
   ],
   "summary": {
-    "pass": 23,
+    "pass": 25,
     "fail": 0,
     "limited": 0,
     "uncertain": 0,
@@ -118,7 +122,7 @@
     },
     "reason": "Original straight-arm reach cannot clear the head."
   },
-  "pre_render_gate_exercised_in_cli": true,
+  "pre_render_gate_exercised_in_cli": false,
   "source_image_hashes": {
     "img-229af256": "7a6545152b4c918a84b7e0fd2c3c7d10d571f8fbda8e4459354eb24059ff245d",
     "img-cd985885": "7f6b690f7594dfab002fb27d36f8247957171b08d19020f24208afd4d5186043"
@@ -128,7 +132,86 @@
     "animation.gif": "032df4c9b178e91f97e1c63e7015957c9909600a2c7b777689c695a502569212",
     "start.png": "5922ea54bab5c494556d9857157e49a95fce6d900bc3baa5e1d6c2185ac97a86",
     "end.png": "5922ea54bab5c494556d9857157e49a95fce6d900bc3baa5e1d6c2185ac97a86",
-    "checks.json": "ebafe5f9b7a65691964251884e4f8d1c1769c195dfd4e6a77272ee01177c3839"
+    "checks.json": "01f67f5e9d5ab94bb36c97fff088904b0d505a57cdc24b147a0b2c2eee2be629"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": false,
+    "evidence_files": [
+      "evidence/movement-quality-recheck.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "hold",
+    "phase_frames": {
+      "start": 1,
+      "middle": 1,
+      "end": 1
+    },
+    "explicit_phases": [
+      "start"
+    ]
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 1000,
+  "gif_frame_count": 12,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 1,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": false,
+    "geometry_changed_this_review": false,
+    "source_photos_calibrated": false,
+    "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+    "evidence": [
+      {
+        "file": "evidence/movement-quality-recheck.json",
+        "sha256": "a882452b5e32b34d677e90fc048e7a2b82bd1ac0db8bbfc9f35b3fee66e1d0f7",
+        "status": null,
+        "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541"
+      }
+    ],
+    "recheck": {
+      "recorded_at_utc": "2026-10-27T08:50:00.597787+00:00",
+      "scope": "Actual arm-joint and rotation replay on unchanged saved scene; existing source comparison stills retained.",
+      "frames": 12,
+      "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541",
+      "gif_sha256": "032df4c9b178e91f97e1c63e7015957c9909600a2c7b777689c695a502569212",
+      "scene_changed": false,
+      "gif_changed": false,
+      "arm_speed_heights_s": 0.0,
+      "arm_turn_deg_s": 0.0,
+      "summary": {
+        "pass": 25,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 0,
+        "info": 18,
+        "unmeasured": 0
+      }
+    }
+  },
+  "status": "checks-passed",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

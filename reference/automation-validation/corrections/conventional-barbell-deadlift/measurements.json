@@ -1,4725 +1,726 @@
 {
-  "reference_motion": {
-    "source": "keyposes",
-    "mode": "cycle",
-    "phase_frames": {
-      "start": 1,
-      "middle": 10,
-      "end": 19
+  "img-149dd351": {
+    "image": "img-149dd351.jpg",
+    "size": [
+      850,
+      567
+    ],
+    "view": "frontal",
+    "shoulder_span": 1.303,
+    "camera_side": "left",
+    "facing": null,
+    "crop": [
+      0.3357,
+      0.1394,
+      0.5949,
+      0.7727
+    ],
+    "flat": {
+      "knee_included": 158.977,
+      "hip_included": 157.187,
+      "elbow_included": 178.101,
+      "upperarm_vs_torso": 0.116,
+      "torso_lean": 33.407,
+      "hip_below_knee": -0.866,
+      "thigh_level": -83.735,
+      "grip_ratio": 1.645,
+      "elbow_width_ratio": 1.31,
+      "back_rounding": null,
+      "back_seen": null,
+      "back_span": null,
+      "back_why": null,
+      "neck_vs_torso": null,
+      "head_pitch": null,
+      "seat_below_knee": null
     },
-    "explicit_phases": [
-      "start",
-      "end"
-    ]
-  },
-  "character_fit": {
-    "kind": "fitness arm reach",
-    "label": "Fitness proportions",
-    "applied": true,
-    "upper_scale": 1.8,
-    "fore_scale": 1.8,
-    "source_model_unchanged": true,
-    "face_max_displacement_mm": 0.0,
-    "hand_scale": 1.0,
-    "per_frame_stretch": false,
-    "sides": {
-      "left": {
-        "upper_before_m": 0.10443226993083954,
-        "fore_before_m": 0.07788365334272385,
-        "upper_after_m": 0.18797808587551118,
-        "fore_after_m": 0.14019057601690293,
-        "wrist_translation_m": [
-          -0.1409132480621338,
-          0.03467267006635666,
-          0.01463861484080553
-        ]
-      },
-      "right": {
-        "upper_before_m": 0.10468268394470215,
-        "fore_before_m": 0.07495778799057007,
-        "upper_after_m": 0.18842883110046388,
-        "fore_after_m": 0.13492401838302612,
-        "wrist_translation_m": [
-          0.13851326704025269,
-          0.035191550850868225,
-          0.015128850936889648
-        ]
-      }
+    "3d": {
+      "knee_included": 99.206,
+      "hip_included": 64.24,
+      "elbow_included": 151.238,
+      "upperarm_vs_torso": 76.934,
+      "torso_lean": 64.039,
+      "hip_below_knee": -0.74,
+      "thigh_level": -43.819,
+      "grip_ratio": 1.332,
+      "elbow_width_ratio": 1.089,
+      "neck_vs_torso": null
     },
-    "requested_mode": "auto",
-    "original_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.10443226993083954,
-          "fore_m": 0.07788365334272385,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 0.9326923310071329,
-          "head_shortfall_mm": 66.81932813822233
-        },
-        "right": {
-          "upper_m": 0.10468268394470215,
-          "fore_m": 0.07495778799057007,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 0.931960947165028,
-          "head_shortfall_mm": 67.55071198032725
-        }
-      }
-    },
-    "actual_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.1879781037569046,
-          "fore_m": 0.14019055664539337,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 1.0785450681358675,
-          "head_shortfall_mm": 0.0
-        },
-        "right": {
-          "upper_m": 0.1884288489818573,
-          "fore_m": 0.13492397964000702,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 1.0756733038516202,
-          "head_shortfall_mm": 0.0
-        }
-      }
-    },
-    "reason": "The short-arm rest character uses the validated fitness proportions for a loaded conventional floor pull."
-  },
-  "surface_cleanup": {
-    "schema": 1,
-    "method": "coincident seam weld and local rest-bound corrective surface",
-    "vertices_before": 46261,
-    "vertices_after": 43352,
-    "faces": 52431,
-    "uv_loops": 157293,
-    "uv_and_materials_preserved": true,
-    "skin_weights_preserved": true,
-    "protected_custom_normals_preserved": true,
-    "seam_tolerance_mm": 0.009995116599818636,
-    "max_weld_displacement_mm": 0.0,
-    "max_bind_displacement_mm": 0.00018143349382111312,
-    "corrected_vertices": 3866,
-    "protected_vertices": 28165,
-    "factor": 1.0,
-    "iterations": 20,
-    "arm_emphasis": null,
-    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
-  },
-  "physical": {
-    "profile": {
-      "family": "hinge",
-      "feet": "planted",
-      "mode": "cycle",
-      "holds": true,
-      "overhead": false
-    },
-    "supports": null,
-    "contacts": {
-      "frames": 32,
-      "equipment": "bar",
-      "max_grip_anchor_error_mm": 0.00025548376702168866,
-      "worst_wrist_bend_deg": 14.64381629991025,
-      "max_surface_path_adjustment_mm": 0.0,
-      "path_adjustments": [
-        {
-          "frame": 1,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.12845724609375
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.12845724609374998
-          ]
-        },
-        {
-          "frame": 2,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.1304117661797821
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.13041176617978212
-          ]
-        },
-        {
-          "frame": 3,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.13597463104002724
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.13597463104002727
-          ]
-        },
-        {
-          "frame": 4,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.14469479757770887
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.14469479757770887
-          ]
-        },
-        {
-          "frame": 5,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.1561212226960503
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.15612122269605033
-          ]
-        },
-        {
-          "frame": 6,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.1698028632982749
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.16980286329827488
-          ]
-        },
-        {
-          "frame": 7,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.18528867628760604
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.18528867628760604
-          ]
-        },
-        {
-          "frame": 8,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.20212761856726708
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.20212761856726708
-          ]
-        },
-        {
-          "frame": 9,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.21986864704048142
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.21986864704048142
-          ]
-        },
-        {
-          "frame": 10,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.23806071861047234
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.23806071861047234
-          ]
-        },
-        {
-          "frame": 11,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.2562527901804633
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.2562527901804633
-          ]
-        },
-        {
-          "frame": 12,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.27399381865367767
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.27399381865367767
-          ]
-        },
-        {
-          "frame": 13,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.29083276093333865
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.29083276093333865
-          ]
-        },
-        {
-          "frame": 14,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3063185739226698
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3063185739226698
-          ]
-        },
-        {
-          "frame": 15,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3200002145248944
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3200002145248944
-          ]
-        },
-        {
-          "frame": 16,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3314266396432359
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3314266396432359
-          ]
-        },
-        {
-          "frame": 17,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3401468061809174
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3401468061809174
-          ]
-        },
-        {
-          "frame": 18,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3457096710411626
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3457096710411626
-          ]
-        },
-        {
-          "frame": 19,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ]
-        },
-        {
-          "frame": 20,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ]
-        },
-        {
-          "frame": 21,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3476641911271947
-          ]
-        },
-        {
-          "frame": 22,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3433510915142681
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3433510915142681
-          ]
-        },
-        {
-          "frame": 23,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3314266396432359
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.3314266396432359
-          ]
-        },
-        {
-          "frame": 24,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.313413105965719
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.313413105965719
-          ]
-        },
-        {
-          "frame": 25,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.29083276093333865
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.29083276093333865
-          ]
-        },
-        {
-          "frame": 26,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.26520787499771603
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.26520787499771603
-          ]
-        },
-        {
-          "frame": 27,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.23806071861047234
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.23806071861047234
-          ]
-        },
-        {
-          "frame": 28,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.2109135622232286
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.2109135622232286
-          ]
-        },
-        {
-          "frame": 29,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.18528867628760604
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.18528867628760604
-          ]
-        },
-        {
-          "frame": 30,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.16270833125522574
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.16270833125522577
-          ]
-        },
-        {
-          "frame": 31,
-          "adjustment_mm": 0.0,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.14469479757770887
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.14469479757770887
-          ]
-        },
-        {
-          "frame": 32,
-          "adjustment_mm": 2.7755575615628914e-14,
-          "requested_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.1327703457066766
-          ],
-          "actual_centre": [
-            -0.00026334822177886963,
-            0.060456282820940024,
-            0.13277034570667656
-          ]
-        }
+    "world": {
+      "nose": [
+        -0.2292,
+        -0.19197,
+        -0.6415
       ],
-      "sides": {
-        "left": {
-          "frames": 32,
-          "frames_touching_within_3mm": 32,
-          "nearest_gap_mm_max": 0.023310885091852585,
-          "deepest_inside_bar_mm": 0.794689947102036
-        },
-        "right": {
-          "frames": 32,
-          "frames_touching_within_3mm": 32,
-          "nearest_gap_mm_max": 0.05044158615454333,
-          "deepest_inside_bar_mm": 0.7994799053954874
-        }
-      },
-      "loaded_plates": true,
-      "plate_radius_character_units": 0.12845724609375,
-      "bar_path_source": "provided rig-space floor-pull trajectory",
-      "grip_ratio": 1.45,
-      "requested_grip_ratio": null,
-      "grip_source": "fitted conventional outside-knee grip",
-      "body_clearance": {
-        "status": "clear_at_samples",
-        "worst": null,
-        "measured_frames": 32,
-        "first_frame": 1,
-        "last_frame": 32,
-        "max_penetration_mm": 0.0,
-        "sample_spacing_mm": 12.560264062499993,
-        "triangles": 43067,
-        "frames": []
-      },
-      "grip_calibration": "Source width is uncalibrated; the declared model fit must still pass physical and form checks.",
-      "deadlift_range": {
-        "frames": 32,
-        "start_frame": 1,
-        "lockout_frame": 19,
-        "minimum_elbow_deg": 175.5171564431122,
-        "worst_elbow_frame": 30,
-        "minimum_elbows_deg": {
-          "left": 175.5171564431122,
-          "right": 176.02526219443988
-        },
-        "elbow_extension_shortfall_deg": 0.0,
-        "lockout_hips_deg": {
-          "left": 177.89625067836698,
-          "right": 178.22582308143444
-        },
-        "lockout_knees_deg": {
-          "left": 174.99977565003292,
-          "right": 174.34334691608154
-        },
-        "start_hips_deg": {
-          "left": 81.29295192335505,
-          "right": 81.51867875533632
-        },
-        "start_knees_deg": {
-          "left": 108.38202067173793,
-          "right": 108.1150892293461
-        },
-        "lockout_torso_lean_deg": 3.306651113363206e-06,
-        "hip_lockout_shortfall_deg": 0.0,
-        "knee_lockout_shortfall_deg": 0.0,
-        "start_bar_below_knees_mm": 38.681864738464355,
-        "start_grip_outside_knees_mm": 98.6108048072455,
-        "forward_bar_travel_mm": 219.20692920684814,
-        "limits": {
-          "minimum_elbow_deg": 175.0,
-          "minimum_lockout_hip_deg": 170.0,
-          "maximum_start_hip_deg": 150.0,
-          "maximum_start_knee_deg": 165.0,
-          "minimum_lockout_knee_deg": 170.0,
-          "maximum_lockout_torso_lean_deg": 10.0,
-          "minimum_start_bar_below_knees_mm": 19.98223828125,
-          "minimum_start_grip_outside_knees_mm": 4.9955595703125,
-          "minimum_forward_bar_travel_mm": 99.91119140625,
-          "maximum_start_plate_floor_gap_mm": 5.0,
-          "maximum_plate_floor_penetration_mm": 3.0,
-          "plate_radius_tolerance_mm": 3.0
-        },
-        "ready": true,
-        "failures": [],
-        "per_frame": [
-          {
-            "frame": 1,
-            "elbows_deg": {
-              "left": 176.22036280205577,
-              "right": 176.71028766700996
-            },
-            "knees_deg": {
-              "left": 108.38202067173793,
-              "right": 108.1150892293461
-            },
-            "hips_deg": {
-              "left": 81.29295192335505,
-              "right": 81.51867875533632
-            },
-            "torso_lean_deg": 54.99993789973838,
-            "bar_height_m": 0.12845724821090698,
-            "bar_below_knees_m": 0.038681864738464355,
-            "grip_outside_knees_m": 0.0986108048072455
-          },
-          {
-            "frame": 2,
-            "elbows_deg": {
-              "left": 177.4767856626558,
-              "right": 177.7797098301692
-            },
-            "knees_deg": {
-              "left": 108.35832812438886,
-              "right": 108.0914862077797
-            },
-            "hips_deg": {
-              "left": 81.80965944827112,
-              "right": 82.03786780804492
-            },
-            "torso_lean_deg": 54.50954806729282,
-            "bar_height_m": 0.130411759018898,
-            "bar_below_knees_m": 0.03667059540748596,
-            "grip_outside_knees_m": 0.09859911487729633
-          },
-          {
-            "frame": 3,
-            "elbows_deg": {
-              "left": 177.87077728408846,
-              "right": 177.92652038871714
-            },
-            "knees_deg": {
-              "left": 108.29879416651224,
-              "right": 108.03239552557997
-            },
-            "hips_deg": {
-              "left": 83.30229026853384,
-              "right": 83.53774809454559
-            },
-            "torso_lean_deg": 53.113788727730324,
-            "bar_height_m": 0.13597463071346283,
-            "bar_below_knees_m": 0.03093034029006958,
-            "grip_outside_knees_m": 0.09856246767455981
-          },
-          {
-            "frame": 4,
-            "elbows_deg": {
-              "left": 176.74654412507743,
-              "right": 176.79028482952813
-            },
-            "knees_deg": {
-              "left": 108.23435974698661,
-              "right": 107.96861965250187
-            },
-            "hips_deg": {
-              "left": 85.70879363872,
-              "right": 85.95586525130389
-            },
-            "torso_lean_deg": 50.92585032764483,
-            "bar_height_m": 0.14469479024410248,
-            "bar_below_knees_m": 0.021889299154281616,
-            "grip_outside_knees_m": 0.09849316044098473
-          },
-          {
-            "frame": 5,
-            "elbows_deg": {
-              "left": 177.66271255515852,
-              "right": 177.17760698060877
-            },
-            "knees_deg": {
-              "left": 108.22074878225237,
-              "right": 107.95664977915025
-            },
-            "hips_deg": {
-              "left": 88.98888890578574,
-              "right": 89.25189231904916
-            },
-            "torso_lean_deg": 48.05887655214915,
-            "bar_height_m": 0.15612122416496277,
-            "bar_below_knees_m": 0.009977370500564575,
-            "grip_outside_knees_m": 0.09838006138926103
-          },
-          {
-            "frame": 6,
-            "elbows_deg": {
-              "left": 176.871036821783,
-              "right": 177.63211595831845
-            },
-            "knees_deg": {
-              "left": 108.06990480025145,
-              "right": 107.80957105068919
-            },
-            "hips_deg": {
-              "left": 93.00121845316605,
-              "right": 93.28451245113672
-            },
-            "torso_lean_deg": 44.62607264245295,
-            "bar_height_m": 0.16980285942554474,
-            "bar_below_knees_m": -0.004547670483589172,
-            "grip_outside_knees_m": 0.09821470458820425
-          },
-          {
-            "frame": 7,
-            "elbows_deg": {
-              "left": 177.13823441564963,
-              "right": 177.43268613376947
-            },
-            "knees_deg": {
-              "left": 108.4580082866834,
-              "right": 108.2022398818664
-            },
-            "hips_deg": {
-              "left": 97.93610514612793,
-              "right": 98.24293511595148
-            },
-            "torso_lean_deg": 40.740589645251035,
-            "bar_height_m": 0.1852886825799942,
-            "bar_below_knees_m": -0.020804017782211304,
-            "grip_outside_knees_m": 0.09799399769037992
-          },
-          {
-            "frame": 8,
-            "elbows_deg": {
-              "left": 178.37931731241827,
-              "right": 176.47251651242752
-            },
-            "knees_deg": {
-              "left": 109.55204755949423,
-              "right": 109.30203280395118
-            },
-            "hips_deg": {
-              "left": 103.7464203820233,
-              "right": 104.0792029419114
-            },
-            "torso_lean_deg": 36.515594352308796,
-            "bar_height_m": 0.2021276205778122,
-            "bar_below_knees_m": -0.03821121156215668,
-            "grip_outside_knees_m": 0.09772890895542517
-          },
-          {
-            "frame": 9,
-            "elbows_deg": {
-              "left": 176.60662653685074,
-              "right": 177.6168902435911
-            },
-            "knees_deg": {
-              "left": 110.97177604469451,
-              "right": 110.73051368633583
-            },
-            "hips_deg": {
-              "left": 110.14188216971363,
-              "right": 110.5027107119471
-            },
-            "torso_lean_deg": 32.06426248420634,
-            "bar_height_m": 0.21986864507198334,
-            "bar_below_knees_m": -0.0565619021654129,
-            "grip_outside_knees_m": 0.09743160528058248
-          },
-          {
-            "frame": 10,
-            "elbows_deg": {
-              "left": 176.02195148473018,
-              "right": 178.21820390978118
-            },
-            "knees_deg": {
-              "left": 112.87975415296478,
-              "right": 112.65025144711129
-            },
-            "hips_deg": {
-              "left": 117.02025507245173,
-              "right": 117.40987958916914
-            },
-            "torso_lean_deg": 27.499775589236677,
-            "bar_height_m": 0.23806071281433105,
-            "bar_below_knees_m": -0.07521829009056091,
-            "grip_outside_knees_m": 0.09712273385323138
-          },
-          {
-            "frame": 11,
-            "elbows_deg": {
-              "left": 178.32642708694374,
-              "right": 178.00972174590547
-            },
-            "knees_deg": {
-              "left": 116.34044252095232,
-              "right": 116.12267174700857
-            },
-            "hips_deg": {
-              "left": 124.58469746424056,
-              "right": 125.00132188265565
-            },
-            "torso_lean_deg": 22.93531284478781,
-            "bar_height_m": 0.25625279545783997,
-            "bar_below_knees_m": -0.09279142320156097,
-            "grip_outside_knees_m": 0.09685403013666308
-          },
-          {
-            "frame": 12,
-            "elbows_deg": {
-              "left": 176.92097846361378,
-              "right": 176.56601290932065
-            },
-            "knees_deg": {
-              "left": 120.573946889234,
-              "right": 120.36962483962255
-            },
-            "hips_deg": {
-              "left": 132.33801350644586,
-              "right": 132.77964270081716
-            },
-            "torso_lean_deg": 18.48402664597085,
-            "bar_height_m": 0.2739938199520111,
-            "bar_below_knees_m": -0.10935206711292267,
-            "grip_outside_knees_m": 0.09663315078427731
-          },
-          {
-            "frame": 13,
-            "elbows_deg": {
-              "left": 175.63292021019097,
-              "right": 177.65267653128063
-            },
-            "knees_deg": {
-              "left": 125.94640257270434,
-              "right": 125.7554263388545
-            },
-            "hips_deg": {
-              "left": 140.21330004193905,
-              "right": 140.67642780706947
-            },
-            "torso_lean_deg": 14.259084483066257,
-            "bar_height_m": 0.2908327579498291,
-            "bar_below_knees_m": -0.12413349747657776,
-            "grip_outside_knees_m": 0.09648382096213513
-          },
-          {
-            "frame": 14,
-            "elbows_deg": {
-              "left": 176.72381704065506,
-              "right": 177.04008515490142
-            },
-            "knees_deg": {
-              "left": 132.0491468909073,
-              "right": 131.870941704765
-            },
-            "hips_deg": {
-              "left": 147.87562733347323,
-              "right": 148.35644068331132
-            },
-            "torso_lean_deg": 10.373659434531513,
-            "bar_height_m": 0.30631858110427856,
-            "bar_below_knees_m": -0.13703331351280212,
-            "grip_outside_knees_m": 0.09639253162531859
-          },
-          {
-            "frame": 15,
-            "elbows_deg": {
-              "left": 176.52309315175242,
-              "right": 176.57364123333215
-            },
-            "knees_deg": {
-              "left": 139.58574413250582,
-              "right": 139.41498876055843
-            },
-            "hips_deg": {
-              "left": 155.40310266585425,
-              "right": 155.89610539630928
-            },
-            "torso_lean_deg": 6.940918899579376,
-            "bar_height_m": 0.32000020146369934,
-            "bar_below_knees_m": -0.14728336036205292,
-            "grip_outside_knees_m": 0.09637770106196966
-          },
-          {
-            "frame": 16,
-            "elbows_deg": {
-              "left": 177.330382997718,
-              "right": 177.09139812583237
-            },
-            "knees_deg": {
-              "left": 149.29989434088628,
-              "right": 149.1212204093252
-            },
-            "hips_deg": {
-              "left": 162.90733804625398,
-              "right": 163.4037755229289
-            },
-            "torso_lean_deg": 4.07401087626125,
-            "bar_height_m": 0.3314266502857208,
-            "bar_below_knees_m": -0.15449610352516174,
-            "grip_outside_knees_m": 0.09642735374064562
-          },
-          {
-            "frame": 17,
-            "elbows_deg": {
-              "left": 176.96831555483905,
-              "right": 176.65944252294128
-            },
-            "knees_deg": {
-              "left": 158.9908228561158,
-              "right": 158.781347017057
-            },
-            "hips_deg": {
-              "left": 169.45923769912218,
-              "right": 169.9484457375221
-            },
-            "torso_lean_deg": 1.8861153030615383,
-            "bar_height_m": 0.3401468098163605,
-            "bar_below_knees_m": -0.1598886102437973,
-            "grip_outside_knees_m": 0.0964599379615134
-          },
-          {
-            "frame": 18,
-            "elbows_deg": {
-              "left": 177.75831788822416,
-              "right": 177.06974051350778
-            },
-            "knees_deg": {
-              "left": 169.66085578097503,
-              "right": 169.3056721223978
-            },
-            "hips_deg": {
-              "left": 175.27211728839524,
-              "right": 175.71053716544898
-            },
-            "torso_lean_deg": 0.49038877824340704,
-            "bar_height_m": 0.3457096815109253,
-            "bar_below_knees_m": -0.16300785541534424,
-            "grip_outside_knees_m": 0.09646576512803828
-          },
-          {
-            "frame": 19,
-            "elbows_deg": {
-              "left": 176.19114684792547,
-              "right": 176.92834941751488
-            },
-            "knees_deg": {
-              "left": 174.99977565003292,
-              "right": 174.34334691608154
-            },
-            "hips_deg": {
-              "left": 177.89625067836698,
-              "right": 178.22582308143444
-            },
-            "torso_lean_deg": 3.306651113363206e-06,
-            "bar_height_m": 0.3476641774177551,
-            "bar_below_knees_m": -0.16432906687259674,
-            "grip_outside_knees_m": 0.09644392441076104
-          },
-          {
-            "frame": 20,
-            "elbows_deg": {
-              "left": 176.19115103826007,
-              "right": 176.92834941751488
-            },
-            "knees_deg": {
-              "left": 174.99977565003292,
-              "right": 174.34334691608154
-            },
-            "hips_deg": {
-              "left": 177.89625067836698,
-              "right": 178.22582308143444
-            },
-            "torso_lean_deg": 3.306651113363206e-06,
-            "bar_height_m": 0.3476641774177551,
-            "bar_below_knees_m": -0.16432906687259674,
-            "grip_outside_knees_m": 0.09644390950983364
-          },
-          {
-            "frame": 21,
-            "elbows_deg": {
-              "left": 176.19115272924563,
-              "right": 176.92835625291056
-            },
-            "knees_deg": {
-              "left": 174.99977565003292,
-              "right": 174.34334691608154
-            },
-            "hips_deg": {
-              "left": 177.89625067836698,
-              "right": 178.22582308143444
-            },
-            "torso_lean_deg": 3.306651113363206e-06,
-            "bar_height_m": 0.3476641774177551,
-            "bar_below_knees_m": -0.16432906687259674,
-            "grip_outside_knees_m": 0.09644390942636157
-          },
-          {
-            "frame": 22,
-            "elbows_deg": {
-              "left": 176.33274423619002,
-              "right": 177.16836313984214
-            },
-            "knees_deg": {
-              "left": 163.0128875450399,
-              "right": 162.77720895210365
-            },
-            "hips_deg": {
-              "left": 172.03641224823357,
-              "right": 172.5174328980308
-            },
-            "torso_lean_deg": 1.0821571026600665,
-            "bar_height_m": 0.3433510959148407,
-            "bar_below_knees_m": -0.16202957928180695,
-            "grip_outside_knees_m": 0.0964607385486915
-          },
-          {
-            "frame": 23,
-            "elbows_deg": {
-              "left": 177.33037655473885,
-              "right": 177.0913543675106
-            },
-            "knees_deg": {
-              "left": 149.29989434088628,
-              "right": 149.1212204093252
-            },
-            "hips_deg": {
-              "left": 162.90733804625398,
-              "right": 163.4037755229289
-            },
-            "torso_lean_deg": 4.07401087626125,
-            "bar_height_m": 0.3314266502857208,
-            "bar_below_knees_m": -0.15449610352516174,
-            "grip_outside_knees_m": 0.09642733888052606
-          },
-          {
-            "frame": 24,
-            "elbows_deg": {
-              "left": 177.85954565528436,
-              "right": 177.9624335251353
-            },
-            "knees_deg": {
-              "left": 136.58848576551839,
-              "right": 136.4115335795715
-            },
-            "hips_deg": {
-              "left": 152.00422006107163,
-              "right": 152.4905086257137
-            },
-            "torso_lean_deg": 8.593632358681868,
-            "bar_height_m": 0.3134131133556366,
-            "bar_below_knees_m": -0.14189596474170685,
-            "grip_outside_knees_m": 0.09640452108665663
-          },
-          {
-            "frame": 25,
-            "elbows_deg": {
-              "left": 175.5423216034817,
-              "right": 176.38445967024595
-            },
-            "knees_deg": {
-              "left": 126.31637315729046,
-              "right": 126.12420488737936
-            },
-            "hips_deg": {
-              "left": 140.34541458980067,
-              "right": 140.8080427164781
-            },
-            "torso_lean_deg": 14.259087383625582,
-            "bar_height_m": 0.2908327579498291,
-            "bar_below_knees_m": -0.123864084482193,
-            "grip_outside_knees_m": 0.0964968712116692
-          },
-          {
-            "frame": 26,
-            "elbows_deg": {
-              "left": 177.36285801674015,
-              "right": 176.15786304754738
-            },
-            "knees_deg": {
-              "left": 118.64404824100913,
-              "right": 118.4319408416453
-            },
-            "hips_deg": {
-              "left": 128.55323847930947,
-              "right": 128.98232021236907
-            },
-            "torso_lean_deg": 20.68843968641813,
-            "bar_height_m": 0.2652078866958618,
-            "bar_below_knees_m": -0.10101109743118286,
-            "grip_outside_knees_m": 0.09674664783872795
-          },
-          {
-            "frame": 27,
-            "elbows_deg": {
-              "left": 175.72962871862882,
-              "right": 177.90171090000888
-            },
-            "knees_deg": {
-              "left": 113.4822186474102,
-              "right": 113.25099542741867
-            },
-            "hips_deg": {
-              "left": 117.24519739775974,
-              "right": 117.63409951472742
-            },
-            "torso_lean_deg": 27.499775595510872,
-            "bar_height_m": 0.23806071281433105,
-            "bar_below_knees_m": -0.0747479796409607,
-            "grip_outside_knees_m": 0.09713996398616223
-          },
-          {
-            "frame": 28,
-            "elbows_deg": {
-              "left": 177.13687409656168,
-              "right": 177.15566266082644
-            },
-            "knees_deg": {
-              "left": 110.46243251639042,
-              "right": 110.2156672663837
-            },
-            "hips_deg": {
-              "left": 106.9735576657846,
-              "right": 107.31989346498136
-            },
-            "torso_lean_deg": 34.3111538640619,
-            "bar_height_m": 0.21091356873512268,
-            "bar_below_knees_m": -0.04711763560771942,
-            "grip_outside_knees_m": 0.09758819684202232
-          },
-          {
-            "frame": 29,
-            "elbows_deg": {
-              "left": 176.73253858439108,
-              "right": 177.49127220789316
-            },
-            "knees_deg": {
-              "left": 109.01747364134255,
-              "right": 108.76014403862682
-            },
-            "hips_deg": {
-              "left": 98.15748446980807,
-              "right": 98.46371797633161
-            },
-            "torso_lean_deg": 40.74059074686714,
-            "bar_height_m": 0.1852886825799942,
-            "bar_below_knees_m": -0.020397961139678955,
-            "grip_outside_knees_m": 0.09799946035272002
-          },
-          {
-            "frame": 30,
-            "elbows_deg": {
-              "left": 175.5171564431122,
-              "right": 176.8019823424513
-            },
-            "knees_deg": {
-              "left": 108.53592679909734,
-              "right": 108.27226640649064
-            },
-            "hips_deg": {
-              "left": 91.05853861583682,
-              "right": 91.33079879269086
-            },
-            "torso_lean_deg": 46.40614389135928,
-            "bar_height_m": 0.1627083271741867,
-            "bar_below_knees_m": 0.0032772868871688843,
-            "grip_outside_knees_m": 0.09830604876896866
-          },
-          {
-            "frame": 31,
-            "elbows_deg": {
-              "left": 176.68101722635996,
-              "right": 176.02526219443988
-            },
-            "knees_deg": {
-              "left": 108.50985047599781,
-              "right": 108.24322490006249
-            },
-            "hips_deg": {
-              "left": 85.82111847546247,
-              "right": 86.06789251282116
-            },
-            "torso_lean_deg": 50.92584119675386,
-            "bar_height_m": 0.14469479024410248,
-            "bar_below_knees_m": 0.022075459361076355,
-            "grip_outside_knees_m": 0.0984923541728692
-          },
-          {
-            "frame": 32,
-            "elbows_deg": {
-              "left": 175.7900609123314,
-              "right": 177.9807894045471
-            },
-            "knees_deg": {
-              "left": 108.60693941478625,
-              "right": 108.33932595775069
-            },
-            "hips_deg": {
-              "left": 82.55133854491751,
-              "right": 82.7822895502141
-            },
-            "torso_lean_deg": 53.91776126846911,
-            "bar_height_m": 0.1327703446149826,
-            "bar_below_knees_m": 0.03442269563674927,
-            "grip_outside_knees_m": 0.09858335953206837
-          }
-        ],
-        "first_frame": 1,
-        "last_frame": 32,
-        "height_m": 0.9991119140625,
-        "phase_frames": {
-          "start": 1,
-          "middle": 10,
-          "end": 19
-        },
-        "plate_floor": {
-          "frames": 32,
-          "first_frame": 1,
-          "last_frame": 32,
-          "start_frame": 1,
-          "missing_loaded_plates": 0,
-          "start_floor_gaps_mm": {
-            "left": 0.0,
-            "right": 0.0
-          },
-          "start_floor_gap_mm": 0.0,
-          "max_floor_penetration_mm": 0.0,
-          "radii_mm": {
-            "left": {
-              "minimum": 128.45725492941267,
-              "maximum": 128.45726696557242
-            },
-            "right": {
-              "minimum": 128.45725492941267,
-              "maximum": 128.45726696557242
-            }
-          },
-          "method": "evaluated full-size disc mesh components; actual world-space lowest plate vertex in every frame",
-          "per_frame": [
-            {
-              "frame": 1,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 0.0
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 0.0
-                }
-              }
-            },
-            {
-              "frame": 2,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 1.9545108079910278
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 1.9545108079910278
-                }
-              }
-            },
-            {
-              "frame": 3,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 7.517382502555847
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 7.517382502555847
-                }
-              }
-            },
-            {
-              "frame": 4,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 16.237542033195496
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 16.237542033195496
-                }
-              }
-            },
-            {
-              "frame": 5,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 27.663975954055786
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 27.663975954055786
-                }
-              }
-            },
-            {
-              "frame": 6,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 41.345611214637756
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 41.345611214637756
-                }
-              }
-            },
-            {
-              "frame": 7,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 56.83143436908722
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 56.83143436908722
-                }
-              }
-            },
-            {
-              "frame": 8,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 73.67037236690521
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 73.67037236690521
-                }
-              }
-            },
-            {
-              "frame": 9,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 91.41139686107635
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 91.41139686107635
-                }
-              }
-            },
-            {
-              "frame": 10,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 109.60346460342407
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 109.60346460342407
-                }
-              }
-            },
-            {
-              "frame": 11,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 127.79554724693298
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 127.79554724693298
-                }
-              }
-            },
-            {
-              "frame": 12,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 145.53657174110413
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 145.53657174110413
-                }
-              }
-            },
-            {
-              "frame": 13,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 162.37550973892212
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 162.37550973892212
-                }
-              }
-            },
-            {
-              "frame": 14,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 177.86133289337158
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 177.86133289337158
-                }
-              }
-            },
-            {
-              "frame": 15,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 191.54295325279236
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 191.54295325279236
-                }
-              }
-            },
-            {
-              "frame": 16,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 202.96940207481384
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 202.96940207481384
-                }
-              }
-            },
-            {
-              "frame": 17,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 211.6895616054535
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 211.6895616054535
-                }
-              }
-            },
-            {
-              "frame": 18,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 217.2524333000183
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 217.2524333000183
-                }
-              }
-            },
-            {
-              "frame": 19,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                }
-              }
-            },
-            {
-              "frame": 20,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                }
-              }
-            },
-            {
-              "frame": 21,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 219.20692920684814
-                }
-              }
-            },
-            {
-              "frame": 22,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45725492941267,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 214.89384770393372
-                },
-                "right": {
-                  "radius_mm": 128.45725492941267,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 214.89384770393372
-                }
-              }
-            },
-            {
-              "frame": 23,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 202.96940207481384
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 202.96940207481384
-                }
-              }
-            },
-            {
-              "frame": 24,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 184.95586514472961
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 184.95586514472961
-                }
-              }
-            },
-            {
-              "frame": 25,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 162.37550973892212
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 162.37550973892212
-                }
-              }
-            },
-            {
-              "frame": 26,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 136.75063848495483
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 136.75063848495483
-                }
-              }
-            },
-            {
-              "frame": 27,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 109.60346460342407
-                },
-                "right": {
-                  "radius_mm": 128.45726696557242,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 109.60346460342407
-                }
-              }
-            },
-            {
-              "frame": 28,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 82.4563205242157
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 82.4563205242157
-                }
-              }
-            },
-            {
-              "frame": 29,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 56.83143436908722
-                },
-                "right": {
-                  "radius_mm": 128.4572564288603,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 56.83143436908722
-                }
-              }
-            },
-            {
-              "frame": 30,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 34.251078963279724
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 34.251078963279724
-                }
-              }
-            },
-            {
-              "frame": 31,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 16.237542033195496
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 16.237542033195496
-                }
-              }
-            },
-            {
-              "frame": 32,
-              "mesh_vertex_count": 732,
-              "mesh_polygon_count": 630,
-              "plates": {
-                "left": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 356,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 4.313096404075623
-                },
-                "right": {
-                  "radius_mm": 128.45726311206818,
-                  "vertex_count": 48,
-                  "lowest_vertex_index": 648,
-                  "polygon_count": 26,
-                  "lowest_world_z_mm": 4.313096404075623
-                }
-              }
-            }
-          ]
-        },
-        "plate_mesh": {
-          "shaft_centre_local_m": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "plates": {
-            "left": {
-              "vertex_indices": [
-                344,
-                345,
-                346,
-                347,
-                348,
-                349,
-                350,
-                351,
-                352,
-                353,
-                354,
-                355,
-                356,
-                357,
-                358,
-                359,
-                360,
-                361,
-                362,
-                363,
-                364,
-                365,
-                366,
-                367,
-                368,
-                369,
-                370,
-                371,
-                372,
-                373,
-                374,
-                375,
-                376,
-                377,
-                378,
-                379,
-                380,
-                381,
-                382,
-                383,
-                384,
-                385,
-                386,
-                387,
-                388,
-                389,
-                390,
-                391
-              ],
-              "radius_m": 0.12845725116050413,
-              "polygon_count": 26,
-              "axial_thickness_m": 0.015985846519470215,
-              "centre_local_m": [
-                -0.5095470547676086,
-                0.0,
-                0.0
-              ]
-            },
-            "right": {
-              "vertex_indices": [
-                636,
-                637,
-                638,
-                639,
-                640,
-                641,
-                642,
-                643,
-                644,
-                645,
-                646,
-                647,
-                648,
-                649,
-                650,
-                651,
-                652,
-                653,
-                654,
-                655,
-                656,
-                657,
-                658,
-                659,
-                660,
-                661,
-                662,
-                663,
-                664,
-                665,
-                666,
-                667,
-                668,
-                669,
-                670,
-                671,
-                672,
-                673,
-                674,
-                675,
-                676,
-                677,
-                678,
-                679,
-                680,
-                681,
-                682,
-                683
-              ],
-              "radius_m": 0.12845725116050413,
-              "polygon_count": 26,
-              "axial_thickness_m": 0.015985846519470215,
-              "centre_local_m": [
-                0.5095470547676086,
-                0.0,
-                0.0
-              ]
-            }
-          },
-          "expected_plate_radius_m": 0.12845724609375,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630
-        }
-      }
-    },
-    "validation": {
-      "rows": [
-        {
-          "group": "body",
-          "metric": "equipment_gap_left",
-          "target": 3.0,
-          "ours": 0.023310885091852585,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_penetration_left",
-          "target": 3.0,
-          "ours": 0.794689947102036,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_gap_right",
-          "target": 3.0,
-          "ours": 0.05044158615454333,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_penetration_right",
-          "target": 3.0,
-          "ours": 0.7994799053954874,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_anchor_error",
-          "target": 2.0,
-          "ours": 0.00025548376702168866,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_path_adaptation",
-          "target": 20.0,
-          "ours": 2.7755575615628914e-14,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Reach adaptation changes the photographed equipment path.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_body_overlap",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_elbow_extension_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": "Both lifting elbows must remain at least 175 degrees throughout the rep.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_start_hip_excess",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_start_knee_excess",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_hip_lockout_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_knee_lockout_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_lockout_torso_lean",
-          "target": 10.0,
-          "ours": 3.306651113363206e-06,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": "Hip and knee lockout and upright torso must occur at the recorded end phase.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_start_bar_height_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_grip_outside_knees_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_bar_travel_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_missing_loaded_plates",
-          "target": 0.0,
-          "ours": 0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "plates",
-          "note": "Both full-size weight-disc meshes must be present; a bare bar or decorative rim does not establish a floor pull.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_plate_start_floor_gap",
-          "target": 5.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Both actual lowest plate vertices must reach the floor at the recorded start phase.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "deadlift_plate_floor_penetration",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Actual evaluated plate vertices must stay above the floor throughout every frame.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "foot_floor_gap_left",
-          "target": 5.0,
-          "ours": 0.00027088503884442616,
-          "status": "pass",
-          "unit": "mm",
-          "frame": 1,
-          "kind": null,
-          "note": "Feet must reach the floor.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "foot_floor_gap_right",
-          "target": 5.0,
-          "ours": 0.0002633871076795913,
-          "status": "pass",
-          "unit": "mm",
-          "frame": 1,
-          "kind": null,
-          "note": "Feet must reach the floor.",
-          "uncertain_why": null
-        }
+      "left_eye_inner": [
+        -0.20672,
+        -0.24113,
+        -0.63916
       ],
-      "ready": true
+      "left_eye": [
+        -0.20385,
+        -0.23497,
+        -0.62898
+      ],
+      "left_eye_outer": [
+        -0.20742,
+        -0.23453,
+        -0.63295
+      ],
+      "right_eye_inner": [
+        -0.23657,
+        -0.24278,
+        -0.63191
+      ],
+      "right_eye": [
+        -0.23413,
+        -0.24922,
+        -0.64958
+      ],
+      "right_eye_outer": [
+        -0.21954,
+        -0.24357,
+        -0.6235
+      ],
+      "left_ear": [
+        -0.06466,
+        -0.2727,
+        -0.57978
+      ],
+      "right_ear": [
+        -0.19555,
+        -0.22604,
+        -0.48743
+      ],
+      "mouth_left": [
+        -0.17452,
+        -0.19648,
+        -0.60749
+      ],
+      "mouth_right": [
+        -0.18681,
+        -0.17957,
+        -0.60804
+      ],
+      "left_shoulder": [
+        0.09524,
+        -0.14976,
+        -0.4482
+      ],
+      "right_shoulder": [
+        -0.26067,
+        -0.20239,
+        -0.2494
+      ],
+      "left_elbow": [
+        0.12649,
+        0.08041,
+        -0.47706
+      ],
+      "right_elbow": [
+        -0.26847,
+        0.0694,
+        -0.26668
+      ],
+      "left_wrist": [
+        0.17833,
+        0.33918,
+        -0.37331
+      ],
+      "right_wrist": [
+        -0.36377,
+        0.31107,
+        -0.30213
+      ],
+      "left_pinky": [
+        0.20616,
+        0.40701,
+        -0.38793
+      ],
+      "right_pinky": [
+        -0.36414,
+        0.34845,
+        -0.35197
+      ],
+      "left_index": [
+        0.14742,
+        0.46021,
+        -0.41702
+      ],
+      "right_index": [
+        -0.33137,
+        0.31457,
+        -0.36771
+      ],
+      "left_thumb": [
+        0.17401,
+        0.39404,
+        -0.38539
+      ],
+      "right_thumb": [
+        -0.34569,
+        0.32217,
+        -0.3244
+      ],
+      "left_hip": [
+        0.10322,
+        0.00598,
+        -0.02479
+      ],
+      "right_hip": [
+        -0.10407,
+        -0.0101,
+        0.02276
+      ],
+      "left_knee": [
+        0.06584,
+        0.30016,
+        -0.32907
+      ],
+      "right_knee": [
+        -0.28835,
+        0.15158,
+        -0.15794
+      ],
+      "left_ankle": [
+        0.13312,
+        0.62178,
+        -0.11412
+      ],
+      "right_ankle": [
+        -0.1618,
+        0.56368,
+        0.08985
+      ],
+      "left_heel": [
+        0.12157,
+        0.66433,
+        -0.0829
+      ],
+      "right_heel": [
+        -0.16371,
+        0.60672,
+        0.07618
+      ],
+      "left_foot_index": [
+        0.09979,
+        0.73075,
+        -0.1376
+      ],
+      "right_foot_index": [
+        -0.29867,
+        0.66033,
+        0.02561
+      ]
+    },
+    "pixels": {
+      "nose": [
+        341.67,
+        157.53
+      ],
+      "left_eye_inner": [
+        345.86,
+        146.45
+      ],
+      "left_eye": [
+        349.71,
+        146.05
+      ],
+      "left_eye_outer": [
+        354.98,
+        145.49
+      ],
+      "right_eye_inner": [
+        338.3,
+        146.11
+      ],
+      "right_eye": [
+        336.08,
+        145.42
+      ],
+      "right_eye_outer": [
+        333.9,
+        144.85
+      ],
+      "left_ear": [
+        371.98,
+        141.7
+      ],
+      "right_ear": [
+        338.72,
+        143.66
+      ],
+      "mouth_left": [
+        352.07,
+        165.12
+      ],
+      "mouth_right": [
+        341.14,
+        165.39
+      ],
+      "left_shoulder": [
+        419.34,
+        172.26
+      ],
+      "right_shoulder": [
+        333.96,
+        186.5
+      ],
+      "left_elbow": [
+        442.91,
+        252.18
+      ],
+      "right_elbow": [
+        329.5,
+        252.76
+      ],
+      "left_wrist": [
+        463.71,
+        332.41
+      ],
+      "right_wrist": [
+        322.13,
+        316.95
+      ],
+      "left_pinky": [
+        470.88,
+        352.14
+      ],
+      "right_pinky": [
+        320.1,
+        333.4
+      ],
+      "left_index": [
+        457.21,
+        354.46
+      ],
+      "right_index": [
+        328.3,
+        331.66
+      ],
+      "left_thumb": [
+        454.31,
+        349.83
+      ],
+      "right_thumb": [
+        331.66,
+        326.73
+      ],
+      "left_hip": [
+        437.11,
+        232.08
+      ],
+      "right_hip": [
+        389.31,
+        237.55
+      ],
+      "left_knee": [
+        430.81,
+        289.56
+      ],
+      "right_knee": [
+        348.89,
+        279.64
+      ],
+      "left_ankle": [
+        452.5,
+        371.92
+      ],
+      "right_ankle": [
+        382.67,
+        357.86
+      ],
+      "left_heel": [
+        459.29,
+        382.82
+      ],
+      "right_heel": [
+        398.4,
+        369.74
+      ],
+      "left_foot_index": [
+        439.27,
+        403.38
+      ],
+      "right_foot_index": [
+        362.08,
+        390.1
+      ]
+    },
+    "visibility": {
+      "left_shoulder": 1.0,
+      "right_shoulder": 1.0,
+      "left_elbow": 0.999,
+      "right_elbow": 0.999,
+      "left_wrist": 0.999,
+      "right_wrist": 0.999,
+      "left_hip": 1.0,
+      "right_hip": 1.0,
+      "left_knee": 0.997,
+      "right_knee": 0.961,
+      "left_ankle": 0.976,
+      "right_ankle": 0.869
     }
   },
-  "contact": {
-    "penetration_mm": 0.0,
-    "penetration_frame": 27,
-    "sides": {
-      "left": {
-        "sole_vertices": 512,
-        "sole_slide_mm": 0.47,
-        "slide_frame": 19,
-        "sole_lift_mm": 0.63,
-        "initial_floor_gap_mm": 0.00027088503884442616
-      },
-      "right": {
-        "sole_vertices": 531,
-        "sole_slide_mm": 0.34,
-        "slide_frame": 19,
-        "sole_lift_mm": 0.52,
-        "initial_floor_gap_mm": 0.0002633871076795913
-      }
+  "img-dd038b45": {
+    "image": "img-dd038b45.jpg",
+    "size": [
+      850,
+      567
+    ],
+    "view": "frontal",
+    "shoulder_span": 0.695,
+    "camera_side": "left",
+    "facing": null,
+    "crop": [
+      0.2993,
+      0.0,
+      0.6281,
+      1.0
+    ],
+    "flat": {
+      "knee_included": 177.211,
+      "hip_included": 164.669,
+      "elbow_included": 166.889,
+      "upperarm_vs_torso": 22.127,
+      "torso_lean": 2.91,
+      "hip_below_knee": -0.719,
+      "thigh_level": -86.218,
+      "grip_ratio": 1.456,
+      "elbow_width_ratio": 1.35,
+      "back_rounding": null,
+      "back_seen": null,
+      "back_span": null,
+      "back_why": null,
+      "neck_vs_torso": null,
+      "head_pitch": null,
+      "seat_below_knee": null
     },
-    "box": [
-      [
-        -0.1949324607849121,
-        -0.198963463306427,
-        -6.97060897891788e-08
+    "3d": {
+      "knee_included": 159.886,
+      "hip_included": 152.619,
+      "elbow_included": 164.482,
+      "upperarm_vs_torso": 32.012,
+      "torso_lean": 17.396,
+      "hip_below_knee": -0.865,
+      "thigh_level": -81.918,
+      "grip_ratio": 1.35,
+      "elbow_width_ratio": 1.223,
+      "neck_vs_torso": null
+    },
+    "world": {
+      "nose": [
+        -0.03328,
+        -0.60156,
+        -0.40124
       ],
-      [
-        0.19429180026054382,
-        0.4134066104888916,
-        0.9944947957992554
+      "left_eye_inner": [
+        -0.0079,
+        -0.62215,
+        -0.40445
+      ],
+      "left_eye": [
+        -0.00754,
+        -0.61987,
+        -0.39122
+      ],
+      "left_eye_outer": [
+        -0.00794,
+        -0.62211,
+        -0.39497
+      ],
+      "right_eye_inner": [
+        -0.02587,
+        -0.6317,
+        -0.40689
+      ],
+      "right_eye": [
+        -0.02534,
+        -0.63079,
+        -0.42063
+      ],
+      "right_eye_outer": [
+        -0.01973,
+        -0.61639,
+        -0.39869
+      ],
+      "left_ear": [
+        0.07611,
+        -0.60718,
+        -0.33217
+      ],
+      "right_ear": [
+        -0.03853,
+        -0.56643,
+        -0.28735
+      ],
+      "mouth_left": [
+        0.01054,
+        -0.58835,
+        -0.36115
+      ],
+      "mouth_right": [
+        -0.01632,
+        -0.55771,
+        -0.37596
+      ],
+      "left_shoulder": [
+        0.19218,
+        -0.43875,
+        -0.21195
+      ],
+      "right_shoulder": [
+        -0.10672,
+        -0.50791,
+        -0.07057
+      ],
+      "left_elbow": [
+        0.24998,
+        -0.24393,
+        -0.18349
+      ],
+      "right_elbow": [
+        -0.14742,
+        -0.22126,
+        -0.07275
+      ],
+      "left_wrist": [
+        0.25365,
+        -0.00438,
+        -0.15254
+      ],
+      "right_wrist": [
+        -0.20179,
+        -0.0226,
+        -0.1335
+      ],
+      "left_pinky": [
+        0.24419,
+        0.04812,
+        -0.15614
+      ],
+      "right_pinky": [
+        -0.19408,
+        0.02427,
+        -0.17365
+      ],
+      "left_index": [
+        0.20082,
+        0.06153,
+        -0.1817
+      ],
+      "right_index": [
+        -0.16446,
+        0.00812,
+        -0.20078
+      ],
+      "left_thumb": [
+        0.24132,
+        0.03086,
+        -0.16124
+      ],
+      "right_thumb": [
+        -0.18841,
+        -0.01241,
+        -0.15477
+      ],
+      "left_hip": [
+        0.09174,
+        0.0083,
+        -0.0121
+      ],
+      "right_hip": [
+        -0.09032,
+        -0.01163,
+        0.01293
+      ],
+      "left_knee": [
+        0.14485,
+        0.43594,
+        0.01733
+      ],
+      "right_knee": [
+        -0.03701,
+        0.3477,
+        0.10642
+      ],
+      "left_ankle": [
+        0.21311,
+        0.76782,
+        0.16492
+      ],
+      "right_ankle": [
+        -0.03126,
+        0.73309,
+        0.27531
+      ],
+      "left_heel": [
+        0.19348,
+        0.80267,
+        0.17846
+      ],
+      "right_heel": [
+        -0.03569,
+        0.76608,
+        0.25074
+      ],
+      "left_foot_index": [
+        0.10048,
+        0.82123,
+        0.07699
+      ],
+      "right_foot_index": [
+        -0.12008,
+        0.76369,
+        0.17658
       ]
-    ]
-  },
-  "deformation": {
-    "crack_max_mm": 0.0,
-    "max_growth_mm": 39.28044980005679,
-    "growth_frame": 1,
-    "coincident_unconnected_pairs": 22773,
-    "deepest_frame": 1,
-    "deepest": {
-      "max_growth_mm": 39.28044980005679,
-      "max_growth_pct": 3.931536522303905,
-      "edges_over_1pct": 346,
-      "edges_over_0_5pct": 789,
-      "worst_edge_at": [
-        -0.0618,
-        -0.0527,
-        0.4146
+    },
+    "pixels": {
+      "nose": [
+        387.51,
+        74.13
       ],
-      "worst_edge_posed_at": [
-        -0.0734,
-        -0.1725,
-        0.3514
+      "left_eye_inner": [
+        394.09,
+        64.18
       ],
-      "worst_edge_rest_mm": 21.683160387471865,
-      "crack_max_mm": 0.0,
-      "skin_max_move_mm": 742.493476739301
+      "left_eye": [
+        397.87,
+        63.75
+      ],
+      "left_eye_outer": [
+        402.31,
+        63.4
+      ],
+      "right_eye_inner": [
+        384.68,
+        65.1
+      ],
+      "right_eye": [
+        382.16,
+        65.1
+      ],
+      "right_eye_outer": [
+        380.37,
+        64.78
+      ],
+      "left_ear": [
+        414.06,
+        66.95
+      ],
+      "right_ear": [
+        381.96,
+        68.23
+      ],
+      "mouth_left": [
+        396.91,
+        83.61
+      ],
+      "mouth_right": [
+        385.02,
+        84.57
+      ],
+      "left_shoulder": [
+        457.42,
+        131.71
+      ],
+      "right_shoulder": [
+        352.64,
+        130.95
+      ],
+      "left_elbow": [
+        473.34,
+        216.94
+      ],
+      "right_elbow": [
+        332.14,
+        208.24
+      ],
+      "left_wrist": [
+        470.17,
+        288.55
+      ],
+      "right_wrist": [
+        318.04,
+        277.73
+      ],
+      "left_pinky": [
+        472.37,
+        309.53
+      ],
+      "right_pinky": [
+        315.0,
+        299.61
+      ],
+      "left_index": [
+        461.5,
+        308.2
+      ],
+      "right_index": [
+        321.1,
+        299.68
+      ],
+      "left_thumb": [
+        457.73,
+        302.14
+      ],
+      "right_thumb": [
+        325.92,
+        292.89
+      ],
+      "left_hip": [
+        426.89,
+        281.15
+      ],
+      "right_hip": [
+        367.87,
+        282.73
+      ],
+      "left_knee": [
+        434.06,
+        389.61
+      ],
+      "right_knee": [
+        373.79,
+        391.95
+      ],
+      "left_ankle": [
+        446.23,
+        495.33
+      ],
+      "right_ankle": [
+        380.7,
+        487.39
+      ],
+      "left_heel": [
+        452.81,
+        508.28
+      ],
+      "right_heel": [
+        391.24,
+        501.1
+      ],
+      "left_foot_index": [
+        423.64,
+        530.56
+      ],
+      "right_foot_index": [
+        355.72,
+        521.83
+      ]
+    },
+    "visibility": {
+      "left_shoulder": 1.0,
+      "right_shoulder": 1.0,
+      "left_elbow": 0.999,
+      "right_elbow": 0.959,
+      "left_wrist": 0.999,
+      "right_wrist": 0.974,
+      "left_hip": 1.0,
+      "right_hip": 1.0,
+      "left_knee": 0.998,
+      "right_knee": 0.985,
+      "left_ankle": 0.999,
+      "right_ankle": 0.995
     }
-  },
-  "deadlift_motion": {
-    "method": "conventional loaded floor pull with straight arms, flat fixed feet and neutral hip lockout",
-    "reference_depth": "uncalibrated; explicit movement constraints replace inferred elbow/pelvis drift",
-    "grip_ratio": 1.45,
-    "source_grip_ratio": null,
-    "stance_source": "flat character bind feet; source width is not metrically calibrated",
-    "start_torso_lean_deg": 55.0,
-    "bar_path": {
-      "1": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.12845724609375
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "2": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.1304117661797821
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "3": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.13597463104002724
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "4": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.14469479757770887
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "5": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.1561212226960503
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "6": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.1698028632982749
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "7": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.18528867628760604
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "8": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.20212761856726708
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "9": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.21986864704048142
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "10": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.23806071861047234
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "11": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.2562527901804633
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "12": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.27399381865367767
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "13": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.29083276093333865
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "14": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3063185739226698
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "15": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3200002145248944
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "16": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3314266396432359
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "17": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3401468061809174
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "18": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3457096710411626
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "19": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3476641911271947
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "20": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3476641911271947
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "21": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3476641911271947
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "22": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3433510915142681
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "23": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.3314266396432359
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "24": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.313413105965719
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "25": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.29083276093333865
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "26": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.26520787499771603
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "27": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.23806071861047234
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "28": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.2109135622232286
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "29": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.18528867628760604
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "30": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.16270833125522574
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "31": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.14469479757770887
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      },
-      "32": {
-        "centre": [
-          -0.00026334822177886963,
-          0.060456282820940024,
-          0.1327703457066766
-        ],
-        "along": [
-          1.0,
-          0.0,
-          0.0
-        ]
-      }
-    },
-    "plate_radius_m": 0.12845724609375,
-    "bar_y_from_ankles_m": 0.109902310546875,
-    "ankle_residual_mm": 0.0009394972379696574,
-    "rest_length_drift_mm": 0.0,
-    "posed_length_drift_mm": 0.00021524709048481583,
-    "rest_mesh_drift_mm": 0.0,
-    "ankle_anchors_m": {
-      "left": [
-        -0.08627365529537201,
-        -0.04952392354607582,
-        0.05075521394610405
-      ],
-      "right": [
-        0.08574695885181427,
-        -0.049368131905794144,
-        0.05075521022081375
-      ]
-    },
-    "original_ankle_anchors_m": {
-      "left": [
-        -0.14359387755393982,
-        0.04874023050069809,
-        0.10564816743135452
-      ],
-      "right": [
-        0.14331810176372528,
-        0.04856995493173599,
-        0.1046157106757164
-      ]
-    },
-    "adaptations": [
-      {
-        "frame": 1,
-        "root_shift_mm": [
-          -0.6490424275398254,
-          -122.68515464683018,
-          -26.272975605117267
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 55.0
-      },
-      {
-        "frame": 2,
-        "root_shift_mm": [
-          -0.6504654884338379,
-          -123.894609791672,
-          -27.9012736045417
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 54.50960219478738
-      },
-      {
-        "frame": 3,
-        "root_shift_mm": [
-          -0.6545260548591614,
-          -127.31360488212367,
-          -32.414628310162065
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 53.11385459533607
-      },
-      {
-        "frame": 4,
-        "root_shift_mm": [
-          -0.6608534604310989,
-          -132.60247540999634,
-          -39.116588849638426
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 50.925925925925924
-      },
-      {
-        "frame": 5,
-        "root_shift_mm": [
-          -0.6690472364425659,
-          -139.39856768652842,
-          -47.17278501269223
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 48.05898491083676
-      },
-      {
-        "frame": 6,
-        "root_shift_mm": [
-          -0.6786733865737915,
-          -147.329275631428,
-          -56.168365414343945
-        ],
-        "height_fit_mm": -0.4995559570312724,
-        "torso_lean_deg": 44.62620027434842
-      },
-      {
-        "frame": 7,
-        "root_shift_mm": [
-          -0.6892718374729156,
-          -156.02369734808124,
-          -64.17203495541985
-        ],
-        "height_fit_mm": -0.4995559570312724,
-        "torso_lean_deg": 40.74074074074074
-      },
-      {
-        "frame": 8,
-        "root_shift_mm": [
-          -0.7004048675298691,
-          -165.12521919802631,
-          -70.30621929836877
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 36.51577503429355
-      },
-      {
-        "frame": 9,
-        "root_shift_mm": [
-          -0.7116049528121948,
-          -174.30259192975015,
-          -74.82381516701075
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 32.0644718792867
-      },
-      {
-        "frame": 10,
-        "root_shift_mm": [
-          -0.7224828004837036,
-          -183.2603684736349,
-          -77.18503584055291
-        ],
-        "height_fit_mm": -0.4995559570312724,
-        "torso_lean_deg": 27.5
-      },
-      {
-        "frame": 11,
-        "root_shift_mm": [
-          -0.732671469449997,
-          -191.74696302634052,
-          -75.62119604749113
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 22.935528120713304
-      },
-      {
-        "frame": 12,
-        "root_shift_mm": [
-          -0.7419008761644363,
-          -199.5598784028465,
-          -71.67114141059045
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 18.484224965706446
-      },
-      {
-        "frame": 13,
-        "root_shift_mm": [
-          -0.7499195635318756,
-          -206.54623118955217,
-          -65.19834503089106
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 14.259259259259261
-      },
-      {
-        "frame": 14,
-        "root_shift_mm": [
-          -0.7566399872303009,
-          -212.59902334099957,
-          -57.36797504711105
-        ],
-        "height_fit_mm": -0.4995559570312724,
-        "torso_lean_deg": 10.37379972565158
-      },
-      {
-        "frame": 15,
-        "root_shift_mm": [
-          -0.7620304822921753,
-          -217.6492468014134,
-          -48.098374947441954
-        ],
-        "height_fit_mm": -0.4995559570312724,
-        "torso_lean_deg": 6.941015089163239
-      },
-      {
-        "frame": 16,
-        "root_shift_mm": [
-          -0.7661283016204834,
-          -221.6535989543849,
-          -37.98121383899644
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 4.074074074074067
-      },
-      {
-        "frame": 17,
-        "root_shift_mm": [
-          -0.7689837366342545,
-          -224.57937577924483,
-          -30.181194931882203
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 1.8861454046639248
-      },
-      {
-        "frame": 18,
-        "root_shift_mm": [
-          -0.7706992328166962,
-          -226.38728744417753,
-          -24.825984321393268
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 0.4903978052126168
-      },
-      {
-        "frame": 19,
-        "root_shift_mm": [
-          -0.7712803781032562,
-          -227.0118109881878,
-          -23.37408941630231
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 0.0
-      },
-      {
-        "frame": 20,
-        "root_shift_mm": [
-          -0.7712803781032562,
-          -227.0118109881878,
-          -23.37408941630231
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 0.0
-      },
-      {
-        "frame": 21,
-        "root_shift_mm": [
-          -0.7712803781032562,
-          -227.0118109881878,
-          -23.37408941630231
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 0.0
-      },
-      {
-        "frame": 22,
-        "root_shift_mm": [
-          -0.7699839770793915,
-          -225.62635862908138,
-          -27.63212142350302
-        ],
-        "height_fit_mm": 0.0,
-        "torso_lean_deg": 1.082175925925926
-      },
-      {
-        "frame": 23,
-        "root_shift_mm": [
-          -0.7661283016204834,
-          -221.6535989543849,
-          -37.98121383899644
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 4.074074074074067
-      },
-      {
-        "frame": 24,
-        "root_shift_mm": [
-          -0.759487971663475,
-          -215.25266577519187,
-          -51.786341418855855
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 8.59375
-      },
-      {
-        "frame": 25,
-        "root_shift_mm": [
-          -0.7499195635318756,
-          -206.54623118955215,
-          -64.69878907385979
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 14.259259259259256
-      },
-      {
-        "frame": 26,
-        "root_shift_mm": [
-          -0.7374174892902374,
-          -195.74817578657616,
-          -73.49218182125588
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 20.688657407407415
-      },
-      {
-        "frame": 27,
-        "root_shift_mm": [
-          -0.7224828004837036,
-          -183.2603684736349,
-          -76.18592392649037
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 27.5
-      },
-      {
-        "frame": 28,
-        "root_shift_mm": [
-          -0.706017017364502,
-          -169.72387999807256,
-          -72.36946742253735
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 34.31134259259259
-      },
-      {
-        "frame": 29,
-        "root_shift_mm": [
-          -0.6892718374729156,
-          -156.02369734808124,
-          -63.1729230413573
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 40.74074074074074
-      },
-      {
-        "frame": 30,
-        "root_shift_mm": [
-          -0.6736759096384048,
-          -143.24548977981527,
-          -50.92490355210627
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 46.40625
-      },
-      {
-        "frame": 31,
-        "root_shift_mm": [
-          -0.6608534604310989,
-          -132.60247540999634,
-          -38.61703289260715
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 50.925925925925924
-      },
-      {
-        "frame": 32,
-        "root_shift_mm": [
-          -0.6521940231323242,
-          -125.34839955015326,
-          -29.337391648225186
-        ],
-        "height_fit_mm": 0.4995559570312724,
-        "torso_lean_deg": 53.917824074074076
-      }
-    ],
-    "contact": {
-      "penetration_mm": 0.0,
-      "penetration_frame": 27,
-      "sides": {
-        "left": {
-          "sole_vertices": 512,
-          "sole_slide_mm": 0.47,
-          "slide_frame": 19,
-          "sole_lift_mm": 0.63,
-          "initial_floor_gap_mm": 0.00027088503884442616
-        },
-        "right": {
-          "sole_vertices": 531,
-          "sole_slide_mm": 0.34,
-          "slide_frame": 19,
-          "sole_lift_mm": 0.52,
-          "initial_floor_gap_mm": 0.0002633871076795913
-        }
-      },
-      "box": [
-        [
-          -0.19493108987808228,
-          -0.198963463306427,
-          -6.97060897891788e-08
-        ],
-        [
-          0.194290429353714,
-          0.4134066104888916,
-          0.9944947957992554
-        ]
-      ]
-    }
-  },
-  "deadlift_range": {
-    "frames": 32,
-    "start_frame": 1,
-    "lockout_frame": 19,
-    "minimum_elbow_deg": 175.5171564431122,
-    "worst_elbow_frame": 30,
-    "minimum_elbows_deg": {
-      "left": 175.5171564431122,
-      "right": 176.02526219443988
-    },
-    "elbow_extension_shortfall_deg": 0.0,
-    "lockout_hips_deg": {
-      "left": 177.89625067836698,
-      "right": 178.22582308143444
-    },
-    "lockout_knees_deg": {
-      "left": 174.99977565003292,
-      "right": 174.34334691608154
-    },
-    "start_hips_deg": {
-      "left": 81.29295192335505,
-      "right": 81.51867875533632
-    },
-    "start_knees_deg": {
-      "left": 108.38202067173793,
-      "right": 108.1150892293461
-    },
-    "lockout_torso_lean_deg": 3.306651113363206e-06,
-    "hip_lockout_shortfall_deg": 0.0,
-    "knee_lockout_shortfall_deg": 0.0,
-    "start_bar_below_knees_mm": 38.681864738464355,
-    "start_grip_outside_knees_mm": 98.6108048072455,
-    "forward_bar_travel_mm": 219.20692920684814,
-    "limits": {
-      "minimum_elbow_deg": 175.0,
-      "minimum_lockout_hip_deg": 170.0,
-      "maximum_start_hip_deg": 150.0,
-      "maximum_start_knee_deg": 165.0,
-      "minimum_lockout_knee_deg": 170.0,
-      "maximum_lockout_torso_lean_deg": 10.0,
-      "minimum_start_bar_below_knees_mm": 19.98223828125,
-      "minimum_start_grip_outside_knees_mm": 4.9955595703125,
-      "minimum_forward_bar_travel_mm": 99.91119140625,
-      "maximum_start_plate_floor_gap_mm": 5.0,
-      "maximum_plate_floor_penetration_mm": 3.0,
-      "plate_radius_tolerance_mm": 3.0
-    },
-    "ready": true,
-    "failures": [],
-    "per_frame": [
-      {
-        "frame": 1,
-        "elbows_deg": {
-          "left": 176.22036280205577,
-          "right": 176.71028766700996
-        },
-        "knees_deg": {
-          "left": 108.38202067173793,
-          "right": 108.1150892293461
-        },
-        "hips_deg": {
-          "left": 81.29295192335505,
-          "right": 81.51867875533632
-        },
-        "torso_lean_deg": 54.99993789973838,
-        "bar_height_m": 0.12845724821090698,
-        "bar_below_knees_m": 0.038681864738464355,
-        "grip_outside_knees_m": 0.0986108048072455
-      },
-      {
-        "frame": 2,
-        "elbows_deg": {
-          "left": 177.4767856626558,
-          "right": 177.7797098301692
-        },
-        "knees_deg": {
-          "left": 108.35832812438886,
-          "right": 108.0914862077797
-        },
-        "hips_deg": {
-          "left": 81.80965944827112,
-          "right": 82.03786780804492
-        },
-        "torso_lean_deg": 54.50954806729282,
-        "bar_height_m": 0.130411759018898,
-        "bar_below_knees_m": 0.03667059540748596,
-        "grip_outside_knees_m": 0.09859911487729633
-      },
-      {
-        "frame": 3,
-        "elbows_deg": {
-          "left": 177.87077728408846,
-          "right": 177.92652038871714
-        },
-        "knees_deg": {
-          "left": 108.29879416651224,
-          "right": 108.03239552557997
-        },
-        "hips_deg": {
-          "left": 83.30229026853384,
-          "right": 83.53774809454559
-        },
-        "torso_lean_deg": 53.113788727730324,
-        "bar_height_m": 0.13597463071346283,
-        "bar_below_knees_m": 0.03093034029006958,
-        "grip_outside_knees_m": 0.09856246767455981
-      },
-      {
-        "frame": 4,
-        "elbows_deg": {
-          "left": 176.74654412507743,
-          "right": 176.79028482952813
-        },
-        "knees_deg": {
-          "left": 108.23435974698661,
-          "right": 107.96861965250187
-        },
-        "hips_deg": {
-          "left": 85.70879363872,
-          "right": 85.95586525130389
-        },
-        "torso_lean_deg": 50.92585032764483,
-        "bar_height_m": 0.14469479024410248,
-        "bar_below_knees_m": 0.021889299154281616,
-        "grip_outside_knees_m": 0.09849316044098473
-      },
-      {
-        "frame": 5,
-        "elbows_deg": {
-          "left": 177.66271255515852,
-          "right": 177.17760698060877
-        },
-        "knees_deg": {
-          "left": 108.22074878225237,
-          "right": 107.95664977915025
-        },
-        "hips_deg": {
-          "left": 88.98888890578574,
-          "right": 89.25189231904916
-        },
-        "torso_lean_deg": 48.05887655214915,
-        "bar_height_m": 0.15612122416496277,
-        "bar_below_knees_m": 0.009977370500564575,
-        "grip_outside_knees_m": 0.09838006138926103
-      },
-      {
-        "frame": 6,
-        "elbows_deg": {
-          "left": 176.871036821783,
-          "right": 177.63211595831845
-        },
-        "knees_deg": {
-          "left": 108.06990480025145,
-          "right": 107.80957105068919
-        },
-        "hips_deg": {
-          "left": 93.00121845316605,
-          "right": 93.28451245113672
-        },
-        "torso_lean_deg": 44.62607264245295,
-        "bar_height_m": 0.16980285942554474,
-        "bar_below_knees_m": -0.004547670483589172,
-        "grip_outside_knees_m": 0.09821470458820425
-      },
-      {
-        "frame": 7,
-        "elbows_deg": {
-          "left": 177.13823441564963,
-          "right": 177.43268613376947
-        },
-        "knees_deg": {
-          "left": 108.4580082866834,
-          "right": 108.2022398818664
-        },
-        "hips_deg": {
-          "left": 97.93610514612793,
-          "right": 98.24293511595148
-        },
-        "torso_lean_deg": 40.740589645251035,
-        "bar_height_m": 0.1852886825799942,
-        "bar_below_knees_m": -0.020804017782211304,
-        "grip_outside_knees_m": 0.09799399769037992
-      },
-      {
-        "frame": 8,
-        "elbows_deg": {
-          "left": 178.37931731241827,
-          "right": 176.47251651242752
-        },
-        "knees_deg": {
-          "left": 109.55204755949423,
-          "right": 109.30203280395118
-        },
-        "hips_deg": {
-          "left": 103.7464203820233,
-          "right": 104.0792029419114
-        },
-        "torso_lean_deg": 36.515594352308796,
-        "bar_height_m": 0.2021276205778122,
-        "bar_below_knees_m": -0.03821121156215668,
-        "grip_outside_knees_m": 0.09772890895542517
-      },
-      {
-        "frame": 9,
-        "elbows_deg": {
-          "left": 176.60662653685074,
-          "right": 177.6168902435911
-        },
-        "knees_deg": {
-          "left": 110.97177604469451,
-          "right": 110.73051368633583
-        },
-        "hips_deg": {
-          "left": 110.14188216971363,
-          "right": 110.5027107119471
-        },
-        "torso_lean_deg": 32.06426248420634,
-        "bar_height_m": 0.21986864507198334,
-        "bar_below_knees_m": -0.0565619021654129,
-        "grip_outside_knees_m": 0.09743160528058248
-      },
-      {
-        "frame": 10,
-        "elbows_deg": {
-          "left": 176.02195148473018,
-          "right": 178.21820390978118
-        },
-        "knees_deg": {
-          "left": 112.87975415296478,
-          "right": 112.65025144711129
-        },
-        "hips_deg": {
-          "left": 117.02025507245173,
-          "right": 117.40987958916914
-        },
-        "torso_lean_deg": 27.499775589236677,
-        "bar_height_m": 0.23806071281433105,
-        "bar_below_knees_m": -0.07521829009056091,
-        "grip_outside_knees_m": 0.09712273385323138
-      },
-      {
-        "frame": 11,
-        "elbows_deg": {
-          "left": 178.32642708694374,
-          "right": 178.00972174590547
-        },
-        "knees_deg": {
-          "left": 116.34044252095232,
-          "right": 116.12267174700857
-        },
-        "hips_deg": {
-          "left": 124.58469746424056,
-          "right": 125.00132188265565
-        },
-        "torso_lean_deg": 22.93531284478781,
-        "bar_height_m": 0.25625279545783997,
-        "bar_below_knees_m": -0.09279142320156097,
-        "grip_outside_knees_m": 0.09685403013666308
-      },
-      {
-        "frame": 12,
-        "elbows_deg": {
-          "left": 176.92097846361378,
-          "right": 176.56601290932065
-        },
-        "knees_deg": {
-          "left": 120.573946889234,
-          "right": 120.36962483962255
-        },
-        "hips_deg": {
-          "left": 132.33801350644586,
-          "right": 132.77964270081716
-        },
-        "torso_lean_deg": 18.48402664597085,
-        "bar_height_m": 0.2739938199520111,
-        "bar_below_knees_m": -0.10935206711292267,
-        "grip_outside_knees_m": 0.09663315078427731
-      },
-      {
-        "frame": 13,
-        "elbows_deg": {
-          "left": 175.63292021019097,
-          "right": 177.65267653128063
-        },
-        "knees_deg": {
-          "left": 125.94640257270434,
-          "right": 125.7554263388545
-        },
-        "hips_deg": {
-          "left": 140.21330004193905,
-          "right": 140.67642780706947
-        },
-        "torso_lean_deg": 14.259084483066257,
-        "bar_height_m": 0.2908327579498291,
-        "bar_below_knees_m": -0.12413349747657776,
-        "grip_outside_knees_m": 0.09648382096213513
-      },
-      {
-        "frame": 14,
-        "elbows_deg": {
-          "left": 176.72381704065506,
-          "right": 177.04008515490142
-        },
-        "knees_deg": {
-          "left": 132.0491468909073,
-          "right": 131.870941704765
-        },
-        "hips_deg": {
-          "left": 147.87562733347323,
-          "right": 148.35644068331132
-        },
-        "torso_lean_deg": 10.373659434531513,
-        "bar_height_m": 0.30631858110427856,
-        "bar_below_knees_m": -0.13703331351280212,
-        "grip_outside_knees_m": 0.09639253162531859
-      },
-      {
-        "frame": 15,
-        "elbows_deg": {
-          "left": 176.52309315175242,
-          "right": 176.57364123333215
-        },
-        "knees_deg": {
-          "left": 139.58574413250582,
-          "right": 139.41498876055843
-        },
-        "hips_deg": {
-          "left": 155.40310266585425,
-          "right": 155.89610539630928
-        },
-        "torso_lean_deg": 6.940918899579376,
-        "bar_height_m": 0.32000020146369934,
-        "bar_below_knees_m": -0.14728336036205292,
-        "grip_outside_knees_m": 0.09637770106196966
-      },
-      {
-        "frame": 16,
-        "elbows_deg": {
-          "left": 177.330382997718,
-          "right": 177.09139812583237
-        },
-        "knees_deg": {
-          "left": 149.29989434088628,
-          "right": 149.1212204093252
-        },
-        "hips_deg": {
-          "left": 162.90733804625398,
-          "right": 163.4037755229289
-        },
-        "torso_lean_deg": 4.07401087626125,
-        "bar_height_m": 0.3314266502857208,
-        "bar_below_knees_m": -0.15449610352516174,
-        "grip_outside_knees_m": 0.09642735374064562
-      },
-      {
-        "frame": 17,
-        "elbows_deg": {
-          "left": 176.96831555483905,
-          "right": 176.65944252294128
-        },
-        "knees_deg": {
-          "left": 158.9908228561158,
-          "right": 158.781347017057
-        },
-        "hips_deg": {
-          "left": 169.45923769912218,
-          "right": 169.9484457375221
-        },
-        "torso_lean_deg": 1.8861153030615383,
-        "bar_height_m": 0.3401468098163605,
-        "bar_below_knees_m": -0.1598886102437973,
-        "grip_outside_knees_m": 0.0964599379615134
-      },
-      {
-        "frame": 18,
-        "elbows_deg": {
-          "left": 177.75831788822416,
-          "right": 177.06974051350778
-        },
-        "knees_deg": {
-          "left": 169.66085578097503,
-          "right": 169.3056721223978
-        },
-        "hips_deg": {
-          "left": 175.27211728839524,
-          "right": 175.71053716544898
-        },
-        "torso_lean_deg": 0.49038877824340704,
-        "bar_height_m": 0.3457096815109253,
-        "bar_below_knees_m": -0.16300785541534424,
-        "grip_outside_knees_m": 0.09646576512803828
-      },
-      {
-        "frame": 19,
-        "elbows_deg": {
-          "left": 176.19114684792547,
-          "right": 176.92834941751488
-        },
-        "knees_deg": {
-          "left": 174.99977565003292,
-          "right": 174.34334691608154
-        },
-        "hips_deg": {
-          "left": 177.89625067836698,
-          "right": 178.22582308143444
-        },
-        "torso_lean_deg": 3.306651113363206e-06,
-        "bar_height_m": 0.3476641774177551,
-        "bar_below_knees_m": -0.16432906687259674,
-        "grip_outside_knees_m": 0.09644392441076104
-      },
-      {
-        "frame": 20,
-        "elbows_deg": {
-          "left": 176.19115103826007,
-          "right": 176.92834941751488
-        },
-        "knees_deg": {
-          "left": 174.99977565003292,
-          "right": 174.34334691608154
-        },
-        "hips_deg": {
-          "left": 177.89625067836698,
-          "right": 178.22582308143444
-        },
-        "torso_lean_deg": 3.306651113363206e-06,
-        "bar_height_m": 0.3476641774177551,
-        "bar_below_knees_m": -0.16432906687259674,
-        "grip_outside_knees_m": 0.09644390950983364
-      },
-      {
-        "frame": 21,
-        "elbows_deg": {
-          "left": 176.19115272924563,
-          "right": 176.92835625291056
-        },
-        "knees_deg": {
-          "left": 174.99977565003292,
-          "right": 174.34334691608154
-        },
-        "hips_deg": {
-          "left": 177.89625067836698,
-          "right": 178.22582308143444
-        },
-        "torso_lean_deg": 3.306651113363206e-06,
-        "bar_height_m": 0.3476641774177551,
-        "bar_below_knees_m": -0.16432906687259674,
-        "grip_outside_knees_m": 0.09644390942636157
-      },
-      {
-        "frame": 22,
-        "elbows_deg": {
-          "left": 176.33274423619002,
-          "right": 177.16836313984214
-        },
-        "knees_deg": {
-          "left": 163.0128875450399,
-          "right": 162.77720895210365
-        },
-        "hips_deg": {
-          "left": 172.03641224823357,
-          "right": 172.5174328980308
-        },
-        "torso_lean_deg": 1.0821571026600665,
-        "bar_height_m": 0.3433510959148407,
-        "bar_below_knees_m": -0.16202957928180695,
-        "grip_outside_knees_m": 0.0964607385486915
-      },
-      {
-        "frame": 23,
-        "elbows_deg": {
-          "left": 177.33037655473885,
-          "right": 177.0913543675106
-        },
-        "knees_deg": {
-          "left": 149.29989434088628,
-          "right": 149.1212204093252
-        },
-        "hips_deg": {
-          "left": 162.90733804625398,
-          "right": 163.4037755229289
-        },
-        "torso_lean_deg": 4.07401087626125,
-        "bar_height_m": 0.3314266502857208,
-        "bar_below_knees_m": -0.15449610352516174,
-        "grip_outside_knees_m": 0.09642733888052606
-      },
-      {
-        "frame": 24,
-        "elbows_deg": {
-          "left": 177.85954565528436,
-          "right": 177.9624335251353
-        },
-        "knees_deg": {
-          "left": 136.58848576551839,
-          "right": 136.4115335795715
-        },
-        "hips_deg": {
-          "left": 152.00422006107163,
-          "right": 152.4905086257137
-        },
-        "torso_lean_deg": 8.593632358681868,
-        "bar_height_m": 0.3134131133556366,
-        "bar_below_knees_m": -0.14189596474170685,
-        "grip_outside_knees_m": 0.09640452108665663
-      },
-      {
-        "frame": 25,
-        "elbows_deg": {
-          "left": 175.5423216034817,
-          "right": 176.38445967024595
-        },
-        "knees_deg": {
-          "left": 126.31637315729046,
-          "right": 126.12420488737936
-        },
-        "hips_deg": {
-          "left": 140.34541458980067,
-          "right": 140.8080427164781
-        },
-        "torso_lean_deg": 14.259087383625582,
-        "bar_height_m": 0.2908327579498291,
-        "bar_below_knees_m": -0.123864084482193,
-        "grip_outside_knees_m": 0.0964968712116692
-      },
-      {
-        "frame": 26,
-        "elbows_deg": {
-          "left": 177.36285801674015,
-          "right": 176.15786304754738
-        },
-        "knees_deg": {
-          "left": 118.64404824100913,
-          "right": 118.4319408416453
-        },
-        "hips_deg": {
-          "left": 128.55323847930947,
-          "right": 128.98232021236907
-        },
-        "torso_lean_deg": 20.68843968641813,
-        "bar_height_m": 0.2652078866958618,
-        "bar_below_knees_m": -0.10101109743118286,
-        "grip_outside_knees_m": 0.09674664783872795
-      },
-      {
-        "frame": 27,
-        "elbows_deg": {
-          "left": 175.72962871862882,
-          "right": 177.90171090000888
-        },
-        "knees_deg": {
-          "left": 113.4822186474102,
-          "right": 113.25099542741867
-        },
-        "hips_deg": {
-          "left": 117.24519739775974,
-          "right": 117.63409951472742
-        },
-        "torso_lean_deg": 27.499775595510872,
-        "bar_height_m": 0.23806071281433105,
-        "bar_below_knees_m": -0.0747479796409607,
-        "grip_outside_knees_m": 0.09713996398616223
-      },
-      {
-        "frame": 28,
-        "elbows_deg": {
-          "left": 177.13687409656168,
-          "right": 177.15566266082644
-        },
-        "knees_deg": {
-          "left": 110.46243251639042,
-          "right": 110.2156672663837
-        },
-        "hips_deg": {
-          "left": 106.9735576657846,
-          "right": 107.31989346498136
-        },
-        "torso_lean_deg": 34.3111538640619,
-        "bar_height_m": 0.21091356873512268,
-        "bar_below_knees_m": -0.04711763560771942,
-        "grip_outside_knees_m": 0.09758819684202232
-      },
-      {
-        "frame": 29,
-        "elbows_deg": {
-          "left": 176.73253858439108,
-          "right": 177.49127220789316
-        },
-        "knees_deg": {
-          "left": 109.01747364134255,
-          "right": 108.76014403862682
-        },
-        "hips_deg": {
-          "left": 98.15748446980807,
-          "right": 98.46371797633161
-        },
-        "torso_lean_deg": 40.74059074686714,
-        "bar_height_m": 0.1852886825799942,
-        "bar_below_knees_m": -0.020397961139678955,
-        "grip_outside_knees_m": 0.09799946035272002
-      },
-      {
-        "frame": 30,
-        "elbows_deg": {
-          "left": 175.5171564431122,
-          "right": 176.8019823424513
-        },
-        "knees_deg": {
-          "left": 108.53592679909734,
-          "right": 108.27226640649064
-        },
-        "hips_deg": {
-          "left": 91.05853861583682,
-          "right": 91.33079879269086
-        },
-        "torso_lean_deg": 46.40614389135928,
-        "bar_height_m": 0.1627083271741867,
-        "bar_below_knees_m": 0.0032772868871688843,
-        "grip_outside_knees_m": 0.09830604876896866
-      },
-      {
-        "frame": 31,
-        "elbows_deg": {
-          "left": 176.68101722635996,
-          "right": 176.02526219443988
-        },
-        "knees_deg": {
-          "left": 108.50985047599781,
-          "right": 108.24322490006249
-        },
-        "hips_deg": {
-          "left": 85.82111847546247,
-          "right": 86.06789251282116
-        },
-        "torso_lean_deg": 50.92584119675386,
-        "bar_height_m": 0.14469479024410248,
-        "bar_below_knees_m": 0.022075459361076355,
-        "grip_outside_knees_m": 0.0984923541728692
-      },
-      {
-        "frame": 32,
-        "elbows_deg": {
-          "left": 175.7900609123314,
-          "right": 177.9807894045471
-        },
-        "knees_deg": {
-          "left": 108.60693941478625,
-          "right": 108.33932595775069
-        },
-        "hips_deg": {
-          "left": 82.55133854491751,
-          "right": 82.7822895502141
-        },
-        "torso_lean_deg": 53.91776126846911,
-        "bar_height_m": 0.1327703446149826,
-        "bar_below_knees_m": 0.03442269563674927,
-        "grip_outside_knees_m": 0.09858335953206837
-      }
-    ],
-    "first_frame": 1,
-    "last_frame": 32,
-    "height_m": 0.9991119140625,
-    "phase_frames": {
-      "start": 1,
-      "middle": 10,
-      "end": 19
-    },
-    "plate_floor": {
-      "frames": 32,
-      "first_frame": 1,
-      "last_frame": 32,
-      "start_frame": 1,
-      "missing_loaded_plates": 0,
-      "start_floor_gaps_mm": {
-        "left": 0.0,
-        "right": 0.0
-      },
-      "start_floor_gap_mm": 0.0,
-      "max_floor_penetration_mm": 0.0,
-      "radii_mm": {
-        "left": {
-          "minimum": 128.45725492941267,
-          "maximum": 128.45726696557242
-        },
-        "right": {
-          "minimum": 128.45725492941267,
-          "maximum": 128.45726696557242
-        }
-      },
-      "method": "evaluated full-size disc mesh components; actual world-space lowest plate vertex in every frame",
-      "per_frame": [
-        {
-          "frame": 1,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 0.0
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 0.0
-            }
-          }
-        },
-        {
-          "frame": 2,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 1.9545108079910278
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 1.9545108079910278
-            }
-          }
-        },
-        {
-          "frame": 3,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 7.517382502555847
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 7.517382502555847
-            }
-          }
-        },
-        {
-          "frame": 4,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 16.237542033195496
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 16.237542033195496
-            }
-          }
-        },
-        {
-          "frame": 5,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 27.663975954055786
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 27.663975954055786
-            }
-          }
-        },
-        {
-          "frame": 6,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 41.345611214637756
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 41.345611214637756
-            }
-          }
-        },
-        {
-          "frame": 7,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 56.83143436908722
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 56.83143436908722
-            }
-          }
-        },
-        {
-          "frame": 8,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 73.67037236690521
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 73.67037236690521
-            }
-          }
-        },
-        {
-          "frame": 9,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 91.41139686107635
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 91.41139686107635
-            }
-          }
-        },
-        {
-          "frame": 10,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 109.60346460342407
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 109.60346460342407
-            }
-          }
-        },
-        {
-          "frame": 11,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 127.79554724693298
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 127.79554724693298
-            }
-          }
-        },
-        {
-          "frame": 12,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 145.53657174110413
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 145.53657174110413
-            }
-          }
-        },
-        {
-          "frame": 13,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 162.37550973892212
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 162.37550973892212
-            }
-          }
-        },
-        {
-          "frame": 14,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 177.86133289337158
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 177.86133289337158
-            }
-          }
-        },
-        {
-          "frame": 15,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 191.54295325279236
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 191.54295325279236
-            }
-          }
-        },
-        {
-          "frame": 16,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 202.96940207481384
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 202.96940207481384
-            }
-          }
-        },
-        {
-          "frame": 17,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 211.6895616054535
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 211.6895616054535
-            }
-          }
-        },
-        {
-          "frame": 18,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 217.2524333000183
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 217.2524333000183
-            }
-          }
-        },
-        {
-          "frame": 19,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            }
-          }
-        },
-        {
-          "frame": 20,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            }
-          }
-        },
-        {
-          "frame": 21,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 219.20692920684814
-            }
-          }
-        },
-        {
-          "frame": 22,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45725492941267,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 214.89384770393372
-            },
-            "right": {
-              "radius_mm": 128.45725492941267,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 214.89384770393372
-            }
-          }
-        },
-        {
-          "frame": 23,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 202.96940207481384
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 202.96940207481384
-            }
-          }
-        },
-        {
-          "frame": 24,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 184.95586514472961
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 184.95586514472961
-            }
-          }
-        },
-        {
-          "frame": 25,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 162.37550973892212
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 162.37550973892212
-            }
-          }
-        },
-        {
-          "frame": 26,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 136.75063848495483
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 136.75063848495483
-            }
-          }
-        },
-        {
-          "frame": 27,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 109.60346460342407
-            },
-            "right": {
-              "radius_mm": 128.45726696557242,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 109.60346460342407
-            }
-          }
-        },
-        {
-          "frame": 28,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 82.4563205242157
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 82.4563205242157
-            }
-          }
-        },
-        {
-          "frame": 29,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 56.83143436908722
-            },
-            "right": {
-              "radius_mm": 128.4572564288603,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 56.83143436908722
-            }
-          }
-        },
-        {
-          "frame": 30,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 34.251078963279724
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 34.251078963279724
-            }
-          }
-        },
-        {
-          "frame": 31,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 16.237542033195496
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 16.237542033195496
-            }
-          }
-        },
-        {
-          "frame": 32,
-          "mesh_vertex_count": 732,
-          "mesh_polygon_count": 630,
-          "plates": {
-            "left": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 356,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 4.313096404075623
-            },
-            "right": {
-              "radius_mm": 128.45726311206818,
-              "vertex_count": 48,
-              "lowest_vertex_index": 648,
-              "polygon_count": 26,
-              "lowest_world_z_mm": 4.313096404075623
-            }
-          }
-        }
-      ]
-    },
-    "plate_mesh": {
-      "shaft_centre_local_m": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "plates": {
-        "left": {
-          "vertex_indices": [
-            344,
-            345,
-            346,
-            347,
-            348,
-            349,
-            350,
-            351,
-            352,
-            353,
-            354,
-            355,
-            356,
-            357,
-            358,
-            359,
-            360,
-            361,
-            362,
-            363,
-            364,
-            365,
-            366,
-            367,
-            368,
-            369,
-            370,
-            371,
-            372,
-            373,
-            374,
-            375,
-            376,
-            377,
-            378,
-            379,
-            380,
-            381,
-            382,
-            383,
-            384,
-            385,
-            386,
-            387,
-            388,
-            389,
-            390,
-            391
-          ],
-          "radius_m": 0.12845725116050413,
-          "polygon_count": 26,
-          "axial_thickness_m": 0.015985846519470215,
-          "centre_local_m": [
-            -0.5095470547676086,
-            0.0,
-            0.0
-          ]
-        },
-        "right": {
-          "vertex_indices": [
-            636,
-            637,
-            638,
-            639,
-            640,
-            641,
-            642,
-            643,
-            644,
-            645,
-            646,
-            647,
-            648,
-            649,
-            650,
-            651,
-            652,
-            653,
-            654,
-            655,
-            656,
-            657,
-            658,
-            659,
-            660,
-            661,
-            662,
-            663,
-            664,
-            665,
-            666,
-            667,
-            668,
-            669,
-            670,
-            671,
-            672,
-            673,
-            674,
-            675,
-            676,
-            677,
-            678,
-            679,
-            680,
-            681,
-            682,
-            683
-          ],
-          "radius_m": 0.12845725116050413,
-          "polygon_count": 26,
-          "axial_thickness_m": 0.015985846519470215,
-          "centre_local_m": [
-            0.5095470547676086,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "expected_plate_radius_m": 0.12845724609375,
-      "mesh_vertex_count": 732,
-      "mesh_polygon_count": 630
-    }
-  },
-  "preview_box": [
-    [
-      -0.6910778462886811,
-      -0.5835929393768311,
-      -0.1935671499214806
-    ],
-    [
-      0.6905511796474457,
-      0.7980360865592957,
-      1.1880618760146462
-    ]
-  ],
-  "preview_cameras": [
-    [
-      35.0,
-      10.0
-    ],
-    [
-      90.0,
-      5.0
-    ]
-  ],
-  "preview_camera_space": "world"
+  }
 }

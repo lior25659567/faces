@@ -12,10 +12,10 @@ const temp = () => { const root = mkdtempSync(path.join(os.tmpdir(), 'studio-pre
 const exerciseList = () => createStore(path.join(temp(), 'user-data')).listExercises()
 const assetNames = ['animation.gif', 'start.png', 'end.png', 'checks.json']
 
-test('all 14 exercises are represented and all 12 committed examples are readable and verified', () => {
+test('all 14 exercises have readable committed examples with verified assets', () => {
   const rows = validatedPreviews.list(exerciseList())
   expect(rows).toHaveLength(14)
-  expect(rows.filter((row) => row.available)).toHaveLength(12)
+  expect(rows.filter((row) => row.available)).toHaveLength(14)
   for (const row of rows.filter((row) => row.available)) {
     expect(row.readOnly).toBe(true)
     expect(row.frames).toBeGreaterThan(0)
@@ -32,7 +32,7 @@ test('all 14 exercises are represented and all 12 committed examples are readabl
 test('source uncertainty and row failures are retained rather than relabeled as approval', () => {
   const rows = validatedPreviews.list(exerciseList())
   const row = rows.find((r) => r.slug === 'barbell-bent-over-row')
-  expect(row).toMatchObject({ summary: { pass: 16, fail: 2, uncertain: 0 }, reviewRequired: true, frames: 81, fps: 30 })
+  expect(row).toMatchObject({ summary: { pass: 18, fail: 2, uncertain: 0 }, reviewRequired: true, frames: 81, fps: 30 })
   expect(row.reason).toMatch(/disagree|failed checks/)
   const overhead = rows.find((r) => r.slug === 'standing-barbell-overhead-press-shoulder-press')
   expect(overhead).toMatchObject({ summary: { fail: 0, uncertain: 10 }, reviewRequired: true })
@@ -43,12 +43,13 @@ test('source uncertainty and row failures are retained rather than relabeled as 
   expect(validatedPreviews.list(exerciseList()).find((r) => r.slug === row.slug).summary.fail).toBe(2)
 })
 
-test('unavailable squat, walking lunge and custom exercises have explicit reasons without invented previews', () => {
+test('squat preset and one-way lunge keep their source modes while unknown exercises stay unavailable', () => {
   const rows = validatedPreviews.list([...exerciseList(), { slug: 'my-exercise', name: 'My exercise' }])
   const squat = rows.find((r) => r.slug === 'barbell-back-squat')
-  expect(squat).toMatchObject({ available: false, gifUrl: null, summary: null })
-  expect(squat.reason).toMatch(/side view.*grip reference/)
-  expect(rows.find((r) => r.slug === 'walking-lunge-dumbbells-optional').reason).toMatch(/handoff.*stepping/)
+  expect(squat).toMatchObject({ available: true, sourceLabel: 'Checked movement preset', playback: 'loop', frames: 69, fps: 30 })
+  expect(rows.find((r) => r.slug === 'walking-lunge-dumbbells-optional')).toMatchObject({
+    available: true, sourceLabel: 'Observed one-way step', playback: 'once', frames: 42, fps: 16, reviewRequired: true,
+  })
   expect(rows.find((r) => r.slug === 'my-exercise')).toMatchObject({ available: false, gifUrl: null })
 })
 

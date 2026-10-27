@@ -1,0 +1,10 @@
+{
+  "ready": true,
+  "mode": "Movement preset",
+  "motionPreset": "squat-v1",
+  "blockers": [],
+  "warnings": [
+    "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets.",
+    "Every build still has to pass movement range, bar contact, floor clearance and visible skin checks."
+  ]
+}

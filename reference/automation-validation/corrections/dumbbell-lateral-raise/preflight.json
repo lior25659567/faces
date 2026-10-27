@@ -1,0 +1,10 @@
+{
+  "ready": true,
+  "mode": "Image key poses",
+  "blockers": [],
+  "warnings": [
+    "Depth in these photographs is inferred. The pose comparisons remain uncertain and require visual review.",
+    "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong.",
+    "The image and estimated 3D pose disagree on start knee bend, start hip bend, start torso lean, start elbow bend, start upper-arm angle, middle knee bend, middle hip bend, middle torso lean, middle elbow bend, middle upper-arm angle, end knee bend, end hip bend, end torso lean, end elbow bend, end upper-arm angle. Check the detected joints and use a clear, level side view."
+  ]
+}

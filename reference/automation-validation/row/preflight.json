@@ -1,0 +1,11 @@
+{
+  "ready": true,
+  "mode": "Image key poses",
+  "blockers": [],
+  "warnings": [
+    "The visible arm drives both sides of this bilateral row. The hidden arm's estimated depth is not used independently.",
+    "The row holds the starting torso hinge. These references differ by 21 degrees of torso lean, so the held torso will differ from the End reference.",
+    "Three-quarter row references use estimated 3D depth. Their projected side angles are not used as measurements. Check the rendered body and bar path against the photographs.",
+    "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong."
+  ]
+}

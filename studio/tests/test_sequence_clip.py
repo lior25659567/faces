@@ -127,3 +127,41 @@ def test_contact_fixture_is_tied_to_reviewed_public_images_and_annotations():
         assert sample['imageSha256'] == frame['sha256']
         assert sample['sourceFrameIndex'] == frame['sourceFrameIndex']
         assert sample['footContacts'] == frame['footContacts']
+
+
+def named_step():
+    samples = []
+    contacts = [({'left': 'toe', 'right': 'airborne'}, {'left': ['toe'], 'right': []}, 'left'),
+                ({'left': 'toe', 'right': 'heel'}, {'left': ['toe'], 'right': ['heel']}, 'both'),
+                ({'left': 'airborne', 'right': 'flat'}, {'left': [], 'right': ['heel', 'toe']}, 'right')]
+    for index, (states, points, support) in enumerate(contacts):
+        sample = mp_pose(0, 180 - index * 20, 170)
+        sample.update(sequenceIndex=index, timeSeconds=2. + index * .2, footContacts=states,
+                      observedContactPoints=points, observedSupport=support)
+        samples.append(sample)
+    return {'motion': {'mode': 'sequence'}, 'sequence': {'contactModel': 'named_heel_toe', 'samples': samples}}
+
+
+def test_observed_toe_to_heel_handoff_keeps_the_same_contact_identity():
+    result = inspect_sequence(named_step())
+    assert result['ready'] and result['input_ready']
+    assert result['rootFitRequired'] and result['calibrated'] is False
+    assert result['playback'] == 'once' and result['completeClosedCycle'] is False
+    assert [i['observedContactPoints'] for i in result['intervals']] == [['left.toe'], ['right.heel']]
+    assert 'roots' not in result  # no calibrated metric travel is claimed from frontal depth
+
+
+def test_unobserved_named_handoff_remains_blocked_without_a_fake_flat_contact():
+    keys = named_step()
+    keys['sequence']['samples'].pop(1)
+    keys['sequence']['samples'][1]['sequenceIndex'] = 1
+    result = inspect_sequence(keys)
+    assert not result['ready']
+    assert any('no shared observed contact point' in message for message in result['blockers'])
+
+
+def test_named_foot_points_cannot_claim_a_flat_foot_from_only_a_toe():
+    keys = named_step()
+    keys['sequence']['samples'][0]['footContacts']['left'] = 'flat'
+    with pytest.raises(SequenceError, match='disagree'):
+        inspect_sequence(keys)

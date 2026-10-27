@@ -1,31 +1,35 @@
 {
-  "name": "Leg Press",
+  "name": "Leg Press (seated machine)",
   "slug": "leg-press-seated-machine",
-  "run_dir": "/tmp/studio-complete-validation/leg-press-seated-machine",
+  "run_dir": "/tmp/studio-motion-quality-validation/leg-press-seated-machine",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 1.12
+      "seconds": 1.28,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 492.74
+      "seconds": 155.85,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 50.6
+      "seconds": 55.42,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.16
+      "seconds": 0.17,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 22,
+    "pass": 30,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -47,17 +51,86 @@
     "face_max_displacement_mm": 0.0,
     "per_frame_stretch": false
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-3cc8d88f": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
     "img-6e74c69b": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051"
   },
-  "scene_sha256": "c0ceb90506f48c09ffd28a3e19d5e3eecd5cde33b0f5e1eb9bc1087502ebfba7",
+  "scene_sha256": "e1e6f0489a3f7e6f92f8dda595c6f8336146c43bda07f24c9f9271ec9e2af143",
   "output_sha256": {
-    "animation.gif": "dc3ef9a7d8fdfab36bf10f3de0c2254a817dcdb98885369bc008f0ae1b2c2241",
-    "start.png": "3fe1e348d819f92e8e7247f57a217f4316a5f94e152888b65ff969516f52e8db",
-    "end.png": "5bdcf173aa193c9ba85bc8b71e1ec6b485ddafc077483e4ae8b10516b569f02f",
-    "checks.json": "2c7a2811af562e032862cc89755804fc97d6343d0bb18f55452cffc7b56b1529"
+    "animation.gif": "1eef7ddb9f295f9279a8a6113432b34c9a3646cb9982133d236a07c446c96a5a",
+    "start.png": "b89460a54a71d334382559d922124b6cf58e87b9bc25f07897624a5d582d6441",
+    "end.png": "68b5436072bfb9b8e2d45a05793e36877f28ba9f153212fedcacf05e9281f9d1",
+    "checks.json": "569777b5f0c8abcc81bd61403caa2d44fcce8bdfa9ab8ebf932d9fec3de5e2b7"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/sled-motion-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/sled-motion-replay.json",
+        "sha256": "532736caec8f9b54c728fb1c4a6f33dfbafe0ab82127d573b05291ba638bd064",
+        "status": "passed",
+        "scene_sha256": "e1e6f0489a3f7e6f92f8dda595c6f8336146c43bda07f24c9f9271ec9e2af143"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

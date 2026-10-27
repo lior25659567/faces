@@ -1,0 +1,425 @@
+{
+  "name": "Walking Lunge (dumbbells optional)",
+  "slug": "walking-lunge-dumbbells-optional",
+  "run_dir": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
+    }
+  ],
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 15,
+    "info": 4,
+    "unmeasured": 0
+  },
+  "frames": 42,
+  "fps": 16.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 25,
+    "end": 42
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "pre_render_gate_exercised_in_cli": true,
+  "source_image_hashes": {
+    "lunge-dense-00": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+    "lunge-dense-01": "45e36b110657fd536d83e0c40b8247a85b592dea0c1ce8dbc35d86d1750b57b9",
+    "lunge-dense-02": "437e7c3b2e5e538e452b47b1767f13c5d6ebb8e44012c96e48aaa248712469bd",
+    "lunge-dense-03": "4d07768cafc6ae4c9cd6f51a1bee5530d57196aaace13e998c7bdb4b58f0ebe0",
+    "lunge-dense-04": "974ee086f0c8efa6860a0db710ffb926f3a3d7d41654c87a35d7b0ade24dd51a",
+    "lunge-dense-05": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+    "lunge-dense-06": "df13eec6222991a599560753586b5caea549a784f0850ad24330bc9c56c43ca4",
+    "lunge-dense-07": "16dd39e9ccdff1d34e423873799705dad61bc65980fc0ba420e039744fa37064",
+    "lunge-dense-08": "b8171578da3a8133f6ab26661f39717390f6e72c4e3d3d28f270d0792b721471",
+    "lunge-dense-09": "1dbb63f44feb1c0ec0236cb0e1f366be9f2c74cf36a576547b4d47c0c9b6d4e8",
+    "lunge-dense-10": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+    "lunge-dense-11": "6935251d666676054c0361b4cf76d3166b9893b04870839ceeda5eebec0c12d7",
+    "lunge-dense-12": "3680a67c5e82f1009ef5eb3ffb25d7475dda20571f58c5cc96a3aa1bb5ccff19",
+    "lunge-dense-13": "bee9891952625f90f27399f2d88c02a42a2a8cc611cb0750b5854d138b863fd6",
+    "lunge-dense-14": "f76d13c712b380da665c2d9bf6b20cb0cd7c63920648a024fba445f68a3cc566",
+    "lunge-dense-15": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+    "lunge-dense-16": "749a68e3afcde3ad968f01df4e6d411fe7e226a85aed2124a4caff9a3eea2bae",
+    "lunge-dense-17": "b68fdadfaa1aefaf50af1a5556aa9396c390767d159d7095ef49c62d48030334",
+    "lunge-dense-18": "5bdb700114f6da52710ee5a36270b34ba27adee7f5bc4f9933a5150e3fba0fa8",
+    "lunge-dense-19": "a3e1f7ed4149be0445e8d8ec7ede66e5b2c7eb1e7c528851d4275ab83062e73d",
+    "lunge-dense-20": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+    "lunge-dense-21": "ba73ad019884fe6106076c1ace6236eb78cc9c190326347717ab44bee4b14f9e",
+    "lunge-dense-22": "2a72f7571ee91af86bc38a1d0b310081e42fc136bea6e2a590aa4bd82c1cc6e5",
+    "lunge-dense-23": "23f8130d2c797076a23cdd980b1982446d5e82c82656ac551c158ddf4b41fba1",
+    "lunge-dense-24": "b4f24d09d5d528b952caa9cb664ac626a04ef6facbb3128f82142b8a649add87",
+    "lunge-dense-25": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de"
+  },
+  "scene_sha256": "2e98cf92876d56af6ed2454b475c026ed0f6c20d02b3bd7f95f24da7fd3fb08c",
+  "output_sha256": {
+    "animation.gif": "16b50f9887a8eedbc843df4f1cfc1b176e7fdf7901e0833c9a1df8b01b13a46f",
+    "start.png": "5e04daf5d2b9785f8185284c5e95178dc76f742000189e2b1a85815bda640668",
+    "end.png": "bd959418e3e9e7d892722e4dc9fa66b2d32b80eb49e116ecda26eaecc9f698e8",
+    "checks.json": "25ca1e18bc65238df1eb28c45f799acf650c67668b2a1997887c770449f4bee7"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "sequence",
+    "playback": "once",
+    "phase_frames": {
+      "start": 1,
+      "middle": 25,
+      "end": 42
+    },
+    "sample_frames": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      11,
+      12,
+      14,
+      15,
+      17,
+      19,
+      20,
+      22,
+      23,
+      25,
+      27,
+      28,
+      30,
+      31,
+      33,
+      35,
+      36,
+      38,
+      39,
+      42
+    ],
+    "source_times": [
+      2.001667,
+      2.101667,
+      2.201667,
+      2.301667,
+      2.401667,
+      2.501667,
+      2.601667,
+      2.701667,
+      2.801667,
+      2.901667,
+      3.001667,
+      3.101667,
+      3.201667,
+      3.301667,
+      3.401667,
+      3.501667,
+      3.601667,
+      3.701667,
+      3.801667,
+      3.901667,
+      4.001667,
+      4.103333,
+      4.203333,
+      4.303333,
+      4.403333,
+      4.503333
+    ],
+    "contactModel": "named_heel_toe",
+    "sourceInferredDepth": true,
+    "calibrated": false,
+    "observed_contacts": [
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "heel",
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": []
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [
+          "toe"
+        ],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      },
+      {
+        "left": [],
+        "right": [
+          "heel",
+          "toe"
+        ]
+      }
+    ]
+  },
+  "input_mode": "observed-sequence",
+  "playback": "once",
+  "gif_duration_ms": 2620,
+  "gif_frame_count": 42,
+  "gif_loop_extension": null,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 42,
+      "file": "end.png",
+      "source": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/frames/frame_0042.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/lunge-contacts-replay.json",
+        "sha256": "ef0062de95a937e4e088392d99bb786489bc7b1a90832cca85b513a760cd4900",
+        "status": "passed",
+        "scene_sha256": "2e98cf92876d56af6ed2454b475c026ed0f6c20d02b3bd7f95f24da7fd3fb08c"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json",
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/lunge-contacts-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  }
+}

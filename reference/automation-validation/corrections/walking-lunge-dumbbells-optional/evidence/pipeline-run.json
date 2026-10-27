@@ -1,0 +1,9 @@
+{
+  "name": "Walking Lunge (dumbbells optional)",
+  "slug": "walking-lunge-dumbbells-optional",
+  "characterFit": "auto",
+  "motionPreset": null,
+  "source": "Actual decoded licensed video frames 120..270; one observed right-forward step; no invented return",
+  "source_sha256": "3d83e21334e0119fc831609c7581af02ec30642f1ebedf514d951ca25fd4d154",
+  "steps": []
+}

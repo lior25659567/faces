@@ -198,6 +198,30 @@ def correct_bench(rig, skin, first, last):
     plane = float(initial[pelvis, 2].min())
     base = {bone.name: bone.matrix_basis.copy() for bone in pose}
     foot = {side: pose[cage.P + side + 'Foot'].matrix.copy() for side in ('Left', 'Right')}
+    # Keep the photographed floor marks while using flat, neutral plantar
+    # surfaces. Fitted rest soles are horizontal; toe-only contact must not
+    # masquerade as a planted foot. The original rig and mesh stay unchanged.
+    foot_adjustments = {}
+    for side in ('Left', 'Right'):
+        bone = pose[cage.P + side + 'Foot']
+        matrix = bone.bone.matrix_local.to_3x3().to_4x4()
+        matrix.translation = foot[side].translation
+        bone.matrix = matrix
+        bpy.context.view_layer.update()
+        toe = pose[cage.P + side + 'ToeBase']
+        matrix = toe.bone.matrix_local.to_3x3().to_4x4()
+        matrix.translation = toe.head
+        toe.matrix = matrix
+        bpy.context.view_layer.update()
+        points = skin_wrap.evaluated(skin)[0]
+        selected = _mask(skin, [side + 'Foot', side + 'ToeBase'])
+        dz = -float(points[selected, 2].min())
+        foot_adjustments[side.lower()] = dz * 1000
+        foot[side] = bone.matrix.copy()
+        foot[side].translation.z += dz
+    for bone in pose:
+        bone.matrix_basis = base[bone.name]
+    bpy.context.view_layer.update()
     def settle(angle, basis, goals):
         for bone in pose:
             bone.matrix_basis = basis[bone.name]
@@ -212,9 +236,17 @@ def correct_bench(rig, skin, first, last):
             cage._move_root(rig, Vector((0., 0., dz)))
             for side in ('Left', 'Right'):
                 residual = max(residual, _leg_to(rig, side, goals[side].translation, goals[side].to_3x3()))
+                toe = pose[cage.P + side + 'ToeBase']
+                matrix = toe.bone.matrix_local.to_3x3().to_4x4()
+                matrix.translation = toe.head
+                toe.matrix = matrix
+                bpy.context.view_layer.update()
         points = skin_wrap.evaluated(skin)[0]
         return float(points[back, 2].min()) - plane, residual, shift
     try:
+        height = json.loads(rig['skin_fit'])['measured']['height']
+        if max(abs(value) for value in foot_adjustments.values()) > height * 50.:
+            raise ValueError('Bench floor contact needs more than 5% of character height in ankle correction.')
         lo, hi = -math.radians(12), math.radians(12)
         left, *_ = settle(lo, base, foot)
         right, *_ = settle(hi, base, foot)
@@ -233,13 +265,12 @@ def correct_bench(rig, skin, first, last):
         for bone in pose:
             bone.matrix_basis = base[bone.name]
         bpy.context.view_layer.update()
-        names = {cage.P + 'Hips'} | {cage.P + side + name for side in ('Left', 'Right') for name in ('UpLeg', 'Leg', 'Foot')}
+        names = {cage.P + 'Hips'} | {cage.P + side + name for side in ('Left', 'Right') for name in ('UpLeg', 'Leg', 'Foot', 'ToeBase')}
         errors, shifts, head_turns, states = [], [], [], []
         for frame in range(first, last + 1):
             scene.frame_set(frame)
             basis = {bone.name: bone.matrix_basis.copy() for bone in pose}
-            goals = {side: pose[cage.P + side + 'Foot'].matrix.copy() for side in ('Left', 'Right')}
-            gap, error, shift = settle(angle, basis, goals)
+            gap, error, shift = settle(angle, basis, foot)
             head_turns.append(_head_on_plane(rig, skin, plane))
             errors.append(error); shifts.append(abs(shift))
             states.append((frame, {bone.name: bone.matrix_basis.copy() for bone in pose}))
@@ -252,7 +283,9 @@ def correct_bench(rig, skin, first, last):
         scene.frame_set(first)
         return {'applied': True, 'body_pitch_adjustment_deg': math.degrees(angle), 'pad_height': plane,
                 'max_ankle_residual_mm': max(errors) * 1000, 'max_settling_shift_mm': max(shifts) * 1000,
-                'max_head_pitch_adjustment_deg': max(abs(v) for v in head_turns)}
+                'max_head_pitch_adjustment_deg': max(abs(v) for v in head_turns),
+                'floor_ankle_adjustments_mm': foot_adjustments,
+                'foot_orientation': 'neutral fitted rest soles on fixed floor marks'}
     except ValueError as error:
         for bone in pose:
             bone.matrix_basis = base[bone.name]
@@ -319,211 +352,9 @@ def _head_support_range(rig, skin, normal):
     return min(values), max(values)
 
 
-def correct_sled(rig, skin, first, last, height):
-    """Project the observed ankle travel onto one rail, then solve the legs.
-
-    The rail axis comes from the reference, with no assumed machine angle.
-    Only a bounded correction is permitted, and the measured source deviation
-    remains in the report. A single rigid foot orientation keeps the soles on
-    the same moving footplate while the knees flex.
-    """
-    scene, pose = bpy.context.scene, rig.pose.bones
-    frames = list(range(first, last + 1))
-    states, ankles, poles = [], [], []
-    for frame in frames:
-        scene.frame_set(frame)
-        states.append({bone.name: bone.matrix_basis.copy() for bone in pose})
-        ankles.append([np.array(pose[cage.P + side + 'Foot'].head) for side in ('Left', 'Right')])
-        poles.append({side: pose[cage.P + side + 'Leg'].head - pose[cage.P + side + 'UpLeg'].head
-                      for side in ('Left', 'Right')})
-    scene.frame_set(first)
-    ankles = np.array(ankles)
-    mid = ankles.mean(1)
-    centre = mid.mean(0)
-    _, singular, directions = np.linalg.svd(mid - centre)
-    if singular[0] < height * .01:
-        return {'applied': False, 'reason': 'The leg-press references provide no readable sled travel.'}
-    axis = directions[0]
-    if axis[2] < 0:
-        axis = -axis
-    distance = (mid - centre) @ axis
-    line = centre + distance[:, None] * axis
-    targets = line[:, None, :] + (ankles[0] - mid[0])[None, :, :]
-    source_deviation = float(np.linalg.norm(mid - line, axis=1).max())
-    maximum_adjustment = float(np.linalg.norm(ankles - targets, axis=2).max())
-    # The monocular oblique samples have no calibrated depth. Keep their actual
-    # correction visible and reject displacement beyond 5% of character height.
-    if maximum_adjustment > height * .05:
-        return {'applied': False, 'reason': 'A straight rail needs more than 5% of character height in ankle-path correction.',
-                'source_rail_deviation_mm': source_deviation * 1000,
-                'max_ankle_path_adjustment_mm': maximum_adjustment * 1000}
-    scene.frame_set(first)
-    pelvis = _mask(skin, ['Hips'])
-    plane = float(skin_wrap.evaluated(skin)[0][pelvis, 2].min())
-    # The fitted rest soles are flat on Z=0. Their plantar normal must face the
-    # plate, rather than letting a changing inferred ankle pitch balance on toes.
-    sole_turn = Vector((0., 0., -1.)).rotation_difference(Vector(axis)).to_matrix()
-    foot_turns = {side: sole_turn @ pose[cage.P + side + 'Foot'].bone.matrix_local.to_3x3()
-                  for side in ('Left', 'Right')}
-    toe_basis = {side: Matrix.Identity(4) for side in ('Left', 'Right')}
-    back = _mask(skin, ['Spine1', 'Spine2'])
-    body_axis = np.array(_joint_mid(rig, 'Arm') - _joint_mid(rig, 'UpLeg'))
-    body_axis[0] = 0.
-    body_axis /= np.linalg.norm(body_axis)
-    normal = np.array([0., body_axis[2], -body_axis[1]])
-    if normal[2] < 0:
-        normal = -normal
-    back_plane = float((skin_wrap.evaluated(skin)[0][back] @ normal).min())
-    _neutral_neck(rig)
-    head_plane = max(back_plane, float((skin_wrap.evaluated(skin)[0][_mask(skin, ['Head'])] @ normal).min()))
-    solved, residuals, shifts, adjustments, pitches, head_pitches = [], [], [], [], [], []
-    head_ranges = []
-    offsets = ankles[0] - mid[0]
-    def settle(index, angle):
-        for bone in pose:
-            bone.matrix_basis = states[index][bone.name]
-        bpy.context.view_layer.update()
-        _neutral_neck(rig)
-        _rotate_root(rig, angle)
-        shift = residual = 0.
-        for _ in range(6):
-            low, high = -float('inf'), float('inf')
-            for side_index, side in enumerate(('Left', 'Right')):
-                up, leg = [pose[cage.P + side + name] for name in ('UpLeg', 'Leg')]
-                radius = math.sqrt(up.length ** 2 + leg.length ** 2 +
-                    2 * up.length * leg.length * math.cos(math.radians(4)))
-                delta = centre + offsets[side_index] - np.array(up.head)
-                projected = float(delta @ axis)
-                discriminant = projected ** 2 - float(delta @ delta) + radius ** 2
-                if discriminant < 0:
-                    raise ValueError('The inferred straight rail is outside the character leg reach.')
-                span = math.sqrt(max(0., discriminant))
-                low, high = max(low, -projected - span), min(high, -projected + span)
-            if low > high:
-                raise ValueError('Both feet cannot reach the same rigid footplate on the inferred rail.')
-            parameter = float(np.clip(distance[index], low, high))
-            frame_targets = centre + parameter * axis + offsets
-            for side_index, side in enumerate(('Left', 'Right')):
-                residual = max(residual, _leg_to(rig, side, Vector(frame_targets[side_index]),
-                    foot_turns[side], poles[index][side]))
-                pose[cage.P + side + 'ToeBase'].matrix_basis = toe_basis[side]
-            bpy.context.view_layer.update()
-            points = skin_wrap.evaluated(skin)[0]
-            dz = plane - float(points[pelvis, 2].min())
-            shift += dz
-            cage._move_root(rig, Vector((0., 0., dz)))
-        residual = max(residual, *(float((pose[cage.P + side + 'Foot'].head -
-            Vector(frame_targets[side_index])).length) for side_index, side in enumerate(('Left', 'Right'))))
-        points = skin_wrap.evaluated(skin)[0]
-        gap = float((points[back] @ normal).min()) - back_plane
-        adjustment = float(np.linalg.norm(ankles[index] - frame_targets, axis=1).max())
-        return gap, residual, shift, adjustment
-    try:
-        previous_angle = 0.
-        for index, frame in enumerate(frames):
-            scene.frame_set(frame)
-            # Adjacent source frames are close. Use measured local slopes first;
-            # retain a bounded bracket search for discontinuities or bad depth.
-            angle, converged = previous_angle, False
-            for _ in range(4):
-                try:
-                    gap = settle(index, angle)[0]
-                    if abs(gap) <= .0001:
-                        converged = True
-                        break
-                    probe = angle + math.radians(1 if angle < math.radians(11) else -1)
-                    slope = (settle(index, probe)[0] - gap) / (probe - angle)
-                    if abs(slope) < 1e-6:
-                        break
-                    angle = float(np.clip(angle - gap / slope, -math.radians(12), math.radians(12)))
-                except ValueError:
-                    break
-            if not converged:
-                trials = []
-                for degrees in (-12, -6, 0, 6, 12):
-                    try:
-                        candidate = math.radians(degrees)
-                        trials.append((candidate, settle(index, candidate)[0]))
-                    except ValueError:
-                        continue
-                brackets = [(a, b) for a, b in zip(trials, trials[1:]) if a[1] * b[1] <= 0]
-                if not brackets:
-                    if not trials or abs(min(trials, key=lambda item: abs(item[1]))[1]) > .003:
-                        raise ValueError('The fixed seat and backrest do not fit within a 12-degree body-pitch correction.')
-                    angle = min(trials, key=lambda item: abs(item[1]))[0]
-                else:
-                    (lo, left), (hi, _) = min(brackets, key=lambda pair: min(abs(pair[0][0]), abs(pair[1][0])))
-                    for _ in range(12):
-                        angle = (lo + hi) / 2
-                        gap = settle(index, angle)[0]
-                        if abs(gap) <= .0001:
-                            break
-                        if gap * left > 0:
-                            lo, left = angle, gap
-                        else:
-                            hi = angle
-            previous_angle = angle
-            gap, residual, shift, adjustment = settle(index, angle)
-            if abs(shift) > .030 or residual > .002:
-                raise ValueError('The fixed seat and rail cannot be reached within the bounded support correction.')
-            if adjustment > height * .05:
-                raise ValueError('The reachable rail needs more than 5% of character height in ankle-path correction.')
-            solved.append({bone.name: bone.matrix_basis.copy() for bone in pose})
-            residuals.append(residual)
-            shifts.append(abs(shift))
-            adjustments.append(adjustment)
-            pitches.append(abs(math.degrees(angle)))
-            head_ranges.append(_head_support_range(rig, skin, normal))
-            if index % 8 == 0 or index == len(frames) - 1:
-                print(f'supports: seat, backrest and sled solved frame {index + 1}/{len(frames)}', flush=True)
-        # A frame-one cushion can leave later head poses unreachable. Fit one
-        # fixed pad to the shared attainable interval across the whole rep.
-        lower = max(back_plane, max(value[0] for value in head_ranges))
-        upper = min(back_plane + height * .08, min(value[1] for value in head_ranges))
-        if lower > upper:
-            raise ValueError('No fixed headrest fits the full rep within the 20-degree head-pitch and 8%-height padding bounds.')
-        head_plane = (lower + upper) / 2
-        for index, (frame, basis) in enumerate(zip(frames, solved)):
-            scene.frame_set(frame)
-            for bone in pose:
-                bone.matrix_basis = basis[bone.name]
-            bpy.context.view_layer.update()
-            head_pitches.append(abs(_head_on_plane(rig, skin, head_plane, normal)))
-            solved[index] = {bone.name: bone.matrix_basis.copy() for bone in pose}
-        names = {cage.P + 'Hips', cage.P + 'Neck', cage.P + 'Head'} | {cage.P + side + name for side in ('Left', 'Right')
-            for name in ('UpLeg', 'Leg', 'Foot', 'ToeBase')}
-        previous = {}
-        for frame, basis in zip(frames, solved):
-            for bone in pose:
-                bone.matrix_basis = basis[bone.name]
-            cage._key(rig, previous, frame, names)
-            pose[cage.P + 'Hips'].keyframe_insert('location', frame=frame)
-        scene.frame_set(first)
-        return {'applied': True, 'source_rail_deviation_mm': source_deviation * 1000,
-                'max_ankle_path_adjustment_mm': max(adjustments) * 1000,
-                'ankle_path_limit_mm': height * 50.,
-                'max_ankle_residual_mm': max(residuals) * 1000,
-                'max_seat_settling_shift_mm': max(shifts) * 1000,
-                'max_body_pitch_adjustment_deg': max(pitches),
-                'max_head_pitch_adjustment_deg': max(head_pitches),
-                'backrest': {'normal': normal.tolist(), 'plane': back_plane, 'head_plane': head_plane,
-                             'body_axis': body_axis.tolist()},
-                'foot_orientation': 'rest plantar soles aligned to the rigid footplate normal',
-                'source': 'reference-inferred travel axis; not calibrated'}
-    except ValueError as error:
-        rejected = {'frame': frame, 'body_pitch_deg': math.degrees(angle),
-            'head_gap_mm': (float((skin_wrap.evaluated(skin)[0][_mask(skin, ['Head'])] @ normal).min()) - head_plane) * 1000}
-        scene.frame_set(first)
-        for bone in pose:
-            bone.matrix_basis = states[0][bone.name]
-        bpy.context.view_layer.update()
-        return {'applied': False, 'reason': str(error),
-                'rejected_pose': rejected,
-                'source_rail_deviation_mm': source_deviation * 1000,
-                'max_ankle_path_adjustment_mm': maximum_adjustment * 1000}
 
 
-def apply(rig, skin, first, last, exercise, reference=None):
+def apply(rig, skin, first, last, exercise, reference=None, reference_phase_frames=None):
     scene = bpy.context.scene
     height = json.loads(rig['skin_fit'])['measured']['height']
     scene.frame_set(first)
@@ -559,17 +390,40 @@ def apply(rig, skin, first, last, exercise, reference=None):
             pb.keyframe_insert('location', frame=frame)
         scene.frame_set(first)
         points = skin_wrap.evaluated(skin)[0]
+    if exercise == 'Dumbbell Shoulder Press (seated overhead press)':
+        import seated_press_body
+        report['body_stabilization'] = seated_press_body.correct(rig, skin, first, last)
+        points = skin_wrap.evaluated(skin)[0]
     if exercise == BENCH:
         report['correction'] = correct_bench(rig, skin, first, last)
         points = skin_wrap.evaluated(skin)[0]
     if exercise == SLED:
-        report['correction'] = correct_sled(rig, skin, first, last, height)
+        import time
+        import sled_body
+        started = time.perf_counter()
+        report['correction'], report['body_stabilization'] = sled_body.fit(
+            rig, skin, first, last, height, reference_phase_frames)
+        report['body_stabilization']['fitting_seconds'] = time.perf_counter() - started
+        report['sled_motion'] = sled_body.measure(rig, first, last, reference_phase_frames)
+        print(f"supports: fixed-body rail fitted {last - first + 1} frames in "
+              f"{report['body_stabilization']['fitting_seconds']:.2f}s", flush=True)
         points = skin_wrap.evaluated(skin)[0]
     if exercise in SEATED | {BENCH, SLED}:
         selected = points[pelvis]
         top = np.array([np.median(selected[:, 0]), np.median(selected[:, 1]), selected[:, 2].min()])
         width = max(float(np.ptp(selected[:, 0])) * .9, height * .18)
         length = height * (.65 if exercise == BENCH else .22)
+        if exercise == SLED and report.get('body_stabilization', {}).get('applied'):
+            from sled_motion import stationary_seat
+            samples = []
+            for frame in range(first, last + 1):
+                scene.frame_set(frame)
+                samples.append(skin_wrap.evaluated(skin)[0][pelvis])
+            body_axis = report['correction']['backrest']['body_axis']
+            seat = stationary_seat(samples, height, width, body_axis)
+            report['pelvis_seat_fit'] = seat
+            top, length = np.array(seat['centre_m']), seat['length_m']
+            scene.frame_set(first)
         if exercise == BENCH:
             # Bench long axis follows the torso's actual horizontal axis.
             upper = points[torso | _mask(skin, ['Head'])]
@@ -593,6 +447,13 @@ def apply(rig, skin, first, last, exercise, reference=None):
             props.append(equipment._pad('seat_back', centre,
                 (width, height * .03, max(float(high[2] - low[2]), height * .2)), rubber))
             report['backrest_plane_y'] = float(low[1])
+            if exercise == 'Dumbbell Shoulder Press (seated overhead press)':
+                # Measure the finite front face of the actual pad in every
+                # frame; the seat alone cannot certify a supported press.
+                axes = np.column_stack([np.array([1., 0., 0.]), np.array([0., 0., -1.]), np.array([0., 1., 0.])])
+                surface = np.array([centre[0], float(low[1]), centre[2]])
+                oriented_requirements.append(('back', _mask(skin, ['Spine1', 'Spine2']), surface, axes,
+                    np.array([width, max(float(high[2] - low[2]), height * .2)]) / 2))
     if exercise == SLED:
         back_mask, head_mask = _mask(skin, ['Spine1', 'Spine2']), _mask(skin, ['Head'])
         backrest = report.get('correction', {}).get('backrest')
@@ -677,6 +538,17 @@ def apply(rig, skin, first, last, exercise, reference=None):
         report['surfaces'][name] = {'frames': len(values), 'measured_frames': len(measured),
             'max_gap_mm': max((v[0] * 1000 for v in measured), default=None),
             'max_penetration_mm': max((v[1] * 1000 for v in measured), default=None)}
+    if exercise in (BENCH, 'Dumbbell Shoulder Press (seated overhead press)'):
+        from bench_feet import floor_report
+        rest = np.array([vertex.co for vertex in skin.data.vertices])
+        feet = {side.lower(): _mask(skin, [side + 'Foot', side + 'ToeBase']) for side in ('Left', 'Right')}
+        def measured_frames():
+            for frame in range(first, last + 1):
+                scene.frame_set(frame)
+                yield frame, skin_wrap.evaluated(skin)[0]
+        measured = floor_report(rest, feet, measured_frames())
+        report['surfaces'].update(measured['surfaces'])
+        report['planted_feet'] = measured['planted_feet']
     if exercise == SLED:
         sled, measured = moving_sled(rig, skin, first, last, height, metal, rubber)
         props.extend(sled)

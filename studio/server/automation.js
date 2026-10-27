@@ -5,9 +5,10 @@ import { BadInputError, characterFitOf } from './store.js'
 import { execFileSync } from 'node:child_process'
 import { BLENDER, PYTHON, REPO } from './paths.js'
 import { getReferenceSpec } from './reference-catalog.js'
-import { getBundledReferenceSpec } from './bundled-references.js'
+import { getBundledReferenceSpec, getLegacyBundledReferenceSpec, isUnchangedLegacySequenceReference } from './bundled-references.js'
 import { fetchReference } from './reference-fetch.js'
 import { automaticBuilder } from './kit.js'
+import { defaultPreset } from './motion-presets.js'
 
 const FINAL = new Set(['done', 'failed', 'interrupted'])
 const json = (file) => { try { return JSON.parse(readFileSync(file, 'utf8')) } catch { return null } }
@@ -21,7 +22,7 @@ const clone = (value) => structuredClone(value)
 const defaultReferenceSpec = (name) => getBundledReferenceSpec(name) || getReferenceSpec(name)
 const sequenceFields = (source = {}) => Object.fromEntries([
   'motionOnly', 'timeSeconds', 'sequenceIndex', 'sourceFrameIndex', 'role', 'leadLeg',
-  'observedSupport', 'footContacts', 'contactNote', 'sequenceInfo',
+  'observedSupport', 'footContacts', 'observedContactPoints', 'contactNote', 'sequenceInfo',
 ].filter((key) => Object.hasOwn(source, key)).map((key) => [key, source[key]]))
 const pictureKey = (images) => JSON.stringify([...images].sort((a, b) => a.order - b.order).map((i) =>
   [i.id, i.file, i.phase, i.viewSetBy === 'user' ? i.view : null, Boolean(i.contextOnly), sequenceFields(i.source)]))
@@ -54,10 +55,13 @@ export const builderFingerprint = ({ root = REPO, execution = runtimeFingerprint
       else if (/\.(py|js|json)$/.test(entry.name) && !entry.name.endsWith('.test.js')) add(file)
     }
   }
+  // Solver and form-gate contents both invalidate completed animations, even
+  // when the reference images and selected character proportions are unchanged.
   for (const dir of ['pipeline', 'studio/measure', 'studio/blender', 'reference/exercises']) walk(path.join(root, dir))
-  for (const rel of ['studio/server/steps.js', 'studio/server/runtime_fingerprint.py',
+  for (const rel of ['studio/server/steps.js', 'studio/server/motion-presets.js', 'studio/server/runtime_fingerprint.py',
     'studio/server/automation.js', 'studio/server/reference-catalog.js', 'studio/server/bundled-references.js',
     'reference/exercise-catalog.json', 'reference/exercise-lunge/sequence.json', 'reference/exercise-lunge/sources.json',
+    'reference/exercise-lunge/one-step/sequence.json', 'reference/exercise-lunge/one-step/sources.json',
     'package-lock.json', 'studio/requirements.txt',
     '3d-character/3d cartoon boy.glb', 'studio/models/pose_landmarker_heavy.task']) add(path.join(root, rel))
   const clips = path.join(root, '3d-character/mixamo')
@@ -69,7 +73,8 @@ const inputsFingerprint = (store, slug, characterFit = 'auto') => {
   const refs = store.listReferences(slug)
   const hash = createHash('sha256').update(pictureKey(refs))
   const exercise = store.getExercise(slug)
-  hash.update(JSON.stringify([exercise.name, exercise.equipment, exercise.clip, exercise.pictureRefusal, automaticBuilder(exercise.name)]))
+  hash.update(JSON.stringify([exercise.name, exercise.equipment, exercise.clip, exercise.pictureRefusal,
+    automaticBuilder(exercise.name), defaultPreset(exercise.name)]))
   hash.update(characterFitOf(characterFit))
   for (const ref of refs) hash.update(readFileSync(path.join(store.root, 'references', slug, ref.file)))
   return hash.digest('hex')
@@ -136,25 +141,34 @@ export const createAutomation = ({ store, queue, referenceSpec = defaultReferenc
 
   const processItem = async (job, item) => {
     const exercise = store.getExercise(item.slug)
+    const motionPreset = defaultPreset(exercise.name)
     if (busy(item.slug)) return update(job, item, { status: 'blocked', message: 'This exercise already has work running or queued. Its current work was left alone.' })
     const spec = referenceSpec(exercise.name)
+    const referenceBundle = spec?.sequenceInfo?.contactModel === 'named_heel_toe' ? { id: spec.id, commit: spec.commit } : null
     let refs = store.listReferences(item.slug)
     const matchesSpec = (ref) => Boolean(spec && ref.source?.catalogId === spec.id && ref.source?.commit === spec.commit)
-    const bundledLunge = getBundledReferenceSpec(exercise.name)
+    const legacyBundle = getLegacyBundledReferenceSpec(exercise.name)
+    const bundledLunge = spec?.id === legacyBundle?.id ? legacyBundle : getBundledReferenceSpec(exercise.name)
     const oldLunge = bundledLunge && getReferenceSpec(exercise.name)
     // The old lunge pair contains only automatic context images. Keep those
     // files and user tags while appending the reviewed sequence. Any manual
     // image or other source change prevents this narrow migration.
     const legacyContext = (ref) => spec && bundledLunge && spec.id === bundledLunge.id && spec.commit === bundledLunge.commit &&
       ref.contextOnly === true && ref.source?.catalogId === oldLunge?.id && ref.source?.commit === oldLunge?.commit
-    const compatible = (images) => images.every((ref) => matchesSpec(ref) || legacyContext(ref))
+    const supersededSequence = (ref) => referenceBundle && isUnchangedLegacySequenceReference(ref)
+    const compatible = (images) => images.every((ref) => matchesSpec(ref) || legacyContext(ref) || supersededSequence(ref))
     const contextMigration = refs.length && refs.some(legacyContext) && compatible(refs)
-    if (spec && refs.length && refs.every((r) => r.source?.catalogId) &&
-        refs.some((r) => !matchesSpec(r)) && !contextMigration) {
+    const sequenceMigration = refs.length && refs.some(supersededSequence) && compatible(refs)
+    if (referenceBundle && refs.length && !compatible(refs)) {
+      return update(job, item, { status: 'blocked',
+        message: 'Existing pictures include edits or another source. Review them before selecting the observed walking sequence; none were replaced.' })
+    }
+    if (!motionPreset && spec && refs.length && refs.every((r) => r.source?.catalogId) &&
+        refs.some((r) => !matchesSpec(r)) && !contextMigration && !sequenceMigration) {
       return update(job, item, { status: 'blocked', message: 'The curated source changed. Review the previously imported references before replacing them.' })
     }
     const automaticOnly = spec && refs.length && refs.every(matchesSpec)
-    if (!refs.length || automaticOnly || contextMigration) {
+    if (!motionPreset && (!refs.length || automaticOnly || contextMigration || sequenceMigration)) {
       if (!spec) return update(job, item, { status: 'blocked', message: 'No exact curated reference source is mapped to this exercise. Add reference pictures in Studio.' })
       update(job, item, { status: 'fetching', message: 'Retrieving the curated reference photographs.', sourceUrl: spec.repository, sourceId: spec.id })
       const known = new Set(refs.map((r) => r.source?.url))
@@ -189,13 +203,15 @@ export const createAutomation = ({ store, queue, referenceSpec = defaultReferenc
           current.add(image.url)
         }
       }
+    } else if (motionPreset) {
+      update(job, item, { motionPreset, message: 'Using the checked movement preset; existing photographs remain context.' })
     } else {
       update(job, item, { message: 'Using existing reference pictures; none were replaced.', sourceUrl: refs[0]?.source?.url })
     }
     if (stopped) return
     // A catalog's special setup/static-only pair cannot become invented motion frames.
     const currentRefs = store.listReferences(item.slug)
-    if (spec?.autoBuild === false && currentRefs.some(matchesSpec) &&
+    if (!motionPreset && spec?.autoBuild === false && currentRefs.some(matchesSpec) &&
         (spec.motion === 'sequence' || currentRefs.filter((r) => !r.contextOnly).every(matchesSpec))) {
       return update(job, item, { status: 'blocked', message: spec.reason || 'These source images do not provide the positions needed for an automatic motion cycle.' })
     }
@@ -204,6 +220,8 @@ export const createAutomation = ({ store, queue, referenceSpec = defaultReferenc
     const previous = !job.checkOnly && !job.forceRebuild && store.listRuns(item.slug).find((run) => !run.readOnly && run.status === 'done' &&
       run.automationFingerprint === job.builderFingerprint && run.automationInputs === inputs &&
       (run.characterFit || 'auto') === job.characterFit &&
+      (run.motionPreset || null) === motionPreset &&
+      (run.referenceBundle?.id || null) === (referenceBundle?.id || null) &&
       reusableOutputs(store, run))
     if (previous) {
       if (fingerprint() !== job.builderFingerprint) return update(job, item, { status: 'blocked', message: 'The builder changed during this batch. Start a fresh batch with the new code.' })
@@ -212,26 +230,43 @@ export const createAutomation = ({ store, queue, referenceSpec = defaultReferenc
           (automationVerdict(previous.summary) === 'passed' ? '' : ' ' + reviewMessage(json(path.join(store.runDir(item.slug, previous.id), 'checks.json')))) })
     }
 
-    update(job, item, { status: 'checking', message: 'Reading references and checking required inputs.' })
-    const read = queue.enqueueRead(item.slug, { automationJobId: job.id, characterFit: job.characterFit })
+    update(job, item, { status: 'checking', message: motionPreset
+      ? 'Checking the selected movement preset; photographs are optional context.'
+      : 'Reading references and checking required inputs.' })
+    const read = queue.enqueueRead(item.slug, { automationJobId: job.id, characterFit: job.characterFit, motionPreset, referenceBundle })
     update(job, item, { referenceRunId: read.id })
     const checked = await waitForRun(job, item.slug, read.id)
     if (!checked || stopped) return
     const plan = json(path.join(store.runDir(item.slug, read.id), 'preflight.json'))
-    const capability = automaticBuilder(exercise.name)
+    const capability = automaticBuilder(exercise.name) &&
+      (exercise.name !== 'Walking Lunge (dumbbells optional)' || referenceBundle !== null)
     if (!capability) return update(job, item, { status: 'blocked', message: blockedBuilder(exercise),
       preflight: plan, referenceMessage: checked.error?.message || null })
     if (checked.status !== 'done' || plan?.ready !== true) return update(job, item, { status: 'blocked', preflight: plan,
       message: plan?.blockers?.join(' ') || checked.error?.message || 'The reference check did not establish readiness.' })
+    if (referenceBundle) {
+      const continuity = json(path.join(store.runDir(item.slug, read.id), 'sequence-continuity.json'))
+      const sourceChecked = plan.mode === 'Chronological image sequence' &&
+        plan.referenceBundle?.id === referenceBundle.id && plan.referenceBundle?.commit === referenceBundle.commit &&
+        continuity?.ready === true && continuity.input_ready === true && continuity.contactModel === 'named_heel_toe' &&
+        continuity.mode === 'sequence' && continuity.playback === 'once' && continuity.calibrated === false &&
+        continuity.completeClosedCycle === false && continuity.sampleCount === spec.images.length &&
+        JSON.stringify(continuity.sourceTimes) === JSON.stringify(spec.images.map((image) => image.timeSeconds))
+      if (!sourceChecked) return update(job, item, { status: 'blocked', preflight: plan,
+        message: 'The check did not validate the selected observed sequence and its complete heel/toe handoffs. Check that exact source before building.' })
+    }
     if (inputsFingerprint(store, item.slug, job.characterFit) !== inputs) return update(job, item, { status: 'blocked', message: 'References changed during the check. Check the edited pictures before rebuilding.' })
     if (fingerprint() !== job.builderFingerprint) return update(job, item, { status: 'blocked', message: 'The builder changed during this batch. Start a fresh batch with the new code.' })
-    if (job.checkOnly) return update(job, item, { status: 'ready', preflight: plan, message: 'References are ready. Rendering was not requested.' })
+    if (job.checkOnly) return update(job, item, { status: 'ready', preflight: plan, message: motionPreset
+      ? 'The movement preset is ready. Photographs are optional context; rendering was not requested.'
+      : 'References are ready. Rendering was not requested.' })
     const state = queue.state()
     if ((state.running?.slug === item.slug && state.running.runId !== read.id) || state.queued.some((pending) => pending.slug === item.slug)) {
       return update(job, item, { status: 'blocked', message: 'Manual work started during the reference check. Automation did not queue a duplicate build.' })
     }
     update(job, item, { status: 'building', preflight: plan, message: 'Building the supported animation and running its form checks.' })
-    const run = queue.enqueue(item.slug, { automationJobId: job.id, automationFingerprint: job.builderFingerprint, automationInputs: inputs, characterFit: job.characterFit })
+    const run = queue.enqueue(item.slug, { automationJobId: job.id, automationFingerprint: job.builderFingerprint,
+      automationInputs: inputs, characterFit: job.characterFit, motionPreset, referenceBundle })
     update(job, item, { runId: run.id })
     const result = await waitForRun(job, item.slug, run.id)
     if (!result || stopped) return

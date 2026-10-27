@@ -14,12 +14,12 @@ from build_targets import build_targets
 from run_read import key_positions
 
 
-def test_isolation_preserves_body_but_not_arms_and_never_mutates_inputs():
+def test_declared_curl_profile_uses_stable_upright_body_without_mutating_photo_poses():
     keys = [{name: np.eye(3) * value for name in ('Hips', 'Spine2', 'LeftLeg', 'LeftArm')} for value in (1, 2)]
     before = deepcopy(keys)
     poses = prepare_key_turns('Dumbbell Bicep Curl (standing, both arms)', keys)
-    assert np.array_equal(poses[1]['Hips'], keys[0]['Hips'])
-    assert np.array_equal(poses[1]['LeftArm'], keys[1]['LeftArm'])
+    assert np.array_equal(poses[1]['Hips'], np.eye(3))
+    assert np.array_equal(poses[1]['LeftArm'], poses[0]['LeftArm'])
     assert all(np.array_equal(k[name], original[name]) for k, original in zip(keys, before) for name in k)
     hinge = prepare_key_turns('Conventional Barbell Deadlift', keys)
     assert np.array_equal(hinge[1]['LeftLeg'], keys[1]['LeftLeg'])
@@ -34,7 +34,25 @@ def test_static_hold_is_one_pose_and_repeats_without_motion():
     frames = keypose_clip.motion(fixed, fps=12, feet='free')
     assert len(frames) == 12
     assert all(np.array_equal(f['Hips'], fixed[0]['Hips']) for f in frames)
-    assert profile_for('Walking Lunge (dumbbells optional)') is None
+    lunge = profile_for('Walking Lunge (dumbbells optional)')
+    assert lunge['mode'] == 'sequence' and lunge['feet'] == 'free'
+
+
+def test_lunge_upright_posture_keeps_chronological_asymmetric_legs_and_source_arms():
+    first = {name: np.eye(3) for name in ('Hips', 'Spine2', 'Head', 'LeftUpLeg', 'RightUpLeg', 'LeftArm', 'RightArm')}
+    second = {name: value.copy() for name, value in first.items()}
+    angle = .3
+    turn = np.array([[1., 0., 0.], [0., np.cos(angle), -np.sin(angle)], [0., np.sin(angle), np.cos(angle)]])
+    second['Hips'] = turn
+    second['LeftUpLeg'] = turn
+    second['RightArm'] = turn.T
+    before = deepcopy([first, second])
+    poses = prepare_key_turns('Walking Lunge (dumbbells optional)', [first, second])
+    assert np.array_equal(poses[1]['Hips'], np.eye(3))
+    assert np.array_equal(poses[1]['LeftUpLeg'], turn)
+    assert np.array_equal(poses[1]['RightUpLeg'], np.eye(3))
+    assert np.array_equal(poses[1]['RightArm'], turn.T)
+    assert all(np.array_equal(key[name], original[name]) for key, original in zip([first, second], before) for name in key)
 
 
 @pytest.mark.parametrize('invalid', [None, float('nan'), float('inf'), True, '0'])
@@ -123,19 +141,41 @@ def test_high_pulldown_arms_share_elevation_with_clavicles_without_rotating_the_
     assert np.array_equal(pose['Spine2'], key['Spine2'])
 
 
-def test_pullup_shares_clavicle_elevation_without_freezing_its_source_body_or_legs():
+def test_strict_pullup_holds_source_lower_body_while_arms_and_clavicles_move():
     def around_y(angle):
         c, s = np.cos(angle), np.sin(angle)
         return np.array([[c, 0., s], [0., 1., 0.], [-s, 0., c]])
     first = {name: np.eye(3) for name in ('Hips', 'Spine2', 'LeftShoulder', 'RightShoulder', 'LeftLeg')}
     first.update(LeftArm=around_y(-np.pi / 2), RightArm=around_y(np.pi / 2))
     second = deepcopy(first)
-    second.update(Hips=around_y(.1), Spine2=around_y(.1), LeftLeg=around_y(.2))
+    second.update(Hips=around_y(.1), Spine2=around_y(.1), LeftLeg=around_y(.2),
+                  LeftArm=around_y(-.4), RightArm=around_y(.4))
     before = deepcopy([first, second])
     poses = prepare_key_turns('Pull-Up', [first, second])
     assert (poses[0]['LeftShoulder'] @ np.array([1., 0., 0.]))[2] > 0
-    for name in ('Hips', 'Spine2', 'LeftLeg', 'LeftArm', 'RightArm'):
+    for name in ('LeftArm', 'RightArm'):
         assert np.array_equal(poses[1][name], second[name])
-    assert not np.array_equal(poses[1]['LeftLeg'], poses[0]['LeftLeg'])
+        assert not np.array_equal(poses[1][name], poses[0][name])
+    for name in ('Hips', 'Spine2', 'LeftLeg'):
+        assert np.array_equal(poses[1][name], first[name])
     assert all(np.array_equal(key[name], original[name]) for key, original in zip([first, second], before) for name in key)
     assert not profile_for('Pull-Up')['overhead']
+
+
+def test_seated_press_restores_upright_trunk_without_standing_up_or_mutating_references():
+    angle = np.radians(40.)
+    c, s = np.cos(angle), np.sin(angle)
+    recline = np.array([[1., 0., 0.], [0., c, -s], [0., s, c]])
+    first = {name: recline.copy() for name in ('Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', 'Head',
+        'LeftShoulder', 'RightShoulder', 'LeftArm', 'RightArm', 'LeftUpLeg', 'RightUpLeg', 'LeftLeg', 'RightLeg')}
+    second = {name: value.copy() for name, value in first.items()}
+    second['LeftArm'] = np.eye(3)
+    original = deepcopy([first, second])
+    poses = prepare_key_turns('Dumbbell Shoulder Press (seated overhead press)', [first, second])
+    for pose in poses:
+        for name in ('Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', 'Head'):
+            np.testing.assert_allclose(pose[name], np.eye(3))
+        for name in ('LeftUpLeg', 'RightUpLeg', 'LeftLeg', 'RightLeg'):
+            np.testing.assert_allclose(pose[name], first[name])
+    np.testing.assert_allclose(poses[1]['LeftArm'], second['LeftArm'])
+    assert all(np.array_equal(key[name], old[name]) for key, old in zip([first, second], original) for name in key)

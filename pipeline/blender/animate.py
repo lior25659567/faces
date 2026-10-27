@@ -491,14 +491,36 @@ def run_mpfb(args):
     retarget = retarget_module()
     from motion_profiles import profile_for
     profile = profile_for(args.exercise) if args.keyposes else None
+    preset_id = getattr(args, 'motion_preset', None)
+    preset = None
+    if preset_id:
+        _kit()  # expose the shared Studio policy modules to Blender
+        from motion_presets import preset_for
+        try:
+            preset = preset_for(args.exercise, preset_id)
+        except ValueError as error:
+            raise SystemExit(str(error)) from error
+        if args.keyposes or args.form_targets or not args.mixamo or Path(args.mixamo).resolve() != (HERE.parent.parent / preset['clip']).resolve():
+            raise SystemExit('The movement preset needs its pinned clip and cannot use photograph correction targets.')
+        if not getattr(args, 'reference_run', None):
+            raise SystemExit('The movement preset needs its Studio run metadata for checks and preview coverage.')
+        import squat_preset
+        squat_preset.validate_clip(args.mixamo)
+        profile = dict(squat_preset.PROFILE)
     # The full-body hanging arc needs denser samples than small standing lifts.
     # Preserve its duration and the existing per-frame jump limit at 16 fps.
-    motion_fps = (16 if profile['family'] == 'hanging' else 12) if args.fast and profile else 30
+    motion_fps = (16 if profile['family'] in ('hanging', 'stepping') else 12) if args.fast and profile else 30
     if not args.wrap_skin or bool(args.mixamo) == bool(args.keyposes):
         raise SystemExit("--mpfb needs --wrap-skin (the skin) and one motion: --mixamo (a clip) or --keyposes "
                          "(the reference pictures' key positions)")
     clip = (retarget.load_clip(args.mixamo, turned="all") if args.mixamo
             else keypose_clip_from(args.keyposes, args.exercise, args.feet, quiet=True, fps=motion_fps))   # refused here, before building
+    if preset:
+        if len(clip.frames) != preset['frames'] or abs(clip.fps - preset['fps']) > 1e-6:
+            raise SystemExit('The pinned movement clip has unexpected frame coverage or timing.')
+        clip.reference_motion = {'source': 'preset', 'preset': preset_id, 'mode': preset['mode'],
+            'phase_frames': dict(preset['phase_frames']), 'source_sha256': preset['sha256'],
+            'description': preset['source']}
     workspace = Path(args.out) if args.out else Path(tempfile.gettempdir())
     workspace.mkdir(parents=True, exist_ok=True)
     skin, rig, cage, built = mpfb_cage.wear(args.wrap_skin, workspace)
@@ -528,6 +550,11 @@ def run_mpfb(args):
     scene = bpy.context.scene
     first, last = scene.frame_start, scene.frame_end
     reference = json.loads(Path(args.keyposes).read_text()) if args.keyposes else None
+    if reference and args.exercise in ('Standing Barbell Overhead Press (Shoulder Press)',
+            'Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise',
+            'Tricep Pushdown (cable, bar or rope attachment)'):
+        import standing_posture
+        result['standing_posture'] = standing_posture.correct(rig, skin, first, last)
     deadlift_plan = None
     if reference and args.exercise == 'Conventional Barbell Deadlift':
         import deadlift_motion
@@ -542,15 +569,23 @@ def run_mpfb(args):
                              'Skeletal-only USD export cannot preserve it; save the validated Blender scene or GIF instead.')
         import pose_cleanup
         result['surface_cleanup'] = pose_cleanup.apply(rig, skin, first, last, exercise=args.exercise)
+    lunge_report = None
+    if reference and args.exercise == 'Walking Lunge (dumbbells optional)':
+        import lunge_contacts
+        lunge_report = lunge_contacts.apply(rig, skin, first, last, reference,
+            (result.get('reference_motion') or {}).get('phase_frames'))
     result["contact"] = retarget.skin_contact(rig, skin, first, last)
     result["cage"] = built
 
     held = []
     if profile:
         import exercise_supports
-        supports, support_report = exercise_supports.apply(rig, skin, first, last, args.exercise, reference=reference)
+        supports, support_report = exercise_supports.apply(rig, skin, first, last, args.exercise, reference=reference,
+            reference_phase_frames=(result.get('reference_motion') or {}).get('phase_frames'))
         held.extend(supports)
         result['physical'] = {'profile': profile, 'supports': support_report}
+        if lunge_report is not None:
+            result['physical']['lunge'] = lunge_report
         result['contact'] = retarget.skin_contact(rig, skin, first, last)
     if args.form_targets:
         # The poses corrected toward a measured reference, at the clip's own timing
@@ -586,6 +621,17 @@ def run_mpfb(args):
         held.append(bar)
         result["row"] = row
         result["grip"] = {"contact": row["contact"]}
+    elif preset:
+        bar, contacts = squat_preset.apply(rig, skin, first, last)
+        held.append(bar)
+        result['physical']['contacts'] = contacts
+        result['physical']['supports'] = contacts.get('supports') or {}
+        sides = contacts.get('sides') or {}
+        result['grip'] = {'contact': {'frames': contacts.get('frames'),
+            'deepest_inside_bar_mm': max((s.get('deepest_inside_bar_mm', float('inf')) for s in sides.values()), default=None),
+            'frames_touching_within_3mm': min((s.get('frames_touching_within_3mm', 0) for s in sides.values()), default=0)}}
+        result['squat_preset'] = {'id': preset_id, 'source': preset['source'], 'sha256': preset['sha256'],
+            'photos_used_as_motion_targets': False}
     elif args.exercise in MPFB_BARBELL_ON_BACK:
         scene.frame_set(first)
         bar, where = mpfb_cage.mount_barbell(rig, skin)
@@ -654,7 +700,7 @@ def run_mpfb(args):
         from physical_checks import rows_for
         rows = rows_for(result)
         for side, reading in (result['contact'].get('sides') or {}).items():
-            if profile['family'] in ('standing', 'hinge', 'seated', 'supine'):
+            if profile['family'] in ('standing', 'hinge', 'seated', 'supine', 'squat'):
                 gap = reading.get('initial_floor_gap_mm')
                 rows.append({'group': 'body', 'metric': 'foot_floor_gap_' + side, 'target': 5., 'ours': gap,
                     'status': 'pass' if gap is not None and gap <= 5. else 'fail', 'unit': 'mm', 'frame': first,
@@ -698,7 +744,7 @@ def run_mpfb(args):
     preview_views = views_for(args.exercise, args.side_view)
     result['preview_cameras'] = [list(view) for view in preview_views]
     result['preview_camera_space'] = 'world'
-    if args.keyposes and (profile or args.exercise == 'Barbell Bent-Over Row'):
+    if (args.keyposes or preset) and (profile or args.exercise == 'Barbell Bent-Over Row'):
         # Run the same all-frame visibility and motion checks as the inspector
         # before spending time on a GIF. Include the planned reference cameras;
         # the back of a bent elbow can be hidden in the preview but visible there.
@@ -706,7 +752,7 @@ def run_mpfb(args):
         mpfb_cage.preview_set(args.width, args.height, samples=4 if args.fast else 16)
         print('skin-preflight: measuring movement and all planned camera views', flush=True)
         checked_skin = skin_preflight.measure(rig, skin, first, last, args.exercise, held,
-            c['box'], args.keyposes, side_view=args.side_view,
+            c['box'], args.keyposes or str(Path(args.reference_run) / 'keyposes.json'), side_view=args.side_view,
             reference_motion=result.get('reference_motion'), preview_views=preview_views)
         result['skin_preflight'] = checked_skin
         existing_rows = (((result.get('physical') or {}).get('validation') or {}).get('rows') or [])
@@ -745,7 +791,8 @@ def run_mpfb(args):
             scene.render.filepath = str(side / "frame_")
             bpy.ops.render.render(animation=True)
         if args.gif:
-            retarget.frames_to_gif(out, args.gif, scene.render.fps, beside=side)
+            retarget.frames_to_gif(out, args.gif, scene.render.fps, beside=side,
+                loop=(getattr(clip, 'reference_motion', {}) or {}).get('playback') != 'once')
     if args.save:
         bpy.ops.wm.save_as_mainfile(filepath=args.save)
     if args.usdz:
@@ -763,12 +810,18 @@ def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False, fps=30)
     its thighs, exist)."""
     import json
     import keypose_clip
+    payload = json.loads(Path(path).read_text()) if Path(path).is_file() else {}
+    if payload.get('exercise') and payload['exercise'] != exercise:
+        raise SystemExit('The measured movement inputs do not match this exercise. Check its references again.')
+    sequence = (payload.get('motion') or {}).get('mode') == 'sequence'
     retarget = retarget_module()
     # refused before anything is built, in the Studio's words (studio/measure/kit.py, one table): feet that step,
     # or a bench / seat / pull-up bar / sled this path doesn't make. The lunge used to build the cage for two
     # minutes and then die in BoneRetarget on feet 'auto' (task 9 review).
     kit = _kit()
     refusal = kit.picture_refusal(exercise)
+    if sequence and exercise == 'Walking Lunge (dumbbells optional)' and (payload.get('sequence') or {}).get('contactModel') == 'named_heel_toe':
+        refusal = None
     from motion_profiles import profile_for
     profile = profile_for(exercise)
     mode = feet or (profile or {}).get('feet') or retarget.EXERCISES.get(exercise, {}).get("feet", "planted")
@@ -785,8 +838,11 @@ def keypose_clip_from(path, exercise, feet=None, lean=None, quiet=False, fps=30)
     rest = retarget.load_clip(keypose_clip.REST_CLIP, turned="all")
     try:
         legs = keypose_clip.DOWN if lean is None else keypose_clip.leg_rest(lean)
-        clip = keypose_clip.clip_from_keyposes(rest, json.loads(path.read_text()), fps=fps, feet=mode, label=str(path),
-                                               legs=legs)
+        if sequence:
+            from sequence_clip import clip_from_sequence
+            clip = clip_from_sequence(rest, payload, fps=fps, label=str(path), legs=legs)
+        else:
+            clip = keypose_clip.clip_from_keyposes(rest, payload, fps=fps, feet=mode, label=str(path), legs=legs)
     except ValueError as problem:
         raise SystemExit(f"No motion for this exercise: {problem}") from None
     # the same line `load_clip` prints, so the Exercise Studio reads this clip's frame count (server/steps.js)
@@ -862,6 +918,10 @@ def main():
                         help="with --mpfb and --wrap-skin, instead of --mixamo: no clip - move between the "
                              "reference pictures' key positions (the Exercise Studio's keyposes.json; "
                              "keypose_clip.py), start -> middle -> end in 1.5 s, held 0.2 s, back in 1.0 s")
+    parser.add_argument('--motion-preset', default=None, choices=('squat-v1',),
+                        help='Explicit pinned movement source; photographs are context and physical/skin checks remain required.')
+    parser.add_argument('--reference-run', default=None, metavar='DIR',
+                        help='Studio run metadata for the explicit movement preset.')
     parser.add_argument("--character-fit", choices=('auto', 'original', 'fitness'), default='auto',
                         help="MPFB body proportions: automatically add arm reach when needed, keep the "
                              "original, or always use fixed fitness proportions; face and source model are preserved")

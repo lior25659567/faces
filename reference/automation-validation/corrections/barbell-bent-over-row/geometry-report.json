@@ -1,0 +1,926 @@
+{
+  "clip": "/tmp/row-stance-validated/keyposes.json",
+  "fps": 30.0,
+  "frames": 81,
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 24,
+      "end": 46
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "contact": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 2,
+    "sides": {
+      "left": {
+        "sole_vertices": 486,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.6364908185787499
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.2093353420495987,
+        -0.10782282799482346,
+        -1.3632018180942396e-06
+      ],
+      [
+        0.2089657187461853,
+        0.42531150579452515,
+        0.8313003182411194
+      ]
+    ]
+  },
+  "grip": {
+    "contact": {
+      "hand_vertices": 4389,
+      "deepest_inside_bar_mm": 0.8049387878278444,
+      "nearest_gap_mm_min": -0.8049387878278444,
+      "frames_touching_within_3mm": 81,
+      "frames": 81,
+      "sides": {
+        "left": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.7987653436670487,
+          "nearest_gap_mm_max": 0.02786813159949726
+        },
+        "right": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.8049387878609136,
+          "nearest_gap_mm_max": 0.05128807603306529
+        }
+      }
+    }
+  },
+  "row": {
+    "source": "shared bar from direct measured arm landmarks; elbow angles adapted to character limb lengths",
+    "body_adaptation": {
+      "torso": "starting hinge held throughout the row",
+      "stance": "constant mean of observed thigh directions and knee bends; starting foot turns retained"
+    },
+    "requested_grip_ratio": 1.4864451766701945,
+    "grip_ratio": 1.4864451766701945,
+    "worst_wrist_bend_deg": 19.495608200213606,
+    "max_path_adjustment_mm": 0.0,
+    "max_grip_anchor_error_mm": 0.005969093856144768,
+    "max_surface_adjustment_mm": 50.9161207399315,
+    "frames": [
+      {
+        "frame": 1,
+        "bar": [
+          0.0002284845996855783,
+          0.10928339867432052,
+          0.3927221069089527
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 2,
+        "bar": [
+          0.00022836538661168067,
+          0.10924903578720116,
+          0.39272655557329744
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 3,
+        "bar": [
+          0.00022801546754321647,
+          0.10914817244171097,
+          0.39274056772693033
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 4,
+        "bar": [
+          0.00022744717684959766,
+          0.10898436399050243,
+          0.39276637970114536
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 5,
+        "bar": [
+          0.00022667378584418252,
+          0.10876143585799185,
+          0.39280765740445767
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 6,
+        "bar": [
+          0.00022570944433078141,
+          0.10848346669129677,
+          0.39286923144868235
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 7,
+        "bar": [
+          0.0002245691430763645,
+          0.10815477754310042,
+          0.3929568439006341
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 8,
+        "bar": [
+          0.0002232686851085292,
+          0.1077799235982312,
+          0.39307690628917313
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 9,
+        "bar": [
+          0.0002218246555887459,
+          0.10736368548971287,
+          0.3932362686194364
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 10,
+        "bar": [
+          0.0002202543818170383,
+          0.10691105777022346,
+          0.3934419993401156
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 11,
+        "bar": [
+          0.000218575876681057,
+          0.10642723261143898,
+          0.39370117644613045
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 12,
+        "bar": [
+          0.00021680776057192625,
+          0.10591757729647497,
+          0.39402069015251884
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 13,
+        "bar": [
+          0.00021496915844649022,
+          0.10538760454833607,
+          0.3944070578235239
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 14,
+        "bar": [
+          0.00021307957031123495,
+          0.10484293519722575,
+          0.39486625206410497
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 15,
+        "bar": [
+          0.00021115871492230427,
+          0.10428925312745824,
+          0.3954035430623428
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 16,
+        "bar": [
+          0.00020922634791888356,
+          0.10373225285484847,
+          0.3960233563959388
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 17,
+        "bar": [
+          0.0002107965573268578,
+          0.10418486196847866,
+          0.39672914757258293
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 1.007
+      },
+      {
+        "frame": 18,
+        "bar": [
+          0.0002148056617936779,
+          0.10534047682544481,
+          0.3975232945540125
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 2.71
+      },
+      {
+        "frame": 19,
+        "bar": [
+          0.00021926679340067784,
+          0.1066263874314944,
+          0.39840700941253054
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 4.529
+      },
+      {
+        "frame": 20,
+        "bar": [
+          0.00022417995214884146,
+          0.1080425937866274,
+          0.3993802700862165
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 6.461
+      },
+      {
+        "frame": 21,
+        "bar": [
+          0.00022953893458562972,
+          0.10958730776009791,
+          0.40044177293923405
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 8.498
+      },
+      {
+        "frame": 22,
+        "bar": [
+          0.0002353300930560349,
+          0.111256595447464,
+          0.4015889065053511
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 10.632
+      },
+      {
+        "frame": 23,
+        "bar": [
+          0.00024153316277882657,
+          0.11304461557337359,
+          0.4028177464093206
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 12.853
+      },
+      {
+        "frame": 24,
+        "bar": [
+          0.0002481225027747883,
+          0.11494397718620959,
+          0.40412307103936307
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 15.151
+      },
+      {
+        "frame": 25,
+        "bar": [
+          0.00025479745086586246,
+          0.11686801512223788,
+          0.4054983971049372
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 17.436
+      },
+      {
+        "frame": 26,
+        "bar": [
+          0.00026143931373665485,
+          0.11878251631356733,
+          0.40693603377952003
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 19.672
+      },
+      {
+        "frame": 27,
+        "bar": [
+          0.00026832931594688176,
+          0.12076854307721346,
+          0.4084271537210197
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 21.939
+      },
+      {
+        "frame": 28,
+        "bar": [
+          0.0002754207245908707,
+          0.12281262476403551,
+          0.4099618789046331
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 24.221
+      },
+      {
+        "frame": 29,
+        "bar": [
+          0.00028266225755153537,
+          0.12489997942556627,
+          0.4115293789140487
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 26.505
+      },
+      {
+        "frame": 30,
+        "bar": [
+          0.00029013166512859164,
+          0.12705301840344724,
+          0.4131179791330399
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 28.813
+      },
+      {
+        "frame": 31,
+        "bar": [
+          0.0002974865150543732,
+          0.12917303640490893,
+          0.41471527617244724
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 31.048
+      },
+      {
+        "frame": 32,
+        "bar": [
+          0.000304830442710473,
+          0.13128990608568142,
+          0.41630825786421066
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 33.242
+      },
+      {
+        "frame": 33,
+        "bar": [
+          0.00031228165344388903,
+          0.13343769985979367,
+          0.4178834252564071
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 35.432
+      },
+      {
+        "frame": 34,
+        "bar": [
+          0.000319161560554167,
+          0.13542081671199804,
+          0.41942691424852885
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 37.426
+      },
+      {
+        "frame": 35,
+        "bar": [
+          0.000326548255034777,
+          0.1375500138313631,
+          0.42092461480794663
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 39.537
+      },
+      {
+        "frame": 36,
+        "bar": [
+          0.0003330846587798156,
+          0.13943411665461922,
+          0.4223622860971482
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 41.381
+      },
+      {
+        "frame": 37,
+        "bar": [
+          0.00033939591323765036,
+          0.14125332073235408,
+          0.42372566630564423
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 43.14
+      },
+      {
+        "frame": 38,
+        "bar": [
+          0.00034519286175469974,
+          0.14292427734261076,
+          0.425000576508372
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 44.737
+      },
+      {
+        "frame": 39,
+        "bar": [
+          0.00035052330833531696,
+          0.14446076587878603,
+          0.4261730184523084
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 46.192
+      },
+      {
+        "frame": 40,
+        "bar": [
+          0.00035526921717004385,
+          0.14582876279888962,
+          0.4272292667942671
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 47.474
+      },
+      {
+        "frame": 41,
+        "bar": [
+          0.00035906864405661884,
+          0.14692393854165806,
+          0.42815595696653375
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 48.485
+      },
+      {
+        "frame": 42,
+        "bar": [
+          0.0003622837027924662,
+          0.14785067155735593,
+          0.428940170526007
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 49.334
+      },
+      {
+        "frame": 43,
+        "bar": [
+          0.00036486435195617233,
+          0.14859453752592683,
+          0.42956952054140807
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.012
+      },
+      {
+        "frame": 44,
+        "bar": [
+          0.0003667609636564122,
+          0.14914123132628393,
+          0.43003224028762854
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.508
+      },
+      {
+        "frame": 45,
+        "bar": [
+          0.00036793052709169346,
+          0.14947835519775007,
+          0.43031727924241997
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.813
+      },
+      {
+        "frame": 46,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 47,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 48,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 49,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 50,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 51,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 52,
+        "bar": [
+          0.00036832879073741664,
+          0.14959315374396764,
+          0.43041441111343126
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.916
+      },
+      {
+        "frame": 53,
+        "bar": [
+          0.00036744003832687484,
+          0.1493369729808543,
+          0.4301976296962887
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.685
+      },
+      {
+        "frame": 54,
+        "bar": [
+          0.00036486435195617233,
+          0.14859453752592683,
+          0.42956952054140807
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 50.012
+      },
+      {
+        "frame": 55,
+        "bar": [
+          0.0003607526830571847,
+          0.14740935876879568,
+          0.4285666609776482
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 48.931
+      },
+      {
+        "frame": 56,
+        "bar": [
+          0.00035526921717004385,
+          0.14582876279888962,
+          0.4272292667942671
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 47.474
+      },
+      {
+        "frame": 57,
+        "bar": [
+          0.0003479199131005091,
+          0.14371034340065786,
+          0.42560047129019296
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 45.483
+      },
+      {
+        "frame": 58,
+        "bar": [
+          0.00033939591323765036,
+          0.14125332073235408,
+          0.42372566630564423
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 43.14
+      },
+      {
+        "frame": 59,
+        "bar": [
+          0.00032985429814285944,
+          0.13850297288932853,
+          0.4216518462300678
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 40.473
+      },
+      {
+        "frame": 60,
+        "bar": [
+          0.000319161560554167,
+          0.13542081671199804,
+          0.41942691424852885
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 37.426
+      },
+      {
+        "frame": 61,
+        "bar": [
+          0.0003087816480719464,
+          0.1324288316394245,
+          0.4170989277092816
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 34.406
+      },
+      {
+        "frame": 62,
+        "bar": [
+          0.0002974865150543732,
+          0.12917303640490893,
+          0.41471527617244724
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 31.048
+      },
+      {
+        "frame": 63,
+        "bar": [
+          0.00028632438058675733,
+          0.12595557768397408,
+          0.4123218010188644
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 27.643
+      },
+      {
+        "frame": 64,
+        "bar": [
+          0.0002754207245908707,
+          0.12281262476403551,
+          0.4099618789046331
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 24.221
+      },
+      {
+        "frame": 65,
+        "bar": [
+          0.00026485660593414373,
+          0.11976754266895892,
+          0.40767550219017434
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 20.803
+      },
+      {
+        "frame": 66,
+        "bar": [
+          0.00025479745086586246,
+          0.11686801512223788,
+          0.4054983971049372
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 17.436
+      },
+      {
+        "frame": 67,
+        "bar": [
+          0.00024478130667271485,
+          0.11398088534104023,
+          0.403461224316139
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 13.993
+      },
+      {
+        "frame": 68,
+        "bar": [
+          0.0002353300930560349,
+          0.111256595447464,
+          0.4015889065053511
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 10.632
+      },
+      {
+        "frame": 69,
+        "bar": [
+          0.00022680485273128553,
+          0.10879921515236403,
+          0.399900123642328
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 7.467
+      },
+      {
+        "frame": 70,
+        "bar": [
+          0.00021926679340067784,
+          0.1066263874314944,
+          0.39840700941253054
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 4.529
+      },
+      {
+        "frame": 71,
+        "bar": [
+          0.0002127444510545906,
+          0.10474633771730339,
+          0.3971150726077237
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 1.843
+      },
+      {
+        "frame": 72,
+        "bar": [
+          0.0002092263479188836,
+          0.10373225285484848,
+          0.3960233563959388
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 73,
+        "bar": [
+          0.0002121218148638556,
+          0.1045668644321162,
+          0.39512483751930094
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 74,
+        "bar": [
+          0.00021496915844649022,
+          0.10538760454833607,
+          0.3944070578235239
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 75,
+        "bar": [
+          0.00021770183512818042,
+          0.10617529218755356,
+          0.3938529730690091
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 76,
+        "bar": [
+          0.0002202543818170383,
+          0.10691105777022346,
+          0.3934419993401156
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 77,
+        "bar": [
+          0.00022256355066233567,
+          0.10757667025492734,
+          0.3931512358001381
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 78,
+        "bar": [
+          0.0002245691430763645,
+          0.1081547775431004,
+          0.3929568439006341
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 79,
+        "bar": [
+          0.0002262145663356462,
+          0.10862906691790597,
+          0.3928355669769763
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 80,
+        "bar": [
+          0.00022744717684959766,
+          0.10898436399050243,
+          0.39276637970114536
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      },
+      {
+        "frame": 81,
+        "bar": [
+          0.00022821851727523673,
+          0.10920670104767438,
+          0.3927322631342113
+        ],
+        "path_adjustment_mm": 0.0,
+        "surface_adjustment_mm": 0.0
+      }
+    ],
+    "contact": {
+      "hand_vertices": 4389,
+      "deepest_inside_bar_mm": 0.8049387878278444,
+      "nearest_gap_mm_min": -0.8049387878278444,
+      "frames_touching_within_3mm": 81,
+      "frames": 81,
+      "sides": {
+        "left": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.7987653436670487,
+          "nearest_gap_mm_max": 0.02786813159949726
+        },
+        "right": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.8049387878609136,
+          "nearest_gap_mm_max": 0.05128807603306529
+        }
+      }
+    },
+    "body_clearance": {
+      "status": "clear_at_samples",
+      "worst": null,
+      "sample_spacing_mm": 12.560264062499993,
+      "triangles": 15713,
+      "frames": []
+    }
+  }
+}

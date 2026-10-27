@@ -1,31 +1,35 @@
 {
   "name": "Conventional Barbell Deadlift",
   "slug": "conventional-barbell-deadlift",
-  "run_dir": "/tmp/studio-release-validation/conventional-barbell-deadlift",
+  "run_dir": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 0.97
+      "seconds": 0.97,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 185.68
+      "seconds": 185.68,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 46.69
+      "seconds": 46.69,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.14
+      "seconds": 0.14,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
     }
   ],
   "summary": {
-    "pass": 26,
+    "pass": 28,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -128,7 +132,87 @@
     "animation.gif": "25c9fa0d16f14722df7ee3949e2f9c7668d0fa60df9718c5f32bcd291ef263dd",
     "start.png": "d20bdd01d535cd43081ceb18d7edd80ab799712e4a7cfb89a4fff3fa9582d588",
     "end.png": "970f056697debfb7b2847181f4e807cacd4f403571adda63c2a62e4a3fdbfdad",
-    "checks.json": "4d8a7603436899017d5d3500c05f5afa773dc9e2cd3119018c8462860c055408"
+    "checks.json": "2c9b6744562c2d371c5ba5cee92fd2b750824ced87cd87340321727d31f090c7"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": false,
+    "evidence_files": [
+      "evidence/movement-quality-recheck.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": false,
+    "geometry_changed_this_review": false,
+    "source_photos_calibrated": false,
+    "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+    "evidence": [
+      {
+        "file": "evidence/movement-quality-recheck.json",
+        "sha256": "ab8fba4fdb1bd7939d09d8e3078b9eae0b838da784e88a5d6061f545afbefa2f",
+        "status": null,
+        "scene_sha256": "b015926bf7bd73667ee819116ac15f0571c2bd6087a4b96761b7430f7e3167cd"
+      }
+    ],
+    "recheck": {
+      "recorded_at_utc": "2026-10-27T08:49:59.981842+00:00",
+      "scope": "Actual arm-joint and rotation replay on unchanged saved scene; existing source comparison stills retained.",
+      "frames": 32,
+      "scene_sha256": "b015926bf7bd73667ee819116ac15f0571c2bd6087a4b96761b7430f7e3167cd",
+      "gif_sha256": "25c9fa0d16f14722df7ee3949e2f9c7668d0fa60df9718c5f32bcd291ef263dd",
+      "scene_changed": false,
+      "gif_changed": false,
+      "arm_speed_heights_s": 0.3214920638355934,
+      "arm_turn_deg_s": 64.74693064037002,
+      "summary": {
+        "pass": 28,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 9,
+        "unmeasured": 0
+      }
+    }
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

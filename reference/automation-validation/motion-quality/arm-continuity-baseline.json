@@ -1,0 +1,456 @@
+{
+  "scope": "Engineering snap detection only; does not certify form",
+  "scenes": [
+    {
+      "slug": "conventional-barbell-deadlift",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.3214920638355934,
+      "max_turn_deg_s": 64.74693064037002,
+      "speed_frame": 27,
+      "turn_frame": 27,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.3214920638355934,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.right.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 64.74693064037002,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.6135,
+      "scene_sha256": "b015926bf7bd73667ee819116ac15f0571c2bd6087a4b96761b7430f7e3167cd",
+      "saved_scene": "/tmp/studio-release-validation/conventional-barbell-deadlift/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "dumbbell-bicep-curl-standing-both-arms",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.33049082214684744,
+      "max_turn_deg_s": 189.14454203255656,
+      "speed_frame": 28,
+      "turn_frame": 27,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.33049082214684744,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 28,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 189.14454203255656,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.left.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.5618,
+      "scene_sha256": "0f66c131f9cf3e6e90bdc77d3442086d1e8acbdc53df950d72dffe70f63c6b1d",
+      "saved_scene": "/tmp/studio-complete-validation/dumbbell-bicep-curl-standing-both-arms/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "dumbbell-lateral-raise",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.47542718558827707,
+      "max_turn_deg_s": 203.60613999494336,
+      "speed_frame": 28,
+      "turn_frame": 27,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.47542718558827707,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 28,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 203.60613999494336,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: hand.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.5833,
+      "scene_sha256": "daabfa4f1659d36fc3d6acd8ddc247af5605819c82e6f0f4f08e38ecb659c969",
+      "saved_scene": "/tmp/studio-complete-validation/dumbbell-lateral-raise/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "dumbbell-shoulder-press-seated-overhead-press",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.4513803819607162,
+      "max_turn_deg_s": 136.20205034401334,
+      "speed_frame": 28,
+      "turn_frame": 28,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.4513803819607162,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 28,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 136.20205034401334,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 28,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: arm.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.7172,
+      "scene_sha256": "9aff41c96b5aef005d26bc9b98fae8efbd360c2e21d0e277da730113abc03a98",
+      "saved_scene": "/tmp/studio-complete-validation/dumbbell-shoulder-press-seated-overhead-press/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "flat-barbell-bench-press",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.8542478597394925,
+      "max_turn_deg_s": 296.2358674541007,
+      "speed_frame": 29,
+      "turn_frame": 24,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.8542478597394925,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 29,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 296.2358674541007,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 24,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.5632,
+      "scene_sha256": "d964807ce5ca04ea3b3de209e160ebf7b686918354902a2ac98a44ef46606914",
+      "saved_scene": "/tmp/studio-integrated-validation/flat-barbell-bench-press/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "front-plank-forearm-plank",
+      "frames": 12,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.0,
+      "max_turn_deg_s": 0.0,
+      "speed_frame": 1,
+      "turn_frame": 1,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.0,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 1,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. The arms remain stationary.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 0.0,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 1,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. The arms remain stationary.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.2188,
+      "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541",
+      "saved_scene": "/tmp/studio-final-pipeline-validation/front-plank-forearm-plank/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "lat-pulldown-seated-to-the-front",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.5299561346708106,
+      "max_turn_deg_s": 180.0139839697934,
+      "speed_frame": 27,
+      "turn_frame": 28,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.5299561346708106,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 180.0139839697934,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 28,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: hand.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.5861,
+      "scene_sha256": "6d3b9ed8e5c23766efc512dd8a6a4834ee2806281205064c9899702662f597f4",
+      "saved_scene": "/tmp/studio-final-validation/lat-pulldown-seated-to-the-front/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "leg-press-seated-machine",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.06945036826903891,
+      "max_turn_deg_s": 53.01203399921992,
+      "speed_frame": 27,
+      "turn_frame": 27,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.06945036826903891,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 53.01203399921992,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.left.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.5915,
+      "scene_sha256": "c0ceb90506f48c09ffd28a3e19d5e3eecd5cde33b0f5e1eb9bc1087502ebfba7",
+      "saved_scene": "/tmp/studio-complete-validation/leg-press-seated-machine/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "pull-up",
+      "frames": 43,
+      "fps": 16.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 3.9317699807043844,
+      "max_turn_deg_s": 1933.080827631474,
+      "speed_frame": 19,
+      "turn_frame": 19,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 3.9317699807043844,
+          "unit": "height/s",
+          "status": "fail",
+          "frame": 19,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.right.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 1933.080827631474,
+          "unit": "deg/s",
+          "status": "fail",
+          "frame": 19,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.8092,
+      "scene_sha256": "003da9ea797fdea40c5790cb499e839bca4f0d3ab0c1d83cde661c62fe0a25aa",
+      "saved_scene": "/tmp/studio-final-pipeline-validation/pull-up/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "standing-barbell-overhead-press-shoulder-press",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.5544043817301876,
+      "max_turn_deg_s": 205.53254279706522,
+      "speed_frame": 27,
+      "turn_frame": 27,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.5544043817301876,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.right.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 205.53254279706522,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 27,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.6437,
+      "scene_sha256": "10c42346ffea683bdac4c446cee57f775e7c22dbd2940bc96a92f4abf369d06f",
+      "saved_scene": "/tmp/studio-final-validation/standing-barbell-overhead-press-shoulder-press/scene.blend",
+      "rendered": false
+    },
+    {
+      "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
+      "frames": 32,
+      "fps": 12.0,
+      "height_m": 0.9991119140625,
+      "loop_seam_measured": true,
+      "max_speed_heights_s": 0.309798799129192,
+      "max_turn_deg_s": 239.99991877833168,
+      "speed_frame": 17,
+      "turn_frame": 17,
+      "rows": [
+        {
+          "group": "body",
+          "metric": "upper_limb_speed",
+          "target": 2.0,
+          "ours": 0.309798799129192,
+          "unit": "height/s",
+          "status": "pass",
+          "frame": 17,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.left.",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "body",
+          "metric": "upper_limb_turn_speed",
+          "target": 720.0,
+          "ours": 239.99991877833168,
+          "unit": "deg/s",
+          "status": "pass",
+          "frame": 17,
+          "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: hand.left.",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "seconds": 0.6292,
+      "scene_sha256": "51a56c9d1c6dedf0166596ae167d21110bb498ead19bc44ed6575d29a9bb9060",
+      "saved_scene": "/tmp/studio-complete-validation/tricep-pushdown-cable-bar-or-rope-attachment/scene.blend",
+      "rendered": false
+    }
+  ]
+}

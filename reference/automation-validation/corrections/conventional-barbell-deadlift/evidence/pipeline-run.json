@@ -1,0 +1,38 @@
+{
+  "name": "Conventional Barbell Deadlift",
+  "slug": "conventional-barbell-deadlift",
+  "source": "/tmp/studio-extended-live-GRamB2/runs/conventional-barbell-deadlift/20261024-153536-9ba3",
+  "characterFit": "auto",
+  "startedAt": "2026-10-25T10:15:48.324146+00:00",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 0.97
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 185.68
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 46.69
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.14
+    }
+  ],
+  "finishedAt": "2026-10-25T10:19:41.804468+00:00",
+  "summary": {
+    "pass": 26,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  }
+}

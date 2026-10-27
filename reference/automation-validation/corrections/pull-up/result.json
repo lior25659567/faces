@@ -1,31 +1,39 @@
 {
   "name": "Pull-Up",
   "slug": "pull-up",
-  "run_dir": "/tmp/studio-final-pipeline-validation/pull-up",
+  "run_dir": "/tmp/studio-motion-quality-validation/pull-up",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 0.99
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 206.51
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 37.41
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.15
+      "seconds": null,
+      "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 20,
+    "pass": 25,
     "fail": 0,
     "limited": 0,
     "uncertain": 11,
@@ -36,8 +44,8 @@
   "fps": 16.0,
   "phase_frames": {
     "start": 1,
-    "middle": 13,
-    "end": 25
+    "middle": 9,
+    "end": 17
   },
   "character_fit": {
     "kind": "fitness arm reach",
@@ -123,12 +131,81 @@
     "img-96142bf0": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
     "img-9a54cdbb": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f"
   },
-  "scene_sha256": "003da9ea797fdea40c5790cb499e839bca4f0d3ab0c1d83cde661c62fe0a25aa",
+  "scene_sha256": "6c2a6b0170790eec2a77acd27624c817a80421d73562536c479122929ffc270d",
   "output_sha256": {
-    "animation.gif": "32b57f5281a5f9f380b57cca547b4bbb5883fb1db9bd6e880f4ad5e42c3c9a92",
-    "start.png": "7b6e9e0cee4945d814cbeb2aebae08cc91c655611e72b2b1e6ff58ab22f16b47",
-    "end.png": "ee49b7aa4e2ff790721e0803acf9e62d879660af4f8d5591033714b683b0def2",
-    "checks.json": "d74ddcf3d991d07d3cb5b3ff2a08aa0bf108b978fc6a1cb00acc6e56075da8ec"
+    "animation.gif": "4d6986b00f69bc2930a72ed8afe4777d80b2cc30fe62c14837433de48763352a",
+    "start.png": "f57c2ce3fe4020c613ebde755d6233c99ea3158fcc2331f0faed444b38293ab5",
+    "end.png": "07c3feb862334a3f0375526431c0c320f8ff5d1b5d7fbecc54786300c8d97898",
+    "checks.json": "c10dd40c369642648de8e4be8236c04ca0b978a67de16eae169c05c5635c44cb"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/pullup-range-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 9,
+      "end": 17
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.0,
+      "hold_s": 0.2,
+      "return_s": 1.5,
+      "forward_action": "pull",
+      "return_action": "controlled lowering",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2690,
+  "gif_frame_count": 43,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/pull-up/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 17,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/pull-up/frames/frame_0017.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/pullup-range-replay.json",
+        "sha256": "41a69e18eb2695deb225aa5799329821c75c28f375c1831c04d3b6a6dec7359e",
+        "status": "passed",
+        "scene_sha256": "6c2a6b0170790eec2a77acd27624c817a80421d73562536c479122929ffc270d"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

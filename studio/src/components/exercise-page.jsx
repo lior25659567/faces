@@ -14,8 +14,9 @@ import { motionSource } from '../lib/labels.js'
 import { defaultRunId, samePictures, stripReasons } from '../lib/run-view.js'
 import { checksAside, checksLine, scoreKind, unmeasuredLine } from '../lib/status.js'
 import { workForExercise } from '../lib/work.js'
-import { referenceCheck } from '../lib/reference-check.js'
+import { referenceCheck, sameReferenceSource } from '../lib/reference-check.js'
 import CharacterFit from './character-fit.jsx'
+import MovementSource from './movement-source.jsx'
 import { characterFitResult } from '../lib/character-fit.js'
 
 const ACTIVE = new Set(['queued', 'running', 'failed', 'interrupted'])
@@ -44,6 +45,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   const [referenceBundle, setReferenceBundle] = useState(null)
   const [busy, setBusy] = useState(false)
   const [pickedCharacterFit, setCharacterFit] = useState(null)
+  const [pickedMotionPreset, setMotionPreset] = useState(undefined)
   const inFlight = useRef(false)
   const refsSection = useRef(null)
   const progressSection = useRef(null)
@@ -78,6 +80,10 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   const referenceStatus = referenceRun?.status
   const latest = runs[0] ?? null
   const characterFit = pickedCharacterFit ?? latest?.characterFit ?? 'auto'
+  const motionPresets = detail?.exercise?.motionPresets ?? exercise.motionPresets ?? []
+  const motionPreset = pickedMotionPreset !== undefined ? pickedMotionPreset : latest?.motionPreset || motionPresets[0]?.id || null
+  const selectedReferenceBundle = exercise.name === 'Walking Lunge (dumbbells optional)'
+    ? referenceRun?.referenceBundle || latest?.referenceBundle || null : null
   const latestDone = runs.find((r) => r.status === 'done') ?? null
   const shownId = pickedRunId && runs.some((r) => r.id === pickedRunId) ? pickedRunId : defaultRunId(runs)
   const shown = runs.find((r) => r.id === shownId) ?? null
@@ -150,8 +156,10 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
   // Save edits together before checking or committing to a complete animation build.
   const changeReferences = (action) => guarded(action)
 
-  const runAgain = () => guarded(() => api.startRun(slug, { characterFit }))
-  const checkReferences = () => guarded(() => api.checkReferences(slug))
+  const runAgain = () => guarded(() => api.startRun(slug, { characterFit, motionPreset,
+    ...(selectedReferenceBundle ? { referenceBundle: selectedReferenceBundle } : {}) }))
+  const checkReferences = () => guarded(() => api.checkReferences(slug, { motionPreset,
+    ...(selectedReferenceBundle ? { referenceBundle: selectedReferenceBundle } : {}) }))
 
   const scrollTo = (ref) => {
     const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -175,8 +183,9 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
 
   const references = detail?.references ?? []
   const currentReferenceBundle = referenceBundle?.runId === referenceRun?.id && referenceBundle?.snapshot?.images &&
-    samePictures(references, referenceBundle.snapshot.images) ? referenceBundle : null
-  const check = referenceCheck(references, referenceRun, referenceBundle)
+    samePictures(references, referenceBundle.snapshot.images) &&
+    sameReferenceSource(referenceBundle.snapshot, motionPreset, selectedReferenceBundle) ? referenceBundle : null
+  const check = referenceCheck(references, referenceRun, referenceBundle, motionPreset, selectedReferenceBundle)
   const checking = referenceRun?.readOnly && ['queued', 'running'].includes(referenceRun.status)
   const working = Boolean(live || queuedAt >= 0)
   // A stopped build may have old pictures or unresolved reference problems. Retry the cheap
@@ -220,7 +229,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
           <h1 className="exercise-title">{exercise.name}</h1>
           <p className="exercise-meta">
             <span className="exercise-equipment">{exercise.equipment}</span>
-            <span className={exercise.clip ? undefined : 'exercise-noclip'}>{motionSource(exercise)}</span>
+            <span className={exercise.clip || motionPreset || exercise.movementSequence ? undefined : 'exercise-noclip'}>{motionSource({ ...exercise, motionPresets, motionPreset })}</span>
             {references.length > 0 && (
               <button type="button" className="exercise-refs-link" onClick={scrollToReferences}>
                 {references.length} reference {references.length === 1 ? 'picture' : 'pictures'}
@@ -246,32 +255,34 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
           <div className="section-head">
             <div>
               <h2 className="section-title" id="reference-check-title">Prepare the movement</h2>
-              <p className="section-note">Save your picture edits, check that Studio can use them, then build the animation.</p>
+              <p className="section-note">{motionPreset ? 'Check the selected movement, then build the animation.' : 'Save your picture edits, check that Studio can use them, then build the animation.'}</p>
             </div>
             <div className="exercise-build-actions">
               <button type="button" className="btn btn-quiet" onClick={scrollToReferences}>Edit pictures</button>
-              <button type="button" className="btn" onClick={checkReferences} disabled={busy || checking || !references.length}>
-                {checking ? 'Checking references…' : 'Check references'}
+              <button type="button" className="btn" onClick={checkReferences} disabled={busy || checking || (!references.length && !motionPreset)}>
+                {checking ? 'Checking movement…' : motionPreset ? 'Check movement' : 'Check references'}
               </button>
               <button type="button" className="btn btn-primary" onClick={runAgain} disabled={busy || working || !check.canBuild}>
                 Build exercise
               </button>
             </div>
           </div>
+          <MovementSource presets={motionPresets} value={motionPreset} onChange={setMotionPreset} disabled={busy || working || checking} />
           <CharacterFit value={characterFit} onChange={setCharacterFit} disabled={busy || working} />
           <div className={`exercise-check-feedback is-${check.state}`} role="status">
             {checking ? (
-              <p>{referenceRun.status === 'queued' ? 'The reference check is waiting in the queue.' : 'Reading your pictures and checking what they can show…'}</p>
+              <p>{referenceRun.status === 'queued' ? 'The movement check is waiting in the queue.' : motionPreset ? 'Checking the selected movement…' : 'Reading your pictures and checking what they can show…'}</p>
             ) : check.state === 'stale' ? (
-              <p>Your pictures or tags changed. Check the references again before building.</p>
+              <p>Your movement source, pictures or tags changed. Check the movement again before building.</p>
             ) : check.state === 'ready' ? (
-              <p>The references are ready to build. The finished animation still needs its movement checks.</p>
+              <p>The movement inputs are ready to build. The finished animation still needs its movement checks.</p>
             ) : check.state === 'blocked' ? (
               <p>Fix the reference problems below, then check again.</p>
             ) : check.state === 'failed' ? (
               <p>{check.message}</p>
             ) : (
-              <p>{exercise.name === 'Barbell Bent-Over Row'
+              <p>{motionPreset ? 'Check the selected preset before building. Your pictures stay available as visual references.'
+                : exercise.movementSequence ? 'Use Automate exercises to retrieve and check the reviewed step sequence.' : exercise.name === 'Barbell Bent-Over Row'
                 ? 'Start with matching side or three-quarter views of the beginning and end. Label their positions and actual views, then check the references.'
                 : 'Start with side views of the beginning and end of the movement. Label each position and view, then check the references.'}</p>
             )}
@@ -344,6 +355,7 @@ const ExercisePage = ({ exercise, state, work, exercises, focusRun, onChanged, o
             </p>
           )}
           <section className="section exercise-section" aria-labelledby="comparison-title">
+            {bundleReady && bundle.snapshot?.motionPreset && <p className="section-note">Movement source: {motionPresets.find((preset) => preset.id === bundle.snapshot.motionPreset)?.label || 'checked movement preset'}. Pictures are visual references for this run.</p>}
             <p className="section-note">{characterFitResult(bundleReady ? bundle.characterFit : null, shown.characterFit)}</p>
             <Comparison
               key={shown.id}

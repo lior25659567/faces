@@ -1,31 +1,35 @@
 {
-  "name": "Seated Dumbbell Shoulder Press",
+  "name": "Dumbbell Shoulder Press (seated overhead press)",
   "slug": "dumbbell-shoulder-press-seated-overhead-press",
-  "run_dir": "/tmp/studio-complete-validation/dumbbell-shoulder-press-seated-overhead-press",
+  "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 1.05
+      "seconds": 1.02,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 182.04
+      "seconds": 180.11,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 80.16
+      "seconds": 33.99,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.26
+      "seconds": 0.09,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 12,
+    "pass": 35,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -36,8 +40,8 @@
   "fps": 12.0,
   "phase_frames": {
     "start": 1,
-    "middle": 10,
-    "end": 19
+    "middle": 7,
+    "end": 13
   },
   "character_fit": {
     "kind": "fitness arm reach",
@@ -118,17 +122,86 @@
     },
     "reason": "Original straight-arm reach cannot clear the head."
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-c052e570": "e0a775bfa0b32b63c84f19fba2b1a05db535bde849feb3e54a3479a943b3bed6",
     "img-e96f851c": "940d5aad6b85960e833f88e218de8ce4f806d84cf2764741f1cbff9cce365d84"
   },
-  "scene_sha256": "9aff41c96b5aef005d26bc9b98fae8efbd360c2e21d0e277da730113abc03a98",
+  "scene_sha256": "87b463151de9ddd197b03a41f168c47b6e5433ef7f8732c88ff697d63cb4fa8e",
   "output_sha256": {
-    "animation.gif": "a6726178cec9b3e83583c4bb376b5e72bbb9b4b0906e784b8b96428d1b8fa1f2",
-    "start.png": "b588bcebfe471da69338af1e2ecb0c08ffe8feac3daf44bea1154095f5407f33",
-    "end.png": "6ea1d61599db1c7fb8bf7bb88f836466c5917c553d9027ccfd691b7ebdc17ab6",
-    "checks.json": "a94c3fa1d381bf576cc24fd63d8fb6b7269d17da8ba40d3d7f05b0e3fedacf2f"
+    "animation.gif": "9e8c72a73801a88e5011190ef20f96137b43027cc28ffc0538a76c351e1956a2",
+    "start.png": "47c07ded3b9cd6aa3dd4d4b9a273f29fa7c1536fd9422122783764c189f06e0d",
+    "end.png": "668709c1db5d9b89e4331b853a6f7eb14a31f433b3ea6b530e7bcc01345613e7",
+    "checks.json": "635449590f0017fdc565751ff4cf79d7fb189c29c85b968d3b3a13b67c7e5a82"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/overhead-range-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 7,
+      "end": 13
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.0,
+      "hold_s": 0.2,
+      "return_s": 1.5,
+      "forward_action": "press",
+      "return_action": "controlled lowering",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 13,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press/frames/frame_0013.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/overhead-range-replay.json",
+        "sha256": "36f4f34cbb1eb99d98b74a13e66549d0f47e3279adf509f73e23d9b97de5c026",
+        "status": "passed",
+        "scene_sha256": "87b463151de9ddd197b03a41f168c47b6e5433ef7f8732c88ff697d63cb4fa8e"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

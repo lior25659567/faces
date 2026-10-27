@@ -11,10 +11,10 @@ def recorded_phase_frames(per_frame, reference_motion, skip=()):
     Invalid generated metadata is an error, not permission to fall back to a
     better-looking frame. A source key that jumps must be repaired before judging.
     """
-    if not isinstance(reference_motion, dict) or reference_motion.get('source') != 'keyposes':
+    if not isinstance(reference_motion, dict) or reference_motion.get('source') not in ('keyposes', 'preset'):
         return None
     mode = reference_motion.get('mode', 'cycle')
-    if mode not in ('cycle', 'hold', 'step'):
+    if mode not in ('cycle', 'hold', 'step', 'sequence'):
         raise ValueError('The generated motion has an unknown timing mode.')
     provided = reference_motion.get('phase_frames')
     if not isinstance(provided, dict):

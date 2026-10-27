@@ -196,10 +196,13 @@ export const recentWork = (items, others = OTHERS_SHOWN) => {
 }
 
 // "--exercises a,b" (slugs or names) or "all" (every exercise with usable pictures) -> slugs.
+const hasMovementInput = (store, slug) => store.hasUsablePictures(slug) ||
+  store.listRuns(slug).some((run) => !run.readOnly && run.motionPreset)
+
 export const resolveExercises = (store, spec) => {
   const all = store.listExercises()
   if (spec === undefined || spec === null || spec === true) return []
-  if (String(spec).trim().toLowerCase() === 'all') return all.map((e) => e.slug).filter((s) => store.hasUsablePictures(s))
+  if (String(spec).trim().toLowerCase() === 'all') return all.map((e) => e.slug).filter((s) => hasMovementInput(store, s))
   const slugs = []
   for (const part of String(spec).split(',').map((p) => p.trim()).filter(Boolean)) {
     const slug = slugOf(part)
@@ -232,7 +235,7 @@ export const createWorkWatcher = ({ work, store, queue, intervalMs = 2500 }) => 
       const noPictures = []
       const notStarted = []
       for (const slug of fresh.exercises || []) {
-        if (!store.getExercise(slug) || !store.hasUsablePictures(slug)) {
+        if (!store.getExercise(slug) || !hasMovementInput(store, slug)) {
           noPictures.push(nameOf(slug))
           continue
         }
@@ -244,7 +247,10 @@ export const createWorkWatcher = ({ work, store, queue, intervalMs = 2500 }) => 
         try {
           // A recheck item re-judges the newest rendered run (fast, no Blender); otherwise a full run.
           const previous = store.listRuns(slug).find((run) => !run.readOnly)
-          const run = fresh.recheck ? queue.enqueueRecheck(slug) : queue.enqueue(slug, { characterFit: previous?.characterFit || 'auto' })
+          const run = fresh.recheck ? queue.enqueueRecheck(slug) : queue.enqueue(slug, {
+            characterFit: previous?.characterFit || 'auto', motionPreset: previous?.motionPreset || null,
+            referenceBundle: previous?.referenceBundle || null,
+          })
           ours.add(run.id)
           rerun.push({ slug, runId: run.id })
         } catch (e) {

@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-10-27T08:50:00.597787+00:00",
+  "scope": "Actual arm-joint and rotation replay on unchanged saved scene; existing source comparison stills retained.",
+  "frames": 12,
+  "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541",
+  "gif_sha256": "032df4c9b178e91f97e1c63e7015957c9909600a2c7b777689c695a502569212",
+  "scene_changed": false,
+  "gif_changed": false,
+  "arm_speed_heights_s": 0.0,
+  "arm_turn_deg_s": 0.0,
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 0,
+    "info": 18,
+    "unmeasured": 0
+  }
+}

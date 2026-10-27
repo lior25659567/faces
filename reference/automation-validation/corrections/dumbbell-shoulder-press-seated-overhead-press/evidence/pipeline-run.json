@@ -1,0 +1,38 @@
+{
+  "name": "Dumbbell Shoulder Press (seated overhead press)",
+  "slug": "dumbbell-shoulder-press-seated-overhead-press",
+  "source": "/tmp/studio-complete-validation/dumbbell-shoulder-press-seated-overhead-press",
+  "characterFit": "auto",
+  "startedAt": "2026-10-27T08:28:35.468Z",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.02
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 180.11
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 33.99
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.09
+    }
+  ],
+  "summary": {
+    "pass": 35,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "finishedAt": "2026-10-27T09:18:01.344Z"
+}

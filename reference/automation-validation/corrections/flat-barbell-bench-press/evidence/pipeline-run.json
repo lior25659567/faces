@@ -1,0 +1,38 @@
+{
+  "name": "Flat Barbell Bench Press",
+  "slug": "flat-barbell-bench-press",
+  "source": "/tmp/studio-integrated-validation/flat-barbell-bench-press",
+  "characterFit": "auto",
+  "startedAt": "2026-10-25T12:18:56.188Z",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 0.94
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 210.45
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 32.49
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.09
+    }
+  ],
+  "summary": {
+    "pass": 38,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "finishedAt": "2026-10-25T12:29:34.129Z"
+}

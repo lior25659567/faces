@@ -1,0 +1,9 @@
+{
+  "ready": true,
+  "mode": "Image key poses",
+  "blockers": [],
+  "warnings": [
+    "This is a static hold. The builder repeats the photographed hold without inventing a setup or movement cycle.",
+    "The middle position is estimated. Add an image from the same view at the middle of the movement if the path between Start and End looks wrong."
+  ]
+}

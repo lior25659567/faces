@@ -1,34 +1,1791 @@
 {
-  "recorded_at_utc": "2026-10-25T10:48:10.032558+00:00",
+  "recorded_at_utc": "2026-10-27T09:52:24.784994+00:00",
   "runs": [
     {
-      "name": "Conventional Barbell Deadlift",
-      "slug": "conventional-barbell-deadlift",
-      "run_dir": "/tmp/studio-release-validation/conventional-barbell-deadlift",
+      "name": "Flat Barbell Bench Press",
+      "slug": "flat-barbell-bench-press",
+      "run_dir": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press",
       "steps": [
         {
           "step": "read",
           "exit": 0,
-          "seconds": 0.97
+          "seconds": 0.94,
+          "scope": "current completed pipeline"
         },
         {
           "step": "animate",
           "exit": 0,
-          "seconds": 185.68
+          "seconds": 210.45,
+          "scope": "current completed pipeline"
         },
         {
           "step": "stills",
           "exit": 0,
-          "seconds": 46.69
+          "seconds": 32.49,
+          "scope": "current completed pipeline"
         },
         {
           "step": "check",
           "exit": 0,
-          "seconds": 0.14
+          "seconds": 0.09,
+          "scope": "current completed pipeline"
         }
       ],
       "summary": {
-        "pass": 26,
+        "pass": 38,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 11,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 10,
+        "end": 19
+      },
+      "character_fit": {
+        "kind": "fitness arm reach",
+        "label": "Fitness proportions",
+        "applied": true,
+        "upper_scale": 1.8,
+        "fore_scale": 1.8,
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "hand_scale": 1.0,
+        "per_frame_stretch": false,
+        "sides": {
+          "left": {
+            "upper_before_m": 0.10443226993083954,
+            "fore_before_m": 0.07788365334272385,
+            "upper_after_m": 0.18797808587551118,
+            "fore_after_m": 0.14019057601690293,
+            "wrist_translation_m": [
+              -0.1409132480621338,
+              0.03467267006635666,
+              0.01463861484080553
+            ]
+          },
+          "right": {
+            "upper_before_m": 0.10468268394470215,
+            "fore_before_m": 0.07495778799057007,
+            "upper_after_m": 0.18842883110046388,
+            "fore_after_m": 0.13492401838302612,
+            "wrist_translation_m": [
+              0.13851326704025269,
+              0.035191550850868225,
+              0.015128850936889648
+            ]
+          }
+        },
+        "requested_mode": "auto",
+        "original_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.10443226993083954,
+              "fore_m": 0.07788365334272385,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 0.9326923310071329,
+              "head_shortfall_mm": 66.81932813822233
+            },
+            "right": {
+              "upper_m": 0.10468268394470215,
+              "fore_m": 0.07495778799057007,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 0.931960947165028,
+              "head_shortfall_mm": 67.55071198032725
+            }
+          }
+        },
+        "actual_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.1879781037569046,
+              "fore_m": 0.14019055664539337,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 1.0785450681358675,
+              "head_shortfall_mm": 0.0
+            },
+            "right": {
+              "upper_m": 0.1884288489818573,
+              "fore_m": 0.13492397964000702,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 1.0756733038516202,
+              "head_shortfall_mm": 0.0
+            }
+          }
+        },
+        "reason": "The short-arm rest character uses the validated fitness proportions for a supported bench grip."
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-533da96b": "44ba81b3ea124f625c555ae812b37263f82ae460749bbc9ebbeb55a6309f6663",
+        "img-5e7d5971": "5056475ae5def865dbe52882d30d2730142de2b03231bda304f82fd0b088f608"
+      },
+      "scene_sha256": "22c2d35c602598342fd02bd5ebf35cd6177609afcabe07b8caeba6940bedceff",
+      "output_sha256": {
+        "animation.gif": "3f3c9baaf0ad0ea0e52053c83b9df8c2b8e605a9229929f12d02cf6558bea6cb",
+        "start.png": "242fff66add337868ea12d8427b325184a9deb3b8368d9c074e5b83cfdf3d4ee",
+        "end.png": "f74be3ab19d0123e2f434aa4ab1ecf17ff8d5945893d6837cc009823b4d1d870",
+        "checks.json": "a5e349b48ee5c313487c4ae0dc425bdc59e4fa24b26d48ca1123a71bcb0823ec"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/bench-motion-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.5,
+          "hold_s": 0.2,
+          "return_s": 1.0,
+          "forward_action": "start to end",
+          "return_action": "end to start",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/bench-motion-replay.json",
+            "sha256": "1948fe00cab8b8ed9aede1d06f61d004c0db934b9308aa025afaff411ad8ac57",
+            "status": "passed",
+            "scene_sha256": "22c2d35c602598342fd02bd5ebf35cd6177609afcabe07b8caeba6940bedceff"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Pull-Up",
+      "slug": "pull-up",
+      "run_dir": "/tmp/studio-motion-quality-validation/pull-up",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 25,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 11,
+        "info": 10,
+        "unmeasured": 0
+      },
+      "frames": 43,
+      "fps": 16.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 9,
+        "end": 17
+      },
+      "character_fit": {
+        "kind": "fitness arm reach",
+        "label": "Fitness proportions",
+        "applied": true,
+        "upper_scale": 1.8,
+        "fore_scale": 1.8,
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "hand_scale": 1.0,
+        "per_frame_stretch": false,
+        "sides": {
+          "left": {
+            "upper_before_m": 0.10443226993083954,
+            "fore_before_m": 0.07788365334272385,
+            "upper_after_m": 0.18797808587551118,
+            "fore_after_m": 0.14019057601690293,
+            "wrist_translation_m": [
+              -0.1409132480621338,
+              0.03467267006635666,
+              0.01463861484080553
+            ]
+          },
+          "right": {
+            "upper_before_m": 0.10468268394470215,
+            "fore_before_m": 0.07495778799057007,
+            "upper_after_m": 0.18842883110046388,
+            "fore_after_m": 0.13492401838302612,
+            "wrist_translation_m": [
+              0.13851326704025269,
+              0.035191550850868225,
+              0.015128850936889648
+            ]
+          }
+        },
+        "requested_mode": "auto",
+        "original_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.10443226993083954,
+              "fore_m": 0.07788365334272385,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 0.9326923310071329,
+              "head_shortfall_mm": 66.81932813822233
+            },
+            "right": {
+              "upper_m": 0.10468268394470215,
+              "fore_m": 0.07495778799057007,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 0.931960947165028,
+              "head_shortfall_mm": 67.55071198032725
+            }
+          }
+        },
+        "actual_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.1879781037569046,
+              "fore_m": 0.14019055664539337,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 1.0785450681358675,
+              "head_shortfall_mm": 0.0
+            },
+            "right": {
+              "upper_m": 0.1884288489818573,
+              "fore_m": 0.13492397964000702,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 1.0756733038516202,
+              "head_shortfall_mm": 0.0
+            }
+          }
+        },
+        "reason": "Original straight-arm reach cannot clear the head."
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-96142bf0": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
+        "img-9a54cdbb": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f"
+      },
+      "scene_sha256": "6c2a6b0170790eec2a77acd27624c817a80421d73562536c479122929ffc270d",
+      "output_sha256": {
+        "animation.gif": "4d6986b00f69bc2930a72ed8afe4777d80b2cc30fe62c14837433de48763352a",
+        "start.png": "f57c2ce3fe4020c613ebde755d6233c99ea3158fcc2331f0faed444b38293ab5",
+        "end.png": "07c3feb862334a3f0375526431c0c320f8ff5d1b5d7fbecc54786300c8d97898",
+        "checks.json": "c10dd40c369642648de8e4be8236c04ca0b978a67de16eae169c05c5635c44cb"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/pullup-range-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 9,
+          "end": 17
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.0,
+          "hold_s": 0.2,
+          "return_s": 1.5,
+          "forward_action": "pull",
+          "return_action": "controlled lowering",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2690,
+      "gif_frame_count": 43,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/pull-up/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 17,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/pull-up/frames/frame_0017.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/pullup-range-replay.json",
+            "sha256": "41a69e18eb2695deb225aa5799329821c75c28f375c1831c04d3b6a6dec7359e",
+            "status": "passed",
+            "scene_sha256": "6c2a6b0170790eec2a77acd27624c817a80421d73562536c479122929ffc270d"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Lat Pulldown (seated, to the front)",
+      "slug": "lat-pulldown-seated-to-the-front",
+      "run_dir": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 0.27,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 162.526,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 34.848,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.095,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 20,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 11,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 7,
+        "end": 13
+      },
+      "character_fit": {
+        "kind": "fitness arm reach",
+        "label": "Fitness proportions",
+        "applied": true,
+        "upper_scale": 1.8,
+        "fore_scale": 1.8,
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "hand_scale": 1.0,
+        "per_frame_stretch": false,
+        "sides": {
+          "left": {
+            "upper_before_m": 0.10443226993083954,
+            "fore_before_m": 0.07788365334272385,
+            "upper_after_m": 0.18797808587551118,
+            "fore_after_m": 0.14019057601690293,
+            "wrist_translation_m": [
+              -0.1409132480621338,
+              0.03467267006635666,
+              0.01463861484080553
+            ]
+          },
+          "right": {
+            "upper_before_m": 0.10468268394470215,
+            "fore_before_m": 0.07495778799057007,
+            "upper_after_m": 0.18842883110046388,
+            "fore_after_m": 0.13492401838302612,
+            "wrist_translation_m": [
+              0.13851326704025269,
+              0.035191550850868225,
+              0.015128850936889648
+            ]
+          }
+        },
+        "requested_mode": "auto",
+        "original_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.10443226993083954,
+              "fore_m": 0.07788365334272385,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 0.9326923310071329,
+              "head_shortfall_mm": 66.81932813822233
+            },
+            "right": {
+              "upper_m": 0.10468268394470215,
+              "fore_m": 0.07495778799057007,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 0.931960947165028,
+              "head_shortfall_mm": 67.55071198032725
+            }
+          }
+        },
+        "actual_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.1879781037569046,
+              "fore_m": 0.14019055664539337,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 1.0785450681358675,
+              "head_shortfall_mm": 0.0
+            },
+            "right": {
+              "upper_m": 0.1884288489818573,
+              "fore_m": 0.13492397964000702,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 1.0756733038516202,
+              "head_shortfall_mm": 0.0
+            }
+          }
+        },
+        "reason": "Original straight-arm reach cannot clear the head."
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-b6fb01ba": "929bc29751c35d0a624840b24501e74dc59438d351e66cc017e7ee8682fb3346",
+        "img-09dcdaf6": "781952e629e8a4cff549df94ee6b1da7e32c7cd507382d47e8566718c07807dd"
+      },
+      "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc",
+      "output_sha256": {
+        "animation.gif": "9e96af9f045c6d51f62f5ef2066b43974225af535f741fc2fa2f753553652958",
+        "start.png": "30c2c9a1e3eebbf2ab62e43677f75e0f80fd48dc4c03bd0a54ffaf72ce7b3862",
+        "end.png": "360cb1d6fe8091c0cfe7a229808fb378331bfa2dbc7c7103e3f54635a344b05b",
+        "checks.json": "beeba085da31dfbf8e6ac66e373d18437ecfbf57a978f7f76a6258deca2fefbc"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/arm-continuity-replay.json",
+          "evidence/pulldown-form-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 7,
+          "end": 13
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.0,
+          "hold_s": 0.2,
+          "return_s": 1.5,
+          "forward_action": "pull",
+          "return_action": "controlled lowering",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 13,
+          "file": "end.png",
+          "source": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front/frames/frame_0013.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/arm-continuity-replay.json",
+            "sha256": "177031ee139389ce52806da169260b2c22ad063e7664ce186d98ce9997bba499",
+            "status": "passed",
+            "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc"
+          },
+          {
+            "file": "evidence/pulldown-form-replay.json",
+            "sha256": "d74d6cc1a2e46d9c9775e039d3b57d9ffecc7c73b081367fdfaeedd17d07a444",
+            "status": "passed",
+            "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Dumbbell Bicep Curl (standing, both arms)",
+      "slug": "dumbbell-bicep-curl-standing-both-arms",
+      "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 1.27,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 379.23,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 92.48,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.32,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 25,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 9,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 10,
+        "end": 19
+      },
+      "character_fit": {
+        "requested_mode": "auto",
+        "applied": false,
+        "label": "Original proportions",
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "per_frame_stretch": false
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-24b4606a": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
+        "img-f1698c9f": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a"
+      },
+      "scene_sha256": "d1f87984f55b37b9d3ff1752455645f1e4076409fd60e519e68897c2609c4c58",
+      "output_sha256": {
+        "animation.gif": "710df457248f153816f41b4e53baaadca26d00585defb813dabdc46f5c4be248",
+        "start.png": "e778b71cb9770ddd2e9aaec65a324515ae0e3f05445bb6ce853d0381b78878d5",
+        "end.png": "11361ffb8c7e4de4fce00fca111fa08317746a936072665850cc8e7bbde545a6",
+        "checks.json": "85aa87bcccfc80637cff5c1ae2f9615a9ecfa66dcc9546c35d06d6a4f33e0f32"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/isolation-form-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.5,
+          "hold_s": 0.2,
+          "return_s": 1.0,
+          "forward_action": "start to end",
+          "return_action": "end to start",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/isolation-form-replay.json",
+            "sha256": "2ac8c0ea43cc0221acdf25f4fb340ac19e73061d8dcb2e2982e03f22a8eb1a97",
+            "status": "passed",
+            "scene_sha256": "d1f87984f55b37b9d3ff1752455645f1e4076409fd60e519e68897c2609c4c58"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Dumbbell Lateral Raise",
+      "slug": "dumbbell-lateral-raise",
+      "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 1.11,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 278.67,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 118.76,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.41,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 25,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 9,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 10,
+        "end": 19
+      },
+      "character_fit": {
+        "requested_mode": "auto",
+        "applied": false,
+        "label": "Original proportions",
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "per_frame_stretch": false
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-5cd18809": "aa1982c367ea9151ee7769ac1f9f8795209db94a6eb85f7d51a7033886fb7ebc",
+        "img-62ff8746": "9210e0fb0202c306026d45a55703aaec89b3bef7aafeb7791aa1d06adcf58ab3"
+      },
+      "scene_sha256": "f60f33c33905ba50e2719f7df7c826fb1b1bba62967b055ff298d4a73b0b9716",
+      "output_sha256": {
+        "animation.gif": "25e84621f16584cad16619aecc6152de6dd733a20f29946504315c5149e40b9b",
+        "start.png": "c27b2fc3809eae34b531b7d083228204959ef4e3cd9ac3df02e7accce9737cdf",
+        "end.png": "3a27b6fe01c6e3894e993d12645b992a3e3446fb81cfa06a492eb487d5f018d2",
+        "checks.json": "5788e205309303c1f6430b20d8f25a8a80ec468b50a0518f02fcc21b92ff4855"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/isolation-form-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.5,
+          "hold_s": 0.2,
+          "return_s": 1.0,
+          "forward_action": "start to end",
+          "return_action": "end to start",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/isolation-form-replay.json",
+            "sha256": "6696717903adfa6b1cbb7e432c1bab1eaadf1c4a346a23d6c54ad8addc61fed3",
+            "status": "passed",
+            "scene_sha256": "f60f33c33905ba50e2719f7df7c826fb1b1bba62967b055ff298d4a73b0b9716"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Tricep Pushdown (cable, bar or rope attachment)",
+      "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
+      "run_dir": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 1.34,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": null,
+          "runner": "Production commandFor arguments and animate.main; exception-capture wrapper made no changes on the successful path.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 68.5,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.19,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 30,
+        "fail": 4,
+        "limited": 0,
+        "uncertain": 2,
+        "info": 18,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 10,
+        "end": 19
+      },
+      "character_fit": {
+        "kind": "fitness arm reach",
+        "label": "Fitness proportions",
+        "applied": true,
+        "upper_scale": 1.8,
+        "fore_scale": 1.8,
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "hand_scale": 1.0,
+        "per_frame_stretch": false,
+        "sides": {
+          "left": {
+            "upper_before_m": 0.10443226993083954,
+            "fore_before_m": 0.07788365334272385,
+            "upper_after_m": 0.18797808587551118,
+            "fore_after_m": 0.14019057601690293,
+            "wrist_translation_m": [
+              -0.1409132480621338,
+              0.03467267006635666,
+              0.01463861484080553
+            ]
+          },
+          "right": {
+            "upper_before_m": 0.10468268394470215,
+            "fore_before_m": 0.07495778799057007,
+            "upper_after_m": 0.18842883110046388,
+            "fore_after_m": 0.13492401838302612,
+            "wrist_translation_m": [
+              0.13851326704025269,
+              0.035191550850868225,
+              0.015128850936889648
+            ]
+          }
+        },
+        "requested_mode": "auto",
+        "original_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.10443226993083954,
+              "fore_m": 0.07788365334272385,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 0.9326923310071329,
+              "head_shortfall_mm": 66.81932813822233
+            },
+            "right": {
+              "upper_m": 0.10468268394470215,
+              "fore_m": 0.07495778799057007,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 0.931960947165028,
+              "head_shortfall_mm": 67.55071198032725
+            }
+          }
+        },
+        "actual_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.1879781037569046,
+              "fore_m": 0.14019055664539337,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 1.0785450681358675,
+              "head_shortfall_mm": 0.0
+            },
+            "right": {
+              "upper_m": 0.1884288489818573,
+              "fore_m": 0.13492397964000702,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 1.0756733038516202,
+              "head_shortfall_mm": 0.0
+            }
+          }
+        },
+        "reason": "The short-arm rest character uses the validated fitness proportions for a collision-free cable grip."
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-41d79d3d": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
+        "img-bfe8bbbf": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c"
+      },
+      "scene_sha256": "f4ef587bfdae0c45fef7ab6ca256cc3965b786665c281ad3faa30214781bcced",
+      "output_sha256": {
+        "animation.gif": "6516bd26766cafbca4151f327208a664f79e38750f99a5fb504cbc2205e7b483",
+        "start.png": "83c4ab237ac34d3e33d6e4598e22486340e76278246ecfd1ce898d869515d5e1",
+        "end.png": "28397bc6c0766116bc14b156200835fe49a6afb1607b2b631bb2b7b50a01b31e",
+        "checks.json": "ae377b84e7d8bfed03dd6497549060d6d44c74a40f13bbfa4f14da73e4d65e44"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/isolation-form-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.5,
+          "hold_s": 0.2,
+          "return_s": 1.0,
+          "forward_action": "start to end",
+          "return_action": "end to start",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [
+          {
+            "group": "start",
+            "metric": "torso_lean",
+            "target": 1.909,
+            "ours": 8.95,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 1,
+            "note": "Off by 7.0\u00b0. Read from the picture, as the coach's; the rig reads 15\u00b0",
+            "kind": null,
+            "uncertain_why": null
+          },
+          {
+            "group": "start",
+            "metric": "upperarm_vs_torso",
+            "target": 17.083,
+            "ours": 29.703,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 1,
+            "note": "Off by 12.6\u00b0. The picture of ours reads 19\u00b0 (shown only; the detector doesn't read the cartoon's arms reliably)",
+            "kind": null,
+            "uncertain_why": null
+          },
+          {
+            "group": "end",
+            "metric": "hip_included",
+            "target": 174.174,
+            "ours": 168.121,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 19,
+            "note": "Off by 6.1\u00b0. Read from the picture, as the coach's; the rig reads 161\u00b0",
+            "kind": null,
+            "uncertain_why": null
+          },
+          {
+            "group": "end",
+            "metric": "elbow_included",
+            "target": 162.331,
+            "ours": 175.076,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 19,
+            "note": "Off by 12.7\u00b0. The picture of ours reads 153\u00b0 (shown only; the detector doesn't read the cartoon's arms reliably)",
+            "kind": null,
+            "uncertain_why": null
+          }
+        ],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/isolation-form-replay.json",
+            "sha256": "58e4ccc13883342ba936e4e3ec782f367dd1e6d419f83b23b6fc559762383957",
+            "status": "passed",
+            "scene_sha256": "f4ef587bfdae0c45fef7ab6ca256cc3965b786665c281ad3faa30214781bcced"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Barbell Back Squat",
+      "slug": "barbell-back-squat",
+      "run_dir": "/tmp/studio-motion-quality-validation/barbell-back-squat",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 0.24,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 308.01,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 19.05,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.12,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "quality-recheck-and-gif-export",
+          "exit": 0,
+          "source": "All69unchangedscene frames remeasured under currentrawcoverage schema, all26physicalrows andplannedview skin/arm gate passed beforeGIFexport",
+          "seconds": null,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 36,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 0,
+        "info": 3,
+        "unmeasured": 0
+      },
+      "frames": 69,
+      "fps": 30.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 19,
+        "end": 38
+      },
+      "character_fit": {
+        "requested_mode": "auto",
+        "applied": false,
+        "label": "Original proportions",
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "per_frame_stretch": false
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {},
+      "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf",
+      "output_sha256": {
+        "animation.gif": "1b680640b8689bf75adfab25aeacf5a0b80c96bce989d1cc76453c044897bcaa",
+        "start.png": "846eb6624826b38bc1269a3dfd6a1c418878fc686c97dc6c931762cc415408b0",
+        "end.png": "de92e1648be61b1d184628e989cd316dd761ae3172338bd8ab36836f8ee8f534",
+        "checks.json": "1f5f1558c307106fa656be637c44d535baa32ed62f46e652c1437f5eeea6e268"
+      },
+      "reference_motion": {
+        "source": "preset",
+        "preset": "squat-v1",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 19,
+          "end": 38
+        },
+        "source_sha256": "e4f720f5d9b9657c2f7b4c52c516bdf3c17ec6d4fcfe5b9b527cb962d4157705",
+        "description": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets."
+      },
+      "input_mode": "motion-preset",
+      "playback": "loop",
+      "gif_duration_ms": 2300,
+      "gif_frame_count": 69,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/barbell-back-squat/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 38,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/barbell-back-squat/frames/frame_0038.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/quality-recheck.json",
+            "sha256": "fd4f047dd06cf9a906067a58d99365ede09747e4ca0e390d8cd1cbf913cfe39b",
+            "status": null,
+            "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf"
+          },
+          {
+            "file": "evidence/squat-preset-replay.json",
+            "sha256": "e33be7ce070b2ff1594a2a560d67757001b865715443eeb732d469908e570e3b",
+            "status": "passed",
+            "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf"
+          }
+        ],
+        "recheck": {
+          "source": "Independent current full-scene measurements after metadata-only range coverage schema addition; PNGs and saved scene unchanged",
+          "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf",
+          "geometry_changed": false,
+          "frames_remeasured": 69,
+          "exported_after_current_checks": true
+        }
+      },
+      "status": "checks-passed",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json",
+      "physical_remeasurement": {
+        "method": "Actual 69-frame scene remeasurement under current range coverage schema before GIF re-export.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "file": "evidence/quality-recheck.json"
+      }
+    },
+    {
+      "status": "needs-review",
+      "run": {
+        "id": "row-stance-validated",
+        "exercise": "Barbell Bent-Over Row",
+        "status": "done",
+        "createdAt": "2026-10-25T09:06:28.404898+00:00",
+        "construction": "fresh cached fit rebuilt from real reference keyposes using production clip, retarget and row-contact modules",
+        "steps": [
+          {
+            "id": "geometry",
+            "exit": 0,
+            "source": "preceding saved-scene geometry replay"
+          },
+          {
+            "id": "render",
+            "seconds": 1088.59,
+            "exit": 0
+          },
+          {
+            "id": "stills",
+            "seconds": 243.3,
+            "exit": 0
+          },
+          {
+            "id": "check",
+            "seconds": 0.1,
+            "exit": 0
+          },
+          {
+            "id": "replay",
+            "seconds": 11.75,
+            "exit": 0
+          }
+        ],
+        "finishedAt": "2026-10-25T09:34:41.108847+00:00",
+        "summary": {
+          "pass": 16,
+          "fail": 2,
+          "limited": 0,
+          "uncertain": 0,
+          "info": 9,
+          "unmeasured": 0
+        },
+        "pictureOptimization": {
+          "steps": [
+            {
+              "id": "stills-skip-estimated",
+              "seconds": 70.72,
+              "exit": 0
+            },
+            {
+              "id": "check-skip-estimated",
+              "seconds": 0.15,
+              "exit": 0
+            },
+            {
+              "id": "replay-skip-estimated",
+              "seconds": 10.93,
+              "exit": 0
+            }
+          ],
+          "beforePhaseSearchRenders": 15,
+          "afterPhaseSearchRenders": 10,
+          "sameAllFrameRigMeasurements": true,
+          "sameAllFrameFolds": true,
+          "sameSourceStillFramesAndCameras": true,
+          "sameJudgedChecks": true,
+          "sameAllVerdictsAndCoverage": true,
+          "informationalReadingChanges": [
+            {
+              "metric": "hip_included",
+              "before": 112.891,
+              "after": 96.776,
+              "note": "Estimated between the other two positions. Shown on the rig; there is no reference picture at this position."
+            },
+            {
+              "metric": "torso_lean",
+              "before": 46.306,
+              "after": 55.472,
+              "note": "Estimated between the other two positions. Shown on the rig; there is no reference picture at this position."
+            }
+          ],
+          "skipped": "estimated middle with no source photograph"
+        }
+      },
+      "summary": {
+        "pass": 18,
+        "fail": 2,
+        "limited": 0,
+        "uncertain": 0,
+        "info": 9,
+        "unmeasured": 0
+      },
+      "failed_checks": [
+        {
+          "group": "end",
+          "metric": "hip_included",
+          "target": 126.746,
+          "ours": 96.776,
+          "unit": "deg",
+          "status": "fail",
+          "frame": 46,
+          "note": "Off by 30.0\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig",
+          "kind": null,
+          "uncertain_why": null
+        },
+        {
+          "group": "end",
+          "metric": "torso_lean",
+          "target": 34.946,
+          "ours": 55.472,
+          "unit": "deg",
+          "status": "fail",
+          "frame": 46,
+          "note": "Off by 20.5\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig. The row holds the starting torso hinge",
+          "kind": null,
+          "uncertain_why": null
+        }
+      ],
+      "runtime": {
+        "blender": "5.2.2 LTS",
+        "mpfb": "2.0.18"
+      },
+      "model": {
+        "path": "3d-character/3d cartoon boy.glb",
+        "sha256": "6cd4a8f50094eac8afdbfc2d958240457084c9a76a15900371704bcafbf93ab3",
+        "proportions": "original"
+      },
+      "source_images": [
+        {
+          "phase": "start",
+          "view": "three-quarter",
+          "sha256": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+          "source": {
+            "name": "Free Exercise DB",
+            "repository": "https://github.com/yuhonas/free-exercise-db",
+            "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+            "license": "Unlicense / public-domain dataset (upstream declared)",
+            "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+            "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+            "reviewedOn": "2026-10-24",
+            "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+            "sourceId": "Bent_Over_Barbell_Row",
+            "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/0.jpg",
+            "sha256": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+            "phase": "start",
+            "view": "three-quarter",
+            "contextOnly": false,
+            "catalogId": "Bent_Over_Barbell_Row",
+            "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/0.jpg"
+          }
+        },
+        {
+          "phase": "end",
+          "view": "three-quarter",
+          "sha256": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72",
+          "source": {
+            "name": "Free Exercise DB",
+            "repository": "https://github.com/yuhonas/free-exercise-db",
+            "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+            "license": "Unlicense / public-domain dataset (upstream declared)",
+            "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+            "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+            "reviewedOn": "2026-10-24",
+            "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+            "sourceId": "Bent_Over_Barbell_Row",
+            "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/1.jpg",
+            "sha256": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72",
+            "phase": "end",
+            "view": "three-quarter",
+            "contextOnly": false,
+            "catalogId": "Bent_Over_Barbell_Row",
+            "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/1.jpg"
+          }
+        }
+      ],
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 24,
+          "end": 46
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ]
+      },
+      "row_solver": {
+        "source": "shared bar from direct measured arm landmarks; elbow angles adapted to character limb lengths",
+        "body_adaptation": {
+          "torso": "starting hinge held throughout the row",
+          "stance": "constant mean of observed thigh directions and knee bends; starting foot turns retained"
+        },
+        "requested_grip_ratio": 1.4864451766701945,
+        "grip_ratio": 1.4864451766701945,
+        "worst_wrist_bend_deg": 19.495608200213606,
+        "max_path_adjustment_mm": 0.0,
+        "max_grip_anchor_error_mm": 0.005969093856144768,
+        "max_surface_adjustment_mm": 50.9161207399315,
+        "contact": {
+          "hand_vertices": 4389,
+          "deepest_inside_bar_mm": 0.8049387878278444,
+          "nearest_gap_mm_min": -0.8049387878278444,
+          "frames_touching_within_3mm": 81,
+          "frames": 81,
+          "sides": {
+            "left": {
+              "frames": 81,
+              "frames_touching_within_3mm": 81,
+              "deepest_inside_bar_mm": 0.7987653436670487,
+              "nearest_gap_mm_max": 0.02786813159949726
+            },
+            "right": {
+              "frames": 81,
+              "frames_touching_within_3mm": 81,
+              "deepest_inside_bar_mm": 0.8049387878609136,
+              "nearest_gap_mm_max": 0.05128807603306529
+            }
+          }
+        },
+        "body_clearance": {
+          "status": "clear_at_samples",
+          "worst": null,
+          "sample_spacing_mm": 12.560264062499993,
+          "triangles": 15713,
+          "frames": []
+        }
+      },
+      "body_contact": {
+        "penetration_mm": 0.0,
+        "penetration_frame": 2,
+        "sides": {
+          "left": {
+            "sole_vertices": 486,
+            "sole_slide_mm": 0.0,
+            "slide_frame": 2,
+            "sole_lift_mm": 0.0,
+            "initial_floor_gap_mm": 0.6364908185787499
+          },
+          "right": {
+            "sole_vertices": 531,
+            "sole_slide_mm": 0.0,
+            "slide_frame": 2,
+            "sole_lift_mm": 0.0,
+            "initial_floor_gap_mm": 0.0
+          }
+        },
+        "box": [
+          [
+            -0.2093353420495987,
+            -0.10782282799482346,
+            -1.3632018180942396e-06
+          ],
+          [
+            0.2089657187461853,
+            0.42531150579452515,
+            0.8313003182411194
+          ]
+        ]
+      },
+      "deformation": {
+        "crack_max_mm": 0.0,
+        "max_growth_mm": 35.139305633162444,
+        "growth_frame": 2,
+        "coincident_unconnected_pairs": 26304,
+        "deepest_frame": 1,
+        "deepest": {
+          "max_growth_mm": 35.139297203941936,
+          "max_growth_pct": 3.517053165852227,
+          "edges_over_1pct": 269,
+          "edges_over_0_5pct": 843,
+          "worst_edge_at": [
+            -0.0618,
+            -0.0527,
+            0.4146
+          ],
+          "worst_edge_posed_at": [
+            -0.0624,
+            -0.0785,
+            0.4121
+          ],
+          "worst_edge_rest_mm": 21.683206358568867,
+          "crack_max_mm": 0.0,
+          "skin_max_move_mm": 439.99647617839025
+        }
+      },
+      "builder_files": {
+        "pipeline/blender/row_motion.py": "1fc98f43fbaeb5879718d2fdd0f418ffcef774cd8942d03aa28ffb7c34b2275e",
+        "pipeline/blender/row_bar.py": "fcb007dcd98e4cf481be9815e2dec925f01f36dbefd5d7d858592f5a05170b57",
+        "pipeline/blender/keypose_clip.py": "1276878b14398136b00056a0be9767eda54f71b6db9836c8bdb568d17f3938f7",
+        "pipeline/blender/retarget.py": "0bf6eb0f8e688868209c8f037b96203ab426fcc51f65ae12707f76421e928747",
+        "studio/blender/inspect_run.py": "71fff6f0b8044fff8f20b785f0048638da0a4fff41ae0c8684f03de473b3bf21",
+        "studio/measure/reference_timing.py": "00d36c7dab534a35ea244cd4b551def9bb65ef5cd3b5293a074a89946c872628",
+        "studio/measure/picture.py": "cdd3497f6221cc7ef0f24c4770e3997648effddbd953e0cd2efed33a43dda475",
+        "studio/measure/checks.py": "1483c44cda6381826e05880a79e353488ef19d7bf9e49eeaa239ddb47e0d5b2c"
+      },
+      "artifacts": {
+        "animation.gif": "9fac3436dd13b9dc49c469bfe24cdd9997876759b26903703099ba9f475e4f7d",
+        "start.png": "2d2610b33220d01bbd8d6485e30df96561de89610ef1e09d6a7243d7c651fd7a",
+        "end.png": "c822512c26e03e5addfa249426bf29bfeb42d842e0e735de8c275d03d25b1ed0",
+        "checks.json": "7c23bba538c58a3e80c1da776bbcde28415646b95a5e8d210b62a15bf9e34938"
+      },
+      "name": "Barbell Bent-Over Row",
+      "slug": "barbell-bent-over-row",
+      "run_dir": "/tmp/studio-motion-quality-validation/barbell-bent-over-row",
+      "steps": [
+        {
+          "id": "geometry",
+          "exit": 0,
+          "source": "preceding saved-scene geometry replay",
+          "step": "geometry",
+          "seconds": null,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "id": "render",
+          "seconds": 1088.59,
+          "exit": 0,
+          "step": "render",
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "id": "stills",
+          "seconds": 243.3,
+          "exit": 0,
+          "step": "stills",
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "id": "check",
+          "seconds": 0.1,
+          "exit": 0,
+          "step": "check",
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "id": "replay",
+          "seconds": 11.75,
+          "exit": 0,
+          "step": "replay",
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        }
+      ],
+      "frames": 81,
+      "fps": 30.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 24,
+        "end": 46
+      },
+      "character_fit": {
+        "applied": false,
+        "label": "Original proportions",
+        "source_model_unchanged": true
+      },
+      "pre_render_gate_exercised_in_cli": false,
+      "source_image_hashes": {
+        "img-a5238694": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+        "img-d5b918c9": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72"
+      },
+      "scene_sha256": "9c28706ef1fc537aab476f82ec59677ded577cc23a6c800ec55f5350f06ac208",
+      "output_sha256": {
+        "animation.gif": "9fac3436dd13b9dc49c469bfe24cdd9997876759b26903703099ba9f475e4f7d",
+        "start.png": "2d2610b33220d01bbd8d6485e30df96561de89610ef1e09d6a7243d7c651fd7a",
+        "end.png": "c822512c26e03e5addfa249426bf29bfeb42d842e0e735de8c275d03d25b1ed0",
+        "checks.json": "7c23bba538c58a3e80c1da776bbcde28415646b95a5e8d210b62a15bf9e34938"
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2700,
+      "gif_frame_count": 81,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/row-stance-validated/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 46,
+          "file": "end.png",
+          "source": "/tmp/row-stance-validated/frames/frame_0046.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [
+          {
+            "group": "end",
+            "metric": "hip_included",
+            "target": 126.746,
+            "ours": 96.776,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 46,
+            "note": "Off by 30.0\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig",
+            "kind": null,
+            "uncertain_why": null
+          },
+          {
+            "group": "end",
+            "metric": "torso_lean",
+            "target": 34.946,
+            "ours": 55.472,
+            "unit": "deg",
+            "status": "fail",
+            "frame": 46,
+            "note": "Off by 20.5\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig. The row holds the starting torso hinge",
+            "kind": null,
+            "uncertain_why": null
+          }
+        ],
+        "rendered_this_review": false,
+        "geometry_changed_this_review": false,
+        "source_photos_calibrated": false,
+        "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+        "evidence": [
+          {
+            "file": "evidence/arm-replay.json",
+            "sha256": "ef4d7ba5cb51f622994ec0c557b1297e95c9dc1c95a324a474943b64bc7a9b7a",
+            "status": "passed",
+            "scene_sha256": "9c28706ef1fc537aab476f82ec59677ded577cc23a6c800ec55f5350f06ac208"
+          },
+          {
+            "file": "evidence/row-replay.json",
+            "sha256": "13a1c36aa3b23b4d1f1fecef76127e402f0394fa48dab40b606e2e5384d39fea",
+            "status": "passed",
+            "scene_sha256": null
+          }
+        ]
+      },
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json",
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": false,
+        "evidence_files": [
+          "evidence/arm-replay.json",
+          "evidence/row-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      }
+    },
+    {
+      "name": "Conventional Barbell Deadlift",
+      "slug": "conventional-barbell-deadlift",
+      "run_dir": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 0.97,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 185.68,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 46.69,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.14,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
+        }
+      ],
+      "summary": {
+        "pass": 28,
         "fail": 0,
         "limited": 0,
         "uncertain": 10,
@@ -131,844 +1888,122 @@
         "animation.gif": "25c9fa0d16f14722df7ee3949e2f9c7668d0fa60df9718c5f32bcd291ef263dd",
         "start.png": "d20bdd01d535cd43081ceb18d7edd80ab799712e4a7cfb89a4fff3fa9582d588",
         "end.png": "970f056697debfb7b2847181f4e807cacd4f403571adda63c2a62e4a3fdbfdad",
-        "checks.json": "4d8a7603436899017d5d3500c05f5afa773dc9e2cd3119018c8462860c055408"
-      },
-      "physical_remeasurement": null
-    },
-    {
-      "name": "Flat Barbell Bench Press",
-      "slug": "flat-barbell-bench-press",
-      "run_dir": "/tmp/studio-integrated-validation/flat-barbell-bench-press",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 5.61
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 725.88
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 193.0
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.46
-        }
-      ],
-      "summary": {
-        "pass": 16,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 11,
-        "unmeasured": 0
-      },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "kind": "fitness arm reach",
-        "label": "Fitness proportions",
-        "applied": true,
-        "upper_scale": 1.8,
-        "fore_scale": 1.8,
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "hand_scale": 1.0,
-        "per_frame_stretch": false,
-        "sides": {
-          "left": {
-            "upper_before_m": 0.10443226993083954,
-            "fore_before_m": 0.07788365334272385,
-            "upper_after_m": 0.18797808587551118,
-            "fore_after_m": 0.14019057601690293,
-            "wrist_translation_m": [
-              -0.1409132480621338,
-              0.03467267006635666,
-              0.01463861484080553
-            ]
-          },
-          "right": {
-            "upper_before_m": 0.10468268394470215,
-            "fore_before_m": 0.07495778799057007,
-            "upper_after_m": 0.18842883110046388,
-            "fore_after_m": 0.13492401838302612,
-            "wrist_translation_m": [
-              0.13851326704025269,
-              0.035191550850868225,
-              0.015128850936889648
-            ]
-          }
-        },
-        "requested_mode": "auto",
-        "original_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.10443226993083954,
-              "fore_m": 0.07788365334272385,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 0.9326923310071329,
-              "head_shortfall_mm": 66.81932813822233
-            },
-            "right": {
-              "upper_m": 0.10468268394470215,
-              "fore_m": 0.07495778799057007,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 0.931960947165028,
-              "head_shortfall_mm": 67.55071198032725
-            }
-          }
-        },
-        "actual_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.1879781037569046,
-              "fore_m": 0.14019055664539337,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 1.0785450681358675,
-              "head_shortfall_mm": 0.0
-            },
-            "right": {
-              "upper_m": 0.1884288489818573,
-              "fore_m": 0.13492397964000702,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 1.0756733038516202,
-              "head_shortfall_mm": 0.0
-            }
-          }
-        },
-        "reason": "The short-arm rest character uses the validated fitness proportions for a supported bench grip."
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-533da96b": "44ba81b3ea124f625c555ae812b37263f82ae460749bbc9ebbeb55a6309f6663",
-        "img-5e7d5971": "5056475ae5def865dbe52882d30d2730142de2b03231bda304f82fd0b088f608"
-      },
-      "scene_sha256": "d964807ce5ca04ea3b3de209e160ebf7b686918354902a2ac98a44ef46606914",
-      "output_sha256": {
-        "animation.gif": "86beae2c10510ccff26df70897baacbb60cb22193c96134d027914c2a54be6c2",
-        "start.png": "0b01182b4a57c743a0ebe6e26858f92e40abf6ab80743fe9c4a346fd5dfcf921",
-        "end.png": "c316411364171212e0d4fa713d21542a0540859a6627c0a64eeb399307533e2f",
-        "checks.json": "feafdb63c8eedef294be456b512c96e3ef2c5777970a94e6a6e5452b676832a3"
+        "checks.json": "2c9b6744562c2d371c5ba5cee92fd2b750824ced87cd87340321727d31f090c7"
       },
       "physical_remeasurement": {
-        "method": "Independent all-frame saved-scene clearance and range replay",
-        "first_frame": 1,
-        "last_frame": 32,
-        "geometry_changed": false
-      }
-    },
-    {
-      "name": "Standing Barbell Overhead Press",
-      "slug": "standing-barbell-overhead-press-shoulder-press",
-      "run_dir": "/tmp/studio-final-validation/standing-barbell-overhead-press-shoulder-press",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 3.93
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": false,
+        "evidence_files": [
+          "evidence/movement-quality-recheck.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
         },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 555.44
+        "explicit_phases": [
+          "start",
+          "end"
+        ]
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
         },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 200.7
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.33
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/conventional-barbell-deadlift/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
         }
-      ],
-      "summary": {
-        "pass": 15,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 9,
-        "unmeasured": 0
       },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "kind": "fitness arm reach",
-        "label": "Fitness proportions",
-        "applied": true,
-        "upper_scale": 1.8,
-        "fore_scale": 1.8,
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "hand_scale": 1.0,
-        "per_frame_stretch": false,
-        "sides": {
-          "left": {
-            "upper_before_m": 0.10443226993083954,
-            "fore_before_m": 0.07788365334272385,
-            "upper_after_m": 0.18797808587551118,
-            "fore_after_m": 0.14019057601690293,
-            "wrist_translation_m": [
-              -0.1409132480621338,
-              0.03467267006635666,
-              0.01463861484080553
-            ]
-          },
-          "right": {
-            "upper_before_m": 0.10468268394470215,
-            "fore_before_m": 0.07495778799057007,
-            "upper_after_m": 0.18842883110046388,
-            "fore_after_m": 0.13492401838302612,
-            "wrist_translation_m": [
-              0.13851326704025269,
-              0.035191550850868225,
-              0.015128850936889648
-            ]
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": false,
+        "geometry_changed_this_review": false,
+        "source_photos_calibrated": false,
+        "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+        "evidence": [
+          {
+            "file": "evidence/movement-quality-recheck.json",
+            "sha256": "ab8fba4fdb1bd7939d09d8e3078b9eae0b838da784e88a5d6061f545afbefa2f",
+            "status": null,
+            "scene_sha256": "b015926bf7bd73667ee819116ac15f0571c2bd6087a4b96761b7430f7e3167cd"
           }
-        },
-        "requested_mode": "auto",
-        "original_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.10443226993083954,
-              "fore_m": 0.07788365334272385,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 0.9326923310071329,
-              "head_shortfall_mm": 66.81932813822233
-            },
-            "right": {
-              "upper_m": 0.10468268394470215,
-              "fore_m": 0.07495778799057007,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 0.931960947165028,
-              "head_shortfall_mm": 67.55071198032725
-            }
+        ],
+        "recheck": {
+          "recorded_at_utc": "2026-10-27T08:49:59.981842+00:00",
+          "scope": "Actual arm-joint and rotation replay on unchanged saved scene; existing source comparison stills retained.",
+          "frames": 32,
+          "scene_sha256": "b015926bf7bd73667ee819116ac15f0571c2bd6087a4b96761b7430f7e3167cd",
+          "gif_sha256": "25c9fa0d16f14722df7ee3949e2f9c7668d0fa60df9718c5f32bcd291ef263dd",
+          "scene_changed": false,
+          "gif_changed": false,
+          "arm_speed_heights_s": 0.3214920638355934,
+          "arm_turn_deg_s": 64.74693064037002,
+          "summary": {
+            "pass": 28,
+            "fail": 0,
+            "limited": 0,
+            "uncertain": 10,
+            "info": 9,
+            "unmeasured": 0
           }
-        },
-        "actual_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.1879781037569046,
-              "fore_m": 0.14019055664539337,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 1.0785450681358675,
-              "head_shortfall_mm": 0.0
-            },
-            "right": {
-              "upper_m": 0.1884288489818573,
-              "fore_m": 0.13492397964000702,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 1.0756733038516202,
-              "head_shortfall_mm": 0.0
-            }
-          }
-        },
-        "reason": "Original straight-arm reach cannot clear the head."
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-4b5dc525": "fb258efda95067b243b1c5033b1ff7b72a0f8cef8607477b71b969d3f72a8471",
-        "img-06bce39c": "b9419884fa57bd7de1dff2d0f811aa61d4cd5547b3c6ebafaca01c7017d8be1a"
-      },
-      "scene_sha256": "10c42346ffea683bdac4c446cee57f775e7c22dbd2940bc96a92f4abf369d06f",
-      "output_sha256": {
-        "animation.gif": "05d146ff142da22424ab23d71729989ef8b93b56c259f8899967c916a4f4c5fc",
-        "start.png": "6a35f4bd235799c85ef5c4caba55d07786a6685563085df087f60252f7820af9",
-        "end.png": "d0e04d4d0fe22012938dd3bf6a6b3791b1562d0091a80f73197c356ef6a844f4",
-        "checks.json": "3174c49a03aaa3db4a4b17176f227b9ec9267ab5b85b7a0844d2ff52bc7385d8"
-      },
-      "physical_remeasurement": {
-        "method": "Independent all-frame saved-scene clearance and range replay",
-        "first_frame": 1,
-        "last_frame": 32,
-        "geometry_changed": false
-      }
-    },
-    {
-      "name": "Pull-Up",
-      "slug": "pull-up",
-      "run_dir": "/tmp/studio-final-pipeline-validation/pull-up",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 0.99
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 206.51
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 37.41
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.15
         }
-      ],
-      "summary": {
-        "pass": 20,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 11,
-        "info": 10,
-        "unmeasured": 0
       },
-      "frames": 43,
-      "fps": 16.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 13,
-        "end": 25
-      },
-      "character_fit": {
-        "kind": "fitness arm reach",
-        "label": "Fitness proportions",
-        "applied": true,
-        "upper_scale": 1.8,
-        "fore_scale": 1.8,
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "hand_scale": 1.0,
-        "per_frame_stretch": false,
-        "sides": {
-          "left": {
-            "upper_before_m": 0.10443226993083954,
-            "fore_before_m": 0.07788365334272385,
-            "upper_after_m": 0.18797808587551118,
-            "fore_after_m": 0.14019057601690293,
-            "wrist_translation_m": [
-              -0.1409132480621338,
-              0.03467267006635666,
-              0.01463861484080553
-            ]
-          },
-          "right": {
-            "upper_before_m": 0.10468268394470215,
-            "fore_before_m": 0.07495778799057007,
-            "upper_after_m": 0.18842883110046388,
-            "fore_after_m": 0.13492401838302612,
-            "wrist_translation_m": [
-              0.13851326704025269,
-              0.035191550850868225,
-              0.015128850936889648
-            ]
-          }
-        },
-        "requested_mode": "auto",
-        "original_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.10443226993083954,
-              "fore_m": 0.07788365334272385,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 0.9326923310071329,
-              "head_shortfall_mm": 66.81932813822233
-            },
-            "right": {
-              "upper_m": 0.10468268394470215,
-              "fore_m": 0.07495778799057007,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 0.931960947165028,
-              "head_shortfall_mm": 67.55071198032725
-            }
-          }
-        },
-        "actual_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.1879781037569046,
-              "fore_m": 0.14019055664539337,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 1.0785450681358675,
-              "head_shortfall_mm": 0.0
-            },
-            "right": {
-              "upper_m": 0.1884288489818573,
-              "fore_m": 0.13492397964000702,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 1.0756733038516202,
-              "head_shortfall_mm": 0.0
-            }
-          }
-        },
-        "reason": "Original straight-arm reach cannot clear the head."
-      },
-      "pre_render_gate_exercised_in_cli": true,
-      "source_image_hashes": {
-        "img-96142bf0": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
-        "img-9a54cdbb": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f"
-      },
-      "scene_sha256": "003da9ea797fdea40c5790cb499e839bca4f0d3ab0c1d83cde661c62fe0a25aa",
-      "output_sha256": {
-        "animation.gif": "32b57f5281a5f9f380b57cca547b4bbb5883fb1db9bd6e880f4ad5e42c3c9a92",
-        "start.png": "7b6e9e0cee4945d814cbeb2aebae08cc91c655611e72b2b1e6ff58ab22f16b47",
-        "end.png": "ee49b7aa4e2ff790721e0803acf9e62d879660af4f8d5591033714b683b0def2",
-        "checks.json": "d74ddcf3d991d07d3cb5b3ff2a08aa0bf108b978fc6a1cb00acc6e56075da8ec"
-      },
-      "physical_remeasurement": null
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
     },
     {
-      "name": "Lat Pulldown",
-      "slug": "lat-pulldown-seated-to-the-front",
-      "run_dir": "/tmp/studio-final-validation/lat-pulldown-seated-to-the-front",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 3.32
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 450.78
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 85.76
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.14
-        }
-      ],
-      "summary": {
-        "pass": 13,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 11,
-        "unmeasured": 0
-      },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "kind": "fitness arm reach",
-        "label": "Fitness proportions",
-        "applied": true,
-        "upper_scale": 1.8,
-        "fore_scale": 1.8,
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "hand_scale": 1.0,
-        "per_frame_stretch": false,
-        "sides": {
-          "left": {
-            "upper_before_m": 0.10443226993083954,
-            "fore_before_m": 0.07788365334272385,
-            "upper_after_m": 0.18797808587551118,
-            "fore_after_m": 0.14019057601690293,
-            "wrist_translation_m": [
-              -0.1409132480621338,
-              0.03467267006635666,
-              0.01463861484080553
-            ]
-          },
-          "right": {
-            "upper_before_m": 0.10468268394470215,
-            "fore_before_m": 0.07495778799057007,
-            "upper_after_m": 0.18842883110046388,
-            "fore_after_m": 0.13492401838302612,
-            "wrist_translation_m": [
-              0.13851326704025269,
-              0.035191550850868225,
-              0.015128850936889648
-            ]
-          }
-        },
-        "requested_mode": "auto",
-        "original_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.10443226993083954,
-              "fore_m": 0.07788365334272385,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 0.9326923310071329,
-              "head_shortfall_mm": 66.81932813822233
-            },
-            "right": {
-              "upper_m": 0.10468268394470215,
-              "fore_m": 0.07495778799057007,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 0.931960947165028,
-              "head_shortfall_mm": 67.55071198032725
-            }
-          }
-        },
-        "actual_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.1879781037569046,
-              "fore_m": 0.14019055664539337,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 1.0785450681358675,
-              "head_shortfall_mm": 0.0
-            },
-            "right": {
-              "upper_m": 0.1884288489818573,
-              "fore_m": 0.13492397964000702,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 1.0756733038516202,
-              "head_shortfall_mm": 0.0
-            }
-          }
-        },
-        "reason": "Original straight-arm reach cannot clear the head."
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-b6fb01ba": "929bc29751c35d0a624840b24501e74dc59438d351e66cc017e7ee8682fb3346",
-        "img-09dcdaf6": "781952e629e8a4cff549df94ee6b1da7e32c7cd507382d47e8566718c07807dd"
-      },
-      "scene_sha256": "6d3b9ed8e5c23766efc512dd8a6a4834ee2806281205064c9899702662f597f4",
-      "output_sha256": {
-        "animation.gif": "980930695e992fb4fd7f918f2e8e3f1251e78e3ade55cb078c2a627d10545e98",
-        "start.png": "e0f3ba43e85b83cac548a6060b7f5c0b7d640a06b04ccc80e460e4d4239a2886",
-        "end.png": "a7516d8a9eb4bc69eee87af04ee7f050ce969f3d4e4092720f0f12f641988a21",
-        "checks.json": "59584f8b655121a812e0586c92dd703e1fe239668bd346ac53685ad6663769c3"
-      },
-      "physical_remeasurement": null
-    },
-    {
-      "name": "Dumbbell Bicep Curl",
-      "slug": "dumbbell-bicep-curl-standing-both-arms",
-      "run_dir": "/tmp/studio-complete-validation/dumbbell-bicep-curl-standing-both-arms",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 1.64
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 249.86
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 68.31
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.2
-        }
-      ],
-      "summary": {
-        "pass": 13,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 9,
-        "unmeasured": 0
-      },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "requested_mode": "auto",
-        "applied": false,
-        "label": "Original proportions",
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "per_frame_stretch": false
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-24b4606a": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
-        "img-f1698c9f": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a"
-      },
-      "scene_sha256": "0f66c131f9cf3e6e90bdc77d3442086d1e8acbdc53df950d72dffe70f63c6b1d",
-      "output_sha256": {
-        "animation.gif": "793c7e95d2b38508864b7f066aa17d53c33d1b0d088e21b4fb3666de29b63e07",
-        "start.png": "128b5f23d67f164c0d0ecd60ddf2fbf8ba6f9c3651ac0d7b53a7ea646f798f2d",
-        "end.png": "76f27f38173b6a8f8356866f4150dd92a87ba6d45b8e35d9c7d4a8904e262a7b",
-        "checks.json": "d9cc91b133d7da2f3c9309f56f594ea96af91fcf0d27fc0e2f2fd7a1e107d918"
-      },
-      "physical_remeasurement": null
-    },
-    {
-      "name": "Dumbbell Lateral Raise",
-      "slug": "dumbbell-lateral-raise",
-      "run_dir": "/tmp/studio-complete-validation/dumbbell-lateral-raise",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 1.36
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 248.58
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 69.07
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.2
-        }
-      ],
-      "summary": {
-        "pass": 13,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 9,
-        "unmeasured": 0
-      },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "requested_mode": "auto",
-        "applied": false,
-        "label": "Original proportions",
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "per_frame_stretch": false
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-5cd18809": "aa1982c367ea9151ee7769ac1f9f8795209db94a6eb85f7d51a7033886fb7ebc",
-        "img-62ff8746": "9210e0fb0202c306026d45a55703aaec89b3bef7aafeb7791aa1d06adcf58ab3"
-      },
-      "scene_sha256": "daabfa4f1659d36fc3d6acd8ddc247af5605819c82e6f0f4f08e38ecb659c969",
-      "output_sha256": {
-        "animation.gif": "adbb532546a7472b92e33ab9ba9d3f4fc615a20f2014c16820685ae6a94a0594",
-        "start.png": "d2cd3f75b59205de2767f90f3d6b80a51fe20e1a878520efcb2353fb95a61288",
-        "end.png": "430140f0a94b1c78b01c83609589fee37625a0091b12a55ee6ebaef2a2dd5e04",
-        "checks.json": "773ffae20ce6618c6782a2d88ab759009a4c3230d0050d2bab34b806282962e3"
-      },
-      "physical_remeasurement": null
-    },
-    {
-      "name": "Seated Dumbbell Shoulder Press",
-      "slug": "dumbbell-shoulder-press-seated-overhead-press",
-      "run_dir": "/tmp/studio-complete-validation/dumbbell-shoulder-press-seated-overhead-press",
-      "steps": [
-        {
-          "step": "read",
-          "exit": 0,
-          "seconds": 1.05
-        },
-        {
-          "step": "animate",
-          "exit": 0,
-          "seconds": 182.04
-        },
-        {
-          "step": "stills",
-          "exit": 0,
-          "seconds": 80.16
-        },
-        {
-          "step": "check",
-          "exit": 0,
-          "seconds": 0.26
-        }
-      ],
-      "summary": {
-        "pass": 12,
-        "fail": 0,
-        "limited": 0,
-        "uncertain": 10,
-        "info": 11,
-        "unmeasured": 0
-      },
-      "frames": 32,
-      "fps": 12.0,
-      "phase_frames": {
-        "start": 1,
-        "middle": 10,
-        "end": 19
-      },
-      "character_fit": {
-        "kind": "fitness arm reach",
-        "label": "Fitness proportions",
-        "applied": true,
-        "upper_scale": 1.8,
-        "fore_scale": 1.8,
-        "source_model_unchanged": true,
-        "face_max_displacement_mm": 0.0,
-        "hand_scale": 1.0,
-        "per_frame_stretch": false,
-        "sides": {
-          "left": {
-            "upper_before_m": 0.10443226993083954,
-            "fore_before_m": 0.07788365334272385,
-            "upper_after_m": 0.18797808587551118,
-            "fore_after_m": 0.14019057601690293,
-            "wrist_translation_m": [
-              -0.1409132480621338,
-              0.03467267006635666,
-              0.01463861484080553
-            ]
-          },
-          "right": {
-            "upper_before_m": 0.10468268394470215,
-            "fore_before_m": 0.07495778799057007,
-            "upper_after_m": 0.18842883110046388,
-            "fore_after_m": 0.13492401838302612,
-            "wrist_translation_m": [
-              0.13851326704025269,
-              0.035191550850868225,
-              0.015128850936889648
-            ]
-          }
-        },
-        "requested_mode": "auto",
-        "original_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.10443226993083954,
-              "fore_m": 0.07788365334272385,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 0.9326923310071329,
-              "head_shortfall_mm": 66.81932813822233
-            },
-            "right": {
-              "upper_m": 0.10468268394470215,
-              "fore_m": 0.07495778799057007,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 0.931960947165028,
-              "head_shortfall_mm": 67.55071198032725
-            }
-          }
-        },
-        "actual_reach": {
-          "head_top_m": 0.9995116591453552,
-          "sides": {
-            "left": {
-              "upper_m": 0.1879781037569046,
-              "fore_m": 0.14019055664539337,
-              "shoulder_z_m": 0.6916018724441528,
-              "grip_offset_m": 0.05877453528941669,
-              "vertical_handle_bound_m": 1.0785450681358675,
-              "head_shortfall_mm": 0.0
-            },
-            "right": {
-              "upper_m": 0.1884288489818573,
-              "fore_m": 0.13492397964000702,
-              "shoulder_z_m": 0.6912083625793457,
-              "grip_offset_m": 0.06111211265041008,
-              "vertical_handle_bound_m": 1.0756733038516202,
-              "head_shortfall_mm": 0.0
-            }
-          }
-        },
-        "reason": "Original straight-arm reach cannot clear the head."
-      },
-      "pre_render_gate_exercised_in_cli": false,
-      "source_image_hashes": {
-        "img-c052e570": "e0a775bfa0b32b63c84f19fba2b1a05db535bde849feb3e54a3479a943b3bed6",
-        "img-e96f851c": "940d5aad6b85960e833f88e218de8ce4f806d84cf2764741f1cbff9cce365d84"
-      },
-      "scene_sha256": "9aff41c96b5aef005d26bc9b98fae8efbd360c2e21d0e277da730113abc03a98",
-      "output_sha256": {
-        "animation.gif": "a6726178cec9b3e83583c4bb376b5e72bbb9b4b0906e784b8b96428d1b8fa1f2",
-        "start.png": "b588bcebfe471da69338af1e2ecb0c08ffe8feac3daf44bea1154095f5407f33",
-        "end.png": "6ea1d61599db1c7fb8bf7bb88f836466c5917c553d9027ccfd691b7ebdc17ab6",
-        "checks.json": "a94c3fa1d381bf576cc24fd63d8fb6b7269d17da8ba40d3d7f05b0e3fedacf2f"
-      },
-      "physical_remeasurement": null
-    },
-    {
-      "name": "Front Plank",
+      "name": "Front Plank (forearm plank)",
       "slug": "front-plank-forearm-plank",
-      "run_dir": "/tmp/studio-final-pipeline-validation/front-plank-forearm-plank",
+      "run_dir": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank",
       "steps": [
         {
           "step": "read",
           "exit": 0,
-          "seconds": 0.91
+          "seconds": 0.91,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
         },
         {
           "step": "animate",
           "exit": 0,
-          "seconds": 60.32
+          "seconds": 60.32,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
         },
         {
           "step": "stills",
           "exit": 0,
-          "seconds": 46.03
+          "seconds": 46.03,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
         },
         {
           "step": "check",
           "exit": 0,
-          "seconds": 0.12
+          "seconds": 0.12,
+          "scope": "original render, retained unchanged; current replay is recorded separately"
         }
       ],
       "summary": {
-        "pass": 23,
+        "pass": 25,
         "fail": 0,
         "limited": 0,
         "uncertain": 0,
@@ -1061,7 +2096,7 @@
         },
         "reason": "Original straight-arm reach cannot clear the head."
       },
-      "pre_render_gate_exercised_in_cli": true,
+      "pre_render_gate_exercised_in_cli": false,
       "source_image_hashes": {
         "img-229af256": "7a6545152b4c918a84b7e0fd2c3c7d10d571f8fbda8e4459354eb24059ff245d",
         "img-cd985885": "7f6b690f7594dfab002fb27d36f8247957171b08d19020f24208afd4d5186043"
@@ -1071,42 +2106,125 @@
         "animation.gif": "032df4c9b178e91f97e1c63e7015957c9909600a2c7b777689c695a502569212",
         "start.png": "5922ea54bab5c494556d9857157e49a95fce6d900bc3baa5e1d6c2185ac97a86",
         "end.png": "5922ea54bab5c494556d9857157e49a95fce6d900bc3baa5e1d6c2185ac97a86",
-        "checks.json": "ebafe5f9b7a65691964251884e4f8d1c1769c195dfd4e6a77272ee01177c3839"
+        "checks.json": "01f67f5e9d5ab94bb36c97fff088904b0d505a57cdc24b147a0b2c2eee2be629"
       },
-      "physical_remeasurement": null
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": false,
+        "evidence_files": [
+          "evidence/movement-quality-recheck.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "hold",
+        "phase_frames": {
+          "start": 1,
+          "middle": 1,
+          "end": 1
+        },
+        "explicit_phases": [
+          "start"
+        ]
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 1000,
+      "gif_frame_count": 12,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 1,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/front-plank-forearm-plank/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": false,
+        "geometry_changed_this_review": false,
+        "source_photos_calibrated": false,
+        "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+        "evidence": [
+          {
+            "file": "evidence/movement-quality-recheck.json",
+            "sha256": "a882452b5e32b34d677e90fc048e7a2b82bd1ac0db8bbfc9f35b3fee66e1d0f7",
+            "status": null,
+            "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541"
+          }
+        ],
+        "recheck": {
+          "recorded_at_utc": "2026-10-27T08:50:00.597787+00:00",
+          "scope": "Actual arm-joint and rotation replay on unchanged saved scene; existing source comparison stills retained.",
+          "frames": 12,
+          "scene_sha256": "03fa232bed8c98ac2ab1f7df0715f1e28f692a1a437fdf168a2f863ae58c8541",
+          "gif_sha256": "032df4c9b178e91f97e1c63e7015957c9909600a2c7b777689c695a502569212",
+          "scene_changed": false,
+          "gif_changed": false,
+          "arm_speed_heights_s": 0.0,
+          "arm_turn_deg_s": 0.0,
+          "summary": {
+            "pass": 25,
+            "fail": 0,
+            "limited": 0,
+            "uncertain": 0,
+            "info": 18,
+            "unmeasured": 0
+          }
+        }
+      },
+      "status": "checks-passed",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
     },
     {
-      "name": "Tricep Pushdown",
-      "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
-      "run_dir": "/tmp/studio-complete-validation/tricep-pushdown-cable-bar-or-rope-attachment",
+      "name": "Leg Press (seated machine)",
+      "slug": "leg-press-seated-machine",
+      "run_dir": "/tmp/studio-motion-quality-validation/leg-press-seated-machine",
       "steps": [
         {
           "step": "read",
           "exit": 0,
-          "seconds": 1.19
+          "seconds": 1.28,
+          "scope": "current completed pipeline"
         },
         {
           "step": "animate",
           "exit": 0,
-          "seconds": 165.35
+          "seconds": 155.85,
+          "scope": "current completed pipeline"
         },
         {
           "step": "stills",
           "exit": 0,
-          "seconds": 27.57
+          "seconds": 55.42,
+          "scope": "current completed pipeline"
         },
         {
           "step": "check",
           "exit": 0,
-          "seconds": 0.09
+          "seconds": 0.17,
+          "scope": "current completed pipeline"
         }
       ],
       "summary": {
-        "pass": 22,
+        "pass": 30,
         "fail": 0,
         "limited": 0,
-        "uncertain": 2,
-        "info": 18,
+        "uncertain": 10,
+        "info": 11,
         "unmeasured": 0
       },
       "frames": 32,
@@ -1115,6 +2233,142 @@
         "start": 1,
         "middle": 10,
         "end": 19
+      },
+      "character_fit": {
+        "requested_mode": "auto",
+        "applied": false,
+        "label": "Original proportions",
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "per_frame_stretch": false
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-3cc8d88f": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
+        "img-6e74c69b": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051"
+      },
+      "scene_sha256": "e1e6f0489a3f7e6f92f8dda595c6f8336146c43bda07f24c9f9271ec9e2af143",
+      "output_sha256": {
+        "animation.gif": "1eef7ddb9f295f9279a8a6113432b34c9a3646cb9982133d236a07c446c96a5a",
+        "start.png": "b89460a54a71d334382559d922124b6cf58e87b9bc25f07897624a5d582d6441",
+        "end.png": "68b5436072bfb9b8e2d45a05793e36877f28ba9f153212fedcacf05e9281f9d1",
+        "checks.json": "569777b5f0c8abcc81bd61403caa2d44fcce8bdfa9ab8ebf932d9fec3de5e2b7"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/sled-motion-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 10,
+          "end": 19
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.5,
+          "hold_s": 0.2,
+          "return_s": 1.0,
+          "forward_action": "start to end",
+          "return_action": "end to start",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 19,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/frames/frame_0019.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/sled-motion-replay.json",
+            "sha256": "532736caec8f9b54c728fb1c4a6f33dfbafe0ab82127d573b05291ba638bd064",
+            "status": "passed",
+            "scene_sha256": "e1e6f0489a3f7e6f92f8dda595c6f8336146c43bda07f24c9f9271ec9e2af143"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Standing Barbell Overhead Press (Shoulder Press)",
+      "slug": "standing-barbell-overhead-press-shoulder-press",
+      "run_dir": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": 0.99,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": 183.02,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": 34.75,
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": 0.09,
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 27,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 10,
+        "info": 9,
+        "unmeasured": 0
+      },
+      "frames": 32,
+      "fps": 12.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 7,
+        "end": 13
       },
       "character_fit": {
         "kind": "fitness arm reach",
@@ -1193,50 +2447,123 @@
             }
           }
         },
-        "reason": "The short-arm rest character uses the validated fitness proportions for a collision-free cable grip."
+        "reason": "Original straight-arm reach cannot clear the head."
       },
-      "pre_render_gate_exercised_in_cli": false,
+      "pre_render_gate_exercised_in_cli": true,
       "source_image_hashes": {
-        "img-41d79d3d": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
-        "img-bfe8bbbf": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c"
+        "img-4b5dc525": "fb258efda95067b243b1c5033b1ff7b72a0f8cef8607477b71b969d3f72a8471",
+        "img-06bce39c": "b9419884fa57bd7de1dff2d0f811aa61d4cd5547b3c6ebafaca01c7017d8be1a"
       },
-      "scene_sha256": "51a56c9d1c6dedf0166596ae167d21110bb498ead19bc44ed6575d29a9bb9060",
+      "scene_sha256": "81332b5eb77c90ea583c0a0a2c15364fa9d8c1b436b42ca926096329c9f58445",
       "output_sha256": {
-        "animation.gif": "edc861c63d974117cca96b9df443b0d4aab31ed260e1e2b98c0c8df613979f5f",
-        "start.png": "8cd1bae67625c92486c37e687ac4dc3cd14ca413185cf880c6f29867be41ddfd",
-        "end.png": "68879667931a0e521a434dc766fe9dd2b9e7a0d6bb6ed3aaa96229675cf77b4f",
-        "checks.json": "fb8c2a30b7b11eb2d57e34f6a1a7f40e98ce1c0a52b0675082663fc505384710"
+        "animation.gif": "ccceca27d75351b428732a3b190731ff48cf89bac97df1c94e21ba0de95a0e0d",
+        "start.png": "88f3013f14f2944a004a6825f4652c3705b19b29593fb0356176e2192e0af602",
+        "end.png": "de4750f0f439b8e960503b9870e2746e8b1d5e71fe1a283c34690dbc0e139e0c",
+        "checks.json": "2482e69f952a3d43586c207ca72d82f589996a95a41e542b14db8a3afa874ce3"
       },
-      "physical_remeasurement": null
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/overhead-range-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 7,
+          "end": 13
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.0,
+          "hold_s": 0.2,
+          "return_s": 1.5,
+          "forward_action": "press",
+          "return_action": "controlled lowering",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 13,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press/frames/frame_0013.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/overhead-range-replay.json",
+            "sha256": "d4ac4fc3b5fbdbedacc61b4d184d320d497a25ca66ba5d475f00c46cbe8e6087",
+            "status": "passed",
+            "scene_sha256": "81332b5eb77c90ea583c0a0a2c15364fa9d8c1b436b42ca926096329c9f58445"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
     },
     {
-      "name": "Leg Press",
-      "slug": "leg-press-seated-machine",
-      "run_dir": "/tmp/studio-complete-validation/leg-press-seated-machine",
+      "name": "Dumbbell Shoulder Press (seated overhead press)",
+      "slug": "dumbbell-shoulder-press-seated-overhead-press",
+      "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press",
       "steps": [
         {
           "step": "read",
           "exit": 0,
-          "seconds": 1.12
+          "seconds": 1.02,
+          "scope": "current completed pipeline"
         },
         {
           "step": "animate",
           "exit": 0,
-          "seconds": 492.74
+          "seconds": 180.11,
+          "scope": "current completed pipeline"
         },
         {
           "step": "stills",
           "exit": 0,
-          "seconds": 50.6
+          "seconds": 33.99,
+          "scope": "current completed pipeline"
         },
         {
           "step": "check",
           "exit": 0,
-          "seconds": 0.16
+          "seconds": 0.09,
+          "scope": "current completed pipeline"
         }
       ],
       "summary": {
-        "pass": 22,
+        "pass": 35,
         "fail": 0,
         "limited": 0,
         "uncertain": 10,
@@ -1247,8 +2574,219 @@
       "fps": 12.0,
       "phase_frames": {
         "start": 1,
-        "middle": 10,
-        "end": 19
+        "middle": 7,
+        "end": 13
+      },
+      "character_fit": {
+        "kind": "fitness arm reach",
+        "label": "Fitness proportions",
+        "applied": true,
+        "upper_scale": 1.8,
+        "fore_scale": 1.8,
+        "source_model_unchanged": true,
+        "face_max_displacement_mm": 0.0,
+        "hand_scale": 1.0,
+        "per_frame_stretch": false,
+        "sides": {
+          "left": {
+            "upper_before_m": 0.10443226993083954,
+            "fore_before_m": 0.07788365334272385,
+            "upper_after_m": 0.18797808587551118,
+            "fore_after_m": 0.14019057601690293,
+            "wrist_translation_m": [
+              -0.1409132480621338,
+              0.03467267006635666,
+              0.01463861484080553
+            ]
+          },
+          "right": {
+            "upper_before_m": 0.10468268394470215,
+            "fore_before_m": 0.07495778799057007,
+            "upper_after_m": 0.18842883110046388,
+            "fore_after_m": 0.13492401838302612,
+            "wrist_translation_m": [
+              0.13851326704025269,
+              0.035191550850868225,
+              0.015128850936889648
+            ]
+          }
+        },
+        "requested_mode": "auto",
+        "original_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.10443226993083954,
+              "fore_m": 0.07788365334272385,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 0.9326923310071329,
+              "head_shortfall_mm": 66.81932813822233
+            },
+            "right": {
+              "upper_m": 0.10468268394470215,
+              "fore_m": 0.07495778799057007,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 0.931960947165028,
+              "head_shortfall_mm": 67.55071198032725
+            }
+          }
+        },
+        "actual_reach": {
+          "head_top_m": 0.9995116591453552,
+          "sides": {
+            "left": {
+              "upper_m": 0.1879781037569046,
+              "fore_m": 0.14019055664539337,
+              "shoulder_z_m": 0.6916018724441528,
+              "grip_offset_m": 0.05877453528941669,
+              "vertical_handle_bound_m": 1.0785450681358675,
+              "head_shortfall_mm": 0.0
+            },
+            "right": {
+              "upper_m": 0.1884288489818573,
+              "fore_m": 0.13492397964000702,
+              "shoulder_z_m": 0.6912083625793457,
+              "grip_offset_m": 0.06111211265041008,
+              "vertical_handle_bound_m": 1.0756733038516202,
+              "head_shortfall_mm": 0.0
+            }
+          }
+        },
+        "reason": "Original straight-arm reach cannot clear the head."
+      },
+      "pre_render_gate_exercised_in_cli": true,
+      "source_image_hashes": {
+        "img-c052e570": "e0a775bfa0b32b63c84f19fba2b1a05db535bde849feb3e54a3479a943b3bed6",
+        "img-e96f851c": "940d5aad6b85960e833f88e218de8ce4f806d84cf2764741f1cbff9cce365d84"
+      },
+      "scene_sha256": "87b463151de9ddd197b03a41f168c47b6e5433ef7f8732c88ff697d63cb4fa8e",
+      "output_sha256": {
+        "animation.gif": "9e8c72a73801a88e5011190ef20f96137b43027cc28ffc0538a76c351e1956a2",
+        "start.png": "47c07ded3b9cd6aa3dd4d4b9a273f29fa7c1536fd9422122783764c189f06e0d",
+        "end.png": "668709c1db5d9b89e4331b853a6f7eb14a31f433b3ea6b530e7bcc01345613e7",
+        "checks.json": "635449590f0017fdc565751ff4cf79d7fb189c29c85b968d3b3a13b67c7e5a82"
+      },
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/overhead-range-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      },
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "cycle",
+        "phase_frames": {
+          "start": 1,
+          "middle": 7,
+          "end": 13
+        },
+        "explicit_phases": [
+          "start",
+          "end"
+        ],
+        "timing": {
+          "forward_s": 1.0,
+          "hold_s": 0.2,
+          "return_s": 1.5,
+          "forward_action": "press",
+          "return_action": "controlled lowering",
+          "source": "declared demonstration tempo; not measured from source photographs"
+        }
+      },
+      "input_mode": "reference-keyposes",
+      "playback": "loop",
+      "gif_duration_ms": 2660,
+      "gif_frame_count": 32,
+      "gif_loop_extension": 0,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 13,
+          "file": "end.png",
+          "source": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press/frames/frame_0013.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/overhead-range-replay.json",
+            "sha256": "36f4f34cbb1eb99d98b74a13e66549d0f47e3279adf509f73e23d9b97de5c026",
+            "status": "passed",
+            "scene_sha256": "87b463151de9ddd197b03a41f168c47b6e5433ef7f8732c88ff697d63cb4fa8e"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json"
+    },
+    {
+      "name": "Walking Lunge (dumbbells optional)",
+      "slug": "walking-lunge-dumbbells-optional",
+      "run_dir": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional",
+      "steps": [
+        {
+          "step": "read",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "animate",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "stills",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        },
+        {
+          "step": "check",
+          "exit": 0,
+          "seconds": null,
+          "source": "Completed read/build/stills/check outcome; elapsed time was not retained.",
+          "scope": "current completed pipeline"
+        }
+      ],
+      "summary": {
+        "pass": 25,
+        "fail": 0,
+        "limited": 0,
+        "uncertain": 15,
+        "info": 4,
+        "unmeasured": 0
+      },
+      "frames": 42,
+      "fps": 16.0,
+      "phase_frames": {
+        "start": 1,
+        "middle": 25,
+        "end": 42
       },
       "character_fit": {
         "requested_mode": "auto",
@@ -1258,19 +2796,373 @@
         "face_max_displacement_mm": 0.0,
         "per_frame_stretch": false
       },
-      "pre_render_gate_exercised_in_cli": false,
+      "pre_render_gate_exercised_in_cli": true,
       "source_image_hashes": {
-        "img-3cc8d88f": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
-        "img-6e74c69b": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051"
+        "lunge-dense-00": "5d50ddcae8e70c034c324f2713603845d263dfba5e2d77193f3529cb2fc58fdc",
+        "lunge-dense-01": "45e36b110657fd536d83e0c40b8247a85b592dea0c1ce8dbc35d86d1750b57b9",
+        "lunge-dense-02": "437e7c3b2e5e538e452b47b1767f13c5d6ebb8e44012c96e48aaa248712469bd",
+        "lunge-dense-03": "4d07768cafc6ae4c9cd6f51a1bee5530d57196aaace13e998c7bdb4b58f0ebe0",
+        "lunge-dense-04": "974ee086f0c8efa6860a0db710ffb926f3a3d7d41654c87a35d7b0ade24dd51a",
+        "lunge-dense-05": "5f4f8f04f1b8643da1ffa4c8947b2acba7c1ca6053f54679c109984b6553c6c7",
+        "lunge-dense-06": "df13eec6222991a599560753586b5caea549a784f0850ad24330bc9c56c43ca4",
+        "lunge-dense-07": "16dd39e9ccdff1d34e423873799705dad61bc65980fc0ba420e039744fa37064",
+        "lunge-dense-08": "b8171578da3a8133f6ab26661f39717390f6e72c4e3d3d28f270d0792b721471",
+        "lunge-dense-09": "1dbb63f44feb1c0ec0236cb0e1f366be9f2c74cf36a576547b4d47c0c9b6d4e8",
+        "lunge-dense-10": "d36c8e2c5730c64efb8b3f3f1cf73694e1ac8e7adb71e0314275f54b13005068",
+        "lunge-dense-11": "6935251d666676054c0361b4cf76d3166b9893b04870839ceeda5eebec0c12d7",
+        "lunge-dense-12": "3680a67c5e82f1009ef5eb3ffb25d7475dda20571f58c5cc96a3aa1bb5ccff19",
+        "lunge-dense-13": "bee9891952625f90f27399f2d88c02a42a2a8cc611cb0750b5854d138b863fd6",
+        "lunge-dense-14": "f76d13c712b380da665c2d9bf6b20cb0cd7c63920648a024fba445f68a3cc566",
+        "lunge-dense-15": "a5e1b4ca969afb4c1c8c84dadb028294c3a6ad0c80b8bc7ae24b741051222378",
+        "lunge-dense-16": "749a68e3afcde3ad968f01df4e6d411fe7e226a85aed2124a4caff9a3eea2bae",
+        "lunge-dense-17": "b68fdadfaa1aefaf50af1a5556aa9396c390767d159d7095ef49c62d48030334",
+        "lunge-dense-18": "5bdb700114f6da52710ee5a36270b34ba27adee7f5bc4f9933a5150e3fba0fa8",
+        "lunge-dense-19": "a3e1f7ed4149be0445e8d8ec7ede66e5b2c7eb1e7c528851d4275ab83062e73d",
+        "lunge-dense-20": "a000a99d381b0f6b594ad39bcc78a9256f0c1507be796f14d4229cba23199f86",
+        "lunge-dense-21": "ba73ad019884fe6106076c1ace6236eb78cc9c190326347717ab44bee4b14f9e",
+        "lunge-dense-22": "2a72f7571ee91af86bc38a1d0b310081e42fc136bea6e2a590aa4bd82c1cc6e5",
+        "lunge-dense-23": "23f8130d2c797076a23cdd980b1982446d5e82c82656ac551c158ddf4b41fba1",
+        "lunge-dense-24": "b4f24d09d5d528b952caa9cb664ac626a04ef6facbb3128f82142b8a649add87",
+        "lunge-dense-25": "8a90578e4117e07c32044c305168ee86af0fcd3ccef9043e176f12ac3a0397de"
       },
-      "scene_sha256": "c0ceb90506f48c09ffd28a3e19d5e3eecd5cde33b0f5e1eb9bc1087502ebfba7",
+      "scene_sha256": "2e98cf92876d56af6ed2454b475c026ed0f6c20d02b3bd7f95f24da7fd3fb08c",
       "output_sha256": {
-        "animation.gif": "dc3ef9a7d8fdfab36bf10f3de0c2254a817dcdb98885369bc008f0ae1b2c2241",
-        "start.png": "3fe1e348d819f92e8e7247f57a217f4316a5f94e152888b65ff969516f52e8db",
-        "end.png": "5bdcf173aa193c9ba85bc8b71e1ec6b485ddafc077483e4ae8b10516b569f02f",
-        "checks.json": "2c7a2811af562e032862cc89755804fc97d6343d0bb18f55452cffc7b56b1529"
+        "animation.gif": "16b50f9887a8eedbc843df4f1cfc1b176e7fdf7901e0833c9a1df8b01b13a46f",
+        "start.png": "5e04daf5d2b9785f8185284c5e95178dc76f742000189e2b1a85815bda640668",
+        "end.png": "bd959418e3e9e7d892722e4dc9fa66b2d32b80eb49e116ecda26eaecc9f698e8",
+        "checks.json": "25ca1e18bc65238df1eb28c45f799acf650c67668b2a1997887c770449f4bee7"
       },
-      "physical_remeasurement": null
+      "reference_motion": {
+        "source": "keyposes",
+        "mode": "sequence",
+        "playback": "once",
+        "phase_frames": {
+          "start": 1,
+          "middle": 25,
+          "end": 42
+        },
+        "sample_frames": [
+          1,
+          3,
+          4,
+          6,
+          7,
+          9,
+          11,
+          12,
+          14,
+          15,
+          17,
+          19,
+          20,
+          22,
+          23,
+          25,
+          27,
+          28,
+          30,
+          31,
+          33,
+          35,
+          36,
+          38,
+          39,
+          42
+        ],
+        "source_times": [
+          2.001667,
+          2.101667,
+          2.201667,
+          2.301667,
+          2.401667,
+          2.501667,
+          2.601667,
+          2.701667,
+          2.801667,
+          2.901667,
+          3.001667,
+          3.101667,
+          3.201667,
+          3.301667,
+          3.401667,
+          3.501667,
+          3.601667,
+          3.701667,
+          3.801667,
+          3.901667,
+          4.001667,
+          4.103333,
+          4.203333,
+          4.303333,
+          4.403333,
+          4.503333
+        ],
+        "contactModel": "named_heel_toe",
+        "sourceInferredDepth": true,
+        "calibrated": false,
+        "observed_contacts": [
+          {
+            "left": [
+              "heel",
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "heel",
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "heel",
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "heel",
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "heel",
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": []
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [
+              "toe"
+            ],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          },
+          {
+            "left": [],
+            "right": [
+              "heel",
+              "toe"
+            ]
+          }
+        ]
+      },
+      "input_mode": "observed-sequence",
+      "playback": "once",
+      "gif_duration_ms": 2620,
+      "gif_frame_count": 42,
+      "gif_loop_extension": null,
+      "anchor_frames": {
+        "start": {
+          "frame": 1,
+          "file": "start.png",
+          "source": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/frames/frame_0001.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        },
+        "end": {
+          "frame": 42,
+          "file": "end.png",
+          "source": "/tmp/studio-lunge-one-shot/walking-lunge-dumbbells-optional/frames/frame_0042.png",
+          "kind": "recorded generated frame from the rendered preview camera"
+        }
+      },
+      "quality": {
+        "mechanical_body_failures": 0,
+        "missing_measurements": 0,
+        "retained_source_comparison_failures": [],
+        "rendered_this_review": true,
+        "geometry_changed_this_review": true,
+        "source_photos_calibrated": false,
+        "render_scope": "New preview rendered for this correction.",
+        "evidence": [
+          {
+            "file": "evidence/lunge-contacts-replay.json",
+            "sha256": "ef0062de95a937e4e088392d99bb786489bc7b1a90832cca85b513a760cd4900",
+            "status": "passed",
+            "scene_sha256": "2e98cf92876d56af6ed2454b475c026ed0f6c20d02b3bd7f95f24da7fd3fb08c"
+          }
+        ]
+      },
+      "status": "needs-review",
+      "geometry_report": "geometry-report.json",
+      "inspector_measurements": "ours.json",
+      "source_provenance": "source-provenance.json",
+      "physical_remeasurement": {
+        "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+        "geometry_changed_during_measurement": false,
+        "geometry_changed_this_review": true,
+        "evidence_files": [
+          "evidence/lunge-contacts-replay.json"
+        ],
+        "raw_report": "geometry-report.json"
+      }
     }
   ],
   "reference_batch": {
@@ -1286,5 +3178,5 @@
     "mpfb": "2.0.18",
     "render": "EEVEE, software GL; shared 4 CPU quota"
   },
-  "interpretation": "Zero failed checks is distinct from source-depth certainty. Oblique/frontal comparisons remain uncertain and require visual review."
+  "interpretation": "Measured examples retain source uncertainty and source conflicts. Mechanical motion checks do not calibrate the photographs or certify clinical technique."
 }

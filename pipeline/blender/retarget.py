@@ -1064,7 +1064,7 @@ def use_workbench(scene, width=360, height=480):
     return scene
 
 
-def frames_to_gif(directory, out, fps, pattern="frame_%04d.png", beside=None):
+def frames_to_gif(directory, out, fps, pattern="frame_%04d.png", beside=None, loop=True):
     """Stitch rendered frames into a GIF with ffmpeg (palette pass, so the skin does not band).
 
     `beside` is a second directory of frames with the same numbering, put to the right of the
@@ -1085,7 +1085,7 @@ def frames_to_gif(directory, out, fps, pattern="frame_%04d.png", beside=None):
         graph = ["-filter_complex", "[0][1]hstack=inputs=2," + palette]
     else:
         graph = ["-vf", palette]
-    subprocess.run([ffmpeg, "-y", "-loglevel", "error", *inputs, *graph, "-loop", "0",
+    subprocess.run([ffmpeg, "-y", "-loglevel", "error", *inputs, *graph, "-loop", "0" if loop else "-1",
                     str(out)], check=True)
     print(f"gif -> {out} ({out.stat().st_size / 1024:.0f} KB)")
     return out

@@ -1,0 +1,141 @@
+{
+  "name": "Barbell Back Squat",
+  "slug": "barbell-back-squat",
+  "run_dir": "/tmp/studio-motion-quality-validation/barbell-back-squat",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 0.24,
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 308.01,
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 19.05,
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.12,
+      "scope": "current completed pipeline"
+    },
+    {
+      "step": "quality-recheck-and-gif-export",
+      "exit": 0,
+      "source": "All69unchangedscene frames remeasured under currentrawcoverage schema, all26physicalrows andplannedview skin/arm gate passed beforeGIFexport",
+      "seconds": null,
+      "scope": "current completed pipeline"
+    }
+  ],
+  "summary": {
+    "pass": 36,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 0,
+    "info": 3,
+    "unmeasured": 0
+  },
+  "frames": 69,
+  "fps": 30.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 19,
+    "end": 38
+  },
+  "character_fit": {
+    "requested_mode": "auto",
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true,
+    "face_max_displacement_mm": 0.0,
+    "per_frame_stretch": false
+  },
+  "pre_render_gate_exercised_in_cli": true,
+  "source_image_hashes": {},
+  "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf",
+  "output_sha256": {
+    "animation.gif": "1b680640b8689bf75adfab25aeacf5a0b80c96bce989d1cc76453c044897bcaa",
+    "start.png": "846eb6624826b38bc1269a3dfd6a1c418878fc686c97dc6c931762cc415408b0",
+    "end.png": "de92e1648be61b1d184628e989cd316dd761ae3172338bd8ab36836f8ee8f534",
+    "checks.json": "1f5f1558c307106fa656be637c44d535baa32ed62f46e652c1437f5eeea6e268"
+  },
+  "reference_motion": {
+    "source": "preset",
+    "preset": "squat-v1",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "source_sha256": "e4f720f5d9b9657c2f7b4c52c516bdf3c17ec6d4fcfe5b9b527cb962d4157705",
+    "description": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets."
+  },
+  "input_mode": "motion-preset",
+  "playback": "loop",
+  "gif_duration_ms": 2300,
+  "gif_frame_count": 69,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/barbell-back-squat/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 38,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/barbell-back-squat/frames/frame_0038.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/quality-recheck.json",
+        "sha256": "fd4f047dd06cf9a906067a58d99365ede09747e4ca0e390d8cd1cbf913cfe39b",
+        "status": null,
+        "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf"
+      },
+      {
+        "file": "evidence/squat-preset-replay.json",
+        "sha256": "e33be7ce070b2ff1594a2a560d67757001b865715443eeb732d469908e570e3b",
+        "status": "passed",
+        "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf"
+      }
+    ],
+    "recheck": {
+      "source": "Independent current full-scene measurements after metadata-only range coverage schema addition; PNGs and saved scene unchanged",
+      "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf",
+      "geometry_changed": false,
+      "frames_remeasured": 69,
+      "exported_after_current_checks": true
+    }
+  },
+  "status": "checks-passed",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json",
+  "physical_remeasurement": {
+    "method": "Actual 69-frame scene remeasurement under current range coverage schema before GIF re-export.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "file": "evidence/quality-recheck.json"
+  }
+}

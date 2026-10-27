@@ -1,0 +1,18 @@
+{
+  "photos": [],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "preset",
+    "preset": "squat-v1",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "source_sha256": "e4f720f5d9b9657c2f7b4c52c516bdf3c17ec6d4fcfe5b9b527cb962d4157705",
+    "description": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets."
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/barbell-back-squat/references.json"
+}

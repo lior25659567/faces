@@ -1,26 +1,76 @@
 {
+  "recorded_at_utc": "2026-10-27T10:11:32.680106+00:00",
+  "scope": "All 14 mapped exercises have checked example media; source comparisons remain separate from mechanical movement checks.",
   "python": {
-    "passed": 597,
-    "skipped": 18,
+    "passed": 741,
+    "skipped": 27,
     "command": "studio/.venv/bin/python -m pytest studio/tests -q --ignore=studio/tests/test_read_pose.py",
-    "notes": "Blender-only scene tests run separately; the legacy private-photo reader module is excluded. Runtime LD_LIBRARY_PATH and cache directories were configured."
+    "notes": "Portable suite. Blender scene replays run separately; legacy private-photo reader excluded. Runtime library/cache environment configured."
   },
   "studio_js": {
-    "passed": 315,
+    "passed": 365,
     "command": "npm --prefix studio test -- --exclude server/api.test.js --exclude server/images.test.js --exclude server/queue.test.js",
-    "notes": "Legacy private-photo/macOS suites excluded."
+    "notes": "Portable suite. Legacy private-photo/macOS suites excluded."
   },
-  "api_queue_fit_tests": {
+  "targeted_api_queue": {
     "passed": 2,
-    "command": "npm --prefix studio test -- server/api.test.js server/queue.test.js -t proportion"
+    "filtered_out": 64,
+    "command": "npm --prefix studio test -- server/api.test.js server/queue.test.js -t 'proportion|preset|reference bundle|motion source'"
   },
-  "main_app": {
-    "passed": 59,
-    "command": "npm test -- --run"
+  "build": {
+    "command": "npm --prefix studio run build",
+    "status": "passed"
   },
-  "builds": [
-    "npm run build",
-    "npm --prefix studio run build"
-  ],
-  "actual_pipeline": "11 complete source-photo read/build/render/stills/check runs, plus independent saved-scene and negative-control replays. Row has separate 81-frame evidence."
+  "browser": {
+    "status": "passed",
+    "exercises": 14,
+    "playable": 14,
+    "desktop_width": 1440,
+    "mobile_widths": [
+      390,
+      320
+    ],
+    "single_active_animation": true,
+    "one_shot_replay": true,
+    "preset_without_photos": true,
+    "photo_source_retained": true,
+    "live_lunge_source_enabled": true,
+    "user_data_unchanged": true,
+    "javascript_errors": 0,
+    "evidence": [
+      "../motion-quality/preview-library-verification.json",
+      "../motion-quality/movement-source-ui-verification.json"
+    ]
+  },
+  "automatic_source_smoke": {
+    "status": "passed",
+    "actual_queue_and_read_subprocesses": true,
+    "cases": [
+      "Barbell Back Squat",
+      "Walking Lunge (dumbbells optional)"
+    ],
+    "lunge_images": 26,
+    "external_fetches": 0,
+    "renders": 0,
+    "seconds": 7.807,
+    "source_inputs_matched_render": true,
+    "evidence": "../motion-quality/automation-source-smoke.json"
+  },
+  "examples": {
+    "count": 14,
+    "missing_measurements": 0,
+    "failed_mechanical_rows": 0,
+    "retained_photo_comparison_failures": {
+      "tricep-pushdown-cable-bar-or-rope-attachment": 4,
+      "barbell-bent-over-row": 2
+    },
+    "independent_scene_replays": "All 14 examples have actual saved-scene mechanical/contact/motion evidence; each bundle records its scope.",
+    "media_unchanged": [
+      "barbell-bent-over-row",
+      "conventional-barbell-deadlift",
+      "front-plank-forearm-plank"
+    ],
+    "squat_scope": "Corrected scene/PNGs unchanged during metadata, full-range and planned-camera recheck; GIF exported after current checks passed.",
+    "lunge_scope": "42 frames@16fps, one observed step, airborne ending, no GIF loop extension;15 inferred-depth comparisons remain uncertain."
+  }
 }

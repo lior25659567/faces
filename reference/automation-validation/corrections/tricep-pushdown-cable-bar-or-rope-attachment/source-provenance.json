@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "image": "img-41d79d3d",
+      "original_path": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/source-references/img-41d79d3d.jpg",
+      "bundled_file": "source-references/img-41d79d3d.jpg",
+      "sha256": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Triceps_Pushdown",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/0.jpg",
+        "sha256": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
+        "phase": "start",
+        "view": "side",
+        "contextOnly": false,
+        "catalogId": "Triceps_Pushdown",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/0.jpg"
+      }
+    },
+    {
+      "image": "img-bfe8bbbf",
+      "original_path": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/source-references/img-bfe8bbbf.jpg",
+      "bundled_file": "source-references/img-bfe8bbbf.jpg",
+      "sha256": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Triceps_Pushdown",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/1.jpg",
+        "sha256": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c",
+        "phase": "end",
+        "view": "side",
+        "contextOnly": false,
+        "catalogId": "Triceps_Pushdown",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Triceps_Pushdown/1.jpg"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/references.json"
+}

@@ -25,7 +25,7 @@ def report(samples):
     motion = summarize(samples)
     return {'frames': len(samples), 'physical': {'profile': {'family': 'hanging'}, 'contacts': {
         'frames': len(samples), 'pullup_range': motion, 'fixed_bar_drift_mm': 0., 'fixed_bar_rotation_deg': 0.,
-        'hang_extension': {'max_body_drop_mm': 3.}}}}
+        'hang_extension': {'max_body_drop_mm': 3., 'max_body_raise_mm': 0.}}}}
 
 
 def range_rows(value):
@@ -35,7 +35,10 @@ def range_rows(value):
 def test_dead_hang_and_chin_clearance_are_required_at_different_frames():
     value = report([sample(1, -100., 176., 179.), sample(19, 4., 58., 60.)])
     checks = range_rows(value)
-    assert all(row['status'] == 'pass' for row in checks.values())
+    assert all(row['status'] == 'pass' for metric, row in checks.items()
+               if metric not in ('pullup_elbow_path_speed', 'pullup_return_path_error'))
+    assert checks['pullup_elbow_path_speed']['kind'] == 'not-measured'
+    assert checks['pullup_return_path_error']['kind'] == 'not-measured'
     assert value['physical']['contacts']['pullup_range']['top_frame'] == 19
     assert value['physical']['contacts']['pullup_range']['bottom_frame'] == 1
     assert checks['pullup_extension_shortfall']['unit'] == 'deg'
@@ -90,10 +93,11 @@ def test_chin_proxy_uses_lower_front_face_and_excludes_neck_ears_and_hair():
 def test_a_moving_bar_and_excessive_body_adaptation_are_rejected():
     value = report([sample(1, 1., 179., 179.)])
     contacts = value['physical']['contacts']
-    contacts.update(fixed_bar_drift_mm=2., fixed_bar_rotation_deg=.2, hang_extension={'max_body_drop_mm': 21.})
+    contacts.update(fixed_bar_drift_mm=2., fixed_bar_rotation_deg=.2,
+                    hang_extension={'max_body_drop_mm': 21., 'max_body_raise_mm': 21.})
     checks = range_rows(value)
     assert all(checks[name]['status'] == 'fail' for name in
-               ('pullup_bar_drift', 'pullup_bar_rotation', 'pullup_hang_body_adaptation'))
+               ('pullup_bar_drift', 'pullup_bar_rotation', 'pullup_hang_body_adaptation', 'pullup_hang_raise_adaptation'))
 
 
 def test_photographed_widths_follow_source_positions_hold_and_return():
@@ -178,3 +182,65 @@ def test_peak_shoulder_pole_is_measured_at_the_highest_body_position():
     top['elbow_wrist_clearance_mm']['right'] = float('nan')
     with pytest.raises(ValueError):
         pole_summary([bottom, top])
+
+
+def test_actual_former_pullup_branch_flip_fails_motion_continuity_and_retrace():
+    import json
+    from pullup_range import motion_summary
+    fixture = json.loads((Path(__file__).with_name('fixtures') / 'pullup-branch-regression.json').read_text())
+    result = motion_summary(fixture['samples'], fixture['fps'], fixture['phase_frames'])
+    assert result['max_elbow_speed_arm_lengths_per_s'] > 6.
+    assert result['max_return_path_error_arm_lengths'] > .12
+
+
+def smooth_path(fractions=None):
+    fractions = fractions or [0., .1, .5, .9, 1., .9, .5, .1, 0.]
+    return [{'frame': i + 1, 'hip_height_m': 1. + fraction * .3,
+             'elbow_offsets_m': {side: [sign * .05, .2 * np.sin(.3 + fraction), .2 * np.cos(.3 + fraction)]
+                                  for side, sign in (('left', -1), ('right', 1))}}
+            for i, fraction in enumerate(fractions)]
+
+
+def test_same_smooth_path_can_have_different_pull_and_lowering_tempo():
+    from pullup_range import motion_summary
+    samples = smooth_path([0., .2, .65, 1., 1., .9, .7, .4, .1, 0.])
+    result = motion_summary(samples, 8., {'start': 1, 'end': 4})
+    assert result['frames'] == len(samples)
+    assert result['max_elbow_speed_arm_lengths_per_s'] < 6.
+    assert result['max_return_path_error_arm_lengths'] < .04
+
+
+def test_a_second_elbow_branch_on_lowering_cannot_hide_behind_good_endpoints():
+    from pullup_range import motion_summary
+    samples = smooth_path()
+    for sample in samples[5:8]:
+        for point in sample['elbow_offsets_m'].values():
+            point[1] *= -1
+    result = motion_summary(samples, 8., {'start': 1, 'end': 5})
+    assert result['max_return_path_error_arm_lengths'] > .12
+
+
+@pytest.mark.parametrize('defect', ['missing', 'nan', 'duplicate', 'fps', 'phase', 'stretch'])
+def test_motion_path_requires_complete_measured_geometry(defect):
+    from pullup_range import motion_summary
+    samples, fps, phases = smooth_path(), 8., {'start': 1, 'end': 5}
+    if defect == 'missing': del samples[1]['elbow_offsets_m']['left']
+    if defect == 'nan': samples[1]['elbow_offsets_m']['left'][0] = float('nan')
+    if defect == 'duplicate': samples[1]['frame'] = 1
+    if defect == 'fps': fps = True
+    if defect == 'phase': phases['end'] = 4
+    if defect == 'stretch': samples[1]['elbow_offsets_m']['left'][0] = 1.
+    with pytest.raises(ValueError):
+        motion_summary(samples, fps, phases)
+
+
+def test_continuous_pullup_pole_does_not_swap_the_elbow_depth_branch_near_the_top():
+    from pullup_range import continuous_pole
+    shoulders = {'left': np.array([-.1, 0., 1.]), 'right': np.array([.1, 0., 1.])}
+    lengths = {side: [.2, .15] for side in shoulders}
+    before = continuous_pole(shoulders, [0., .1, 1.1], [1., 0., 0.], 2., .999, lengths, 1.)
+    top = continuous_pole(shoulders, [0., .1, 1.1], [1., 0., 0.], 2., 1., lengths, 1.)
+    for side in shoulders:
+        assert before[0][side][1] > shoulders[side][1]
+        assert top[1][side]['min_elbow_y'] == pytest.approx(.035)
+        assert abs(before[1][side]['max_elbow_z'] - top[1][side]['max_elbow_z']) < .001

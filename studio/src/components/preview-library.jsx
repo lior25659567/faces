@@ -2,27 +2,30 @@ import { useState } from 'react'
 import { previewStatus } from '../lib/preview-status.js'
 import './preview-library.css'
 
-const PreviewCard = ({ example, playing, onPlay, onOpenExercise }) => {
+const PreviewCard = ({ example, playing, playCount, onPlay, onOpenExercise }) => {
   const status = previewStatus(example)
   const summary = example.summary
+  const once = example.playback === 'once'
+  const action = once && playing ? 'Replay' : playing ? 'Pause' : 'Play'
   return (
     <article className="preview-card" data-exercise={example.slug}>
       <div className={`preview-card-media${example.available ? '' : ' is-unavailable'}`}>
         {example.available ? (
           <>
-            <img src={playing ? example.gifUrl : example.posterUrl}
+            <img src={playing ? example.gifUrl + (once ? `?play=${playCount}` : '') : example.posterUrl}
               alt={`${example.name}: ${playing ? 'animated movement' : 'starting pose'}`}
               loading="lazy" width="360" height="360" />
             <button type="button" className="preview-play btn" aria-pressed={playing}
-              aria-label={`${playing ? 'Pause' : 'Play'} ${example.name} preview`} onClick={onPlay}>
-              <span aria-hidden="true">{playing ? 'Ⅱ' : '▶'}</span> {playing ? 'Pause' : 'Play preview'}
+              aria-label={`${action} ${example.name} preview`} onClick={onPlay}>
+              <span aria-hidden="true">{playing && !once ? 'Ⅱ' : '▶'}</span> {action === 'Play' ? 'Play preview' : action}
             </button>
           </>
         ) : <p>{example.reason || 'Build this exercise after adding suitable references.'}</p>}
       </div>
       <div className="preview-card-content">
-        <p className="preview-example-label">{example.available ? 'Validated example' : 'Awaiting a build'}</p>
+        <p className="preview-example-label">{example.available ? 'Example build' : 'Awaiting a build'}</p>
         <h2>{example.name}</h2>
+        {example.sourceLabel && <p className="preview-source-note">{example.sourceLabel}{once ? ' · plays once' : ''}</p>}
         <span className={`preview-status is-${status.kind}`}>{status.label}</span>
         {example.available && summary && (
           <p className="preview-check-count num">
@@ -43,7 +46,7 @@ const PreviewCard = ({ example, playing, onPlay, onOpenExercise }) => {
 }
 
 const PreviewLibrary = ({ previews, error, onRetry, onOpenExercise }) => {
-  const [playing, setPlaying] = useState(null)
+  const [playback, setPlayback] = useState({ slug: null, count: 0 })
   const available = previews?.filter((example) => example.available).length ?? 0
   return (
     <section className="preview-library" aria-labelledby="preview-library-title">
@@ -51,14 +54,17 @@ const PreviewLibrary = ({ previews, error, onRetry, onOpenExercise }) => {
         <h1 id="preview-library-title">Built exercise previews</h1>
         {previews && <p className="preview-library-count num">{available} built previews · {previews.length} exercises</p>}
         <p>Browse completed example builds. Open an exercise to edit references and build your own.</p>
-        <p className="preview-library-note">Review labels retain uncertain photo depth and failed checks.</p>
+        <p className="preview-library-note">These are draft examples. Passing automatic checks does not establish correct exercise technique.</p>
       </div>
       {error ? (
         <div className="preview-library-error" role="alert"><p>{error}</p><button type="button" className="btn" onClick={onRetry}>Retry previews</button></div>
       ) : !previews ? <p className="preview-library-loading">Loading the previews…</p> : (
         <div className="preview-library-grid">
-          {previews.map((example) => <PreviewCard key={example.slug} example={example} playing={playing === example.slug}
-            onPlay={() => setPlaying((current) => current === example.slug ? null : example.slug)} onOpenExercise={onOpenExercise} />)}
+          {previews.map((example) => <PreviewCard key={example.slug} example={example} playing={playback.slug === example.slug}
+            playCount={playback.count} onPlay={() => setPlayback((current) => ({
+              slug: current.slug === example.slug && example.playback !== 'once' ? null : example.slug,
+              count: current.count + 1,
+            }))} onOpenExercise={onOpenExercise} />)}
         </div>
       )}
     </section>

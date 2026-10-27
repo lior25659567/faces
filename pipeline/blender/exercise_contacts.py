@@ -17,7 +17,7 @@ from motion_profiles import profile_for
 
 SIDES = (('left', 'Left', -1), ('right', 'Right', 1))
 DUMBBELLS = {'Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise',
-             'Dumbbell Shoulder Press (seated overhead press)'}
+             'Dumbbell Shoulder Press (seated overhead press)', 'Walking Lunge (dumbbells optional)'}
 BARS = {'Conventional Barbell Deadlift', 'Flat Barbell Bench Press',
         'Standing Barbell Overhead Press (Shoulder Press)',
         'Lat Pulldown (seated, to the front)', 'Tricep Pushdown (cable, bar or rope attachment)', 'Pull-Up'}
@@ -85,7 +85,7 @@ def _upperarms(rig):
 
 def pullup_range(rig, skin, bar, first, last):
     """Measure the final keyed skin's lower face against the top of a fixed bar."""
-    from pullup_range import chin_region, summarize
+    from pullup_range import chin_region, summarize, motion_summary
     head = {g.index for g in skin.vertex_groups if g.name == cage.P + 'Head'}
     mask = np.array([sum(g.weight for g in v.groups if g.group in head) > .99 for v in skin.data.vertices])
     transform = rig.matrix_world.inverted() @ skin.matrix_world
@@ -105,10 +105,18 @@ def pullup_range(rig, skin, bar, first, last):
         shoulders = {side: float((world @ pose[cage.P + title + 'Arm'].head).z) for side, title, _ in SIDES}
         samples.append({'frame': frame, 'chin_clearance_mm': (chin - top) * 1000,
                         'elbows_deg': _elbows(pose), 'hip_height_m': float((world @ pose[cage.P + 'Hips'].head).z),
+                        'elbow_offsets_m': {side: list(world.to_3x3() @ (pose[cage.P + title + 'ForeArm'].head - pose[cage.P + title + 'Arm'].head))
+                                            for side, title, _ in SIDES},
                         'elbow_bar_clearance_mm': {side: (float(bar.matrix_world.translation.z) - elbow) * 1000 for side, elbow in elbows.items()},
                         'elbow_wrist_clearance_mm': {side: (wrists[side] - elbow) * 1000 for side, elbow in elbows.items()},
                         'elbow_shoulder_clearance_mm': {side: (shoulders[side] - elbow) * 1000 for side, elbow in elbows.items()}})
     result = summarize(samples)
+    reference = json.loads(rig.get('reference_motion', '{}')) if 'reference_motion' in rig else None
+    # The caller adds the recorded source phases once retargeting has finished;
+    # saved-scene replays read those same phases from the rig custom property.
+    if reference and reference.get('phase_frames'):
+        result['motion_continuity'] = motion_summary(samples,
+            bpy.context.scene.render.fps / bpy.context.scene.render.fps_base, reference['phase_frames'])
     result['chin_proxy'] = {'method': 'lowest central 20% / front 40% rigid head rest-surface band; geometric lower-face proxy, not anatomical calibration',
                            'rest_indices': region.tolist(), 'rest_points_m': rest[region].tolist()}
     bpy.context.scene.frame_set(first)
@@ -168,13 +176,14 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
             equipment.capsule('handle', (-half, 0., 0.), (half, 0., 0.), radius, metal)])
         props['bar']['contact_half_length'] = half
     else:
-        props['bar'] = equipment.barbell(height, plates=exercise == 'Conventional Barbell Deadlift')
+        props['bar'] = equipment.barbell(height, plates=exercise in ('Conventional Barbell Deadlift', 'Flat Barbell Bench Press',
+            'Standing Barbell Overhead Press (Shoulder Press)'))
     curl = {}
     for side, title, _ in SIDES:
         curl.update(hand_rig.pose_basis(rig, title, grips[side]['rotations']))
     names = set(curl)
     names.update(cage.P + title + 'Hand' for _, title, _ in SIDES)
-    if not separate:
+    if not separate or exercise == 'Dumbbell Shoulder Press (seated overhead press)':
         names.update(cage.P + title + part for _, title, _ in SIDES for part in ('Arm', 'ForeArm', 'Hand'))
     previous, elbows, path, root_adjustments, source_elbow_goals = {}, {}, [], [], []
     half_grip = None
@@ -185,6 +194,7 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
     worst_anchor = worst_bend = 0.
     worst_surface_shift = 0.
     arm_goals = None
+    pulldown_plan = None
     if exercise == PUSHDOWN and source_arm_targets is not None:
         observed = []
         for frame in range(first, last + 1):
@@ -195,15 +205,59 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
         arm_goals = {metric: reference_timeline(source_arm_targets, reference_phase_frames, fraction, metric, first)
             for metric in ('elbow_included', 'upperarm_vs_torso')}
         scene.frame_set(first)
+    bench = None
+    if exercise == 'Flat Barbell Bench Press':
+        import bench_contacts
+        scene.frame_set(first)
+        shoulder_line = np.array(pose[cage.P + 'RightArm'].head - pose[cage.P + 'LeftArm'].head)
+        shoulder_line[2] = 0.; shoulder_line /= np.linalg.norm(shoulder_line)
+        bench_guard = make_body_guard(rig, skin, shoulder_line, np.array([0., 0., 1.]), height)
+        bench = bench_contacts.prepare(rig, skin, first, last, height, grips, lengths, bench_guard, reference_phase_frames)
+        half_grip = requested_half_grip = bench['half_grip']
+    overhead = None
+    if exercise in ('Standing Barbell Overhead Press (Shoulder Press)', 'Dumbbell Shoulder Press (seated overhead press)'):
+        import overhead_contacts
+        overhead = overhead_contacts.prepare(rig, skin, first, last, reference_phase_frames,
+            height, grips, lengths, separate=separate)
+        if not separate:
+            half_grip = requested_half_grip = overhead['half_grip']
     hang = None
     if exercise == 'Pull-Up':
+        if reference_phase_frames is not None:
+            rig['reference_motion'] = json.dumps({'phase_frames': reference_phase_frames})
         roots = []
         for frame in range(first, last + 1):
             scene.frame_set(frame)
             roots.append(float(pose[cage.P + 'Hips'].head.z))
         scene.frame_set(first)
         hang = {'source_bottom_elbows_deg': _elbows(pose), 'root_down_m': None, 'grip_fit_satisfied': False,
+                'hand_turns': {}, 'max_hand_roll_deg': 0.,
                 'fractions': np.clip((np.array(roots) - min(roots)) / max(max(roots) - min(roots), 1e-9), 0., 1.)}
+        # With the head/torso held neutral, a few millimetres of extra body
+        # travel may be needed for the mascot's actual chin to clear its grip.
+        # Measure it before solving, then ease it over the whole pull/return;
+        # never snap the body upward only at the last source frame.
+        from pullup_range import chin_region
+        head_groups = {g.index for g in skin.vertex_groups if g.name == cage.P + 'Head'}
+        head_mask = np.array([sum(g.weight for g in vertex.groups if g.group in head_groups) > .99 for vertex in skin.data.vertices])
+        transform = rig.matrix_world.inverted() @ skin.matrix_world
+        chin_indices = chin_region(np.array([transform @ vertex.co for vertex in skin.data.vertices]), head_mask)
+        peak_frame = first + int(np.argmax(roots))
+        scene.frame_set(peak_frame)
+        for name, value in curl.items():
+            pose[name].rotation_mode = 'QUATERNION'
+            pose[name].rotation_quaternion = value
+        bpy.context.view_layer.update()
+        peak_along = np.array(pose[cage.P + 'RightArm'].head - pose[cage.P + 'LeftArm'].head)
+        peak_along[2] = 0.
+        peak_along /= np.linalg.norm(peak_along)
+        peak_anchors = _bar_anchors(pose, grips, peak_along)
+        peak_bar_z = float((peak_anchors['left'][2] + peak_anchors['right'][2]) / 2)
+        peak_chin = float(skin_wrap.evaluated(skin)[0][chin_indices, 2].min())
+        hang['peak_raise_m'] = max(0., peak_bar_z + radius + .001 * height - peak_chin)
+        if hang['peak_raise_m'] > .020:
+            raise ValueError('The neutral pull-up cannot clear the chin within the bounded 20 mm body-travel correction.')
+        scene.frame_set(first)
         from pullup_range import elbow_width_timeline
         hang['widths'] = elbow_width_timeline(source_elbow_widths, reference_phase_frames, hang['fractions'], first)
     for frame in range(first, last + 1):
@@ -213,31 +267,53 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
             pose[name].rotation_quaternion = value
         bpy.context.view_layer.update()
         if separate:
+            if overhead is not None:
+                shoulders = {side: np.array(pose[cage.P + title + 'Arm'].head) for side, title, _ in SIDES}
+                press_goals, press_solutions, _ = overhead_contacts.solve(overhead, frame, shoulders,
+                    lengths, grips, elbows, height)
             for side, title, sign in SIDES:
                 hand = pose[cage.P + title + 'Hand']
                 # Explicit grip roll prevents a supinated biceps curl silently
                 # becoming a neutral-grip hammer curl. Lateral-raise handles
                 # run forward/back while press/curl handles run across the body.
-                along = np.array([0., 1., 0.]) if exercise == 'Dumbbell Lateral Raise' else np.array([1., 0., 0.])
-                forearm = np.array(hand.head - pose[cage.P + title + 'ForeArm'].head)
-                if exercise == 'Dumbbell Bicep Curl (standing, both arms)':
-                    palm = np.cross([1., 0., 0.], forearm)
-                elif exercise == 'Dumbbell Lateral Raise':
-                    palm = sign * np.cross([0., 1., 0.], forearm)
+                if overhead is not None:
+                    solution = press_solutions[side]
+                    overhead_contacts.apply_solution(rig, side, solution)
+                    along, turn = overhead['along'], solution['turn']
+                    elbows[side] = {'elbow': solution['elbow'], 'turn': turn}
                 else:
-                    palm = np.array([0., 1., 0.])
-                candidates = [hand_rig.hand_turn(grips[side], sign, axis, forearm) for axis in (along, -along)]
-                turn = max(candidates, key=lambda rotation: float((rotation @ np.array(grips[side]['n'])) @ palm))
+                    neutral = exercise in ('Dumbbell Lateral Raise', 'Walking Lunge (dumbbells optional)')
+                    along = np.array([0., 1., 0.]) if neutral else np.array([1., 0., 0.])
+                    forearm = np.array(hand.head - pose[cage.P + title + 'ForeArm'].head)
+                    if exercise == 'Dumbbell Bicep Curl (standing, both arms)':
+                        palm = np.cross([1., 0., 0.], forearm)
+                    elif exercise == 'Dumbbell Lateral Raise':
+                        palm = sign * np.cross([0., 1., 0.], forearm)
+                    elif exercise == 'Walking Lunge (dumbbells optional)':
+                        palm = np.array([-sign, 0., 0.])
+                    else:
+                        palm = np.array([0., 1., 0.])
+                    candidates = [hand_rig.hand_turn(grips[side], sign, axis, forearm) for axis in (along, -along)]
+                    turn = max(candidates, key=lambda rotation: float((rotation @ np.array(grips[side]['n'])) @ palm))
                 matrix = (Matrix(turn.tolist()) @ hand.bone.matrix_local.to_3x3()).to_4x4()
                 matrix.translation = hand.head
                 hand.matrix = matrix
                 bpy.context.view_layer.update()
                 centre = _anchor(hand, grips[side])
+                if overhead is not None:
+                    worst_anchor = max(worst_anchor, float(np.linalg.norm(centre - press_goals[side])))
+                    worst_bend = max(worst_bend, solution['bend_deg'])
                 obj = props[side]
                 obj.matrix_world = rig.matrix_world @ _matrix(along, centre)
                 obj.keyframe_insert('location', frame=frame)
                 obj.rotation_mode = 'QUATERNION'
                 obj.keyframe_insert('rotation_quaternion', frame=frame)
+            if overhead is not None:
+                import overhead_arm_roll
+                roll = overhead_arm_roll.orient_upperarms(rig)
+                roll['max_change_degrees'] = max(roll['max_change_degrees'],
+                    (overhead.get('arm_roll') or {}).get('max_change_degrees', 0.))
+                overhead['arm_roll'] = roll
         else:
             shoulders = {side: np.array(pose[cage.P + title + 'Arm'].head) for side, title, _ in SIDES}
             if initial_shoulder_width is None:
@@ -303,8 +379,16 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
                     shoulders = {s: np.array(pose[cage.P + t + 'Arm'].head) for s, t, _ in SIDES}
                     worst_surface_shift = max(worst_surface_shift, shift)
                     root_shift = root_shift - direction * shift
+                rise = hang['peak_raise_m'] * float(hang['fractions'][frame - first])
+                if rise:
+                    delta = np.array([0., 0., rise])
+                    cage._move_root(rig, Vector(delta))
+                    pose[cage.P + 'Hips'].keyframe_insert('location', frame=frame)
+                    bpy.context.view_layer.update()
+                    shoulders = {s: np.array(pose[cage.P + t + 'Arm'].head) for s, t, _ in SIDES}
+                    root_shift = root_shift + delta
                 root_adjustments.append({'frame': frame, 'delta_mm': (root_shift * 1000).tolist()})
-            if exercise != 'Pull-Up':
+            if exercise not in ('Pull-Up', 'Flat Barbell Bench Press', 'Standing Barbell Overhead Press (Shoulder Press)'):
                 direction = np.array([0., 0., 1.]) if exercise == 'Flat Barbell Bench Press' else np.cross([0., 0., 1.], along)
                 guard = make_body_guard(rig, skin, along, direction, height,
                                         half_length=props['bar'].get('contact_half_length'))
@@ -315,42 +399,42 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
                 preferences = {side: {'elbow_deg': 178., 'min_elbow_deg': 175.} for side, _, _ in SIDES}
                 centre, solutions, adjustment = bounded_reach(rig, skin, shoulders, centre, along, half_grip,
                     lengths, grips, hints, elbows, height, guard=guard, preferences=preferences)
+            elif exercise == 'Flat Barbell Bench Press':
+                centre, solutions, adjustment = bench_contacts.solve(bench, frame, shoulders, lengths, grips, elbows, height)
+            elif exercise == 'Standing Barbell Overhead Press (Shoulder Press)':
+                guard = make_body_guard(rig, skin, along, np.cross([0., 0., 1.], along), height)
+                centre, solutions, adjustment = overhead_contacts.solve(overhead, frame, shoulders,
+                    lengths, grips, elbows, height, guard=guard)
+            elif exercise == 'Lat Pulldown (seated, to the front)':
+                import pulldown_contacts
+                if pulldown_plan is None:
+                    pulldown_plan = pulldown_contacts.prepare(rig, first, last, reference_phase_frames,
+                        shoulders, along, half_grip, lengths, grips, height, guard)
+                centre, solutions, adjustment = pulldown_contacts.solve(rig, pulldown_plan, frame, first, last,
+                    reference_phase_frames, shoulders, lengths, grips, elbows, height, guard)
+            elif exercise == PUSHDOWN:
+                import pushdown_contacts
+                source_fk = _elbows(pose)
+                observed = source_fk if arm_goals is None else {
+                    side: float(arm_goals['elbow_included'][frame - first]) for side, _, _ in SIDES}
+                source_elbow_goals.append({'frame': frame, 'elbows_deg': observed, 'source_fk_elbows_deg': source_fk})
+                if arm_goals is not None:
+                    source_elbow_goals[-1].update(upperarm_goal_deg=float(arm_goals['upperarm_vs_torso'][frame - first]),
+                        source_fk_upperarm_deg=_upperarms(rig))
+                centre, solutions, adjustment = pushdown_contacts.solve(frame, first, last, reference_phase_frames,
+                    shoulders, centre, along, half_grip, lengths, grips, hints, elbows, height, guard,
+                    scene.render.fps / scene.render.fps_base)
             elif exercise != 'Pull-Up':
                 origin = (shoulders['left'] + shoulders['right']) / 2
                 toward = origin - centre
                 toward -= along * (toward @ along)
                 tangent = toward - direction * (toward @ direction) / float(direction @ direction)
                 preferences = None
-                if exercise == PUSHDOWN:
-                    source_fk = _elbows(pose)
-                    observed = source_fk if arm_goals is None else {
-                        side: float(arm_goals['elbow_included'][frame - first]) for side, _, _ in SIDES}
-                    preferences = {side: {'elbow_deg': value} for side, value in observed.items()}
-                    if arm_goals is not None:
-                        upper_goal = float(arm_goals['upperarm_vs_torso'][frame - first])
-                        torso_turn = np.array(cage._torso_turn(rig))
-                        for side, title, _ in SIDES:
-                            preferences[side].update(upperarm_deg=upper_goal,
-                                torso_down=torso_turn @ np.array(pose[cage.P + title + 'UpLeg'].head - pose[cage.P + title + 'Arm'].head))
-                    source_elbow_goals.append({'frame': frame, 'elbows_deg': observed, 'source_fk_elbows_deg': source_fk})
-                    if arm_goals is not None:
-                        source_elbow_goals[-1].update(upperarm_goal_deg=upper_goal, source_fk_upperarm_deg=_upperarms(rig))
                 def solve(target):
-                    solutions = solve_shared_bar(shoulders, target, along, half_grip, lengths,
+                    return solve_shared_bar(shoulders, target, along, half_grip, lengths,
                         grips, hints, elbows, allow_adaptation=False, preferences=preferences)[1]
-                    elbow_limit = 3. if arm_goals is None else source_fit_limit
-                    if exercise == PUSHDOWN and any(abs(solution['elbow_deg'] - observed[side]) > elbow_limit
-                                                   for side, solution in solutions.items()):
-                        raise ValueError('The cable handle would change the elbow bend beyond the reference tolerance.')
-                    if exercise == PUSHDOWN and arm_goals is not None and any(abs(solution['upperarm_deg'] - upper_goal) > source_fit_limit
-                                                                                           for solution in solutions.values()):
-                        raise ValueError('The cable handle would move the upper arm beyond the reference tolerance.')
-                    return solutions
                 from motion_geometry import collision_safe_target
-                vertical = np.array([0., 0., 1.])
-                directions = (toward, tangent, -vertical, vertical, -direction, direction,
-                              -direction - vertical, -direction + vertical) if exercise == PUSHDOWN else (toward, tangent)
-                centre, solutions, adjustment = collision_safe_target(centre, directions, guard, solve)
+                centre, solutions, adjustment = collision_safe_target(centre, (toward, tangent), guard, solve)
             else:
                 try:
                     # Near-straight arms need a fine hand-roll search. The generic
@@ -364,18 +448,25 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
                     preferences = {side: {'elbow_deg': min(179., observed[side]
                         + (bottom_goal - hang['source_bottom_elbows_deg'][side]) * taper)} for side, _, _ in SIDES}
                     for side, _, _ in SIDES:
-                        upper_limit = float(centre[2] - .005 * height)
-                        if hang['fractions'][frame - first] >= 1. - 1e-6:
-                            upper_limit = min(upper_limit, float(shoulders[side][2] - .005 * height))
-                        preferences[side].update(max_elbow_z=upper_limit, elbow_below_wrist=True,
+                        preferences[side].update(max_elbow_z=float(centre[2] - .005 * height), elbow_below_wrist=True,
                             elbow_clearance_m=.005 * height, forearm_vertical_fraction=.9)
                     if hang['widths'] is not None:
                         width = float(hang['widths'][frame - first])
-                        origin = (shoulders['left'] + shoulders['right']) / 2
+                        from pullup_range import continuous_pole
+                        hints, poles = continuous_pole(shoulders, centre, along, width,
+                            hang['fractions'][frame - first], lengths, height)
                         shoulder_width = float(np.linalg.norm(shoulders['right'] - shoulders['left']))
                         for side, _, sign in SIDES:
-                            preferences[side].update(elbow_lateral=float(origin @ along) + sign * width * shoulder_width / 2,
-                                lateral_axis=along, lateral_scale=shoulder_width * .015)
+                            # The inferred FK elbow angle can favor the other
+                            # depth branch. Fixed grip, fixed limb lengths and
+                            # the continuous pole determine the intervening
+                            # bend; only the photographed dead hang is required
+                            # to be nearly straight.
+                            preferences[side].pop('elbow_deg', None)
+                            preferences[side].update(poles[side])
+                            if side in hang['hand_turns']:
+                                preferences[side].update(reference_hand_turn=hang['hand_turns'][side],
+                                    max_hand_turn_deg=20. * float(np.sqrt(hang['fractions'][frame - first])))
                             if frame == first:
                                 preferences[side]['min_elbow_deg'] = 175.
                     if hang['root_down_m'] is None:
@@ -416,7 +507,8 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
                         hints = {s: np.array(pose[cage.P + t + 'ForeArm'].head) for s, t, _ in SIDES}
                         root_adjustments[-1]['delta_mm'] = (np.array(root_adjustments[-1]['delta_mm']) + delta * 1000).tolist()
                     centre, solutions, adjustment = solve_shared_bar(shoulders, centre, along, half_grip, lengths,
-                        grips, hints, elbows, allow_adaptation=False, preferences=preferences)
+                        grips, hints, {} if hang['widths'] is not None else elbows,
+                        allow_adaptation=False, preferences=preferences)
                 except ValueError as error:
                     raise ValueError('The fixed pull-up bar cannot be gripped while keeping the head clear and the arms within reach.') from error
             bar = props['bar']
@@ -426,6 +518,11 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
             bar.keyframe_insert('rotation_quaternion', frame=frame)
             for side, title, sign in SIDES:
                 solution = solutions[side]
+                if exercise == 'Pull-Up':
+                    hang['hand_turns'].setdefault(side, solution['turn'].copy())
+                    turn = hang['hand_turns'][side].T @ solution['turn']
+                    hang['max_hand_roll_deg'] = max(hang['max_hand_roll_deg'],
+                        float(np.degrees(np.arccos(np.clip((np.trace(turn) - 1.) / 2., -1., 1.)))))
                 arm, fore, hand = [pose[cage.P + title + part] for part in ('Arm', 'ForeArm', 'Hand')]
                 cage._aim_pose(arm, Vector(solution['elbow']) - arm.head)
                 cage._aim_pose(fore, Vector(solution['wrist']) - fore.head)
@@ -436,6 +533,18 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
                 worst_anchor = max(worst_anchor, float(np.linalg.norm(_anchor(hand, grips[side]) - (centre + sign * half_grip * along))))
                 worst_bend = max(worst_bend, solution['bend_deg'])
                 elbows[side] = {'elbow': solution['elbow'], 'turn': solution['turn']}
+            if bench is not None:
+                import bench_arm_roll
+                roll = bench_arm_roll.orient_upperarms(rig)
+                roll['max_change_degrees'] = max(roll['max_change_degrees'],
+                    (bench.get('arm_roll') or {}).get('max_change_degrees', 0.))
+                bench['arm_roll'] = roll
+            if pulldown_plan is not None:
+                import pulldown_arm_roll
+                roll = pulldown_arm_roll.orient_upperarms(rig)
+                roll['max_change_degrees'] = max(roll['max_change_degrees'],
+                    (pulldown_plan.get('arm_roll') or {}).get('max_change_degrees', 0.))
+                pulldown_plan['arm_roll'] = roll
             if exercise == PUSHDOWN:
                 source_elbow_goals[-1]['solved_elbows_deg'] = _elbows(pose)
                 if arm_goals is not None:
@@ -471,18 +580,52 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
               'max_grip_anchor_error_mm': worst_anchor * 1000, 'worst_wrist_bend_deg': worst_bend,
               'max_surface_path_adjustment_mm': worst_surface_shift * 1000,
               'path_adjustments': path, 'sides': sides}
+    if exercise in ('Dumbbell Bicep Curl (standing, both arms)', 'Dumbbell Lateral Raise', PUSHDOWN):
+        import isolation_contacts
+        report['isolation_range'] = isolation_contacts.measure(rig, first, last, height, reference_phase_frames, exercise)
+        report['isolation_profile'] = {'method': 'declared upright isolation technique; source depth is not calibrated',
+            'source_comparison_retained': True,
+            'source_conflict': 'The technique profile completes 175-degree elbow extension; the demonstrated endpoint is incomplete and its comparison failures are retained.' if exercise == PUSHDOWN else None}
     if exercise == 'Conventional Barbell Deadlift':
         report['loaded_plates'] = True
         report['plate_radius_character_units'] = equipment.PLATE_DIAMETER / 2 * unit
         report['bar_path_source'] = 'provided rig-space floor-pull trajectory' if bar_path is not None else 'reference-driven fitted closed-hand anchors'
+    if bench is not None:
+        report['bench_range'] = bench_contacts.measure(rig, props['bar'], first, last, height, reference_phase_frames)
+        report['bench_profile'] = {'method': bench['method'], 'grip_ratio': 2.,
+            'top_rig_m': bench['top'].tolist(), 'bottom_rig_m': bench['bottom'].tolist(),
+            'bottom_surface_shift_mm': float(bench['bottom_guard_shift'] * 1000), 'loaded_plates': True,
+            'lockout_lateral_fit_mm': bench['lockout_lateral_fit_mm'],
+            'max_hand_roll_from_lower_chest_deg': 30., 'upper_arm_roll': bench.get('arm_roll')}
+    if overhead is not None:
+        report['overhead_range'] = overhead_contacts.measure(rig, skin, props, separate, grips,
+            first, last, height, reference_phase_frames)
+        report['overhead_profile'] = {'method': overhead['method'],
+            'clearance_shifts': overhead['clearance_shifts'], 'hand_roll_limit_deg': overhead['motion_hand_roll_limit_deg'],
+            'grip_roll_reference': 'eased lower-to-lockout grip' if separate else 'starting grip',
+            'source_depth_calibrated': False, 'loaded_plates': not separate,
+            'upper_arm_roll': overhead.get('arm_roll')}
+    if exercise == 'Lat Pulldown (seated, to the front)':
+        import pulldown_contacts
+        report['pulldown_range'] = pulldown_contacts.measure(rig, props['bar'], first, last, reference_phase_frames)
+        report['pulldown_profile'] = {'method': pulldown_plan['method'],
+            'source_depth': 'inferred, not calibrated', 'bottom_upperarm_limit_deg': 70.,
+            'top_rig_m': pulldown_plan['top'].tolist(), 'bottom_rig_m': pulldown_plan['bottom'].tolist(),
+            'bottom_guard_shift_mm': pulldown_plan['bottom_guard_shift_mm'], 'max_hand_turn_deg': 25.,
+            'max_actual_hand_roll_deg': pulldown_plan['max_hand_roll_deg'],
+            'arm_roll': pulldown_plan.get('arm_roll'),
+            'clearance_path_shifts': pulldown_plan['clearance_path_shifts']}
     if root_adjustments:
         report['root_adjustments'] = root_adjustments
         report['fixed_bar_drift_mm'] = bar_drift * 1000
         report['fixed_bar_rotation_deg'] = bar_rotation
         report['hang_extension'] = {'max_body_drop_mm': hang['root_down_m'] * 1000,
+            'max_body_raise_mm': hang['peak_raise_m'] * 1000,
             'limit_mm': 20., 'source_bottom_elbows_deg': hang['source_bottom_elbows_deg'],
-            'method': 'fixed bar and limb lengths; near-straight elbow preference plus bounded whole-body lowering, tapered by source root height'}
+            'method': 'fixed bar and limb lengths; bounded lowering for dead hang and measured neutral-chin travel correction, eased by source root height'}
         report['pullup_range'] = pullup_range(rig, skin, props['bar'], first, last)
+        report['pullup_grip_roll'] = {'max_turn_deg': hang['max_hand_roll_deg'], 'limit_deg': 20.,
+            'method': 'One palm-roll branch within 20 degrees of the dead-hang grip; available roll eases with square-root body travel on both strokes.'}
         if hang['widths'] is not None:
             report['elbow_width_references'] = source_elbow_widths
             report['elbow_width_phase_frames'] = reference_phase_frames
@@ -492,6 +635,14 @@ def apply(rig, skin, first, last, exercise, height=None, pulley_anchor=None, gri
         report['grip_ratio'] = 2 * half_grip / initial_shoulder_width
         report['requested_grip_ratio'] = source_grip_ratio if source_grip_ratio is not None else (grip_ratio if grip_ratio is not None else 2 * requested_half_grip / initial_shoulder_width)
         report['grip_source'] = 'provided shoulder-relative ratio' if grip_ratio is not None else 'reference-driven fitted hand span'
+        if bench is not None:
+            report['grip_source'] = 'declared medium-grip bench profile; not calibrated from source photographs'
+            report['requested_grip_ratio'] = 2.
+            report['grip_calibration'] = 'The model uses a declared two-shoulder-width span; source width and depth remain uncalibrated.'
+        if overhead is not None:
+            report['grip_source'] = 'declared fitted overhead-press grip; not calibrated from source photographs'
+            report['requested_grip_ratio'] = 1.7
+            report['grip_calibration'] = 'The overhead press uses a declared medium grip and full lockout; photo depth remains inferred.'
         if exercise == 'Pull-Up' and grip_ratio is not None and grip_ratio_tolerance > 0 and hang['widths'] is not None:
             report['grip_adaptation'] = {
                 'requested_ratio': float(grip_ratio), 'chosen_ratio': report['grip_ratio'],

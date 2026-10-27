@@ -1,7 +1,7 @@
 import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 import { MAX_BYTES, TOO_BIG_MESSAGE, UploadError, prepareUpload, refuseEarly } from './images.js'
-import { BadInputError, NotFoundError, characterFitOf } from './store.js'
+import { BadInputError, NotFoundError, characterFitOf, motionPresetOf, referenceBundleOf } from './store.js'
 import { recentWork } from './work.js'
 import { validatedPreviews } from './validated-previews.js'
 
@@ -227,13 +227,17 @@ export const studioApi = ({ store, queue, work, watcher, automation, onListening
         }
       }
       if (seg[3] === 'read' && seg.length === 4 && method === 'POST') {
-        exerciseOr404(slug)
-        return sendJson(res, 201, queue.enqueueRead(slug))
+        const exercise = exerciseOr404(slug)
+        const body = await readJsonBody(req)
+        return sendJson(res, 201, queue.enqueueRead(slug, { motionPreset: motionPresetOf(exercise.name, body.motionPreset),
+          referenceBundle: referenceBundleOf(exercise.name, body.referenceBundle) }))
       }
       if (seg[3] === 'runs' && seg.length === 4 && method === 'POST') {
-        exerciseOr404(slug)
+        const exercise = exerciseOr404(slug)
         const body = await readJsonBody(req)
-        return sendJson(res, 201, queue.enqueue(slug, { characterFit: characterFitOf(body.characterFit) }))
+        return sendJson(res, 201, queue.enqueue(slug, { characterFit: characterFitOf(body.characterFit),
+          motionPreset: motionPresetOf(exercise.name, body.motionPreset),
+          referenceBundle: referenceBundleOf(exercise.name, body.referenceBundle) }))
       }
     }
     throw new HttpError(404, 'Not found.')

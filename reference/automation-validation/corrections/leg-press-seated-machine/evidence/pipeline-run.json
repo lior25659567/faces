@@ -1,0 +1,38 @@
+{
+  "name": "Leg Press (seated machine)",
+  "slug": "leg-press-seated-machine",
+  "source": "/tmp/studio-complete-validation/leg-press-seated-machine",
+  "characterFit": "auto",
+  "startedAt": "2026-10-27T08:29:26.768Z",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.28
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 155.85
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 55.42
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.17
+    }
+  ],
+  "summary": {
+    "pass": 30,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  },
+  "finishedAt": "2026-10-27T09:07:43.373Z"
+}

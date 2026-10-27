@@ -3,6 +3,8 @@ import { randomBytes } from 'node:crypto'
 import path from 'node:path'
 import { CLIPS_DIR, DATA, REPO } from './paths.js'
 import { automationBlocker, pictureRefusal, unheld } from './kit.js'
+import { presetDefinition, presetsFor } from './motion-presets.js'
+import { getOneStepBundledReferenceSpec } from './bundled-references.js'
 
 // The "Save as" column of 3d-character/mixamo/README.md, keyed by the names in poses.json.
 const CLIPS = {
@@ -33,6 +35,20 @@ export const characterFitOf = (value = 'auto') => {
     throw new BadInputError('Character proportions must be auto, original or fitness.')
   }
   return value
+}
+
+export const motionPresetOf = (exercise, value = null) => {
+  try { return presetDefinition(exercise, value)?.id ?? null }
+  catch (error) { throw new BadInputError(error.message) }
+}
+
+export const referenceBundleOf = (exercise, value) => {
+  if (value == null) return null
+  const spec = getOneStepBundledReferenceSpec(exercise)
+  if (!spec || typeof value !== 'object' || value.id !== spec.id || value.commit !== spec.commit) {
+    throw new BadInputError('That reviewed motion sequence is not available for this exercise.')
+  }
+  return { id: spec.id, commit: spec.commit }
 }
 
 export const slugOf = (name) => (String(name).toLowerCase().match(/[a-z0-9]+/g) || []).join('-')
@@ -87,6 +103,10 @@ export const createStore = (dataRoot = DATA) => {
       pictureRefusal: pictureRefusal(e.name, e.equipment || 'bodyweight'),
       unheld: unheld(e.name, e.equipment || 'bodyweight'),
       automationBlocker: automationBlocker(e.name),
+      motionPresets: presetsFor(e.name),
+      movementSequence: getOneStepBundledReferenceSpec(e.name)?.autoBuild ? {
+        label: 'Observed forward step (plays once)', playback: 'once', approximateDepth: true,
+      } : null,
     }))
   }
 
@@ -188,16 +208,18 @@ export const createStore = (dataRoot = DATA) => {
     const exercise = getExercise(slug)
     if (!exercise) throw new NotFoundError('Unknown exercise.')
     const characterFit = characterFitOf(extra.characterFit)
+    const motionPreset = motionPresetOf(exercise.name, extra.motionPreset)
+    const referenceBundle = referenceBundleOf(exercise.name, extra.referenceBundle)
     let id
     do id = `${stamp()}-${randomBytes(2).toString('hex')}`
     while (existsSync(runDir(slug, id)))
     const dir = runDir(slug, id)
     const images = listReferences(slug).map((i) => ({ ...i, path: path.join(refDir(slug), i.file) }))
-    writeJson(path.join(dir, 'references.json'), { exercise: exercise.name, slug, equipment: exercise.equipment, characterFit, images })
+    writeJson(path.join(dir, 'references.json'), { exercise: exercise.name, slug, equipment: exercise.equipment, characterFit, motionPreset, referenceBundle, images })
     const run = {
       id, slug, name: exercise.name, clip: exercise.clip, status: 'queued',
       createdAt: new Date().toISOString(), startedAt: null, finishedAt: null,
-      steps: (extra.readOnly ? ['read'] : STEP_IDS).map(newStep), error: null, summary: null, ...extra, characterFit,
+      steps: (extra.readOnly ? ['read'] : STEP_IDS).map(newStep), error: null, summary: null, ...extra, characterFit, motionPreset, referenceBundle,
     }
     writeRun(run)
     return run
@@ -216,6 +238,8 @@ export const createStore = (dataRoot = DATA) => {
     if (!exercise) throw new NotFoundError('Unknown exercise.')
     if (!sourceRun?.id) throw new NotFoundError('No run to re-check.')
     const characterFit = characterFitOf(sourceRun.characterFit)
+    const motionPreset = sourceRun.motionPreset || null
+    const referenceBundle = sourceRun.referenceBundle || null
     const srcDir = runDir(slug, sourceRun.id)
     let id
     do id = `${stamp()}-${randomBytes(2).toString('hex')}`
@@ -237,7 +261,7 @@ export const createStore = (dataRoot = DATA) => {
     const run = {
       id, slug, name: exercise.name, clip: exercise.clip, status: 'queued',
       createdAt: new Date().toISOString(), startedAt: null, finishedAt: null,
-      steps, error: null, summary: null, checkOnly: true, recheckOf: sourceRun.id, ...extra, characterFit,
+      steps, error: null, summary: null, checkOnly: true, recheckOf: sourceRun.id, ...extra, characterFit, motionPreset, referenceBundle,
     }
     writeRun(run)
     return run

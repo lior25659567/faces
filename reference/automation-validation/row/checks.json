@@ -1,6 +1,6 @@
 {
   "summary": {
-    "pass": 16,
+    "pass": 18,
     "fail": 2,
     "limited": 0,
     "uncertain": 0,
@@ -329,6 +329,30 @@
       "status": "pass",
       "frame": null,
       "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.23560857843455016,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 33,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.left.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 270.00220115827983,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 33,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: hand.left.",
       "kind": null,
       "uncertain_why": null
     }

@@ -1,0 +1,38 @@
+{
+  "name": "Front Plank (forearm plank)",
+  "slug": "front-plank-forearm-plank",
+  "source": "/tmp/studio-extended-live-GRamB2/runs/front-plank-forearm-plank/20261024-153544-cdac",
+  "characterFit": "auto",
+  "startedAt": "2026-10-25T10:33:35.199594+00:00",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 0.91
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 60.32
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 46.03
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.12
+    }
+  ],
+  "finishedAt": "2026-10-25T10:35:22.574187+00:00",
+  "summary": {
+    "pass": 23,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 0,
+    "info": 18,
+    "unmeasured": 0
+  }
+}

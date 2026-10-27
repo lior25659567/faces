@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "flat-barbell-bench-press",
+    "run": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press",
+    "gif_frames": 32,
+    "gif_ms": 2660,
+    "durations_ms": [
+      80,
+      90
+    ]
+  },
+  {
+    "slug": "pull-up",
+    "run": "/tmp/studio-motion-quality-validation/pull-up",
+    "gif_frames": 43,
+    "gif_ms": 2690,
+    "durations_ms": [
+      60,
+      70
+    ]
+  },
+  {
+    "slug": "lat-pulldown-seated-to-the-front",
+    "run": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front",
+    "gif_frames": 32,
+    "gif_ms": 2660,
+    "durations_ms": [
+      80,
+      90
+    ]
+  },
+  {
+    "slug": "standing-barbell-overhead-press-shoulder-press",
+    "run": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press",
+    "gif_frames": 32,
+    "gif_ms": 2660,
+    "durations_ms": [
+      80,
+      90
+    ]
+  },
+  {
+    "slug": "dumbbell-shoulder-press-seated-overhead-press",
+    "run": "/tmp/studio-motion-quality-validation/dumbbell-shoulder-press-seated-overhead-press",
+    "gif_frames": 32,
+    "gif_ms": 2660,
+    "durations_ms": [
+      80,
+      90
+    ]
+  }
+]

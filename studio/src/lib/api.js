@@ -56,7 +56,7 @@ export const api = {
   updateReference: (slug, id, patch) => request(`/api/exercises/${seg(slug)}/references/${seg(id)}`, json('PATCH', patch)),
   removeReference: (slug, id) => request(`/api/exercises/${seg(slug)}/references/${seg(id)}`, { method: 'DELETE' }),
   startRun: (slug, options = {}) => request(`/api/exercises/${seg(slug)}/runs`, json('POST', options)),
-  checkReferences: (slug) => request(`/api/exercises/${seg(slug)}/read`, { method: 'POST' }),
+  checkReferences: (slug, options = {}) => request(`/api/exercises/${seg(slug)}/read`, json('POST', options)),
 
   // One JSON file from a run's folder, or null when it isn't there.
   runJson: (slug, runId, file) => optionalJson(runFileUrl(slug, runId, file)),

@@ -1,31 +1,35 @@
 {
-  "name": "Dumbbell Bicep Curl",
+  "name": "Dumbbell Bicep Curl (standing, both arms)",
   "slug": "dumbbell-bicep-curl-standing-both-arms",
-  "run_dir": "/tmp/studio-complete-validation/dumbbell-bicep-curl-standing-both-arms",
+  "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 1.64
+      "seconds": 1.27,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 249.86
+      "seconds": 379.23,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 68.31
+      "seconds": 92.48,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.2
+      "seconds": 0.32,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 13,
+    "pass": 25,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -47,17 +51,86 @@
     "face_max_displacement_mm": 0.0,
     "per_frame_stretch": false
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-24b4606a": "fad8458c2f70c39e1abb0a9554bba280da5abf9f8dc2d76f7c0be44ffdbfc99b",
     "img-f1698c9f": "ec2c3a539aa80ea911a85e00ca9fb74502407e8ef0d8a4526e3b076a5a52b30a"
   },
-  "scene_sha256": "0f66c131f9cf3e6e90bdc77d3442086d1e8acbdc53df950d72dffe70f63c6b1d",
+  "scene_sha256": "d1f87984f55b37b9d3ff1752455645f1e4076409fd60e519e68897c2609c4c58",
   "output_sha256": {
-    "animation.gif": "793c7e95d2b38508864b7f066aa17d53c33d1b0d088e21b4fb3666de29b63e07",
-    "start.png": "128b5f23d67f164c0d0ecd60ddf2fbf8ba6f9c3651ac0d7b53a7ea646f798f2d",
-    "end.png": "76f27f38173b6a8f8356866f4150dd92a87ba6d45b8e35d9c7d4a8904e262a7b",
-    "checks.json": "d9cc91b133d7da2f3c9309f56f594ea96af91fcf0d27fc0e2f2fd7a1e107d918"
+    "animation.gif": "710df457248f153816f41b4e53baaadca26d00585defb813dabdc46f5c4be248",
+    "start.png": "e778b71cb9770ddd2e9aaec65a324515ae0e3f05445bb6ce853d0381b78878d5",
+    "end.png": "11361ffb8c7e4de4fce00fca111fa08317746a936072665850cc8e7bbde545a6",
+    "checks.json": "85aa87bcccfc80637cff5c1ae2f9615a9ecfa66dcc9546c35d06d6a4f33e0f32"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/isolation-form-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-bicep-curl-standing-both-arms/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/isolation-form-replay.json",
+        "sha256": "2ac8c0ea43cc0221acdf25f4fb340ac19e73061d8dcb2e2982e03f22a8eb1a97",
+        "status": "passed",
+        "scene_sha256": "d1f87984f55b37b9d3ff1752455645f1e4076409fd60e519e68897c2609c4c58"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

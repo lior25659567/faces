@@ -76,7 +76,7 @@ const nonEmpty = (file) => {
 // What a run measures from the pictures: which ones, in what order, with which tags. A view the
 // detector filled in is not a change the user made (src/lib/run-view.js picturesKey reads them the same way).
 const picturesKey = (snapshot) =>
-  [...(snapshot?.images ?? [])]
+  `${snapshot?.motionPreset || 'photos'}:${snapshot?.referenceBundle?.id || ''}@${snapshot?.referenceBundle?.commit || ''}|` + [...(snapshot?.images ?? [])]
     .sort((a, b) => a.order - b.order)
     .map((i) => `${i.id}:${i.file}:${i.phase}:${i.viewSetBy === 'user' ? i.view : ''}:${i.contextOnly ? 1 : 0}`)
     .join('|')
@@ -424,6 +424,8 @@ export const createQueue = ({
     const at = waiting.findIndex((w) => w.slug === slug &&
       Boolean(store.readRun(slug, w.runId)?.readOnly) === Boolean(extra.readOnly) &&
       (store.readRun(slug, w.runId)?.characterFit || 'auto') === fresh.characterFit &&
+      (store.readRun(slug, w.runId)?.motionPreset || null) === fresh.motionPreset &&
+      (store.readRun(slug, w.runId)?.referenceBundle?.id || null) === (fresh.referenceBundle?.id || null) &&
       (store.readRun(slug, w.runId)?.automationJobId || null) === (extra.automationJobId || null))
     const old = at < 0 ? null : store.readRun(slug, waiting[at].runId)
     let run = fresh
@@ -433,7 +435,7 @@ export const createQueue = ({
       writeFileSync(path.join(oldDir, 'references.json'), readFileSync(path.join(freshDir, 'references.json')))
       rmSync(freshDir, { recursive: true, force: true })
       run = { ...old, ...extra }
-      for (const k of ['name', 'clip', 'replaces', 'note']) if (fresh[k] !== undefined) run[k] = fresh[k]
+      for (const k of ['name', 'clip', 'motionPreset', 'referenceBundle', 'replaces', 'note']) if (fresh[k] !== undefined) run[k] = fresh[k]
       store.writeRun(run)
       if (fresh.replaces) {
         current.run.replacedBy = run.id
@@ -521,8 +523,10 @@ export const createQueue = ({
     for (const { slug } of store.listExercises()) {
       const newest = store.listRuns(slug)[0]
       if (!newest || newest.automationJobId || newest.status !== 'interrupted' || newest.restartedAs || newest.restartOf || newest.replacedBy) continue
-      if (!store.hasUsablePictures(slug)) continue
-      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, characterFit: newest.characterFit || 'auto', ...(newest.readOnly ? { readOnly: true } : {}) })
+      if (!newest.motionPreset && !store.hasUsablePictures(slug)) continue
+      const run = enqueue(slug, { note: RESTARTED, restartOf: newest.id, characterFit: newest.characterFit || 'auto',
+        motionPreset: newest.motionPreset || null, referenceBundle: newest.referenceBundle || null,
+        ...(newest.readOnly ? { readOnly: true } : {}) })
       store.writeRun({ ...newest, restartedAs: run.id, restartedAt: iso() })
       restarted.push({ slug, runId: run.id })
     }

@@ -1,31 +1,35 @@
 {
   "name": "Dumbbell Lateral Raise",
   "slug": "dumbbell-lateral-raise",
-  "run_dir": "/tmp/studio-complete-validation/dumbbell-lateral-raise",
+  "run_dir": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 1.36
+      "seconds": 1.11,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 248.58
+      "seconds": 278.67,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 69.07
+      "seconds": 118.76,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.2
+      "seconds": 0.41,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 13,
+    "pass": 25,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -47,17 +51,86 @@
     "face_max_displacement_mm": 0.0,
     "per_frame_stretch": false
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-5cd18809": "aa1982c367ea9151ee7769ac1f9f8795209db94a6eb85f7d51a7033886fb7ebc",
     "img-62ff8746": "9210e0fb0202c306026d45a55703aaec89b3bef7aafeb7791aa1d06adcf58ab3"
   },
-  "scene_sha256": "daabfa4f1659d36fc3d6acd8ddc247af5605819c82e6f0f4f08e38ecb659c969",
+  "scene_sha256": "f60f33c33905ba50e2719f7df7c826fb1b1bba62967b055ff298d4a73b0b9716",
   "output_sha256": {
-    "animation.gif": "adbb532546a7472b92e33ab9ba9d3f4fc615a20f2014c16820685ae6a94a0594",
-    "start.png": "d2cd3f75b59205de2767f90f3d6b80a51fe20e1a878520efcb2353fb95a61288",
-    "end.png": "430140f0a94b1c78b01c83609589fee37625a0091b12a55ee6ebaef2a2dd5e04",
-    "checks.json": "773ffae20ce6618c6782a2d88ab759009a4c3230d0050d2bab34b806282962e3"
+    "animation.gif": "25e84621f16584cad16619aecc6152de6dd733a20f29946504315c5149e40b9b",
+    "start.png": "c27b2fc3809eae34b531b7d083228204959ef4e3cd9ac3df02e7accce9737cdf",
+    "end.png": "3a27b6fe01c6e3894e993d12645b992a3e3446fb81cfa06a492eb487d5f018d2",
+    "checks.json": "5788e205309303c1f6430b20d8f25a8a80ec468b50a0518f02fcc21b92ff4855"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/isolation-form-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/dumbbell-lateral-raise/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/isolation-form-replay.json",
+        "sha256": "6696717903adfa6b1cbb7e432c1bab1eaadf1c4a346a23d6c54ad8addc61fed3",
+        "status": "passed",
+        "scene_sha256": "f60f33c33905ba50e2719f7df7c826fb1b1bba62967b055ff298d4a73b0b9716"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

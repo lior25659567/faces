@@ -1,31 +1,35 @@
 {
   "name": "Flat Barbell Bench Press",
   "slug": "flat-barbell-bench-press",
-  "run_dir": "/tmp/studio-integrated-validation/flat-barbell-bench-press",
+  "run_dir": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 5.61
+      "seconds": 0.94,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 725.88
+      "seconds": 210.45,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 193.0
+      "seconds": 32.49,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.46
+      "seconds": 0.09,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 16,
+    "pass": 38,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -118,22 +122,86 @@
     },
     "reason": "The short-arm rest character uses the validated fitness proportions for a supported bench grip."
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-533da96b": "44ba81b3ea124f625c555ae812b37263f82ae460749bbc9ebbeb55a6309f6663",
     "img-5e7d5971": "5056475ae5def865dbe52882d30d2730142de2b03231bda304f82fd0b088f608"
   },
-  "scene_sha256": "d964807ce5ca04ea3b3de209e160ebf7b686918354902a2ac98a44ef46606914",
+  "scene_sha256": "22c2d35c602598342fd02bd5ebf35cd6177609afcabe07b8caeba6940bedceff",
   "output_sha256": {
-    "animation.gif": "86beae2c10510ccff26df70897baacbb60cb22193c96134d027914c2a54be6c2",
-    "start.png": "0b01182b4a57c743a0ebe6e26858f92e40abf6ab80743fe9c4a346fd5dfcf921",
-    "end.png": "c316411364171212e0d4fa713d21542a0540859a6627c0a64eeb399307533e2f",
-    "checks.json": "feafdb63c8eedef294be456b512c96e3ef2c5777970a94e6a6e5452b676832a3"
+    "animation.gif": "3f3c9baaf0ad0ea0e52053c83b9df8c2b8e605a9229929f12d02cf6558bea6cb",
+    "start.png": "242fff66add337868ea12d8427b325184a9deb3b8368d9c074e5b83cfdf3d4ee",
+    "end.png": "f74be3ab19d0123e2f434aa4ab1ecf17ff8d5945893d6837cc009823b4d1d870",
+    "checks.json": "a5e349b48ee5c313487c4ae0dc425bdc59e4fa24b26d48ca1123a71bcb0823ec"
   },
   "physical_remeasurement": {
-    "method": "Independent all-frame saved-scene clearance and range replay",
-    "first_frame": 1,
-    "last_frame": 32,
-    "geometry_changed": false
-  }
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/bench-motion-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/bench-motion-replay.json",
+        "sha256": "1948fe00cab8b8ed9aede1d06f61d004c0db934b9308aa025afaff411ad8ac57",
+        "status": "passed",
+        "scene_sha256": "22c2d35c602598342fd02bd5ebf35cd6177609afcabe07b8caeba6940bedceff"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

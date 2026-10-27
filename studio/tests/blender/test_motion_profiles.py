@@ -46,7 +46,8 @@ def main():
     result = retarget.BoneRetarget(rig, skin, clip, exercise=keys['exercise'], feet=profile['feet']).run()
     scene = bpy.context.scene
     first, last = scene.frame_start, scene.frame_end
-    props, support = exercise_supports.apply(rig, skin, first, last, keys['exercise'], reference=keys)
+    props, support = exercise_supports.apply(rig, skin, first, last, keys['exercise'], reference=keys,
+        reference_phase_frames=clip.reference_motion['phase_frames'])
     held, contacts = exercise_contacts.apply(rig, skin, first, last, keys['exercise'], pulley_anchor=(support or {}).get('pulley_anchor'))
     props += held
     result['physical'] = {'profile': profile, 'contacts': contacts, 'supports': support}

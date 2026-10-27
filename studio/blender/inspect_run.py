@@ -1165,6 +1165,30 @@ def measure_frames(rig, first, last, side, side_normal, behind_normal, turn):
     return per_frame, joints_by_frame
 
 
+def upper_limb_motion(rig, first, last, loop=False):
+    """Actual keyed arm movement, including rotations a joint path can hide."""
+    from upper_limb_motion import summarize as summarize_arms
+    scene = bpy.context.scene
+    original_frame, original_subframe = scene.frame_current, scene.frame_subframe
+    samples = []
+    try:
+        for frame in range(first, last + 1):
+            scene.frame_set(frame)
+            pose, world = rig.pose.bones, rig.matrix_world
+            root = np.array(world @ pose[P + 'Hips'].head)
+            points, turns = {}, {}
+            for side in ('Left', 'Right'):
+                for label, part in (('elbow', 'ForeArm'), ('wrist', 'Hand')):
+                    points[f'{label}.{side.lower()}'] = (np.array(world @ pose[P + side + part].head) - root).tolist()
+                for label, part in (('arm', 'Arm'), ('forearm', 'ForeArm'), ('hand', 'Hand')):
+                    turns[f'{label}.{side.lower()}'] = list((world @ pose[P + side + part].matrix).to_quaternion())
+            samples.append({'frame': frame, 'points_m': points, 'turns_wxyz': turns})
+        height = json.loads(rig['skin_fit'])['measured']['height']
+        return summarize_arms(samples, height, scene.render.fps / scene.render.fps_base, first, last, loop=loop)
+    finally:
+        scene.frame_set(original_frame, subframe=original_subframe)
+
+
 def pick_positions(per_frame, targets, joints_by_frame, reference_motion=None):
     """(phase frames, driver, jumps, steps): the coach's positions on our clip, as metrics picks them, never
     on a frame that jumps. RunError (plain words) when none can be picked."""
@@ -1212,6 +1236,7 @@ def inspect(run):
         bpy.ops.wm.open_mainfile(filepath=str(scene_path))
     targets = _read_json(run / "targets.json", "targets")
     snapshot = _read_json(run / "references.json", "reference list")
+    preset = snapshot.get('motionPreset') is not None
     measured = _read_json(run / "measurements.json", "measurements") if (run / "measurements.json").is_file() else {}
     side = (targets.get("camera") or {}).get("side")
     if side not in SIDE_TURN and (targets.get('motion') or {}).get('approximateDepth'):
@@ -1263,6 +1288,8 @@ def inspect(run):
     reference_report = _read_json(run / 'frames' / 'retarget.json', 'animation report') if (run / 'frames' / 'retarget.json').is_file() else {}
     phase_frames, driver, jumps, steps = pick_positions(per_frame, targets, joints_by_frame,
                                                        reference_report.get('reference_motion'))
+    arms = upper_limb_motion(rig, first, last,
+                            loop=(reference_report.get('reference_motion') or {}).get('mode') == 'cycle')
     log(f"figure faces azimuth {yaw:.1f}; phase frames {phase_frames} (timed by {driver})")
     if steps:
         log("the pose snaps on frames " + ", ".join(f"{s['frame']} ({s['mm']} mm)" for s in steps))
@@ -1273,14 +1300,18 @@ def inspect(run):
     mpfb_cage.preview_set(560, 560, samples=4 if targets.get('motion') else 16)
     stills_dir = run / "stills"
     stills_dir.mkdir(parents=True, exist_ok=True)
-    keys = [i for i in snapshot.get("images") or [] if not i.get("contextOnly") and not i.get("deleted")
+    from motion_presets import movement_images
+    keys = [i for i in movement_images(snapshot) if not preset and not i.get("contextOnly") and not i.get("deleted")
             and not i.get('motionOnly') and not (i.get('source') or {}).get('motionOnly')]
+    if preset:
+        keys = [{'id': 'preset-' + phase, 'phase': phase, 'view': 'three-quarter', 'preset': True}
+                for phase in ('start', 'middle', 'end')]
     stills, still_cameras, side_stills = [], {}, {}
     for n, image in enumerate(keys, 1):
         phase = image.get("phase")
         if phase not in phase_frames:
             raise RunError(f"Image {image.get('original') or image['id']} has no position (start, middle or end).")
-        view = effective_view(image, measured)
+        view = 'three-quarter' if image.get('preset') else effective_view(image, measured)
         image_side = (measured.get(image["id"]) or {}).get("camera_side")
         image_side = image_side if image_side in SIDE_TURN else side
         azimuth, elevation, cam_view = camera_for(view, image_side, yaw)
@@ -1298,7 +1329,7 @@ def inspect(run):
     # Read judged positions from the same camera as the coach. An estimated
     # middle has no source picture and no verdict; avoid its five camera renders
     # while retaining all-frame rig/contact/fold measurements.
-    picture_frames = comparison_frames(phase_frames, targets)
+    picture_frames = {} if preset else comparison_frames(phase_frames, targets)
     with tempfile.TemporaryDirectory(prefix="picture-") as folder:
         picture = picture_or_none(skin, picture_frames, *side_camera, folder, side_stills)
         for phase, frame in phase_frames.items():
@@ -1306,7 +1337,7 @@ def inspect(run):
                 picture[phase] = {'frame': frame, **summarize([]), 'why': ESTIMATED_POSITION,
                                   'skipped': 'estimated-reference-position'}
                 log(f"picture: {phase} frame {frame}: skipped camera search; {ESTIMATED_POSITION}")
-        bind = bind_reading(rig, skin, side_camera, side, side_normal, behind_normal, turn, folder)
+        bind = {'warning': 'Preset movement: reference photos are context only.'} if preset else bind_reading(rig, skin, side_camera, side, side_normal, behind_normal, turn, folder)
     # the depth as a judge sees it (task 22): the seat against the top of the knee at the bottom, read off our
     # silhouette as the coach's is and off the 3D skin - for an exercise whose kit row says so
     seat = {"end": seat_reading(rig, skin, phase_frames["end"], side, side_camera, side_normal)} \
@@ -1333,7 +1364,8 @@ def inspect(run):
             "per_frame": per_frame,
             "picture": {**picture, "framings": [list(f) for f in FRAMINGS],
                         "camera": {"azimuth": round(side_camera[0], 2), "elevation": round(side_camera[1], 2)}},
-            "phase_frames": phase_frames, "phase_driver": driver, "jumps": jumps, "steps": steps, "arm": arm_lengths(rig), "stills": stills}
+            "phase_frames": phase_frames, "phase_driver": driver, "jumps": jumps, "steps": steps,
+            "upper_limb_motion": arms, "arm": arm_lengths(rig), "stills": stills}
     if measured_folds is not None:      # not measured: no keys, and the check says so
         folds = measured_folds["folds"]
         ours.update(height_m=measured_folds["height_m"], folds=folds, folds_worst=worst_folds(folds))

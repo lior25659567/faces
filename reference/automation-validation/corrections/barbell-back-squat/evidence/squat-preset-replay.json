@@ -1,0 +1,210 @@
+{
+  "status": "passed",
+  "frames": 69,
+  "scene_sha256": "84d3263b22aeec1b90f75434c4003418f87c29dfbf6bfdba16b393a16508fbdf",
+  "rendered": false,
+  "geometry_unchanged": true,
+  "preset": {
+    "source": "preset",
+    "mode": "cycle",
+    "preset": "squat-v1",
+    "source_sha256": "e4f720f5d9b9657c2f7b4c52c516bdf3c17ec6d4fcfe5b9b527cb962d4157705",
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "explicit_phases": [],
+    "photos_context_only": true,
+    "description": "Pinned 3D squat body motion with an authored fitted back-bar grip; photographs are context only."
+  },
+  "range": {
+    "frames": 69,
+    "measured_frames": 69,
+    "first_frame": 1,
+    "last_frame": 69,
+    "height_m": 0.9991119140625,
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "start": {
+      "frame": 1,
+      "knees_deg": {
+        "left": 179.9999325572858,
+        "right": 173.02012397438128
+      },
+      "hips_deg": {
+        "left": 166.10054045104863,
+        "right": 164.5943249575101
+      },
+      "torso_lean_deg": 10.7341044993072
+    },
+    "bottom": {
+      "frame": 38,
+      "knees_deg": {
+        "left": 34.1106341723236,
+        "right": 36.359399917364335
+      },
+      "hips_deg": {
+        "left": 50.47412680478139,
+        "right": 53.00249865260478
+      },
+      "torso_lean_deg": 35.6595783013445
+    },
+    "finish": {
+      "frame": 69,
+      "knees_deg": {
+        "left": 179.99993030361716,
+        "right": 173.01140280857123
+      },
+      "hips_deg": {
+        "left": 166.10053591380924,
+        "right": 164.5916056368117
+      },
+      "torso_lean_deg": 10.7341044993072
+    },
+    "top_knee_extension_shortfall_deg": 0.0,
+    "top_hip_extension_shortfall_deg": 0.0,
+    "bottom_knee_flexion_excess_deg": 0.0,
+    "bottom_hip_flexion_excess_deg": 0.0,
+    "depth_shortfall_mm": 0.0,
+    "pelvis_travel_mm": 289.07717391848564,
+    "pelvis_travel_shortfall_mm": 0.0,
+    "knee_asymmetry_deg": 7.986622397195049,
+    "bar_level_excess_deg": 0.0,
+    "spine_deviation_deg": 14.260887387040135,
+    "loop_position_error_mm": 0.013005022579490854,
+    "method": "Pinned 3D clip with declared fitted back-bar grip; full keyed bilateral range, depth, spine, shaft and loop measurements; photos are context only."
+  },
+  "contact": {
+    "left": {
+      "frames": 69,
+      "frames_touching_within_3mm": 69,
+      "nearest_gap_mm_max": 0.02333825082392535,
+      "deepest_inside_bar_mm": 0.7946906668652937
+    },
+    "right": {
+      "frames": 69,
+      "frames_touching_within_3mm": 69,
+      "nearest_gap_mm_max": 0.0504983324134782,
+      "deepest_inside_bar_mm": 0.7996181153294476
+    }
+  },
+  "supports": {
+    "surfaces": {
+      "foot_left_heel": {
+        "frames": 69,
+        "measured_frames": 69,
+        "max_gap_mm": 2.2076608147472143,
+        "max_penetration_mm": 0.001625012146178051
+      },
+      "foot_left_toe": {
+        "frames": 69,
+        "measured_frames": 69,
+        "max_gap_mm": 2.3105584550648928,
+        "max_penetration_mm": 0.00165381482020166
+      },
+      "foot_right_heel": {
+        "frames": 69,
+        "measured_frames": 69,
+        "max_gap_mm": 1.4649376971647143,
+        "max_penetration_mm": 0.0016384731225116411
+      },
+      "foot_right_toe": {
+        "frames": 69,
+        "measured_frames": 69,
+        "max_gap_mm": 1.9935974851250648,
+        "max_penetration_mm": 0.0016801077435957268
+      }
+    },
+    "planted_feet": {
+      "frames": 69,
+      "measured_frames": 69,
+      "first_frame": 1,
+      "last_frame": 69,
+      "max_slide_mm": 1.3894822533503202,
+      "method": "fitted rest heel/toe plantar patches, full evaluated surface on every frame"
+    }
+  },
+  "bar_body_max_overlap_mm": 1.2650913483321664,
+  "max_anchor_error_mm": 0.00023126365533698845,
+  "arm_length_error_mm": 8.338006846075885e-05,
+  "upper_limb_rows": [
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.18214853335774847,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 56,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.right.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 58.74939236621461,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 56,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: arm.right.",
+      "kind": null,
+      "uncertain_why": null
+    }
+  ],
+  "skin_rows": [
+    {
+      "group": "body",
+      "metric": "folded_skin",
+      "target": 99.9,
+      "ours": 473.3,
+      "unit": "mm2",
+      "status": "info",
+      "frame": 1,
+      "note": "Folds hidden from every view at the left shoulder (up to 473 mm\u00b2, every frame) and the right shoulder (up to 221 mm\u00b2, every frame); plus creases at the elbows, the knees and the hips, which are normal in deep bends",
+      "kind": "not-judged",
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "smooth_motion",
+      "target": 0,
+      "ours": 0,
+      "unit": "frames",
+      "status": "pass",
+      "frame": null,
+      "note": null,
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.18214853335774847,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 56,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.right.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 58.74939236621461,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 56,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: arm.right.",
+      "kind": null,
+      "uncertain_why": null
+    }
+  ]
+}

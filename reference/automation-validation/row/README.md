@@ -43,7 +43,7 @@ forward by up to 50.92 mm to clear the mascot's torso; this adaptation is retain
 in the report. The chosen grip width (1.486× shoulder width) comes from adapted
 arm paths; there is no front/behind photograph to validate that width.
 
-Checks: **16 pass, 2 fail,
+Checks: **18 pass, 2 fail,
 0 uncertain, 9 information,
 0 not measured**. Raw results are in [checks.json](checks.json).
 

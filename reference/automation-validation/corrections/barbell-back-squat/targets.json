@@ -1,0 +1,59 @@
+{
+  "exercise": "Barbell Back Squat",
+  "equipment": "barbell",
+  "phases": {
+    "start": {
+      "estimated": true,
+      "knee_included": {
+        "value": 180.0,
+        "method": "flat",
+        "source": "declared-preset-range",
+        "uncertain": false
+      }
+    },
+    "middle": {
+      "estimated": true,
+      "knee_included": {
+        "value": 100.0,
+        "method": "flat",
+        "source": "declared-preset-range",
+        "uncertain": false
+      }
+    },
+    "end": {
+      "estimated": true,
+      "knee_included": {
+        "value": 45.0,
+        "method": "flat",
+        "source": "declared-preset-range",
+        "uncertain": false
+      }
+    }
+  },
+  "widths": {},
+  "tolerance": {
+    "angles_deg": 5,
+    "ratios": 0.12,
+    "hip_below_knee": 0.1,
+    "seat_below_knee": 0.1,
+    "back_rounding": 0.04,
+    "neck_vs_torso": 10,
+    "spine_curl": 10
+  },
+  "camera": {
+    "side": "left"
+  },
+  "images": {},
+  "motion": {
+    "source": "preset",
+    "preset": "squat-v1",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "sourceDepthCalibrated": false,
+    "description": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets."
+  }
+}

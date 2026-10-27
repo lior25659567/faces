@@ -1,31 +1,35 @@
 {
-  "name": "Lat Pulldown",
+  "name": "Lat Pulldown (seated, to the front)",
   "slug": "lat-pulldown-seated-to-the-front",
-  "run_dir": "/tmp/studio-final-validation/lat-pulldown-seated-to-the-front",
+  "run_dir": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 3.32
+      "seconds": 0.27,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 450.78
+      "seconds": 162.526,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 85.76
+      "seconds": 34.848,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.14
+      "seconds": 0.095,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 13,
+    "pass": 20,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -36,8 +40,8 @@
   "fps": 12.0,
   "phase_frames": {
     "start": 1,
-    "middle": 10,
-    "end": 19
+    "middle": 7,
+    "end": 13
   },
   "character_fit": {
     "kind": "fitness arm reach",
@@ -118,17 +122,93 @@
     },
     "reason": "Original straight-arm reach cannot clear the head."
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-b6fb01ba": "929bc29751c35d0a624840b24501e74dc59438d351e66cc017e7ee8682fb3346",
     "img-09dcdaf6": "781952e629e8a4cff549df94ee6b1da7e32c7cd507382d47e8566718c07807dd"
   },
-  "scene_sha256": "6d3b9ed8e5c23766efc512dd8a6a4834ee2806281205064c9899702662f597f4",
+  "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc",
   "output_sha256": {
-    "animation.gif": "980930695e992fb4fd7f918f2e8e3f1251e78e3ade55cb078c2a627d10545e98",
-    "start.png": "e0f3ba43e85b83cac548a6060b7f5c0b7d640a06b04ccc80e460e4d4239a2886",
-    "end.png": "a7516d8a9eb4bc69eee87af04ee7f050ce969f3d4e4092720f0f12f641988a21",
-    "checks.json": "59584f8b655121a812e0586c92dd703e1fe239668bd346ac53685ad6663769c3"
+    "animation.gif": "9e96af9f045c6d51f62f5ef2066b43974225af535f741fc2fa2f753553652958",
+    "start.png": "30c2c9a1e3eebbf2ab62e43677f75e0f80fd48dc4c03bd0a54ffaf72ce7b3862",
+    "end.png": "360cb1d6fe8091c0cfe7a229808fb378331bfa2dbc7c7103e3f54635a344b05b",
+    "checks.json": "beeba085da31dfbf8e6ac66e373d18437ecfbf57a978f7f76a6258deca2fefbc"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/arm-continuity-replay.json",
+      "evidence/pulldown-form-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 7,
+      "end": 13
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.0,
+      "hold_s": 0.2,
+      "return_s": 1.5,
+      "forward_action": "pull",
+      "return_action": "controlled lowering",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 13,
+      "file": "end.png",
+      "source": "/tmp/studio-lat-technique-fix/lat-pulldown-seated-to-the-front/frames/frame_0013.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/arm-continuity-replay.json",
+        "sha256": "177031ee139389ce52806da169260b2c22ad063e7664ce186d98ce9997bba499",
+        "status": "passed",
+        "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc"
+      },
+      {
+        "file": "evidence/pulldown-form-replay.json",
+        "sha256": "d74d6cc1a2e46d9c9775e039d3b57d9ffecc7c73b081367fdfaeedd17d07a444",
+        "status": "passed",
+        "scene_sha256": "e3a0668a9d036d9709fa30ae38450b370afaa1523444b45f505489de6a4314bc"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

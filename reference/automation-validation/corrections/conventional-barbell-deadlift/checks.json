@@ -1,6 +1,6 @@
 {
   "summary": {
-    "pass": 26,
+    "pass": 28,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -546,6 +546,30 @@
       "frame": null,
       "unit": "mm",
       "note": "Actual evaluated plate vertices must stay above the floor throughout every frame.",
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.3214920638355934,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 27,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.right.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 64.74693064037002,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 27,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+      "kind": null,
       "uncertain_why": null
     }
   ]

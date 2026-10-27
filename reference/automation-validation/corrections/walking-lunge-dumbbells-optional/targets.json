@@ -1,0 +1,302 @@
+{
+  "exercise": "Walking Lunge (dumbbells optional)",
+  "phases": {
+    "start": {
+      "knee_included": {
+        "value": 151.101,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-00",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 146.731,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-00",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 23.629,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-00",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 170.346,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-00",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 30.222,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-00",
+        "source": "inferred_3d"
+      }
+    },
+    "middle": {
+      "knee_included": {
+        "value": 55.096,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-15",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 80.329,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-15",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 12.508,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-15",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 168.739,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-15",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 26.415,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-15",
+        "source": "inferred_3d"
+      }
+    },
+    "end": {
+      "knee_included": {
+        "value": 145.386,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-25",
+        "source": "inferred_3d"
+      },
+      "hip_included": {
+        "value": 140.496,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-25",
+        "source": "inferred_3d"
+      },
+      "torso_lean": {
+        "value": 23.005,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-25",
+        "source": "inferred_3d"
+      },
+      "elbow_included": {
+        "value": 175.636,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-25",
+        "source": "inferred_3d"
+      },
+      "upperarm_vs_torso": {
+        "value": 33.582,
+        "method": "3d",
+        "cross": null,
+        "uncertain": true,
+        "image": "lunge-dense-25",
+        "source": "inferred_3d"
+      }
+    }
+  },
+  "widths": {
+    "grip_ratio": {
+      "value": 1.592,
+      "method": "flat",
+      "cross": 1.699,
+      "uncertain": false,
+      "image": "lunge-dense-00"
+    },
+    "elbow_width_ratio": {
+      "value": 1.352,
+      "method": "flat",
+      "cross": 1.347,
+      "uncertain": false,
+      "image": "lunge-dense-00"
+    }
+  },
+  "tolerance": {
+    "angles_deg": 5,
+    "ratios": 0.12,
+    "hip_below_knee": 0.1,
+    "seat_below_knee": 0.1,
+    "back_rounding": 0.04,
+    "neck_vs_torso": 10,
+    "spine_curl": 10
+  },
+  "images": {
+    "lunge-dense-00": {
+      "used": true,
+      "why": null,
+      "view": "front"
+    },
+    "lunge-dense-01": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-02": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-03": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-04": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-05": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-06": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-07": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-08": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-09": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-10": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-11": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-12": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-13": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-14": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-15": {
+      "used": true,
+      "why": null,
+      "view": "front"
+    },
+    "lunge-dense-16": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-17": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-18": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-19": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-20": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-21": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-22": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-23": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-24": {
+      "used": false,
+      "why": "Motion sample",
+      "view": "front"
+    },
+    "lunge-dense-25": {
+      "used": true,
+      "why": null,
+      "view": "front"
+    }
+  },
+  "camera": {
+    "side": "left",
+    "facing": null
+  },
+  "motion": {
+    "mode": "sequence",
+    "sourcePhases": [
+      "start",
+      "middle",
+      "end"
+    ],
+    "approximateDepth": true
+  },
+  "equipment": "dumbbells (optional)"
+}

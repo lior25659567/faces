@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Side_Lateral_Raise",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Side_Lateral_Raise/0.jpg"
-      }
+      },
+      "path": "source-references/img-5cd18809.jpg"
     },
     {
       "id": "img-62ff8746",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Side_Lateral_Raise",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Side_Lateral_Raise/1.jpg"
-      }
+      },
+      "path": "source-references/img-62ff8746.jpg"
     }
   ],
   "characterFit": "auto"

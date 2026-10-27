@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "image": "img-533da96b",
+      "original_path": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/source-references/img-533da96b.jpg",
+      "bundled_file": "source-references/img-533da96b.jpg",
+      "sha256": "44ba81b3ea124f625c555ae812b37263f82ae460749bbc9ebbeb55a6309f6663",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Barbell_Bench_Press_-_Medium_Grip",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg",
+        "sha256": "44ba81b3ea124f625c555ae812b37263f82ae460749bbc9ebbeb55a6309f6663",
+        "phase": "start",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Barbell_Bench_Press_-_Medium_Grip",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg"
+      }
+    },
+    {
+      "image": "img-5e7d5971",
+      "original_path": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/source-references/img-5e7d5971.jpg",
+      "bundled_file": "source-references/img-5e7d5971.jpg",
+      "sha256": "5056475ae5def865dbe52882d30d2730142de2b03231bda304f82fd0b088f608",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Barbell_Bench_Press_-_Medium_Grip",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg",
+        "sha256": "5056475ae5def865dbe52882d30d2730142de2b03231bda304f82fd0b088f608",
+        "phase": "end",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Barbell_Bench_Press_-_Medium_Grip",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/flat-barbell-bench-press/references.json"
+}

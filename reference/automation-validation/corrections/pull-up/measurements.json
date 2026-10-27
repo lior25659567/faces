@@ -1,3455 +1,726 @@
 {
-  "reference_motion": {
-    "source": "keyposes",
-    "mode": "cycle",
-    "phase_frames": {
-      "start": 1,
-      "middle": 13,
-      "end": 25
+  "img-96142bf0": {
+    "image": "img-96142bf0.jpg",
+    "size": [
+      850,
+      567
+    ],
+    "view": "three-quarter",
+    "shoulder_span": 0.529,
+    "camera_side": "right",
+    "facing": null,
+    "crop": [
+      0.3335,
+      0.0,
+      0.6485,
+      1.0
+    ],
+    "flat": {
+      "knee_included": 168.07,
+      "hip_included": 173.253,
+      "elbow_included": 163.372,
+      "upperarm_vs_torso": 167.888,
+      "torso_lean": 1.134,
+      "hip_below_knee": -0.67,
+      "thigh_level": -88.369,
+      "grip_ratio": 1.762,
+      "elbow_width_ratio": 1.616,
+      "back_rounding": null,
+      "back_seen": null,
+      "back_span": null,
+      "back_why": null,
+      "neck_vs_torso": null,
+      "head_pitch": null,
+      "seat_below_knee": null
     },
-    "explicit_phases": [
-      "start",
-      "end"
-    ]
-  },
-  "character_fit": {
-    "kind": "fitness arm reach",
-    "label": "Fitness proportions",
-    "applied": true,
-    "upper_scale": 1.8,
-    "fore_scale": 1.8,
-    "source_model_unchanged": true,
-    "face_max_displacement_mm": 0.0,
-    "hand_scale": 1.0,
-    "per_frame_stretch": false,
-    "sides": {
-      "left": {
-        "upper_before_m": 0.10443226993083954,
-        "fore_before_m": 0.07788365334272385,
-        "upper_after_m": 0.18797808587551118,
-        "fore_after_m": 0.14019057601690293,
-        "wrist_translation_m": [
-          -0.1409132480621338,
-          0.03467267006635666,
-          0.01463861484080553
-        ]
-      },
-      "right": {
-        "upper_before_m": 0.10468268394470215,
-        "fore_before_m": 0.07495778799057007,
-        "upper_after_m": 0.18842883110046388,
-        "fore_after_m": 0.13492401838302612,
-        "wrist_translation_m": [
-          0.13851326704025269,
-          0.035191550850868225,
-          0.015128850936889648
-        ]
-      }
+    "3d": {
+      "knee_included": 137.379,
+      "hip_included": 159.329,
+      "elbow_included": 149.498,
+      "upperarm_vs_torso": 160.571,
+      "torso_lean": 5.632,
+      "hip_below_knee": -0.555,
+      "thigh_level": -74.757,
+      "grip_ratio": 1.41,
+      "elbow_width_ratio": 1.41,
+      "neck_vs_torso": null
     },
-    "requested_mode": "auto",
-    "original_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.10443226993083954,
-          "fore_m": 0.07788365334272385,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 0.9326923310071329,
-          "head_shortfall_mm": 66.81932813822233
-        },
-        "right": {
-          "upper_m": 0.10468268394470215,
-          "fore_m": 0.07495778799057007,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 0.931960947165028,
-          "head_shortfall_mm": 67.55071198032725
-        }
-      }
-    },
-    "actual_reach": {
-      "head_top_m": 0.9995116591453552,
-      "sides": {
-        "left": {
-          "upper_m": 0.1879781037569046,
-          "fore_m": 0.14019055664539337,
-          "shoulder_z_m": 0.6916018724441528,
-          "grip_offset_m": 0.05877453528941669,
-          "vertical_handle_bound_m": 1.0785450681358675,
-          "head_shortfall_mm": 0.0
-        },
-        "right": {
-          "upper_m": 0.1884288489818573,
-          "fore_m": 0.13492397964000702,
-          "shoulder_z_m": 0.6912083625793457,
-          "grip_offset_m": 0.06111211265041008,
-          "vertical_handle_bound_m": 1.0756733038516202,
-          "head_shortfall_mm": 0.0
-        }
-      }
-    },
-    "reason": "Original straight-arm reach cannot clear the head."
-  },
-  "surface_cleanup": {
-    "schema": 1,
-    "method": "coincident seam weld and local rest-bound corrective surface",
-    "vertices_before": 46261,
-    "vertices_after": 43352,
-    "faces": 52431,
-    "uv_loops": 157293,
-    "uv_and_materials_preserved": true,
-    "skin_weights_preserved": true,
-    "protected_custom_normals_preserved": true,
-    "seam_tolerance_mm": 0.009995116599818636,
-    "max_weld_displacement_mm": 0.0,
-    "max_bind_displacement_mm": 0.00018143349382111312,
-    "corrected_vertices": 3866,
-    "protected_vertices": 28165,
-    "factor": 1.0,
-    "iterations": 20,
-    "arm_emphasis": null,
-    "export": "post-skin Blender surface correction; skeletal-only exports must not discard it"
-  },
-  "physical": {
-    "profile": {
-      "family": "hanging",
-      "feet": "free",
-      "mode": "cycle",
-      "holds": true,
-      "overhead": false
-    },
-    "supports": {
-      "frames": 43,
-      "surfaces": {}
-    },
-    "contacts": {
-      "frames": 43,
-      "equipment": "bar",
-      "max_grip_anchor_error_mm": 0.0018514639055109256,
-      "worst_wrist_bend_deg": 24.983192790029573,
-      "max_surface_path_adjustment_mm": 0.0,
-      "path_adjustments": [
-        {
-          "frame": 1,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 2,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 3,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 4,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 5,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 6,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 7,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 8,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 9,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 10,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 11,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 12,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 13,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 14,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 15,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 16,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 17,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 18,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 19,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 20,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 21,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 22,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 23,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 24,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 25,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 26,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 27,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 28,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 29,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 30,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 31,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 32,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 33,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 34,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 35,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 36,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 37,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 38,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 39,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 40,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 41,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 42,
-          "adjustment_mm": 0.0
-        },
-        {
-          "frame": 43,
-          "adjustment_mm": 0.0
-        }
+    "world": {
+      "nose": [
+        -0.03891,
+        -0.61655,
+        -0.03362
       ],
-      "sides": {
-        "left": {
-          "frames": 43,
-          "frames_touching_within_3mm": 43,
-          "nearest_gap_mm_max": 0.025005952744183713,
-          "deepest_inside_bar_mm": 0.7962669078981034
-        },
-        "right": {
-          "frames": 43,
-          "frames_touching_within_3mm": 43,
-          "nearest_gap_mm_max": 0.05106186532680655,
-          "deepest_inside_bar_mm": 0.8000199362014132
-        }
-      },
-      "root_adjustments": [
-        {
-          "frame": 1,
-          "delta_mm": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        },
-        {
-          "frame": 2,
-          "delta_mm": [
-            -0.0002751657299515653,
-            -0.11642242975357098,
-            0.12700992177450132
-          ]
-        },
-        {
-          "frame": 3,
-          "delta_mm": [
-            -0.0010862595483246418,
-            -0.4453251399513525,
-            0.4896530015621181
-          ]
-        },
-        {
-          "frame": 4,
-          "delta_mm": [
-            -0.0023297376322423125,
-            -0.9475972335600824,
-            1.0553613800066142
-          ]
-        },
-        {
-          "frame": 5,
-          "delta_mm": [
-            -0.003918838480096443,
-            -1.5757090126939932,
-            1.7834582930951193
-          ]
-        },
-        {
-          "frame": 6,
-          "delta_mm": [
-            -0.005679318913445752,
-            -2.2768748700572883,
-            2.6252185575548204
-          ]
-        },
-        {
-          "frame": 7,
-          "delta_mm": [
-            -0.007459668178194656,
-            -2.9967224131640102,
-            3.5229353964285615
-          ]
-        },
-        {
-          "frame": 8,
-          "delta_mm": [
-            -0.009241284441727227,
-            -3.682581159398235,
-            4.4123634733375106
-          ]
-        },
-        {
-          "frame": 9,
-          "delta_mm": [
-            -0.01082870692660498,
-            -4.28619447864137,
-            5.224394839785429
-          ]
-        },
-        {
-          "frame": 10,
-          "delta_mm": [
-            -0.012103865429505256,
-            -4.765701606265049,
-            5.890523231650846
-          ]
-        },
-        {
-          "frame": 11,
-          "delta_mm": [
-            -0.013099290850152046,
-            -5.0863748433892795,
-            6.346985229519486
-          ]
-        },
-        {
-          "frame": 12,
-          "delta_mm": [
-            -0.013649109384575309,
-            -5.220267520592348,
-            6.540085215758662
-          ]
-        },
-        {
-          "frame": 13,
-          "delta_mm": [
-            -0.013714308059437075,
-            -5.1462090888939604,
-            6.432586953609487
-          ]
-        },
-        {
-          "frame": 14,
-          "delta_mm": [
-            -0.013282458996635715,
-            -4.849477761143528,
-            6.007896586496475
-          ]
-        },
-        {
-          "frame": 15,
-          "delta_mm": [
-            -0.012225318896941229,
-            -4.323563570117594,
-            5.274239110119039
-          ]
-        },
-        {
-          "frame": 16,
-          "delta_mm": [
-            -0.010610760957027732,
-            -3.573238904779563,
-            4.26643508609148
-          ]
-        },
-        {
-          "frame": 17,
-          "delta_mm": [
-            -0.008449071356345095,
-            -2.6184351049429457,
-            3.0447152088648455
-          ]
-        },
-        {
-          "frame": 18,
-          "delta_mm": [
-            -0.005771543020602343,
-            -1.4978272091124567,
-            1.6900243035835594
-          ]
-        },
-        {
-          "frame": 19,
-          "delta_mm": [
-            -0.0028116200162936478,
-            -0.26994177724348756,
-            0.29336908780130955
-          ]
-        },
-        {
-          "frame": 20,
-          "delta_mm": [
-            0.0003178599819603223,
-            0.9895932309670341,
-            -1.0529318377874297
-          ]
-        },
-        {
-          "frame": 21,
-          "delta_mm": [
-            0.0033541835753742033,
-            2.1946829513642685,
-            -2.266707763113107
-          ]
-        },
-        {
-          "frame": 22,
-          "delta_mm": [
-            0.0061104027452296705,
-            3.2575814477850407,
-            -3.281883931953722
-          ]
-        },
-        {
-          "frame": 23,
-          "delta_mm": [
-            0.008246939836989431,
-            4.095890904621341,
-            -4.048637761025153
-          ]
-        },
-        {
-          "frame": 24,
-          "delta_mm": [
-            0.009641727516787602,
-            4.63918465931984,
-            -4.530044225126373
-          ]
-        },
-        {
-          "frame": 25,
-          "delta_mm": [
-            0.010163146964323189,
-            4.83040410380009,
-            -4.696680162600497
-          ]
-        },
-        {
-          "frame": 26,
-          "delta_mm": [
-            0.010148246158470098,
-            4.830404218463452,
-            -4.696680241293105
-          ]
-        },
-        {
-          "frame": 27,
-          "delta_mm": [
-            0.010148264079079539,
-            4.83042490259436,
-            -4.696685261532885
-          ]
-        },
-        {
-          "frame": 28,
-          "delta_mm": [
-            0.010140804804048553,
-            4.830433272780377,
-            -4.696623260997068
-          ]
-        },
-        {
-          "frame": 29,
-          "delta_mm": [
-            0.008979872560044289,
-            4.408365306941414,
-            -4.32662868762157
-          ]
-        },
-        {
-          "frame": 30,
-          "delta_mm": [
-            0.00595391128245526,
-            3.2576576273927738,
-            -3.281636655120934
-          ]
-        },
-        {
-          "frame": 31,
-          "delta_mm": [
-            0.0016853149784890054,
-            1.6046281905979787,
-            -1.680588741729938
-          ]
-        },
-        {
-          "frame": 32,
-          "delta_mm": [
-            -0.0030054078660191053,
-            -0.269816721897298,
-            0.293753124218199
-          ]
-        },
-        {
-          "frame": 33,
-          "delta_mm": [
-            -0.007362888211251417,
-            -2.075486859778264,
-            2.3788384779086513
-          ]
-        },
-        {
-          "frame": 34,
-          "delta_mm": [
-            -0.010730017725377183,
-            -3.573034996031288,
-            4.2668135966899
-          ]
-        },
-        {
-          "frame": 35,
-          "delta_mm": [
-            -0.012839036744871635,
-            -4.61495000590495,
-            5.67847907110397
-          ]
-        },
-        {
-          "frame": 36,
-          "delta_mm": [
-            -0.013662132015174189,
-            -5.145978134248663,
-            6.432933853389278
-          ]
-        },
-        {
-          "frame": 37,
-          "delta_mm": [
-            -0.013286531533526769,
-            -5.17798560896296,
-            6.479745499852418
-          ]
-        },
-        {
-          "frame": 38,
-          "delta_mm": [
-            -0.011954913213194085,
-            -4.765542959477065,
-            5.891207450800406
-          ]
-        },
-        {
-          "frame": 39,
-          "delta_mm": [
-            -0.009892606508479784,
-            -3.997316632082859,
-            4.833261476466788
-          ]
-        },
-        {
-          "frame": 40,
-          "delta_mm": [
-            -0.0073107985699011335,
-            -2.9966214267758415,
-            3.5240099833377947
-          ]
-        },
-        {
-          "frame": 41,
-          "delta_mm": [
-            -0.004611110488841885,
-            -1.920459355197357,
-            2.194686237727783
-          ]
-        },
-        {
-          "frame": 42,
-          "delta_mm": [
-            -0.0022106773054780815,
-            -0.9475094333750156,
-            1.056551079171797
-          ]
-        },
-        {
-          "frame": 43,
-          "delta_mm": [
-            -0.0004918798402753222,
-            -0.2564533413460246,
-            0.28179174749753955
-          ]
-        }
+      "left_eye_inner": [
+        -0.04561,
+        -0.62463,
+        -0.06663
       ],
-      "fixed_bar_drift_mm": 0.0,
-      "fixed_bar_rotation_deg": 0.0,
-      "hang_extension": {
-        "max_body_drop_mm": 0.0,
-        "limit_mm": 20.0,
-        "source_bottom_elbows_deg": {
-          "left": 153.0496063232422,
-          "right": 153.05401611328125
-        },
-        "method": "fixed bar and limb lengths; near-straight elbow preference plus bounded whole-body lowering, tapered by source root height"
-      },
-      "pullup_range": {
-        "frames": 43,
-        "top_frame": 25,
-        "bottom_frame": 1,
-        "chin_clearance_mm": 11.385886006164636,
-        "chin_shortfall_mm": 0.0,
-        "bottom_elbows_deg": {
-          "left": 175.04127502441406,
-          "right": 175.43875122070312
-        },
-        "extension_shortfall_deg": 4.9587249755859375,
-        "minimum_required_elbow_included_deg": 175.0,
-        "per_frame": [
-          {
-            "frame": 1,
-            "chin_clearance_mm": -297.2899395896911,
-            "elbows_deg": {
-              "left": 175.04127502441406,
-              "right": 175.43875122070312
-            },
-            "hip_height_m": 0.5652163028717041,
-            "elbow_bar_clearance_mm": {
-              "left": 173.63691329956055,
-              "right": 175.4089593887329
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 132.83896446228027,
-              "right": 127.37774848937988
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -174.11160469055176,
-              "right": -173.87861013412476
-            }
-          },
-          {
-            "frame": 2,
-            "chin_clearance_mm": -296.3866908027648,
-            "elbows_deg": {
-              "left": 171.45570373535156,
-              "right": 171.6473846435547
-            },
-            "hip_height_m": 0.5661651492118835,
-            "elbow_bar_clearance_mm": {
-              "left": 174.24285411834717,
-              "right": 176.43535137176514
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 133.44502449035645,
-              "right": 128.40425968170166
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -172.76835441589355,
-              "right": -172.1096634864807
-            }
-          },
-          {
-            "frame": 3,
-            "chin_clearance_mm": -293.69279927749625,
-            "elbows_deg": {
-              "left": 169.78099060058594,
-              "right": 169.7767333984375
-            },
-            "hip_height_m": 0.5689916610717773,
-            "elbow_bar_clearance_mm": {
-              "left": 172.3651885986328,
-              "right": 174.65436458587646
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 133.4517002105713,
-              "right": 128.66663932800293
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -172.43129014968872,
-              "right": -171.6606616973877
-            }
-          },
-          {
-            "frame": 4,
-            "chin_clearance_mm": -289.1363818122863,
-            "elbows_deg": {
-              "left": 166.38941955566406,
-              "right": 167.01589965820312
-            },
-            "hip_height_m": 0.5737637281417847,
-            "elbow_bar_clearance_mm": {
-              "left": 169.52776908874512,
-              "right": 171.57793045043945
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 133.375883102417,
-              "right": 128.8895606994629
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -171.4751124382019,
-              "right": -170.91935873031616
-            }
-          },
-          {
-            "frame": 5,
-            "chin_clearance_mm": -282.5636584236144,
-            "elbows_deg": {
-              "left": 162.90887451171875,
-              "right": 163.2738800048828
-            },
-            "hip_height_m": 0.5806320905685425,
-            "elbow_bar_clearance_mm": {
-              "left": 164.1523838043213,
-              "right": 165.88711738586426
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 132.17711448669434,
-              "right": 127.5869607925415
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -171.29504680633545,
-              "right": -171.0224747657776
-            }
-          },
-          {
-            "frame": 6,
-            "chin_clearance_mm": -273.79724568862906,
-            "elbows_deg": {
-              "left": 157.31451416015625,
-              "right": 157.66859436035156
-            },
-            "hip_height_m": 0.5897724032402039,
-            "elbow_bar_clearance_mm": {
-              "left": 157.0974588394165,
-              "right": 158.01894664764404
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 129.54211235046387,
-              "right": 124.4593858718872
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -170.82536220550537,
-              "right": -171.32693529129028
-            }
-          },
-          {
-            "frame": 7,
-            "chin_clearance_mm": -262.6899797393798,
-            "elbows_deg": {
-              "left": 150.50267028808594,
-              "right": 150.9462432861328
-            },
-            "hip_height_m": 0.6013296842575073,
-            "elbow_bar_clearance_mm": {
-              "left": 147.62485027313232,
-              "right": 149.6669054031372
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 124.69911575317383,
-              "right": 121.15693092346191
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -170.62729597091675,
-              "right": -169.96324062347412
-            }
-          },
-          {
-            "frame": 8,
-            "chin_clearance_mm": -249.17087144393912,
-            "elbows_deg": {
-              "left": 142.52606201171875,
-              "right": 143.076416015625
-            },
-            "hip_height_m": 0.615372896194458,
-            "elbow_bar_clearance_mm": {
-              "left": 137.15052604675293,
-              "right": 137.76075839996338
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 118.54171752929688,
-              "right": 114.07053470611572
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -169.18396949768066,
-              "right": -169.9017882347107
-            }
-          },
-          {
-            "frame": 9,
-            "chin_clearance_mm": -233.28235930938712,
-            "elbows_deg": {
-              "left": 134.29803466796875,
-              "right": 134.94888305664062
-            },
-            "hip_height_m": 0.6318567991256714,
-            "elbow_bar_clearance_mm": {
-              "left": 124.33481216430664,
-              "right": 124.81498718261719
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 110.15760898590088,
-              "right": 106.12475872039795
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -167.84727573394775,
-              "right": -168.6413288116455
-            }
-          },
-          {
-            "frame": 10,
-            "chin_clearance_mm": -215.20117110748282,
-            "elbows_deg": {
-              "left": 126.00839233398438,
-              "right": 126.75304412841797
-            },
-            "hip_height_m": 0.650600790977478,
-            "elbow_bar_clearance_mm": {
-              "left": 111.7328405380249,
-              "right": 112.03229427337646
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 102.07462310791016,
-              "right": 98.48427772521973
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -164.20882940292358,
-              "right": -165.12703895568848
-            }
-          },
-          {
-            "frame": 11,
-            "chin_clearance_mm": -195.2451188041686,
-            "elbows_deg": {
-              "left": 117.22431945800781,
-              "right": 118.02684783935547
-            },
-            "hip_height_m": 0.6712816953659058,
-            "elbow_bar_clearance_mm": {
-              "left": 95.08633613586426,
-              "right": 95.32177448272705
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 88.98556232452393,
-              "right": 85.96360683441162
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -162.81473636627197,
-              "right": -163.73854875564575
-            }
-          },
-          {
-            "frame": 12,
-            "chin_clearance_mm": -173.86236972351065,
-            "elbows_deg": {
-              "left": 108.8431396484375,
-              "right": 109.70356750488281
-            },
-            "hip_height_m": 0.6934440732002258,
-            "elbow_bar_clearance_mm": {
-              "left": 80.03509044647217,
-              "right": 80.13606071472168
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 77.5146484375,
-              "right": 75.01339912414551
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -158.44416618347168,
-              "right": -159.443199634552
-            }
-          },
-          {
-            "frame": 13,
-            "chin_clearance_mm": -151.60384959716788,
-            "elbows_deg": {
-              "left": 100.98433685302734,
-              "right": 101.64289093017578
-            },
-            "hip_height_m": 0.716528058052063,
-            "elbow_bar_clearance_mm": {
-              "left": 64.46385383605957,
-              "right": 64.61930274963379
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 65.53292274475098,
-              "right": 63.224077224731445
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -153.7339687347412,
-              "right": -154.61933612823486
-            }
-          },
-          {
-            "frame": 14,
-            "chin_clearance_mm": -129.0828306152343,
-            "elbows_deg": {
-              "left": 93.29988861083984,
-              "right": 94.02207946777344
-            },
-            "hip_height_m": 0.7399095892906189,
-            "elbow_bar_clearance_mm": {
-              "left": 44.2044734954834,
-              "right": 44.64113712310791
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 47.83618450164795,
-              "right": 46.445250511169434
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -153.4373164176941,
-              "right": -153.98341417312622
-            }
-          },
-          {
-            "frame": 15,
-            "chin_clearance_mm": -106.92742652435294,
-            "elbows_deg": {
-              "left": 86.4104995727539,
-              "right": 86.97818756103516
-            },
-            "hip_height_m": 0.7629477977752686,
-            "elbow_bar_clearance_mm": {
-              "left": 26.902079582214355,
-              "right": 29.561638832092285
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 33.089280128479004,
-              "right": 34.02864933013916
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -150.5092978477478,
-              "right": -148.77617359161377
-            }
-          },
-          {
-            "frame": 16,
-            "chin_clearance_mm": -85.73058433074942,
-            "elbows_deg": {
-              "left": 80.36738586425781,
-              "right": 81.03479766845703
-            },
-            "hip_height_m": 0.7850348949432373,
-            "elbow_bar_clearance_mm": {
-              "left": 16.00515842437744,
-              "right": 15.549659729003906
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 24.73592758178711,
-              "right": 23.200154304504395
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -142.0673131942749,
-              "right": -143.3955430984497
-            }
-          },
-          {
-            "frame": 17,
-            "chin_clearance_mm": -66.00752658386222,
-            "elbows_deg": {
-              "left": 75.00054931640625,
-              "right": 74.16944122314453
-            },
-            "hip_height_m": 0.8056395053863525,
-            "elbow_bar_clearance_mm": {
-              "left": 7.434964179992676,
-              "right": 5.31458854675293
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 18.189072608947754,
-              "right": 11.37542724609375
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -132.67874717712402,
-              "right": -135.62142848968506
-            }
-          },
-          {
-            "frame": 18,
-            "chin_clearance_mm": -48.16428012390128,
-            "elbows_deg": {
-              "left": 70.14598846435547,
-              "right": 68.58685302734375
-            },
-            "hip_height_m": 0.8243370056152344,
-            "elbow_bar_clearance_mm": {
-              "left": 9.37962532043457,
-              "right": 5.016803741455078
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 21.140336990356445,
-              "right": 10.015487670898438
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -114.53688144683838,
-              "right": -119.6756362915039
-            }
-          },
-          {
-            "frame": 19,
-            "chin_clearance_mm": -32.48730487365714,
-            "elbows_deg": {
-              "left": 65.98883056640625,
-              "right": 57.95625686645508
-            },
-            "hip_height_m": 0.8408219218254089,
-            "elbow_bar_clearance_mm": {
-              "left": 7.051587104797363,
-              "right": 176.76889896392822
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 19.31452751159668,
-              "right": 131.85155391693115
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -102.69057750701904,
-              "right": 66.29276275634766
-            }
-          },
-          {
-            "frame": 20,
-            "chin_clearance_mm": -19.14659328002921,
-            "elbows_deg": {
-              "left": 55.25898742675781,
-              "right": 57.18473815917969
-            },
-            "hip_height_m": 0.8549036979675293,
-            "elbow_bar_clearance_mm": {
-              "left": 176.8762469291687,
-              "right": 182.2742223739624
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 136.4498734474182,
-              "right": 132.332444190979
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 79.13976907730103,
-              "right": 83.84037017822266
-            }
-          },
-          {
-            "frame": 21,
-            "chin_clearance_mm": -8.216055102538977,
-            "elbows_deg": {
-              "left": 54.58268356323242,
-              "right": 55.82216262817383
-            },
-            "hip_height_m": 0.8664871454238892,
-            "elbow_bar_clearance_mm": {
-              "left": 182.76309967041016,
-              "right": 182.65289068222046
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 137.76683807373047,
-              "right": 132.71111249923706
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 94.81239318847656,
-              "right": 94.03616189956665
-            }
-          },
-          {
-            "frame": 22,
-            "chin_clearance_mm": 0.2952497528077025,
-            "elbows_deg": {
-              "left": 53.80504608154297,
-              "right": 54.30818176269531
-            },
-            "hip_height_m": 0.8755416870117188,
-            "elbow_bar_clearance_mm": {
-              "left": 181.50365352630615,
-              "right": 181.13422393798828
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.53297519683838,
-              "right": 132.77626037597656
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 101.13322734832764,
-              "right": 100.12292861938477
-            }
-          },
-          {
-            "frame": 23,
-            "chin_clearance_mm": 6.405917935180749,
-            "elbows_deg": {
-              "left": 52.90933609008789,
-              "right": 53.54056167602539
-            },
-            "hip_height_m": 0.8820644617080688,
-            "elbow_bar_clearance_mm": {
-              "left": 180.87708950042725,
-              "right": 178.42072248458862
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.55264472961426,
-              "right": 130.39058446884155
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 105.92293739318848,
-              "right": 102.84417867660522
-            }
-          },
-          {
-            "frame": 24,
-            "chin_clearance_mm": 10.120479397583093,
-            "elbows_deg": {
-              "left": 52.30192565917969,
-              "right": 52.82991027832031
-            },
-            "hip_height_m": 0.8860401511192322,
-            "elbow_bar_clearance_mm": {
-              "left": 180.21076917648315,
-              "right": 177.40732431411743
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.5462670326233,
-              "right": 130.38283586502075
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 108.53677988052368,
-              "right": 105.12250661849976
-            }
-          },
-          {
-            "frame": 25,
-            "chin_clearance_mm": 11.385886006164636,
-            "elbows_deg": {
-              "left": 51.970638275146484,
-              "right": 52.593448638916016
-            },
-            "hip_height_m": 0.8873965740203857,
-            "elbow_bar_clearance_mm": {
-              "left": 179.52632904052734,
-              "right": 177.06286907196045
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.5353593826294,
-              "right": 130.3807497024536
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 108.96730422973633,
-              "right": 105.89718818664551
-            }
-          },
-          {
-            "frame": 26,
-            "chin_clearance_mm": 11.385886006164636,
-            "elbows_deg": {
-              "left": 51.970645904541016,
-              "right": 52.48808288574219
-            },
-            "hip_height_m": 0.8873965740203857,
-            "elbow_bar_clearance_mm": {
-              "left": 179.52632904052734,
-              "right": 176.70130729675293
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.5353593826294,
-              "right": 130.36513328552246
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 108.96730422973633,
-              "right": 105.53562641143799
-            }
-          },
-          {
-            "frame": 27,
-            "chin_clearance_mm": 11.385886006164636,
-            "elbows_deg": {
-              "left": 51.97061538696289,
-              "right": 52.488067626953125
-            },
-            "hip_height_m": 0.8873965740203857,
-            "elbow_bar_clearance_mm": {
-              "left": 179.52632904052734,
-              "right": 176.70130729675293
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.5353593826294,
-              "right": 130.36513328552246
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 108.96730422973633,
-              "right": 105.53562641143799
-            }
-          },
-          {
-            "frame": 28,
-            "chin_clearance_mm": 11.385886006164636,
-            "elbows_deg": {
-              "left": 51.97060775756836,
-              "right": 52.48804473876953
-            },
-            "hip_height_m": 0.8873966336250305,
-            "elbow_bar_clearance_mm": {
-              "left": 179.52632904052734,
-              "right": 176.70130729675293
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.5353593826294,
-              "right": 130.36513328552246
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 108.96742343902588,
-              "right": 105.53574562072754
-            }
-          },
-          {
-            "frame": 29,
-            "chin_clearance_mm": 8.564321331787195,
-            "elbows_deg": {
-              "left": 52.3785514831543,
-              "right": 52.99129867553711
-            },
-            "hip_height_m": 0.8843737840652466,
-            "elbow_bar_clearance_mm": {
-              "left": 179.86220121383667,
-              "right": 177.3892641067505
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.53279638290405,
-              "right": 130.3647756576538
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 106.81527853012085,
-              "right": 103.72674465179443
-            }
-          },
-          {
-            "frame": 30,
-            "chin_clearance_mm": 0.29548817138680405,
-            "elbows_deg": {
-              "left": 53.80496597290039,
-              "right": 54.098594665527344
-            },
-            "hip_height_m": 0.8755419254302979,
-            "elbow_bar_clearance_mm": {
-              "left": 181.50365352630615,
-              "right": 180.41586875915527
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 135.53297519683838,
-              "right": 132.71737098693848
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 101.13346576690674,
-              "right": 99.40481185913086
-            }
-          },
-          {
-            "frame": 31,
-            "chin_clearance_mm": -13.378174967956458,
-            "elbows_deg": {
-              "left": 55.97090148925781,
-              "right": 56.446651458740234
-            },
-            "hip_height_m": 0.8610110282897949,
-            "elbow_bar_clearance_mm": {
-              "left": 185.42420864105225,
-              "right": 182.4929714202881
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 137.89987564086914,
-              "right": 132.5511932373047
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 92.85855293273926,
-              "right": 89.24639225006104
-            }
-          },
-          {
-            "frame": 32,
-            "chin_clearance_mm": -32.487066455078036,
-            "elbows_deg": {
-              "left": 59.66898727416992,
-              "right": 59.84318542480469
-            },
-            "hip_height_m": 0.8408223390579224,
-            "elbow_bar_clearance_mm": {
-              "left": 188.36373090744019,
-              "right": 185.890793800354
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 137.74365186691284,
-              "right": 133.6139440536499
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 78.62192392349243,
-              "right": 75.41501522064209
-            }
-          },
-          {
-            "frame": 33,
-            "chin_clearance_mm": -56.82984179992667,
-            "elbows_deg": {
-              "left": 64.60586547851562,
-              "right": 65.036376953125
-            },
-            "hip_height_m": 0.815248966217041,
-            "elbow_bar_clearance_mm": {
-              "left": 192.07477569580078,
-              "right": 188.8716220855713
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 138.8249397277832,
-              "right": 133.34786891937256
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 60.29927730560303,
-              "right": 56.29754066467285
-            }
-          },
-          {
-            "frame": 34,
-            "chin_clearance_mm": -85.73034591217032,
-            "elbows_deg": {
-              "left": 71.52104949951172,
-              "right": 71.94695281982422
-            },
-            "hip_height_m": 0.785035252571106,
-            "elbow_bar_clearance_mm": {
-              "left": 195.15001773834229,
-              "right": 191.83117151260376
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.1083002090454,
-              "right": 133.61018896102905
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 37.077903747558594,
-              "right": 32.8863263130188
-            }
-          },
-          {
-            "frame": 35,
-            "chin_clearance_mm": -117.92054957885733,
-            "elbows_deg": {
-              "left": 80.2277603149414,
-              "right": 80.83821105957031
-            },
-            "hip_height_m": 0.7515112161636353,
-            "elbow_bar_clearance_mm": {
-              "left": 197.03638553619385,
-              "right": 193.8791275024414
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.16170597076416,
-              "right": 133.73208045959473
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": 9.587645530700684,
-              "right": 5.4759979248046875
-            }
-          },
-          {
-            "frame": 36,
-            "chin_clearance_mm": -151.60337276000968,
-            "elbows_deg": {
-              "left": 90.94248962402344,
-              "right": 91.68439483642578
-            },
-            "hip_height_m": 0.7165284156799316,
-            "elbow_bar_clearance_mm": {
-              "left": 198.25196266174316,
-              "right": 195.18333673477173
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.51396942138672,
-              "right": 134.13923978805542
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -19.945502281188965,
-              "right": -24.05494451522827
-            }
-          },
-          {
-            "frame": 37,
-            "chin_clearance_mm": -184.69909019012442,
-            "elbows_deg": {
-              "left": 102.74951171875,
-              "right": 104.05558013916016
-            },
-            "hip_height_m": 0.6822111010551453,
-            "elbow_bar_clearance_mm": {
-              "left": 198.45128059387207,
-              "right": 195.53649425506592
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.81592655181885,
-              "right": 134.5597505569458
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -49.880385398864746,
-              "right": -53.92485857009888
-            }
-          },
-          {
-            "frame": 38,
-            "chin_clearance_mm": -215.20045585174552,
-            "elbows_deg": {
-              "left": 113.12995910644531,
-              "right": 114.58562469482422
-            },
-            "hip_height_m": 0.6506015062332153,
-            "elbow_bar_clearance_mm": {
-              "left": 198.39370250701904,
-              "right": 195.4978108406067
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.69647884368896,
-              "right": 134.4354748725891
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -77.54725217819214,
-              "right": -81.66080713272095
-            }
-          },
-          {
-            "frame": 39,
-            "chin_clearance_mm": -241.51429719467154,
-            "elbows_deg": {
-              "left": 123.2940444946289,
-              "right": 125.21268463134766
-            },
-            "hip_height_m": 0.623318612575531,
-            "elbow_bar_clearance_mm": {
-              "left": 198.2405185699463,
-              "right": 195.80233097076416
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.46664333343506,
-              "right": 134.69064235687256
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -101.29040479660034,
-              "right": -105.03017902374268
-            }
-          },
-          {
-            "frame": 40,
-            "chin_clearance_mm": -262.68890685577384,
-            "elbows_deg": {
-              "left": 133.0730743408203,
-              "right": 135.46009826660156
-            },
-            "hip_height_m": 0.6013307571411133,
-            "elbow_bar_clearance_mm": {
-              "left": 198.3221173286438,
-              "right": 195.23251056671143
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 139.58364725112915,
-              "right": 134.2151165008545
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -119.92895603179932,
-              "right": -124.39656257629395
-            }
-          },
-          {
-            "frame": 41,
-            "chin_clearance_mm": -278.46399135131827,
-            "elbows_deg": {
-              "left": 154.66078186035156,
-              "right": 156.00282287597656
-            },
-            "hip_height_m": 0.5849090218544006,
-            "elbow_bar_clearance_mm": {
-              "left": 161.1233949661255,
-              "right": 162.8119945526123
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 127.44653224945068,
-              "right": 123.68667125701904
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -170.81910371780396,
-              "right": -170.57394981384277
-            }
-          },
-          {
-            "frame": 42,
-            "chin_clearance_mm": -289.1351897193908,
-            "elbows_deg": {
-              "left": 167.3700408935547,
-              "right": 167.9385528564453
-            },
-            "hip_height_m": 0.5737649202346802,
-            "elbow_bar_clearance_mm": {
-              "left": 169.09241676330566,
-              "right": 171.1064577102661
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 133.3463191986084,
-              "right": 128.80146503448486
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -171.90927267074585,
-              "right": -171.389639377594
-            }
-          },
-          {
-            "frame": 43,
-            "chin_clearance_mm": -295.2642757369994,
-            "elbows_deg": {
-              "left": 170.5904083251953,
-              "right": 171.282958984375
-            },
-            "hip_height_m": 0.5673432946205139,
-            "elbow_bar_clearance_mm": {
-              "left": 173.67839813232422,
-              "right": 175.33040046691895
-            },
-            "elbow_wrist_clearance_mm": {
-              "left": 133.62514972686768,
-              "right": 128.3048391342163
-            },
-            "elbow_shoulder_clearance_mm": {
-              "left": -172.41275310516357,
-              "right": -172.28811979293823
-            }
-          }
-        ],
-        "elbow_pole": {
-          "frames": 43,
-          "measured_frames": 43,
-          "peak_frame": 28,
-          "minimum_bar_clearance_mm": 5.016803741455078,
-          "minimum_wrist_clearance_mm": 10.015487670898438,
-          "peak_minimum_shoulder_clearance_mm": 105.53574562072754,
-          "max_elbow_above_bar_mm": 0.0,
-          "max_elbow_above_wrist_mm": 0.0,
-          "peak_elbow_above_shoulder_mm": 0.0
-        },
-        "chin_proxy": {
-          "method": "lowest central 20% / front 40% rigid head rest-surface band; geometric lower-face proxy, not anatomical calibration",
-          "rest_indices": [
-            10335,
-            10336,
-            10351,
-            10352,
-            28369
-          ],
-          "rest_points_m": [
-            [
-              0.01635742001235485,
-              0.061523448675870895,
-              0.7490233778953552
-            ],
-            [
-              0.02221679501235485,
-              0.0585937574505806,
-              0.7509765028953552
-            ],
-            [
-              0.0051269507966935635,
-              0.0566406324505806,
-              0.7495116591453552
-            ],
-            [
-              0.010498044081032276,
-              0.0551757887005806,
-              0.7499999403953552
-            ],
-            [
-              -0.02221679873764515,
-              0.0585937574505806,
-              0.7509765028953552
-            ]
-          ]
-        }
-      },
-      "elbow_width_references": {
-        "start": {
-          "elbow_width_ratio": {
-            "value": 1.616,
-            "method": "flat",
-            "cross": 1.41,
-            "uncertain": false,
-            "image": "img-96142bf0"
-          }
-        },
-        "end": {
-          "elbow_width_ratio": {
-            "value": 2.048,
-            "method": "flat",
-            "cross": 1.999,
-            "uncertain": false,
-            "image": "img-9a54cdbb"
-          }
-        }
-      },
-      "elbow_width_phase_frames": {
-        "start": 1,
-        "middle": 13,
-        "end": 25
-      },
-      "elbow_width_goals": [
-        {
-          "frame": 1,
-          "ratio": 1.616
-        },
-        {
-          "frame": 2,
-          "ratio": 1.61708612758555
-        },
-        {
-          "frame": 3,
-          "ratio": 1.6203423834605044
-        },
-        {
-          "frame": 4,
-          "ratio": 1.6259015007973072
-        },
-        {
-          "frame": 5,
-          "ratio": 1.63401649974426
-        },
-        {
-          "frame": 6,
-          "ratio": 1.6449838045909209
-        },
-        {
-          "frame": 7,
-          "ratio": 1.6590714812042484
-        },
-        {
-          "frame": 8,
-          "ratio": 1.6764554305777537
-        },
-        {
-          "frame": 9,
-          "ratio": 1.6971673983900688
-        },
-        {
-          "frame": 10,
-          "ratio": 1.7210591331097167
-        },
-        {
-          "frame": 11,
-          "ratio": 1.747787655370039
-        },
-        {
-          "frame": 12,
-          "ratio": 1.776822190028054
-        },
-        {
-          "frame": 13,
-          "ratio": 1.8074721307200745
-        },
-        {
-          "frame": 14,
-          "ratio": 1.8389343038993744
-        },
-        {
-          "frame": 15,
-          "ratio": 1.8703511036025153
-        },
-        {
-          "frame": 16,
-          "ratio": 1.9008732738460474
-        },
-        {
-          "frame": 17,
-          "ratio": 1.929718909900193
-        },
-        {
-          "frame": 18,
-          "ratio": 1.9562199345925528
-        },
-        {
-          "frame": 19,
-          "ratio": 1.979852268518814
-        },
-        {
-          "frame": 20,
-          "ratio": 2.0002418955942516
-        },
-        {
-          "frame": 21,
-          "ratio": 2.0171547012856292
-        },
-        {
-          "frame": 22,
-          "ratio": 2.030462757597667
-        },
-        {
-          "frame": 23,
-          "ratio": 2.0400966651683916
-        },
-        {
-          "frame": 24,
-          "ratio": 2.0459871821826248
-        },
-        {
-          "frame": 25,
-          "ratio": 2.048
-        },
-        {
-          "frame": 26,
-          "ratio": 2.048
-        },
-        {
-          "frame": 27,
-          "ratio": 2.048
-        },
-        {
-          "frame": 28,
-          "ratio": 2.048
-        },
-        {
-          "frame": 29,
-          "ratio": 2.0435159819732918
-        },
-        {
-          "frame": 30,
-          "ratio": 2.030462757597667
-        },
-        {
-          "frame": 31,
-          "ratio": 2.009142895487579
-        },
-        {
-          "frame": 32,
-          "ratio": 1.979852268518814
-        },
-        {
-          "frame": 33,
-          "ratio": 1.9432988919755985
-        },
-        {
-          "frame": 34,
-          "ratio": 1.9008732738460474
-        },
-        {
-          "frame": 35,
-          "ratio": 1.8547022958251012
-        },
-        {
-          "frame": 36,
-          "ratio": 1.8074721307200745
-        },
-        {
-          "frame": 37,
-          "ratio": 1.762056510794417
-        },
-        {
-          "frame": 38,
-          "ratio": 1.7210591331097167
-        },
-        {
-          "frame": 39,
-          "ratio": 1.6864002567429208
-        },
-        {
-          "frame": 40,
-          "ratio": 1.6590714812042484
-        },
-        {
-          "frame": 41,
-          "ratio": 1.6391253483489043
-        },
-        {
-          "frame": 42,
-          "ratio": 1.6259015007973072
-        },
-        {
-          "frame": 43,
-          "ratio": 1.618438588023344
-        }
+      "left_eye": [
+        -0.045,
+        -0.62518,
+        -0.05612
       ],
-      "grip_ratio": 1.772,
-      "requested_grip_ratio": 1.762,
-      "grip_source": "bounded fit within the photographed grip tolerance",
-      "grip_adaptation": {
-        "requested_ratio": 1.762,
-        "chosen_ratio": 1.772,
-        "allowed_ratio_difference": 0.12,
-        "span_change_mm": 2.4061499536037467,
-        "fit_satisfied": true,
-        "method": "nearest source grip search within the unchanged dead-hang, wrist and photographed elbow-width limits"
-      },
-      "body_clearance": {
-        "status": "clear_at_samples",
-        "worst": null,
-        "measured_frames": 43,
-        "first_frame": 1,
-        "last_frame": 43,
-        "max_penetration_mm": 0.0,
-        "sample_spacing_mm": 12.560264062499993,
-        "triangles": 43067,
-        "frames": []
-      },
-      "grip_reference": {
-        "value": 1.762,
-        "method": "flat",
-        "cross": 1.41,
-        "uncertain": true,
-        "image": "img-96142bf0"
-      }
+      "left_eye_outer": [
+        -0.04297,
+        -0.62717,
+        -0.05613
+      ],
+      "right_eye_inner": [
+        -0.01917,
+        -0.63912,
+        -0.08201
+      ],
+      "right_eye": [
+        -0.01315,
+        -0.63646,
+        -0.09401
+      ],
+      "right_eye_outer": [
+        -0.00921,
+        -0.62781,
+        -0.07044
+      ],
+      "left_ear": [
+        -0.05755,
+        -0.57887,
+        -0.13549
+      ],
+      "right_ear": [
+        0.03217,
+        -0.54845,
+        -0.11326
+      ],
+      "mouth_left": [
+        -0.03499,
+        -0.58918,
+        -0.04045
+      ],
+      "mouth_right": [
+        -0.00765,
+        -0.55947,
+        -0.06853
+      ],
+      "left_shoulder": [
+        -0.11792,
+        -0.48503,
+        -0.08165
+      ],
+      "right_shoulder": [
+        0.12756,
+        -0.57155,
+        -0.01961
+      ],
+      "left_elbow": [
+        -0.20209,
+        -0.70442,
+        -0.10498
+      ],
+      "right_elbow": [
+        0.17288,
+        -0.71823,
+        -0.06447
+      ],
+      "left_wrist": [
+        -0.22396,
+        -0.92441,
+        -0.04021
+      ],
+      "right_wrist": [
+        0.1525,
+        -0.9494,
+        -0.04465
+      ],
+      "left_pinky": [
+        -0.24621,
+        -0.98078,
+        -0.01553
+      ],
+      "right_pinky": [
+        0.18136,
+        -1.01494,
+        -0.08067
+      ],
+      "left_index": [
+        -0.23127,
+        -0.98706,
+        -0.02912
+      ],
+      "right_index": [
+        0.18237,
+        -1.05044,
+        -0.07311
+      ],
+      "left_thumb": [
+        -0.21022,
+        -0.92117,
+        -0.04407
+      ],
+      "right_thumb": [
+        0.14171,
+        -0.97919,
+        -0.04496
+      ],
+      "left_hip": [
+        -0.07034,
+        -0.00149,
+        0.01704
+      ],
+      "right_hip": [
+        0.07031,
+        -0.00768,
+        -0.01546
+      ],
+      "left_knee": [
+        -0.08651,
+        0.31289,
+        -0.04867
+      ],
+      "right_knee": [
+        0.14018,
+        0.28431,
+        -0.05354
+      ],
+      "left_ankle": [
+        0.04823,
+        0.46632,
+        -0.20803
+      ],
+      "right_ankle": [
+        0.12854,
+        0.48539,
+        -0.27238
+      ],
+      "left_heel": [
+        0.04186,
+        0.48047,
+        -0.21421
+      ],
+      "right_heel": [
+        0.12572,
+        0.49454,
+        -0.3284
+      ],
+      "left_foot_index": [
+        0.04151,
+        0.5174,
+        -0.17835
+      ],
+      "right_foot_index": [
+        0.1242,
+        0.51205,
+        -0.33956
+      ]
     },
-    "validation": {
-      "rows": [
-        {
-          "group": "body",
-          "metric": "equipment_gap_left",
-          "target": 3.0,
-          "ours": 0.025005952744183713,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_penetration_left",
-          "target": 3.0,
-          "ours": 0.7962669078981034,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_gap_right",
-          "target": 3.0,
-          "ours": 0.05106186532680655,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_penetration_right",
-          "target": 3.0,
-          "ours": 0.8000199362014132,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_anchor_error",
-          "target": 2.0,
-          "ours": 0.0018514639055109256,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_path_adaptation",
-          "target": 20.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Reach adaptation changes the photographed equipment path.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "equipment_body_overlap",
-          "target": 3.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Conservative shaft/body surface samples; overlap candidates need visual review.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_chin_shortfall",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "The lower-face geometric proxy must clear the top of the fixed bar at the top of the rep. Inspect the rendered chin too.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_extension_shortfall",
-          "target": 5.0,
-          "ours": 4.9587249755859375,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": "Both elbows must reach at least 175 degrees together at the bottom; a secure grip alone is incomplete movement.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_bar_drift",
-          "target": 1.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "The body moves below a fixed pull-up bar.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_bar_rotation",
-          "target": 0.1,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "deg",
-          "note": null,
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_hang_body_adaptation",
-          "target": 20.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Declared whole-body lowering completes the dead hang without stretching the arms or moving the bar.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_elbow_above_bar",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "Both elbows must remain below the fixed bar throughout the pull-up.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_elbow_above_wrist",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "The forearms must point upward to the fixed grip; an inverted elbow branch is rejected.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "pullup_peak_elbow_above_shoulder",
-          "target": 0.0,
-          "ours": 0.0,
-          "status": "pass",
-          "kind": null,
-          "frame": null,
-          "unit": "mm",
-          "note": "At the highest body position the elbows must lie below their shoulders, as in the source pull-up.",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "folded_skin",
-          "target": 99.9,
-          "ours": 274.1,
-          "unit": "mm2",
-          "status": "info",
-          "frame": 39,
-          "note": "Folds hidden from every view at the left elbow (up to 274 mm\u00b2, 2 of 43 frames), the right elbow (up to 201 mm\u00b2, frames 38\u201339), the left shoulder (up to 182 mm\u00b2, 27 of 43 frames), the right shoulder (up to 167 mm\u00b2, 22 of 43 frames) and the left collarbone (up to 104 mm\u00b2, frame 37); plus creases at the elbows and the knees, which are normal in deep bends",
-          "kind": "not-judged",
-          "uncertain_why": null
-        },
-        {
-          "group": "body",
-          "metric": "smooth_motion",
-          "target": 0,
-          "ours": 0,
-          "unit": "frames",
-          "status": "pass",
-          "frame": null,
-          "note": null,
-          "kind": null,
-          "uncertain_why": null
-        }
+    "pixels": {
+      "nose": [
+        420.24,
+        151.72
       ],
-      "ready": true
+      "left_eye_inner": [
+        416.29,
+        146.7
+      ],
+      "left_eye": [
+        413.4,
+        147.02
+      ],
+      "left_eye_outer": [
+        410.26,
+        147.65
+      ],
+      "right_eye_inner": [
+        424.57,
+        145.31
+      ],
+      "right_eye": [
+        427.4,
+        145.03
+      ],
+      "right_eye_outer": [
+        430.68,
+        144.85
+      ],
+      "left_ear": [
+        405.84,
+        154.3
+      ],
+      "right_ear": [
+        433.47,
+        152.46
+      ],
+      "mouth_left": [
+        416.4,
+        160.08
+      ],
+      "mouth_right": [
+        424.91,
+        158.98
+      ],
+      "left_shoulder": [
+        387.2,
+        190.23
+      ],
+      "right_shoulder": [
+        465.84,
+        186.48
+      ],
+      "left_elbow": [
+        358.96,
+        129.54
+      ],
+      "right_elbow": [
+        485.95,
+        121.61
+      ],
+      "left_wrist": [
+        347.9,
+        59.76
+      ],
+      "right_wrist": [
+        486.62,
+        57.51
+      ],
+      "left_pinky": [
+        340.51,
+        50.67
+      ],
+      "right_pinky": [
+        494.22,
+        47.37
+      ],
+      "left_index": [
+        351.46,
+        48.37
+      ],
+      "right_index": [
+        482.54,
+        46.05
+      ],
+      "left_thumb": [
+        357.31,
+        50.27
+      ],
+      "right_thumb": [
+        477.02,
+        48.94
+      ],
+      "left_hip": [
+        406.34,
+        339.84
+      ],
+      "right_hip": [
+        452.58,
+        334.51
+      ],
+      "left_knee": [
+        392.82,
+        444.2
+      ],
+      "right_knee": [
+        455.42,
+        434.26
+      ],
+      "left_ankle": [
+        433.77,
+        474.43
+      ],
+      "right_ankle": [
+        447.66,
+        476.96
+      ],
+      "left_heel": [
+        446.48,
+        467.6
+      ],
+      "right_heel": [
+        452.82,
+        470.15
+      ],
+      "left_foot_index": [
+        442.7,
+        521.12
+      ],
+      "right_foot_index": [
+        449.8,
+        520.85
+      ]
+    },
+    "visibility": {
+      "left_shoulder": 1.0,
+      "right_shoulder": 1.0,
+      "left_elbow": 0.987,
+      "right_elbow": 0.952,
+      "left_wrist": 0.993,
+      "right_wrist": 0.988,
+      "left_hip": 1.0,
+      "right_hip": 1.0,
+      "left_knee": 0.782,
+      "right_knee": 0.911,
+      "left_ankle": 0.774,
+      "right_ankle": 0.871
     }
   },
-  "contact": {
-    "penetration_mm": 0.0,
-    "penetration_frame": null,
-    "sides": {
-      "left": {
-        "sole_vertices": 85,
-        "sole_slide_mm": 234.87,
-        "slide_frame": 27,
-        "sole_lift_mm": 337.21,
-        "initial_floor_gap_mm": 99.91127252578735
-      },
-      "right": {
-        "sole_vertices": 79,
-        "sole_slide_mm": 236.5,
-        "slide_frame": 28,
-        "sole_lift_mm": 337.1,
-        "initial_floor_gap_mm": 100.28597712516785
-      }
+  "img-9a54cdbb": {
+    "image": "img-9a54cdbb.jpg",
+    "size": [
+      850,
+      567
+    ],
+    "view": "frontal",
+    "shoulder_span": 0.667,
+    "camera_side": "right",
+    "facing": null,
+    "crop": [
+      0.3284,
+      0.0,
+      0.6555,
+      0.8135
+    ],
+    "flat": {
+      "knee_included": 160.199,
+      "hip_included": 168.076,
+      "elbow_included": 22.483,
+      "upperarm_vs_torso": 53.167,
+      "torso_lean": 0.264,
+      "hip_below_knee": -0.524,
+      "thigh_level": -87.32,
+      "grip_ratio": 1.675,
+      "elbow_width_ratio": 2.048,
+      "back_rounding": null,
+      "back_seen": null,
+      "back_span": null,
+      "back_why": null,
+      "neck_vs_torso": null,
+      "head_pitch": null,
+      "seat_below_knee": null
     },
-    "box": [
-      [
-        -0.2995413541793823,
-        -0.13492542505264282,
-        0.09991127252578735
+    "3d": {
+      "knee_included": 112.039,
+      "hip_included": 152.378,
+      "elbow_included": 36.143,
+      "upperarm_vs_torso": 60.25,
+      "torso_lean": 15.49,
+      "hip_below_knee": -0.57,
+      "thigh_level": -57.827,
+      "grip_ratio": 1.412,
+      "elbow_width_ratio": 1.999,
+      "neck_vs_torso": null
+    },
+    "world": {
+      "nose": [
+        -0.01534,
+        -0.64229,
+        -0.03139
       ],
-      [
-        0.2848496437072754,
-        0.273672491312027,
-        1.418956995010376
+      "left_eye_inner": [
+        -0.03637,
+        -0.65874,
+        -0.07877
+      ],
+      "left_eye": [
+        -0.03484,
+        -0.66075,
+        -0.0667
+      ],
+      "left_eye_outer": [
+        -0.03281,
+        -0.66111,
+        -0.0679
+      ],
+      "right_eye_inner": [
+        0.01185,
+        -0.67622,
+        -0.09792
+      ],
+      "right_eye": [
+        0.01604,
+        -0.67328,
+        -0.11435
+      ],
+      "right_eye_outer": [
+        0.0207,
+        -0.66283,
+        -0.08787
+      ],
+      "left_ear": [
+        -0.1006,
+        -0.5952,
+        -0.20184
+      ],
+      "right_ear": [
+        0.06672,
+        -0.55665,
+        -0.19861
+      ],
+      "mouth_left": [
+        -0.02964,
+        -0.60263,
+        -0.04834
+      ],
+      "mouth_right": [
+        0.01742,
+        -0.57114,
+        -0.08025
+      ],
+      "left_shoulder": [
+        -0.19454,
+        -0.44293,
+        -0.14568
+      ],
+      "right_shoulder": [
+        0.19165,
+        -0.48733,
+        -0.10847
+      ],
+      "left_elbow": [
+        -0.35389,
+        -0.33082,
+        -0.10836
+      ],
+      "right_elbow": [
+        0.42385,
+        -0.30304,
+        -0.04638
+      ],
+      "left_wrist": [
+        -0.26878,
+        -0.50428,
+        0.03234
+      ],
+      "right_wrist": [
+        0.28212,
+        -0.48276,
+        0.0455
+      ],
+      "left_pinky": [
+        -0.26971,
+        -0.57121,
+        0.06964
+      ],
+      "right_pinky": [
+        0.27931,
+        -0.53767,
+        0.04137
+      ],
+      "left_index": [
+        -0.23749,
+        -0.60671,
+        0.08245
+      ],
+      "right_index": [
+        0.25577,
+        -0.60085,
+        0.05387
+      ],
+      "left_thumb": [
+        -0.24305,
+        -0.51019,
+        0.03972
+      ],
+      "right_thumb": [
+        0.25173,
+        -0.52202,
+        0.0517
+      ],
+      "left_hip": [
+        -0.10577,
+        0.00195,
+        0.01827
+      ],
+      "right_hip": [
+        0.10773,
+        -0.0108,
+        -0.01712
+      ],
+      "left_knee": [
+        -0.14426,
+        0.38859,
+        0.21141
+      ],
+      "right_knee": [
+        0.15933,
+        0.2616,
+        0.14629
+      ],
+      "left_ankle": [
+        0.12378,
+        0.50072,
+        0.07028
+      ],
+      "right_ankle": [
+        0.02823,
+        0.50306,
+        0.01137
+      ],
+      "left_heel": [
+        0.13112,
+        0.51541,
+        0.06971
+      ],
+      "right_heel": [
+        0.00816,
+        0.52471,
+        -0.04169
+      ],
+      "left_foot_index": [
+        0.13037,
+        0.61023,
+        0.17841
+      ],
+      "right_foot_index": [
+        0.01049,
+        0.5992,
+        0.01571
       ]
-    ]
-  },
-  "deformation": {
-    "crack_max_mm": 0.0,
-    "max_growth_mm": 21.25383415770984,
-    "growth_frame": 28,
-    "coincident_unconnected_pairs": 22773,
-    "deepest_frame": 1,
-    "deepest": {
-      "max_growth_mm": 17.74702904744251,
-      "max_growth_pct": 1.7762803943835601,
-      "edges_over_1pct": 7,
-      "edges_over_0_5pct": 86,
-      "worst_edge_at": [
-        0.0005,
-        0.0103,
-        0.3418
+    },
+    "pixels": {
+      "nose": [
+        419.86,
+        54.25
       ],
-      "worst_edge_posed_at": [
-        0.0005,
-        0.1448,
-        0.4644
+      "left_eye_inner": [
+        415.12,
+        47.52
       ],
-      "worst_edge_rest_mm": 1.7605431265981077,
-      "crack_max_mm": 0.0,
-      "skin_max_move_mm": 589.5871338613163
+      "left_eye": [
+        412.14,
+        47.76
+      ],
+      "left_eye_outer": [
+        409.22,
+        47.98
+      ],
+      "right_eye_inner": [
+        424.57,
+        47.62
+      ],
+      "right_eye": [
+        427.88,
+        47.9
+      ],
+      "right_eye_outer": [
+        431.33,
+        48.26
+      ],
+      "left_ear": [
+        403.27,
+        53.47
+      ],
+      "right_ear": [
+        434.82,
+        53.44
+      ],
+      "mouth_left": [
+        414.95,
+        62.21
+      ],
+      "mouth_right": [
+        425.1,
+        62.11
+      ],
+      "left_shoulder": [
+        373.46,
+        107.58
+      ],
+      "right_shoulder": [
+        462.68,
+        105.57
+      ],
+      "left_elbow": [
+        326.8,
+        158.12
+      ],
+      "right_elbow": [
+        509.52,
+        154.2
+      ],
+      "left_wrist": [
+        341.71,
+        100.71
+      ],
+      "right_wrist": [
+        491.09,
+        107.27
+      ],
+      "left_pinky": [
+        340.64,
+        86.52
+      ],
+      "right_pinky": [
+        490.68,
+        95.76
+      ],
+      "left_index": [
+        350.99,
+        84.28
+      ],
+      "right_index": [
+        482.24,
+        94.51
+      ],
+      "left_thumb": [
+        352.7,
+        88.87
+      ],
+      "right_thumb": [
+        481.53,
+        98.83
+      ],
+      "left_hip": [
+        396.55,
+        240.91
+      ],
+      "right_hip": [
+        440.82,
+        239.88
+      ],
+      "left_knee": [
+        376.11,
+        308.88
+      ],
+      "right_knee": [
+        444.1,
+        309.98
+      ],
+      "left_ankle": [
+        433.72,
+        368.7
+      ],
+      "right_ankle": [
+        425.12,
+        371.58
+      ],
+      "left_heel": [
+        447.84,
+        379.66
+      ],
+      "right_heel": [
+        417.88,
+        379.16
+      ],
+      "left_foot_index": [
+        439.94,
+        409.31
+      ],
+      "right_foot_index": [
+        419.46,
+        413.66
+      ]
+    },
+    "visibility": {
+      "left_shoulder": 1.0,
+      "right_shoulder": 1.0,
+      "left_elbow": 0.997,
+      "right_elbow": 1.0,
+      "left_wrist": 0.96,
+      "right_wrist": 0.992,
+      "left_hip": 1.0,
+      "right_hip": 1.0,
+      "left_knee": 0.901,
+      "right_knee": 0.943,
+      "left_ankle": 0.958,
+      "right_ankle": 0.981
     }
-  },
-  "preview_box": [
-    [
-      -0.7809903860092163,
-      -0.7110528141260147,
-      -0.07094784975051882
-    ],
-    [
-      0.7798623085021973,
-      0.8497998803853989,
-      1.4899048447608947
-    ]
-  ],
-  "preview_cameras": [
-    [
-      35.0,
-      10.0
-    ],
-    [
-      90.0,
-      5.0
-    ]
-  ],
-  "preview_camera_space": "world",
-  "skin_preflight": {
-    "first": 1,
-    "last": 43,
-    "preview_box": [
-      [
-        -0.7809903860092163,
-        -0.7110528141260147,
-        -0.07094784975051882
-      ],
-      [
-        0.7798623085021973,
-        0.8497998803853989,
-        1.4899048447608947
-      ]
-    ],
-    "preview_cameras": [
-      [
-        35.0,
-        10.0
-      ],
-      [
-        90.0,
-        5.0
-      ]
-    ],
-    "preview_camera_space": "world",
-    "preview_camera_positions": [
-      [
-        -2.2185080602137632,
-        3.2369258664437437,
-        1.3913115504326319
-      ],
-      [
-        -3.9121425041080737,
-        0.06937353312969231,
-        1.0516972697158435
-      ]
-    ],
-    "comparison_camera_frames": [
-      1,
-      25
-    ],
-    "comparison_cameras": [
-      {
-        "image": "img-96142bf0",
-        "phase": "start",
-        "frame": 1,
-        "view": "behind",
-        "azimuth": 180.3313413761972,
-        "elevation": 5.0,
-        "location": [
-          0.015358880626109322,
-          -2.692325757567462,
-          0.8935950365283688
-        ]
-      },
-      {
-        "image": "img-9a54cdbb",
-        "phase": "end",
-        "frame": 25,
-        "view": "behind",
-        "azimuth": 180.3313413761972,
-        "elevation": 5.0,
-        "location": [
-          0.013406263113796238,
-          -2.396663917260873,
-          1.142573665301498
-        ]
-      }
-    ],
-    "height_m": 0.9995,
-    "folds": [
-      {
-        "frame": 1,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 121.6,
-        "visible_mm2": 59.6,
-        "centre": [
-          0.112,
-          0.07,
-          0.866
-        ]
-      },
-      {
-        "frame": 1,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 173.4,
-        "visible_mm2": 19.4,
-        "centre": [
-          -0.115,
-          0.07,
-          0.868
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 117.0,
-        "visible_mm2": 49.8,
-        "centre": [
-          0.113,
-          0.07,
-          0.867
-        ]
-      },
-      {
-        "frame": 2,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 160.4,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.116,
-          0.071,
-          0.87
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 114.9,
-        "visible_mm2": 49.2,
-        "centre": [
-          0.113,
-          0.068,
-          0.87
-        ]
-      },
-      {
-        "frame": 3,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 157.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.117,
-          0.069,
-          0.872
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 112.0,
-        "visible_mm2": 48.4,
-        "centre": [
-          0.114,
-          0.065,
-          0.874
-        ]
-      },
-      {
-        "frame": 4,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 137.8,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.118,
-          0.067,
-          0.877
-        ]
-      },
-      {
-        "frame": 5,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 133.7,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.118,
-          0.063,
-          0.884
-        ]
-      },
-      {
-        "frame": 6,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 122.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.119,
-          0.058,
-          0.893
-        ]
-      },
-      {
-        "frame": 16,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 117.1,
-        "visible_mm2": 117.1,
-        "centre": [
-          0.073,
-          0.159,
-          0.538
-        ]
-      },
-      {
-        "frame": 17,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 139.9,
-        "visible_mm2": 139.9,
-        "centre": [
-          0.072,
-          0.171,
-          0.559
-        ]
-      },
-      {
-        "frame": 18,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 210.1,
-        "visible_mm2": 116.5,
-        "centre": [
-          0.071,
-          0.182,
-          0.579
-        ]
-      },
-      {
-        "frame": 18,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 125.7,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.177,
-          0.583
-        ]
-      },
-      {
-        "frame": 19,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 221.6,
-        "visible_mm2": 124.3,
-        "centre": [
-          0.071,
-          0.191,
-          0.597
-        ]
-      },
-      {
-        "frame": 19,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 102.3,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.02,
-          1.049
-        ]
-      },
-      {
-        "frame": 19,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 133.5,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.186,
-          0.601
-        ]
-      },
-      {
-        "frame": 20,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 232.6,
-        "visible_mm2": 132.1,
-        "centre": [
-          0.071,
-          0.2,
-          0.613
-        ]
-      },
-      {
-        "frame": 20,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 116.3,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.021,
-          1.062
-        ]
-      },
-      {
-        "frame": 20,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 140.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.195,
-          0.616
-        ]
-      },
-      {
-        "frame": 20,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 132.8,
-        "visible_mm2": 21.8,
-        "centre": [
-          -0.101,
-          0.022,
-          1.062
-        ]
-      },
-      {
-        "frame": 21,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 242.5,
-        "visible_mm2": 139.2,
-        "centre": [
-          0.071,
-          0.208,
-          0.626
-        ]
-      },
-      {
-        "frame": 21,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 153.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.019,
-          1.073
-        ]
-      },
-      {
-        "frame": 21,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 179.0,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.083,
-          0.205,
-          0.628
-        ]
-      },
-      {
-        "frame": 21,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 182.1,
-        "visible_mm2": 45.8,
-        "centre": [
-          -0.1,
-          0.023,
-          1.074
-        ]
-      },
-      {
-        "frame": 22,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 250.9,
-        "visible_mm2": 145.3,
-        "centre": [
-          0.071,
-          0.215,
-          0.637
-        ]
-      },
-      {
-        "frame": 22,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 166.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.02,
-          1.082
-        ]
-      },
-      {
-        "frame": 22,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 192.7,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.211,
-          0.638
-        ]
-      },
-      {
-        "frame": 22,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 157.9,
-        "visible_mm2": 23.5,
-        "centre": [
-          -0.101,
-          0.024,
-          1.081
-        ]
-      },
-      {
-        "frame": 23,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 257.3,
-        "visible_mm2": 75.3,
-        "centre": [
-          0.071,
-          0.22,
-          0.644
-        ]
-      },
-      {
-        "frame": 23,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 150.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.021,
-          1.087
-        ]
-      },
-      {
-        "frame": 23,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 217.3,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.083,
-          0.218,
-          0.645
-        ]
-      },
-      {
-        "frame": 23,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 164.2,
-        "visible_mm2": 23.9,
-        "centre": [
-          -0.101,
-          0.024,
-          1.087
-        ]
-      },
-      {
-        "frame": 24,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 261.4,
-        "visible_mm2": 31.3,
-        "centre": [
-          0.071,
-          0.223,
-          0.649
-        ]
-      },
-      {
-        "frame": 24,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 153.1,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.022,
-          1.091
-        ]
-      },
-      {
-        "frame": 24,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 220.7,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.083,
-          0.221,
-          0.649
-        ]
-      },
-      {
-        "frame": 24,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 167.3,
-        "visible_mm2": 24.1,
-        "centre": [
-          -0.101,
-          0.025,
-          1.091
-        ]
-      },
-      {
-        "frame": 25,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 262.8,
-        "visible_mm2": 31.7,
-        "centre": [
-          0.071,
-          0.224,
-          0.651
-        ]
-      },
-      {
-        "frame": 25,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 154.0,
-        "visible_mm2": 16.8,
-        "centre": [
-          0.096,
-          0.022,
-          1.092
-        ]
-      },
-      {
-        "frame": 25,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 295.4,
-        "visible_mm2": 8.4,
-        "centre": [
-          -0.081,
-          0.223,
-          0.651
-        ]
-      },
-      {
-        "frame": 25,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 167.1,
-        "visible_mm2": 31.9,
-        "centre": [
-          -0.101,
-          0.025,
-          1.092
-        ]
-      },
-      {
-        "frame": 26,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 262.8,
-        "visible_mm2": 31.7,
-        "centre": [
-          0.071,
-          0.224,
-          0.651
-        ]
-      },
-      {
-        "frame": 26,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 153.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.022,
-          1.092
-        ]
-      },
-      {
-        "frame": 26,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 295.4,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.081,
-          0.223,
-          0.651
-        ]
-      },
-      {
-        "frame": 26,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 167.1,
-        "visible_mm2": 24.0,
-        "centre": [
-          -0.101,
-          0.025,
-          1.092
-        ]
-      },
-      {
-        "frame": 27,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 262.8,
-        "visible_mm2": 31.7,
-        "centre": [
-          0.071,
-          0.224,
-          0.651
-        ]
-      },
-      {
-        "frame": 27,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 153.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.022,
-          1.092
-        ]
-      },
-      {
-        "frame": 27,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 295.4,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.081,
-          0.223,
-          0.651
-        ]
-      },
-      {
-        "frame": 27,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 167.1,
-        "visible_mm2": 24.0,
-        "centre": [
-          -0.101,
-          0.025,
-          1.092
-        ]
-      },
-      {
-        "frame": 28,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 262.8,
-        "visible_mm2": 31.7,
-        "centre": [
-          0.071,
-          0.224,
-          0.651
-        ]
-      },
-      {
-        "frame": 28,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 153.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.022,
-          1.092
-        ]
-      },
-      {
-        "frame": 28,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 295.4,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.081,
-          0.223,
-          0.651
-        ]
-      },
-      {
-        "frame": 28,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 167.1,
-        "visible_mm2": 24.0,
-        "centre": [
-          -0.101,
-          0.025,
-          1.092
-        ]
-      },
-      {
-        "frame": 29,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 259.7,
-        "visible_mm2": 76.4,
-        "centre": [
-          0.071,
-          0.222,
-          0.647
-        ]
-      },
-      {
-        "frame": 29,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 151.1,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.096,
-          0.022,
-          1.089
-        ]
-      },
-      {
-        "frame": 29,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 219.3,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.083,
-          0.22,
-          0.647
-        ]
-      },
-      {
-        "frame": 29,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 164.4,
-        "visible_mm2": 23.8,
-        "centre": [
-          -0.101,
-          0.025,
-          1.089
-        ]
-      },
-      {
-        "frame": 30,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 250.9,
-        "visible_mm2": 145.3,
-        "centre": [
-          0.071,
-          0.215,
-          0.637
-        ]
-      },
-      {
-        "frame": 30,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 164.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.02,
-          1.082
-        ]
-      },
-      {
-        "frame": 30,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 192.8,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.211,
-          0.638
-        ]
-      },
-      {
-        "frame": 30,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 157.9,
-        "visible_mm2": 23.5,
-        "centre": [
-          -0.101,
-          0.024,
-          1.081
-        ]
-      },
-      {
-        "frame": 31,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 237.7,
-        "visible_mm2": 135.7,
-        "centre": [
-          0.071,
-          0.204,
-          0.62
-        ]
-      },
-      {
-        "frame": 31,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 138.5,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.019,
-          1.068
-        ]
-      },
-      {
-        "frame": 31,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 143.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.085,
-          0.199,
-          0.623
-        ]
-      },
-      {
-        "frame": 31,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 182.0,
-        "visible_mm2": 46.3,
-        "centre": [
-          -0.1,
-          0.023,
-          1.069
-        ]
-      },
-      {
-        "frame": 32,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 221.6,
-        "visible_mm2": 124.3,
-        "centre": [
-          0.071,
-          0.191,
-          0.597
-        ]
-      },
-      {
-        "frame": 32,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 120.0,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.094,
-          0.02,
-          1.049
-        ]
-      },
-      {
-        "frame": 32,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 133.5,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.084,
-          0.186,
-          0.601
-        ]
-      },
-      {
-        "frame": 32,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 161.9,
-        "visible_mm2": 23.3,
-        "centre": [
-          -0.1,
-          0.022,
-          1.05
-        ]
-      },
-      {
-        "frame": 33,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 204.4,
-        "visible_mm2": 112.7,
-        "centre": [
-          0.071,
-          0.177,
-          0.569
-        ]
-      },
-      {
-        "frame": 33,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 101.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.095,
-          0.019,
-          1.025
-        ]
-      },
-      {
-        "frame": 33,
-        "bone": "mixamorig:LeftLeg",
-        "kind": "crease",
-        "area_mm2": 121.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.083,
-          0.172,
-          0.573
-        ]
-      },
-      {
-        "frame": 33,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 148.5,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.1,
-          0.02,
-          1.026
-        ]
-      },
-      {
-        "frame": 34,
-        "bone": "mixamorig:RightLeg",
-        "kind": "crease",
-        "area_mm2": 117.1,
-        "visible_mm2": 117.1,
-        "centre": [
-          0.073,
-          0.159,
-          0.538
-        ]
-      },
-      {
-        "frame": 34,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 157.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.099,
-          0.022,
-          0.998
-        ]
-      },
-      {
-        "frame": 34,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "hidden",
-        "area_mm2": 165.3,
-        "visible_mm2": 34.1,
-        "centre": [
-          -0.244,
-          0.151,
-          0.989
-        ]
-      },
-      {
-        "frame": 35,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 111.7,
-        "visible_mm2": 6.9,
-        "centre": [
-          -0.1,
-          0.025,
-          0.964
-        ]
-      },
-      {
-        "frame": 35,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 182.7,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.238,
-          0.158,
-          0.987
-        ]
-      },
-      {
-        "frame": 36,
-        "bone": "mixamorig:RightForeArm",
-        "kind": "crease",
-        "area_mm2": 240.6,
-        "visible_mm2": 59.4,
-        "centre": [
-          0.232,
-          0.156,
-          0.989
-        ]
-      },
-      {
-        "frame": 36,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 198.0,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.237,
-          0.16,
-          0.986
-        ]
-      },
-      {
-        "frame": 37,
-        "bone": "mixamorig:RightForeArm",
-        "kind": "crease",
-        "area_mm2": 256.7,
-        "visible_mm2": 66.4,
-        "centre": [
-          0.228,
-          0.157,
-          0.987
-        ]
-      },
-      {
-        "frame": 37,
-        "bone": "mixamorig:LeftShoulder",
-        "kind": "hidden",
-        "area_mm2": 104.1,
-        "visible_mm2": 59.5,
-        "centre": [
-          -0.071,
-          0.074,
-          0.946
-        ]
-      },
-      {
-        "frame": 37,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 446.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.218,
-          0.155,
-          0.985
-        ]
-      },
-      {
-        "frame": 38,
-        "bone": "mixamorig:RightForeArm",
-        "kind": "hidden",
-        "area_mm2": 130.8,
-        "visible_mm2": 0.0,
-        "centre": [
-          0.226,
-          0.168,
-          0.973
-        ]
-      },
-      {
-        "frame": 38,
-        "bone": "mixamorig:RightForeArm",
-        "kind": "crease",
-        "area_mm2": 247.3,
-        "visible_mm2": 58.7,
-        "centre": [
-          0.216,
-          0.148,
-          0.986
-        ]
-      },
-      {
-        "frame": 38,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 106.2,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.124,
-          0.054,
-          0.935
-        ]
-      },
-      {
-        "frame": 38,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "crease",
-        "area_mm2": 356.1,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.21,
-          0.148,
-          0.983
-        ]
-      },
-      {
-        "frame": 39,
-        "bone": "mixamorig:RightForeArm",
-        "kind": "hidden",
-        "area_mm2": 201.1,
-        "visible_mm2": 36.4,
-        "centre": [
-          0.208,
-          0.133,
-          0.985
-        ]
-      },
-      {
-        "frame": 39,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 146.9,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.121,
-          0.063,
-          0.912
-        ]
-      },
-      {
-        "frame": 39,
-        "bone": "mixamorig:LeftForeArm",
-        "kind": "hidden",
-        "area_mm2": 274.1,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.198,
-          0.14,
-          0.982
-        ]
-      },
-      {
-        "frame": 40,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 101.8,
-        "visible_mm2": 61.1,
-        "centre": [
-          0.116,
-          0.069,
-          0.893
-        ]
-      },
-      {
-        "frame": 40,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 161.6,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.12,
-          0.068,
-          0.894
-        ]
-      },
-      {
-        "frame": 42,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 113.1,
-        "visible_mm2": 48.8,
-        "centre": [
-          0.114,
-          0.065,
-          0.874
-        ]
-      },
-      {
-        "frame": 42,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 139.1,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.117,
-          0.067,
-          0.877
-        ]
-      },
-      {
-        "frame": 43,
-        "bone": "mixamorig:RightArm",
-        "kind": "hidden",
-        "area_mm2": 116.7,
-        "visible_mm2": 49.7,
-        "centre": [
-          0.113,
-          0.069,
-          0.868
-        ]
-      },
-      {
-        "frame": 43,
-        "bone": "mixamorig:LeftArm",
-        "kind": "hidden",
-        "area_mm2": 159.0,
-        "visible_mm2": 0.0,
-        "centre": [
-          -0.117,
-          0.07,
-          0.871
-        ]
-      }
-    ],
-    "rows": [
-      {
-        "group": "body",
-        "metric": "folded_skin",
-        "target": 99.9,
-        "ours": 274.1,
-        "unit": "mm2",
-        "status": "info",
-        "frame": 39,
-        "note": "Folds hidden from every view at the left elbow (up to 274 mm\u00b2, 2 of 43 frames), the right elbow (up to 201 mm\u00b2, frames 38\u201339), the left shoulder (up to 182 mm\u00b2, 27 of 43 frames), the right shoulder (up to 167 mm\u00b2, 22 of 43 frames) and the left collarbone (up to 104 mm\u00b2, frame 37); plus creases at the elbows and the knees, which are normal in deep bends",
-        "kind": "not-judged",
-        "uncertain_why": null
-      },
-      {
-        "group": "body",
-        "metric": "smooth_motion",
-        "target": 0,
-        "ours": 0,
-        "unit": "frames",
-        "status": "pass",
-        "frame": null,
-        "note": null,
-        "kind": null,
-        "uncertain_why": null
-      }
-    ],
-    "fold_rows": [
-      {
-        "group": "body",
-        "metric": "folded_skin",
-        "target": 99.9,
-        "ours": 274.1,
-        "unit": "mm2",
-        "status": "info",
-        "frame": 39,
-        "note": "Folds hidden from every view at the left elbow (up to 274 mm\u00b2, 2 of 43 frames), the right elbow (up to 201 mm\u00b2, frames 38\u201339), the left shoulder (up to 182 mm\u00b2, 27 of 43 frames), the right shoulder (up to 167 mm\u00b2, 22 of 43 frames) and the left collarbone (up to 104 mm\u00b2, frame 37); plus creases at the elbows and the knees, which are normal in deep bends",
-        "kind": "not-judged",
-        "uncertain_why": null
-      }
-    ],
-    "motion_rows": [
-      {
-        "group": "body",
-        "metric": "smooth_motion",
-        "target": 0,
-        "ours": 0,
-        "unit": "frames",
-        "status": "pass",
-        "frame": null,
-        "note": null,
-        "kind": null,
-        "uncertain_why": null
-      }
-    ],
-    "jumps": [],
-    "steps": [],
-    "ready": true,
-    "measured_frames": 43,
-    "measurement_error": null,
-    "phase_frames": {
-      "start": 1,
-      "middle": 13,
-      "end": 25
-    },
-    "fold_ready": true,
-    "motion_ready": true
   }
 }

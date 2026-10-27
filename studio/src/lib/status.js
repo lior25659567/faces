@@ -62,7 +62,7 @@ export const exerciseLine = (exercise, state, runs) => {
     if (live?.slug === slug) return `running · ${formatLeft({ seconds: live.left, overdue: live.overdue })}`
     return 'waiting to start'
   }
-  if (status === 'needs-reference') return 'needs a reference'
+  if (status === 'needs-reference') return exercise.motionPresets?.length ? 'movement preset available' : 'needs a reference'
   if (status === 'unmeasured') {
     const latest = latestFinished(runs)
     return latest?.summary ? `${historyLine(latest)} · ${unmeasuredLine(latest.summary)}` : 'not measured'

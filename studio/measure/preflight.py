@@ -59,6 +59,9 @@ def row_key_problems(keys):
 
 
 def plan_for(snapshot, targets, pipeline_targets, keys, clip=None):
+    if snapshot.get('motionPreset') is not None:
+        from motion_presets import preset_plan
+        return preset_plan(snapshot)
     exercise = snapshot["exercise"]
     solver = exercise in SOLVER_EXERCISES
     row = exercise == ROW_EXERCISE

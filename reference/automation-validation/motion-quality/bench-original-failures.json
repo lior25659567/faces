@@ -1,0 +1,34 @@
+{
+  "frames": 32,
+  "first_frame": 1,
+  "last_frame": 32,
+  "height_m": 0.9991119140625,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "top_elbows_deg": {
+    "left": 125.9887046527957,
+    "right": 127.93164366081434
+  },
+  "bottom_elbows_deg": {
+    "left": 88.62359153652437,
+    "right": 88.18332855184954
+  },
+  "lockout_shortfall_deg": 49.011295347204296,
+  "bottom_flexion_excess_deg": 0.0,
+  "bottom_overfold_deg": 0.0,
+  "bar_vertical_travel_mm": 148.03743362426758,
+  "travel_shortfall_mm": 0.0,
+  "max_forearm_tilt_deg": 59.89690413556206,
+  "forearm_tilt_excess_deg": 29.89690413556206,
+  "bar_torso_path_excess_mm": 150.5133885781791,
+  "bottom_chest_shortfall_mm": 0.0,
+  "lockout_shoulder_offset_mm": 33.11387478116777,
+  "stroke_reversal_mm": 41.136725058291276,
+  "stationary_body_drift_mm": 0.00017881393432617188,
+  "elbow_asymmetry_deg": 2.3731132457471347,
+  "raw_measurements": "studio/tests/fixtures/bench-original-range.json",
+  "interpretation": "Original bench was incorrectly accepted by the previous checks. New all-frame form rules reject these actual saved-scene measurements."
+}

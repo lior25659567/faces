@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "image": "img-96142bf0",
+      "original_path": "/tmp/studio-extended-live-GRamB2/references/pull-up/img-96142bf0.jpg",
+      "bundled_file": "source-references/img-96142bf0.jpg",
+      "sha256": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Pullups",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/0.jpg",
+        "sha256": "e56c8c43a41cfe2489dcfffc2c8195fd9e8897ba25165dbc34a4154ed6df5c7a",
+        "phase": "start",
+        "view": "behind",
+        "contextOnly": false,
+        "catalogId": "Pullups",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/0.jpg"
+      }
+    },
+    {
+      "image": "img-9a54cdbb",
+      "original_path": "/tmp/studio-extended-live-GRamB2/references/pull-up/img-9a54cdbb.jpg",
+      "bundled_file": "source-references/img-9a54cdbb.jpg",
+      "sha256": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Pullups",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/1.jpg",
+        "sha256": "40549a52b064e5084a85e2c36afb51438df6ac1097169379a05f21565f8b4f3f",
+        "phase": "end",
+        "view": "behind",
+        "contextOnly": false,
+        "catalogId": "Pullups",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Pullups/1.jpg"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 9,
+      "end": 17
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.0,
+      "hold_s": 0.2,
+      "return_s": 1.5,
+      "forward_action": "pull",
+      "return_action": "controlled lowering",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/pull-up/references.json"
+}

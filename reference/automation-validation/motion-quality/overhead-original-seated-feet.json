@@ -1,0 +1,40 @@
+{
+  "surfaces": {
+    "foot_left_heel": {
+      "frames": 32,
+      "measured_frames": 32,
+      "max_gap_mm": 43.05163398385048,
+      "max_penetration_mm": 0.0
+    },
+    "foot_left_toe": {
+      "frames": 32,
+      "measured_frames": 32,
+      "max_gap_mm": 12.749888934195042,
+      "max_penetration_mm": 0.0
+    },
+    "foot_right_heel": {
+      "frames": 32,
+      "measured_frames": 32,
+      "max_gap_mm": 42.8398996591568,
+      "max_penetration_mm": 0.0
+    },
+    "foot_right_toe": {
+      "frames": 32,
+      "measured_frames": 32,
+      "max_gap_mm": 12.355053797364235,
+      "max_penetration_mm": 0.0
+    }
+  },
+  "planted_feet": {
+    "frames": 32,
+    "measured_frames": 32,
+    "first_frame": 1,
+    "last_frame": 32,
+    "max_slide_mm": 0.0,
+    "method": "fitted rest heel/toe plantar patches, full evaluated surface on every frame"
+  },
+  "provenance": {
+    "source": "Actual original seated shoulder press before flat-foot correction",
+    "scene_sha256": "9aff41c96b5aef005d26bc9b98fae8efbd360c2e21d0e277da730113abc03a98"
+  }
+}

@@ -159,6 +159,10 @@ test('uncertain and limited results stay amber and need review', () => {
   expect(exerciseLine({slug:'row',status:'review'},{running:null,queued:[]},runs)).toContain('1 uncertain')
 })
 
+test('a checked preset does not ask for optional photographs in the exercise list', () => {
+  expect(exerciseLine({ slug: 'squat', status: 'needs-reference', motionPresets: [{ id: 'squat-v1' }] }, null, [])).toBe('movement preset available')
+})
+
 
 test('history bars retain uncertain checks in their amber review share', () => {
   expect(historyBar({pass:4,fail:0,limited:1,uncertain:3,unmeasured:2})).toEqual([

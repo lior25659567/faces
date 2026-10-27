@@ -16,14 +16,14 @@ def test_leg_press_requires_back_and_head_even_when_seat_and_footplate_pass():
     report = report_for('sled', SLED_FEET)
     report['physical']['supports']['rail_path'] = {'frames': 8, 'max_deviation_mm': .1}
     rows = rows_for(report)
-    missing = {row['metric'] for row in rows if row['kind'] == 'not-measured'}
+    missing = {row['metric'] for row in rows if row['kind'] == 'not-measured' and row['metric'].startswith('support_')}
     assert missing == {'support_gap_back', 'support_gap_head'}
 
 
 def test_every_frame_of_a_leg_press_backrest_must_be_measured():
     report = report_for('sled', SLED_FEET + ['back', 'head'])
     report['physical']['supports']['rail_path'] = {'frames': 8, 'max_deviation_mm': .1}
-    assert all(row['status'] == 'pass' for row in rows_for(report))
+    assert all(row['status'] == 'pass' for row in rows_for(report) if row['metric'].startswith('support_'))
     for name in ('back', 'head'):
         incomplete = deepcopy(report)
         incomplete['physical']['supports']['surfaces'][name]['measured_frames'] = 7
@@ -46,7 +46,7 @@ def test_leg_press_cannot_pass_without_a_complete_measured_rail_path():
 def test_nearest_toe_contact_cannot_certify_a_flat_foot_on_the_plate():
     report = report_for('sled', ['pelvis', 'back', 'head', 'footplate_left', 'footplate_right'])
     report['physical']['supports']['rail_path'] = {'frames': 8, 'max_deviation_mm': 0.}
-    missing = {row['metric'] for row in rows_for(report) if row['kind'] == 'not-measured'}
+    missing = {row['metric'] for row in rows_for(report) if row['kind'] == 'not-measured' and row['metric'].startswith('support_')}
     assert missing == {'support_gap_footplate_left_heel', 'support_gap_footplate_left_toe',
         'support_gap_footplate_right_heel', 'support_gap_footplate_right_toe'}
 
@@ -54,6 +54,15 @@ def test_nearest_toe_contact_cannot_certify_a_flat_foot_on_the_plate():
 def test_bench_requires_skull_support_in_addition_to_back_and_pelvis():
     rows = rows_for(report_for('supine', ['pelvis', 'back']))
     assert any(row['metric'] == 'support_gap_head' and row['kind'] == 'not-measured' for row in rows)
+
+
+def test_good_seat_and_footplate_contact_cannot_replace_measured_leg_press_movement():
+    report = report_for('sled', SLED_FEET + ['back', 'head'])
+    report['physical']['supports']['rail_path'] = {'frames': 8, 'max_deviation_mm': 0.}
+    motion = [row for row in rows_for(report)
+              if row['metric'].startswith('sled_') and row['metric'] != 'sled_rail_deviation']
+    assert len(motion) == 6
+    assert all(row['kind'] == 'not-measured' for row in motion)
 
 
 def test_a_rejected_body_correction_cannot_pass_with_stale_good_contact_numbers():

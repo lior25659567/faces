@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "image": "img-3cc8d88f",
+      "original_path": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/source-references/img-3cc8d88f.jpg",
+      "bundled_file": "source-references/img-3cc8d88f.jpg",
+      "sha256": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Leg_Press",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/0.jpg",
+        "sha256": "55079d514ae8d4dbc526731bb5120748e74a084ebcd546eaa890fa273427f0dc",
+        "phase": "start",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Leg_Press",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/0.jpg"
+      }
+    },
+    {
+      "image": "img-6e74c69b",
+      "original_path": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/source-references/img-6e74c69b.jpg",
+      "bundled_file": "source-references/img-6e74c69b.jpg",
+      "sha256": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Leg_Press",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/1.jpg",
+        "sha256": "f4e08d4ad4e6542f5dd923bbfabe9a28bf6c960bed02b1b9d65f6bafd6ceb051",
+        "phase": "end",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Leg_Press",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/1.jpg"
+      }
+    }
+  ],
+  "source_bytes_changed": false,
+  "snapshot_paths_rewritten_for_portability": true,
+  "motion_source": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "original_snapshot_path": "/tmp/studio-motion-quality-validation/leg-press-seated-machine/references.json"
+}

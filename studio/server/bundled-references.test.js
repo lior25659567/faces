@@ -1,14 +1,30 @@
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { expect, test } from 'vitest'
-import { bundledReferenceImageFor, getBundledReferenceSpec, matchesBundledReference } from './bundled-references.js'
+import { bundledReferenceImageFor, getBundledReferenceSpec, getLegacyBundledReferenceSpec,
+  getOneStepBundledReferenceSpec, matchesBundledReference } from './bundled-references.js'
 import { getReferenceSpec } from './reference-catalog.js'
 import { fetchReference } from './reference-fetch.js'
 
 const exercise = 'Walking Lunge (dumbbells optional)'
-const spec = getBundledReferenceSpec(exercise)
+const spec = getLegacyBundledReferenceSpec(exercise)
 const manifest = JSON.parse(readFileSync(new URL('../../reference/exercise-lunge/sequence.json', import.meta.url), 'utf8'))
 const source = JSON.parse(readFileSync(new URL('../../reference/exercise-lunge/sources.json', import.meta.url), 'utf8'))
+
+test('the dense one-step bundle preserves real heel/toe identities and distinct trusted URLs', async () => {
+  const dense = getOneStepBundledReferenceSpec(exercise)
+  const manifest = JSON.parse(readFileSync(new URL('../../reference/exercise-lunge/one-step/sequence.json', import.meta.url), 'utf8'))
+  expect(dense.images).toHaveLength(26)
+  expect(dense.sequenceInfo).toMatchObject({ contactModel: 'named_heel_toe', playback: 'once', calibrated: false, completeClosedCycle: false })
+  expect(dense.images.filter((image) => !image.motionOnly).map((image) => image.sourceFrameIndex)).toEqual([120, 210, 270])
+  expect(dense.images[0].url).not.toBe(spec.images[0].url)
+  for (const [index, image] of dense.images.entries()) {
+    const result = await fetchReference(image, { fetchImpl: () => { throw Error('reviewed local frames must not fetch') } })
+    expect(result.sha256).toBe(manifest.frames[index].sha256)
+    expect(result.provenance.observedContactPoints).toEqual(image.observedContactPoints)
+  }
+  expect(getBundledReferenceSpec(exercise).id).toBe(manifest.autoBuild ? dense.id : spec.id)
+})
 
 test('reviewed stepping frames remain unavailable to the reversible-cycle builder', () => {
   expect(spec.motion).toBe('sequence')

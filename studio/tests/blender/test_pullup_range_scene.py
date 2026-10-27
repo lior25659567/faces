@@ -23,7 +23,7 @@ sys.path[:0] = [str(ROOT / 'pipeline/blender')]
 import equipment
 import mpfb_cage
 import skin_wrap
-from exercise_contacts import pullup_range, _hand_masks
+from exercise_contacts import pullup_range, _hand_masks, _turn
 from row_motion import shaft_gaps
 
 
@@ -45,12 +45,19 @@ def main():
     assert pole.get('measured_frames') == movement['frames'], movement
     assert all(pole.get(key) == 0. for key in
                ('max_elbow_above_bar_mm', 'max_elbow_above_wrist_mm', 'peak_elbow_above_shoulder_mm')), pole
+    motion = movement.get('motion_continuity') or {}
+    assert motion.get('frames') == movement['frames'], motion
+    assert motion.get('max_elbow_speed_arm_lengths_per_s', float('inf')) <= 6., motion
+    assert motion.get('max_return_path_error_arm_lengths', float('inf')) <= .12, motion
     height = json.loads(rig['skin_fit'])['measured']['height']
     unit = height / 1.75
     radius = equipment.BARBELL_BAR_DIAMETER / 2 * unit
     half = equipment.BARBELL_LENGTH / 2 * unit
     masks = _hand_masks(skin)
+    grips = json.loads(rig['hand_grip'])
     contacts = {side: [] for side in masks}
+    hand_base, hand_roll = {}, {side: [] for side in masks}
+    palm_forward = {side: [] for side in masks}
     base = None
     drift = rotation = 0.
     for frame in range(first, last + 1):
@@ -62,6 +69,17 @@ def main():
         points = skin_wrap.evaluated(skin)[0]
         axis = np.array((bar.matrix_world.to_3x3() @ Vector((1, 0, 0))).normalized())
         for side, mask in masks.items():
+            title = side.title()
+            turn = (rig.matrix_world @ rig.pose.bones[mpfb_cage.P + title + 'Hand'].matrix).to_quaternion()
+            hand_base.setdefault(side, turn.copy())
+            angle = float(np.degrees(hand_base[side].rotation_difference(turn).angle))
+            assert angle <= 20.001, (frame, side, angle)
+            hand_roll[side].append({'frame': frame, 'roll_deg': angle})
+            # Overhand pull-ups keep the palms facing away from the athlete.
+            # The fitted character's forward direction is canonical +Y.
+            forward = float((_turn(rig.pose.bones[mpfb_cage.P + title + 'Hand']) @ np.array(grips[side]['n']))[1])
+            assert forward > 0., (frame, side, 'inverted/supinated grip', forward)
+            palm_forward[side].append(forward)
             gaps = shaft_gaps(points[mask], np.array(now[0]), axis, half, radius)
             gap, depth = float(abs(gaps).min() * 1000), max(0., float(-gaps.min() * 1000))
             assert gap <= 3. and depth <= 3., (frame, side, gap, depth)
@@ -70,6 +88,9 @@ def main():
     movement.update(status='passed', source='replayed actual keyed skin and fixed bar', rendered=False,
                     scene_sha256=hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest(),
                     fixed_bar_drift_mm=drift, fixed_bar_rotation_deg=rotation,
+                    grip_roll={side: {'frames': len(rows), 'max_turn_deg': max(row['roll_deg'] for row in rows),
+                                     'minimum_palm_forward_dot': min(palm_forward[side]),
+                                     'per_frame': rows} for side, rows in hand_roll.items()},
                     contact={side: {'frames': len(rows), 'max_gap_mm': max(r['gap_mm'] for r in rows),
                                     'max_penetration_mm': max(r['penetration_mm'] for r in rows)}
                              for side, rows in contacts.items()})

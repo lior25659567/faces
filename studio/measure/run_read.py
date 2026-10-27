@@ -10,6 +10,7 @@ from build_targets import PHASES, SOLVER_EXERCISES, TooFewPositions, build_targe
 from read_pose import NoBody, read_pose  # noqa: E402
 from preflight import plan_for  # noqa: E402
 from pose_cache import read_cached  # noqa: E402
+from motion_presets import movement_images, preset_for, preset_plan, preset_targets  # noqa: E402
 
 KEY_FIELDS = ("view", "facing", "camera_side", "size", "world", "pixels", "visibility")
 
@@ -54,8 +55,9 @@ def key_positions(targets, measured, images=None):
             sequence_info = sequence_info or source['sequenceInfo']
             reading = measured.get(image['id'])
             entry = {'image': image['id'], 'source': source,
+                     'phase': image.get('phase'),
                      **{key: source.get(key) for key in ('sequenceIndex', 'timeSeconds', 'sourceFrameIndex',
-                       'role', 'leadLeg', 'observedSupport', 'footContacts', 'contactNote', 'motionOnly')}}
+                       'role', 'leadLeg', 'observedSupport', 'footContacts', 'observedContactPoints', 'contactNote', 'motionOnly')}}
             if isinstance(reading, dict) and reading.get('world'):
                 entry.update({key: reading.get(key) for key in KEY_FIELDS})
                 entry['view'] = image.get('view') or entry['view']
@@ -70,12 +72,41 @@ def key_positions(targets, measured, images=None):
 def main(run_dir):
     run_dir = Path(run_dir)
     snap = json.loads((run_dir / "references.json").read_text())
-    images = snap["images"]
-    # These are derived from this read. Never leave stale correction inputs after a failed retry.
-    for name in ("targets.json", "pipeline-targets.json", "keyposes.json", "preflight.json", "read-problems.json", "sequence-continuity.json"):
+    # Remove derived inputs even when the selected source itself is invalid.
+    for name in ('targets.json', 'pipeline-targets.json', 'keyposes.json', 'preflight.json', 'read-problems.json', 'sequence-continuity.json'):
         (run_dir / name).unlink(missing_ok=True)
+    try:
+        images = movement_images(snap)
+    except ValueError as error:
+        (run_dir / 'preflight.json').write_text(json.dumps({'ready': False, 'mode': 'Chronological image sequence',
+            'blockers': [str(error)], 'warnings': []}, indent=2))
+        (run_dir / 'measurements.json').write_text('{}\n')
+        print(str(error), file=sys.stderr)
+        return 3
+    if snap.get('exercise') == 'Walking Lunge (dumbbells optional)' and (snap.get('motion') or {}).get('contactModel') == 'named_heel_toe':
+        # New one-shot snapshots retain their source-video timestamp name.
+        # Normalize only the derived read input; never rewrite user metadata.
+        images = [{**image, 'source': {**image.get('source', {}),
+            'sequenceInfo': {**snap['motion'], **((image.get('source') or {}).get('sequenceInfo') or {})},
+            'timeSeconds': (image.get('source') or {}).get('timeSeconds', (image.get('source') or {}).get('sourceTimestampSeconds'))}}
+            for image in images]
+    # These are derived from this read. Never leave stale correction inputs after a failed retry.
     run_file = run_dir / "run.json"
     run = json.loads(run_file.read_text()) if run_file.exists() else {}
+    if snap.get('motionPreset') is not None:
+        plan = preset_plan(snap)
+        (run_dir / 'preflight.json').write_text(json.dumps(plan, indent=2))
+        (run_dir / 'measurements.json').write_text('{}\n')
+        if not plan['ready']:
+            print(' '.join(plan['blockers']), file=sys.stderr)
+            return 3
+        preset = preset_for(snap['exercise'], snap['motionPreset'])
+        targets = preset_targets(snap, preset)
+        (run_dir / 'targets.json').write_text(json.dumps(targets, indent=2))
+        (run_dir / 'keyposes.json').write_text(json.dumps({'exercise': snap['exercise'],
+            'motionPreset': preset['id'], 'phases': [], 'motion': targets['motion']}, indent=2))
+        print(f"Movement source: {preset['label']}. Photographs remain context; every rendered build is checked.")
+        return 0
     cache_dir = run_dir.parent / ".pose-cache"
     measured, out = {}, {}
     for n, img in enumerate(images, 1):
@@ -120,7 +151,6 @@ def main(run_dir):
     plan = plan_for(snap, targets, pt, keys, clip=None if sequence else run.get("clip"))
     if sequence:
         plan['mode'] = 'Chronological image sequence'
-        plan['blockers'].append('This walking sequence needs per-foot contact and forward root-motion validation before rendering.')
         sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'pipeline/blender'))
         from sequence_clip import SequenceError, inspect_sequence
         try:
@@ -128,8 +158,16 @@ def main(run_dir):
         except SequenceError as error:
             continuity = error.report
         (run_dir / 'sequence-continuity.json').write_text(json.dumps(continuity, indent=2))
-        plan['blockers'].extend(continuity.get('blockers') or [])
-        plan['ready'] = False
+        if snap['exercise'] == 'Walking Lunge (dumbbells optional)' and continuity.get('contactModel') == 'named_heel_toe' and continuity.get('input_ready'):
+            plan['blockers'] = []
+            plan['ready'] = True
+            plan['warnings'].append('One observed step, not a closed loop. Frontal depth remains inferred; actual heel/toe contacts and root motion must pass before rendering.')
+        else:
+            plan['blockers'].append('This walking sequence needs observed heel/toe handoffs and forward root-motion validation before rendering.')
+            plan['blockers'].extend(continuity.get('blockers') or [])
+            plan['ready'] = False
+    if snap.get('referenceBundle') is not None:
+        plan['referenceBundle'] = snap['referenceBundle']
     (run_dir / "preflight.json").write_text(json.dumps(plan, indent=2))
     if not plan["ready"]:
         print(" ".join(plan["blockers"]), file=sys.stderr)

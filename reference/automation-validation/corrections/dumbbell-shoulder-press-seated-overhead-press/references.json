@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Dumbbell_Shoulder_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Shoulder_Press/0.jpg"
-      }
+      },
+      "path": "source-references/img-c052e570.jpg"
     },
     {
       "id": "img-e96f851c",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Dumbbell_Shoulder_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Shoulder_Press/1.jpg"
-      }
+      },
+      "path": "source-references/img-e96f851c.jpg"
     }
   ],
   "characterFit": "auto"

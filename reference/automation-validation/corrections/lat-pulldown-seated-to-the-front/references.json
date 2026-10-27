@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Wide-Grip_Lat_Pulldown",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Wide-Grip_Lat_Pulldown/0.jpg"
-      }
+      },
+      "path": "source-references/img-b6fb01ba.jpg"
     },
     {
       "id": "img-09dcdaf6",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Wide-Grip_Lat_Pulldown",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Wide-Grip_Lat_Pulldown/1.jpg"
-      }
+      },
+      "path": "source-references/img-09dcdaf6.jpg"
     }
   ],
   "characterFit": "auto"

@@ -263,6 +263,43 @@ def test_the_rep_is_timed_like_a_real_lift():
     assert steps[0] < steps[down // 2] / 10 and steps[-1] < steps[down // 2] / 10
 
 
+def test_pullup_pulls_up_then_lowers_more_slowly_with_matching_recorded_phases():
+    # Photos give positions, not a timestamp. The declared tempo must follow
+    # exercise semantics and the inspector must use the changed actual frames.
+    keys = [kc.key_pose(mp_pose(0, 180, 180), REST),
+            kc.key_pose(mp_pose(20, 90, 90, phase='end'), REST)]
+    fps = 16
+    parameters = kc.timeline(fps, 'Pull-Up')
+    peak = parameters.index(1.)
+    assert peak == fps
+    assert len(parameters) == len(kc.timeline(fps)) == 43
+    returning = len(parameters) - (peak + round(.2 * fps))
+    assert returning > peak
+    assert all(a <= b for a, b in zip(parameters[:peak], parameters[1:peak + 1]))
+    assert all(a >= b for a, b in zip(parameters[peak:], parameters[peak + 1:]))
+    poses = kc.motion(keys, fps=fps, feet='free', exercise='Pull-Up')
+    for name in keys[1]:
+        assert np.allclose(poses[peak][name], keys[1][name])
+    recorded = kc.reference_timing({'exercise': 'Pull-Up'}, ['start', 'end'], keys, fps=fps)
+    assert recorded['phase_frames'] == {'start': 1, 'middle': 9, 'end': 17}
+    assert 'not measured' in recorded['timing']['source']
+    bench = kc.reference_timing({'exercise': 'Flat Barbell Bench Press'}, ['start', 'end'], keys, fps=fps)
+    assert bench['phase_frames']['end'] == 25
+    assert bench['timing']['forward_s'] > bench['timing']['return_s']
+    pulldown = kc.reference_timing({'exercise': 'Lat Pulldown (seated, to the front)'},
+        ['start', 'end'], keys, fps=12)
+    assert pulldown['phase_frames'] == {'start': 1, 'middle': 7, 'end': 13}
+    assert pulldown['timing']['forward_s'] == 1.
+    assert pulldown['timing']['return_s'] == 1.5
+    assert len(kc.timeline(12, 'Lat Pulldown (seated, to the front)')) == 32
+    for exercise in ('Standing Barbell Overhead Press (Shoulder Press)',
+                     'Dumbbell Shoulder Press (seated overhead press)'):
+        press = kc.reference_timing({'exercise': exercise}, ['start', 'end'], keys, fps=12)
+        assert press['phase_frames']['end'] == 13
+        assert press['timing']['forward_action'] == 'press'
+        assert press['timing']['forward_s'] < press['timing']['return_s']
+
+
 def test_the_motion_passes_through_the_middle_position():
     keys = [kc.key_pose(mp_pose(*a, phase=p), REST) for a, p in
             (((0, 180, 180), "start"), ((15, 120, 120), "middle"), ((20, 90, 90), "end"))]

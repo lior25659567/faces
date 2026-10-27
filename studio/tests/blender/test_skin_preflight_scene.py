@@ -45,7 +45,14 @@ def main():
     expected_motion = next(row for row in checks['rows'] if row['metric'] == 'smooth_motion')
     assert result['fold_rows'] == [expected], (expected, result['fold_rows'])
     assert result['motion_rows'] == [expected_motion], (expected_motion, result['motion_rows'])
-    expected_ready = all(row['status'] != 'fail' and row['kind'] != 'not-measured' for row in [expected, expected_motion])
+    saved_arms = [row for row in checks['rows'] if row['metric'] in ('upper_limb_speed', 'upper_limb_turn_speed')]
+    if saved_arms:
+        assert result['upper_limb_rows'] == saved_arms, (saved_arms, result['upper_limb_rows'])
+    # Legacy saved Checks predate the required arm-snap gate. Their old passing
+    # hip/knee verdict cannot override a newly measured elbow branch jump.
+    assert len(result['upper_limb_rows']) == 2 and result['upper_limb_motion']['measured_frames'] == report['frames']
+    expected_ready = all(row['status'] != 'fail' and row['kind'] != 'not-measured'
+                         for row in [expected, expected_motion, *result['upper_limb_rows']])
     assert result['ready'] is expected_ready
     assert result['measured_frames'] == scene.frame_end - scene.frame_start + 1
     assert scene.frame_current == original_frame and scene.camera == original_camera

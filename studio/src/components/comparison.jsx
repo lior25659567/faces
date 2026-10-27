@@ -100,8 +100,14 @@ const Pair = ({ pair, rows }) => {
 
 const Comparison = ({ slug, run, bundle, fallbackImages, rows, newerRun }) => {
   const [gifOk, setGifOk] = useState(true)
+  const [replay, setReplay] = useState(0)
+  const once = bundle?.targets?.motion?.mode === 'sequence' || bundle?.snapshot?.motion?.playback === 'once'
   // The run's own snapshot of the pictures, so later edits don't change an old comparison.
-  const images = bundle?.snapshot?.images ?? fallbackImages
+  const preset = bundle?.snapshot?.motionPreset
+  const recordedImages = bundle?.snapshot?.images ?? fallbackImages ?? []
+  const selectedBundle = bundle?.snapshot?.referenceBundle
+  const images = recordedImages.map((image) => ({ ...image, contextOnly: image.contextOnly || Boolean(preset) || Boolean(selectedBundle &&
+    (image.source?.catalogId !== selectedBundle.id || image.source?.commit !== selectedBundle.commit)) }))
   const { pairs, context } = buildComparison({
     slug, runId: run.id, images, ours: bundle?.ours, measurements: bundle?.measurements, targets: bundle?.targets,
   })
@@ -114,7 +120,8 @@ const Comparison = ({ slug, run, bundle, fallbackImages, rows, newerRun }) => {
         <p className="section-note">
           {newerRun
             ? `From the run of ${formatWhen(run.createdAt)}, the newest that finished.`
-            : `Coach beside our character at the same moment. Run of ${formatWhen(run.createdAt)}.`}
+            : preset ? `Checked movement preset. Pictures are visual references. Run of ${formatWhen(run.createdAt)}.`
+              : `Coach beside our character at the same moment. Run of ${formatWhen(run.createdAt)}.`}
         </p>
       </div>
 
@@ -127,13 +134,14 @@ const Comparison = ({ slug, run, bundle, fallbackImages, rows, newerRun }) => {
             <figure className="pair pair-gif">
               <figcaption className="pair-head">
                 <span className="pair-phase">Animation</span>
-                <span className="pair-view">the whole movement</span>
+                <span className="pair-view">{once ? 'observed step · plays once' : 'the whole movement'}</span>
               </figcaption>
               <div className="pair-images">
                 <div className="pair-side is-gif">
-                  <img src={gif} alt={`Our character doing the ${run.name ?? 'exercise'}`} onError={() => setGifOk(false)} />
+                  <img src={gif + (once ? `?play=${replay}` : '')} alt={`Our character doing the ${run.name ?? 'exercise'}`} onError={() => setGifOk(false)} />
                 </div>
               </div>
+              {once && <button type="button" className="btn btn-quiet" onClick={() => setReplay((value) => value + 1)}>Replay step</button>}
             </figure>
           )}
           {pairs.map((p) => <Pair key={p.id} pair={p} rows={rows} />)}

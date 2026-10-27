@@ -1,0 +1,108 @@
+{
+  "exercise": "Dumbbell Bicep Curl (standing, both arms)",
+  "frames": 32,
+  "measured_frames": 32,
+  "first_frame": 1,
+  "last_frame": 32,
+  "height_m": 0.9991119140625,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "start_elbows_deg": {
+    "left": 175.01717081140038,
+    "right": 175.01901934564563
+  },
+  "end_elbows_deg": {
+    "left": 55.75028185934867,
+    "right": 55.831202275666655
+  },
+  "start_upperarms_deg": {
+    "left": 14.890414430088892,
+    "right": 15.247886256204003
+  },
+  "end_upperarms_deg": {
+    "left": 14.890413182330462,
+    "right": 15.247898881479717
+  },
+  "body_lean_excess_deg": 0.0,
+  "knee_extension_shortfall_deg": 0.0,
+  "hip_extension_shortfall_deg": 0.0,
+  "body_drift_mm": 0.0010322550196883529,
+  "elbow_asymmetry_deg": 0.0809212975195237,
+  "upperarm_drift_deg": 4.6520871708205316e-05,
+  "upperarm_position_excess_deg": 0.0,
+  "method": "Declared standing isolation technique, measured from actual body and arm joints at every frame; separate photo comparisons retain uncertainty and source conflicts.",
+  "start_extension_shortfall_deg": 0.0,
+  "end_flexion_excess_deg": 0.0,
+  "end_overfold_deg": 0.0,
+  "status": "passed",
+  "source": "Independent actual saved-scene joint/skin/grip replay",
+  "rendered": false,
+  "scene_sha256": "d1f87984f55b37b9d3ff1752455645f1e4076409fd60e519e68897c2609c4c58",
+  "max_hand_gap_mm": 0.07922815987578165,
+  "max_hand_penetration_mm": 0.7996166884138715,
+  "planted_feet": {
+    "surfaces": {
+      "foot_left_heel": {
+        "frames": 32,
+        "measured_frames": 32,
+        "max_gap_mm": 1.954406499862671,
+        "max_penetration_mm": 0.0
+      },
+      "foot_left_toe": {
+        "frames": 32,
+        "measured_frames": 32,
+        "max_gap_mm": 2.139624208211899,
+        "max_penetration_mm": 0.0
+      },
+      "foot_right_heel": {
+        "frames": 32,
+        "measured_frames": 32,
+        "max_gap_mm": 1.4743220526725054,
+        "max_penetration_mm": 0.0
+      },
+      "foot_right_toe": {
+        "frames": 32,
+        "measured_frames": 32,
+        "max_gap_mm": 2.1088216453790665,
+        "max_penetration_mm": 0.0
+      }
+    },
+    "planted_feet": {
+      "frames": 32,
+      "measured_frames": 32,
+      "first_frame": 1,
+      "last_frame": 32,
+      "max_slide_mm": 0.0026323145252898634,
+      "method": "fitted rest heel/toe plantar patches, full evaluated surface on every frame"
+    }
+  },
+  "upper_limb_rows": [
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.2411191092295181,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 27,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: wrist.left.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 178.33363490860543,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 27,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.right.",
+      "kind": null,
+      "uncertain_why": null
+    }
+  ]
+}

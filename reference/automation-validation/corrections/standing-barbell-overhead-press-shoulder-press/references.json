@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Standing_Military_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Standing_Military_Press/0.jpg"
-      }
+      },
+      "path": "source-references/img-4b5dc525.jpg"
     },
     {
       "id": "img-06bce39c",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Standing_Military_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Standing_Military_Press/1.jpg"
-      }
+      },
+      "path": "source-references/img-06bce39c.jpg"
     }
   ],
   "characterFit": "auto"

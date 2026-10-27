@@ -64,13 +64,64 @@ const spec = freeze({
   },
 })
 
-const specs = new Map([[spec.exercise, spec]])
+const oneStepDirectory = new URL('one-step/', directory)
+const oneStepManifest = JSON.parse(readFileSync(new URL('sequence.json', oneStepDirectory), 'utf8'))
+if (!Array.isArray(oneStepManifest.frames) || oneStepManifest.frames.length !== 26 ||
+    oneStepManifest.exercise !== spec.exercise || oneStepManifest.playback !== 'once' || oneStepManifest.calibrated !== false) {
+  throw Error('Invalid one-step lunge reference manifest.')
+}
+const oneStepId = sourceId + '-one-step-v1'
+const oneStepImages = oneStepManifest.frames.map((frame, index) => {
+  if (!/^frame-\d{2}\.jpg$/.test(frame.file) || !/^[a-f0-9]{64}$/.test(frame.sha256) || frame.sequenceIndex !== index ||
+      !Number.isInteger(frame.sourceFrameIndex) || !Number.isFinite(frame.sourceTimestampSeconds) ||
+      index > 0 && (frame.sourceTimestampSeconds <= oneStepManifest.frames[index - 1].sourceTimestampSeconds ||
+        frame.sourceFrameIndex <= oneStepManifest.frames[index - 1].sourceFrameIndex) ||
+      !frame.observedContactPoints || !frame.footContacts) throw Error('Invalid one-step lunge frame.')
+  return { id: `one-step-${String(index).padStart(2, '0')}`, sourceId: oneStepId, commit: source.sha256,
+    // The namespace distinguishes the revised contact annotation from legacy
+    // frames at the same video time, preserving old trusted URL identities.
+    url: `${source.url}#t=${frame.sourceTimestampSeconds}&sequence=one-step-v1`,
+    phase: frame.phase || 'middle', view: 'front', contextOnly: false, motionOnly: Boolean(frame.motionOnly),
+    timeSeconds: frame.sourceTimestampSeconds, sequenceIndex: index, sourceFrameIndex: frame.sourceFrameIndex,
+    role: frame.role, observedSupport: frame.observedSupport, footContacts: frame.footContacts,
+    observedContactPoints: frame.observedContactPoints, contactNote: frame.contactNote, sha256: frame.sha256 }
+})
+const oneStepInfo = {
+  contactModel: 'named_heel_toe', playback: 'once', completeClosedCycle: false,
+  calibrated: false, sourceInferredDepth: true, camera: oneStepManifest.view,
+  initialStandingTimestampSeconds: oneStepManifest.initialStandingTimestampSeconds,
+  finalStandingTimestampSeconds: oneStepManifest.finalStandingTimestampSeconds,
+  uprightPassingTimestampSeconds: oneStepManifest.uprightPassingTimestampSeconds,
+  contactAnnotationPolicy: oneStepManifest.contactReview,
+}
+const oneStepSpec = freeze({ exercise: spec.exercise, id: oneStepId, sourceId: oneStepId, commit: source.sha256,
+  repository: source.metadataUrl, license: source.license, licenseUrl: source.licenseUrl, author: source.author,
+  variant: oneStepManifest.variant, images: oneStepImages, motion: 'sequence',
+  autoBuild: oneStepManifest.autoBuild === true, sequenceInfo: oneStepInfo,
+  reason: oneStepManifest.autoBuild === true ? 'One observed forward step; frontal depth remains inferred.'
+    : 'The observed one-step movement is waiting for its full movement and skin validation.',
+  limitations: ['One observed forward step, not a closed cycle.', 'Frontal depth remains inferred.'] })
+const specs = new Map([[spec.exercise, oneStepSpec.autoBuild ? oneStepSpec : spec]])
 const imagesByUrl = new Map(images.map((image, index) => [image.url, freeze({
   image, fileUrl: new URL(sequence.frames[index].file, directory).href,
   provenance, sequenceInfo: spec.sequenceInfo,
 })]))
+for (const [index, image] of oneStepImages.entries()) imagesByUrl.set(image.url, freeze({ image,
+  fileUrl: new URL(oneStepManifest.frames[index].file, oneStepDirectory).href,
+  provenance: { ...provenance, derivative: oneStepManifest.derivative, cropPixels: oneStepManifest.cropPixels },
+  sequenceInfo: oneStepSpec.sequenceInfo }))
 
 export const getBundledReferenceSpec = (exercise) => typeof exercise === 'string' ? specs.get(exercise) ?? null : null
+export const getLegacyBundledReferenceSpec = (exercise) => exercise === spec.exercise ? spec : null
+export const getOneStepBundledReferenceSpec = (exercise) => exercise === spec.exercise ? oneStepSpec : null
+
+export const isUnchangedLegacySequenceReference = (reference) => {
+  const image = images.find((entry) => entry.url === reference.source?.url)
+  return Boolean(image && reference.source?.catalogId === spec.id && reference.source?.commit === spec.commit &&
+    reference.phase === image.phase && reference.view === image.view && reference.contextOnly === image.contextOnly &&
+    ['motionOnly', 'sequenceIndex', 'sourceFrameIndex', 'timeSeconds', 'footContacts', 'observedSupport'].every((key) =>
+      isDeepStrictEqual(reference.source?.[key], image[key])))
+}
 
 export const bundledReferenceImageFor = (url) => typeof url === 'string' ? imagesByUrl.get(url) ?? null : null
 

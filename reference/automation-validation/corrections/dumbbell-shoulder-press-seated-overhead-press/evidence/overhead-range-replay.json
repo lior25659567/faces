@@ -1,0 +1,89 @@
+{
+  "frames": 32,
+  "measured_frames": 32,
+  "first_frame": 1,
+  "last_frame": 32,
+  "height_m": 0.9991119140625,
+  "phase_frames": {
+    "start": 1,
+    "middle": 7,
+    "end": 13
+  },
+  "bottom_elbows_deg": {
+    "left": 69.9340601928569,
+    "right": 70.44083412848141
+  },
+  "top_elbows_deg": {
+    "left": 177.9701844843981,
+    "right": 177.8235754628699
+  },
+  "lockout_shortfall_deg": 0.0,
+  "bottom_flexion_excess_deg": 0.0,
+  "bottom_overfold_deg": 0.0,
+  "elbow_above_wrist_mm": 0.0,
+  "handle_travel_mm": {
+    "left": 243.6707615852356,
+    "right": 240.1275634765625
+  },
+  "travel_shortfall_mm": 0.0,
+  "peak_stack_excess_mm": 0.0,
+  "lockout_head_shortfall_mm": 0.0,
+  "elbow_asymmetry_deg": 0.8184595864115067,
+  "hip_drift_mm": 0.0,
+  "torso_lean_deg": 1.032620672592415,
+  "method": "Actual bilateral press joints and handles at the recorded phases and every intervening frame; authored fitted trajectory, not calibrated photo depth",
+  "status": "passed",
+  "scene_sha256": "87b463151de9ddd197b03a41f168c47b6e5433ef7f8732c88ff697d63cb4fa8e",
+  "rendered": false,
+  "max_hand_gap_mm": 0.0817113465638817,
+  "max_hand_penetration_mm": 0.799330913689355,
+  "max_bone_length_error_mm": 0.005032462801368709,
+  "back_gap_mm": 0.07013976573944092,
+  "back_penetration_mm": 0.10477006435394287,
+  "planted_feet": {
+    "frames": 32,
+    "measured_frames": 32,
+    "first_frame": 1,
+    "last_frame": 32,
+    "max_slide_mm": 0.0009008195637786376,
+    "method": "fitted rest heel/toe plantar patches, full evaluated surface on every frame"
+  },
+  "hand_roll_from_start_deg": {
+    "left": 31.99994855320967,
+    "right": 30.000857917854496
+  },
+  "arm_continuity_rows": [
+    {
+      "group": "body",
+      "metric": "upper_limb_speed",
+      "target": 2.0,
+      "ours": 0.4392430422817022,
+      "unit": "height/s",
+      "status": "pass",
+      "frame": 11,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: elbow.left.",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "body",
+      "metric": "upper_limb_turn_speed",
+      "target": 720.0,
+      "ours": 162.44645108582853,
+      "unit": "deg/s",
+      "status": "pass",
+      "frame": 10,
+      "note": "Generous arm-snap limit; passing this check does not establish exercise technique. Fastest measured joint: forearm.left.",
+      "kind": null,
+      "uncertain_why": null
+    }
+  ],
+  "summary": {
+    "pass": 35,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 11,
+    "unmeasured": 0
+  }
+}

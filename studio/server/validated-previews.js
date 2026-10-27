@@ -37,13 +37,16 @@ export const createValidatedPreviews = ({ root = REPO } = {}) => {
       if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(run.slug || '') || records.has(run.slug) || !validSummary(run.summary) ||
           !Number.isInteger(run.frames) || run.frames < 1 || !Number.isFinite(run.fps) || run.fps <= 0) throw Error('Invalid preview record.')
       records.set(run.slug, { folder: path.join(base, run.slug), summary: run.summary, frames: run.frames,
-        fps: run.fps, characterFit: fitSummary(run.character_fit), hashes: run.output_sha256 })
+        fps: run.fps, characterFit: fitSummary(run.character_fit), hashes: run.output_sha256,
+        playback: run.reference_motion?.mode === 'sequence' ? 'once' : 'loop',
+        sourceLabel: run.reference_motion?.source === 'preset' ? 'Checked movement preset'
+          : run.reference_motion?.mode === 'sequence' ? 'Observed one-way step' : null })
     }
     const folder = path.join(root, 'reference/automation-validation/row')
     const row = readJson(path.join(folder, 'result.json'))
     if (!validSummary(row.summary) || !Number.isInteger(row.row_solver?.contact?.frames)) throw Error('Invalid row preview.')
     records.set('barbell-bent-over-row', { folder, summary: row.summary, frames: row.row_solver.contact.frames,
-      fps: 30, characterFit: originalFit, hashes: row.artifacts })
+      fps: 30, characterFit: originalFit, hashes: row.artifacts, playback: 'loop', sourceLabel: null })
   } catch {
     records.clear()
     manifestError = 'Bundled preview metadata is unavailable. Restore the checked-in validation files.'
@@ -88,7 +91,8 @@ export const createValidatedPreviews = ({ root = REPO } = {}) => {
   const list = (exercises) => exercises.map(({ slug, name }) => {
     const checked = verified(slug)
     const empty = { slug, name, available: false, readOnly: true, summary: null, frames: null, fps: null,
-      characterFit: null, gifUrl: null, posterUrl: null, endUrl: null, checksUrl: null, reviewRequired: true }
+      characterFit: null, gifUrl: null, posterUrl: null, endUrl: null, checksUrl: null, reviewRequired: true,
+      playback: null, sourceLabel: null }
     if (!checked) return { ...empty, reason: records.has(slug)
       ? 'The bundled preview files are missing or changed. Restore the checked-in validation files.'
       : manifestError || unavailableReason(slug) }
@@ -98,6 +102,7 @@ export const createValidatedPreviews = ({ root = REPO } = {}) => {
     return { ...empty, available: true, summary: { ...record.summary }, frames: record.frames, fps: record.fps,
       characterFit: { ...record.characterFit }, gifUrl: url('animation.gif'), posterUrl: url('start.png'),
       endUrl: url('end.png'), checksUrl: url('checks.json'), reviewRequired,
+      playback: record.playback, sourceLabel: record.sourceLabel,
       reason: record.summary.fail > 0 ? slug === 'barbell-bent-over-row'
         ? `${record.summary.fail} source-photo comparisons still disagree with the steady row hinge. Review the retained failed checks.`
         : 'This example has failed checks that require review.'

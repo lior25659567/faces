@@ -1,0 +1,13 @@
+{
+  "defaultPreset": true,
+  "photoPathRetained": true,
+  "presetCheckWithoutPhotos": true,
+  "explicitRequestMode": "squat-v1",
+  "userDataUnchanged": true,
+  "lungeSourceEnabled": true,
+  "mobileWidths": [
+    390,
+    320
+  ],
+  "browserErrors": []
+}

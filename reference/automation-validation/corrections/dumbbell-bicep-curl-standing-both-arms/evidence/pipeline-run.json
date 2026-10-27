@@ -1,0 +1,37 @@
+{
+  "name": "Dumbbell Bicep Curl (standing, both arms)",
+  "slug": "dumbbell-bicep-curl-standing-both-arms",
+  "source": "/tmp/studio-complete-validation/dumbbell-bicep-curl-standing-both-arms",
+  "characterFit": "auto",
+  "startedAt": "2026-10-27T08:30:23.249Z",
+  "steps": [
+    {
+      "step": "read",
+      "exit": 0,
+      "seconds": 1.27
+    },
+    {
+      "step": "animate",
+      "exit": 0,
+      "seconds": 379.23
+    },
+    {
+      "step": "stills",
+      "exit": 0,
+      "seconds": 92.48
+    },
+    {
+      "step": "check",
+      "exit": 0,
+      "seconds": 0.32
+    }
+  ],
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "limited": 0,
+    "uncertain": 10,
+    "info": 9,
+    "unmeasured": 0
+  }
+}

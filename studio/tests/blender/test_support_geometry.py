@@ -117,6 +117,11 @@ def main():
                 readings.append(near_plane(points, mask(skin, names), float(high[2]), '/'.join(names),
                     (high - low)[:2] / 2, (low + high)[:2] / 2))
             for side, selected in soles.items():
+                patch = points[plantar[side]]
+                assert len(patch) >= 6, 'No readable plantar heel/toe patch'
+                plantar_gap = max(plantar_gap, float(abs(patch[:, 2]).max()))
+                assert float(patch[:, 2].max()) <= .005, side + ' heel or toe lifted from the floor'
+                assert float(patch[:, 2].min()) >= -.003, side + ' heel or toe penetrated the floor'
                 if side not in starts:
                     indices = np.flatnonzero(selected & (points[:, 2] <= .002))
                     assert len(indices) >= 3, 'No readable sole patch on the floor'

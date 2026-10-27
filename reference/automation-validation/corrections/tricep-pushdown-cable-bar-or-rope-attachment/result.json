@@ -1,32 +1,37 @@
 {
-  "name": "Tricep Pushdown",
+  "name": "Tricep Pushdown (cable, bar or rope attachment)",
   "slug": "tricep-pushdown-cable-bar-or-rope-attachment",
-  "run_dir": "/tmp/studio-complete-validation/tricep-pushdown-cable-bar-or-rope-attachment",
+  "run_dir": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 1.19
+      "seconds": 1.34,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 165.35
+      "seconds": null,
+      "runner": "Production commandFor arguments and animate.main; exception-capture wrapper made no changes on the successful path.",
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 27.57
+      "seconds": 68.5,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.09
+      "seconds": 0.19,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 22,
-    "fail": 0,
+    "pass": 30,
+    "fail": 4,
     "limited": 0,
     "uncertain": 2,
     "info": 18,
@@ -118,17 +123,135 @@
     },
     "reason": "The short-arm rest character uses the validated fitness proportions for a collision-free cable grip."
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-41d79d3d": "5f52b0f699fcd01bcf07053d9abe26e428f227816d62bc61a3232435715b5e7e",
     "img-bfe8bbbf": "76f7793452cebb4f00846f9fd5ce3306d90d4b1912b192125cd428c2d8b76a3c"
   },
-  "scene_sha256": "51a56c9d1c6dedf0166596ae167d21110bb498ead19bc44ed6575d29a9bb9060",
+  "scene_sha256": "f4ef587bfdae0c45fef7ab6ca256cc3965b786665c281ad3faa30214781bcced",
   "output_sha256": {
-    "animation.gif": "edc861c63d974117cca96b9df443b0d4aab31ed260e1e2b98c0c8df613979f5f",
-    "start.png": "8cd1bae67625c92486c37e687ac4dc3cd14ca413185cf880c6f29867be41ddfd",
-    "end.png": "68879667931a0e521a434dc766fe9dd2b9e7a0d6bb6ed3aaa96229675cf77b4f",
-    "checks.json": "fb8c2a30b7b11eb2d57e34f6a1a7f40e98ce1c0a52b0675082663fc505384710"
+    "animation.gif": "6516bd26766cafbca4151f327208a664f79e38750f99a5fb504cbc2205e7b483",
+    "start.png": "83c4ab237ac34d3e33d6e4598e22486340e76278246ecfd1ce898d869515d5e1",
+    "end.png": "28397bc6c0766116bc14b156200835fe49a6afb1607b2b631bb2b7b50a01b31e",
+    "checks.json": "ae377b84e7d8bfed03dd6497549060d6d44c74a40f13bbfa4f14da73e4d65e44"
   },
-  "physical_remeasurement": null
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/isolation-form-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 10,
+      "end": 19
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.5,
+      "hold_s": 0.2,
+      "return_s": 1.0,
+      "forward_action": "start to end",
+      "return_action": "end to start",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 19,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/tricep-pushdown-cable-bar-or-rope-attachment/frames/frame_0019.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [
+      {
+        "group": "start",
+        "metric": "torso_lean",
+        "target": 1.909,
+        "ours": 8.95,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 1,
+        "note": "Off by 7.0\u00b0. Read from the picture, as the coach's; the rig reads 15\u00b0",
+        "kind": null,
+        "uncertain_why": null
+      },
+      {
+        "group": "start",
+        "metric": "upperarm_vs_torso",
+        "target": 17.083,
+        "ours": 29.703,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 1,
+        "note": "Off by 12.6\u00b0. The picture of ours reads 19\u00b0 (shown only; the detector doesn't read the cartoon's arms reliably)",
+        "kind": null,
+        "uncertain_why": null
+      },
+      {
+        "group": "end",
+        "metric": "hip_included",
+        "target": 174.174,
+        "ours": 168.121,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 19,
+        "note": "Off by 6.1\u00b0. Read from the picture, as the coach's; the rig reads 161\u00b0",
+        "kind": null,
+        "uncertain_why": null
+      },
+      {
+        "group": "end",
+        "metric": "elbow_included",
+        "target": 162.331,
+        "ours": 175.076,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 19,
+        "note": "Off by 12.7\u00b0. The picture of ours reads 153\u00b0 (shown only; the detector doesn't read the cartoon's arms reliably)",
+        "kind": null,
+        "uncertain_why": null
+      }
+    ],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/isolation-form-replay.json",
+        "sha256": "58e4ccc13883342ba936e4e3ec782f367dd1e6d419f83b23b6fc559762383957",
+        "status": "passed",
+        "scene_sha256": "f4ef587bfdae0c45fef7ab6ca256cc3965b786665c281ad3faa30214781bcced"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

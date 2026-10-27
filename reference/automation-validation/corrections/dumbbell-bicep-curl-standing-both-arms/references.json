@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Dumbbell_Bicep_Curl",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/0.jpg"
-      }
+      },
+      "path": "source-references/img-24b4606a.jpg"
     },
     {
       "id": "img-f1698c9f",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Dumbbell_Bicep_Curl",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Dumbbell_Bicep_Curl/1.jpg"
-      }
+      },
+      "path": "source-references/img-f1698c9f.jpg"
     }
   ],
   "characterFit": "auto"

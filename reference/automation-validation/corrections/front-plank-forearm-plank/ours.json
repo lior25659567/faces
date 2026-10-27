@@ -1,0 +1,1881 @@
+{
+  "first": 1,
+  "last": 12,
+  "camera_side": "right",
+  "ears": {
+    "left": [
+      -0.1077,
+      -0.0223,
+      0.8498
+    ],
+    "right": [
+      0.1081,
+      -0.0226,
+      0.8499
+    ],
+    "count": [
+      99,
+      92
+    ]
+  },
+  "spine_rest": 29.302,
+  "torso_rest_lean": -15.382,
+  "legs_at_rest": {
+    "joints": {
+      "thigh.left": -10.705,
+      "thigh.right": -10.584,
+      "shin.left": -10.703,
+      "shin.right": -10.583
+    },
+    "outline": {
+      "thigh.left": -4.81,
+      "thigh.right": -4.622
+    },
+    "read": {
+      "ours": {
+        "hip_included": 174.903,
+        "knee_included": 179.999,
+        "torso_lean": 0.0
+      },
+      "warning": null,
+      "mediapipe": {
+        "hip_included": 172.613,
+        "knee_included": 178.471,
+        "torso_lean": 2.17,
+        "thigh_slope": -2.906,
+        "knee_seen": 0.795
+      }
+    },
+    "warning": null
+  },
+  "per_frame": [
+    {
+      "frame": 1,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 2,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 3,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 4,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 5,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 6,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 7,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 8,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 9,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 10,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 11,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    },
+    {
+      "frame": 12,
+      "flat": {
+        "knee_included": 175.604,
+        "hip_included": 177.586,
+        "torso_lean": 85.27,
+        "hip_below_knee": -0.087,
+        "thigh_level": -6.179,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null,
+        "head_pitch": -62.208,
+        "spine_curl": -0.068
+      },
+      "3d": {
+        "knee_included": 175.594,
+        "hip_included": 161.779,
+        "elbow_included": 67.66,
+        "upperarm_vs_torso": 74.374,
+        "torso_lean": 85.138,
+        "hip_below_knee": -0.083,
+        "thigh_level": -5.876,
+        "grip_ratio": 1.0,
+        "elbow_width_ratio": 1.0,
+        "neck_vs_torso": null
+      }
+    }
+  ],
+  "picture": {
+    "start": {
+      "frame": 1,
+      "ok": true,
+      "reads": 5,
+      "seen": 5,
+      "flat": {
+        "torso_lean": 80.819,
+        "hip_included": 177.169,
+        "knee_included": 177.534,
+        "elbow_included": 56.975,
+        "upperarm_vs_torso": 69.395
+      },
+      "3d": {
+        "torso_lean": 82.782,
+        "hip_included": 155.333,
+        "knee_included": 170.254,
+        "elbow_included": 42.817,
+        "upperarm_vs_torso": 61.445
+      },
+      "spread": {
+        "torso_lean": [
+          80.406,
+          81.31
+        ],
+        "hip_included": [
+          176.479,
+          178.288
+        ]
+      },
+      "visibility": {
+        "torso": 1.0,
+        "knee": 0.855
+      },
+      "why": null
+    },
+    "end": {
+      "frame": 1,
+      "ok": true,
+      "reads": 5,
+      "seen": 5,
+      "flat": {
+        "torso_lean": 80.819,
+        "hip_included": 177.169,
+        "knee_included": 177.534,
+        "elbow_included": 56.975,
+        "upperarm_vs_torso": 69.395
+      },
+      "3d": {
+        "torso_lean": 82.782,
+        "hip_included": 155.333,
+        "knee_included": 170.254,
+        "elbow_included": 42.817,
+        "upperarm_vs_torso": 61.445
+      },
+      "spread": {
+        "torso_lean": [
+          80.406,
+          81.31
+        ],
+        "hip_included": [
+          176.479,
+          178.288
+        ]
+      },
+      "visibility": {
+        "torso": 1.0,
+        "knee": 0.855
+      },
+      "why": null
+    },
+    "middle": {
+      "frame": 1,
+      "ok": false,
+      "reads": 0,
+      "seen": 0,
+      "flat": null,
+      "3d": null,
+      "spread": null,
+      "visibility": {
+        "torso": null,
+        "knee": null
+      },
+      "why": "Estimated between the source positions; there is no reference photograph to compare here.",
+      "skipped": "estimated-reference-position"
+    },
+    "framings": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.015,
+        0.0,
+        1.0
+      ],
+      [
+        -0.015,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.015,
+        1.0
+      ],
+      [
+        0.0,
+        -0.015,
+        1.0
+      ]
+    ],
+    "camera": {
+      "azimuth": -89.97,
+      "elevation": 5.0
+    }
+  },
+  "phase_frames": {
+    "start": 1,
+    "middle": 1,
+    "end": 1
+  },
+  "phase_driver": "reference_time",
+  "jumps": [],
+  "steps": [],
+  "arm": {
+    "shoulder_half_width": 0.1169,
+    "upper_arm": 0.1882,
+    "forearm": 0.1754
+  },
+  "stills": [
+    {
+      "image": "img-cd985885",
+      "phase": "start",
+      "view": "side",
+      "frame": 1,
+      "file": "stills/img-cd985885.png",
+      "facing": "right"
+    }
+  ],
+  "height_m": 0.9995,
+  "folds": [
+    {
+      "frame": 1,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 1,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 73.1,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 1,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 1,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 2,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 2,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 2,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 2,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 3,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 3,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 3,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 3,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 4,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 4,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 4,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 4,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 5,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 5,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 5,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 5,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 6,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 6,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 6,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 6,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 7,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 7,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 7,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 7,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 8,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 8,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 8,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 8,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 9,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 9,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 9,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 9,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 10,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 10,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 10,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 10,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 11,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 11,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 11,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 11,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    },
+    {
+      "frame": 12,
+      "bone": "mixamorig:LeftUpLeg",
+      "kind": "hidden",
+      "area_mm2": 178.6,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.0,
+        0.305,
+        0.12
+      ]
+    },
+    {
+      "frame": 12,
+      "bone": "mixamorig:RightArm",
+      "kind": "hidden",
+      "area_mm2": 364.9,
+      "visible_mm2": 0.0,
+      "centre": [
+        0.089,
+        0.629,
+        0.213
+      ]
+    },
+    {
+      "frame": 12,
+      "bone": "mixamorig:LeftArm",
+      "kind": "hidden",
+      "area_mm2": 630.8,
+      "visible_mm2": 46.4,
+      "centre": [
+        -0.087,
+        0.636,
+        0.203
+      ]
+    },
+    {
+      "frame": 12,
+      "bone": "mixamorig:LeftForeArm",
+      "kind": "crease",
+      "area_mm2": 131.8,
+      "visible_mm2": 42.9,
+      "centre": [
+        -0.137,
+        0.617,
+        0.032
+      ]
+    }
+  ],
+  "folds_worst": {
+    "mixamorig:LeftArm": 630.8,
+    "mixamorig:RightArm": 364.9,
+    "mixamorig:LeftUpLeg": 178.6,
+    "mixamorig:LeftForeArm": 131.8
+  },
+  "upper_limb_motion": {
+    "frames": 12,
+    "measured_frames": 12,
+    "first_frame": 1,
+    "last_frame": 12,
+    "height_m": 0.9991119140625,
+    "fps": 12.0,
+    "loop": false,
+    "per_frame": [
+      {
+        "frame": 1,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 2,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 3,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 4,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 5,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 6,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 7,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 8,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 9,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 10,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 11,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      },
+      {
+        "frame": 12,
+        "points_m": {
+          "elbow.left": [
+            -0.11755073815584183,
+            0.21036523580551147,
+            -0.05496641993522644
+          ],
+          "wrist.left": [
+            -0.11755076795816422,
+            0.34785592555999756,
+            -0.027585335075855255
+          ],
+          "elbow.right": [
+            0.1162383034825325,
+            0.20981377363204956,
+            -0.054585978388786316
+          ],
+          "wrist.right": [
+            0.11623834073543549,
+            0.3421393632888794,
+            -0.02823352813720703
+          ]
+        },
+        "turns_wxyz": {
+          "arm.left": [
+            0.3897417187690735,
+            -0.47344470024108887,
+            0.5020307898521423,
+            -0.6098496317863464
+          ],
+          "forearm.left": [
+            0.9771119952201843,
+            0.09634914994239807,
+            0.1887395679950714,
+            0.018610946834087372
+          ],
+          "hand.left": [
+            0.9825233221054077,
+            0.09688270837068558,
+            0.1581721305847168,
+            0.015596995130181313
+          ],
+          "arm.right": [
+            0.3896041512489319,
+            -0.47327741980552673,
+            -0.5021376013755798,
+            0.6099794507026672
+          ],
+          "forearm.right": [
+            0.9774422645568848,
+            0.09638170897960663,
+            -0.18702183663845062,
+            -0.01844162493944168
+          ],
+          "hand.right": [
+            0.9944021105766296,
+            0.09805408865213394,
+            -0.03917761147022247,
+            -0.0038632252253592014
+          ]
+        }
+      }
+    ],
+    "max_speed_heights_s": 0.0,
+    "speed_frame": 1,
+    "speed_joint": null,
+    "max_turn_deg_s": 0.0,
+    "turn_frame": 1,
+    "turn_joint": null,
+    "limits": {
+      "speed_heights_s": 2.0,
+      "turn_deg_s": 720.0
+    },
+    "method": "All-frame hip-relative elbow/wrist speed and shortest world arm/forearm/hand turns; snap detection only."
+  }
+}

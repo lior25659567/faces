@@ -6,6 +6,93 @@ not a calibrated anatomical landmark or a measurement of the source athlete.
 import numpy as np
 
 
+def continuous_pole(shoulders, bar, along, width, fraction, lengths, height):
+    """One down-and-forward elbow branch for both strokes of a strict pull-up.
+
+    The source pictures calibrate width, not sagittal depth. This declared depth
+    policy keeps elbows in front of the torso while they descend continuously;
+    it cannot turn an inferred source depth into an observed measurement.
+    """
+    fraction = float(fraction)
+    if not np.isfinite(fraction) or not 0. <= fraction <= 1.:
+        raise ValueError('The pull-up pole needs a finite movement fraction.')
+    bar, along = np.asarray(bar), np.asarray(along)
+    shoulders = {side: np.asarray(value) for side, value in shoulders.items()}
+    origin = (shoulders['left'] + shoulders['right']) / 2
+    span = float(np.linalg.norm(shoulders['right'] - shoulders['left']))
+    if not np.isfinite([span, width, height]).all() or min(span, width, height) <= 0:
+        raise ValueError('The pull-up pole needs positive finite widths and height.')
+    hints, preferences = {}, {}
+    for side, sign in (('left', -1), ('right', 1)):
+        upper = float(lengths[side][0])
+        hint = origin + sign * width * span / 2 * along
+        hint[1] = shoulders[side][1] + .08 * height
+        hint[2] = shoulders[side][2] + upper * (1. - 1.65 * fraction)
+        hints[side] = hint
+        preferences[side] = {
+            'elbow_lateral': float(origin @ along) + sign * width * span / 2,
+            'lateral_axis': along, 'lateral_scale': span * .015,
+            'max_elbow_z': float(shoulders[side][2] + (bar[2] - shoulders[side][2]) * (1. - fraction) - .005 * height),
+            'min_elbow_y': float(shoulders[side][1] + height * (.035 + .10 * np.sqrt(fraction) * (1. - fraction))),
+            'elbow_below_wrist': True, 'elbow_clearance_m': .005 * height,
+            'forearm_vertical_fraction': .9,
+        }
+    return hints, preferences
+
+
+def motion_summary(samples, fps, phase_frames):
+    """Measure branch jumps and a different lowering path from actual joints.
+
+    Offsets are relative to the moving shoulders, so body travel cannot conceal
+    a snapping elbow. Return-path error compares the same body heights, without
+    assuming equal ascent and descent speed.
+    """
+    if (isinstance(fps, bool) or not isinstance(fps, (int, float)) or not np.isfinite(fps) or fps <= 0
+            or not isinstance(samples, list) or len(samples) < 3 or not isinstance(phase_frames, dict)):
+        raise ValueError('Pull-up motion requires complete joint samples, fps and recorded phases.')
+    frames = [sample.get('frame') for sample in samples]
+    first, last = frames[0], frames[-1]
+    if (type(first) is not int or type(last) is not int or frames != list(range(first, last + 1))
+            or phase_frames.get('start') != first or type(phase_frames.get('end')) is not int
+            or not first < phase_frames['end'] < last):
+        raise ValueError('Pull-up motion requires every frame and its recorded ascent/return boundary.')
+    hips = np.array([sample.get('hip_height_m') for sample in samples], dtype=float)
+    if not np.isfinite(hips).all() or np.ptp(hips) <= 1e-8:
+        raise ValueError('Pull-up motion requires a measured body rise.')
+    top = phase_frames['end'] - first
+    if hips[top] < hips.max() - 1e-5:
+        raise ValueError('The recorded pull-up top must be the measured highest body position.')
+    speed, retrace = 0., 0.
+    for side in ('left', 'right'):
+        try:
+            offsets = np.array([sample['elbow_offsets_m'][side] for sample in samples], dtype=float)
+        except (KeyError, TypeError):
+            raise ValueError('Every pull-up frame needs both shoulder-relative elbow positions.') from None
+        if offsets.shape != (len(samples), 3) or not np.isfinite(offsets).all():
+            raise ValueError('Every pull-up frame needs finite three-dimensional elbow offsets.')
+        lengths = np.linalg.norm(offsets, axis=1)
+        upper = float(np.median(lengths))
+        if upper <= 1e-8 or np.max(abs(lengths - upper)) > upper * .01:
+            raise ValueError('The measured pull-up upper arm must keep its fixed length.')
+        speed = max(speed, float(np.linalg.norm(np.diff(np.vstack([offsets, offsets[0]]), axis=0), axis=1).max() * fps / upper))
+        # Interpolate each stroke independently at the same body heights;
+        # repeated top-hold heights share one interpolation anchor.
+        up_x, up_i = np.unique(hips[:top + 1], return_index=True)
+        down_x, down_i = np.unique(hips[top:], return_index=True)
+        low, high = max(up_x[0], down_x[0]), min(up_x[-1], down_x[-1])
+        if len(up_x) < 2 or len(down_x) < 2 or high - low <= 1e-8:
+            raise ValueError('The pull-up must contain both a measurable pull and return.')
+        common = np.unique(np.r_[up_x[(up_x >= low) & (up_x <= high)], down_x[(down_x >= low) & (down_x <= high)]])
+        up = np.column_stack([np.interp(common, up_x, offsets[:top + 1][up_i, axis]) for axis in range(3)])
+        down = np.column_stack([np.interp(common, down_x, offsets[top:][down_i, axis]) for axis in range(3)])
+        retrace = max(retrace, float(np.linalg.norm(up - down, axis=1).max() / upper))
+    return {'frames': len(samples), 'measured_frames': len(samples), 'fps': float(fps),
+            'phase_frames': dict(phase_frames), 'max_elbow_speed_arm_lengths_per_s': speed,
+            'max_return_path_error_arm_lengths': retrace,
+            'limits': {'max_elbow_speed_arm_lengths_per_s': 6., 'max_return_path_error_arm_lengths': .12},
+            'method': 'Measured shoulder-relative elbow path, including loop seam; compare pull and lowering at the same body height.'}
+
+
 def grip_candidates(requested, tolerance=0., step=.005):
     """Nearest-first grip ratios inside an explicit source tolerance."""
     for value in (requested, tolerance, step):

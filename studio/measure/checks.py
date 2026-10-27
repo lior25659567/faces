@@ -517,6 +517,28 @@ def _motion_rows(ours):
     return [_row("body", "smooth_motion", 0, len(events), "fail", worst, note, "frames")]
 
 
+def _upper_limb_rows(ours):
+    """Recheck full arm samples, never a cached pass or a single driving angle."""
+    from upper_limb_motion import remeasure, MAX_SPEED_HEIGHTS_S, MAX_TURN_DEG_S
+    try:
+        measured = remeasure(ours.get('upper_limb_motion'), ours.get('first'), ours.get('last'))
+    except (ValueError, TypeError, KeyError):
+        measured = None
+    rows = []
+    for metric, value, limit, unit, where, joint in (
+            ('upper_limb_speed', 'max_speed_heights_s', MAX_SPEED_HEIGHTS_S, 'height/s', 'speed_frame', 'speed_joint'),
+            ('upper_limb_turn_speed', 'max_turn_deg_s', MAX_TURN_DEG_S, 'deg/s', 'turn_frame', 'turn_joint')):
+        if measured is None:
+            rows.append(_missing('body', metric, limit, unit))
+            rows[-1]['note'] = 'Every arm, elbow and wrist frame must be measured, including the loop seam for a repeated movement.'
+        else:
+            note = ('Generous arm-snap limit; passing this check does not establish exercise technique. '
+                    + (f"Fastest measured joint: {measured[joint]}." if measured[joint] else 'The arms remain stationary.'))
+            rows.append(_row('body', metric, limit, measured[value], 'pass' if measured[value] <= limit else 'fail',
+                             measured[where], note, unit))
+    return rows
+
+
 # Skin turned over (ours.json `folds`, from studio/blender/inspect_run.py): one record per patch over
 # the limit per frame, of kind "crease" (inside a hinge bent past 60 degrees, see creases.py:
 # normal in deep bends, never fails), "defect" (a camera the user looks at sees at least the limit's
@@ -823,10 +845,17 @@ def unmeasured(rows):
 
 def build_checks(targets, ours, report, exercise):
     from physical_checks import rows_for
-    rows = (_phase_rows(targets, ours, exercise) + _width_rows(targets, ours, exercise)
+    preset = (targets.get('motion') or {}).get('source') == 'preset'
+    comparisons = [] if preset else _phase_rows(targets, ours, exercise) + _width_rows(targets, ours, exercise)
+    rows = (comparisons
             + _posture_rows(targets, ours, exercise)
             + _body_rows(report, exercise, targets.get("equipment")) + _fold_rows(ours) + _motion_rows(ours)
-            + rows_for(report))
+            + rows_for(report, exercise=exercise))
+    if preset:
+        rows.append(_info('body', 'movement_source', None, None, SHOWN_ONLY,
+            'Explicit pinned movement preset with a declared fitted grip. Photographs are context, not calibrated motion targets.'))
+    if report.get('physical') or 'upper_limb_motion' in ours:
+        rows += _upper_limb_rows(ours)
     capabilities = kit_of(exercise)
     if capabilities.get('reference_motion'):
         physical = report.get('physical') or {}

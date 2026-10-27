@@ -1,0 +1,15 @@
+{
+  "presets": {
+    "squat-v1": {
+      "exercise": "Barbell Back Squat",
+      "label": "Checked squat movement preset",
+      "clip": "3d-character/mixamo/squat.fbx",
+      "sha256": "e4f720f5d9b9657c2f7b4c52c516bdf3c17ec6d4fcfe5b9b527cb962d4157705",
+      "frames": 69,
+      "fps": 30,
+      "phase_frames": { "start": 1, "middle": 19, "end": 38 },
+      "source": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets.",
+      "mode": "cycle"
+    }
+  }
+}

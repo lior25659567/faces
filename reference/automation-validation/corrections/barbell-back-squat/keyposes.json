@@ -1,0 +1,17 @@
+{
+  "exercise": "Barbell Back Squat",
+  "motionPreset": "squat-v1",
+  "phases": [],
+  "motion": {
+    "source": "preset",
+    "preset": "squat-v1",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 19,
+      "end": 38
+    },
+    "sourceDepthCalibrated": false,
+    "description": "Existing pinned 3D motion clip with a declared fitted back-bar grip; photos are context, not calibrated motion targets."
+  }
+}

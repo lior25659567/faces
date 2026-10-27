@@ -46,7 +46,8 @@ def _samples(keyposes):
         if any(not isinstance(point, (list, tuple)) or len(point) != 3 or not all(_finite(v) for v in point)
                for point in sample['world'].values()):
             raise SequenceError(f"Motion sample {index} has invalid body landmarks.")
-        if any((sample.get('footContacts') or {}).get(side) not in CONTACT_STATES for side in SIDES):
+        states = CONTACT_STATES + ('heel', 'toe') if sequence.get('contactModel') == 'named_heel_toe' else CONTACT_STATES
+        if any((sample.get('footContacts') or {}).get(side) not in states for side in SIDES):
             raise SequenceError(f"Motion sample {index} needs observed per-foot contact states.")
         for name in ('left_hip', 'right_hip') + tuple(f'{s}_{j}' for s in SIDES for j in ('ankle', 'heel', 'foot_index')):
             point = sample['world'].get(name)
@@ -122,6 +123,41 @@ def contact_roots(points, supports, *, initial=None, tolerance=.003):
 
 def inspect_sequence(keyposes, min_visibility=.8, tolerance=.003):
     samples = _samples(keyposes)
+    if (keyposes.get('sequence') or {}).get('contactModel') == 'named_heel_toe':
+        anchors, intervals, blockers = [], [], []
+        for index, sample in enumerate(samples):
+            points = sample.get('observedContactPoints')
+            if not isinstance(points, dict) or set(points) != set(SIDES):
+                raise SequenceError(f'Motion sample {index} needs observed heel/toe contact identities for both feet.')
+            active = set()
+            for side in SIDES:
+                named = points[side]
+                if (not isinstance(named, list) or len(set(named)) != len(named)
+                        or any(name not in ('heel', 'toe') for name in named)):
+                    raise SequenceError(f'Motion sample {index} has invalid named contact points.')
+                state = sample['footContacts'][side]
+                expected = {'flat': {'heel', 'toe'}, 'heel': {'heel'}, 'toe': {'toe'},
+                            'airborne': set(), 'uncertain': set()}[state]
+                if set(named) != expected:
+                    raise SequenceError(f'Motion sample {index} contact points disagree with its observed foot state.')
+                if named and sample.get('observedSupport') not in (side, 'both'):
+                    raise SequenceError(f'Motion sample {index} anchors an unobserved supporting foot.')
+                active.update(side + '.' + name for name in named)
+            if not active:
+                blockers.append(f'Motion sample {index} has no observed supporting heel or toe.')
+            if anchors:
+                shared = sorted(active & anchors[-1])
+                intervals.append({'fromIndex': index - 1, 'toIndex': index, 'observedContactPoints': shared})
+                if not shared:
+                    blockers.append(f'The handoff from samples {index - 1} to {index} has no shared observed contact point.')
+            anchors.append(active)
+        return {'ready': not blockers, 'input_ready': not blockers, 'blockers': blockers,
+            'mode': 'sequence', 'playback': 'once', 'contactModel': 'named_heel_toe',
+            'sampleCount': len(samples), 'sourceTimes': [s['timeSeconds'] for s in samples],
+            'observedContacts': [sorted(points) for points in anchors], 'intervals': intervals,
+            'rootFitRequired': True, 'sourceInferredDepth': True, 'calibrated': False,
+            'completeClosedCycle': False,
+            'note': 'Observed support identity is connected. Model-space root fitting and actual skin contacts must still pass before rendering.'}
     bodies = sequence_bodies(samples)
     supports = [visible_support(sample, min_visibility) for sample in samples]
     points = [{s: (body[f'{s}_heel'] + body[f'{s}_foot_index']) / 2 for s in SIDES} for body in bodies]
@@ -195,3 +231,52 @@ def motion_from_sequence(keyposes, rest, fps=30, legs=DOWN, contact_tolerance=.0
               'source_times': [sample['timeSeconds'] for sample in samples],
               'sourceInferredDepth': True, 'calibrated': False},
             'report': report}
+
+
+def clip_from_sequence(rest, keyposes, fps=16, label='keyposes.json', legs=DOWN):
+    """Blender Clip for one observed chronological step, without a return cycle."""
+    import retarget
+    from mathutils import Matrix, Vector
+    report = inspect_sequence(keyposes)
+    if not report['ready']:
+        raise SequenceError(' '.join(report['blockers']), report)
+    if report.get('contactModel') != 'named_heel_toe':
+        raise SequenceError('Walking rendering requires the reviewed named heel/toe contact model.')
+    if not _finite(fps) or not 0 < fps <= 120:
+        raise SequenceError('Sequence playback needs a finite positive frame rate up to 120 fps.')
+    samples = _samples(keyposes)
+    rows = np.asarray(retarget.facing(rest.rest)[0])
+    to_world = np.column_stack([-rows[0], -rows[1], rows[2]])
+    rest_points = {name: to_world.T @ np.array(point) for name, point in rest.rest.items()}
+    bodies = sequence_bodies(samples)
+    keys = [bone_turns(body, body, rest_points, square=False, legs=legs) for body in bodies]
+    from motion_profiles import prepare_key_turns
+    keys = prepare_key_turns(keyposes.get('exercise'), keys)
+    bones = sorted(keys[0])
+    if any(name not in rest.rest_turns for name in bones):
+        raise SequenceError('The pinned rest skeleton lacks the required walking bones.')
+    origin = samples[0]['timeSeconds']
+    marks = [sample['timeSeconds'] - origin for sample in samples]
+    times = [min(index / fps, marks[-1]) for index in range(math.ceil(marks[-1] * fps) + 1)]
+    poses = [pose_at(keys, marks, time) for time in times]
+    pelvis = (rest_points['LeftUpLeg'] + rest_points['RightUpLeg']) / 2
+    frames = [{name: Vector((to_world @ (point + pelvis)).tolist())
+               for name, point in _leg_frame(pose, rest_points, legs).items()} for pose in poses]
+    turns = [{name: Matrix((to_world @ pose[name] @ to_world.T).tolist()).to_quaternion() @ rest.rest_turns[name]
+              for name in bones} for pose in poses]
+    phases = {}
+    for sample in samples:
+        phase = sample.get('phase') or (sample.get('source') or {}).get('phase')
+        if phase in ('start', 'middle', 'end') and not sample.get('motionOnly'):
+            phases[phase] = min(range(len(times)), key=lambda i: abs(times[i] - (sample['timeSeconds'] - origin))) + 1
+    if set(phases) != {'start', 'middle', 'end'}:
+        raise SequenceError('The chronological step needs its three actual observed comparison anchors.')
+    clip = retarget.Clip(path=str(label), fps=float(fps), first=1, rest=dict(rest.rest), frames=frames,
+        bones=dict(rest.bones), rest_turns={name: rest.rest_turns[name] for name in bones}, turns=turns,
+        notes=['Observed chronological step; one-shot playback; frontal depth remains inferred.'])
+    clip.reference_motion = {'source': 'keyposes', 'mode': 'sequence', 'playback': 'once',
+        'phase_frames': phases, 'sample_frames': [min(range(len(times)), key=lambda i: abs(times[i] - mark)) + 1 for mark in marks],
+        'source_times': [sample['timeSeconds'] for sample in samples],
+        'contactModel': 'named_heel_toe', 'sourceInferredDepth': True, 'calibrated': False,
+        'observed_contacts': [sample['observedContactPoints'] for sample in samples]}
+    return clip

@@ -19,21 +19,17 @@ redirects, checks image headers and byte limits, and verifies the expected conte
 It returns image data and provenance; the automation owns importing it without replacing
 existing user references.
 
-Walking-lunge references are deliberately ineligible for automatic animation:
+The two walking-lunge photos show alternating lowered positions and remain context only.
+The older [12-frame sequence](exercise-lunge/README.md) also retains its historical support-handoff blocker.
+The preferred source is now the [reviewed one-step bundle](exercise-lunge/one-step/README.md):
+26 licensed chronological video frames with conservative heel/toe observations. Its fitted 42-frame
+animation passed the contact, range, floor, skin and continuity checks and an independent saved-scene
+replay. It plays once and ends during the observed swing-through. The fixed frontal camera does not
+calibrate human depth, so those comparisons remain uncertain.
 
-- Walking lunge photos depict alternating lowered stances, without a standing start.
-  Both are context-only references.
-
-A separate [walking-lunge video sequence](exercise-lunge/README.md) supplies 12
-licensed real frames with a standing start, alternating lower positions, and
-observed step transitions. Its fixed frontal camera does not supply calibrated
-depth, and the athlete continues stepping after the selected interval. This
-sequence is now preferred for unattended lunge reference retrieval. It can be
-appended to the old automatic context pair while preserving those files and tags;
-manual references prevent that migration. Rendering remains blocked: visible
-support does not connect every adjacent sample, so a complete forward root path
-cannot be recovered without guessing. The sequence never authorizes a reversed,
-stationary lunge cycle.
+Exact reviewed source selection is saved with each run. Unchanged automatic legacy references can
+remain as context beside the new sequence without deleting or retagging them. Manual changes block
+silent migration. Ordinary unreviewed two-photo stepping still cannot use the named sequence path.
 
 The plank pair depicts a kneeling setup and a static forearm hold. Only the hold is
 a usable pose; this pair must not become a kneel-to-plank animation cycle. The
@@ -46,6 +42,9 @@ model and face while providing fixed arm reach.
 The back-squat pair shows the correct exercise but supplies only three-quarter views.
 It cannot satisfy that solver's required side positions and front/rear grip-width
 measurements. Its limitation is explicit in the catalog.
+Automatic builds instead select the checked, pinned 3D squat preset with a declared fitted back-bar
+grip. Photos are optional context in that mode. The separate photo-reconstruction mode retains its
+side and front/rear requirements; the preset does not pretend the photo views changed.
 
 The other implemented profiles build their required supports and finite equipment
 contacts. The reference-driven builder holds isolation poses, checks overhead
@@ -63,15 +62,14 @@ photographs, the five camera searches for an estimated middle are skipped,
 reducing detector-rendered comparisons from 15 to 10 without dropping a source
 photograph. See the [scan parity report](automation-validation/skin-preflight/README.md).
 
-The [latest full validation](automation-validation/corrections/README.md) covers bench, overhead press, pulldown, seated dumbbell press, plank,
-leg press, curl, lateral raise, pushdown, pull-up and deadlift runs have no failed Checks;
-inferred source depth still requires review. The row retains 16 passing checks
-and two torso/hip conflicts with the photographed demonstration's moving hinge
-([row evidence](automation-validation/row/README.md)). The final pull-up uses 43 frames at
-16 fps and passes the same movement rules, along with grip, elbow direction and visible skin.
+The [current validation](automation-validation/corrections/README.md) contains all 14 mapped examples
+with no failed mechanical checks or missing measurements. The row retains two source comparisons
+and pushdown retains four; inferred source depth still requires review. Their actual failure counts
+remain visible. The pull-up uses 43 frames at 16 fps with one second of effort and a controlled
+1.5-second lowering, along with full hang, chin clearance, stable grip and continuous elbows.
 Current engine flags live in `studio/measure/exercise-kit.json`.
 
-`autoBuild: true` means a source supplies movement endpoints or an explicit static hold; the engine's
+`autoBuild: true` means a source is reviewed for its declared movement mode; the engine's
 capability checks and pose preflight still decide whether it can build the exercise.
 Unknown or ambiguously named exercises have no automatic mapping. Adding another
 exercise requires an exact source variant, inspection of its photos/instructions,

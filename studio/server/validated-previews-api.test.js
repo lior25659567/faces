@@ -35,7 +35,7 @@ test('all previews appear on a fresh Studio without creating references or run r
   expect(response.status).toBe(200)
   const rows = await response.json()
   expect(rows).toHaveLength(14)
-  expect(rows.filter((row) => row.available)).toHaveLength(12)
+  expect(rows.filter((row) => row.available)).toHaveLength(14)
   expect(rows.find((row) => row.slug === 'barbell-bent-over-row').summary.fail).toBe(2)
   expect(await readdir(root)).toEqual([])
 })
@@ -54,7 +54,7 @@ test('serves the actual whitelisted GIF, PNG and exact Checks with matching cont
   expect(await head.text()).toBe('')
 })
 
-test.each(['/api/previews/barbell-back-squat/animation.gif', '/api/previews/missing/animation.gif',
+test.each(['/api/previews/barbell-back-squat/source.fbx', '/api/previews/missing/animation.gif',
   '/api/previews/barbell-bent-over-row/scene.blend', '/api/previews/barbell-bent-over-row/../../package.json',
   '/api/previews/%2e%2e/%2e%2e/package.json', '/api/previews/barbell-bent-over-row/%2fetc%2fpasswd',
   '/api/previews/barbell-bent-over-row/%zz'])('unavailable and untrusted assets are rejected: %s', async (url) => {

@@ -1,31 +1,35 @@
 {
-  "name": "Standing Barbell Overhead Press",
+  "name": "Standing Barbell Overhead Press (Shoulder Press)",
   "slug": "standing-barbell-overhead-press-shoulder-press",
-  "run_dir": "/tmp/studio-final-validation/standing-barbell-overhead-press-shoulder-press",
+  "run_dir": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press",
   "steps": [
     {
       "step": "read",
       "exit": 0,
-      "seconds": 3.93
+      "seconds": 0.99,
+      "scope": "current completed pipeline"
     },
     {
       "step": "animate",
       "exit": 0,
-      "seconds": 555.44
+      "seconds": 183.02,
+      "scope": "current completed pipeline"
     },
     {
       "step": "stills",
       "exit": 0,
-      "seconds": 200.7
+      "seconds": 34.75,
+      "scope": "current completed pipeline"
     },
     {
       "step": "check",
       "exit": 0,
-      "seconds": 0.33
+      "seconds": 0.09,
+      "scope": "current completed pipeline"
     }
   ],
   "summary": {
-    "pass": 15,
+    "pass": 27,
     "fail": 0,
     "limited": 0,
     "uncertain": 10,
@@ -36,8 +40,8 @@
   "fps": 12.0,
   "phase_frames": {
     "start": 1,
-    "middle": 10,
-    "end": 19
+    "middle": 7,
+    "end": 13
   },
   "character_fit": {
     "kind": "fitness arm reach",
@@ -118,22 +122,86 @@
     },
     "reason": "Original straight-arm reach cannot clear the head."
   },
-  "pre_render_gate_exercised_in_cli": false,
+  "pre_render_gate_exercised_in_cli": true,
   "source_image_hashes": {
     "img-4b5dc525": "fb258efda95067b243b1c5033b1ff7b72a0f8cef8607477b71b969d3f72a8471",
     "img-06bce39c": "b9419884fa57bd7de1dff2d0f811aa61d4cd5547b3c6ebafaca01c7017d8be1a"
   },
-  "scene_sha256": "10c42346ffea683bdac4c446cee57f775e7c22dbd2940bc96a92f4abf369d06f",
+  "scene_sha256": "81332b5eb77c90ea583c0a0a2c15364fa9d8c1b436b42ca926096329c9f58445",
   "output_sha256": {
-    "animation.gif": "05d146ff142da22424ab23d71729989ef8b93b56c259f8899967c916a4f4c5fc",
-    "start.png": "6a35f4bd235799c85ef5c4caba55d07786a6685563085df087f60252f7820af9",
-    "end.png": "d0e04d4d0fe22012938dd3bf6a6b3791b1562d0091a80f73197c356ef6a844f4",
-    "checks.json": "3174c49a03aaa3db4a4b17176f227b9ec9267ab5b85b7a0844d2ff52bc7385d8"
+    "animation.gif": "ccceca27d75351b428732a3b190731ff48cf89bac97df1c94e21ba0de95a0e0d",
+    "start.png": "88f3013f14f2944a004a6825f4652c3705b19b29593fb0356176e2192e0af602",
+    "end.png": "de4750f0f439b8e960503b9870e2746e8b1d5e71fe1a283c34690dbc0e139e0c",
+    "checks.json": "2482e69f952a3d43586c207ca72d82f589996a95a41e542b14db8a3afa874ce3"
   },
   "physical_remeasurement": {
-    "method": "Independent all-frame saved-scene clearance and range replay",
-    "first_frame": 1,
-    "last_frame": 32,
-    "geometry_changed": false
-  }
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": true,
+    "evidence_files": [
+      "evidence/overhead-range-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  },
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 7,
+      "end": 13
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ],
+    "timing": {
+      "forward_s": 1.0,
+      "hold_s": 0.2,
+      "return_s": 1.5,
+      "forward_action": "press",
+      "return_action": "controlled lowering",
+      "source": "declared demonstration tempo; not measured from source photographs"
+    }
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2660,
+  "gif_frame_count": 32,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 13,
+      "file": "end.png",
+      "source": "/tmp/studio-motion-quality-validation/standing-barbell-overhead-press-shoulder-press/frames/frame_0013.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [],
+    "rendered_this_review": true,
+    "geometry_changed_this_review": true,
+    "source_photos_calibrated": false,
+    "render_scope": "New preview rendered for this correction.",
+    "evidence": [
+      {
+        "file": "evidence/overhead-range-replay.json",
+        "sha256": "d4ac4fc3b5fbdbedacc61b4d184d320d497a25ca66ba5d475f00c46cbe8e6087",
+        "status": "passed",
+        "scene_sha256": "81332b5eb77c90ea583c0a0a2c15364fa9d8c1b436b42ca926096329c9f58445"
+      }
+    ]
+  },
+  "status": "needs-review",
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json"
 }

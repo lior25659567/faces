@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Leg_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/0.jpg"
-      }
+      },
+      "path": "source-references/img-3cc8d88f.jpg"
     },
     {
       "id": "img-6e74c69b",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Leg_Press",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Leg_Press/1.jpg"
-      }
+      },
+      "path": "source-references/img-6e74c69b.jpg"
     }
   ],
   "characterFit": "auto"

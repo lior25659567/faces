@@ -101,17 +101,44 @@ def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, prev
     maximum_elbow_z = None if not preference else preference.get('max_elbow_z')
     if maximum_elbow_z is not None and (isinstance(maximum_elbow_z, bool) or not np.isfinite(maximum_elbow_z)):
         raise ValueError('The maximum elbow height must be finite.')
+    minimum_elbow_y = None if not preference else preference.get('min_elbow_y')
+    if minimum_elbow_y is not None and (isinstance(minimum_elbow_y, bool) or not np.isfinite(minimum_elbow_y)):
+        raise ValueError('The minimum elbow forward position must be finite.')
     below_wrist = bool((preference or {}).get('elbow_below_wrist', False))
     clearance = float((preference or {}).get('elbow_clearance_m', 0.))
     vertical_fraction = (preference or {}).get('forearm_vertical_fraction')
+    minimum_vertical_fraction = (preference or {}).get('minimum_forearm_vertical_fraction')
+    forward_axis = (preference or {}).get('elbow_forward_axis')
+    minimum_forward = (preference or {}).get('minimum_elbow_forward')
+    if minimum_forward is not None:
+        forward_axis = _unit(forward_axis)
+        if isinstance(minimum_forward, bool) or not np.isfinite(minimum_forward):
+            raise ValueError('The minimum elbow-forward projection must be finite.')
+    reference_hand_turn = (preference or {}).get('reference_hand_turn')
+    maximum_hand_turn = (preference or {}).get('max_hand_turn_deg')
+    if reference_hand_turn is not None:
+        reference_hand_turn = np.asarray(reference_hand_turn, dtype=float)
+        if (reference_hand_turn.shape != (3, 3) or not np.isfinite(reference_hand_turn).all()
+                or not np.allclose(reference_hand_turn.T @ reference_hand_turn, np.eye(3), atol=1e-6)
+                or not np.isclose(np.linalg.det(reference_hand_turn), 1., atol=1e-6)
+                or isinstance(maximum_hand_turn, bool) or not isinstance(maximum_hand_turn, (int, float))
+                or not np.isfinite(maximum_hand_turn) or not 0. <= maximum_hand_turn <= 180.):
+            raise ValueError('A bounded hand turn needs a finite reference rotation and degree limit.')
     if not np.isfinite(clearance) or clearance < 0:
         raise ValueError('The elbow height clearance must be finite and nonnegative.')
     if vertical_fraction is not None and (isinstance(vertical_fraction, bool) or not np.isfinite(vertical_fraction)
                                          or not 0 <= vertical_fraction <= 1):
         raise ValueError('The forearm vertical fraction must lie between zero and one.')
+    if minimum_vertical_fraction is not None and (isinstance(minimum_vertical_fraction, bool)
+            or not np.isfinite(minimum_vertical_fraction) or not 0 <= minimum_vertical_fraction <= 1):
+        raise ValueError('The minimum forearm vertical fraction must lie between zero and one.')
     def candidate(degrees):
         phi = math.radians(degrees)
         turn = (np.eye(3) + math.sin(phi) * cross + (1 - math.cos(phi)) * cross @ cross) @ base
+        if reference_hand_turn is not None:
+            angle = math.degrees(math.acos(float(np.clip((np.trace(reference_hand_turn.T @ turn) - 1.) / 2., -1., 1.))))
+            if angle > maximum_hand_turn:
+                return None
         wrist = point - turn @ offset
         delta = wrist - shoulder
         distance = np.linalg.norm(delta)
@@ -156,8 +183,14 @@ def solve_contact(shoulder, point, along, sign, upper, forearm, grip, hint, prev
         cost[bends > max_bend] = np.inf
         if maximum_elbow_z is not None:
             cost[elbows[:, 2] > maximum_elbow_z] = np.inf
+        if minimum_elbow_y is not None:
+            cost[elbows[:, 1] < minimum_elbow_y] = np.inf
         if below_wrist:
             cost[elbows[:, 2] > wrist[2] - clearance] = np.inf
+        if minimum_vertical_fraction is not None:
+            cost[fore[:, 2] < minimum_vertical_fraction] = np.inf
+        if minimum_forward is not None:
+            cost[elbows @ forward_axis < minimum_forward] = np.inf
         index = int(np.argmin(cost))
         if np.isfinite(cost[index]):
             return dict(elbow=elbows[index], wrist=wrist, turn=turn,

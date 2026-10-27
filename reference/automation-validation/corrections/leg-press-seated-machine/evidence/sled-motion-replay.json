@@ -1,0 +1,31 @@
+{
+  "frames": 32,
+  "measured_frames": 32,
+  "first_frame": 1,
+  "last_frame": 32,
+  "height_m": 0.9991119140625,
+  "phase_frames": {
+    "start": 1,
+    "middle": 10,
+    "end": 19
+  },
+  "max_supported_body_drift_mm": 0.0,
+  "max_hand_drift_mm": 0.0,
+  "top_knees_deg": {
+    "left": 175.99920609608577,
+    "right": 173.30824279098687
+  },
+  "bottom_knees_deg": {
+    "left": 65.89081914285212,
+    "right": 65.74131018382654
+  },
+  "top_extension_shortfall_deg": 0.0,
+  "bottom_flexion_shortfall_deg": 0.0,
+  "bottom_overfold_deg": 0.0,
+  "max_knee_asymmetry_deg": 2.6909633050989044,
+  "method": "Actual all-frame joint coordinates; fixed supported torso and hands, source-phase leg range.",
+  "status": "passed",
+  "rendered": true,
+  "original_rocking_rejected": true,
+  "scene_sha256": "e1e6f0489a3f7e6f92f8dda595c6f8336146c43bda07f24c9f9271ec9e2af143"
+}

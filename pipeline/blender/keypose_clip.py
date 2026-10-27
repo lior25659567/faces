@@ -72,13 +72,14 @@ position is built the way the Studio reads it:
 Off a side view (no facing known), everything comes from the 3D landmarks, the frame from the hips' left-right
 line made level.
 
-## Timing: a real lift
+## Timing: a declared demonstration tempo
 
 Start -> middle -> end over 1.5 s, held 0.2 s, back end -> middle -> start over 1.0 s (the lift reverses along
 one path); each stroke eased in and out (smoothstep), every bone's rotation slerped between neighbouring
 positions. The middle sits along the stroke where its share of the bones' turning puts it. Without a middle
 picture the stroke runs start -> end. At 30 fps: 81 frames, 45 down, 6 held, 30 up (the last leads into the first:
-the rep loops, so no frame is shown twice).
+the rep loops, so no frame is shown twice). Pull-ups start at the bottom: their pull takes 1.0 s and
+controlled lowering takes 1.5 s. Two photographs establish positions, not the athlete's actual timing.
 
 The numpy core (everything above `clip_from_keyposes`) runs without Blender and is tested by
 studio/tests/test_keypose_clip.py; the whole path by studio/tests/blender/test_keypose.py.
@@ -479,11 +480,31 @@ def _smoothstep(t):
     return t * t * (3.0 - 2.0 * t)
 
 
-def timeline(fps=FPS):
-    """The path parameter per frame: 0 at the start position, 1 at the end; down over DESCENT_S, held HOLD_S,
-    back over ASCENT_S, each stroke eased in and out. The rep loops (the GIF, the app), so the way up stops one frame
-    short of the start: the next frame is the first one, not a repeat of it."""
-    down, hold, up = (int(round(s * fps)) for s in (DESCENT_S, HOLD_S, ASCENT_S))
+def cycle_timing(exercise=None):
+    """Declared demonstration tempo; two still photos do not measure timing.
+
+    A pull-up starts at the bottom, unlike the squat/bench examples. Its
+    controlled lowering belongs on the return stroke, rather than a fast drop.
+    """
+    pulling = exercise in ('Pull-Up', 'Lat Pulldown (seated, to the front)')
+    pressing = exercise in ('Standing Barbell Overhead Press (Shoulder Press)',
+                            'Dumbbell Shoulder Press (seated overhead press)')
+    effort_first = pulling or pressing
+    return {'forward_s': ASCENT_S if effort_first else DESCENT_S, 'hold_s': HOLD_S,
+            'return_s': DESCENT_S if effort_first else ASCENT_S,
+            'forward_action': 'pull' if pulling else 'press' if pressing else 'start to end',
+            'return_action': 'controlled lowering' if effort_first else 'end to start',
+            'source': 'declared demonstration tempo; not measured from source photographs'}
+
+
+def timeline(fps=FPS, exercise=None):
+    """The eased path from start (0) to end (1), a hold, then the return.
+
+    The final sample leads into the first rather than duplicating it. Exercise
+    semantics decide which stroke gets the slower controlled lowering.
+    """
+    timing = cycle_timing(exercise)
+    down, hold, up = (int(round(timing[name] * fps)) for name in ('forward_s', 'hold_s', 'return_s'))
     return ([_smoothstep(i / down) for i in range(down + 1)] + [1.0] * hold
             + [_smoothstep(1.0 - i / up) for i in range(1, up)])
 
@@ -512,14 +533,14 @@ def pose_at(keys, marks, s):
     raise ValueError("no key positions")
 
 
-def motion(keys, fps=FPS, feet="planted"):
+def motion(keys, fps=FPS, feet="planted", exercise=None):
     """Every frame's bone turns. "planted" feet keep the first position's foot throughout."""
     if len(keys) == 1:
         return [{name: value.copy() for name, value in keys[0].items()} for _ in range(round(fps))]
     if feet == "planted":
         keys = [{**k, **{b: keys[0][b] for b in FEET}} for k in keys]
     marks = path_marks(keys)
-    return [pose_at(keys, marks, s) for s in timeline(fps)]
+    return [pose_at(keys, marks, s) for s in timeline(fps, exercise)]
 
 
 def reference_timing(keyposes, phase_names, key_turns, fps=FPS, first=1):
@@ -538,10 +559,12 @@ def reference_timing(keyposes, phase_names, key_turns, fps=FPS, first=1):
         marks = ({'start': 0., 'middle': .5, 'end': 1.} if keyposes.get('exercise') == 'Barbell Bent-Over Row'
                  else dict(zip(phase_names, path_marks(key_turns))))
         marks.setdefault('middle', .5)
-        forward = timeline(fps)[:int(round(DESCENT_S * fps)) + 1]
+        exercise = keyposes.get('exercise')
+        forward = timeline(fps, exercise)[:int(round(cycle_timing(exercise)['forward_s'] * fps)) + 1]
         frames = {p: first + min(range(len(forward)), key=lambda i: abs(forward[i] - marks[p])) for p in PHASES}
     return {'source': 'keyposes', 'mode': 'hold' if hold else 'cycle',
-            'phase_frames': frames, 'explicit_phases': explicit}
+            'phase_frames': frames, 'explicit_phases': explicit,
+            **({} if hold else {'timing': cycle_timing(keyposes.get('exercise'))})}
 
 
 def leg_points(pose, rest, legs=DOWN):
@@ -585,15 +608,17 @@ def clip_from_keyposes(rest, keyposes, fps=FPS, feet="planted", label="keyposes.
         from row_motion import stabilize_body
         key_turns = stabilize_body(key_turns, legs=legs)
         notes.append("row: starting body hinge held throughout; arms retain reference motion")
-    poses = motion(key_turns, fps=fps, feet=feet)
+    poses = motion(key_turns, fps=fps, feet=feet, exercise=keyposes.get('exercise'))
 
     def in_world(r):
         return Matrix((to_world @ r @ to_world.T).tolist()).to_quaternion()
     turns = [{b: in_world(pose[b]) @ rest.rest_turns[b] for b in bones} for pose in poses]
     frames = [{n: Vector((to_world @ p).tolist()) for n, p in leg_points(pose, rest_points, legs).items()}
               for pose in poses]
+    timing = cycle_timing(keyposes.get('exercise'))
     notes.append(f"key positions {', '.join(p for p, _ in keys)}; {len(poses)} frames at {fps} fps "
-                 f"({DESCENT_S:g} s down, {HOLD_S:g} s held, {ASCENT_S:g} s up), feet {feet}")
+                 f"({timing['forward_s']:g} s start to end, {timing['hold_s']:g} s held, "
+                 f"{timing['return_s']:g} s return; declared tempo), feet {feet}")
     clip = retarget.Clip(path=str(label), fps=float(fps), first=1, rest=dict(rest.rest), frames=frames,
                          bones=dict(rest.bones), notes=notes, rest_turns={b: rest.rest_turns[b] for b in bones},
                          turns=turns)

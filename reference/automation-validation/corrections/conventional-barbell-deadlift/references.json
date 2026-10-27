@@ -31,7 +31,8 @@
         "contextOnly": false,
         "catalogId": "Barbell_Deadlift",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Deadlift/0.jpg"
-      }
+      },
+      "path": "source-references/img-149dd351.jpg"
     },
     {
       "id": "img-dd038b45",
@@ -61,7 +62,8 @@
         "contextOnly": false,
         "catalogId": "Barbell_Deadlift",
         "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Barbell_Deadlift/1.jpg"
-      }
+      },
+      "path": "source-references/img-dd038b45.jpg"
     }
   ],
   "characterFit": "auto"

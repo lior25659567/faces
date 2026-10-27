@@ -5,6 +5,7 @@ import path from 'node:path'
 import http from 'node:http'
 import { createStore } from './store.js'
 import { studioApi } from './api.js'
+import { getOneStepBundledReferenceSpec } from './bundled-references.js'
 
 let root, store, server, base, calls
 const slug = 'barbell-back-squat'
@@ -14,7 +15,8 @@ beforeEach(async () => {
   calls = []
   const queue = {
     state: () => ({ running: null, queued: [] }),
-    enqueueRead: (s) => { calls.push(s); return store.createRun(s, { readOnly: true }) },
+    enqueueRead: (s, options) => { calls.push(s); return store.createRun(s, { ...options, readOnly: true }) },
+    enqueue: (s, options) => { calls.push(s); return store.createRun(s, options) },
   }
   let middleware
   studioApi({ store, queue }).configureServer({ middlewares: { use: (f) => { middleware = f } } })
@@ -54,6 +56,46 @@ test('reference endpoint preserves existence and same-origin guards', async () =
   expect((await fetch(`${base}/api/exercises/missing/read`, { method: 'POST' })).status).toBe(404)
   expect((await fetch(`${base}/api/exercises/${slug}/read`, { method: 'POST', headers: { origin: 'http://unrelated.example' } })).status).toBe(403)
   expect(calls).toEqual([])
+})
+
+test('an explicit movement check snapshots the allowed preset without requiring or retagging photos', async () => {
+  const before = store.listReferences(slug)
+  const response = await fetch(`${base}/api/exercises/${slug}/read`, {
+    method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ motionPreset: 'squat-v1' }),
+  })
+  expect(response.status).toBe(201)
+  const run = await response.json()
+  expect(run).toMatchObject({ motionPreset: 'squat-v1', readOnly: true })
+  expect(store.listReferences(slug)).toEqual(before)
+})
+
+test('the API rejects unknown or cross-exercise movement sources before queueing', async () => {
+  for (const [exercise, preset] of [[slug, '../other.fbx'], ['pull-up', 'squat-v1']]) {
+    const response = await fetch(`${base}/api/exercises/${exercise}/read`, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ motionPreset: preset }),
+    })
+    expect(response.status).toBe(400)
+  }
+  expect(calls).toEqual([])
+})
+
+test('manual checks and builds preserve the exact selected observed sequence', async () => {
+  const lunge = 'walking-lunge-dumbbells-optional'
+  const source = getOneStepBundledReferenceSpec(store.getExercise(lunge).name)
+  const referenceBundle = { id: source.id, commit: source.commit }
+  for (const route of ['read', 'runs']) {
+    const response = await fetch(`${base}/api/exercises/${lunge}/${route}`, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ referenceBundle }),
+    })
+    expect(response.status).toBe(201)
+    expect((await response.json()).referenceBundle).toEqual(referenceBundle)
+  }
+  const rejected = await fetch(`${base}/api/exercises/${lunge}/read`, {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ referenceBundle: { ...referenceBundle, commit: '0'.repeat(64) } }),
+  })
+  expect(rejected.status).toBe(400)
+  expect(calls).toEqual([lunge, lunge])
 })
 
 

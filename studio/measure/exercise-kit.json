@@ -68,7 +68,11 @@
     },
     "Walking Lunge (dumbbells optional)": {
       "steps": true,
-      "clip": "lunge.fbx"
+      "clip": "lunge.fbx",
+      "holds": "dumbbells",
+      "built": true,
+      "automatic": true,
+      "referenceMotion": true
     },
     "Front Plank (forearm plank)": {
       "referenceMotion": true,

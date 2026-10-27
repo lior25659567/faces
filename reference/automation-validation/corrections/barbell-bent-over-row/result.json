@@ -1,0 +1,451 @@
+{
+  "status": "needs-review",
+  "run": {
+    "id": "row-stance-validated",
+    "exercise": "Barbell Bent-Over Row",
+    "status": "done",
+    "createdAt": "2026-10-25T09:06:28.404898+00:00",
+    "construction": "fresh cached fit rebuilt from real reference keyposes using production clip, retarget and row-contact modules",
+    "steps": [
+      {
+        "id": "geometry",
+        "exit": 0,
+        "source": "preceding saved-scene geometry replay"
+      },
+      {
+        "id": "render",
+        "seconds": 1088.59,
+        "exit": 0
+      },
+      {
+        "id": "stills",
+        "seconds": 243.3,
+        "exit": 0
+      },
+      {
+        "id": "check",
+        "seconds": 0.1,
+        "exit": 0
+      },
+      {
+        "id": "replay",
+        "seconds": 11.75,
+        "exit": 0
+      }
+    ],
+    "finishedAt": "2026-10-25T09:34:41.108847+00:00",
+    "summary": {
+      "pass": 16,
+      "fail": 2,
+      "limited": 0,
+      "uncertain": 0,
+      "info": 9,
+      "unmeasured": 0
+    },
+    "pictureOptimization": {
+      "steps": [
+        {
+          "id": "stills-skip-estimated",
+          "seconds": 70.72,
+          "exit": 0
+        },
+        {
+          "id": "check-skip-estimated",
+          "seconds": 0.15,
+          "exit": 0
+        },
+        {
+          "id": "replay-skip-estimated",
+          "seconds": 10.93,
+          "exit": 0
+        }
+      ],
+      "beforePhaseSearchRenders": 15,
+      "afterPhaseSearchRenders": 10,
+      "sameAllFrameRigMeasurements": true,
+      "sameAllFrameFolds": true,
+      "sameSourceStillFramesAndCameras": true,
+      "sameJudgedChecks": true,
+      "sameAllVerdictsAndCoverage": true,
+      "informationalReadingChanges": [
+        {
+          "metric": "hip_included",
+          "before": 112.891,
+          "after": 96.776,
+          "note": "Estimated between the other two positions. Shown on the rig; there is no reference picture at this position."
+        },
+        {
+          "metric": "torso_lean",
+          "before": 46.306,
+          "after": 55.472,
+          "note": "Estimated between the other two positions. Shown on the rig; there is no reference picture at this position."
+        }
+      ],
+      "skipped": "estimated middle with no source photograph"
+    }
+  },
+  "summary": {
+    "pass": 18,
+    "fail": 2,
+    "limited": 0,
+    "uncertain": 0,
+    "info": 9,
+    "unmeasured": 0
+  },
+  "failed_checks": [
+    {
+      "group": "end",
+      "metric": "hip_included",
+      "target": 126.746,
+      "ours": 96.776,
+      "unit": "deg",
+      "status": "fail",
+      "frame": 46,
+      "note": "Off by 30.0\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig",
+      "kind": null,
+      "uncertain_why": null
+    },
+    {
+      "group": "end",
+      "metric": "torso_lean",
+      "target": 34.946,
+      "ours": 55.472,
+      "unit": "deg",
+      "status": "fail",
+      "frame": 46,
+      "note": "Off by 20.5\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig. The row holds the starting torso hinge",
+      "kind": null,
+      "uncertain_why": null
+    }
+  ],
+  "runtime": {
+    "blender": "5.2.2 LTS",
+    "mpfb": "2.0.18"
+  },
+  "model": {
+    "path": "3d-character/3d cartoon boy.glb",
+    "sha256": "6cd4a8f50094eac8afdbfc2d958240457084c9a76a15900371704bcafbf93ab3",
+    "proportions": "original"
+  },
+  "source_images": [
+    {
+      "phase": "start",
+      "view": "three-quarter",
+      "sha256": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Bent_Over_Barbell_Row",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/0.jpg",
+        "sha256": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+        "phase": "start",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Bent_Over_Barbell_Row",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/0.jpg"
+      }
+    },
+    {
+      "phase": "end",
+      "view": "three-quarter",
+      "sha256": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72",
+      "source": {
+        "name": "Free Exercise DB",
+        "repository": "https://github.com/yuhonas/free-exercise-db",
+        "commit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+        "license": "Unlicense / public-domain dataset (upstream declared)",
+        "licenseUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/LICENSE.md",
+        "upstreamCredit": "The upstream README credits wrkout/exercises.json; original photographers are not named.",
+        "reviewedOn": "2026-10-24",
+        "reviewMethod": "Exact exercise variants, instructions and all source image pairs inspected; view tags describe the photographs rather than a required solver view.",
+        "sourceId": "Bent_Over_Barbell_Row",
+        "sourceUrl": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/1.jpg",
+        "sha256": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72",
+        "phase": "end",
+        "view": "three-quarter",
+        "contextOnly": false,
+        "catalogId": "Bent_Over_Barbell_Row",
+        "url": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5/exercises/Bent_Over_Barbell_Row/1.jpg"
+      }
+    }
+  ],
+  "reference_motion": {
+    "source": "keyposes",
+    "mode": "cycle",
+    "phase_frames": {
+      "start": 1,
+      "middle": 24,
+      "end": 46
+    },
+    "explicit_phases": [
+      "start",
+      "end"
+    ]
+  },
+  "row_solver": {
+    "source": "shared bar from direct measured arm landmarks; elbow angles adapted to character limb lengths",
+    "body_adaptation": {
+      "torso": "starting hinge held throughout the row",
+      "stance": "constant mean of observed thigh directions and knee bends; starting foot turns retained"
+    },
+    "requested_grip_ratio": 1.4864451766701945,
+    "grip_ratio": 1.4864451766701945,
+    "worst_wrist_bend_deg": 19.495608200213606,
+    "max_path_adjustment_mm": 0.0,
+    "max_grip_anchor_error_mm": 0.005969093856144768,
+    "max_surface_adjustment_mm": 50.9161207399315,
+    "contact": {
+      "hand_vertices": 4389,
+      "deepest_inside_bar_mm": 0.8049387878278444,
+      "nearest_gap_mm_min": -0.8049387878278444,
+      "frames_touching_within_3mm": 81,
+      "frames": 81,
+      "sides": {
+        "left": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.7987653436670487,
+          "nearest_gap_mm_max": 0.02786813159949726
+        },
+        "right": {
+          "frames": 81,
+          "frames_touching_within_3mm": 81,
+          "deepest_inside_bar_mm": 0.8049387878609136,
+          "nearest_gap_mm_max": 0.05128807603306529
+        }
+      }
+    },
+    "body_clearance": {
+      "status": "clear_at_samples",
+      "worst": null,
+      "sample_spacing_mm": 12.560264062499993,
+      "triangles": 15713,
+      "frames": []
+    }
+  },
+  "body_contact": {
+    "penetration_mm": 0.0,
+    "penetration_frame": 2,
+    "sides": {
+      "left": {
+        "sole_vertices": 486,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.6364908185787499
+      },
+      "right": {
+        "sole_vertices": 531,
+        "sole_slide_mm": 0.0,
+        "slide_frame": 2,
+        "sole_lift_mm": 0.0,
+        "initial_floor_gap_mm": 0.0
+      }
+    },
+    "box": [
+      [
+        -0.2093353420495987,
+        -0.10782282799482346,
+        -1.3632018180942396e-06
+      ],
+      [
+        0.2089657187461853,
+        0.42531150579452515,
+        0.8313003182411194
+      ]
+    ]
+  },
+  "deformation": {
+    "crack_max_mm": 0.0,
+    "max_growth_mm": 35.139305633162444,
+    "growth_frame": 2,
+    "coincident_unconnected_pairs": 26304,
+    "deepest_frame": 1,
+    "deepest": {
+      "max_growth_mm": 35.139297203941936,
+      "max_growth_pct": 3.517053165852227,
+      "edges_over_1pct": 269,
+      "edges_over_0_5pct": 843,
+      "worst_edge_at": [
+        -0.0618,
+        -0.0527,
+        0.4146
+      ],
+      "worst_edge_posed_at": [
+        -0.0624,
+        -0.0785,
+        0.4121
+      ],
+      "worst_edge_rest_mm": 21.683206358568867,
+      "crack_max_mm": 0.0,
+      "skin_max_move_mm": 439.99647617839025
+    }
+  },
+  "builder_files": {
+    "pipeline/blender/row_motion.py": "1fc98f43fbaeb5879718d2fdd0f418ffcef774cd8942d03aa28ffb7c34b2275e",
+    "pipeline/blender/row_bar.py": "fcb007dcd98e4cf481be9815e2dec925f01f36dbefd5d7d858592f5a05170b57",
+    "pipeline/blender/keypose_clip.py": "1276878b14398136b00056a0be9767eda54f71b6db9836c8bdb568d17f3938f7",
+    "pipeline/blender/retarget.py": "0bf6eb0f8e688868209c8f037b96203ab426fcc51f65ae12707f76421e928747",
+    "studio/blender/inspect_run.py": "71fff6f0b8044fff8f20b785f0048638da0a4fff41ae0c8684f03de473b3bf21",
+    "studio/measure/reference_timing.py": "00d36c7dab534a35ea244cd4b551def9bb65ef5cd3b5293a074a89946c872628",
+    "studio/measure/picture.py": "cdd3497f6221cc7ef0f24c4770e3997648effddbd953e0cd2efed33a43dda475",
+    "studio/measure/checks.py": "1483c44cda6381826e05880a79e353488ef19d7bf9e49eeaa239ddb47e0d5b2c"
+  },
+  "artifacts": {
+    "animation.gif": "9fac3436dd13b9dc49c469bfe24cdd9997876759b26903703099ba9f475e4f7d",
+    "start.png": "2d2610b33220d01bbd8d6485e30df96561de89610ef1e09d6a7243d7c651fd7a",
+    "end.png": "c822512c26e03e5addfa249426bf29bfeb42d842e0e735de8c275d03d25b1ed0",
+    "checks.json": "7c23bba538c58a3e80c1da776bbcde28415646b95a5e8d210b62a15bf9e34938"
+  },
+  "name": "Barbell Bent-Over Row",
+  "slug": "barbell-bent-over-row",
+  "run_dir": "/tmp/studio-motion-quality-validation/barbell-bent-over-row",
+  "steps": [
+    {
+      "id": "geometry",
+      "exit": 0,
+      "source": "preceding saved-scene geometry replay",
+      "step": "geometry",
+      "seconds": null,
+      "scope": "original render, retained unchanged; current replay is recorded separately"
+    },
+    {
+      "id": "render",
+      "seconds": 1088.59,
+      "exit": 0,
+      "step": "render",
+      "scope": "original render, retained unchanged; current replay is recorded separately"
+    },
+    {
+      "id": "stills",
+      "seconds": 243.3,
+      "exit": 0,
+      "step": "stills",
+      "scope": "original render, retained unchanged; current replay is recorded separately"
+    },
+    {
+      "id": "check",
+      "seconds": 0.1,
+      "exit": 0,
+      "step": "check",
+      "scope": "original render, retained unchanged; current replay is recorded separately"
+    },
+    {
+      "id": "replay",
+      "seconds": 11.75,
+      "exit": 0,
+      "step": "replay",
+      "scope": "original render, retained unchanged; current replay is recorded separately"
+    }
+  ],
+  "frames": 81,
+  "fps": 30.0,
+  "phase_frames": {
+    "start": 1,
+    "middle": 24,
+    "end": 46
+  },
+  "character_fit": {
+    "applied": false,
+    "label": "Original proportions",
+    "source_model_unchanged": true
+  },
+  "pre_render_gate_exercised_in_cli": false,
+  "source_image_hashes": {
+    "img-a5238694": "09abbeb2fca7006d0e072bdc802158b34acf7923bd3069bb835951e49a95de41",
+    "img-d5b918c9": "3c323601573df29cc9c6343765e0d21e7cd99a2dc830105099ac95ecba2cea72"
+  },
+  "scene_sha256": "9c28706ef1fc537aab476f82ec59677ded577cc23a6c800ec55f5350f06ac208",
+  "output_sha256": {
+    "animation.gif": "9fac3436dd13b9dc49c469bfe24cdd9997876759b26903703099ba9f475e4f7d",
+    "start.png": "2d2610b33220d01bbd8d6485e30df96561de89610ef1e09d6a7243d7c651fd7a",
+    "end.png": "c822512c26e03e5addfa249426bf29bfeb42d842e0e735de8c275d03d25b1ed0",
+    "checks.json": "7c23bba538c58a3e80c1da776bbcde28415646b95a5e8d210b62a15bf9e34938"
+  },
+  "input_mode": "reference-keyposes",
+  "playback": "loop",
+  "gif_duration_ms": 2700,
+  "gif_frame_count": 81,
+  "gif_loop_extension": 0,
+  "anchor_frames": {
+    "start": {
+      "frame": 1,
+      "file": "start.png",
+      "source": "/tmp/row-stance-validated/frames/frame_0001.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    },
+    "end": {
+      "frame": 46,
+      "file": "end.png",
+      "source": "/tmp/row-stance-validated/frames/frame_0046.png",
+      "kind": "recorded generated frame from the rendered preview camera"
+    }
+  },
+  "quality": {
+    "mechanical_body_failures": 0,
+    "missing_measurements": 0,
+    "retained_source_comparison_failures": [
+      {
+        "group": "end",
+        "metric": "hip_included",
+        "target": 126.746,
+        "ours": 96.776,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 46,
+        "note": "Off by 30.0\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig",
+        "kind": null,
+        "uncertain_why": null
+      },
+      {
+        "group": "end",
+        "metric": "torso_lean",
+        "target": 34.946,
+        "ours": 55.472,
+        "unit": "deg",
+        "status": "fail",
+        "frame": 46,
+        "note": "Off by 20.5\u00b0. Reference angle inferred from three-quarter depth; compared with the 3D rig. The row holds the starting torso hinge",
+        "kind": null,
+        "uncertain_why": null
+      }
+    ],
+    "rendered_this_review": false,
+    "geometry_changed_this_review": false,
+    "source_photos_calibrated": false,
+    "render_scope": "Existing scene and GIF retained unchanged; actual saved-scene movement checks were replayed.",
+    "evidence": [
+      {
+        "file": "evidence/arm-replay.json",
+        "sha256": "ef4d7ba5cb51f622994ec0c557b1297e95c9dc1c95a324a474943b64bc7a9b7a",
+        "status": "passed",
+        "scene_sha256": "9c28706ef1fc537aab476f82ec59677ded577cc23a6c800ec55f5350f06ac208"
+      },
+      {
+        "file": "evidence/row-replay.json",
+        "sha256": "13a1c36aa3b23b4d1f1fecef76127e402f0394fa48dab40b606e2e5384d39fea",
+        "status": "passed",
+        "scene_sha256": null
+      }
+    ]
+  },
+  "geometry_report": "geometry-report.json",
+  "inspector_measurements": "ours.json",
+  "source_provenance": "source-provenance.json",
+  "physical_remeasurement": {
+    "method": "Independent actual saved-scene movement/contact measurements; see the preserved replay and recheck records.",
+    "geometry_changed_during_measurement": false,
+    "geometry_changed_this_review": false,
+    "evidence_files": [
+      "evidence/arm-replay.json",
+      "evidence/row-replay.json"
+    ],
+    "raw_report": "geometry-report.json"
+  }
+}

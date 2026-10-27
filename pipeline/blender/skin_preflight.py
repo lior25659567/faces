@@ -31,12 +31,20 @@ def preview_bounds(contact_box, prop_corners=()):
 
 def source_camera_plan(snapshot, measurements, targets, phase_frames, yaw, camera_for, effective_view):
     """Every source comparison view at its recorded frame; no best-fit selection."""
+    if snapshot.get('motionPreset') is not None:
+        from motion_presets import preset_for
+        preset = preset_for(snapshot['exercise'], snapshot['motionPreset'])
+        if (targets.get('motion') or {}).get('preset') != preset['id']:
+            raise ValueError('The preset comparison metadata does not match the selected movement.')
+        # Every planned GIF camera still contributes to the full-frame skin scan.
+        return []
     side = ((targets or {}).get('camera') or {}).get('side')
     if side not in ('left', 'right') and ((targets or {}).get('motion') or {}).get('approximateDepth'):
         side = 'left'
     if side not in ('left', 'right'):
         raise ValueError('The reference camera side is missing.')
-    images = [image for image in (snapshot.get('images') or []) if not image.get('contextOnly')
+    from motion_presets import movement_images
+    images = [image for image in movement_images(snapshot) if not image.get('contextOnly')
               and not image.get('deleted') and not image.get('motionOnly')
               and not (image.get('source') or {}).get('motionOnly')]
     if not images:
@@ -75,6 +83,12 @@ def motion_verdict(measured, error=None):
     return rows, ready
 
 
+def upper_limb_verdict(measured, first, last):
+    from checks import _upper_limb_rows
+    rows = _upper_limb_rows({'first': first, 'last': last, 'upper_limb_motion': measured})
+    return rows, all(row['status'] == 'pass' for row in rows)
+
+
 def measure(rig, skin, first, last, exercise, held, contact_box, keyposes_path, side_view=True,
             reference_motion=None, preview_views=None):
     """Return exact planned-view folds and motion rows without changing the scene.
@@ -97,8 +111,9 @@ def measure(rig, skin, first, last, exercise, held, contact_box, keyposes_path, 
     original_frame, original_subframe, original_camera = scene.frame_current, scene.frame_subframe, scene.camera
     result = {'first': first, 'last': last, 'preview_box': None, 'preview_cameras': [],
               'preview_camera_space': 'world', 'preview_camera_positions': [], 'comparison_camera_frames': [],
-              'comparison_cameras': [], 'height_m': None, 'folds': None, 'rows': [], 'fold_rows': [],
-              'motion_rows': [], 'jumps': None, 'steps': None, 'ready': False,
+              'comparison_cameras': [], 'preset_pose_cameras': [], 'height_m': None, 'folds': None, 'rows': [], 'fold_rows': [],
+              'motion_rows': [], 'upper_limb_rows': [], 'upper_limb_motion': None,
+              'jumps': None, 'steps': None, 'ready': False,
               'measured_frames': 0, 'measurement_error': None}
     measured = None
     motion = None
@@ -140,10 +155,18 @@ def measure(rig, skin, first, last, exercise, held, contact_box, keyposes_path, 
         jump_set = inspector.jump_frames(per_frame, targets, joints)
         motion = {'jumps': inspector.jump_sizes(joints, jump_set), 'steps': inspector.jump_steps(joints)}
         result.update(motion)
+        result['upper_limb_motion'] = inspector.upper_limb_motion(rig, first, last,
+            loop=reference_motion.get('mode') == 'cycle')
         comparisons = source_camera_plan(snapshot, measurements, targets, phases, yaw,
                                          inspector.camera_for, inspector.effective_view)
+        preset_poses = []
+        if snapshot.get('motionPreset') is not None:
+            azimuth, elevation, view = inspector.camera_for('three-quarter', side, yaw)
+            preset_poses = [{'phase': phase, 'frame': frame, 'view': view, 'azimuth': float(azimuth),
+                'elevation': float(elevation), 'purpose': 'Preset pose preview; not a source photograph comparison.'}
+                for phase, frame in phases.items()]
         by_frame, points_at = {}, {}
-        for camera in comparisons:
+        for camera in comparisons + preset_poses:
             frame, azimuth, elevation = camera['frame'], camera['azimuth'], camera['elevation']
             if frame not in points_at:
                 points_at[frame] = inspector.figure_points(skin, frame)
@@ -156,7 +179,8 @@ def measure(rig, skin, first, last, exercise, held, contact_box, keyposes_path, 
             position = centre + inspector.view_direction(azimuth, elevation) * cage.distance_for(extent)
             camera['location'] = position.tolist()
             by_frame.setdefault(frame, []).append(position)
-        result.update(comparison_cameras=comparisons, comparison_camera_frames=sorted(by_frame))
+        result.update(comparison_cameras=comparisons, comparison_camera_frames=sorted({c['frame'] for c in comparisons}),
+                      preset_pose_cameras=preset_poses)
         measured = inspector.skin_folds(rig, skin, first, last,
                                        lambda frame: positions + by_frame.get(frame, []))
         if not isinstance(measured, dict):
@@ -171,6 +195,8 @@ def measure(rig, skin, first, last, exercise, held, contact_box, keyposes_path, 
     rows, ready = fold_verdict(measured, first, last, error=result['measurement_error'])
     # A later fold/camera failure must not erase a completed movement reading.
     motion_rows, motion_ready = motion_verdict(motion, error=result['measurement_error'] if motion is None else None)
-    result.update(fold_rows=rows, motion_rows=motion_rows, rows=rows + motion_rows,
-                  fold_ready=ready, motion_ready=motion_ready, ready=ready and motion_ready)
+    arm_rows, arm_ready = upper_limb_verdict(result['upper_limb_motion'], first, last)
+    result.update(fold_rows=rows, motion_rows=motion_rows, upper_limb_rows=arm_rows, rows=rows + motion_rows + arm_rows,
+                  fold_ready=ready, motion_ready=motion_ready, upper_limb_ready=arm_ready,
+                  ready=ready and motion_ready and arm_ready)
     return result
